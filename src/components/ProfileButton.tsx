@@ -2,24 +2,40 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { X, User, Bell, Shield, LogIn, Edit } from "lucide-react"
+import { X, Edit, LogOut, Bell, Shield } from "lucide-react"
 import { getInitials, avatarColour } from "@/lib/utils"
 import { getProfile, clearProfile } from "@/lib/profile"
+import { onAuthChange, signOut, type User } from "@/lib/auth"
 import { PrepSightProfile } from "@/lib/types"
 
 export default function ProfileButton() {
   const router = useRouter()
   const [open, setOpen] = useState(false)
+  const [user, setUser] = useState<User | null>(null)
   const [profile, setProfile] = useState<PrepSightProfile | null>(null)
+
+  useEffect(() => {
+    const unsub = onAuthChange((u) => setUser(u))
+    return unsub
+  }, [])
 
   useEffect(() => {
     setProfile(getProfile())
   }, [open])
 
-  const displayName = profile?.hospital ?? "Guest"
-  const displayRole = profile?.role ?? "Unknown role"
-  const initials    = getInitials(displayName)
-  const colour      = avatarColour(displayName)
+  const displayName = user?.displayName ?? user?.email ?? "You"
+  const displayRole = profile?.role ?? "No role set"
+  const photoURL    = user?.photoURL
+
+  const initials = getInitials(displayName)
+  const colour   = avatarColour(displayName)
+
+  async function handleSignOut() {
+    clearProfile()
+    await signOut()
+    setOpen(false)
+    router.push("/login")
+  }
 
   function handleEditProfile() {
     clearProfile()
@@ -31,10 +47,13 @@ export default function ProfileButton() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className={`w-9 h-9 rounded-full ${colour} text-white text-sm font-bold flex items-center justify-center shrink-0 shadow-sm`}
         aria-label="Your profile"
+        className={`w-9 h-9 rounded-full overflow-hidden shrink-0 shadow-sm ${!photoURL ? `${colour} text-white text-sm font-bold flex items-center justify-center` : ""}`}
       >
-        {initials}
+        {photoURL
+          ? <img src={photoURL} alt={displayName} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+          : initials
+        }
       </button>
 
       {open && (
@@ -46,17 +65,20 @@ export default function ProfileButton() {
             className="bg-white w-full sm:max-w-sm sm:rounded-2xl rounded-t-2xl shadow-xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header strip */}
+            {/* Header */}
             <div className="bg-[#003366] px-5 pt-6 pb-8 flex items-start justify-between">
               <div className="flex items-center gap-3">
-                <div className={`w-14 h-14 rounded-full ${colour} text-white text-xl font-bold flex items-center justify-center`}>
-                  {initials}
+                <div className={`w-14 h-14 rounded-full overflow-hidden shrink-0 ${!photoURL ? `${colour} text-white text-xl font-bold flex items-center justify-center` : ""}`}>
+                  {photoURL
+                    ? <img src={photoURL} alt={displayName} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                    : initials
+                  }
                 </div>
                 <div>
                   <p className="text-white font-bold text-lg leading-snug">{displayName}</p>
                   <p className="text-white/70 text-sm">{displayRole}</p>
-                  {profile?.departments && profile.departments.length > 0 && (
-                    <p className="text-white/50 text-xs mt-0.5">{profile.departments.join(" · ")}</p>
+                  {profile?.hospital && (
+                    <p className="text-white/50 text-xs mt-0.5">{profile.hospital}</p>
                   )}
                 </div>
               </div>
@@ -68,7 +90,7 @@ export default function ProfileButton() {
               </button>
             </div>
 
-            {/* Menu items */}
+            {/* Menu */}
             <div className="divide-y divide-[#F4F7FA]">
               <button
                 onClick={handleEditProfile}
@@ -79,7 +101,7 @@ export default function ProfileButton() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-[#3F4752]">Edit profile</p>
-                  <p className="text-xs text-[#94a3b8]">Update your hospital and preferences</p>
+                  <p className="text-xs text-[#94a3b8]">Update hospital and preferences</p>
                 </div>
               </button>
 
@@ -89,7 +111,7 @@ export default function ProfileButton() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-[#3F4752]">Notifications</p>
-                  <p className="text-xs text-[#94a3b8]">Requires sign-in</p>
+                  <p className="text-xs text-[#94a3b8]">Coming soon</p>
                 </div>
               </button>
 
@@ -99,23 +121,26 @@ export default function ProfileButton() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-[#3F4752]">Permissions &amp; Access</p>
-                  <p className="text-xs text-[#94a3b8]">Requires sign-in</p>
+                  <p className="text-xs text-[#94a3b8]">Coming soon</p>
                 </div>
               </button>
 
-              <button className="w-full flex items-center gap-3 px-5 py-4 text-left hover:bg-[#f8fafc] transition-colors">
-                <div className="w-9 h-9 rounded-full bg-[#dcfce7] flex items-center justify-center shrink-0">
-                  <LogIn size={18} className="text-emerald-600" />
+              <button
+                onClick={handleSignOut}
+                className="w-full flex items-center gap-3 px-5 py-4 text-left hover:bg-[#fff5f5] transition-colors"
+              >
+                <div className="w-9 h-9 rounded-full bg-[#fee2e2] flex items-center justify-center shrink-0">
+                  <LogOut size={18} className="text-red-500" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-[#3F4752]">Sign in</p>
-                  <p className="text-xs text-[#94a3b8]">Connect your hospital account</p>
+                  <p className="text-sm font-semibold text-red-600">Sign out</p>
+                  <p className="text-xs text-[#94a3b8]">{user?.email}</p>
                 </div>
               </button>
             </div>
 
             <div className="px-5 py-3 bg-[#f8fafc]">
-              <p className="text-xs text-[#94a3b8] text-center">PrepSight · v0.2 · Read-only mode</p>
+              <p className="text-xs text-[#94a3b8] text-center">PrepSight · v0.2 · No patient data stored</p>
             </div>
           </div>
         </div>
