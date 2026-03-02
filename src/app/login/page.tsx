@@ -44,7 +44,7 @@ export default function LoginPage() {
         {/* Logo */}
         <div className="text-center mb-8">
           <img
-            src="/logo.jpg"
+            src="/logo.png"
             alt="PrepSight"
             className="w-36 mx-auto mb-3"
           />

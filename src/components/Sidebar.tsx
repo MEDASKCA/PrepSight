@@ -8,7 +8,7 @@ export default function Sidebar() {
       {/* Logo */}
       <div className="px-4 py-4 border-b border-[#D5DCE3]">
         <Link href="/">
-          <img src="/logo.jpg" alt="PrepSight" className="w-24" />
+          <img src="/logo.png" alt="PrepSight" className="w-24" />
         </Link>
       </div>
 
