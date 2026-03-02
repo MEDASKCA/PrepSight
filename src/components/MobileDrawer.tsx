@@ -20,7 +20,7 @@ export default function MobileDrawer() {
         >
           <Menu size={22} className="text-[#3F4752]" />
         </button>
-        <Link href="/" className="text-lg font-bold text-[#003366]">PrepSight</Link>
+        <Link href="/"><img src="/logo.jpg" alt="PrepSight" className="h-8" /></Link>
         <ProfileButton />
       </div>
 
@@ -42,7 +42,7 @@ export default function MobileDrawer() {
         {/* Drawer header */}
         <div className="flex items-center justify-between px-4 py-4 border-b border-[#D5DCE3]">
           <div>
-            <p className="text-lg font-bold text-[#003366]">PrepSight</p>
+            <img src="/logo.jpg" alt="PrepSight" className="w-24" />
             <p className="text-xs text-[#94a3b8]">Clinical Procedure Reference</p>
           </div>
           <button

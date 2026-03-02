@@ -7,10 +7,9 @@ export default function Sidebar() {
     <div className="flex flex-col h-full border-r border-[#D5DCE3] bg-white">
       {/* Logo */}
       <div className="px-4 py-4 border-b border-[#D5DCE3]">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-lg font-bold text-[#003366]">PrepSight</span>
+        <Link href="/">
+          <img src="/logo.jpg" alt="PrepSight" className="w-24" />
         </Link>
-        <p className="text-xs text-[#94a3b8] mt-0.5">Clinical Procedure Reference</p>
       </div>
 
       {/* Nav tree — flex-1 so it fills the sidebar */}

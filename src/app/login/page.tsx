@@ -43,8 +43,12 @@ export default function LoginPage() {
 
         {/* Logo */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-[#003366] mb-1">PrepSight</h1>
-          <p className="text-sm text-[#64748b]">Clinical Procedure Reference</p>
+          <img
+            src="/logo.jpg"
+            alt="PrepSight"
+            className="w-36 mx-auto mb-3"
+          />
+          <p className="text-sm text-[#64748b]">Every procedure. Every setting. Every team.</p>
         </div>
 
         {/* Card */}
