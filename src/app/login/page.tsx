@@ -46,7 +46,7 @@ export default function LoginPage() {
           <img
             src="/logo.png"
             alt="PrepSight"
-            className="w-36 mx-auto mb-3"
+            className="w-56 mx-auto mb-3"
           />
           <p className="text-sm text-[#64748b]">Every procedure. Every setting. Every team.</p>
         </div>
