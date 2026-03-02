@@ -1,0 +1,153 @@
+import { ClinicalSetting, SectionType } from "./types"
+
+export const CLINICAL_SETTINGS: ClinicalSetting[] = [
+  "Operating Theatre",
+  "Endoscopy Suite",
+  "Interventional Radiology / Cath Lab",
+  "Emergency Department",
+  "Intensive Care Unit",
+  "Ward",
+  "Outpatient / Clinic",
+  "Maternity & Obstetrics",
+]
+
+export const SETTING_SPECIALTIES: Record<ClinicalSetting, string[]> = {
+  "Operating Theatre": [
+    "Orthopaedics",
+    "General Surgery",
+    "Urology",
+    "Gynaecology",
+    "ENT",
+    "Ophthalmology",
+    "Vascular Surgery",
+    "Cardiothoracic",
+    "Neurosurgery",
+    "Plastics & Reconstructive",
+  ],
+  "Endoscopy Suite": [
+    "Upper GI",
+    "Lower GI",
+    "Hepatobiliary",
+    "Respiratory",
+  ],
+  "Interventional Radiology / Cath Lab": [
+    "Interventional Radiology",
+    "Cardiology",
+    "Neuroradiology",
+  ],
+  "Emergency Department": [
+    "Resuscitation",
+    "Trauma",
+    "Procedural",
+  ],
+  "Intensive Care Unit": [
+    "General ICU",
+    "Cardiac ICU",
+    "Neuro ICU",
+  ],
+  "Ward": [
+    "General Ward",
+    "Surgical Ward",
+    "Medical Ward",
+  ],
+  "Outpatient / Clinic": [
+    "Outpatients",
+    "Minor Procedures",
+    "Specialist Clinic",
+  ],
+  "Maternity & Obstetrics": [
+    "Labour Ward",
+    "Obstetric Theatre",
+    "Postnatal",
+  ],
+}
+
+export interface SectionTypeMeta {
+  type: SectionType
+  label: string
+  icon: string
+  description: string
+}
+
+export const SECTION_TYPE_CATALOGUE: SectionTypeMeta[] = [
+  { type: "overview",                 label: "Overview",                      icon: "FileText",   description: "Summary, duration, anaesthesia type" },
+  { type: "consent_documentation",    label: "Consent & Documentation",       icon: "ClipboardList", description: "Consent forms, checklists, WHO sign-in" },
+  { type: "pre_procedure_assessment", label: "Pre-procedure Assessment",      icon: "Stethoscope", description: "Assessment criteria and pre-op checks" },
+  { type: "ppe",                      label: "PPE",                           icon: "ShieldCheck", description: "Personal protective equipment required" },
+  { type: "patient_preparation",      label: "Patient Preparation",           icon: "User",       description: "Skin prep, bowel prep, fasting, IV access" },
+  { type: "anaesthesia",              label: "Anaesthesia",                   icon: "Syringe",    description: "Anaesthesia type, local infiltration, sedation" },
+  { type: "patient_positioning",      label: "Patient Positioning",           icon: "Move",       description: "Position, supports, pressure area protection" },
+  { type: "sterile_field_draping",    label: "Sterile Field & Draping",       icon: "Layers",     description: "Drapes, incise drapes, sterile field setup" },
+  { type: "instrument_sets_trays",    label: "Instrument Sets & Trays",       icon: "Wrench",     description: "Instrument trays, sets, and counts" },
+  { type: "equipment_devices",        label: "Equipment & Devices",           icon: "Monitor",    description: "Theatre equipment, medical devices" },
+  { type: "implants_prosthetics",     label: "Implants & Prosthetics",        icon: "Package",    description: "Implant systems, sizes, trial components" },
+  { type: "consumables_supplies",     label: "Consumables & Supplies",        icon: "Box",        description: "Swabs, sutures, disposables" },
+  { type: "medications_fluids",       label: "Medications & Fluids",          icon: "Droplets",   description: "Drugs, IV fluids, anticoagulants" },
+  { type: "specimen_collection",      label: "Specimen Collection",           icon: "TestTube",   description: "Biopsies, cultures, histology containers" },
+  { type: "procedure_reference",      label: "Procedure Reference",           icon: "ExternalLink", description: "Operative technique links, implant guides" },
+  { type: "nurse_prep_notes",         label: "Nurse Prep Notes",              icon: "PencilLine", description: "Scrub/scout cheat sheet and prep checklist" },
+  { type: "post_procedure_care",      label: "Post-procedure Care",           icon: "Heart",      description: "Recovery, dressings, observations" },
+  { type: "discharge_criteria",       label: "Discharge Criteria",            icon: "LogOut",     description: "Criteria for safe discharge or step-down" },
+  { type: "complications_escalation", label: "Complications & Escalation",    icon: "AlertTriangle", description: "Common complications, escalation pathways" },
+  { type: "patient_information",      label: "Patient Information",           icon: "Info",       description: "Patient leaflets, aftercare instructions" },
+]
+
+export const DEFAULT_SECTIONS_BY_SETTING: Record<ClinicalSetting, SectionType[]> = {
+  "Operating Theatre": [
+    "overview", "ppe", "patient_preparation", "anaesthesia", "patient_positioning",
+    "sterile_field_draping", "instrument_sets_trays", "equipment_devices",
+    "implants_prosthetics", "consumables_supplies", "medications_fluids",
+    "procedure_reference", "nurse_prep_notes", "post_procedure_care",
+  ],
+  "Endoscopy Suite": [
+    "overview", "consent_documentation", "pre_procedure_assessment", "ppe",
+    "patient_preparation", "anaesthesia", "equipment_devices", "consumables_supplies",
+    "medications_fluids", "specimen_collection", "nurse_prep_notes",
+    "post_procedure_care", "discharge_criteria", "complications_escalation",
+  ],
+  "Interventional Radiology / Cath Lab": [
+    "overview", "consent_documentation", "ppe", "patient_preparation", "anaesthesia",
+    "patient_positioning", "equipment_devices", "consumables_supplies",
+    "medications_fluids", "nurse_prep_notes", "post_procedure_care",
+  ],
+  "Emergency Department": [
+    "overview", "pre_procedure_assessment", "ppe", "patient_preparation",
+    "anaesthesia", "equipment_devices", "consumables_supplies", "medications_fluids",
+    "nurse_prep_notes", "complications_escalation",
+  ],
+  "Intensive Care Unit": [
+    "overview", "ppe", "patient_preparation", "anaesthesia", "patient_positioning",
+    "equipment_devices", "consumables_supplies", "medications_fluids",
+    "nurse_prep_notes", "post_procedure_care", "complications_escalation",
+  ],
+  "Ward": [
+    "overview", "consent_documentation", "pre_procedure_assessment", "ppe",
+    "patient_preparation", "equipment_devices", "consumables_supplies",
+    "medications_fluids", "nurse_prep_notes", "post_procedure_care",
+    "discharge_criteria",
+  ],
+  "Outpatient / Clinic": [
+    "overview", "consent_documentation", "ppe", "patient_preparation",
+    "equipment_devices", "consumables_supplies", "medications_fluids",
+    "nurse_prep_notes", "post_procedure_care", "discharge_criteria",
+    "patient_information",
+  ],
+  "Maternity & Obstetrics": [
+    "overview", "consent_documentation", "pre_procedure_assessment", "ppe",
+    "patient_preparation", "anaesthesia", "patient_positioning",
+    "instrument_sets_trays", "equipment_devices", "consumables_supplies",
+    "medications_fluids", "nurse_prep_notes", "post_procedure_care",
+    "complications_escalation",
+  ],
+}
+
+export const SETTING_COLOUR: Record<ClinicalSetting, string> = {
+  "Operating Theatre":                   "bg-blue-100 text-blue-700",
+  "Endoscopy Suite":                     "bg-teal-100 text-teal-700",
+  "Interventional Radiology / Cath Lab": "bg-violet-100 text-violet-700",
+  "Emergency Department":                "bg-red-100 text-red-700",
+  "Intensive Care Unit":                 "bg-orange-100 text-orange-700",
+  "Ward":                                "bg-green-100 text-green-700",
+  "Outpatient / Clinic":                 "bg-indigo-100 text-indigo-700",
+  "Maternity & Obstetrics":              "bg-pink-100 text-pink-700",
+}
