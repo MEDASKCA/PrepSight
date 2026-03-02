@@ -42,7 +42,7 @@ export default function LoginPage() {
 
       {/* Logo */}
       <div className="text-center mb-8">
-        <img src="/ps.jpg" alt="P.S." className="w-64 mx-auto mb-0" />
+        <img src="/ps.jpg" alt="P.S." className="w-48 mx-auto mb-0" />
         <h1 className="text-6xl font-bold text-[#00B4D8] tracking-tight mb-2">PrepSight</h1>
         <p className="text-sm text-[#64748b]">Every procedure. Every setting. Every team.</p>
       </div>
