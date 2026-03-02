@@ -39,17 +39,18 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-[#F4F7FA] flex flex-col items-center justify-center px-4">
-      <div className="w-full max-w-sm">
 
-        {/* Logo */}
-        <div className="text-center mb-8">
-          <img
-            src="/logo.png"
-            alt="PrepSight"
-            className="w-full mx-auto mb-3"
-          />
-          <p className="text-sm text-[#64748b]">Every procedure. Every setting. Every team.</p>
-        </div>
+      {/* Logo */}
+      <div className="text-center mb-8 w-full max-w-[800px]">
+        <img
+          src="/logo.png"
+          alt="PrepSight"
+          className="w-full mx-auto mb-3"
+        />
+        <p className="text-sm text-[#64748b]">Every procedure. Every setting. Every team.</p>
+      </div>
+
+      <div className="w-full max-w-sm">
 
         {/* Card */}
         <div className="bg-white border border-[#D5DCE3] rounded-2xl p-6 shadow-sm">
