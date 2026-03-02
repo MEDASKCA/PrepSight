@@ -41,12 +41,8 @@ export default function LoginPage() {
     <div className="min-h-screen bg-[#F4F7FA] flex flex-col items-center justify-center px-4">
 
       {/* Logo */}
-      <div className="text-center mb-8 w-full max-w-[800px]">
-        <img
-          src="/logo.png"
-          alt="PrepSight"
-          className="w-full mx-auto mb-3"
-        />
+      <div className="text-center mb-8">
+        <h1 className="text-6xl font-bold text-[#00B4D8] tracking-tight mb-2">PrepSight</h1>
         <p className="text-sm text-[#64748b]">Every procedure. Every setting. Every team.</p>
       </div>
 
