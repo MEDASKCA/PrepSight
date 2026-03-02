@@ -3,6 +3,9 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { signInWithGoogle, signInWithMicrosoft } from "@/lib/auth"
+import { Kalam } from "next/font/google"
+
+const kalam = Kalam({ subsets: ["latin"], weight: "400" })
 
 export default function LoginPage() {
   const router = useRouter()
@@ -42,7 +45,7 @@ export default function LoginPage() {
 
       {/* Logo */}
       <div className="text-center mb-8">
-        <p className="text-5xl text-[#9CA3AF] mb-0 leading-none" style={{ fontFamily: "'Segoe Print', cursive" }}>P.S.</p>
+        <p className={`${kalam.className} text-7xl text-[#9CA3AF] mb-0 leading-none`}>P.S.</p>
         <h1 className="text-6xl font-bold text-[#00B4D8] tracking-tight mb-2">PrepSight</h1>
         <p className="text-sm text-[#64748b]">Every procedure. Every setting. Every team.</p>
       </div>
