@@ -46,7 +46,7 @@ export default function LoginPage() {
           <img
             src="/logo.png"
             alt="PrepSight"
-            className="w-56 mx-auto mb-3"
+            className="w-full mx-auto mb-3"
           />
           <p className="text-sm text-[#64748b]">Every procedure. Every setting. Every team.</p>
         </div>
@@ -97,6 +97,9 @@ export default function LoginPage() {
           Sign-in is used only to save your preferences and role.
           <br />
           Your organisation&apos;s IT policy applies to personal device use.
+        </p>
+        <p className="mt-3 text-xs text-[#b0bcc8] text-center">
+          PrepSight is a product of MEDASKCA&#8482;
         </p>
 
       </div>
