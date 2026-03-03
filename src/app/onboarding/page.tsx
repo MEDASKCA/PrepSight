@@ -231,9 +231,6 @@ export default function OnboardingPage() {
           {/* ── Step 2 — What PrepSight is ────────────────────────────── */}
           {step === 2 && (
             <div className="animate-step-in">
-              {/* Minimal card icon */}
-              <div className="w-10 h-10 border-2 border-[#4DA3FF] rounded-lg mb-6" />
-
               <h2 className="text-2xl font-bold text-[#3F4752] mb-2">
                 A procedure card. Reimagined.
               </h2>
@@ -244,7 +241,7 @@ export default function OnboardingPage() {
               <div className="space-y-4">
                 {[
                   "Every procedure has a structured card covering equipment, instruments, positioning, medications, and more.",
-                  "Cards are organised by setting, specialty, and consultant — so you find what you need quickly.",
+                  "Cards are organised by setting, specialty, and surgeon — so you find what you need quickly.",
                   "PrepSight supports your preparation. Your trust's policy and your clinical judgement always come first.",
                 ].map((point, i) => (
                   <div
