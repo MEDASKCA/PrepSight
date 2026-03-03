@@ -3,6 +3,8 @@ import { Procedure } from "../types"
 // ── Urinary Catheterisation (Male) — SHOWCASE ─────────────────────────────
 const urinaryCathMale: Procedure = {
   id: "urinary-cath-male",
+  familyId: "urinary-catheterisation",
+  variantLabel: "Male — Foley catheter",
   name: "Urinary Catheterisation — Male",
   setting: "Ward",
   specialty: "General Ward",
@@ -79,6 +81,8 @@ const urinaryCathMale: Procedure = {
 // ── Urinary Catheterisation (Female) — SHOWCASE ───────────────────────────
 const urinaryCathFemale: Procedure = {
   id: "urinary-cath-female",
+  familyId: "urinary-catheterisation",
+  variantLabel: "Female — Foley catheter",
   name: "Urinary Catheterisation — Female",
   setting: "Ward",
   specialty: "General Ward",
@@ -115,9 +119,12 @@ const urinaryCathFemale: Procedure = {
   ],
 }
 
-function sk(id: string, name: string, specialty: string, approach?: string): Procedure {
+function sk(id: string, name: string, specialty: string, approach?: string, familyId?: string, variantLabel?: string): Procedure {
   return {
-    id, name,
+    id,
+    familyId: familyId ?? id,
+    variantLabel,
+    name,
     setting: "Ward",
     specialty,
     approach,
@@ -143,11 +150,11 @@ function sk(id: string, name: string, specialty: string, approach?: string): Pro
 export const ward: Procedure[] = [
   urinaryCathMale,
   urinaryCathFemale,
-  sk("wound-drain-removal",     "Wound Drain Removal",         "Surgical Ward"),
-  sk("staple-removal",          "Surgical Staple Removal",     "Surgical Ward"),
-  sk("wound-dehiscence-care",   "Wound Dehiscence Management", "Surgical Ward"),
-  sk("ng-tube-insertion",       "Nasogastric Tube Insertion",  "Medical Ward"),
-  sk("blood-transfusion-admin", "Blood Transfusion Administration", "Medical Ward"),
-  sk("subcutaneous-infusion",   "Subcutaneous Infusion (Hypodermoclysis)", "Medical Ward"),
-  sk("syringe-driver-setup",    "Syringe Driver Setup",        "Medical Ward"),
+  sk("wound-drain-removal",     "Wound Drain Removal",                    "Surgical Ward", undefined, "wound-drain-removal",        "Vacuum drain removal"),
+  sk("staple-removal",          "Surgical Staple Removal",                "Surgical Ward", undefined, "wound-closure-removal",       "Surgical staple removal"),
+  sk("wound-dehiscence-care",   "Wound Dehiscence Management",            "Surgical Ward", undefined, "wound-care",                  "Dehiscence assessment and management"),
+  sk("ng-tube-insertion",       "Nasogastric Tube Insertion",             "Medical Ward",  undefined, "ng-tube-insertion",           "NG tube — pH confirmation"),
+  sk("blood-transfusion-admin", "Blood Transfusion Administration",       "Medical Ward",  undefined, "blood-product-administration", "Red cell transfusion"),
+  sk("subcutaneous-infusion",   "Subcutaneous Infusion (Hypodermoclysis)","Medical Ward",  undefined, "subcutaneous-infusion",       "Hypodermoclysis / SC infusion"),
+  sk("syringe-driver-setup",    "Syringe Driver Setup",                   "Medical Ward",  undefined, "subcutaneous-infusion",       "Syringe driver setup"),
 ]

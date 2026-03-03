@@ -1,8 +1,11 @@
 import { Procedure } from "../types"
 
-function sk(id: string, name: string, approach?: string, implantSystem?: string): Procedure {
+function sk(id: string, name: string, approach?: string, implantSystem?: string, familyId?: string, variantLabel?: string): Procedure {
   return {
-    id, name,
+    id,
+    familyId: familyId ?? id,
+    variantLabel,
+    name,
     setting: "Operating Theatre",
     specialty: "Urology",
     approach,
@@ -27,10 +30,10 @@ function sk(id: string, name: string, approach?: string, implantSystem?: string)
 }
 
 export const theatreUrology: Procedure[] = [
-  sk("turp",               "TURP (Transurethral Resection of Prostate)", "Endoscopic"),
-  sk("pcnl",               "PCNL (Percutaneous Nephrolithotomy)",         "Percutaneous", "Karl Storz"),
-  sk("nephrectomy-lap",    "Laparoscopic Nephrectomy",                   "Laparoscopic"),
-  sk("cystoscopy-bimanual", "Cystoscopy + Bimanual Examination",          "Endoscopic"),
-  sk("ureteroscopy-laser",  "Ureteroscopy + Laser Lithotripsy",           "Flexible ureteroscopy"),
-  sk("radical-prostatectomy-robotic", "Robotic Radical Prostatectomy",   "Robotic / Da Vinci"),
+  sk("turp",               "TURP (Transurethral Resection of Prostate)", "Endoscopic",          undefined,    "turp",                    "Monopolar / Bipolar TURP"),
+  sk("pcnl",               "PCNL (Percutaneous Nephrolithotomy)",         "Percutaneous",        "Karl Storz", "pcnl",                    "Prone — access + stone clearance"),
+  sk("nephrectomy-lap",    "Laparoscopic Nephrectomy",                   "Laparoscopic",        undefined,    "nephrectomy",             "Laparoscopic — radical"),
+  sk("cystoscopy-bimanual", "Cystoscopy + Bimanual Examination",          "Endoscopic",          undefined,    "cystoscopy",              "Flexible / Rigid + bimanual examination"),
+  sk("ureteroscopy-laser",  "Ureteroscopy + Laser Lithotripsy",           "Flexible ureteroscopy", undefined,  "ureteroscopy",            "Rigid / Semi-rigid — Holmium laser"),
+  sk("radical-prostatectomy-robotic", "Robotic Radical Prostatectomy",   "Robotic / Da Vinci",  undefined,    "radical-prostatectomy",   "Robotic-assisted (RARP)"),
 ]

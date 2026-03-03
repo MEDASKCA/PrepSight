@@ -1,8 +1,11 @@
 import { Procedure } from "../types"
 
-function sk(id: string, name: string, approach?: string): Procedure {
+function sk(id: string, name: string, approach?: string, familyId?: string, variantLabel?: string): Procedure {
   return {
-    id, name,
+    id,
+    familyId: familyId ?? id,
+    variantLabel,
+    name,
     setting: "Operating Theatre",
     specialty: "ENT",
     approach,
@@ -26,10 +29,10 @@ function sk(id: string, name: string, approach?: string): Procedure {
 }
 
 export const theatreEnt: Procedure[] = [
-  sk("tonsillectomy",          "Tonsillectomy",                           "Dissection / Coblation"),
-  sk("grommets",               "Grommet Insertion (Bilateral)",           "Myringotomy"),
-  sk("septoplasty",            "Septoplasty",                             "Endonasal"),
-  sk("functional-ess",         "Functional Endoscopic Sinus Surgery (FESS)", "Endoscopic"),
-  sk("pinnaplasty",            "Pinnaplasty / Otoplasty",                 "Posterior auricular"),
-  sk("submandibular-gland",    "Submandibular Gland Excision",            "Transcervical"),
+  sk("tonsillectomy",          "Tonsillectomy",                              "Dissection / Coblation",  "tonsillectomy",                    "Cold steel / Diathermy"),
+  sk("grommets",               "Grommet Insertion (Bilateral)",              "Myringotomy",             "grommets",                         "Bilateral grommet insertion"),
+  sk("septoplasty",            "Septoplasty",                                "Endonasal",               "septoplasty",                      "Endoscopic — submucosal"),
+  sk("functional-ess",         "Functional Endoscopic Sinus Surgery (FESS)", "Endoscopic",              "functional-endoscopic-sinus-surgery", "Bilateral FESS"),
+  sk("pinnaplasty",            "Pinnaplasty / Otoplasty",                    "Posterior auricular",     "pinnaplasty",                      "Otoplasty — Mustardé sutures"),
+  sk("submandibular-gland",    "Submandibular Gland Excision",               "Transcervical",           "submandibular-gland-excision",      "Extraoral approach"),
 ]

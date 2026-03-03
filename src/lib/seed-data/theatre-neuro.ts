@@ -1,8 +1,11 @@
 import { Procedure } from "../types"
 
-function sk(id: string, name: string, approach?: string, implantSystem?: string): Procedure {
+function sk(id: string, name: string, approach?: string, implantSystem?: string, familyId?: string, variantLabel?: string): Procedure {
   return {
-    id, name,
+    id,
+    familyId: familyId ?? id,
+    variantLabel,
+    name,
     setting: "Operating Theatre",
     specialty: "Neurosurgery",
     approach,
@@ -27,8 +30,8 @@ function sk(id: string, name: string, approach?: string, implantSystem?: string)
 }
 
 export const theatreNeuro: Procedure[] = [
-  sk("craniotomy-tumour",       "Craniotomy for Tumour Resection",    "Pterional / frontal"),
-  sk("burr-hole-haematoma",     "Burr Hole Evacuation (CSDH)",         "Twist drill / burr hole"),
-  sk("vp-shunt",                "Ventriculo-Peritoneal Shunt",          "Frontal / parietal", "Medtronic PS Medical"),
-  sk("lumbar-discectomy",       "Lumbar Discectomy",                    "Posterior"),
+  sk("craniotomy-tumour",       "Craniotomy for Tumour Resection",    "Pterional / frontal",    undefined,             "craniotomy",         "Tumour resection — awake / GA"),
+  sk("burr-hole-haematoma",     "Burr Hole Evacuation (CSDH)",         "Twist drill / burr hole", undefined,            "burr-hole-drainage", "Chronic subdural haematoma drainage"),
+  sk("vp-shunt",                "Ventriculo-Peritoneal Shunt",          "Frontal / parietal",     "Medtronic PS Medical", "vp-shunt",          "Ventriculoperitoneal shunt insertion"),
+  sk("lumbar-discectomy",       "Lumbar Discectomy",                    "Posterior",              undefined,             "lumbar-discectomy",  "Microdiscectomy — posterior approach"),
 ]

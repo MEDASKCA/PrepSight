@@ -1,8 +1,11 @@
 import { Procedure } from "../types"
 
-function sk(id: string, name: string, approach?: string, implantSystem?: string): Procedure {
+function sk(id: string, name: string, approach?: string, implantSystem?: string, familyId?: string, variantLabel?: string): Procedure {
   return {
-    id, name,
+    id,
+    familyId: familyId ?? id,
+    variantLabel,
+    name,
     setting: "Operating Theatre",
     specialty: "Plastics & Reconstructive",
     approach,
@@ -27,9 +30,9 @@ function sk(id: string, name: string, approach?: string, implantSystem?: string)
 }
 
 export const theatrePlastics: Procedure[] = [
-  sk("split-skin-graft",      "Split-Thickness Skin Graft (STSG)",    "Donor + recipient sites"),
-  sk("full-thickness-graft",  "Full-Thickness Skin Graft (FTSG)",     "Donor + recipient sites"),
-  sk("diep-flap",             "DIEP Flap Breast Reconstruction",       "Free flap"),
-  sk("carpal-tunnel-release", "Carpal Tunnel Release",                 "Open / endoscopic"),
-  sk("dupuytren-fasciectomy", "Dupuytren's Fasciectomy",               "Zigzag / Bruner incision"),
+  sk("split-skin-graft",      "Split-Thickness Skin Graft (STSG)",    "Donor + recipient sites",  undefined, "skin-graft",              "Split-skin graft (SSG)"),
+  sk("full-thickness-graft",  "Full-Thickness Skin Graft (FTSG)",     "Donor + recipient sites",  undefined, "skin-graft",              "Full-thickness graft (FTG)"),
+  sk("diep-flap",             "DIEP Flap Breast Reconstruction",       "Free flap",                undefined, "breast-reconstruction",   "DIEP flap"),
+  sk("carpal-tunnel-release", "Carpal Tunnel Release",                 "Open / endoscopic",        undefined, "carpal-tunnel-release",   "Open decompression"),
+  sk("dupuytren-fasciectomy", "Dupuytren's Fasciectomy",               "Zigzag / Bruner incision", undefined, "dupuytren-surgery",       "Palmar fasciectomy"),
 ]

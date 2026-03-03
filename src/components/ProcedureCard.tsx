@@ -1,7 +1,6 @@
 import Link from "next/link"
 import { Procedure } from "@/lib/types"
 import { SETTING_COLOUR } from "@/lib/settings"
-import { getInitials } from "@/lib/utils"
 
 interface Props {
   procedure: Procedure
@@ -9,7 +8,6 @@ interface Props {
 
 export default function ProcedureCard({ procedure }: Props) {
   const settingColour = SETTING_COLOUR[procedure.setting] ?? "bg-gray-100 text-gray-700"
-  const consultantInitials = procedure.consultant ? getInitials(procedure.consultant) : null
 
   return (
     <Link
@@ -17,9 +15,6 @@ export default function ProcedureCard({ procedure }: Props) {
       className="block bg-white border border-[#D5DCE3] rounded-xl p-4 hover:border-[#4DA3FF] hover:shadow-sm transition-all"
     >
       <p className="font-semibold text-[#3F4752] leading-snug">
-        {consultantInitials && (
-          <span className="text-[#94a3b8] font-medium">{consultantInitials} / </span>
-        )}
         {procedure.name}
       </p>
       {procedure.approach && (

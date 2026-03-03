@@ -2,10 +2,14 @@ import { Procedure } from "../types"
 
 function skeleton(
   id: string, name: string, specialty: string,
-  approach?: string, implantSystem?: string
+  approach?: string, implantSystem?: string,
+  familyId?: string, variantLabel?: string
 ): Procedure {
   return {
-    id, name,
+    id,
+    familyId: familyId ?? id,
+    variantLabel,
+    name,
     setting: "Operating Theatre",
     specialty,
     approach,
@@ -32,6 +36,8 @@ function skeleton(
 // ── Laparoscopic Cholecystectomy — SHOWCASE ───────────────────────────────
 const lapChole: Procedure = {
   id: "lap-chole",
+  familyId: "cholecystectomy",
+  variantLabel: "Laparoscopic (4-port)",
   name: "Laparoscopic Cholecystectomy",
   setting: "Operating Theatre",
   specialty: "General Surgery",
@@ -150,12 +156,12 @@ const lapChole: Procedure = {
 
 export const theatreGeneral: Procedure[] = [
   lapChole,
-  skeleton("appendicectomy-lap",       "Laparoscopic Appendicectomy",        "General Surgery", "Laparoscopic"),
-  skeleton("open-appendicectomy",       "Open Appendicectomy",                "General Surgery", "Gridiron / Lanz"),
-  skeleton("inguinal-hernia-lap",       "Laparoscopic Inguinal Hernia Repair", "General Surgery", "TEP / TAPP"),
-  skeleton("inguinal-hernia-open",      "Open Inguinal Hernia Repair",        "General Surgery", "Lichtenstein", "Prolene mesh"),
-  skeleton("hartmanns",                 "Hartmann's Procedure",               "General Surgery", "Midline laparotomy"),
-  skeleton("right-hemicolectomy",       "Right Hemicolectomy",                "General Surgery", "Laparoscopic / Open"),
-  skeleton("anterior-resection",        "Anterior Resection",                 "General Surgery", "Laparoscopic / Open"),
-  skeleton("thyroidectomy",             "Thyroidectomy",                      "General Surgery", "Collar incision"),
+  skeleton("appendicectomy-lap",       "Laparoscopic Appendicectomy",        "General Surgery", "Laparoscopic",    undefined,       "appendicectomy",       "Laparoscopic"),
+  skeleton("open-appendicectomy",       "Open Appendicectomy",                "General Surgery", "Gridiron / Lanz", undefined,       "appendicectomy",       "Open (Gridiron incision)"),
+  skeleton("inguinal-hernia-lap",       "Laparoscopic Inguinal Hernia Repair", "General Surgery", "TEP / TAPP",     undefined,       "inguinal-hernia-repair", "Laparoscopic (TEP / TAPP)"),
+  skeleton("inguinal-hernia-open",      "Open Inguinal Hernia Repair",        "General Surgery", "Lichtenstein",    "Prolene mesh",  "inguinal-hernia-repair", "Open (Lichtenstein)"),
+  skeleton("hartmanns",                 "Hartmann's Procedure",               "General Surgery", "Midline laparotomy", undefined,    "hartmanns-procedure",  "Open — end colostomy"),
+  skeleton("right-hemicolectomy",       "Right Hemicolectomy",                "General Surgery", "Laparoscopic / Open", undefined,  "right-hemicolectomy",  "Laparoscopic — right colon resection"),
+  skeleton("anterior-resection",        "Anterior Resection",                 "General Surgery", "Laparoscopic / Open", undefined,  "anterior-resection",   "Laparoscopic — stapled anastomosis"),
+  skeleton("thyroidectomy",             "Thyroidectomy",                      "General Surgery", "Collar incision", undefined,       "thyroidectomy",        "Total thyroidectomy"),
 ]

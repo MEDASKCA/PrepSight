@@ -1,8 +1,11 @@
 import { Procedure } from "../types"
 
-function sk(id: string, name: string, specialty: string, approach?: string, implantSystem?: string): Procedure {
+function sk(id: string, name: string, specialty: string, approach?: string, implantSystem?: string, familyId?: string, variantLabel?: string): Procedure {
   return {
-    id, name,
+    id,
+    familyId: familyId ?? id,
+    variantLabel,
+    name,
     setting: "Interventional Radiology / Cath Lab",
     specialty,
     approach,
@@ -28,9 +31,9 @@ function sk(id: string, name: string, specialty: string, approach?: string, impl
 }
 
 export const cathLab: Procedure[] = [
-  sk("coronary-angiogram",    "Coronary Angiogram ± PCI",             "Cardiology",          "Radial / femoral"),
-  sk("pacemaker-insertion",   "Pacemaker Insertion",                   "Cardiology",          "Subclavian / cephalic", "Medtronic Micra"),
-  sk("uterine-fibroid-emb",   "Uterine Fibroid Embolisation (UFE)",   "Interventional Radiology", "Femoral"),
-  sk("hepatic-angioembolism",  "Hepatic Artery Embolisation",         "Interventional Radiology", "Femoral"),
-  sk("neuro-angio",           "Cerebral Angiogram",                    "Neuroradiology",      "Femoral"),
+  sk("coronary-angiogram",    "Coronary Angiogram ± PCI",             "Cardiology",               "Radial / femoral",      undefined,            "coronary-angiography",           "Diagnostic coronary angiogram"),
+  sk("pacemaker-insertion",   "Pacemaker Insertion",                   "Cardiology",               "Subclavian / cephalic", "Medtronic Micra",    "pacemaker-insertion",            "Dual-chamber PPM"),
+  sk("uterine-fibroid-emb",   "Uterine Fibroid Embolisation (UFE)",   "Interventional Radiology", "Femoral",               undefined,            "uterine-fibroid-embolisation",   "UAE — bilateral"),
+  sk("hepatic-angioembolism",  "Hepatic Artery Embolisation",         "Interventional Radiology", "Femoral",               undefined,            "hepatic-embolisation",           "TACE / bland embolisation"),
+  sk("neuro-angio",           "Cerebral Angiogram",                    "Neuroradiology",           "Femoral",               undefined,            "neuroangiography",               "Cerebral angiogram"),
 ]

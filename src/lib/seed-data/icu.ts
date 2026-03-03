@@ -1,8 +1,11 @@
 import { Procedure } from "../types"
 
-function sk(id: string, name: string, specialty: string, approach?: string): Procedure {
+function sk(id: string, name: string, specialty: string, approach?: string, familyId?: string, variantLabel?: string): Procedure {
   return {
-    id, name,
+    id,
+    familyId: familyId ?? id,
+    variantLabel,
+    name,
     setting: "Intensive Care Unit",
     specialty,
     approach,
@@ -27,8 +30,8 @@ function sk(id: string, name: string, specialty: string, approach?: string): Pro
 }
 
 export const icu: Procedure[] = [
-  sk("central-line",      "Central Venous Line (CVC) Insertion",     "General ICU", "Internal jugular / subclavian"),
-  sk("arterial-line",     "Arterial Line Insertion",                  "General ICU", "Radial"),
-  sk("tracheostomy-perc", "Percutaneous Tracheostomy",               "General ICU", "Percutaneous dilational"),
-  sk("bronchoscopy-icu",  "Bronchoscopy (ICU — therapeutic)",        "General ICU", "Flexible"),
+  sk("central-line",      "Central Venous Line (CVC) Insertion",     "General ICU", "Internal jugular / subclavian", "central-line-insertion",   "Ultrasound-guided CVC"),
+  sk("arterial-line",     "Arterial Line Insertion",                  "General ICU", "Radial",                        "arterial-line-insertion",  "Radial artery — Seldinger"),
+  sk("tracheostomy-perc", "Percutaneous Tracheostomy",               "General ICU", "Percutaneous dilational",        "tracheostomy",             "Percutaneous dilatational"),
+  sk("bronchoscopy-icu",  "Bronchoscopy (ICU — therapeutic)",        "General ICU", "Flexible",                       "bronchoscopy",             "Flexible bronchoscopy — ICU"),
 ]

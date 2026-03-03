@@ -4,12 +4,13 @@ export const theatreOrtho: Procedure[] = [
   // ── Total Hip Replacement ─────────────────────────────────────────────────
   {
     id: "thr-posterior",
+    familyId: "total-hip-replacement",
+    variantLabel: "Posterior — Exeter / Trident",
     name: "Total Hip Replacement",
     setting: "Operating Theatre",
     specialty: "Orthopaedics",
     approach: "Posterior",
     implantSystem: "Exeter / Trident",
-    consultant: "Mr A. Smith",
     sections: [
       {
         id: "ppe",
@@ -132,12 +133,13 @@ export const theatreOrtho: Procedure[] = [
   // ── Total Knee Replacement ────────────────────────────────────────────────
   {
     id: "tkr",
+    familyId: "total-knee-replacement",
+    variantLabel: "Medial parapatellar — ATTUNE",
     name: "Total Knee Replacement",
     setting: "Operating Theatre",
     specialty: "Orthopaedics",
     approach: "Medial parapatellar",
     implantSystem: "ATTUNE",
-    consultant: "Mr D. Patel",
     sections: [
       {
         id: "ppe", title: "PPE", sectionType: "ppe",
@@ -228,12 +230,13 @@ export const theatreOrtho: Procedure[] = [
   // ── Total Shoulder Arthroplasty ───────────────────────────────────────────
   {
     id: "tsa",
+    familyId: "total-shoulder-arthroplasty",
+    variantLabel: "Deltopectoral — Aequalis / Simpliciti",
     name: "Total Shoulder Arthroplasty",
     setting: "Operating Theatre",
     specialty: "Orthopaedics",
     approach: "Deltopectoral",
     implantSystem: "Aequalis / Simpliciti",
-    consultant: "Mr R. Clarke",
     sections: [
       {
         id: "ppe", title: "PPE", sectionType: "ppe",
@@ -318,12 +321,13 @@ export const theatreOrtho: Procedure[] = [
   // ── IM Nail — Femur ───────────────────────────────────────────────────────
   {
     id: "im-nail-femur",
+    familyId: "im-nail-femur",
+    variantLabel: "Piriformis / Trochanteric — Gamma3 / TFN",
     name: "IM Nail — Femur",
     setting: "Operating Theatre",
     specialty: "Orthopaedics",
     approach: "Piriformis / Trochanteric",
     implantSystem: "Stryker Gamma3 / TFN",
-    consultant: "Mr T. Okafor",
     sections: [
       {
         id: "ppe", title: "PPE", sectionType: "ppe",
@@ -412,6 +416,8 @@ export const theatreOrtho: Procedure[] = [
   // ── Arthroscopic ACL Reconstruction (skeleton) ────────────────────────────
   {
     id: "acl-reconstruction",
+    familyId: "acl-reconstruction",
+    variantLabel: "Arthroscopic — Hamstring / BPTB graft",
     name: "ACL Reconstruction",
     setting: "Operating Theatre",
     specialty: "Orthopaedics",
@@ -438,6 +444,8 @@ export const theatreOrtho: Procedure[] = [
   // ── Spine — TLIF (skeleton) ───────────────────────────────────────────────
   {
     id: "tlif",
+    familyId: "tlif",
+    variantLabel: "Posterior — Pedicle screw + cage",
     name: "Transforaminal Lumbar Interbody Fusion (TLIF)",
     setting: "Operating Theatre",
     specialty: "Orthopaedics",
@@ -464,6 +472,8 @@ export const theatreOrtho: Procedure[] = [
   // ── Ankle Arthroplasty (skeleton) ─────────────────────────────────────────
   {
     id: "ankle-arthroplasty",
+    familyId: "total-ankle-arthroplasty",
+    variantLabel: "Anterior approach — STAR / Infinity",
     name: "Total Ankle Arthroplasty",
     setting: "Operating Theatre",
     specialty: "Orthopaedics",
@@ -490,6 +500,8 @@ export const theatreOrtho: Procedure[] = [
   // ── Dynamic Hip Screw (skeleton) ──────────────────────────────────────────
   {
     id: "dhs",
+    familyId: "dynamic-hip-screw",
+    variantLabel: "Lateral approach — Synthes DHS",
     name: "Dynamic Hip Screw (DHS)",
     setting: "Operating Theatre",
     specialty: "Orthopaedics",
@@ -516,6 +528,8 @@ export const theatreOrtho: Procedure[] = [
   // ── Unicompartmental Knee Replacement (skeleton) ──────────────────────────
   {
     id: "ukr",
+    familyId: "unicompartmental-knee",
+    variantLabel: "Minimally invasive — Oxford / Repicci",
     name: "Unicompartmental Knee Replacement",
     setting: "Operating Theatre",
     specialty: "Orthopaedics",

@@ -1,8 +1,11 @@
 import { Procedure } from "../types"
 
-function sk(id: string, name: string, specialty: string, approach?: string): Procedure {
+function sk(id: string, name: string, specialty: string, approach?: string, familyId?: string, variantLabel?: string): Procedure {
   return {
-    id, name,
+    id,
+    familyId: familyId ?? id,
+    variantLabel,
+    name,
     setting: "Endoscopy Suite",
     specialty,
     approach,
@@ -28,6 +31,8 @@ function sk(id: string, name: string, specialty: string, approach?: string): Pro
 // ── OGD — SHOWCASE ────────────────────────────────────────────────────────
 const ogd: Procedure = {
   id: "ogd",
+  familyId: "upper-gi-endoscopy",
+  variantLabel: "Diagnostic OGD",
   name: "OGD — Oesophago-gastro-duodenoscopy",
   setting: "Endoscopy Suite",
   specialty: "Upper GI",
@@ -149,6 +154,8 @@ const ogd: Procedure = {
 // ── Colonoscopy — SHOWCASE (briefer than OGD) ─────────────────────────────
 const colonoscopy: Procedure = {
   id: "colonoscopy",
+  familyId: "colonoscopy",
+  variantLabel: "Diagnostic / therapeutic",
   name: "Colonoscopy",
   setting: "Endoscopy Suite",
   specialty: "Lower GI",
@@ -224,15 +231,15 @@ const colonoscopy: Procedure = {
 export const endoscopy: Procedure[] = [
   ogd,
   colonoscopy,
-  sk("ercp",                  "ERCP",                              "Hepatobiliary", "Fluoroscopic"),
-  sk("eus",                   "Endoscopic Ultrasound (EUS)",       "Upper GI"),
-  sk("capsule-endoscopy",     "Capsule Endoscopy",                  "Lower GI"),
-  sk("flexible-sigmoidoscopy", "Flexible Sigmoidoscopy",           "Lower GI"),
-  sk("push-enteroscopy",      "Push Enteroscopy",                   "Upper GI"),
-  sk("argon-plasma-coag",     "Argon Plasma Coagulation (APC)",    "Upper GI"),
-  sk("band-ligation",         "Oesophageal Variceal Band Ligation", "Upper GI"),
-  sk("bronchoscopy-rigid",    "Rigid Bronchoscopy",                 "Respiratory"),
-  sk("bronchoscopy-flexible", "Flexible Bronchoscopy + BAL",       "Respiratory"),
-  sk("endobronchial-biopsy",  "Endobronchial Ultrasound (EBUS)",   "Respiratory"),
-  sk("esd",                   "Endoscopic Submucosal Dissection (ESD)", "Upper GI"),
+  sk("ercp",                  "ERCP",                              "Hepatobiliary", "Fluoroscopic",  "ercp",                              "Diagnostic + therapeutic ERCP"),
+  sk("eus",                   "Endoscopic Ultrasound (EUS)",       "Upper GI",      undefined,       "endoscopic-ultrasound",             "Radial / Linear EUS"),
+  sk("capsule-endoscopy",     "Capsule Endoscopy",                  "Lower GI",      undefined,       "capsule-endoscopy",                 "Small bowel capsule"),
+  sk("flexible-sigmoidoscopy", "Flexible Sigmoidoscopy",           "Lower GI",      undefined,       "flexible-sigmoidoscopy",            "Flexible sigmoidoscopy"),
+  sk("push-enteroscopy",      "Push Enteroscopy",                   "Upper GI",      undefined,       "enteroscopy",                       "Push enteroscopy"),
+  sk("argon-plasma-coag",     "Argon Plasma Coagulation (APC)",    "Upper GI",      undefined,       "argon-plasma-coagulation",          "APC haemostasis"),
+  sk("band-ligation",         "Oesophageal Variceal Band Ligation", "Upper GI",     undefined,       "band-ligation",                     "Oesophageal variceal banding"),
+  sk("bronchoscopy-rigid",    "Rigid Bronchoscopy",                 "Respiratory",   undefined,       "bronchoscopy",                      "Rigid bronchoscopy"),
+  sk("bronchoscopy-flexible", "Flexible Bronchoscopy + BAL",       "Respiratory",   undefined,       "bronchoscopy",                      "Flexible bronchoscopy"),
+  sk("endobronchial-biopsy",  "Endobronchial Ultrasound (EBUS)",   "Respiratory",   undefined,       "endobronchial-biopsy",              "EBUS-guided biopsy"),
+  sk("esd",                   "Endoscopic Submucosal Dissection (ESD)", "Upper GI", undefined,       "endoscopic-submucosal-dissection",  "Gastric / colonic ESD"),
 ]

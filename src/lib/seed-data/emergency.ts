@@ -3,6 +3,8 @@ import { Procedure } from "../types"
 // ── RSI — SHOWCASE ────────────────────────────────────────────────────────
 const rsi: Procedure = {
   id: "rsi-intubation",
+  familyId: "intubation",
+  variantLabel: "RSI — video/direct laryngoscopy",
   name: "Rapid Sequence Induction (RSI) & Intubation",
   setting: "Emergency Department",
   specialty: "Resuscitation",
@@ -71,9 +73,12 @@ const rsi: Procedure = {
   ],
 }
 
-function sk(id: string, name: string, specialty: string, approach?: string): Procedure {
+function sk(id: string, name: string, specialty: string, approach?: string, familyId?: string, variantLabel?: string): Procedure {
   return {
-    id, name,
+    id,
+    familyId: familyId ?? id,
+    variantLabel,
+    name,
     setting: "Emergency Department",
     specialty,
     approach,

@@ -73,17 +73,44 @@ export interface Section {
   commonComplications?: string[]
 }
 
+export interface ProcedureFamily {
+  id: string              // "total-hip-replacement"
+  name: string            // "Total Hip Replacement"
+  specialty: string       // "Orthopaedics"
+  setting: ClinicalSetting
+  description?: string    // brief summary shown on family page
+  tags?: string[]         // searchable aliases e.g. ["THR", "hip arthroplasty"]
+}
+
 export interface Procedure {
   id: string
-  name: string
+  familyId: string        // links to ProcedureFamily
+  variantLabel?: string   // what makes this variant unique e.g. "Posterior — Exeter / Trident"
+  name: string            // procedure name (usually = family name)
   setting: ClinicalSetting
   specialty: string
   approach?: string
   implantSystem?: string
-  consultant?: string
   sections: Section[]
   createdAt?: string
   updatedAt?: string
+}
+
+export interface Surgeon {
+  id: string
+  name: string        // "Mr James Wilson"
+  shortName: string   // "Wilson" — for compact display
+  initials: string    // "JW" — for avatar badges
+  specialty: string
+  grade?: string      // "Consultant", "Associate Specialist"
+}
+
+export interface SurgeonProcedure {
+  id: string            // unique assignment e.g. "wilson-thr"
+  surgeonId: string     // references Surgeon.id
+  procedureId: string   // references Procedure.id
+  implantSystem?: string  // surgeon's preferred system (overrides template)
+  notes?: string          // surgeon-specific prep notes
 }
 
 export type ClinicalRole =

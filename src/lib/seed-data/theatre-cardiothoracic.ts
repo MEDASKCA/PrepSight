@@ -1,8 +1,11 @@
 import { Procedure } from "../types"
 
-function sk(id: string, name: string, approach?: string, implantSystem?: string): Procedure {
+function sk(id: string, name: string, approach?: string, implantSystem?: string, familyId?: string, variantLabel?: string): Procedure {
   return {
-    id, name,
+    id,
+    familyId: familyId ?? id,
+    variantLabel,
+    name,
     setting: "Operating Theatre",
     specialty: "Cardiothoracic",
     approach,
@@ -27,9 +30,9 @@ function sk(id: string, name: string, approach?: string, implantSystem?: string)
 }
 
 export const theatreCardiothoracic: Procedure[] = [
-  sk("cabg",               "Coronary Artery Bypass Grafting (CABG)",     "Median sternotomy"),
-  sk("avr",                "Aortic Valve Replacement",                    "Median sternotomy", "Edwards SAPIEN / Mechanical"),
-  sk("lobectomy-vats",     "VATS Lobectomy",                              "Video-assisted thoracoscopic"),
-  sk("pneumonectomy",      "Pneumonectomy",                               "Posterolateral thoracotomy"),
-  sk("thoracic-drainage",  "Thoracic Drain Insertion (Open)",             "Intercostal"),
+  sk("cabg",               "Coronary Artery Bypass Grafting (CABG)",     "Median sternotomy",            undefined,                      "coronary-artery-bypass",      "On-pump — LIMA + SVG"),
+  sk("avr",                "Aortic Valve Replacement",                    "Median sternotomy",            "Edwards SAPIEN / Mechanical",  "aortic-valve-replacement",    "Median sternotomy — tissue valve"),
+  sk("lobectomy-vats",     "VATS Lobectomy",                              "Video-assisted thoracoscopic", undefined,                      "lobectomy",                   "VATS — video-assisted"),
+  sk("pneumonectomy",      "Pneumonectomy",                               "Posterolateral thoracotomy",   undefined,                      "pneumonectomy",               "Open thoracotomy"),
+  sk("thoracic-drainage",  "Thoracic Drain Insertion (Open)",             "Intercostal",                  undefined,                      "thoracic-drainage",           "Surgical drain — empyema / effusion"),
 ]

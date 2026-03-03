@@ -1,8 +1,11 @@
 import { Procedure } from "../types"
 
-function sk(id: string, name: string, approach?: string, implantSystem?: string): Procedure {
+function sk(id: string, name: string, approach?: string, implantSystem?: string, familyId?: string, variantLabel?: string): Procedure {
   return {
-    id, name,
+    id,
+    familyId: familyId ?? id,
+    variantLabel,
+    name,
     setting: "Operating Theatre",
     specialty: "Ophthalmology",
     approach,
@@ -27,8 +30,8 @@ function sk(id: string, name: string, approach?: string, implantSystem?: string)
 }
 
 export const theatreOphtho: Procedure[] = [
-  sk("phacoemulsification", "Phacoemulsification + IOL",      "Temporal clear cornea", "Alcon AcrySof IOL"),
-  sk("trabeculectomy",      "Trabeculectomy",                  "Fornix-based"),
-  sk("vitrectomy-ppv",      "Pars Plana Vitrectomy (PPV)",     "23G / 25G"),
-  sk("strabismus-repair",   "Strabismus Correction",           "Limbal"),
+  sk("phacoemulsification", "Phacoemulsification + IOL",      "Temporal clear cornea", "Alcon AcrySof IOL", "cataract-surgery",   "Phacoemulsification + IOL"),
+  sk("trabeculectomy",      "Trabeculectomy",                  "Fornix-based",          undefined,           "trabeculectomy",     "Fornix-based — MMC augmented"),
+  sk("vitrectomy-ppv",      "Pars Plana Vitrectomy (PPV)",     "23G / 25G",             undefined,           "vitrectomy",         "Posterior PPV (23G / 25G)"),
+  sk("strabismus-repair",   "Strabismus Correction",           "Limbal",                undefined,           "strabismus-repair",  "Recession / Resection"),
 ]

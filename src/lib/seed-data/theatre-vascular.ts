@@ -1,8 +1,11 @@
 import { Procedure } from "../types"
 
-function sk(id: string, name: string, approach?: string, implantSystem?: string): Procedure {
+function sk(id: string, name: string, approach?: string, implantSystem?: string, familyId?: string, variantLabel?: string): Procedure {
   return {
-    id, name,
+    id,
+    familyId: familyId ?? id,
+    variantLabel,
+    name,
     setting: "Operating Theatre",
     specialty: "Vascular Surgery",
     approach,
@@ -27,9 +30,9 @@ function sk(id: string, name: string, approach?: string, implantSystem?: string)
 }
 
 export const theatreVascular: Procedure[] = [
-  sk("carotid-endarterectomy",    "Carotid Endarterectomy",            "Longitudinal cervical"),
-  sk("evar",                      "Endovascular Aortic Repair (EVAR)", "Endovascular",         "Medtronic Endurant"),
-  sk("fem-pop-bypass",            "Femoro-Popliteal Bypass",           "Open"),
-  sk("varicose-veins-tevlar",     "Varicose Vein Surgery (EVLA)",      "Endovenous laser"),
-  sk("below-knee-amputation",     "Below-Knee Amputation",             "Posterior flap"),
+  sk("carotid-endarterectomy",    "Carotid Endarterectomy",            "Longitudinal cervical", undefined,            "carotid-endarterectomy",     "Open — patch angioplasty"),
+  sk("evar",                      "Endovascular Aortic Repair (EVAR)", "Endovascular",          "Medtronic Endurant", "aortic-aneurysm-repair",     "Endovascular (EVAR)"),
+  sk("fem-pop-bypass",            "Femoro-Popliteal Bypass",           "Open",                  undefined,            "peripheral-bypass",          "Fem-pop — vein graft"),
+  sk("varicose-veins-tevlar",     "Varicose Vein Surgery (EVLA)",      "Endovenous laser",      undefined,            "varicose-vein-treatment",    "Thermal ablation (TEVLAR)"),
+  sk("below-knee-amputation",     "Below-Knee Amputation",             "Posterior flap",        undefined,            "lower-limb-amputation",      "Below knee (BKA)"),
 ]

@@ -3,9 +3,10 @@ import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { getProcedureById, procedures } from "@/lib/data"
 import { SETTING_COLOUR } from "@/lib/settings"
-import { getInitials } from "@/lib/utils"
 import KardexSection from "@/components/KardexSection"
 import ProfileButton from "@/components/ProfileButton"
+import WatermarkOverlay from "@/components/WatermarkOverlay"
+import HistoryTracker from "@/components/HistoryTracker"
 
 interface Props {
   params: Promise<{ id: string }>
@@ -26,7 +27,6 @@ export default async function ProcedurePage({ params }: Props) {
   const procedure = getProcedureById(id)
   if (!procedure) notFound()
 
-  const consultantInitials = procedure.consultant ? getInitials(procedure.consultant) : null
   const settingColour = SETTING_COLOUR[procedure.setting] ?? "bg-gray-100 text-gray-700"
 
   return (
@@ -39,9 +39,6 @@ export default async function ProcedurePage({ params }: Props) {
 
           <div className="flex-1 min-w-0">
             <h1 className="font-bold text-lg leading-snug">
-              {consultantInitials && (
-                <span className="text-white/60 font-medium">{consultantInitials} / </span>
-              )}
               {procedure.name}
             </h1>
             <div className="flex flex-wrap items-center gap-1.5 mt-1">
@@ -63,7 +60,9 @@ export default async function ProcedurePage({ params }: Props) {
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-4 py-4">
+      <main className="max-w-4xl mx-auto px-4 py-4 relative select-none">
+        <HistoryTracker id={procedure.id} />
+        <WatermarkOverlay />
         {procedure.sections.map((section, i) => (
           <KardexSection
             key={section.id}
@@ -71,6 +70,15 @@ export default async function ProcedurePage({ params }: Props) {
             defaultOpen={i === 0}
           />
         ))}
+        {/* Trust indicator */}
+        <footer className="mt-6 pt-4 border-t border-[#D5DCE3]">
+          <p className="text-xs text-[#94a3b8]">
+            {procedure.updatedAt
+              ? `Reviewed ${new Date(procedure.updatedAt).toLocaleDateString("en-GB", { month: "long", year: "numeric" })} · `
+              : "Reviewed periodically · "}
+            PrepSight editorial · Local policy applies
+          </p>
+        </footer>
       </main>
     </div>
   )
