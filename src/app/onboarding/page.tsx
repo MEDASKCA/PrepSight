@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
-import { ChevronRight, Check } from "lucide-react"
+import { ChevronRight, Check, Search } from "lucide-react"
 import { saveProfile, hasProfile } from "@/lib/profile"
 import { ClinicalRole, PrepSightProfile } from "@/lib/types"
 import { SETTING_SPECIALTIES } from "@/lib/settings"
@@ -65,9 +65,9 @@ const CTA_LABELS = [
 
 // ── Chip ─────────────────────────────────────────────────────────────────────
 
-const CHIP_BASE = "border rounded-xl px-5 py-3 text-sm font-medium cursor-pointer select-none transition-colors chip-reveal"
-const CHIP_ON   = "border-[#4DA3FF] bg-[#EFF8FF] text-[#2F8EF7]"
-const CHIP_OFF  = "border-[#D5DCE3] text-[#64748b] hover:border-[#4DA3FF] hover:text-[#2F8EF7]"
+const CHIP_BASE = "border rounded-xl px-4 py-2 text-sm font-medium cursor-pointer select-none transition-all chip-reveal"
+const CHIP_ON   = "bg-[#003366] border-[#003366] text-white shadow-sm"
+const CHIP_OFF  = "bg-white border-[#E2E8F0] text-[#475569] hover:border-[#4DA3FF] hover:bg-[#F0F8FF]"
 
 function Chip({
   label, selected, onToggle, delay = 0,
@@ -102,6 +102,7 @@ export default function OnboardingPage() {
   const [role,                setRole]                = useState<ClinicalRole | "">("")
   const [departments,         setDepartments]         = useState<string[]>([])
   const [specialties,         setSpecialties]         = useState<string[]>([])
+  const [specialtySearch,     setSpecialtySearch]     = useState("")
 
   const hospitalWrapRef = useRef<HTMLDivElement>(null)
 
@@ -120,6 +121,8 @@ export default function OnboardingPage() {
   const availableSpecialties = Array.from(
     new Set(departments.flatMap((d) => DEPT_TO_SPECIALTY[d] ?? []))
   )
+
+  useEffect(() => { setSpecialtySearch("") }, [departments])
 
   function handleHospitalInput(val: string) {
     setHospital(val)
@@ -303,69 +306,96 @@ export default function OnboardingPage() {
           {step === 4 && (
             <div className="animate-step-in">
               <h2 className="text-2xl font-bold text-[#3F4752] mb-1">
-                Let's set up your view.
+                Let&apos;s set up your view.
               </h2>
               <p className="text-sm text-[#64748b] mb-6">
                 PrepSight will show you the most relevant procedures first.
               </p>
 
               {/* Role — always shown */}
-              <div className="mb-6">
-                <p className="text-xs font-semibold text-[#94a3b8] uppercase tracking-wide mb-3">Your role</p>
-                <div className="flex flex-wrap gap-2">
+              <div className="mb-7">
+                <p className="text-sm font-semibold text-[#3F4752] mb-3">What&apos;s your role?</p>
+                <div className="grid grid-cols-2 gap-2">
                   {ROLES.map((r, i) => (
-                    <Chip
+                    <button
                       key={r}
-                      label={r}
-                      selected={role === r}
-                      onToggle={() => setRole(r)}
-                      delay={i * 30}
-                    />
+                      type="button"
+                      onClick={() => setRole(r)}
+                      className={`chip-reveal flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-medium transition-all text-left ${
+                        role === r
+                          ? "bg-[#003366] text-white shadow-md"
+                          : "bg-white border border-[#E2E8F0] text-[#3F4752] hover:border-[#4DA3FF] hover:bg-[#F0F8FF]"
+                      }`}
+                      style={{ animationDelay: `${i * 25}ms` }}
+                    >
+                      <span>{r}</span>
+                      {role === r && <Check size={13} className="shrink-0 ml-1" />}
+                    </button>
                   ))}
                 </div>
               </div>
 
               {/* Area — revealed after role selected */}
               {role !== "" && (
-                <div className="mb-6 animate-step-in">
-                  <p className="text-xs font-semibold text-[#94a3b8] uppercase tracking-wide mb-3">Where you work</p>
-                  <div className="flex flex-wrap gap-2">
+                <div className="mb-7 animate-step-in">
+                  <p className="text-sm font-semibold text-[#3F4752] mb-1">Where do you work?</p>
+                  <p className="text-xs text-[#94a3b8] mb-3">Select all that apply</p>
+                  <div className="grid grid-cols-2 gap-2">
                     {DEPARTMENTS.map((d, i) => (
-                      <Chip
+                      <button
                         key={d}
-                        label={d}
-                        selected={departments.includes(d)}
-                        onToggle={() => setDepartments((prev) =>
+                        type="button"
+                        onClick={() => setDepartments((prev) =>
                           prev.includes(d) ? prev.filter((x) => x !== d) : [...prev, d]
                         )}
-                        delay={i * 30}
-                      />
+                        className={`chip-reveal flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-medium transition-all text-left ${
+                          departments.includes(d)
+                            ? "bg-[#003366] text-white shadow-md"
+                            : "bg-white border border-[#E2E8F0] text-[#3F4752] hover:border-[#4DA3FF] hover:bg-[#F0F8FF]"
+                        }`}
+                        style={{ animationDelay: `${i * 25}ms` }}
+                      >
+                        <span>{d}</span>
+                        {departments.includes(d) && <Check size={13} className="shrink-0 ml-1" />}
+                      </button>
                     ))}
                   </div>
                 </div>
               )}
 
-              {/* Specialty — revealed after area selected */}
+              {/* Specialty — keyword search + chips */}
               {departments.length > 0 && availableSpecialties.length > 0 && (
                 <div className="animate-step-in">
-                  <p className="text-xs font-semibold text-[#94a3b8] uppercase tracking-wide mb-1">
-                    Any specialties? <span className="normal-case font-normal text-[#94a3b8]">(optional)</span>
+                  <p className="text-sm font-semibold text-[#3F4752] mb-1">
+                    Any specialties? <span className="text-xs font-normal text-[#94a3b8]">optional</span>
                   </p>
                   <p className="text-xs text-[#94a3b8] mb-3">
                     You can always browse everything — this just helps us prioritise.
                   </p>
+                  <div className="relative mb-3">
+                    <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#94a3b8]" />
+                    <input
+                      type="text"
+                      placeholder="Filter specialties…"
+                      value={specialtySearch}
+                      onChange={(e) => setSpecialtySearch(e.target.value)}
+                      className="w-full pl-9 pr-4 py-2.5 border border-[#D5DCE3] rounded-xl text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#4DA3FF] transition-shadow"
+                    />
+                  </div>
                   <div className="flex flex-wrap gap-2">
-                    {availableSpecialties.map((s, i) => (
-                      <Chip
-                        key={s}
-                        label={s}
-                        selected={specialties.includes(s)}
-                        onToggle={() => setSpecialties((prev) =>
-                          prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]
-                        )}
-                        delay={i * 25}
-                      />
-                    ))}
+                    {availableSpecialties
+                      .filter((s) => !specialtySearch || s.toLowerCase().includes(specialtySearch.toLowerCase()))
+                      .map((s, i) => (
+                        <Chip
+                          key={s}
+                          label={s}
+                          selected={specialties.includes(s)}
+                          onToggle={() => setSpecialties((prev) =>
+                            prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]
+                          )}
+                          delay={i * 20}
+                        />
+                      ))}
                   </div>
                 </div>
               )}
