@@ -93,6 +93,7 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
 
     if (!user && !isPublic)                          { router.replace("/login");      return }
     if (user && isPublic)                            { router.replace("/");           return }
+    if (user && hasProfile() && isOnboarding)        { router.replace("/");           return }
     if (user && !hasProfile() && !isOnboarding)      { router.replace("/onboarding"); return }
   }, [user, profileChecking, pathname, router])
 

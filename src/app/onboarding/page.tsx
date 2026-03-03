@@ -103,6 +103,7 @@ export default function OnboardingPage() {
   const [departments,         setDepartments]         = useState<string[]>([])
   const [specialties,         setSpecialties]         = useState<string[]>([])
   const [specialtySearch,     setSpecialtySearch]     = useState("")
+  const [saving,              setSaving]              = useState(false)
 
   const hospitalWrapRef = useRef<HTMLDivElement>(null)
 
@@ -143,7 +144,8 @@ export default function OnboardingPage() {
   function goBack()  { setStep((s) => s - 1); setAnimKey((k) => k + 1) }
 
   async function handleFinish() {
-    if (!role) return
+    if (!role || saving) return
+    setSaving(true)
     const profile: PrepSightProfile = {
       hospital: hospital.trim(),
       departments,
@@ -467,9 +469,13 @@ export default function OnboardingPage() {
             <button
               type="button"
               onClick={handleFinish}
-              className="flex-1 flex items-center justify-center gap-1.5 bg-[#4DA3FF] text-white px-4 py-3.5 rounded-xl text-sm font-semibold hover:bg-[#2F8EF7] transition-colors pulse-once"
+              disabled={saving}
+              className="flex-1 flex items-center justify-center gap-1.5 bg-[#4DA3FF] text-white px-4 py-3.5 rounded-xl text-sm font-semibold hover:bg-[#2F8EF7] transition-colors pulse-once disabled:opacity-60"
             >
-              <Check size={15} /> {CTA_LABELS[4]}
+              {saving
+                ? <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                : <><Check size={15} /> {CTA_LABELS[4]}</>
+              }
             </button>
           )}
 
