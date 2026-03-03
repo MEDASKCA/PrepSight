@@ -7,7 +7,8 @@ export async function getUserProfile(uid: string): Promise<PrepSightProfile | nu
   try {
     const snap = await getDoc(doc(db, "users", uid))
     return snap.exists() ? (snap.data() as PrepSightProfile) : null
-  } catch {
+  } catch (err) {
+    console.warn("[PrepSight] Firestore getUserProfile failed:", err)
     return null
   }
 }
@@ -16,8 +17,8 @@ export async function saveUserProfile(uid: string, profile: PrepSightProfile): P
   if (!db) return
   try {
     await setDoc(doc(db, "users", uid), profile)
-  } catch {
-    // silently fail — localStorage is the fallback
+  } catch (err) {
+    console.warn("[PrepSight] Firestore saveUserProfile failed:", err)
   }
 }
 

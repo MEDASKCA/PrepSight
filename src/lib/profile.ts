@@ -31,10 +31,10 @@ export function hasProfile(): boolean {
 
 // ── Dual-write (Firestore + localStorage) ───────────────────────────────────
 
-/** Save profile to both Firestore and localStorage. uid optional — skips Firestore if absent. */
+/** Save profile to localStorage immediately; Firestore write is fire-and-forget. */
 export async function saveProfile(profile: PrepSightProfile, uid?: string): Promise<void> {
   saveProfileLocal(profile)
-  if (uid) await saveUserProfile(uid, profile)
+  if (uid) saveUserProfile(uid, profile) // intentionally not awaited — don't block UX
 }
 
 /**

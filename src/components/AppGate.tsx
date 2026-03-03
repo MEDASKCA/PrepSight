@@ -75,7 +75,12 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
     if (PUBLIC_ROUTES.includes(pathname) || pathname === ONBOARDING_ROUTE) return
 
     setProfileChecking(true)
-    resolveProfile(user.uid).finally(() => setProfileChecking(false))
+    // Bail out after 4s so a slow/unreachable Firestore never leaves user stuck
+    const bailout = setTimeout(() => setProfileChecking(false), 4000)
+    resolveProfile(user.uid)
+      .catch(() => null)
+      .finally(() => { clearTimeout(bailout); setProfileChecking(false) })
+    return () => clearTimeout(bailout)
   }, [user, pathname])
 
   // ── All router.replace() calls live here — never during render ──────────

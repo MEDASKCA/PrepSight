@@ -43,7 +43,7 @@ export default function LoginPage() {
     try {
       await signInWithGoogle()
       setAuthenticated(true)
-      setTimeout(() => router.push("/"), 1100)
+      setTimeout(() => router.push("/"), 800)
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : "Sign-in failed"
       if (!msg.includes("popup-closed")) setError(msg)
@@ -56,7 +56,7 @@ export default function LoginPage() {
     try {
       await signInWithMicrosoft()
       setAuthenticated(true)
-      setTimeout(() => router.push("/"), 1100)
+      setTimeout(() => router.push("/"), 800)
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : "Sign-in failed"
       if (!msg.includes("popup-closed")) setError(msg)
@@ -81,7 +81,7 @@ export default function LoginPage() {
         <div
           className="absolute inset-0 pointer-events-none z-50"
           style={{
-            animation: "lightBurst 1.1s ease-out forwards",
+            animation: "lightBurst 0.8s ease-out forwards",
             background: "radial-gradient(ellipse 110% 75% at 50% 0%, rgba(255,255,240,0.95) 0%, rgba(255,244,180,0.5) 35%, transparent 70%)",
           }}
         />
