@@ -4,110 +4,273 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { signInWithGoogle, signInWithMicrosoft } from "@/lib/auth"
 
+// ── Theatre light geometry ────────────────────────────────────────────────────
+// SVG viewBox="0 0 300 320"  CX=150, CY=190 (fixture centre)
+const CX = 150, CY = 190
+const RINGS = [
+  { r: 0,   n: 1,  lr: 14 },
+  { r: 30,  n: 8,  lr: 9  },
+  { r: 58,  n: 14, lr: 9  },
+  { r: 87,  n: 20, lr: 8  },
+  { r: 113, n: 24, lr: 8  },
+]
+
+const LEDS: { x: number; y: number; r: number; idx: number }[] = []
+let idx = 0
+for (const { r, n, lr } of RINGS) {
+  for (let j = 0; j < n; j++) {
+    const angle = n === 1 ? 0 : (2 * Math.PI * j) / n - Math.PI / 2
+    LEDS.push({ x: CX + r * Math.cos(angle), y: CY + r * Math.sin(angle), r: lr, idx: idx++ })
+  }
+}
+
+const BRAND = "MEDASKCA".split("")
+
+// ── Component ─────────────────────────────────────────────────────────────────
 export default function LoginPage() {
   const router = useRouter()
+  const [lit,     setLit]     = useState(false)
   const [loading, setLoading] = useState<"google" | "microsoft" | null>(null)
-  const [error, setError] = useState<string | null>(null)
+  const [error,   setError]   = useState<string | null>(null)
+
+  function handleLight() {
+    if (!lit) setLit(true)
+  }
 
   async function handleGoogle() {
-    setError(null)
-    setLoading("google")
-    try {
-      await signInWithGoogle()
-      router.push("/")
-    } catch (e: unknown) {
+    setError(null); setLoading("google")
+    try { await signInWithGoogle(); router.push("/") }
+    catch (e: unknown) {
       const msg = e instanceof Error ? e.message : "Sign-in failed"
       if (!msg.includes("popup-closed")) setError(msg)
-    } finally {
-      setLoading(null)
-    }
+    } finally { setLoading(null) }
   }
 
   async function handleMicrosoft() {
-    setError(null)
-    setLoading("microsoft")
-    try {
-      await signInWithMicrosoft()
-      router.push("/")
-    } catch (e: unknown) {
+    setError(null); setLoading("microsoft")
+    try { await signInWithMicrosoft(); router.push("/") }
+    catch (e: unknown) {
       const msg = e instanceof Error ? e.message : "Sign-in failed"
       if (!msg.includes("popup-closed")) setError(msg)
-    } finally {
-      setLoading(null)
-    }
+    } finally { setLoading(null) }
   }
 
   return (
-    <div className="min-h-screen bg-[#F4F7FA] flex flex-col items-center justify-center px-4">
+    <div
+      className="relative min-h-screen w-full flex flex-col items-center overflow-hidden select-none"
+      style={{ backgroundColor: "#000" }}
+    >
+      {/* ── Warm glow radiates from fixture when lit ──────────────────────── */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          opacity: lit ? 1 : 0,
+          transition: "opacity 1.2s ease",
+          background: "radial-gradient(ellipse 90% 55% at 50% 0%, rgba(255,244,180,0.12) 0%, rgba(255,244,180,0.04) 45%, transparent 80%)",
+        }}
+      />
 
-      {/* Logo */}
-      <div className="text-center mb-8">
-        <img src="/ps.jpg" alt="P.S." className="w-48 mx-auto mb-0" />
-        <h1 className="text-6xl font-bold text-[#00B4D8] tracking-tight mb-2">PrepSight</h1>
-        <p className="text-sm text-[#64748b]">Every procedure. Every setting. Every team.</p>
+      {/* ── Theatre light SVG ─────────────────────────────────────────────── */}
+      <div
+        className="relative z-10 flex-shrink-0"
+        style={{ cursor: lit ? "default" : "pointer", marginTop: "-2px" }}
+        onClick={handleLight}
+        role={lit ? undefined : "button"}
+        aria-label={lit ? undefined : "Turn on the theatre light"}
+      >
+        <svg viewBox="0 0 300 320" className="w-72 h-auto md:w-80">
+          <defs>
+            <radialGradient id="ledglow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%"   stopColor="#fffde7" />
+              <stop offset="60%"  stopColor="#fff8e1" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#fff8e1" stopOpacity="0" />
+            </radialGradient>
+            <filter id="bloom" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          {/* Ceiling arm */}
+          <rect
+            x="143" y="0" width="14" height="58" rx="4"
+            fill={lit ? "#666" : "#252525"}
+            style={{ transition: "fill 0.6s ease" }}
+          />
+
+          {/* Mounting yoke */}
+          <rect
+            x="126" y="52" width="48" height="16" rx="5"
+            fill={lit ? "#777" : "#2a2a2a"}
+            style={{ transition: "fill 0.6s ease" }}
+          />
+
+          {/* Outer housing */}
+          <circle
+            cx={CX} cy={CY} r="132"
+            fill={lit ? "#181818" : "#111"}
+            style={{ transition: "fill 0.8s ease" }}
+          />
+          <circle
+            cx={CX} cy={CY} r="132"
+            fill="none" stroke={lit ? "#555" : "#1e1e1e"} strokeWidth="5"
+            style={{ transition: "stroke 0.8s ease" }}
+          />
+
+          {/* Inner reflector bowl */}
+          <circle
+            cx={CX} cy={CY} r="118"
+            fill={lit ? "#0d0d0d" : "#0a0a0a"}
+            style={{ transition: "fill 0.8s ease" }}
+          />
+
+          {/* LED modules */}
+          {LEDS.map((led) => (
+            <circle
+              key={led.idx}
+              cx={led.x} cy={led.y} r={led.r}
+              fill={lit ? "#fffde7" : "#1a1a1a"}
+              filter={lit ? "url(#bloom)" : undefined}
+              style={{ transition: `fill 0.08s ease ${led.idx * 11}ms, filter 0.08s ease ${led.idx * 11}ms` }}
+            />
+          ))}
+
+          {/* Centre handle grip */}
+          <circle cx={CX} cy={CY} r="20" fill={lit ? "#666" : "#222"} style={{ transition: "fill 0.6s ease" }} />
+          <circle cx={CX} cy={CY} r="11" fill={lit ? "#444" : "#181818"} style={{ transition: "fill 0.6s ease" }} />
+
+          {/* Lens bloom overlay when lit */}
+          {lit && (
+            <circle cx={CX} cy={CY} r="118" fill="url(#ledglow)" style={{ opacity: 0.18 }} />
+          )}
+        </svg>
       </div>
 
-      <div className="w-full max-w-sm">
+      {/* ── Pre-click hint ────────────────────────────────────────────────── */}
+      <p
+        className="text-[#333] text-xs font-semibold tracking-[0.25em] uppercase mt-1 z-10"
+        style={{
+          opacity: lit ? 0 : 1,
+          transition: "opacity 0.4s ease",
+          pointerEvents: "none",
+          animation: !lit ? "pulse 2s ease-in-out infinite" : "none",
+        }}
+      >
+        Enter the theatre
+      </p>
 
-        {/* Card */}
-        <div className="bg-white border border-[#D5DCE3] rounded-2xl p-6 shadow-sm">
-          <h2 className="text-lg font-bold text-[#3F4752] mb-1">Sign in</h2>
-          <p className="text-sm text-[#64748b] mb-6">
-            Use your work or personal account to continue.
-          </p>
-
-          {/* Google */}
-          <button
-            onClick={handleGoogle}
-            disabled={loading !== null}
-            className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-[#D5DCE3] rounded-xl text-sm font-semibold text-[#3F4752] hover:bg-[#F4F7FA] transition-colors disabled:opacity-50 mb-3"
-          >
-            {loading === "google" ? (
-              <span className="w-5 h-5 border-2 border-[#D5DCE3] border-t-[#4DA3FF] rounded-full animate-spin" />
-            ) : (
-              <GoogleIcon />
-            )}
-            Continue with Google
-          </button>
-
-          {/* Microsoft */}
-          <button
-            onClick={handleMicrosoft}
-            disabled={loading !== null}
-            className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-[#D5DCE3] rounded-xl text-sm font-semibold text-[#3F4752] hover:bg-[#F4F7FA] transition-colors disabled:opacity-50"
-          >
-            {loading === "microsoft" ? (
-              <span className="w-5 h-5 border-2 border-[#D5DCE3] border-t-[#4DA3FF] rounded-full animate-spin" />
-            ) : (
-              <MicrosoftIcon />
-            )}
-            Continue with Microsoft
-          </button>
-
-          {error && (
-            <p className="mt-4 text-sm text-red-600 text-center">{error}</p>
-          )}
+      {/* ── Login content — slides in when lit ────────────────────────────── */}
+      <div
+        className="w-full max-w-sm px-6 pb-10 flex flex-col items-center z-10"
+        style={{
+          opacity: lit ? 1 : 0,
+          transform: lit ? "translateY(0)" : "translateY(16px)",
+          transition: "opacity 0.6s ease 600ms, transform 0.6s ease 600ms",
+          pointerEvents: lit ? "auto" : "none",
+        }}
+      >
+        {/* MEDASKCA animated wordmark */}
+        <div className="flex gap-0.5 mb-3 mt-2">
+          {BRAND.map((letter, i) => (
+            <span
+              key={i}
+              className="text-xs font-bold tracking-widest text-[#555]"
+              style={{
+                opacity: lit ? 1 : 0,
+                transition: `opacity 0.25s ease ${700 + i * 55}ms`,
+              }}
+            >
+              {letter}
+            </span>
+          ))}
         </div>
 
-        {/* Footer note */}
-        <p className="mt-6 text-xs text-[#94a3b8] text-center leading-relaxed">
-          PrepSight holds no patient data.
-          Sign-in is used only to save your preferences and role.
-          <br />
-          Your organisation&apos;s IT policy applies to personal device use.
-        </p>
-        <p className="mt-3 text-xs text-[#b0bcc8] text-center">
-          PrepSight is a product of MEDASKCA&#8482;
-        </p>
+        {/* PrepSight */}
+        <h1
+          className="text-5xl font-extrabold text-[#00B4D8] tracking-tight mb-1"
+          style={{
+            opacity: lit ? 1 : 0,
+            transition: "opacity 0.5s ease 1180ms",
+          }}
+        >
+          PrepSight
+        </h1>
 
+        {/* Tagline + description */}
+        <div
+          className="text-center mb-6"
+          style={{
+            opacity: lit ? 1 : 0,
+            transition: "opacity 0.5s ease 1380ms",
+          }}
+        >
+          <p className="text-[#e5e5e5] font-semibold text-sm mb-3">A procedure card. Reimagined.</p>
+          <p className="text-xs text-[#666] leading-relaxed">
+            You already know what a Kardex is. PrepSight does the same job — digitally,
+            consistently, and always with you. Every card covers equipment, instruments,
+            positioning, medications, and more. Organised by setting, specialty, and surgeon.
+          </p>
+          <p className="text-xs text-[#444] mt-3 leading-relaxed">
+            PrepSight supports your preparation. Your trust&apos;s policy and your
+            clinical judgement always come first.
+          </p>
+        </div>
+
+        {/* Sign-in card */}
+        <div
+          className="w-full"
+          style={{
+            opacity: lit ? 1 : 0,
+            transition: "opacity 0.5s ease 1580ms",
+          }}
+        >
+          <div className="bg-[#0d0d0d] border border-[#1e1e1e] rounded-2xl p-5">
+            <p className="text-xs font-semibold text-[#555] uppercase tracking-widest text-center mb-4">
+              Sign in to continue
+            </p>
+
+            <button
+              onClick={handleGoogle}
+              disabled={loading !== null}
+              className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-[#282828] rounded-xl text-sm font-semibold text-[#bbb] hover:bg-[#181818] active:bg-[#222] transition-colors disabled:opacity-40 mb-3"
+            >
+              {loading === "google" ? <BtnSpinner /> : <GoogleIcon />}
+              Continue with Google
+            </button>
+
+            <button
+              onClick={handleMicrosoft}
+              disabled={loading !== null}
+              className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-[#282828] rounded-xl text-sm font-semibold text-[#bbb] hover:bg-[#181818] active:bg-[#222] transition-colors disabled:opacity-40"
+            >
+              {loading === "microsoft" ? <BtnSpinner /> : <MicrosoftIcon />}
+              Continue with Microsoft
+            </button>
+
+            {error && <p className="mt-4 text-xs text-red-400 text-center">{error}</p>}
+          </div>
+
+          <p className="mt-4 text-xs text-[#383838] text-center leading-relaxed">
+            PrepSight holds no patient data. Sign-in saves your preferences only.
+            <br />
+            <span className="text-[#2a2a2a]">PrepSight is a product of MEDASKCA™</span>
+          </p>
+        </div>
       </div>
     </div>
   )
 }
 
+function BtnSpinner() {
+  return <span className="w-4 h-4 border-2 border-[#333] border-t-[#4DA3FF] rounded-full animate-spin" />
+}
+
 function GoogleIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 18 18">
+    <svg width="17" height="17" viewBox="0 0 18 18">
       <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"/>
       <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/>
       <path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/>
@@ -118,10 +281,10 @@ function GoogleIcon() {
 
 function MicrosoftIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 18 18">
-      <rect width="8.5" height="8.5" fill="#F25022"/>
-      <rect x="9.5" width="8.5" height="8.5" fill="#7FBA00"/>
-      <rect y="9.5" width="8.5" height="8.5" fill="#00A4EF"/>
+    <svg width="17" height="17" viewBox="0 0 18 18">
+      <rect width="8.5"  height="8.5"               fill="#F25022"/>
+      <rect x="9.5"      width="8.5"  height="8.5"  fill="#7FBA00"/>
+      <rect y="9.5"      width="8.5"  height="8.5"  fill="#00A4EF"/>
       <rect x="9.5" y="9.5" width="8.5" height="8.5" fill="#FFB900"/>
     </svg>
   )

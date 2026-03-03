@@ -6,18 +6,43 @@ import { onAuthChange, type User } from "@/lib/auth"
 import { hasProfile, resolveProfile } from "@/lib/profile"
 import Sidebar from "./Sidebar"
 import MobileDrawer from "./MobileDrawer"
-import SplashScreen from "./SplashScreen"
 
-const PUBLIC_ROUTES = ["/login"]
+const PUBLIC_ROUTES  = ["/login"]
 const ONBOARDING_ROUTE = "/onboarding"
 
-function Spinner({ message = "Loading PrepSight…" }: { message?: string }) {
+const BRAND_LETTERS = "MEDASKCA".split("")
+
+// ── Loading screen ─────────────────────────────────────────────────────────
+function LoadingScreen({ message }: { message: string }) {
   return (
-    <div className="min-h-screen bg-[#F4F7FA] flex items-center justify-center">
-      <div className="flex flex-col items-center gap-3">
-        <span className="w-8 h-8 border-2 border-[#D5DCE3] border-t-[#4DA3FF] rounded-full animate-spin" />
-        <p className="text-sm text-[#94a3b8]">{message}</p>
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black">
+      {/* MEDASKCA animated wordmark */}
+      <div className="flex gap-1 mb-6">
+        {BRAND_LETTERS.map((letter, i) => (
+          <span
+            key={i}
+            className="text-2xl font-bold tracking-widest text-white"
+            style={{
+              animation: `medaskca-pulse 2s ease-in-out ${i * 80}ms infinite`,
+            }}
+          >
+            {letter}
+          </span>
+        ))}
       </div>
+
+      {/* Dot loader */}
+      <div className="flex gap-2 mb-4">
+        {[0, 1, 2].map((i) => (
+          <span
+            key={i}
+            className="w-1.5 h-1.5 rounded-full bg-[#00B4D8]"
+            style={{ animation: `dot-bounce 1.2s ease-in-out ${i * 200}ms infinite` }}
+          />
+        ))}
+      </div>
+
+      <p className="text-xs text-[#555] tracking-widest uppercase">{message}</p>
     </div>
   )
 }
@@ -28,12 +53,6 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
 
   const [user,            setUser]            = useState<User | null | undefined>(undefined)
   const [profileChecking, setProfileChecking] = useState(false)
-  const [showSplash,      setShowSplash]      = useState(false)
-
-  // Splash: only on first session visit
-  useEffect(() => {
-    if (!sessionStorage.getItem("splash_shown")) setShowSplash(true)
-  }, [])
 
   // Auth listener
   useEffect(() => {
@@ -50,81 +69,60 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
     resolveProfile(user.uid).finally(() => setProfileChecking(false))
   }, [user, pathname])
 
-  // ── All router.replace() calls live here — never during render ──────────────
+  // ── All router.replace() calls live here — never during render ──────────
   useEffect(() => {
-    if (user === undefined) return   // still resolving auth
-    if (profileChecking)   return   // still resolving profile
+    if (user === undefined) return
+    if (profileChecking)   return
 
     const isPublic     = PUBLIC_ROUTES.includes(pathname)
     const isOnboarding = pathname === ONBOARDING_ROUTE
 
-    if (!user && !isPublic) {
-      router.replace("/login")
-      return
-    }
-    if (user && isPublic) {
-      router.replace("/")
-      return
-    }
-    if (user && !hasProfile() && !isOnboarding) {
-      router.replace("/onboarding")
-      return
-    }
+    if (!user && !isPublic)                          { router.replace("/login");      return }
+    if (user && isPublic)                            { router.replace("/");           return }
+    if (user && !hasProfile() && !isOnboarding)      { router.replace("/onboarding"); return }
   }, [user, profileChecking, pathname, router])
 
-  // ── Splash overlay (rendered over everything) ───────────────────────────────
-  const splash = showSplash
-    ? <SplashScreen onComplete={() => setShowSplash(false)} />
-    : null
-
-  // ── Auth resolving ──────────────────────────────────────────────────────────
+  // ── Auth resolving ──────────────────────────────────────────────────────
   if (user === undefined) {
-    return <>{splash}<Spinner /></>
+    return <LoadingScreen message="Loading…" />
   }
 
-  // ── Profile resolving ───────────────────────────────────────────────────────
+  // ── Profile resolving ───────────────────────────────────────────────────
   if (profileChecking) {
-    return <>{splash}<Spinner message="Setting up your profile…" /></>
+    return <LoadingScreen message="Setting up your profile…" />
   }
 
   const isPublic     = PUBLIC_ROUTES.includes(pathname)
   const isOnboarding = pathname === ONBOARDING_ROUTE
 
-  // ── Not signed in: show login page; spinner on protected routes (redirect pending)
   if (!user) {
-    return isPublic ? <>{splash}{children}</> : <>{splash}<Spinner /></>
+    return isPublic ? <>{children}</> : <LoadingScreen message="Loading…" />
   }
 
-  // ── Signed in on public route: spinner while redirect fires ─────────────────
   if (isPublic) {
-    return <>{splash}<Spinner /></>
+    return <LoadingScreen message="Loading…" />
   }
 
-  // ── No profile: show onboarding page; spinner elsewhere (redirect pending) ──
   if (!hasProfile()) {
-    return isOnboarding ? <>{splash}{children}</> : <>{splash}<Spinner /></>
+    return isOnboarding ? <>{children}</> : <LoadingScreen message="Loading…" />
   }
 
-  // ── Onboarding with a profile: spinner while redirect fires to / ────────────
   if (isOnboarding) {
-    return <>{splash}<Spinner /></>
+    return <LoadingScreen message="Loading…" />
   }
 
-  // ── Fully authenticated with profile ────────────────────────────────────────
+  // ── Fully authenticated with profile ────────────────────────────────────
   return (
-    <>
-      {splash}
-      <div className="flex min-h-screen bg-[#F4F7FA]">
-        <aside className="hidden lg:flex w-60 shrink-0 h-screen sticky top-0 overflow-hidden">
-          <Sidebar />
-        </aside>
-        <div className="flex-1 min-w-0 flex flex-col">
-          <Suspense>
-            <MobileDrawer />
-          </Suspense>
-          <main className="flex-1">{children}</main>
-        </div>
+    <div className="flex min-h-screen bg-[#F4F7FA]">
+      <aside className="hidden lg:flex w-60 shrink-0 h-screen sticky top-0 overflow-hidden">
+        <Sidebar />
+      </aside>
+      <div className="flex-1 min-w-0 flex flex-col">
+        <Suspense>
+          <MobileDrawer />
+        </Suspense>
+        <main className="flex-1">{children}</main>
       </div>
-    </>
+    </div>
   )
 }
