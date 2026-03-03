@@ -113,25 +113,20 @@ export interface SurgeonProcedure {
   notes?: string          // surgeon-specific prep notes
 }
 
-export type ClinicalRole =
-  | "Consultant"
-  | "Registrar"
-  | "SHO"
-  | "Scrub Nurse"
-  | "Scout Nurse"
-  | "ODP"
-  | "Anaesthetist"
-  | "Endoscopy Nurse"
-  | "ICU Nurse"
-  | "Ward Nurse"
-  | "Charge Nurse"
-  | "Sister"
-  | "Other"
+/** How the user intends to use PrepSight — stored internally, not shown verbatim */
+export type UserRole = "viewer" | "editor" | "clinical_author"
+
+export const USER_ROLE_LABEL: Record<UserRole, string> = {
+  viewer:          "Browse & Reference",
+  editor:          "Content Manager",
+  clinical_author: "Clinical Author",
+}
 
 export interface PrepSightProfile {
   hospital: string
   departments: string[]
-  role: ClinicalRole
+  role: UserRole
+  jobTitle?: string            // optional — collected later via profile settings
   specialtiesOfInterest: string[]
   completedAt: string
 }

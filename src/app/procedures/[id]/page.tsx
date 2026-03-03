@@ -4,7 +4,6 @@ import { ArrowLeft } from "lucide-react"
 import { getProcedureById, procedures } from "@/lib/data"
 import { SETTING_COLOUR } from "@/lib/settings"
 import KardexSection from "@/components/KardexSection"
-import ProfileButton from "@/components/ProfileButton"
 import WatermarkOverlay from "@/components/WatermarkOverlay"
 import HistoryTracker from "@/components/HistoryTracker"
 
@@ -19,7 +18,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const { id } = await params
   const procedure = getProcedureById(id)
-  return { title: procedure ? `${procedure.name} — PrepSight` : "Not Found" }
+  return { title: procedure ? `${procedure.name} | PrepSight` : "Not Found" }
 }
 
 export default async function ProcedurePage({ params }: Props) {
@@ -31,7 +30,7 @@ export default async function ProcedurePage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-[#F4F7FA]">
-      <header className="bg-[#003366] text-white sticky top-0 z-30">
+      <header className="bg-[#4DA3FF] text-white sticky top-0 z-30">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center gap-3">
           <Link href="/" className="text-white/80 hover:text-white transition-colors shrink-0">
             <ArrowLeft size={22} />
@@ -56,7 +55,6 @@ export default async function ProcedurePage({ params }: Props) {
             </div>
           </div>
 
-          <ProfileButton />
         </div>
       </header>
 

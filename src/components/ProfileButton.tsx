@@ -66,7 +66,7 @@ export default function ProfileButton() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="bg-[#003366] px-5 pt-6 pb-8 flex items-start justify-between">
+            <div className="bg-[#4DA3FF] px-5 pt-6 pb-8 flex items-start justify-between">
               <div className="flex items-center gap-3">
                 <div className={`w-14 h-14 rounded-full overflow-hidden shrink-0 ${!photoURL ? `${colour} text-white text-xl font-bold flex items-center justify-center` : ""}`}>
                   {photoURL

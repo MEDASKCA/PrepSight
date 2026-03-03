@@ -6,7 +6,7 @@ import Link from "next/link"
 import { getProfile } from "@/lib/profile"
 import { getHistory } from "@/lib/history"
 import { procedures } from "@/lib/seed-data/index"
-import { PrepSightProfile } from "@/lib/types"
+import { PrepSightProfile, USER_ROLE_LABEL } from "@/lib/types"
 import { SETTING_COLOUR } from "@/lib/settings"
 
 function getGreeting(): string {
@@ -17,7 +17,7 @@ function getGreeting(): string {
 }
 
 function getContextBadge(profile: PrepSightProfile): string {
-  const parts: string[] = [profile.role]
+  const parts: string[] = [USER_ROLE_LABEL[profile.role] ?? profile.role]
   if (profile.departments[0]) parts.push(profile.departments[0])
   if (profile.specialtiesOfInterest[0]) parts.push(profile.specialtiesOfInterest[0])
   return parts.join(" · ")
@@ -62,7 +62,7 @@ export default function HomeHero() {
       </div>
 
       {/* Find a procedure — dominant card */}
-      <div className="bg-[#003366] rounded-2xl p-5 mb-6">
+      <div className="bg-[#4DA3FF] rounded-2xl p-5 mb-6">
         <p className="text-white/50 text-xs font-semibold uppercase tracking-wider mb-1">
           Find a procedure
         </p>

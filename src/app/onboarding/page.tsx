@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { ChevronRight, Check, Search } from "lucide-react"
 import { saveProfile, hasProfile } from "@/lib/profile"
-import { ClinicalRole, PrepSightProfile } from "@/lib/types"
+import { UserRole, PrepSightProfile } from "@/lib/types"
 import { SETTING_SPECIALTIES } from "@/lib/settings"
 import { onAuthChange, type User } from "@/lib/auth"
 import hospitalsData from "@/lib/hospitals.json"
@@ -25,20 +25,10 @@ const DEPARTMENTS = [
   "Other",
 ]
 
-const ROLES: ClinicalRole[] = [
-  "Consultant",
-  "Registrar",
-  "SHO",
-  "Scrub Nurse",
-  "Scout Nurse",
-  "ODP",
-  "Anaesthetist",
-  "Endoscopy Nurse",
-  "ICU Nurse",
-  "Ward Nurse",
-  "Charge Nurse",
-  "Sister",
-  "Other",
+const USE_CASES: { label: string; role: UserRole }[] = [
+  { label: "Browse and reference procedures",    role: "viewer" },
+  { label: "Manage or update procedure content", role: "editor" },
+  { label: "Review and sign off procedures",     role: "clinical_author" },
 ]
 
 const DEPT_TO_SPECIALTY: Record<string, string[]> = {
@@ -57,16 +47,16 @@ const TOTAL_STEPS = 5
 
 const CTA_LABELS = [
   "This is where I work",
-  "Understood — continue",
-  "I understand — continue",
-  "This is me — continue",
+  "Understood, continue",
+  "I understand, continue",
+  "This is me, continue",
   "Enter PrepSight",
 ]
 
 // ── Chip ─────────────────────────────────────────────────────────────────────
 
 const CHIP_BASE = "border rounded-xl px-4 py-2 text-sm font-medium cursor-pointer select-none transition-all chip-reveal"
-const CHIP_ON   = "bg-[#003366] border-[#003366] text-white shadow-sm"
+const CHIP_ON   = "bg-[#4DA3FF] border-[#4DA3FF] text-white shadow-sm"
 const CHIP_OFF  = "bg-white border-[#E2E8F0] text-[#475569] hover:border-[#4DA3FF] hover:bg-[#F0F8FF]"
 
 function Chip({
@@ -99,7 +89,7 @@ export default function OnboardingPage() {
   const [hospital,            setHospital]            = useState("")
   const [hospitalSuggestions, setHospitalSuggestions] = useState<typeof HOSPITALS>([])
   const [showSuggestions,     setShowSuggestions]     = useState(false)
-  const [role,                setRole]                = useState<ClinicalRole | "">("")
+  const [role,                setRole]                = useState<UserRole | "">("")
   const [departments,         setDepartments]         = useState<string[]>([])
   const [specialties,         setSpecialties]         = useState<string[]>([])
   const [specialtySearch,     setSpecialtySearch]     = useState("")
@@ -149,7 +139,7 @@ export default function OnboardingPage() {
     const profile: PrepSightProfile = {
       hospital: hospital.trim(),
       departments,
-      role: role as ClinicalRole,
+      role: role as UserRole,
       specialtiesOfInterest: specialties,
       completedAt: new Date().toISOString(),
     }
@@ -227,7 +217,7 @@ export default function OnboardingPage() {
                   </div>
                 )}
                 <p className="text-xs text-[#94a3b8] mt-2">
-                  Not listed? Type the name — it will be saved as entered.
+                  Not listed? Type it in and it will be saved as entered.
                 </p>
               </div>
             </div>
@@ -243,13 +233,13 @@ export default function OnboardingPage() {
                 A procedure card. Reimagined.
               </h2>
               <p className="text-sm text-[#64748b] mb-6">
-                You already know what a Kardex is. PrepSight does the same job — digitally, consistently, and always with you.
+                You already know what a Kardex is. PrepSight does the same job, digitally, consistently, and always with you.
               </p>
 
               <div className="space-y-4">
                 {[
                   "Every procedure has a structured card covering equipment, instruments, positioning, medications, and more.",
-                  "Cards are organised by setting, specialty, and surgeon — so you find what you need quickly.",
+                  "Cards are organised by setting, specialty, and surgeon, so you find what you need quickly.",
                   "PrepSight supports your preparation. Your trust's policy and your clinical judgement always come first.",
                 ].map((point, i) => (
                   <div
@@ -268,6 +258,10 @@ export default function OnboardingPage() {
           {/* ── Step 3 — Safety & responsibility ─────────────────────── */}
           {step === 3 && (
             <div className="animate-step-in">
+              <div className="flex justify-center mb-6">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/disclaimer.png" alt="" className="w-28 h-28" />
+              </div>
               <h2 className="text-2xl font-bold text-[#3F4752] mb-2">
                 One thing before you continue.
               </h2>
@@ -280,7 +274,7 @@ export default function OnboardingPage() {
                   PrepSight is a preparation and reference aid.
                 </p>
                 <p className="text-sm text-[#475569]">
-                  It reflects established practice — but it does not replace the policies, protocols, or clinical judgement of your trust.
+                  It reflects established practice, but it does not replace the policies, protocols, or clinical judgement of your trust.
                 </p>
                 <ul className="space-y-1.5 list-disc list-inside">
                   {[
@@ -316,22 +310,23 @@ export default function OnboardingPage() {
 
               {/* Role — always shown */}
               <div className="mb-7">
-                <p className="text-sm font-semibold text-[#3F4752] mb-3">What&apos;s your role?</p>
-                <div className="grid grid-cols-2 gap-2">
-                  {ROLES.map((r, i) => (
+                <p className="text-2xl font-bold text-[#3F4752] mb-1">How will you use PrepSight?</p>
+                <p className="text-xs text-[#94a3b8] mb-4">This helps us set up your access. You can change this at any time.</p>
+                <div className="flex flex-col gap-2">
+                  {USE_CASES.map((uc, i) => (
                     <button
-                      key={r}
+                      key={uc.role}
                       type="button"
-                      onClick={() => setRole(r)}
-                      className={`chip-reveal flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-medium transition-all text-left ${
-                        role === r
-                          ? "bg-[#003366] text-white shadow-md"
+                      onClick={() => setRole(uc.role)}
+                      className={`chip-reveal flex items-center justify-between px-4 py-3.5 rounded-2xl text-sm font-medium transition-all text-left ${
+                        role === uc.role
+                          ? "bg-[#4DA3FF] text-white shadow-md"
                           : "bg-white border border-[#E2E8F0] text-[#3F4752] hover:border-[#4DA3FF] hover:bg-[#F0F8FF]"
                       }`}
-                      style={{ animationDelay: `${i * 25}ms` }}
+                      style={{ animationDelay: `${i * 60}ms` }}
                     >
-                      <span>{r}</span>
-                      {role === r && <Check size={13} className="shrink-0 ml-1" />}
+                      <span>{uc.label}</span>
+                      {role === uc.role && <Check size={13} className="shrink-0 ml-1" />}
                     </button>
                   ))}
                 </div>
@@ -352,7 +347,7 @@ export default function OnboardingPage() {
                         )}
                         className={`chip-reveal flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-medium transition-all text-left ${
                           departments.includes(d)
-                            ? "bg-[#003366] text-white shadow-md"
+                            ? "bg-[#4DA3FF] text-white shadow-md"
                             : "bg-white border border-[#E2E8F0] text-[#3F4752] hover:border-[#4DA3FF] hover:bg-[#F0F8FF]"
                         }`}
                         style={{ animationDelay: `${i * 25}ms` }}
@@ -372,7 +367,7 @@ export default function OnboardingPage() {
                     Any specialties? <span className="text-xs font-normal text-[#94a3b8]">optional</span>
                   </p>
                   <p className="text-xs text-[#94a3b8] mb-3">
-                    You can always browse everything — this just helps us prioritise.
+                    You can always browse everything. This just helps us prioritise.
                   </p>
                   <div className="relative mb-3">
                     <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#94a3b8]" />
@@ -414,9 +409,9 @@ export default function OnboardingPage() {
 
               <div className="bg-white border border-[#D5DCE3] rounded-xl divide-y divide-[#F4F7FA]">
                 {[
-                  { label: "Role",     value: role || "—" },
-                  { label: "Area",     value: departments.join(", ") || "—" },
-                  { label: "Hospital", value: hospital || "—" },
+                  { label: "Role",     value: role || "-" },
+                  { label: "Area",     value: departments.join(", ") || "-" },
+                  { label: "Hospital", value: hospital || "-" },
                   ...(specialties.length > 0 ? [{ label: "Specialties", value: specialties.join(", ") }] : []),
                 ].map(({ label, value }, i) => (
                   <div
@@ -461,7 +456,7 @@ export default function OnboardingPage() {
               type="button"
               onClick={goNext}
               disabled={!canAdvance()}
-              className="flex-1 flex items-center justify-center gap-1.5 bg-[#003366] text-white px-4 py-3.5 rounded-xl text-sm font-semibold hover:bg-[#002244] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              className="flex-1 flex items-center justify-center gap-1.5 bg-[#4DA3FF] text-white px-4 py-3.5 rounded-xl text-sm font-semibold hover:bg-[#2F8EF7] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
             >
               {CTA_LABELS[step - 1]} <ChevronRight size={15} />
             </button>

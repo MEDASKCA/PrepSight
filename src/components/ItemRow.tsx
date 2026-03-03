@@ -42,7 +42,7 @@ export default function ItemRow({ item }: Props) {
   const [newComment, setNewComment] = useState("")
   const [newUrgency, setNewUrgency] = useState<UrgencyLevel>("info")
 
-  const qty = item.defaultQty ?? "—"
+  const qty = item.defaultQty ?? "-"
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {

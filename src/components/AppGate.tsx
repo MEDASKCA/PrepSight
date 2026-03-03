@@ -6,9 +6,11 @@ import { onAuthChange, type User } from "@/lib/auth"
 import { hasProfile, resolveProfile } from "@/lib/profile"
 import Sidebar from "./Sidebar"
 import MobileDrawer from "./MobileDrawer"
+import AdminUnlocker from "./AdminUnlocker"
 
-const PUBLIC_ROUTES  = ["/login"]
+const PUBLIC_ROUTES    = ["/login"]
 const ONBOARDING_ROUTE = "/onboarding"
+const ADMIN_ROUTE      = "/admin"
 
 const BRAND_LETTERS = "MEDASKCA".split("")
 
@@ -90,11 +92,12 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
 
     const isPublic     = PUBLIC_ROUTES.includes(pathname)
     const isOnboarding = pathname === ONBOARDING_ROUTE
+    const isAdmin      = pathname.startsWith(ADMIN_ROUTE)
 
-    if (!user && !isPublic)                          { router.replace("/login");      return }
-    if (user && isPublic)                            { router.replace("/");           return }
-    if (user && hasProfile() && isOnboarding)        { router.replace("/");           return }
-    if (user && !hasProfile() && !isOnboarding)      { router.replace("/onboarding"); return }
+    if (!user && !isPublic)                                    { router.replace("/login");      return }
+    if (user && isPublic)                                      { router.replace("/");           return }
+    if (user && hasProfile() && isOnboarding)                  { router.replace("/");           return }
+    if (user && !hasProfile() && !isOnboarding && !isAdmin)    { router.replace("/onboarding"); return }
   }, [user, profileChecking, pathname, router])
 
   // ── Auth resolving ──────────────────────────────────────────────────────
@@ -109,9 +112,12 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
 
   const isPublic     = PUBLIC_ROUTES.includes(pathname)
   const isOnboarding = pathname === ONBOARDING_ROUTE
+  const isAdmin      = pathname.startsWith(ADMIN_ROUTE)
 
   if (!user) {
-    return isPublic ? <>{children}</> : <LoadingScreen message="Loading…" />
+    return isPublic
+      ? <><AdminUnlocker />{children}</>
+      : <LoadingScreen message="Loading…" />
   }
 
   if (isPublic) {
@@ -119,17 +125,26 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
   }
 
   if (!hasProfile()) {
-    return isOnboarding ? <>{children}</> : <LoadingScreen message="Loading…" />
+    return isOnboarding
+      ? <><AdminUnlocker />{children}</>
+      : isAdmin
+        ? <><AdminUnlocker />{children}</>
+        : <LoadingScreen message="Loading…" />
   }
 
   if (isOnboarding) {
     return <LoadingScreen message="Loading…" />
   }
 
+  // Admin — full-screen, no sidebar/drawer
+  if (isAdmin) {
+    return <><AdminUnlocker />{children}</>
+  }
+
   // ── Fully authenticated with profile ────────────────────────────────────
   return (
     <div className="flex min-h-screen bg-[#F4F7FA]">
-      <aside className="hidden lg:flex w-60 shrink-0 h-screen sticky top-0 overflow-hidden">
+      <aside className="hidden lg:flex shrink-0 h-screen sticky top-0">
         <Sidebar />
       </aside>
       <div className="flex-1 min-w-0 flex flex-col">
@@ -138,6 +153,7 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
         </Suspense>
         <main className="flex-1">{children}</main>
       </div>
+      <AdminUnlocker />
     </div>
   )
 }

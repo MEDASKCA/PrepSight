@@ -1,6 +1,11 @@
-import { doc, getDoc, setDoc } from "firebase/firestore"
+import {
+  doc, getDoc, setDoc, deleteDoc,
+  collection, getDocs,
+} from "firebase/firestore"
 import { db } from "./firebase"
 import { PrepSightProfile } from "./types"
+
+// ── User profile ──────────────────────────────────────────────────────────────
 
 export async function getUserProfile(uid: string): Promise<PrepSightProfile | null> {
   if (!db) return null
@@ -25,4 +30,142 @@ export async function saveUserProfile(uid: string, profile: PrepSightProfile): P
 export async function hasUserProfile(uid: string): Promise<boolean> {
   const p = await getUserProfile(uid)
   return p !== null
+}
+
+// ── Admin content ─────────────────────────────────────────────────────────────
+// Stored in admin_content/{key} — dots in key replaced with underscores as doc ID
+
+function contentDocId(key: string) {
+  return key.replace(/\./g, "_")
+}
+
+export async function getAllAdminContent(): Promise<Record<string, string>> {
+  if (!db) return {}
+  try {
+    const snap = await getDocs(collection(db, "admin_content"))
+    const result: Record<string, string> = {}
+    snap.forEach((d) => {
+      // Convert doc ID back to dotted key
+      result[d.id.replace(/_/g, ".")] = d.data().value as string
+    })
+    return result
+  } catch {
+    return {}
+  }
+}
+
+export async function saveAdminContent(uid: string, key: string, value: string): Promise<void> {
+  if (!db) return
+  await setDoc(doc(db, "admin_content", contentDocId(key)), {
+    value,
+    updatedAt: new Date().toISOString(),
+    updatedBy: uid,
+  })
+}
+
+export async function deleteAdminContent(key: string): Promise<void> {
+  if (!db) return
+  await deleteDoc(doc(db, "admin_content", contentDocId(key)))
+}
+
+// ── Hospitals (Firestore additions on top of seed JSON) ───────────────────────
+
+export interface FirestoreHospital {
+  id: string
+  name: string
+  trust?: string
+  addedAt: string
+  addedBy: string
+  approved: boolean
+  approvedAt?: string
+  approvedBy?: string
+}
+
+export async function getFirestoreHospitals(): Promise<FirestoreHospital[]> {
+  if (!db) return []
+  try {
+    const snap = await getDocs(collection(db, "hospitals"))
+    return snap.docs.map((d) => ({ id: d.id, ...d.data() } as FirestoreHospital))
+  } catch {
+    return []
+  }
+}
+
+export async function addFirestoreHospital(
+  uid: string,
+  name: string,
+  trust?: string,
+): Promise<void> {
+  if (!db) return
+  const id = name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
+  await setDoc(doc(db, "hospitals", id), {
+    name,
+    trust: trust ?? "",
+    addedAt: new Date().toISOString(),
+    addedBy: uid,
+    approved: false,
+  })
+}
+
+export async function approveFirestoreHospital(uid: string, id: string): Promise<void> {
+  if (!db) return
+  const ref = doc(db, "hospitals", id)
+  const snap = await getDoc(ref)
+  if (!snap.exists()) return
+  await setDoc(ref, { ...snap.data(), approved: true, approvedAt: new Date().toISOString(), approvedBy: uid })
+}
+
+export async function deleteFirestoreHospital(id: string): Promise<void> {
+  if (!db) return
+  await deleteDoc(doc(db, "hospitals", id))
+}
+
+// ── Surgeons (Firestore) ──────────────────────────────────────────────────────
+
+export interface FirestoreSurgeon {
+  id: string
+  name: string
+  shortName: string
+  specialty: string
+  grade?: string
+  addedAt: string
+  addedBy: string
+  approved: boolean
+}
+
+export async function getFirestoreSurgeons(): Promise<FirestoreSurgeon[]> {
+  if (!db) return []
+  try {
+    const snap = await getDocs(collection(db, "surgeons"))
+    return snap.docs.map((d) => ({ id: d.id, ...d.data() } as FirestoreSurgeon))
+  } catch {
+    return []
+  }
+}
+
+export async function addFirestoreSurgeon(
+  uid: string,
+  surgeon: Omit<FirestoreSurgeon, "id" | "addedAt" | "addedBy" | "approved">,
+): Promise<void> {
+  if (!db) return
+  const id = surgeon.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
+  await setDoc(doc(db, "surgeons", id), {
+    ...surgeon,
+    addedAt: new Date().toISOString(),
+    addedBy: uid,
+    approved: false,
+  })
+}
+
+export async function approveFirestoreSurgeon(uid: string, id: string): Promise<void> {
+  if (!db) return
+  const ref = doc(db, "surgeons", id)
+  const snap = await getDoc(ref)
+  if (!snap.exists()) return
+  await setDoc(ref, { ...snap.data(), approved: true, approvedAt: new Date().toISOString(), approvedBy: uid })
+}
+
+export async function deleteFirestoreSurgeon(id: string): Promise<void> {
+  if (!db) return
+  await deleteDoc(doc(db, "surgeons", id))
 }

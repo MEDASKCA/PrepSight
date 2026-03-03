@@ -1,8 +1,10 @@
 import { procedures, getProceduresBySettingAndSpecialty } from "@/lib/data"
 import { ClinicalSetting } from "@/lib/types"
+import { SETTING_COLOUR } from "@/lib/settings"
+import { ArrowLeft } from "lucide-react"
+import Link from "next/link"
 import ProcedureCard from "@/components/ProcedureCard"
 import ProfileButton from "@/components/ProfileButton"
-import SearchBar from "@/components/SearchBar"
 import HomeHero from "@/components/HomeHero"
 
 interface Props {
@@ -27,67 +29,78 @@ export default async function HomePage({ searchParams }: Props) {
     }
   }
 
-  // ── No filter: show home hero ─────────────────────────────────────────────
+  // ── No filter: home hero ──────────────────────────────────────────────────
   if (!activeSetting) {
     return <HomeHero />
   }
 
-  // ── Filtered view: header + breadcrumb + grid ─────────────────────────────
+  // ── Filtered view ─────────────────────────────────────────────────────────
+  const backHref = activeSpecialty
+    ? `/?setting=${encodeURIComponent(activeSetting)}`
+    : "/"
+
+  const settingColour = SETTING_COLOUR[activeSetting] ?? "bg-gray-100 text-gray-700"
+
   return (
     <div className="min-h-screen bg-[#F4F7FA]">
-      {/* Mobile header */}
-      <header className="bg-white border-b border-[#D5DCE3] sticky top-0 z-30 lg:hidden">
-        <div className="px-4 py-3">
-          <SearchBar procedures={procedures} />
-        </div>
-      </header>
 
-      {/* Desktop header */}
-      <header className="bg-white border-b border-[#D5DCE3] sticky top-0 z-30 hidden lg:block">
-        <div className="px-6 py-3 flex items-center gap-4">
-          <div className="flex-1">
-            <SearchBar procedures={procedures} />
+      {/* Navy header — matches procedure page style */}
+      <header className="bg-[#4DA3FF] text-white sticky top-0 z-30">
+        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center gap-3">
+          <Link href={backHref} className="text-white/80 hover:text-white transition-colors shrink-0">
+            <ArrowLeft size={22} />
+          </Link>
+          <div className="flex-1 min-w-0">
+            <h1 className="font-bold text-lg leading-snug truncate">
+              {activeSpecialty ?? activeSetting}
+            </h1>
+            <div className="flex flex-wrap items-center gap-1.5 mt-1">
+              <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${settingColour}`}>
+                {activeSetting}
+              </span>
+              {activeSpecialty && (
+                <span className="text-xs px-2 py-0.5 rounded-full bg-white/10 text-white/80">
+                  {activeSpecialty}
+                </span>
+              )}
+            </div>
           </div>
           <ProfileButton />
         </div>
       </header>
 
-      <main className="px-4 lg:px-6 py-5 space-y-6 max-w-5xl">
+      <main className="max-w-4xl mx-auto px-4 py-5 space-y-4">
 
-        {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm text-[#64748b]">
-          <a href="/" className="hover:text-[#2F8EF7] transition-colors">Home</a>
-          <span>/</span>
-          <span className="text-[#3F4752] font-medium">{activeSetting}</span>
-          {activeSpecialty && (
-            <>
-              <span>/</span>
-              <span className="text-[#3F4752] font-medium">{activeSpecialty}</span>
-            </>
-          )}
-        </div>
-
-        {/* Setting + specialty: flat grid */}
+        {/* Setting + specialty: compact list */}
         {activeSpecialty && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {filteredProcedures.map((p) => <ProcedureCard key={p.id} procedure={p} />)}
+          <div className="bg-white rounded-2xl overflow-hidden border border-[#D5DCE3] shadow-sm divide-y divide-[#F4F7FA]">
+            {filteredProcedures.map((p) => (
+              <ProcedureCard key={p.id} procedure={p} />
+            ))}
             {filteredProcedures.length === 0 && (
-              <p className="text-sm text-[#94a3b8] col-span-full">No procedures in this specialty yet.</p>
+              <p className="px-4 py-6 text-sm text-[#94a3b8]">No procedures in this specialty yet.</p>
             )}
           </div>
         )}
 
-        {/* Setting only: specialties within setting */}
+        {/* Setting only: specialty sections with blue headers */}
         {!activeSpecialty && (() => {
           const specialtyMap = bySettingAndSpecialty.get(activeSetting!)
-          if (!specialtyMap) return <p className="text-sm text-[#94a3b8]">No procedures in this setting yet.</p>
+          if (!specialtyMap) {
+            return <p className="text-sm text-[#94a3b8]">No procedures in this setting yet.</p>
+          }
           return Array.from(specialtyMap.entries()).map(([spec, procs]) => (
-            <section key={spec}>
-              <h2 className="text-sm font-bold uppercase tracking-widest text-[#64748b] mb-2">{spec}</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                {procs.map((p) => <ProcedureCard key={p.id} procedure={p} />)}
+            <div key={spec} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-[#D5DCE3]">
+              <div className="bg-[#4DA3FF] px-4 py-3.5 flex items-center justify-between">
+                <h2 className="text-white font-semibold text-base">{spec}</h2>
+                <span className="text-white/60 text-xs tabular-nums">{procs.length}</span>
               </div>
-            </section>
+              <div className="divide-y divide-[#F4F7FA]">
+                {procs.map((p) => (
+                  <ProcedureCard key={p.id} procedure={p} />
+                ))}
+              </div>
+            </div>
           ))
         })()}
 

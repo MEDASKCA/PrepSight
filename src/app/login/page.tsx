@@ -252,9 +252,9 @@ export default function LoginPage() {
             transition: "opacity 0.5s ease 1380ms",
           }}
         >
-          <p className="text-[#e5e5e5] font-semibold text-sm mb-3">A procedure card. Reimagined.</p>
+          <p className="text-[#e5e5e5] font-semibold text-sm mb-3">Every case. Every setting. Every team.</p>
           <p className="text-xs text-[#666] leading-relaxed">
-            You already know what a Kardex is. PrepSight does the same job — digitally,
+            You already know what a Kardex is. PrepSight does the same job, digitally,
             consistently, and always with you. Every card covers equipment, instruments,
             positioning, medications, and more. Organised by setting, specialty, and surgeon.
           </p>
