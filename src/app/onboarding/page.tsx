@@ -232,7 +232,7 @@ export default function OnboardingPage() {
           {step === 2 && (
             <div className="animate-step-in">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/ps-mark.png" alt="P.S." className="h-14 w-auto mb-5 opacity-40" />
+              <img src="/ps-mark.png" alt="P.S." className="h-14 w-auto mb-5" />
 
               <h2 className="text-2xl font-bold text-[#3F4752] mb-2">
                 A procedure card. Reimagined.
