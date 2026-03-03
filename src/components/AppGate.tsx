@@ -16,6 +16,15 @@ const BRAND_LETTERS = "MEDASKCA".split("")
 function LoadingScreen({ message }: { message: string }) {
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black">
+      {/* MEDASKCA logo mark */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/logo-medaskca.png"
+        alt="MEDASKCA"
+        className="w-16 h-16 rounded-full mb-6"
+        style={{ animation: "medaskca-pulse 2s ease-in-out infinite" }}
+      />
+
       {/* MEDASKCA animated wordmark */}
       <div className="flex gap-1 mb-6">
         {BRAND_LETTERS.map((letter, i) => (
