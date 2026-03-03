@@ -29,9 +29,10 @@ const BRAND = "MEDASKCA".split("")
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function LoginPage() {
   const router = useRouter()
-  const [lit,     setLit]     = useState(false)
-  const [loading, setLoading] = useState<"google" | "microsoft" | null>(null)
-  const [error,   setError]   = useState<string | null>(null)
+  const [lit,           setLit]           = useState(false)
+  const [loading,       setLoading]       = useState<"google" | "microsoft" | null>(null)
+  const [error,         setError]         = useState<string | null>(null)
+  const [authenticated, setAuthenticated] = useState(false)
 
   function handleLight() {
     if (!lit) setLit(true)
@@ -39,20 +40,35 @@ export default function LoginPage() {
 
   async function handleGoogle() {
     setError(null); setLoading("google")
-    try { await signInWithGoogle(); router.push("/") }
-    catch (e: unknown) {
+    try {
+      await signInWithGoogle()
+      setAuthenticated(true)
+      setTimeout(() => router.push("/"), 1100)
+    } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : "Sign-in failed"
       if (!msg.includes("popup-closed")) setError(msg)
-    } finally { setLoading(null) }
+      setLoading(null)
+    }
   }
 
   async function handleMicrosoft() {
     setError(null); setLoading("microsoft")
-    try { await signInWithMicrosoft(); router.push("/") }
-    catch (e: unknown) {
+    try {
+      await signInWithMicrosoft()
+      setAuthenticated(true)
+      setTimeout(() => router.push("/"), 1100)
+    } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : "Sign-in failed"
       if (!msg.includes("popup-closed")) setError(msg)
-    } finally { setLoading(null) }
+      setLoading(null)
+    }
+  }
+
+  const ledFill = authenticated ? "#ffffff" : (lit ? "#fffde7" : "#1a1a1a")
+  function ledTransition(i: number) {
+    return authenticated
+      ? "fill 0.05s ease"
+      : `fill 0.08s ease ${i * 11}ms, filter 0.08s ease ${i * 11}ms`
   }
 
   return (
@@ -60,13 +76,26 @@ export default function LoginPage() {
       className="relative min-h-screen w-full flex flex-col items-center overflow-hidden select-none"
       style={{ backgroundColor: "#000" }}
     >
+      {/* ── Auth success burst flash ───────────────────────────────────────── */}
+      {authenticated && (
+        <div
+          className="absolute inset-0 pointer-events-none z-50"
+          style={{
+            animation: "lightBurst 1.1s ease-out forwards",
+            background: "radial-gradient(ellipse 110% 75% at 50% 0%, rgba(255,255,240,0.95) 0%, rgba(255,244,180,0.5) 35%, transparent 70%)",
+          }}
+        />
+      )}
+
       {/* ── Warm glow radiates from fixture when lit ──────────────────────── */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           opacity: lit ? 1 : 0,
-          transition: "opacity 1.2s ease",
-          background: "radial-gradient(ellipse 90% 55% at 50% 0%, rgba(255,244,180,0.12) 0%, rgba(255,244,180,0.04) 45%, transparent 80%)",
+          transition: authenticated ? "opacity 0.3s ease" : "opacity 1.2s ease",
+          background: authenticated
+            ? "radial-gradient(ellipse 100% 65% at 50% 0%, rgba(255,255,220,0.25) 0%, rgba(255,244,180,0.08) 45%, transparent 80%)"
+            : "radial-gradient(ellipse 90% 55% at 50% 0%, rgba(255,244,180,0.12) 0%, rgba(255,244,180,0.04) 45%, transparent 80%)",
         }}
       />
 
@@ -85,8 +114,20 @@ export default function LoginPage() {
               <stop offset="60%"  stopColor="#fff8e1" stopOpacity="0.8" />
               <stop offset="100%" stopColor="#fff8e1" stopOpacity="0" />
             </radialGradient>
+            <radialGradient id="ledglow-burst" cx="50%" cy="50%" r="50%">
+              <stop offset="0%"   stopColor="#ffffff" />
+              <stop offset="50%"  stopColor="#fffde7" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#fffde7" stopOpacity="0" />
+            </radialGradient>
             <filter id="bloom" x="-60%" y="-60%" width="220%" height="220%">
               <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <filter id="bloom-burst" x="-80%" y="-80%" width="260%" height="260%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
@@ -132,9 +173,9 @@ export default function LoginPage() {
             <circle
               key={led.idx}
               cx={led.x} cy={led.y} r={led.r}
-              fill={lit ? "#fffde7" : "#1a1a1a"}
-              filter={lit ? "url(#bloom)" : undefined}
-              style={{ transition: `fill 0.08s ease ${led.idx * 11}ms, filter 0.08s ease ${led.idx * 11}ms` }}
+              fill={ledFill}
+              filter={authenticated ? "url(#bloom-burst)" : (lit ? "url(#bloom)" : undefined)}
+              style={{ transition: ledTransition(led.idx) }}
             />
           ))}
 
@@ -144,7 +185,11 @@ export default function LoginPage() {
 
           {/* Lens bloom overlay when lit */}
           {lit && (
-            <circle cx={CX} cy={CY} r="118" fill="url(#ledglow)" style={{ opacity: 0.18 }} />
+            <circle
+              cx={CX} cy={CY} r="118"
+              fill={authenticated ? "url(#ledglow-burst)" : "url(#ledglow)"}
+              style={{ opacity: authenticated ? 0.5 : 0.18, transition: "opacity 0.1s ease" }}
+            />
           )}
         </svg>
       </div>
@@ -234,7 +279,7 @@ export default function LoginPage() {
 
             <button
               onClick={handleGoogle}
-              disabled={loading !== null}
+              disabled={loading !== null || authenticated}
               className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-[#282828] rounded-xl text-sm font-semibold text-[#bbb] hover:bg-[#181818] active:bg-[#222] transition-colors disabled:opacity-40 mb-3"
             >
               {loading === "google" ? <BtnSpinner /> : <GoogleIcon />}
@@ -243,7 +288,7 @@ export default function LoginPage() {
 
             <button
               onClick={handleMicrosoft}
-              disabled={loading !== null}
+              disabled={loading !== null || authenticated}
               className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-[#282828] rounded-xl text-sm font-semibold text-[#bbb] hover:bg-[#181818] active:bg-[#222] transition-colors disabled:opacity-40"
             >
               {loading === "microsoft" ? <BtnSpinner /> : <MicrosoftIcon />}

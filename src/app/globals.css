@@ -48,6 +48,12 @@ body {
   100% { box-shadow: 0 0 0 0 rgba(77, 163, 255, 0); }
 }
 
+@keyframes lightBurst {
+  0%   { opacity: 0; }
+  8%   { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+
 .animate-fade-in  { animation: fadeIn      0.5s  ease-out both; }
 .animate-step-in  { animation: fadeSlideUp 0.3s  ease-out both; }
 .line-reveal      { animation: lineReveal  0.4s  ease-out both; }
