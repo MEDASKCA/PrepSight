@@ -270,22 +270,20 @@ export default function OnboardingPage() {
                 Please take a moment to read this.
               </p>
 
-              {/* Left-border card */}
-              <div className="bg-white border border-[#D5DCE3] border-l-4 border-l-[#4DA3FF] rounded-xl px-5 py-5 space-y-3">
+              <div className="space-y-3">
                 <p className="text-sm text-[#475569]">
                   PrepSight is a preparation and reference aid.
                 </p>
                 <p className="text-sm text-[#475569]">
                   It reflects established practice — but it does not replace the policies, protocols, or clinical judgement of your trust.
                 </p>
-                <ul className="space-y-1.5">
+                <ul className="space-y-1.5 list-disc list-inside">
                   {[
                     "Always follow your local guidelines",
                     "Clinical judgement takes precedence",
                     "Cards are reviewed periodically but may not reflect the most recent local changes",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-[#475569]">
-                      <span className="text-[#94a3b8] mt-0.5">—</span>
+                    <li key={item} className="text-sm text-[#475569]">
                       {item}
                     </li>
                   ))}
