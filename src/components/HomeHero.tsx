@@ -3,10 +3,10 @@
 import { useState, useEffect, useRef } from "react"
 import { Search, ChevronRight } from "lucide-react"
 import Link from "next/link"
-import { getProfile } from "@/lib/profile"
+import { getProfile, getRelevantSettings } from "@/lib/profile"
 import { getHistory } from "@/lib/history"
 import { procedures } from "@/lib/seed-data/index"
-import { PrepSightProfile, USER_ROLE_LABEL } from "@/lib/types"
+import { PrepSightProfile, ClinicalSetting, USER_ROLE_LABEL } from "@/lib/types"
 import { SETTING_COLOUR } from "@/lib/settings"
 
 function getGreeting(): string {
@@ -28,11 +28,14 @@ export default function HomeHero() {
   const [recentIds,  setRecentIds]  = useState<string[]>([])
   const [query,      setQuery]      = useState("")
   const [focused,    setFocused]    = useState(false)
+  const [relevantSettings, setRelevantSettings] = useState<ClinicalSetting[]>([])
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    setProfile(getProfile())
+    const p = getProfile()
+    setProfile(p)
     setRecentIds(getHistory())
+    if (p) setRelevantSettings(getRelevantSettings(p))
   }, [])
 
   const results = query.trim().length > 1
@@ -109,6 +112,39 @@ export default function HomeHero() {
           <p className="mt-3 text-sm text-white/40">No procedures found.</p>
         )}
       </div>
+
+      {/* Browse by your areas */}
+      {relevantSettings.length > 0 && (
+        <div className="mb-6">
+          <p className="text-xs font-semibold text-[#94a3b8] uppercase tracking-wider mb-3">
+            Your areas
+          </p>
+          <div className="space-y-2">
+            {relevantSettings.map((setting) => {
+              const count = procedures.filter((p) => p.setting === setting).length
+              if (count === 0) return null
+              return (
+                <Link
+                  key={setting}
+                  href={`/?setting=${encodeURIComponent(setting)}`}
+                  className="flex items-center justify-between px-4 py-3.5 bg-white rounded-xl border border-[#D5DCE3] hover:border-[#4DA3FF] transition-colors"
+                >
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-[#3F4752]">{setting}</p>
+                    <p className="text-xs text-[#94a3b8] mt-0.5">{count} {count === 1 ? "procedure" : "procedures"}</p>
+                  </div>
+                  <div className="flex items-center gap-2 shrink-0 ml-3">
+                    <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${SETTING_COLOUR[setting] ?? "bg-gray-100 text-gray-600"}`}>
+                      {setting.split(" ")[0]}
+                    </span>
+                    <ChevronRight size={14} className="text-[#D5DCE3]" />
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Recently viewed */}
       {recentProcedures.length > 0 && (

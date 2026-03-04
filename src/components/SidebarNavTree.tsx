@@ -32,6 +32,7 @@ export default function SidebarNavTree({ onNavigate }: Props) {
   const [viewMode, setViewMode]                           = useState<ViewMode>("setting")
   const [expandedSettings, setExpandedSettings]           = useState<Set<string>>(new Set())
   const [expandedSurgeons, setExpandedSurgeons]           = useState<Set<string>>(new Set())
+  const [showAllAreas, setShowAllAreas]                   = useState(false)
 
   const profile          = useMemo(() => getProfile(), [])
   const relevantSettings = useMemo(() =>
@@ -233,14 +234,21 @@ export default function SidebarNavTree({ onNavigate }: Props) {
                 </div>
                 {otherEntries.length > 0 && (
                   <>
-                    <div className="flex items-center gap-2 px-4 py-2">
+                    <button
+                      onClick={() => setShowAllAreas((v) => !v)}
+                      className="w-full flex items-center gap-2 px-4 py-2 text-xs text-[#94a3b8] hover:text-[#64748b] transition-colors"
+                    >
                       <div className="flex-1 h-px bg-[#E2E8F0]" />
-                      <span className="text-xs text-[#94a3b8] font-medium">All areas</span>
+                      <span className="font-medium shrink-0">
+                        {showAllAreas ? "Hide other areas" : "Show all areas"}
+                      </span>
                       <div className="flex-1 h-px bg-[#E2E8F0]" />
-                    </div>
-                    <div className="px-3 space-y-2 pb-3">
-                      {renderSettingCards(otherEntries)}
-                    </div>
+                    </button>
+                    {showAllAreas && (
+                      <div className="px-3 space-y-2 pb-3">
+                        {renderSettingCards(otherEntries)}
+                      </div>
+                    )}
                   </>
                 )}
               </>

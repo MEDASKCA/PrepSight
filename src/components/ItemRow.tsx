@@ -1,11 +1,13 @@
 "use client"
 
 import { useRef, useState } from "react"
-import { ImagePlus, X, Flag, Pencil, Check, Clock } from "lucide-react"
+import { ImagePlus, X, Flag, Pencil, Save, Check, Clock, Trash2 } from "lucide-react"
 import { Item } from "@/lib/types"
 
 interface Props {
   item: Item
+  editMode?: boolean
+  onDelete?: () => void
 }
 
 type UrgencyLevel = "info" | "advisory" | "urgent" | "critical"
@@ -28,22 +30,63 @@ function today() {
   return new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
 }
 
-export default function ItemRow({ item }: Props) {
-  const [showInfo, setShowInfo] = useState(false)
-  const [localImage, setLocalImage] = useState<string | null>(item.imageUrl ?? null)
+export default function ItemRow({ item, editMode = false, onDelete }: Props) {
+  const [showInfo, setShowInfo]       = useState(false)
+  const [localImage, setLocalImage]   = useState<string | null>(item.imageUrl ?? null)
   const [showContact, setShowContact] = useState(false)
 
-  const [showNotes, setShowNotes] = useState(false)
-  const [instruction, setInstruction] = useState("")
-  const [instructionDraft, setInstructionDraft] = useState("")
+  const [showNotes, setShowNotes]                   = useState(false)
+  const [instruction, setInstruction]               = useState("")
+  const [instructionDraft, setInstructionDraft]     = useState("")
   const [editingInstruction, setEditingInstruction] = useState(false)
   const [instructionLastEdited, setInstructionLastEdited] = useState<string | null>(null)
-  const [comments, setComments] = useState<Comment[]>([])
+  const [comments, setComments]   = useState<Comment[]>([])
   const [newComment, setNewComment] = useState("")
   const [newUrgency, setNewUrgency] = useState<UrgencyLevel>("info")
 
-  const qty = item.defaultQty ?? "-"
+  // Committed display values (updated when modal is saved)
+  const [localName,     setLocalName]     = useState(item.name)
+  const [localQty,      setLocalQty]      = useState(item.defaultQty != null ? String(item.defaultQty) : "")
+  const [localProduct,  setLocalProduct]  = useState(item.product ?? "")
+  const [localSupplier, setLocalSupplier] = useState(item.supplier?.name ?? "")
+  const [localContact,  setLocalContact]  = useState(item.supplier?.contact ?? "")
+  const [localLocation, setLocalLocation] = useState(item.location ?? "")
+
+  // Modal draft values
+  const [showEditModal, setShowEditModal] = useState(false)
+  const [draftName,     setDraftName]     = useState("")
+  const [draftQty,      setDraftQty]      = useState("")
+  const [draftProduct,  setDraftProduct]  = useState("")
+  const [draftSupplier, setDraftSupplier] = useState("")
+  const [draftContact,  setDraftContact]  = useState("")
+  const [draftLocFloor, setDraftLocFloor] = useState("")
+  const [draftLocRoom,  setDraftLocRoom]  = useState("")
+  const [draftLocShelf, setDraftLocShelf] = useState("")
+
   const fileInputRef = useRef<HTMLInputElement>(null)
+
+  function openEditModal() {
+    setDraftName(localName)
+    setDraftQty(localQty)
+    setDraftProduct(localProduct)
+    setDraftSupplier(localSupplier)
+    setDraftContact(localContact)
+    const locParts = localLocation.split("/")
+    setDraftLocFloor(locParts[0]?.trim() ?? "")
+    setDraftLocRoom(locParts[1]?.trim() ?? "")
+    setDraftLocShelf(locParts[2]?.trim() ?? "")
+    setShowEditModal(true)
+  }
+
+  function saveEdit() {
+    setLocalName(draftName)
+    setLocalQty(draftQty)
+    setLocalProduct(draftProduct)
+    setLocalSupplier(draftSupplier)
+    setLocalContact(draftContact)
+    setLocalLocation([draftLocFloor, draftLocRoom, draftLocShelf].filter(Boolean).join("/"))
+    setShowEditModal(false)
+  }
 
   function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
@@ -77,42 +120,236 @@ export default function ItemRow({ item }: Props) {
   return (
     <>
       {/* ── Compact row ─────────────────────────────────────────────── */}
-      <div className="flex items-center gap-3 border-b border-[#D5DCE3] py-3">
+      <div className={`flex items-center gap-2 border-b border-[#D5DCE3] py-2.5 ${editMode ? "bg-[#fff8f5]" : ""}`}>
 
-        {/* Item name (hyperlink) + product name */}
-        <div className="flex-1 min-w-0">
-          <button
-            onClick={() => setShowInfo(true)}
-            className="text-sm font-semibold text-[#2F8EF7] underline underline-offset-2 truncate text-left w-full leading-snug"
-          >
-            {item.name}
-          </button>
-          {item.product && (
-            <p className="text-xs text-[#94a3b8] truncate leading-snug mt-0.5">
-              {item.product}
-            </p>
-          )}
-        </div>
+        {editMode ? (
+          /* ── Edit mode — clean row with action icons ──────────────── */
+          <>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold text-[#3F4752] truncate">{localName}</p>
+              {localProduct && (
+                <p className="text-xs text-[#94a3b8] truncate leading-snug mt-0.5">{localProduct}</p>
+              )}
+            </div>
+            <div className="flex items-center gap-2 shrink-0">
+              <div className="w-14 text-center">
+                {localLocation
+                  ? localLocation.split("/").map((part, i) => (
+                      <span key={i} className="text-[10px] text-[#64748b] leading-tight block">
+                        {part.trim()}
+                      </span>
+                    ))
+                  : <span className="text-[10px] text-[#D5DCE3]">-</span>
+                }
+              </div>
+              <div className="w-10 text-center text-sm font-medium text-[#3F4752]">
+                {localQty || "-"}
+              </div>
+              <button
+                onClick={openEditModal}
+                className="w-7 h-7 shrink-0 rounded-full bg-[#F87171]/10 flex items-center justify-center text-[#F87171] hover:bg-[#F87171]/20 transition-colors"
+                aria-label="Edit item"
+              >
+                <Pencil size={13} />
+              </button>
+              <button
+                onClick={onDelete}
+                className="w-7 h-7 shrink-0 rounded-full bg-[#F87171]/10 flex items-center justify-center text-[#F87171] hover:bg-[#F87171]/20 transition-colors"
+                aria-label="Remove item"
+              >
+                <Trash2 size={13} />
+              </button>
+            </div>
+          </>
+        ) : (
+          /* ── View mode ─────────────────────────────────────────────── */
+          <>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-1.5 min-w-0">
+                <button
+                  onClick={() => setShowInfo(true)}
+                  className="text-sm font-semibold text-[#2F8EF7] underline underline-offset-2 truncate text-left leading-snug min-w-0"
+                >
+                  {localName}
+                </button>
+                <button
+                  onClick={() => setShowNotes(true)}
+                  className={[
+                    "shrink-0 w-4 h-4 rounded-full border flex items-center justify-center text-[9px] font-bold leading-none transition-colors",
+                    hasNotes
+                      ? "border-[#2F8EF7] text-[#2F8EF7]"
+                      : "border-[#94a3b8] text-[#94a3b8] hover:border-[#2F8EF7] hover:text-[#2F8EF7]",
+                  ].join(" ")}
+                  aria-label="Notes and comments"
+                >
+                  i
+                </button>
+              </div>
+              {localProduct && (
+                <p className="text-xs text-[#94a3b8] truncate leading-snug mt-0.5">
+                  {localProduct}
+                </p>
+              )}
+            </div>
 
-        {/* ⓘ — notes, instructions, comments */}
-        <button
-          onClick={() => setShowNotes(true)}
-          className={[
-            "shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold leading-none transition-colors",
-            hasNotes
-              ? "border-[#2F8EF7] text-[#2F8EF7]"
-              : "border-[#94a3b8] text-[#94a3b8] hover:border-[#2F8EF7] hover:text-[#2F8EF7]",
-          ].join(" ")}
-          aria-label="Notes and comments"
-        >
-          i
-        </button>
-
-        {/* Qty — read only */}
-        <span className="shrink-0 w-14 text-center text-sm font-medium text-[#3F4752]">
-          {qty}
-        </span>
+            <div className="flex items-center gap-2 shrink-0">
+              <div className="w-14 text-center">
+                {localLocation
+                  ? localLocation.split("/").map((part, i) => (
+                      <span key={i} className="text-[10px] text-[#64748b] leading-tight block">
+                        {part.trim()}
+                      </span>
+                    ))
+                  : <span className="text-[10px] text-[#D5DCE3]">-</span>
+                }
+              </div>
+              <div className="w-10 text-center text-sm font-medium text-[#3F4752]">
+                {localQty || "-"}
+              </div>
+            </div>
+          </>
+        )}
       </div>
+
+      {/* ── Edit modal ──────────────────────────────────────────────── */}
+      {showEditModal && (
+        <div
+          className="fixed inset-0 bg-black/40 flex items-end sm:items-center justify-center z-50 p-0 sm:p-4"
+          onClick={() => setShowEditModal(false)}
+        >
+          <div
+            className="bg-white w-full sm:max-w-sm sm:rounded-2xl rounded-t-2xl p-6 shadow-xl max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-start justify-between mb-5">
+              <div>
+                <p className="text-xs uppercase tracking-wide text-[#94a3b8] mb-1">Edit item</p>
+                <h3 className="font-bold text-[#3F4752] text-lg leading-snug">{localName}</h3>
+              </div>
+              <button
+                onClick={() => setShowEditModal(false)}
+                className="ml-3 shrink-0 w-8 h-8 rounded-full bg-[#F4F7FA] flex items-center justify-center text-[#64748b] hover:bg-[#D5DCE3] transition-colors"
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            {/* Fields */}
+            <div className="space-y-4">
+              <div>
+                <label className="text-xs uppercase tracking-wide text-[#94a3b8] block mb-1.5">Item name</label>
+                <input
+                  type="text"
+                  value={draftName}
+                  onChange={(e) => setDraftName(e.target.value)}
+                  className="w-full text-base border border-[#D5DCE3] rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#F87171] focus:border-transparent"
+                />
+              </div>
+
+              {/* Location — 3 parts */}
+              <div>
+                <label className="text-xs uppercase tracking-wide text-[#94a3b8] block mb-1.5">Location</label>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <div>
+                    <input
+                      type="text"
+                      value={draftLocFloor}
+                      onChange={(e) => setDraftLocFloor(e.target.value)}
+                      maxLength={10}
+                      placeholder="Floor / Bldg"
+                      className="w-full text-sm border border-[#D5DCE3] rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#F87171] focus:border-transparent placeholder:text-[#D5DCE3]"
+                    />
+                    <p className="text-[10px] text-[#94a3b8] mt-1 px-1">Floor / Bldg</p>
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      value={draftLocRoom}
+                      onChange={(e) => setDraftLocRoom(e.target.value)}
+                      maxLength={10}
+                      placeholder="Room"
+                      className="w-full text-sm border border-[#D5DCE3] rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#F87171] focus:border-transparent placeholder:text-[#D5DCE3]"
+                    />
+                    <p className="text-[10px] text-[#94a3b8] mt-1 px-1">Room</p>
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      value={draftLocShelf}
+                      onChange={(e) => setDraftLocShelf(e.target.value)}
+                      maxLength={10}
+                      placeholder="Shelf / Drawer"
+                      className="w-full text-sm border border-[#D5DCE3] rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#F87171] focus:border-transparent placeholder:text-[#D5DCE3]"
+                    />
+                    <p className="text-[10px] text-[#94a3b8] mt-1 px-1">Shelf / Drawer</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-1/3">
+                <label className="text-xs uppercase tracking-wide text-[#94a3b8] block mb-1.5">Qty</label>
+                <input
+                  type="number"
+                  value={draftQty}
+                  onChange={(e) => setDraftQty(e.target.value)}
+                  placeholder="1"
+                  className="w-full text-sm border border-[#D5DCE3] rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#F87171] focus:border-transparent placeholder:text-[#D5DCE3]"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs uppercase tracking-wide text-[#94a3b8] block mb-1.5">Product ref</label>
+                <input
+                  type="text"
+                  value={draftProduct}
+                  onChange={(e) => setDraftProduct(e.target.value)}
+                  placeholder="e.g. REF-12345"
+                  className="w-full text-sm border border-[#D5DCE3] rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#F87171] focus:border-transparent placeholder:text-[#D5DCE3]"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs uppercase tracking-wide text-[#94a3b8] block mb-1.5">Supplier</label>
+                <input
+                  type="text"
+                  value={draftSupplier}
+                  onChange={(e) => setDraftSupplier(e.target.value)}
+                  placeholder="e.g. Stryker"
+                  className="w-full text-sm border border-[#D5DCE3] rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#F87171] focus:border-transparent placeholder:text-[#D5DCE3]"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs uppercase tracking-wide text-[#94a3b8] block mb-1.5">Supplier contact</label>
+                <input
+                  type="text"
+                  value={draftContact}
+                  onChange={(e) => setDraftContact(e.target.value)}
+                  placeholder="e.g. 0800 123 456"
+                  className="w-full text-sm border border-[#D5DCE3] rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#F87171] focus:border-transparent placeholder:text-[#D5DCE3]"
+                />
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="flex gap-3 mt-6">
+              <button
+                onClick={saveEdit}
+                className="flex-1 flex items-center justify-center gap-2 bg-[#F87171] text-white font-semibold py-3 rounded-xl hover:bg-[#ef4444] transition-colors"
+              >
+                <Save size={16} /> Save changes
+              </button>
+              <button
+                onClick={() => setShowEditModal(false)}
+                className="px-5 py-3 rounded-xl border border-[#D5DCE3] text-[#64748b] font-semibold hover:bg-[#F4F7FA] transition-colors"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── Info drawer (item name click) ────────────────────────────── */}
       {showInfo && (
@@ -127,7 +364,7 @@ export default function ItemRow({ item }: Props) {
             {/* Header */}
             <div className="flex items-start justify-between mb-5">
               <div>
-                <h3 className="font-bold text-[#3F4752] text-lg leading-snug">{item.name}</h3>
+                <h3 className="font-bold text-[#3F4752] text-lg leading-snug">{localName}</h3>
                 {item.sku && <p className="text-sm text-[#94a3b8] mt-0.5">{item.sku}</p>}
               </div>
               <button
@@ -143,7 +380,7 @@ export default function ItemRow({ item }: Props) {
               {localImage ? (
                 <div className="relative">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={localImage} alt={item.name} className="w-full h-40 object-cover rounded-xl border border-[#D5DCE3]" />
+                  <img src={localImage} alt={localName} className="w-full h-40 object-cover rounded-xl border border-[#D5DCE3]" />
                   <button
                     onClick={removeImage}
                     className="absolute top-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center shadow text-[#64748b] hover:text-red-500 transition-colors"
@@ -168,25 +405,25 @@ export default function ItemRow({ item }: Props) {
             )}
 
             {/* Product + Supplier */}
-            {(item.product || item.supplier) && (
+            {(localProduct || localSupplier) && (
               <div className="space-y-4">
-                {item.product && (
+                {localProduct && (
                   <div>
                     <span className="text-xs uppercase tracking-wide text-[#94a3b8] block mb-1">Product</span>
-                    <span className="text-base font-medium text-[#3F4752]">{item.product}</span>
+                    <span className="text-base font-medium text-[#3F4752]">{localProduct}</span>
                   </div>
                 )}
-                {item.supplier && (
+                {localSupplier && (
                   <div>
                     <span className="text-xs uppercase tracking-wide text-[#94a3b8] block mb-1">Supplier</span>
                     <button
                       onClick={() => setShowContact(!showContact)}
                       className="text-base text-[#2F8EF7] font-semibold underline underline-offset-2"
                     >
-                      {item.supplier.name}
+                      {localSupplier}
                     </button>
-                    {showContact && item.supplier.contact && (
-                      <span className="block text-base text-[#475569] mt-1.5">{item.supplier.contact}</span>
+                    {showContact && localContact && (
+                      <span className="block text-base text-[#475569] mt-1.5">{localContact}</span>
                     )}
                   </div>
                 )}
@@ -209,7 +446,7 @@ export default function ItemRow({ item }: Props) {
             {/* Header */}
             <div className="flex items-start justify-between mb-5">
               <div>
-                <h3 className="font-bold text-[#3F4752] text-lg leading-snug">{item.name}</h3>
+                <h3 className="font-bold text-[#3F4752] text-lg leading-snug">{localName}</h3>
                 <p className="text-sm text-[#94a3b8] mt-0.5">Notes &amp; comments</p>
               </div>
               <button
@@ -291,7 +528,6 @@ export default function ItemRow({ item }: Props) {
               <span className="text-xs uppercase tracking-wide text-[#94a3b8] block mb-2">
                 Add comment
               </span>
-              {/* Urgency selector */}
               <div className="flex gap-1.5 mb-3">
                 {(Object.keys(URGENCY) as UrgencyLevel[]).map((u) => (
                   <button

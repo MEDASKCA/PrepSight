@@ -17,9 +17,9 @@ export const theatreOrtho: Procedure[] = [
         title: "PPE",
         sectionType: "ppe",
         items: [
-          { id: "surgical-gown",   name: "Surgical Gown",        sku: "Proxima OR",         description: "Sterile barrier protection — fluid-resistant reinforced gown", product: "Proxima OR",     supplier: { name: "Medline",    contact: "0800 123 456" }, defaultQty: 3 },
-          { id: "surgical-gloves", name: "Surgical Gloves",      sku: "Biogel Eclipse",      description: "Double-gloving, indicator system",                            product: "Biogel Eclipse 7.0", supplier: { name: "Mölnlycke",  contact: "0800 222 111" }, defaultQty: 2 },
-          { id: "face-shield",     name: "Face Shield / Visor",  sku: "Halyard SafeSight",   description: "Full-face splash protection",                                 product: "Halyard SafeSight", supplier: { name: "Halyard Health", contact: "0800 456 789" }, defaultQty: 1 },
+          { id: "surgical-gown",   name: "Surgical Gown",        location: "4th Floor/Storage A/Shelf A2", sku: "Proxima OR",         description: "Sterile barrier protection — fluid-resistant reinforced gown", product: "Proxima OR",     supplier: { name: "Medline",    contact: "0800 123 456" }, defaultQty: 3 },
+          { id: "surgical-gloves", name: "Surgical Gloves",      location: "4th Floor/Storage A/Shelf A3", sku: "Biogel Eclipse",      description: "Double-gloving, indicator system",                            product: "Biogel Eclipse 7.0", supplier: { name: "Mölnlycke",  contact: "0800 222 111" }, defaultQty: 2 },
+          { id: "face-shield",     name: "Face Shield / Visor",  location: "3rd Floor/PPE Store/Cabinet 3", sku: "Halyard SafeSight",   description: "Full-face splash protection",                                 product: "Halyard SafeSight", supplier: { name: "Halyard Health", contact: "0800 456 789" }, defaultQty: 1 },
         ],
       },
       {

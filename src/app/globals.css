@@ -60,6 +60,11 @@ body {
 .chip-reveal      { animation: chipReveal  0.22s ease-out both; }
 .pulse-once       { animation: pulseCTA    0.9s  ease-out 0.5s both; }
 
+/* ── Ensure inputs inherit Manrope ──────────────────────────────────────── */
+input, textarea, select, button {
+  font-family: inherit;
+}
+
 /* ── Hide number input spinners ─────────────────────────────────────────── */
 /* Hide number input spinners */
 input[type="number"]::-webkit-inner-spin-button,

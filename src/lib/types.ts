@@ -46,6 +46,7 @@ export interface Item {
   imageUrl?: string
   notes?: string
   defaultQty?: number
+  location?: string
 }
 
 export interface Section {
@@ -127,6 +128,7 @@ export interface PrepSightProfile {
   departments: string[]
   role: UserRole
   jobTitle?: string            // optional — collected later via profile settings
+  name?: string                // optional — "First Last", used for edit attribution
   specialtiesOfInterest: string[]
   completedAt: string
 }

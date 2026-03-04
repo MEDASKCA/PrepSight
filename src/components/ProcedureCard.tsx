@@ -4,9 +4,10 @@ import { Procedure } from "@/lib/types"
 
 interface Props {
   procedure: Procedure
+  cardCount?: number
 }
 
-export default function ProcedureCard({ procedure }: Props) {
+export default function ProcedureCard({ procedure, cardCount = 1 }: Props) {
   return (
     <Link
       href={`/procedures/${procedure.id}`}
@@ -18,12 +19,17 @@ export default function ProcedureCard({ procedure }: Props) {
           <p className="text-xs text-[#94a3b8] mt-0.5">{procedure.approach}</p>
         )}
       </div>
-      {procedure.implantSystem && (
-        <span className="hidden sm:block text-xs text-[#94a3b8] shrink-0 max-w-[120px] truncate">
-          {procedure.implantSystem}
+      <div className="flex items-center gap-2 shrink-0">
+        <span className="text-xs text-[#94a3b8]">
+          {cardCount} {cardCount === 1 ? "card" : "cards"}
         </span>
-      )}
-      <ChevronRight size={14} className="text-[#CBD5E1] shrink-0" />
+        {procedure.implantSystem && (
+          <span className="hidden sm:block text-xs text-[#94a3b8] max-w-[100px] truncate">
+            {procedure.implantSystem}
+          </span>
+        )}
+        <ChevronRight size={14} className="text-[#CBD5E1]" />
+      </div>
     </Link>
   )
 }

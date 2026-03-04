@@ -13,17 +13,17 @@ export default function MobileDrawer() {
   return (
     <>
       {/* Top bar — always visible on mobile */}
-      <div className="lg:hidden grid grid-cols-3 items-center px-4 py-3 bg-[#4DA3FF] sticky top-0 z-40">
+      <div className="lg:hidden grid grid-cols-3 items-center px-4 py-3 bg-white border-b border-[#D5DCE3] sticky top-0 z-40">
         <button
           onClick={() => setOpen(true)}
           aria-label="Open navigation"
-          className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors"
+          className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-[#F4F7FA] transition-colors"
         >
-          <Menu size={22} className="text-white" />
+          <Menu size={22} className="text-[#4DA3FF]" />
         </button>
 
         <Link href="/" className="flex justify-center">
-          <span className="text-base font-bold text-white">PrepSight</span>
+          <span className="text-base font-bold text-[#00B4D8]">PrepSight</span>
         </Link>
 
         <div className="flex justify-end">
@@ -62,6 +62,17 @@ export default function MobileDrawer() {
           >
             <X size={18} className="text-[#64748b]" />
           </button>
+        </div>
+
+        {/* New card */}
+        <div className="px-3 pt-3">
+          <Link
+            href="/procedures/new"
+            onClick={() => setOpen(false)}
+            className="w-full flex items-center justify-center gap-1.5 py-2 rounded-lg border border-dashed border-[#4DA3FF] text-[#4DA3FF] text-xs font-semibold hover:bg-[#EFF8FF] transition-colors"
+          >
+            <span className="text-base leading-none">+</span> New procedure card
+          </Link>
         </div>
 
         {/* Nav tree */}

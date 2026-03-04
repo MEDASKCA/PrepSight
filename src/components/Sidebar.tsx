@@ -141,6 +141,16 @@ export default function Sidebar() {
           )}
         </div>
 
+        {/* New card */}
+        <div className="px-3 pt-3 shrink-0">
+          <Link
+            href="/procedures/new"
+            className="w-full flex items-center justify-center gap-1.5 py-2 rounded-lg border border-dashed border-[#4DA3FF] text-[#4DA3FF] text-xs font-semibold hover:bg-[#EFF8FF] transition-colors"
+          >
+            <span className="text-base leading-none">+</span> New procedure card
+          </Link>
+        </div>
+
         {/* Search */}
         <div className="px-3 py-3 border-b border-[#D5DCE3] shrink-0">
           <div className="relative">
@@ -198,7 +208,7 @@ export default function Sidebar() {
                   >
                     <span className="flex-1 text-sm font-semibold truncate">{setting}</span>
                     <span className={`text-xs tabular-nums shrink-0 ${isSelected ? "text-white/50" : "text-[#94a3b8]"}`}>
-                      {specMap.size}
+                      {specMap.size} {specMap.size === 1 ? "specialty" : "specialties"}
                     </span>
                     <ChevronRight size={13} className={`shrink-0 ${isSelected ? "text-white/60" : "text-[#94a3b8]"}`} />
                   </button>
@@ -228,7 +238,7 @@ export default function Sidebar() {
                   >
                     <span className="flex-1 text-sm font-semibold truncate">{surgeon}</span>
                     <span className={`text-xs tabular-nums shrink-0 ${isSelected ? "text-white/50" : "text-[#94a3b8]"}`}>
-                      {procs.length}
+                      {procs.length} {procs.length === 1 ? "procedure" : "procedures"}
                     </span>
                     <ChevronRight size={13} className={`shrink-0 ${isSelected ? "text-white/60" : "text-[#94a3b8]"}`} />
                   </button>
@@ -285,7 +295,7 @@ export default function Sidebar() {
                 className="flex items-center justify-between px-4 h-10 text-sm text-[#475569] hover:bg-[#F4F7FA] hover:text-[#2F8EF7] transition-colors"
               >
                 <span>{spec}</span>
-                <span className="text-xs text-[#94a3b8] tabular-nums">{procs.length}</span>
+                <span className="text-xs text-[#94a3b8] tabular-nums">{procs.length} {procs.length === 1 ? "procedure" : "procedures"}</span>
               </Link>
             ))}
             {selectedSetting && !flyoutSettingData && (
