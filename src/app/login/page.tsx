@@ -1,8 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { signInWithGoogle, signInWithMicrosoft } from "@/lib/auth"
+import { signInWithGoogle, signInWithMicrosoft, getLoginRedirectResult } from "@/lib/auth"
 
 // ── Theatre light geometry ────────────────────────────────────────────────────
 // SVG viewBox="0 0 300 320"  CX=150, CY=190 (fixture centre)
@@ -33,6 +33,16 @@ export default function LoginPage() {
   const [loading,       setLoading]       = useState<"google" | "microsoft" | null>(null)
   const [error,         setError]         = useState<string | null>(null)
   const [authenticated, setAuthenticated] = useState(false)
+
+  // Handle redirect result (mobile sign-in returns here after redirect)
+  useEffect(() => {
+    getLoginRedirectResult().then((result) => {
+      if (result?.user) {
+        setAuthenticated(true)
+        setTimeout(() => router.push("/"), 800)
+      }
+    }).catch(() => {})
+  }, [router])
 
   function handleLight() {
     if (!lit) setLit(true)

@@ -1,7 +1,10 @@
 "use client"
 
-import { useRef, useState } from "react"
-import { ImagePlus, X, Flag, Pencil, Save, Check, Clock, Trash2 } from "lucide-react"
+import { useRef, useState, useEffect } from "react"
+import { ImagePlus, X, Flag, Pencil, Save, Check, Clock, Trash2, Loader2 } from "lucide-react"
+import { ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage"
+import { doc, setDoc, deleteDoc, getDoc } from "firebase/firestore"
+import { storage, db } from "@/lib/firebase"
 import { Item } from "@/lib/types"
 
 interface Props {
@@ -31,9 +34,22 @@ function today() {
 }
 
 export default function ItemRow({ item, editMode = false, onDelete }: Props) {
-  const [showInfo, setShowInfo]       = useState(false)
-  const [localImage, setLocalImage]   = useState<string | null>(item.imageUrl ?? null)
-  const [showContact, setShowContact] = useState(false)
+  const [showInfo, setShowInfo]             = useState(false)
+  const [localImage, setLocalImage]         = useState<string | null>(item.imageUrl ?? null)
+  const [pendingImage, setPendingImage]     = useState<string | null>(null)
+  const [confirmDeleteImg, setConfirmDeleteImg] = useState(false)
+  const [savingImage, setSavingImage]       = useState(false)
+  const [deletingImage, setDeletingImage]   = useState(false)
+  const [imageError, setImageError]         = useState<string | null>(null)
+  const [showContact, setShowContact]       = useState(false)
+
+  // Load persisted image from Firestore on mount
+  useEffect(() => {
+    if (!db || item.imageUrl) return
+    getDoc(doc(db, "item_images", item.id)).then((snap) => {
+      if (snap.exists()) setLocalImage(snap.data().url as string)
+    }).catch(() => {})
+  }, [item.id, item.imageUrl])
 
   const [showNotes, setShowNotes]                   = useState(false)
   const [instruction, setInstruction]               = useState("")
@@ -91,13 +107,65 @@ export default function ItemRow({ item, editMode = false, onDelete }: Props) {
   function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
     if (!file) return
-    setLocalImage(URL.createObjectURL(file))
+    if (pendingImage?.startsWith("blob:")) URL.revokeObjectURL(pendingImage)
+    setPendingImage(URL.createObjectURL(file))
     e.target.value = ""
   }
 
-  function removeImage() {
-    if (localImage?.startsWith("blob:")) URL.revokeObjectURL(localImage)
-    setLocalImage(null)
+  async function saveImage() {
+    if (!pendingImage) return
+    setSavingImage(true)
+    setImageError(null)
+    try {
+      if (storage && db) {
+        const blob = await fetch(pendingImage).then((r) => r.blob())
+        const storageRef = ref(storage, `item-images/${item.id}`)
+
+        // Timeout wrapper — Firebase Storage can hang silently if rules block or bucket unreachable
+        const timeout = new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error("Upload timed out — check Firebase Storage rules are set to allow writes.")), 10000)
+        )
+
+        await Promise.race([uploadBytes(storageRef, blob), timeout])
+        const url = await getDownloadURL(storageRef)
+        await setDoc(doc(db, "item_images", item.id), { url })
+        if (localImage?.startsWith("blob:")) URL.revokeObjectURL(localImage)
+        setLocalImage(url)
+        if (pendingImage.startsWith("blob:")) URL.revokeObjectURL(pendingImage)
+        setPendingImage(null)
+      } else {
+        setLocalImage(pendingImage)
+        setPendingImage(null)
+      }
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err)
+      console.error("Image upload failed:", err)
+      setImageError(msg)
+    } finally {
+      setSavingImage(false)
+    }
+  }
+
+  function cancelPendingImage() {
+    if (pendingImage?.startsWith("blob:")) URL.revokeObjectURL(pendingImage)
+    setPendingImage(null)
+  }
+
+  async function removeImage() {
+    setDeletingImage(true)
+    try {
+      if (storage && db) {
+        try {
+          await deleteObject(ref(storage, `item-images/${item.id}`))
+        } catch {}
+        await deleteDoc(doc(db, "item_images", item.id))
+      }
+      if (localImage?.startsWith("blob:")) URL.revokeObjectURL(localImage)
+      setLocalImage(null)
+      setConfirmDeleteImg(false)
+    } finally {
+      setDeletingImage(false)
+    }
   }
 
   function addComment() {
@@ -377,18 +445,72 @@ export default function ItemRow({ item, editMode = false, onDelete }: Props) {
 
             {/* Image */}
             <div className="mb-5">
-              {localImage ? (
-                <div className="relative">
+              {pendingImage ? (
+                /* Pending — awaiting save */
+                <div>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={localImage} alt={localName} className="w-full h-40 object-cover rounded-xl border border-[#D5DCE3]" />
-                  <button
-                    onClick={removeImage}
-                    className="absolute top-2 right-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center shadow text-[#64748b] hover:text-red-500 transition-colors"
-                  >
-                    <X size={14} />
-                  </button>
+                  <img src={pendingImage} alt={localName} className="w-full h-40 object-cover rounded-xl border border-[#D5DCE3] mb-3" />
+                  <div className="flex gap-2">
+                    <button
+                      onClick={saveImage}
+                      disabled={savingImage}
+                      className="flex-1 flex items-center justify-center gap-2 bg-emerald-500 text-white font-semibold py-2.5 rounded-xl hover:bg-emerald-600 transition-colors text-sm disabled:opacity-60"
+                    >
+                      {savingImage ? <Loader2 size={15} className="animate-spin" /> : <Check size={15} />}
+                      {savingImage ? "Saving…" : "Save image"}
+                    </button>
+                    <button
+                      onClick={cancelPendingImage}
+                      disabled={savingImage}
+                      className="px-4 py-2.5 rounded-xl border border-[#D5DCE3] text-[#64748b] font-semibold text-sm hover:bg-[#F4F7FA] transition-colors disabled:opacity-60"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                  {imageError && (
+                    <p className="text-xs text-red-500 mt-2 text-center">{imageError}</p>
+                  )}
                 </div>
+              ) : localImage ? (
+                confirmDeleteImg ? (
+                  /* Confirm delete */
+                  <div>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={localImage} alt={localName} className="w-full h-40 object-cover rounded-xl border border-[#D5DCE3] opacity-40 mb-3" />
+                    <p className="text-sm font-semibold text-[#3F4752] mb-3 text-center">Delete this image?</p>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={removeImage}
+                        disabled={deletingImage}
+                        className="flex-1 flex items-center justify-center gap-2 bg-[#F87171] text-white font-semibold py-2.5 rounded-xl hover:bg-[#ef4444] transition-colors text-sm disabled:opacity-60"
+                      >
+                        {deletingImage ? <Loader2 size={15} className="animate-spin" /> : <Trash2 size={15} />}
+                        {deletingImage ? "Deleting…" : "Yes, delete"}
+                      </button>
+                      <button
+                        onClick={() => setConfirmDeleteImg(false)}
+                        disabled={deletingImage}
+                        className="px-4 py-2.5 rounded-xl border border-[#D5DCE3] text-[#64748b] font-semibold text-sm hover:bg-[#F4F7FA] transition-colors disabled:opacity-60"
+                      >
+                        Keep it
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  /* Image saved — show with delete button */
+                  <div>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={localImage} alt={localName} className="w-full h-40 object-cover rounded-xl border border-[#D5DCE3] mb-3" />
+                    <button
+                      onClick={() => setConfirmDeleteImg(true)}
+                      className="w-full flex items-center justify-center gap-2 border border-dashed border-[#F87171] text-[#F87171] rounded-xl py-2 text-sm font-semibold hover:bg-[#fef2f2] transition-colors"
+                    >
+                      <Trash2 size={14} /> Delete image
+                    </button>
+                  </div>
+                )
               ) : (
+                /* No image */
                 <button
                   onClick={() => fileInputRef.current?.click()}
                   className="w-full flex items-center justify-center gap-2 border border-dashed border-[#cbd5e1] rounded-xl py-6 text-sm text-[#94a3b8] hover:border-[#4DA3FF] hover:text-[#4DA3FF] transition-colors"
