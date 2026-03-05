@@ -7,9 +7,10 @@ import { ChevronRight, Search, Package } from "lucide-react"
 import { procedures } from "@/lib/seed-data/index"
 import { getProcedureById } from "@/lib/data"
 import { surgeons as surgeonList, getSurgeonLibrary } from "@/lib/surgeons"
-import { CLINICAL_SETTINGS } from "@/lib/settings"
+import { CLINICAL_SETTINGS, SETTING_SPECIALTIES } from "@/lib/settings"
 import { ClinicalSetting, Procedure } from "@/lib/types"
 import { getProfile, getRelevantSettings } from "@/lib/profile"
+import { canonicalSpecialtyName } from "@/lib/specialty-normalization"
 
 interface Props {
   onNavigate?: () => void
@@ -42,16 +43,20 @@ export default function SidebarNavTree({ onNavigate }: Props) {
   // ── Setting tree ─────────────────────────────────────────────────────────────
   const tree = useMemo(() => {
     const map = new Map<ClinicalSetting, Map<string, typeof procedures>>()
-    for (const setting of CLINICAL_SETTINGS) map.set(setting, new Map())
+    for (const setting of CLINICAL_SETTINGS) {
+      const specMap = new Map<string, typeof procedures>()
+      for (const specialty of SETTING_SPECIALTIES[setting] ?? []) {
+        specMap.set(specialty, [])
+      }
+      map.set(setting, specMap)
+    }
     for (const p of procedures) {
       const specMap = map.get(p.setting)
       if (!specMap) continue
-      const list = specMap.get(p.specialty) ?? []
+      const specialty = canonicalSpecialtyName(p.setting, p.specialty)
+      const list = specMap.get(specialty) ?? []
       list.push(p)
-      specMap.set(p.specialty, list)
-    }
-    for (const [key, val] of map.entries()) {
-      if (val.size === 0) map.delete(key)
+      specMap.set(specialty, list)
     }
     return map
   }, [])
@@ -68,7 +73,9 @@ export default function SidebarNavTree({ onNavigate }: Props) {
         const filteredProcs = procs.filter(
           (p) => settingMatch || specMatch || p.name.toLowerCase().includes(q)
         )
-        if (filteredProcs.length > 0) filteredSpecs.set(spec, filteredProcs)
+        if (filteredProcs.length > 0 || settingMatch || specMatch) {
+          filteredSpecs.set(spec, filteredProcs)
+        }
       }
       if (filteredSpecs.size > 0) result.set(setting, filteredSpecs)
     }
@@ -136,15 +143,19 @@ export default function SidebarNavTree({ onNavigate }: Props) {
           {/* Card header */}
           <button
             onClick={() => toggleSetting(setting)}
-            className={`w-full flex items-center gap-2 px-4 h-12 text-left transition-colors ${
+            className={`w-full flex items-start gap-2 px-4 min-h-12 py-3 text-left transition-colors ${
               isExpanded ? "bg-[#2F8EF7]" : "bg-[#4DA3FF] hover:bg-[#2F8EF7]"
             }`}
           >
-            <span className="flex-1 text-sm font-bold text-white leading-snug">{setting}</span>
-            <span className="text-xs text-white/60 tabular-nums shrink-0">{specMap.size}</span>
+            <span className="flex-1 min-w-0 whitespace-normal break-words text-sm font-bold text-white leading-snug">
+              {setting}
+            </span>
+            <span className="mt-0.5 text-xs text-white/70 tabular-nums shrink-0">
+              {specMap.size} {specMap.size === 1 ? "specialty" : "specialties"}
+            </span>
             <ChevronRight
               size={14}
-              className={`shrink-0 text-white/60 transition-transform duration-200 ${isExpanded ? "rotate-90" : ""}`}
+              className={`mt-0.5 shrink-0 text-white/60 transition-transform duration-200 ${isExpanded ? "rotate-90" : ""}`}
             />
           </button>
 
@@ -158,16 +169,18 @@ export default function SidebarNavTree({ onNavigate }: Props) {
                     key={spec}
                     href={`/?setting=${encodeURIComponent(setting)}&specialty=${encodeURIComponent(spec)}`}
                     onClick={onNavigate}
-                    className={`flex items-center justify-between px-4 h-10 text-sm border-b border-[#F0F4F8] last:border-b-0 transition-colors ${
+                    className={`flex items-start justify-between gap-2 px-4 min-h-10 py-2 text-sm border-b border-[#F0F4F8] last:border-b-0 transition-colors ${
                       isActive
                         ? "bg-[#EFF8FF] text-[#2F8EF7] font-semibold"
                         : "bg-[#F8FAFC] text-[#475569] hover:bg-[#EFF8FF] hover:text-[#2F8EF7]"
                     }`}
                   >
-                    <span>{spec}</span>
-                    <div className="flex items-center gap-1.5 shrink-0">
-                      <span className="text-xs text-[#94a3b8]">{procs.length}</span>
-                      <ChevronRight size={11} className="text-[#94a3b8]" />
+                    <span className="flex-1 min-w-0 whitespace-normal break-words leading-snug pr-2">{spec}</span>
+                    <div className="ml-3 flex items-center gap-1.5 shrink-0 pt-0.5">
+                      <ChevronRight size={11} className="text-[#94a3b8] shrink-0" />
+                      <span className="text-xs text-[#94a3b8] tabular-nums text-right min-w-[5.5rem] shrink-0">
+                        {procs.length} {procs.length === 1 ? "procedure" : "procedures"}
+                      </span>
                     </div>
                   </Link>
                 )

@@ -8,9 +8,10 @@ import { ChevronRight, Search, Package, X } from "lucide-react"
 import { procedures } from "@/lib/seed-data/index"
 import { getProcedureById } from "@/lib/data"
 import { surgeons as surgeonList, getSurgeonLibrary } from "@/lib/surgeons"
-import { CLINICAL_SETTINGS } from "@/lib/settings"
+import { CLINICAL_SETTINGS, SETTING_SPECIALTIES } from "@/lib/settings"
 import { ClinicalSetting, Procedure, USER_ROLE_LABEL } from "@/lib/types"
 import { getProfile, getRelevantSettings } from "@/lib/profile"
+import { canonicalSpecialtyName } from "@/lib/specialty-normalization"
 
 type ViewMode = "setting" | "surgeon" | "supplier"
 
@@ -33,16 +34,20 @@ export default function Sidebar() {
   // ── Data ──────────────────────────────────────────────────────────────────────
   const tree = useMemo(() => {
     const map = new Map<ClinicalSetting, Map<string, typeof procedures>>()
-    for (const setting of CLINICAL_SETTINGS) map.set(setting, new Map())
+    for (const setting of CLINICAL_SETTINGS) {
+      const specMap = new Map<string, typeof procedures>()
+      for (const specialty of SETTING_SPECIALTIES[setting] ?? []) {
+        specMap.set(specialty, [])
+      }
+      map.set(setting, specMap)
+    }
     for (const p of procedures) {
       const specMap = map.get(p.setting)
       if (!specMap) continue
-      const list = specMap.get(p.specialty) ?? []
+      const specialty = canonicalSpecialtyName(p.setting, p.specialty)
+      const list = specMap.get(specialty) ?? []
       list.push(p)
-      specMap.set(p.specialty, list)
-    }
-    for (const [key, val] of map.entries()) {
-      if (val.size === 0) map.delete(key)
+      specMap.set(specialty, list)
     }
     return map
   }, [])
@@ -59,7 +64,9 @@ export default function Sidebar() {
         const filteredProcs = procs.filter(
           (p) => settingMatch || specMatch || p.name.toLowerCase().includes(q)
         )
-        if (filteredProcs.length > 0) filteredSpecs.set(spec, filteredProcs)
+        if (filteredProcs.length > 0 || settingMatch || specMatch) {
+          filteredSpecs.set(spec, filteredProcs)
+        }
       }
       if (filteredSpecs.size > 0) result.set(setting, filteredSpecs)
     }
@@ -202,15 +209,15 @@ export default function Sidebar() {
                       setSelectedSetting(isSelected ? null : setting)
                       setSelectedSurgeon(null)
                     }}
-                    className={`w-full flex items-center gap-2 h-10 px-2.5 rounded-lg text-left transition-all ${
+                    className={`w-full flex items-start gap-2 min-h-10 py-2 px-2.5 rounded-lg text-left transition-all ${
                       isSelected ? "bg-[#4DA3FF] text-white" : "hover:bg-[#F4F7FA] text-[#3F4752]"
                     }`}
                   >
-                    <span className="flex-1 text-sm font-semibold truncate">{setting}</span>
-                    <span className={`text-xs tabular-nums shrink-0 ${isSelected ? "text-white/50" : "text-[#94a3b8]"}`}>
+                    <span className="flex-1 min-w-0 whitespace-normal break-words text-sm font-semibold leading-snug">{setting}</span>
+                    <span className={`text-xs tabular-nums shrink-0 pt-0.5 ${isSelected ? "text-white/50" : "text-[#94a3b8]"}`}>
                       {specMap.size} {specMap.size === 1 ? "specialty" : "specialties"}
                     </span>
-                    <ChevronRight size={13} className={`shrink-0 ${isSelected ? "text-white/60" : "text-[#94a3b8]"}`} />
+                    <ChevronRight size={13} className={`shrink-0 mt-0.5 ${isSelected ? "text-white/60" : "text-[#94a3b8]"}`} />
                   </button>
                 )
               })}
@@ -237,10 +244,10 @@ export default function Sidebar() {
                     }`}
                   >
                     <span className="flex-1 text-sm font-semibold truncate">{surgeon}</span>
-                    <span className={`text-xs tabular-nums shrink-0 ${isSelected ? "text-white/50" : "text-[#94a3b8]"}`}>
+                    <ChevronRight size={13} className={`shrink-0 ${isSelected ? "text-white/60" : "text-[#94a3b8]"}`} />
+                    <span className={`text-xs tabular-nums text-right min-w-[6.5rem] shrink-0 ${isSelected ? "text-white/50" : "text-[#94a3b8]"}`}>
                       {procs.length} {procs.length === 1 ? "procedure" : "procedures"}
                     </span>
-                    <ChevronRight size={13} className={`shrink-0 ${isSelected ? "text-white/60" : "text-[#94a3b8]"}`} />
                   </button>
                 )
               })}
@@ -273,7 +280,7 @@ export default function Sidebar() {
 
       {/* ── Flyout panel ────────────────────────────────────────────────────── */}
       {isFlyoutOpen && (
-        <div className="w-56 shrink-0 flex flex-col h-full border-r border-[#D5DCE3] bg-white">
+        <div className="w-56 shrink-0 flex flex-col h-full border-r border-[#BFDDFB] bg-[#EAF4FF]">
           <div className="px-4 py-3.5 border-b border-[#D5DCE3] flex items-center gap-2 shrink-0">
             <p className="flex-1 text-sm font-bold text-[#3F4752] truncate">
               {selectedSetting ?? selectedSurgeon}
@@ -292,10 +299,10 @@ export default function Sidebar() {
                 key={spec}
                 href={`/?setting=${encodeURIComponent(selectedSetting!)}&specialty=${encodeURIComponent(spec)}`}
                 onClick={closeFlyout}
-                className="flex items-center justify-between px-4 h-10 text-sm text-[#475569] hover:bg-[#F4F7FA] hover:text-[#2F8EF7] transition-colors"
+                className="flex items-start justify-between gap-2 px-4 min-h-10 py-2 text-sm text-[#153A63] bg-[#DFF0FF] hover:bg-[#CFE8FF] hover:text-[#2F8EF7] border-l-4 border-[#7DB7F0] transition-colors"
               >
-                <span>{spec}</span>
-                <span className="text-xs text-[#94a3b8] tabular-nums">{procs.length} {procs.length === 1 ? "procedure" : "procedures"}</span>
+                <span className="flex-1 min-w-0 whitespace-normal break-words leading-snug pr-2">{spec}</span>
+                <span className="text-xs text-[#94a3b8] tabular-nums text-right min-w-[6rem] shrink-0 pt-0.5">{procs.length} {procs.length === 1 ? "procedure" : "procedures"}</span>
               </Link>
             ))}
             {selectedSetting && !flyoutSettingData && (
