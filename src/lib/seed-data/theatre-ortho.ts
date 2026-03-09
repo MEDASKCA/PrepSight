@@ -24,7 +24,7 @@ export const theatreOrtho: Procedure[] = [
       },
       {
         id: "procedure-ref",
-        title: "Procedure Reference",
+        title: "Operative References",
         sectionType: "procedure_reference",
         operativeTechniqueUrl: "https://www.stryker.com/us/en/joint-replacement/systems/exeter-stem.html",
         implantGuideUrl: "https://www.stryker.com/us/en/joint-replacement/systems/trident-ii-acetabular-system.html",
@@ -149,7 +149,7 @@ export const theatreOrtho: Procedure[] = [
         ],
       },
       {
-        id: "procedure-ref", title: "Procedure Reference", sectionType: "procedure_reference",
+        id: "procedure-ref", title: "Operative References", sectionType: "procedure_reference",
         operativeTechniqueUrl: "https://www.jnjmedtech.com/en-US/product/attune-primary-knee-system",
         implantGuideUrl: "https://www.jnjmedtech.com/en-US/product/attune-primary-knee-system",
         items: [],
@@ -246,7 +246,7 @@ export const theatreOrtho: Procedure[] = [
         ],
       },
       {
-        id: "procedure-ref", title: "Procedure Reference", sectionType: "procedure_reference",
+        id: "procedure-ref", title: "Operative References", sectionType: "procedure_reference",
         operativeTechniqueUrl: "https://www.stryker.com/us/en/joint-replacement/systems/shoulder-arthroplasty.html",
         implantGuideUrl: "https://www.stryker.com/us/en/joint-replacement/systems/shoulder-arthroplasty.html",
         items: [],
@@ -337,7 +337,7 @@ export const theatreOrtho: Procedure[] = [
         ],
       },
       {
-        id: "procedure-ref", title: "Procedure Reference", sectionType: "procedure_reference",
+        id: "procedure-ref", title: "Operative References", sectionType: "procedure_reference",
         operativeTechniqueUrl: "https://www.stryker.com/us/en/trauma-and-extremities/products/gamma3-trochanteric-nail.html",
         implantGuideUrl: "https://www.stryker.com/us/en/trauma-and-extremities/products/gamma3-trochanteric-nail.html",
         items: [],

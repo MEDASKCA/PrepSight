@@ -112,6 +112,15 @@ export default function ItemRow({ item, editMode = false, onDelete }: Props) {
     e.target.value = ""
   }
 
+  function withTimeout<T>(promise: Promise<T>, ms: number, label: string): Promise<T> {
+    return Promise.race([
+      promise,
+      new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error(`${label} timed out — check Firebase rules allow read/write.`)), ms)
+      ),
+    ])
+  }
+
   async function saveImage() {
     if (!pendingImage) return
     setSavingImage(true)
@@ -121,25 +130,27 @@ export default function ItemRow({ item, editMode = false, onDelete }: Props) {
         const blob = await fetch(pendingImage).then((r) => r.blob())
         const storageRef = ref(storage, `item-images/${item.id}`)
 
-        // Timeout wrapper — Firebase Storage can hang silently if rules block or bucket unreachable
-        const timeout = new Promise<never>((_, reject) =>
-          setTimeout(() => reject(new Error("Upload timed out — check Firebase Storage rules are set to allow writes.")), 10000)
-        )
-
-        await Promise.race([uploadBytes(storageRef, blob), timeout])
+        await withTimeout(uploadBytes(storageRef, blob), 10000, "Storage upload")
         const url = await getDownloadURL(storageRef)
-        await setDoc(doc(db, "item_images", item.id), { url })
+
+        // Show the image immediately — don't wait for Firestore
         if (localImage?.startsWith("blob:")) URL.revokeObjectURL(localImage)
-        setLocalImage(url)
         if (pendingImage.startsWith("blob:")) URL.revokeObjectURL(pendingImage)
+        setLocalImage(url)
         setPendingImage(null)
+
+        // Persist URL to Firestore (with timeout)
+        await withTimeout(
+          setDoc(doc(db, "item_images", item.id), { url }),
+          10000, "Firestore write"
+        )
       } else {
         setLocalImage(pendingImage)
         setPendingImage(null)
       }
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : String(err)
-      console.error("Image upload failed:", err)
+      console.error("Image save failed:", err)
       setImageError(msg)
     } finally {
       setSavingImage(false)

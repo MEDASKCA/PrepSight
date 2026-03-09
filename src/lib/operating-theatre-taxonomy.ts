@@ -1,7 +1,7 @@
-import specialties from "../../data/specialties.json"
-import serviceLines from "../../data/service_lines.json"
-import serviceLineAnatomyMap from "../../data/service_line_anatomy_map.json"
-import anatomy from "../../data/anatomy.json"
+import specialties from "../../data/taxonomy/specialties.json"
+import serviceLines from "../../data/taxonomy/service_lines.json"
+import serviceLineAnatomyMap from "../../data/taxonomy/service_line_anatomy_map.json"
+import anatomy from "../../data/taxonomy/anatomy.json"
 
 interface SpecialtyRecord {
   id: string
@@ -35,11 +35,16 @@ function normalizeKey(value: string): string {
   return value.trim().toLowerCase()
 }
 
+const anatomyRows = anatomy as AnatomyRecord[]
+const serviceLineRows = serviceLines as ServiceLineRecord[]
+const serviceLineAnatomyRows = serviceLineAnatomyMap as ServiceLineAnatomyMapRecord[]
+
 const operatingTheatreSpecialties = (specialties as SpecialtyRecord[]).filter(
   (item) => item.category === "Operating Theatre"
 )
+
 const serviceLineIdsWithAnatomy = new Set(
-  (serviceLineAnatomyMap as ServiceLineAnatomyMapRecord[]).map((row) => row.service_line_id)
+  serviceLineAnatomyRows.map((row) => row.service_line_id)
 )
 
 const specialtyIdByName = new Map<string, string>()
@@ -53,10 +58,10 @@ const displayAliases: Record<string, string> = {
   "oral and maxillofacial": "SPEC_OMFS",
   "dental and oral": "SPEC_DENTAL_ORAL_SURGERY",
   "plastic and reconstructive": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
-  cardiothoracic: "SPEC_CARDIOTHORACIC_SURGERY",
-  vascular: "SPEC_VASCULAR_SURGERY",
-  paediatric: "SPEC_PAEDIATRIC_SURGERY",
-  podiatric: "SPEC_PODIATRIC_SURGERY",
+  "cardiothoracic": "SPEC_CARDIOTHORACIC_SURGERY",
+  "vascular": "SPEC_VASCULAR_SURGERY",
+  "paediatric": "SPEC_PAEDIATRIC_SURGERY",
+  "podiatric": "SPEC_PODIATRIC_SURGERY",
 }
 
 export function getOperatingTheatreSpecialtyIdByLabel(label: string): string | undefined {
@@ -65,9 +70,8 @@ export function getOperatingTheatreSpecialtyIdByLabel(label: string): string | u
 }
 
 export function getServiceLinesForSpecialty(specialtyId: string): ServiceLineRecord[] {
-  const rows = (serviceLines as ServiceLineRecord[]).filter((item) => item.specialty_id === specialtyId)
+  const rows = serviceLineRows.filter((item) => item.specialty_id === specialtyId)
 
-  // For duplicate display names, prefer the ID that has mapped anatomy.
   const byName = new Map<string, ServiceLineRecord[]>()
   for (const row of rows) {
     const key = normalizeKey(row.name)
@@ -86,12 +90,12 @@ export function getServiceLinesForSpecialty(specialtyId: string): ServiceLineRec
 }
 
 export function getAnatomyForServiceLine(serviceLineId: string): AnatomyRecord[] {
-  const mapRows = (serviceLineAnatomyMap as ServiceLineAnatomyMapRecord[])
+  const mapRows = serviceLineAnatomyRows
     .filter((row) => row.service_line_id === serviceLineId)
     .sort((a, b) => a.sort_order - b.sort_order)
 
   const anatomyById = new Map<string, AnatomyRecord>()
-  for (const row of anatomy as AnatomyRecord[]) {
+  for (const row of anatomyRows) {
     anatomyById.set(row.id, row)
   }
 
@@ -100,5 +104,34 @@ export function getAnatomyForServiceLine(serviceLineId: string): AnatomyRecord[]
     const found = anatomyById.get(row.anatomy_id)
     if (found) resolved.push(found)
   }
+
   return resolved
+}
+
+export function getServiceLineNameById(serviceLineId: string): string | undefined {
+  const found = serviceLineRows.find((item) => item.id === serviceLineId)
+  return found?.name
+}
+
+export function getAnatomyNameById(anatomyId: string): string | undefined {
+  const found = anatomyRows.find((item) => item.id === anatomyId)
+  return found?.name
+}
+
+export function getDescendantAnatomyIds(anatomyId: string): string[] {
+  const collected = new Set<string>()
+
+  function walk(id: string) {
+    if (collected.has(id)) return
+    collected.add(id)
+
+    for (const row of anatomyRows) {
+      if (row.parent_id === id) {
+        walk(row.id)
+      }
+    }
+  }
+
+  walk(anatomyId)
+  return Array.from(collected)
 }

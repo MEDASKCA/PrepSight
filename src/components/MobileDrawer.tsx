@@ -13,7 +13,7 @@ export default function MobileDrawer() {
   return (
     <>
       {/* Top bar — always visible on mobile */}
-      <div className="lg:hidden grid grid-cols-3 items-center px-4 py-3 bg-white border-b border-[#D5DCE3] sticky top-0 z-40">
+      <div data-dev-trigger className="lg:hidden grid grid-cols-3 items-center px-4 py-3 bg-white border-b border-[#D5DCE3] sticky top-0 z-40">
         <button
           onClick={() => setOpen(true)}
           aria-label="Open navigation"

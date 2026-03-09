@@ -1,0 +1,227 @@
+[
+  {
+    "id": "PROC_GENERAL_ANAESTHESIA_INDUCTION",
+    "name": "General Anaesthesia Induction",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_GENERAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_AIRWAY",
+    "aliases": ["Induction of General Anaesthesia"],
+    "description": "Induction of general anaesthesia using intravenous or inhalational agents.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_ENDOTRACHEAL_INTUBATION",
+    "name": "Endotracheal Intubation",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_GENERAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_AIRWAY",
+    "aliases": [],
+    "description": "Placement of endotracheal tube to secure airway during anaesthesia.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_LARYNGEAL_MASK_AIRWAY_INSERTION",
+    "name": "Laryngeal Mask Airway Insertion",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_GENERAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_AIRWAY",
+    "aliases": ["LMA Insertion"],
+    "description": "Insertion of supraglottic airway device for airway management.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_RAPID_SEQUENCE_INDUCTION",
+    "name": "Rapid Sequence Induction",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_GENERAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_AIRWAY",
+    "aliases": ["RSI"],
+    "description": "Rapid induction technique to minimise aspiration risk.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_AWAKE_FIBREOPTIC_INTUBATION",
+    "name": "Awake Fibreoptic Intubation",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_GENERAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_AIRWAY",
+    "aliases": [],
+    "description": "Awake fibreoptic technique for anticipated difficult airway.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_EXTUBATION",
+    "name": "Extubation",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_GENERAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_AIRWAY",
+    "aliases": [],
+    "description": "Removal of endotracheal tube after anaesthesia.",
+    "status": "active"
+  },
+
+  {
+    "id": "PROC_SPINAL_ANAESTHESIA",
+    "name": "Spinal Anaesthesia",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_REGIONAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_SPINE",
+    "aliases": [],
+    "description": "Injection of local anaesthetic into subarachnoid space.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_EPIRURAL_ANAESTHESIA",
+    "name": "Epidural Anaesthesia",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_REGIONAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_SPINE",
+    "aliases": [],
+    "description": "Placement of epidural catheter for anaesthesia or analgesia.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_COMBINED_SPINAL_EPIRURAL_ANAESTHESIA",
+    "name": "Combined Spinal Epidural Anaesthesia",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_REGIONAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_SPINE",
+    "aliases": ["CSE Anaesthesia"],
+    "description": "Combined spinal and epidural technique for anaesthesia.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_PERIPHERAL_NERVE_BLOCK",
+    "name": "Peripheral Nerve Block",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_REGIONAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_PERIPHERAL_NERVES",
+    "aliases": [],
+    "description": "Regional anaesthesia technique targeting a peripheral nerve.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_BRACHIAL_PLEXUS_BLOCK",
+    "name": "Brachial Plexus Block",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_REGIONAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_BRACHIAL_PLEXUS",
+    "aliases": [],
+    "description": "Regional anaesthesia of upper limb via brachial plexus.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_FEMORAL_NERVE_BLOCK",
+    "name": "Femoral Nerve Block",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_REGIONAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_FEMORAL_NERVE",
+    "aliases": [],
+    "description": "Regional anaesthesia targeting the femoral nerve.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_SCIATIC_NERVE_BLOCK",
+    "name": "Sciatic Nerve Block",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_REGIONAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_SCIATIC_NERVE",
+    "aliases": [],
+    "description": "Regional anaesthesia targeting the sciatic nerve.",
+    "status": "active"
+  },
+
+  {
+    "id": "PROC_OBSTETRIC_EPIRURAL_ANALGESIA",
+    "name": "Obstetric Epidural Analgesia",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_OBSTETRIC_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_SPINE",
+    "aliases": ["Labour Epidural"],
+    "description": "Epidural analgesia for labour pain management.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_SPINAL_ANAESTHESIA_FOR_CAESAREAN_SECTION",
+    "name": "Spinal Anaesthesia for Caesarean Section",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_OBSTETRIC_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_SPINE",
+    "aliases": [],
+    "description": "Spinal anaesthetic technique for caesarean delivery.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_GENERAL_ANAESTHESIA_FOR_OBSTETRIC_SURGERY",
+    "name": "General Anaesthesia for Obstetric Surgery",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_OBSTETRIC_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_AIRWAY",
+    "aliases": [],
+    "description": "General anaesthesia administered during obstetric surgery.",
+    "status": "active"
+  },
+
+  {
+    "id": "PROC_PAEDIATRIC_GENERAL_ANAESTHESIA",
+    "name": "Paediatric General Anaesthesia",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_PAEDIATRIC_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_AIRWAY",
+    "aliases": [],
+    "description": "General anaesthesia administered in paediatric patients.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_CAUSAL_EPIRURAL_BLOCK",
+    "name": "Caudal Epidural Block",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_PAEDIATRIC_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_SPINE",
+    "aliases": [],
+    "description": "Caudal epidural analgesia technique used in paediatric anaesthesia.",
+    "status": "active"
+  },
+
+  {
+    "id": "PROC_CARDIOPULMONARY_BYPASS_ANAESTHETIC_MANAGEMENT",
+    "name": "Cardiopulmonary Bypass Anaesthetic Management",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_CARDIOTHORACIC_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_HEART_AND_LUNGS",
+    "aliases": [],
+    "description": "Anaesthetic management during cardiopulmonary bypass surgery.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_TRANSOESOPHAGEAL_ECHOCARDIOGRAPHY_INTRAOPERATIVE",
+    "name": "Transoesophageal Echocardiography Intraoperative",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_CARDIOTHORACIC_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_OESOPHAGUS",
+    "aliases": ["Intraoperative TEE"],
+    "description": "Use of transoesophageal echocardiography during cardiac surgery.",
+    "status": "active"
+  },
+
+  {
+    "id": "PROC_ARTERIAL_LINE_INSERTION",
+    "name": "Arterial Line Insertion",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_GENERAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_ARTERY",
+    "aliases": [],
+    "description": "Insertion of arterial catheter for invasive blood pressure monitoring.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_CENTRAL_VENOUS_CATHETER_INSERTION",
+    "name": "Central Venous Catheter Insertion",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_GENERAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_CENTRAL_VEINS",
+    "aliases": [],
+    "description": "Insertion of central venous catheter for monitoring or access.",
+    "status": "active"
+  }
+]

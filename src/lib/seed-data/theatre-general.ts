@@ -114,7 +114,7 @@ const lapChole: Procedure = {
       ],
     },
     {
-      id: "procedure-ref", title: "Procedure Reference", sectionType: "procedure_reference",
+      id: "procedure-ref", title: "Operative References", sectionType: "procedure_reference",
       operativeTechniqueUrl: "https://www.websurg.com/doi-ot02en001.htm",
       externalLinks: [
         { label: "Critical View of Safety (SAGES)", url: "https://www.sages.org/critical-view-of-safety/" },

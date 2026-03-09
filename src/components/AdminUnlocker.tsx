@@ -16,7 +16,10 @@ export default function AdminUnlocker() {
   const clickTimesRef = useRef<number[]>([])
   const inputRef      = useRef<HTMLInputElement>(null)
 
-  const handleDocClick = useCallback(() => {
+  const handleDocClick = useCallback((e: MouseEvent) => {
+    // Only count clicks that land on the app header (marked with data-dev-trigger)
+    if (!(e.target as Element).closest("[data-dev-trigger]")) return
+
     const now = Date.now()
     // Remove clicks outside the rolling window
     clickTimesRef.current = clickTimesRef.current.filter((t) => now - t < CLICK_WINDOW_MS)
@@ -66,16 +69,16 @@ export default function AdminUnlocker() {
       className="fixed inset-0 bg-black/85 flex items-center justify-center z-[9999] p-4"
       onClick={(e) => { if (e.target === e.currentTarget) dismiss() }}
     >
-      <div className="bg-[#0d0d0d] border border-[#1e1e1e] rounded-2xl p-6 w-full max-w-xs shadow-2xl">
+      <div className="bg-white border border-slate-200 rounded-2xl p-6 w-full max-w-xs shadow-2xl">
         {/* Header */}
         <div className="flex items-start justify-between mb-5">
           <div>
-            <p className="text-[10px] text-[#555] uppercase tracking-[0.2em] mb-1">Dev Mode</p>
-            <h2 className="text-base font-bold text-white leading-snug">Enter password</h2>
+            <p className="text-[10px] text-slate-500 uppercase tracking-[0.2em] mb-1">Dev Mode</p>
+            <h2 className="text-base font-bold text-slate-900 leading-snug">Enter password</h2>
           </div>
           <button
             onClick={dismiss}
-            className="w-8 h-8 rounded-full bg-[#1a1a1a] flex items-center justify-center text-[#555] hover:text-white transition-colors shrink-0 ml-3"
+            className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors shrink-0 ml-3"
           >
             <X size={14} />
           </button>
@@ -91,7 +94,7 @@ export default function AdminUnlocker() {
             value={password}
             onChange={(e) => { setPassword(e.target.value); setError(false) }}
             placeholder="Password"
-            className="w-full bg-[#181818] border border-[#282828] rounded-xl px-4 py-3 text-white text-sm placeholder:text-[#383838] focus:outline-none focus:border-[#4DA3FF] transition-colors"
+            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:border-[#4DA3FF] transition-colors"
           />
 
           {error && (

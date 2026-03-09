@@ -1,0 +1,1010 @@
+[
+  {
+    "id": "PROC_PRIMARY_TOTAL_HIP_REPLACEMENT",
+    "name": "Primary Total Hip Replacement",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ARTHROPLASTY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "aliases": ["Total Hip Replacement", "Total Hip Arthroplasty", "THR", "THA"],
+    "description": "Primary replacement of the hip joint with prosthetic components.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_HIP_RESURFACING",
+    "name": "Hip Resurfacing",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ARTHROPLASTY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "aliases": [],
+    "description": "Bone-conserving arthroplasty of the hip.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_REVISION_TOTAL_HIP_REPLACEMENT",
+    "name": "Revision Total Hip Replacement",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ARTHROPLASTY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "aliases": ["Revision THR"],
+    "description": "Revision of a previous total hip replacement.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_ACETABULAR_REVISION_OF_HIP_REPLACEMENT",
+    "name": "Acetabular Revision of Hip Replacement",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ARTHROPLASTY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ACETABULUM",
+    "aliases": [],
+    "description": "Revision of the acetabular component of a hip replacement.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_FEMORAL_REVISION_OF_HIP_REPLACEMENT",
+    "name": "Femoral Revision of Hip Replacement",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ARTHROPLASTY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FEMUR",
+    "aliases": [],
+    "description": "Revision of the femoral component of a hip replacement.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_TWO_STAGE_REVISION_TOTAL_HIP_REPLACEMENT",
+    "name": "Two-Stage Revision Total Hip Replacement",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ARTHROPLASTY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "aliases": [],
+    "description": "Staged revision total hip replacement, commonly for prosthetic joint infection.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_PRIMARY_TOTAL_KNEE_REPLACEMENT",
+    "name": "Primary Total Knee Replacement",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ARTHROPLASTY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "aliases": ["Total Knee Replacement", "Total Knee Arthroplasty", "TKR", "TKA"],
+    "description": "Primary replacement of the knee joint with prosthetic components.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_UNICOMPARTMENTAL_KNEE_REPLACEMENT",
+    "name": "Unicompartmental Knee Replacement",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ARTHROPLASTY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "aliases": ["Partial Knee Replacement"],
+    "description": "Replacement of a single compartment of the knee.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_PATELLOFEMORAL_JOINT_REPLACEMENT",
+    "name": "Patellofemoral Joint Replacement",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ARTHROPLASTY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PATELLA",
+    "aliases": [],
+    "description": "Replacement of the patellofemoral compartment of the knee.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_REVISION_TOTAL_KNEE_REPLACEMENT",
+    "name": "Revision Total Knee Replacement",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ARTHROPLASTY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "aliases": ["Revision TKR"],
+    "description": "Revision of a previous total knee replacement.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_PRIMARY_TOTAL_SHOULDER_REPLACEMENT",
+    "name": "Primary Total Shoulder Replacement",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ARTHROPLASTY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "aliases": [],
+    "description": "Primary replacement of the glenohumeral joint.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_REVERSE_TOTAL_SHOULDER_REPLACEMENT",
+    "name": "Reverse Total Shoulder Replacement",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ARTHROPLASTY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "aliases": [],
+    "description": "Reverse geometry shoulder replacement.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_HEMIARTHROPLASTY_OF_SHOULDER",
+    "name": "Hemiarthroplasty of Shoulder",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ARTHROPLASTY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "aliases": [],
+    "description": "Partial replacement of the shoulder joint.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_PRIMARY_TOTAL_ELBOW_REPLACEMENT",
+    "name": "Primary Total Elbow Replacement",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ARTHROPLASTY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ELBOW",
+    "aliases": [],
+    "description": "Primary total elbow arthroplasty.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_PRIMARY_TOTAL_ANKLE_REPLACEMENT",
+    "name": "Primary Total Ankle Replacement",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ARTHROPLASTY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE",
+    "aliases": [],
+    "description": "Primary total ankle arthroplasty.",
+    "status": "active"
+  },
+
+  {
+    "id": "PROC_HEMIARTHROPLASTY_OF_HIP",
+    "name": "Hemiarthroplasty of Hip",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "aliases": ["Hip Hemiarthroplasty"],
+    "description": "Hemiarthroplasty of the hip, commonly for intracapsular femoral neck fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_DYNAMIC_HIP_SCREW_FIXATION_OF_INTERTROCHANTERIC_FRACTURE",
+    "name": "Dynamic Hip Screw Fixation of Intertrochanteric Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "aliases": ["DHS Fixation"],
+    "description": "Dynamic hip screw fixation for intertrochanteric femoral fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_CEPHALOMEDULLARY_NAIL_FIXATION_OF_INTERTROCHANTERIC_FRACTURE",
+    "name": "Cephalomedullary Nail Fixation of Intertrochanteric Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FEMUR",
+    "aliases": ["Proximal Femoral Nail Fixation"],
+    "description": "Cephalomedullary nailing of intertrochanteric femoral fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_INTRAMEDULLARY_NAILING_OF_SUBTROCHANTERIC_FEMUR_FRACTURE",
+    "name": "Intramedullary Nailing of Subtrochanteric Femur Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FEMUR",
+    "aliases": [],
+    "description": "Intramedullary fixation of subtrochanteric femur fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_INTRAMEDULLARY_NAILING_OF_FEMORAL_SHAFT_FRACTURE",
+    "name": "Intramedullary Nailing of Femoral Shaft Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FEMUR",
+    "aliases": [],
+    "description": "Intramedullary fixation of femoral shaft fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_DISTAL_FEMUR_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Distal Femur Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FEMUR",
+    "aliases": ["Distal Femur ORIF"],
+    "description": "Open reduction and internal fixation of distal femur fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_PATELLA_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Patella Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PATELLA",
+    "aliases": ["Patella ORIF"],
+    "description": "Open reduction and internal fixation of patella fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_TIBIAL_PLATEAU_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Tibial Plateau Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "aliases": ["Tibial Plateau ORIF"],
+    "description": "Open reduction and internal fixation of tibial plateau fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_INTRAMEDULLARY_NAILING_OF_TIBIAL_SHAFT_FRACTURE",
+    "name": "Intramedullary Nailing of Tibial Shaft Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_TIBIA",
+    "aliases": [],
+    "description": "Intramedullary fixation of tibial shaft fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_DISTAL_TIBIA_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Distal Tibia Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_TIBIA",
+    "aliases": ["Distal Tibia ORIF"],
+    "description": "Open reduction and internal fixation of distal tibia fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_PILON_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Pilon Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE",
+    "aliases": ["Pilon ORIF"],
+    "description": "Open reduction and internal fixation of tibial plafond fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_ANKLE_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Ankle Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE",
+    "aliases": ["Ankle ORIF"],
+    "description": "Open reduction and internal fixation of ankle fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_CALCANEAL_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Calcaneal Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HINDFOOT",
+    "aliases": ["Calcaneus ORIF"],
+    "description": "Open reduction and internal fixation of calcaneal fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_TALAR_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Talar Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HINDFOOT",
+    "aliases": ["Talus ORIF"],
+    "description": "Open reduction and internal fixation of talar fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_CLAVICLE_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Clavicle Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_CLAVICLE",
+    "aliases": ["Clavicle ORIF"],
+    "description": "Open reduction and internal fixation of clavicle fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_PROXIMAL_HUMERUS_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Proximal Humerus Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HUMERUS",
+    "aliases": ["Proximal Humerus ORIF"],
+    "description": "Open reduction and internal fixation of proximal humerus fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_HUMERAL_SHAFT_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Humeral Shaft Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HUMERUS",
+    "aliases": ["Humeral Shaft ORIF"],
+    "description": "Open reduction and internal fixation of humeral shaft fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_DISTAL_HUMERUS_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Distal Humerus Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ELBOW",
+    "aliases": ["Distal Humerus ORIF"],
+    "description": "Open reduction and internal fixation of distal humerus fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_OLECRANON_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Olecranon Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ELBOW",
+    "aliases": ["Olecranon ORIF"],
+    "description": "Open reduction and internal fixation of olecranon fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_RADIAL_HEAD_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Radial Head Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ELBOW",
+    "aliases": ["Radial Head ORIF"],
+    "description": "Open reduction and internal fixation of radial head fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_RADIAL_HEAD_REPLACEMENT",
+    "name": "Radial Head Replacement",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ELBOW",
+    "aliases": [],
+    "description": "Replacement of the radial head, commonly for complex fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_FOREARM_SHAFT_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Forearm Shaft Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOREARM",
+    "aliases": ["Forearm Shaft ORIF"],
+    "description": "Open reduction and internal fixation of radius and/or ulna shaft fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_DISTAL_RADIUS_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Distal Radius Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WRIST",
+    "aliases": ["Distal Radius ORIF"],
+    "description": "Open reduction and internal fixation of distal radius fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_SCAPHOID_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Scaphoid Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WRIST",
+    "aliases": ["Scaphoid ORIF"],
+    "description": "Open reduction and internal fixation of scaphoid fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_PERCUTANEOUS_FIXATION_OF_SCAPHOID_FRACTURE",
+    "name": "Percutaneous Fixation of Scaphoid Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WRIST",
+    "aliases": [],
+    "description": "Percutaneous fixation of scaphoid fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_METACARPAL_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Metacarpal Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HAND",
+    "aliases": ["Metacarpal ORIF"],
+    "description": "Open reduction and internal fixation of metacarpal fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OPEN_REDUCTION_AND_INTERNAL_FIXATION_OF_PHALANGEAL_FRACTURE",
+    "name": "Open Reduction and Internal Fixation of Phalangeal Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS",
+    "aliases": ["Phalangeal ORIF"],
+    "description": "Open reduction and internal fixation of phalangeal fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_EXTERNAL_FIXATION_OF_FRACTURE",
+    "name": "External Fixation of Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_BONE",
+    "aliases": [],
+    "description": "Application of external fixation for fracture stabilisation.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_MANAGEMENT_OF_OPEN_FRACTURE",
+    "name": "Management of Open Fracture",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_BONE",
+    "aliases": [],
+    "description": "Operative debridement and stabilisation for open fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_PELVIC_RING_FIXATION",
+    "name": "Pelvic Ring Fixation",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PELVIS",
+    "aliases": [],
+    "description": "Operative fixation of pelvic ring injury.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_ACETABULAR_FRACTURE_FIXATION",
+    "name": "Acetabular Fracture Fixation",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ACETABULUM",
+    "aliases": [],
+    "description": "Operative fixation of acetabular fracture.",
+    "status": "active"
+  },
+
+  {
+    "id": "PROC_ANTERIOR_CRUCIATE_LIGAMENT_RECONSTRUCTION",
+    "name": "Anterior Cruciate Ligament Reconstruction",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SPORTS_AND_KNEE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "aliases": ["ACL Reconstruction"],
+    "description": "Reconstruction of the anterior cruciate ligament.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_POSTERIOR_CRUCIATE_LIGAMENT_RECONSTRUCTION",
+    "name": "Posterior Cruciate Ligament Reconstruction",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SPORTS_AND_KNEE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "aliases": ["PCL Reconstruction"],
+    "description": "Reconstruction of the posterior cruciate ligament.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_MULTILIGAMENT_KNEE_RECONSTRUCTION",
+    "name": "Multiligament Knee Reconstruction",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SPORTS_AND_KNEE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "aliases": [],
+    "description": "Reconstruction of multiple injured knee ligaments.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_MENISCAL_REPAIR",
+    "name": "Meniscal Repair",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SPORTS_AND_KNEE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "aliases": [],
+    "description": "Repair of meniscal tear.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_PARTIAL_MENISCECTOMY",
+    "name": "Partial Meniscectomy",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SPORTS_AND_KNEE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "aliases": [],
+    "description": "Arthroscopic resection of damaged meniscal tissue.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_OSTEOCHONDRAL_REPAIR_OF_KNEE",
+    "name": "Osteochondral Repair of Knee",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SPORTS_AND_KNEE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "aliases": [],
+    "description": "Repair of focal osteochondral defect of the knee.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_PATELLOFEMORAL_STABILISATION",
+    "name": "Patellofemoral Stabilisation",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SPORTS_AND_KNEE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PATELLA",
+    "aliases": [],
+    "description": "Operative stabilisation for recurrent patellar instability.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_DIAGNOSTIC_KNEE_ARTHROSCOPY",
+    "name": "Diagnostic Knee Arthroscopy",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SPORTS_AND_KNEE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "aliases": [],
+    "description": "Diagnostic arthroscopy of the knee.",
+    "status": "active"
+  },
+
+  {
+    "id": "PROC_ARTHROSCOPIC_ROTATOR_CUFF_REPAIR",
+    "name": "Arthroscopic Rotator Cuff Repair",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SHOULDER_AND_ELBOW_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "aliases": [],
+    "description": "Arthroscopic repair of rotator cuff tear.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_SHOULDER_STABILISATION",
+    "name": "Shoulder Stabilisation",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SHOULDER_AND_ELBOW_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "aliases": [],
+    "description": "Operative stabilisation for recurrent shoulder instability.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_LATARJET_PROCEDURE",
+    "name": "Latarjet Procedure",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SHOULDER_AND_ELBOW_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "aliases": [],
+    "description": "Coracoid transfer procedure for anterior shoulder instability.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_ACROMIOCLAVICULAR_JOINT_RECONSTRUCTION",
+    "name": "Acromioclavicular Joint Reconstruction",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SHOULDER_AND_ELBOW_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_CLAVICLE",
+    "aliases": [],
+    "description": "Reconstruction for acromioclavicular joint instability.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_SUBACROMIAL_DECOMPRESSION",
+    "name": "Subacromial Decompression",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SHOULDER_AND_ELBOW_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "aliases": [],
+    "description": "Decompression procedure for subacromial impingement.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_ELBOW_ARTHROLYSIS",
+    "name": "Elbow Arthrolysis",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SHOULDER_AND_ELBOW_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ELBOW",
+    "aliases": [],
+    "description": "Release procedure for stiff elbow.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_ULNAR_NERVE_DECOMPRESSION_AT_ELBOW",
+    "name": "Ulnar Nerve Decompression at Elbow",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SHOULDER_AND_ELBOW_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ELBOW",
+    "aliases": ["Cubital Tunnel Decompression"],
+    "description": "Decompression of the ulnar nerve at the elbow.",
+    "status": "active"
+  },
+
+  {
+    "id": "PROC_CARPAL_TUNNEL_RELEASE",
+    "name": "Carpal Tunnel Release",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_HAND_AND_WRIST_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WRIST",
+    "aliases": [],
+    "description": "Decompression of the median nerve at the carpal tunnel.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_TRIGGER_FINGER_RELEASE",
+    "name": "Trigger Finger Release",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_HAND_AND_WRIST_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS",
+    "aliases": [],
+    "description": "Release of stenosing tenosynovitis of a finger or thumb.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_DUPUYTREN_FASCIECTOMY",
+    "name": "Dupuytren Fasciectomy",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_HAND_AND_WRIST_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HAND",
+    "aliases": [],
+    "description": "Excision of diseased palmar fascia for Dupuytren disease.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_FLEXOR_TENDON_REPAIR_OF_HAND",
+    "name": "Flexor Tendon Repair of Hand",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_HAND_AND_WRIST_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HAND",
+    "aliases": [],
+    "description": "Repair of flexor tendon injury in the hand.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_EXTENSOR_TENDON_REPAIR_OF_HAND",
+    "name": "Extensor Tendon Repair of Hand",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_HAND_AND_WRIST_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HAND",
+    "aliases": [],
+    "description": "Repair of extensor tendon injury in the hand.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_DE_QUERVAIN_RELEASE",
+    "name": "De Quervain Release",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_HAND_AND_WRIST_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WRIST",
+    "aliases": [],
+    "description": "Release of first dorsal compartment for De Quervain tenosynovitis.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_PROXIMAL_ROW_CARPECTOMY",
+    "name": "Proximal Row Carpectomy",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_HAND_AND_WRIST_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WRIST",
+    "aliases": [],
+    "description": "Excision of proximal carpal row for wrist arthritis or collapse.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_WRIST_FUSION",
+    "name": "Wrist Fusion",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_HAND_AND_WRIST_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WRIST",
+    "aliases": ["Wrist Arthrodesis"],
+    "description": "Arthrodesis of the wrist joint.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_THUMB_BASAL_JOINT_ARTHROPLASTY",
+    "name": "Thumb Basal Joint Arthroplasty",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_HAND_AND_WRIST_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS",
+    "aliases": ["Thumb CMC Arthroplasty"],
+    "description": "Arthroplasty for thumb carpometacarpal joint arthritis.",
+    "status": "active"
+  },
+
+  {
+    "id": "PROC_ACHILLES_TENDON_REPAIR",
+    "name": "Achilles Tendon Repair",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_FOOT_AND_ANKLE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HINDFOOT",
+    "aliases": [],
+    "description": "Repair of ruptured Achilles tendon.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_HALLUX_VALGUS_CORRECTION",
+    "name": "Hallux Valgus Correction",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_FOOT_AND_ANKLE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOREFOOT",
+    "aliases": ["Bunion Correction"],
+    "description": "Corrective surgery for hallux valgus deformity.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_FIRST_METATARSOPHALANGEAL_JOINT_FUSION",
+    "name": "First Metatarsophalangeal Joint Fusion",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_FOOT_AND_ANKLE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOREFOOT",
+    "aliases": ["First MTP Joint Fusion"],
+    "description": "Arthrodesis of the first metatarsophalangeal joint.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_ANKLE_FUSION",
+    "name": "Ankle Fusion",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_FOOT_AND_ANKLE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE",
+    "aliases": ["Ankle Arthrodesis"],
+    "description": "Arthrodesis of the ankle joint.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_SUBTALAR_FUSION",
+    "name": "Subtalar Fusion",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_FOOT_AND_ANKLE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HINDFOOT",
+    "aliases": ["Subtalar Arthrodesis"],
+    "description": "Arthrodesis of the subtalar joint.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_TRIPLE_FUSION",
+    "name": "Triple Fusion",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_FOOT_AND_ANKLE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HINDFOOT",
+    "aliases": ["Triple Arthrodesis"],
+    "description": "Arthrodesis of the subtalar, talonavicular, and calcaneocuboid joints.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_MIDFOOT_FUSION",
+    "name": "Midfoot Fusion",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_FOOT_AND_ANKLE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_MIDFOOT",
+    "aliases": ["Midfoot Arthrodesis"],
+    "description": "Arthrodesis of one or more midfoot joints.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_TIBIALIS_POSTERIOR_TENDON_RECONSTRUCTION",
+    "name": "Tibialis Posterior Tendon Reconstruction",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_FOOT_AND_ANKLE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOOT",
+    "aliases": [],
+    "description": "Reconstruction for tibialis posterior tendon dysfunction.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_DIAGNOSTIC_ANKLE_ARTHROSCOPY",
+    "name": "Diagnostic Ankle Arthroscopy",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_FOOT_AND_ANKLE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE",
+    "aliases": [],
+    "description": "Diagnostic arthroscopy of the ankle.",
+    "status": "active"
+  },
+
+  {
+    "id": "PROC_LUMBAR_DISCECTOMY",
+    "name": "Lumbar Discectomy",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SPINE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LUMBAR_SPINE",
+    "aliases": [],
+    "description": "Removal of lumbar disc material compressing a neural structure.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_LUMBAR_DECOMPRESSION",
+    "name": "Lumbar Decompression",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SPINE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LUMBAR_SPINE",
+    "aliases": [],
+    "description": "Posterior decompression procedure in the lumbar spine.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_LUMBAR_SPINAL_FUSION",
+    "name": "Lumbar Spinal Fusion",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SPINE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LUMBAR_SPINE",
+    "aliases": ["Lumbar Fusion"],
+    "description": "Fusion of lumbar spinal segments.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_CERVICAL_DISCECTOMY_AND_FUSION",
+    "name": "Cervical Discectomy and Fusion",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SPINE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_CERVICAL_SPINE",
+    "aliases": ["ACDF"],
+    "description": "Anterior cervical discectomy and fusion.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_CERVICAL_DECOMPRESSION",
+    "name": "Cervical Decompression",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SPINE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_CERVICAL_SPINE",
+    "aliases": [],
+    "description": "Cervical decompression procedure for neural element compression.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_THORACOLUMBAR_FUSION",
+    "name": "Thoracolumbar Fusion",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SPINE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_THORACIC_SPINE",
+    "aliases": [],
+    "description": "Fusion across thoracolumbar spinal segments.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_VERTEBROPLASTY",
+    "name": "Vertebroplasty",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SPINE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SPINE",
+    "aliases": [],
+    "description": "Cement augmentation of vertebral body fracture.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_KYPHOPLASTY",
+    "name": "Kyphoplasty",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SPINE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SPINE",
+    "aliases": [],
+    "description": "Balloon-assisted vertebral body augmentation.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_SCOLIOSIS_CORRECTION_AND_FUSION",
+    "name": "Scoliosis Correction and Fusion",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_SPINE_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SPINE",
+    "aliases": [],
+    "description": "Corrective deformity surgery with spinal fusion.",
+    "status": "active"
+  },
+
+  {
+    "id": "PROC_REDUCTION_OF_DEVELOPMENTAL_DYSPLASIA_OF_HIP",
+    "name": "Reduction of Developmental Dysplasia of Hip",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_PAEDIATRIC_ORTHOPAEDIC_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "aliases": [],
+    "description": "Operative reduction for developmental dysplasia of the hip.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_FEMORAL_OSTEOTOMY",
+    "name": "Femoral Osteotomy",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_PAEDIATRIC_ORTHOPAEDIC_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FEMUR",
+    "aliases": [],
+    "description": "Corrective osteotomy of the femur.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_TIBIAL_OSTEOTOMY",
+    "name": "Tibial Osteotomy",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_PAEDIATRIC_ORTHOPAEDIC_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_TIBIA",
+    "aliases": [],
+    "description": "Corrective osteotomy of the tibia.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_HEMIEPIPHYSIODESIS",
+    "name": "Hemiepiphysiodesis",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_PAEDIATRIC_ORTHOPAEDIC_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB",
+    "aliases": ["Guided Growth Procedure"],
+    "description": "Growth modulation procedure for angular deformity correction.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_TENDON_LENGTHENING_FOR_CEREBRAL_PALSY",
+    "name": "Tendon Lengthening for Cerebral Palsy",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_PAEDIATRIC_ORTHOPAEDIC_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB",
+    "aliases": [],
+    "description": "Soft tissue lengthening procedure for spastic deformity.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_PAEDIATRIC_SPINAL_DEFORMITY_CORRECTION",
+    "name": "Paediatric Spinal Deformity Correction",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_PAEDIATRIC_ORTHOPAEDIC_SURGERY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SPINE",
+    "aliases": [],
+    "description": "Correction of paediatric spinal deformity.",
+    "status": "active"
+  },
+
+  {
+    "id": "PROC_EXCISION_OF_BONE_TUMOUR",
+    "name": "Excision of Bone Tumour",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_ONCOLOGY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_BONE",
+    "aliases": [],
+    "description": "Excision of primary or secondary bone tumour.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_EXCISION_OF_SOFT_TISSUE_TUMOUR",
+    "name": "Excision of Soft Tissue Tumour",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_ONCOLOGY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SOFT_TISSUE",
+    "aliases": [],
+    "description": "Excision of benign or malignant soft tissue tumour.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_LIMB_SALVAGE_RESECTION_AND_RECONSTRUCTION",
+    "name": "Limb Salvage Resection and Reconstruction",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_ONCOLOGY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_BONE",
+    "aliases": [],
+    "description": "Limb salvage tumour resection with reconstruction.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_ENDOPROSTHETIC_RECONSTRUCTION_AFTER_TUMOUR_RESECTION",
+    "name": "Endoprosthetic Reconstruction after Tumour Resection",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_ONCOLOGY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_BONE",
+    "aliases": [],
+    "description": "Reconstruction using an endoprosthesis after tumour resection.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_PELVIC_TUMOUR_RESECTION",
+    "name": "Pelvic Tumour Resection",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_ONCOLOGY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PELVIS",
+    "aliases": [],
+    "description": "Resection of tumour involving the pelvis.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_METASTATIC_BONE_DISEASE_FIXATION",
+    "name": "Fixation for Metastatic Bone Disease",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "service_line_id": "SL_ORTHOPAEDIC_ONCOLOGY",
+    "anatomy_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_BONE",
+    "aliases": [],
+    "description": "Stabilisation procedure for metastatic bone disease.",
+    "status": "active"
+  }
+]
