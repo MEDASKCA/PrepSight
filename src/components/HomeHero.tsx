@@ -69,10 +69,20 @@ export default function HomeHero() {
         href:
           entry.variantId && entry.systemId
             ? `/procedures/${procedure.id}?variant=${encodeURIComponent(entry.variantId)}&system=${encodeURIComponent(entry.systemId)}`
-            : `/procedures/${procedure.id}`,
+          : `/procedures/${procedure.id}`,
       }
     })
-    .filter(Boolean)
+    .filter(
+      (
+        card,
+      ): card is {
+        entry: (typeof recentEntries)[number]
+        procedure: (typeof procedures)[number]
+        variant: ReturnType<typeof getProcedureVariantById>
+        system: ReturnType<typeof getSystemById>
+        href: string
+      } => card !== null,
+    )
 
   const showResults = focused && query.trim().length > 1
 
