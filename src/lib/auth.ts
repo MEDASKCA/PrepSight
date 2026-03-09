@@ -5,6 +5,8 @@ import {
   signInWithPopup,
   signInWithRedirect,
   getRedirectResult,
+  browserLocalPersistence,
+  setPersistence,
   signOut as firebaseSignOut,
   onAuthStateChanged,
   type User,
@@ -18,29 +20,45 @@ function isMobile() {
   return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
 }
 
-export async function signInWithGoogle() {
+async function prepareAuth() {
   if (!auth) throw new Error("Firebase not configured")
-  if (isMobile()) return signInWithRedirect(auth, googleProvider)
+  await setPersistence(auth, browserLocalPersistence)
+  return auth
+}
+
+export async function signInWithGoogle() {
+  const authInstance = await prepareAuth()
+  if (isMobile()) {
+    await signInWithRedirect(authInstance, googleProvider)
+    return { method: "redirect" as const }
+  }
   try {
-    return await signInWithPopup(auth, googleProvider)
+    const result = await signInWithPopup(authInstance, googleProvider)
+    return { method: "popup" as const, result }
   } catch (e: unknown) {
     const code = (e as { code?: string }).code ?? ""
     if (code === "auth/popup-blocked" || code === "auth/popup-closed-by-user") {
-      return signInWithRedirect(auth, googleProvider)
+      await signInWithRedirect(authInstance, googleProvider)
+      return { method: "redirect" as const }
     }
     throw e
   }
 }
 
 export async function signInWithMicrosoft() {
-  if (!auth) throw new Error("Firebase not configured")
-  if (isMobile()) return signInWithRedirect(auth, microsoftProvider)
+  const authInstance = await prepareAuth()
+  if (isMobile()) {
+    await signInWithRedirect(authInstance, microsoftProvider)
+    return { method: "redirect" as const }
+  }
   try {
-    return await signInWithPopup(auth, microsoftProvider)
+    const result = await signInWithPopup(authInstance, microsoftProvider)
+    return { method: "popup" as const, result }
   } catch (e: unknown) {
     const code = (e as { code?: string }).code ?? ""
     if (code === "auth/popup-blocked" || code === "auth/popup-closed-by-user") {
-      return signInWithRedirect(auth, microsoftProvider)
+      await signInWithRedirect(authInstance, microsoftProvider)
+      return { method: "redirect" as const }
     }
     throw e
   }

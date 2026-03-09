@@ -2,7 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { signInWithGoogle, signInWithMicrosoft, getLoginRedirectResult } from "@/lib/auth"
+import {
+  signInWithGoogle,
+  signInWithMicrosoft,
+  getLoginRedirectResult,
+  onAuthChange,
+} from "@/lib/auth"
 
 // ── Theatre light geometry ────────────────────────────────────────────────────
 // SVG viewBox="0 0 300 320"  CX=150, CY=190 (fixture centre)
@@ -25,23 +30,55 @@ for (const { r, n, lr } of RINGS) {
 }
 
 const BRAND = "MEDASKCA".split("")
+const PENDING_PROVIDER_KEY = "prepsight_pending_auth"
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function LoginPage() {
   const router = useRouter()
-  const [lit,           setLit]           = useState(false)
-  const [loading,       setLoading]       = useState<"google" | "microsoft" | null>(null)
+  const pendingProvider =
+    typeof window !== "undefined"
+      ? (window.sessionStorage.getItem(PENDING_PROVIDER_KEY) as "google" | "microsoft" | null)
+      : null
+
+  const [lit,           setLit]           = useState(() => pendingProvider !== null)
+  const [loading,       setLoading]       = useState<"google" | "microsoft" | null>(() => pendingProvider)
   const [error,         setError]         = useState<string | null>(null)
   const [authenticated, setAuthenticated] = useState(false)
 
   // Handle redirect result (mobile sign-in returns here after redirect)
   useEffect(() => {
-    getLoginRedirectResult().then((result) => {
-      if (result?.user) {
-        setAuthenticated(true)
-        setTimeout(() => router.push("/"), 800)
+    getLoginRedirectResult()
+      .then((result) => {
+        if (result?.user) {
+          if (typeof window !== "undefined") {
+            window.sessionStorage.removeItem(PENDING_PROVIDER_KEY)
+          }
+          setAuthenticated(true)
+          setLoading(null)
+          setTimeout(() => router.push("/"), 800)
+        }
+      })
+      .catch((e: unknown) => {
+        if (typeof window !== "undefined") {
+          window.sessionStorage.removeItem(PENDING_PROVIDER_KEY)
+        }
+        const msg = e instanceof Error ? e.message : "Sign-in failed"
+        setError(msg)
+        setLoading(null)
+      })
+  }, [router])
+
+  useEffect(() => {
+    return onAuthChange((user) => {
+      if (!user) return
+      if (typeof window !== "undefined") {
+        window.sessionStorage.removeItem(PENDING_PROVIDER_KEY)
       }
-    }).catch(() => {})
+      setLit(true)
+      setAuthenticated(true)
+      setLoading(null)
+      setTimeout(() => router.push("/"), 800)
+    })
   }, [router])
 
   function handleLight() {
@@ -51,7 +88,13 @@ export default function LoginPage() {
   async function handleGoogle() {
     setError(null); setLoading("google")
     try {
-      await signInWithGoogle()
+      const signIn = await signInWithGoogle()
+      if (signIn.method === "redirect") {
+        if (typeof window !== "undefined") {
+          window.sessionStorage.setItem(PENDING_PROVIDER_KEY, "google")
+        }
+        return
+      }
       setAuthenticated(true)
       setTimeout(() => router.push("/"), 800)
     } catch (e: unknown) {
@@ -64,7 +107,13 @@ export default function LoginPage() {
   async function handleMicrosoft() {
     setError(null); setLoading("microsoft")
     try {
-      await signInWithMicrosoft()
+      const signIn = await signInWithMicrosoft()
+      if (signIn.method === "redirect") {
+        if (typeof window !== "undefined") {
+          window.sessionStorage.setItem(PENDING_PROVIDER_KEY, "microsoft")
+        }
+        return
+      }
       setAuthenticated(true)
       setTimeout(() => router.push("/"), 800)
     } catch (e: unknown) {
