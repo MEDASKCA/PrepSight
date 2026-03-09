@@ -47,6 +47,8 @@ export default function LoginPage() {
 
   // Handle redirect result (mobile sign-in returns here after redirect)
   useEffect(() => {
+    if (!pendingProvider) return
+
     getLoginRedirectResult()
       .then((result) => {
         if (result?.user) {
@@ -62,11 +64,19 @@ export default function LoginPage() {
         if (typeof window !== "undefined") {
           window.sessionStorage.removeItem(PENDING_PROVIDER_KEY)
         }
+        const code =
+          typeof e === "object" && e !== null && "code" in e
+            ? String((e as { code?: string }).code ?? "")
+            : ""
+        if (code === "auth/missing-initial-state") {
+          setLoading(null)
+          return
+        }
         const msg = e instanceof Error ? e.message : "Sign-in failed"
         setError(msg)
         setLoading(null)
       })
-  }, [router])
+  }, [pendingProvider, router])
 
   useEffect(() => {
     return onAuthChange((user) => {
