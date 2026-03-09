@@ -24,91 +24,51 @@ function AiBubbleIcon() {
   return (
     <svg viewBox="0 0 96 96" className="h-[60px] w-[60px]" aria-hidden="true">
       <defs>
-        <radialGradient id="bubbleFill" cx="28%" cy="18%" r="85%">
-          <stop offset="0%" stopColor="#87F7F1" />
-          <stop offset="38%" stopColor="#42D8F4" />
-          <stop offset="72%" stopColor="#1E8CF4" />
-          <stop offset="100%" stopColor="#1557D6" />
-        </radialGradient>
-        <linearGradient id="bubbleEdge" x1="12%" y1="10%" x2="86%" y2="88%">
-          <stop offset="0%" stopColor="#67F4EF" />
-          <stop offset="50%" stopColor="#2EC4F3" />
-          <stop offset="100%" stopColor="#1B67DF" />
+        <linearGradient id="iconStroke" x1="10%" y1="22%" x2="88%" y2="76%">
+          <stop offset="0%" stopColor="#16B6FF" />
+          <stop offset="100%" stopColor="#20E7C7" />
         </linearGradient>
-        <filter id="starGlow" x="-120%" y="-120%" width="340%" height="340%">
-          <feGaussianBlur stdDeviation="2.8" result="blurA">
-            <animate
-              attributeName="stdDeviation"
-              values="2.2;4.2;2.2"
-              dur="2.8s"
-              repeatCount="indefinite"
-            />
-          </feGaussianBlur>
-          <feColorMatrix
-            in="blurA"
-            type="matrix"
-            values="1 0 0 0 0
-                    0 1 0 0 0
-                    0 0 1 0 0
-                    0 0 0 1 0"
-          />
-          <feMerge>
-            <feMergeNode />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-        <filter id="bubbleShadow" x="-40%" y="-40%" width="180%" height="180%">
-          <feDropShadow dx="0" dy="5" stdDeviation="4" floodColor="#0F2F7A" floodOpacity="0.24" />
+        <filter id="iconGlow" x="-40%" y="-40%" width="180%" height="180%">
+          <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="#17CFFF" floodOpacity="0.35" />
+          <feDropShadow dx="0" dy="0" stdDeviation="6" floodColor="#19E5D0" floodOpacity="0.18" />
         </filter>
       </defs>
 
-      <g filter="url(#bubbleShadow)">
+      <g
+        fill="none"
+        stroke="url(#iconStroke)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        filter="url(#iconGlow)"
+      >
         <path
-          d="M48 10c22.6 0 39.2 12.2 39.2 31.1 0 18.8-16.6 31.5-39 31.5-4.4 0-8.2-.4-12.2-1.2l-10.2 6.8c-2.8 1.8-6.4-.8-5.6-4l2-7.6C14.6 61.1 8.8 51.7 8.8 41.1 8.8 22.2 25.4 10 48 10Z"
-          fill="url(#bubbleFill)"
-          stroke="url(#bubbleEdge)"
-          strokeWidth="3"
+          d="M22 47c0-15.4 11.8-27 27.9-27 13.9 0 24.6 8.3 27.5 20.7"
+          strokeWidth="6"
         />
         <path
-          d="M20 53c3.8 4.8 9.6 8.2 16 9.6"
-          fill="none"
-          stroke="#D7FFFF"
-          strokeLinecap="round"
-          strokeOpacity="0.22"
-          strokeWidth="2"
+          d="M77.4 42.5c.4 1.6.6 3 .6 4.5 0 11.8-9.4 21-22 21H45.5l-8.4 7v-7.1C28.1 66.1 22 57.6 22 47"
+          strokeWidth="6"
         />
         <path
-          d="M23 23c6-5.2 15.2-8.2 25.6-8.2"
-          fill="none"
-          stroke="#FFFFFF"
-          strokeLinecap="round"
-          strokeOpacity="0.42"
-          strokeWidth="4"
+          d="M16 42v11"
+          strokeWidth="6"
         />
+        <path d="M82 42v11" strokeWidth="6" />
+        <rect x="12" y="41" width="8" height="14" rx="4" strokeWidth="4" />
+        <rect x="78" y="41" width="8" height="14" rx="4" strokeWidth="4" />
       </g>
 
-      <g fill="#FFFFFF" filter="url(#starGlow)">
-        <path d="M47 27c1.8 8.8 3.4 10.4 12.2 12.2-8.8 1.8-10.4 3.4-12.2 12.2-1.8-8.8-3.4-10.4-12.2-12.2 8.8-1.8 10.4-3.4 12.2-12.2Z">
-          <animate attributeName="opacity" values="0.82;1;0.82" dur="2.2s" repeatCount="indefinite" />
-        </path>
-        <path d="M66 23c1 4.8 1.8 5.6 6.6 6.6-4.8 1-5.6 1.8-6.6 6.6-1-4.8-1.8-5.6-6.6-6.6 4.8-1 5.6-1.8 6.6-6.6Z">
-          <animate attributeName="opacity" values="0.68;0.96;0.68" dur="1.8s" repeatCount="indefinite" />
-        </path>
-        <path d="M31 44c1 4.6 1.8 5.4 6.2 6.2-4.4.8-5.2 1.6-6.2 6.2-1-4.6-1.8-5.4-6.2-6.2 4.4-.8 5.2-1.6 6.2-6.2Z">
-          <animate attributeName="opacity" values="0.62;0.9;0.62" dur="2.6s" repeatCount="indefinite" />
-        </path>
-      </g>
-
-      <g fill="#E9FFFF">
-        <circle cx="55" cy="33" r="1.4">
-          <animate attributeName="opacity" values="0.2;0.7;0.2" dur="2.4s" repeatCount="indefinite" />
-        </circle>
-        <circle cx="62" cy="48" r="1.8">
-          <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.1s" repeatCount="indefinite" />
-        </circle>
-        <circle cx="43" cy="31" r="1.6">
-          <animate attributeName="opacity" values="0.2;0.8;0.2" dur="1.9s" repeatCount="indefinite" />
-        </circle>
+      <g
+        fill="none"
+        stroke="url(#iconStroke)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        filter="url(#iconGlow)"
+        strokeWidth="6"
+      >
+        <path d="M33 58V37l15 13 15-13v21" />
+        <path d="M33 37h11L48 50l4-13h11" />
+        <path d="M33 58h11l4-8 4 8h11" />
       </g>
     </svg>
   )
