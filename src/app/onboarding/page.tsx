@@ -44,6 +44,7 @@ const DEPT_TO_SPECIALTY: Record<string, string[]> = {
 
 // Step 1: hospital · Step 2: what PrepSight is · Step 3: safety · Step 4: role+area · Step 5: confirm
 const TOTAL_STEPS = 5
+const DEFAULT_HOSPITAL_SUGGESTIONS = HOSPITALS.slice(0, 8)
 
 const CTA_LABELS = [
   "This is where I work",
@@ -123,7 +124,11 @@ export default function OnboardingPage() {
 
   function handleHospitalInput(val: string) {
     setHospital(val)
-    if (val.trim().length < 2) { setHospitalSuggestions([]); setShowSuggestions(false); return }
+    if (val.trim().length < 2) {
+      setHospitalSuggestions(DEFAULT_HOSPITAL_SUGGESTIONS)
+      setShowSuggestions(true)
+      return
+    }
     const q = val.toLowerCase()
     const matches = HOSPITALS.filter((h) => h.hospital.toLowerCase().includes(q) || h.trust.toLowerCase().includes(q) || (h.postcode && h.postcode.toLowerCase().includes(q))).slice(0, 5)
     setHospitalSuggestions(matches)
@@ -202,7 +207,12 @@ export default function OnboardingPage() {
                   type="text"
                   value={hospital}
                   onChange={(e) => handleHospitalInput(e.target.value)}
-                  onFocus={() => { if (hospitalSuggestions.length > 0) setShowSuggestions(true) }}
+                  onFocus={() => {
+                    if (hospitalSuggestions.length === 0) {
+                      setHospitalSuggestions(DEFAULT_HOSPITAL_SUGGESTIONS)
+                    }
+                    setShowSuggestions(true)
+                  }}
                   placeholder="Search for your hospital or trust"
                   className="w-full px-4 py-3.5 border border-[#D5DCE3] rounded-xl text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#4DA3FF] transition-shadow"
                   autoFocus
