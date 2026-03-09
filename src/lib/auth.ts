@@ -20,6 +20,11 @@ function isMobile() {
   return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
 }
 
+function shouldUseRedirect() {
+  if (typeof window === "undefined") return false
+  return isMobile() || window.location.hostname === "localhost"
+}
+
 async function prepareAuth() {
   if (!auth) throw new Error("Firebase not configured")
   await setPersistence(auth, browserLocalPersistence)
@@ -28,7 +33,7 @@ async function prepareAuth() {
 
 export async function signInWithGoogle() {
   const authInstance = await prepareAuth()
-  if (isMobile()) {
+  if (shouldUseRedirect()) {
     await signInWithRedirect(authInstance, googleProvider)
     return { method: "redirect" as const }
   }
@@ -47,7 +52,7 @@ export async function signInWithGoogle() {
 
 export async function signInWithMicrosoft() {
   const authInstance = await prepareAuth()
-  if (isMobile()) {
+  if (shouldUseRedirect()) {
     await signInWithRedirect(authInstance, microsoftProvider)
     return { method: "redirect" as const }
   }
