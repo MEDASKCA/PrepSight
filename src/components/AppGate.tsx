@@ -3,7 +3,7 @@
 import { useEffect, useState, Suspense } from "react"
 import { useRouter, usePathname } from "next/navigation"
 import { onAuthChange, type User } from "@/lib/auth"
-import { hasProfile, resolveProfile } from "@/lib/profile"
+import { hasProfile } from "@/lib/profile"
 import Sidebar from "./Sidebar"
 import MobileDrawer from "./MobileDrawer"
 import AdminUnlocker from "./AdminUnlocker"
@@ -15,11 +15,9 @@ const ADMIN_ROUTE      = "/admin"
 
 const BRAND_LETTERS = "MEDASKCA".split("")
 
-// ── Loading screen ─────────────────────────────────────────────────────────
 function LoadingScreen({ message }: { message: string }) {
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black">
-      {/* MEDASKCA logo mark */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/logo-medaskca.png"
@@ -28,22 +26,18 @@ function LoadingScreen({ message }: { message: string }) {
         style={{ animation: "medaskca-pulse 2s ease-in-out infinite" }}
       />
 
-      {/* MEDASKCA animated wordmark */}
       <div className="flex gap-1 mb-6">
         {BRAND_LETTERS.map((letter, i) => (
           <span
             key={i}
             className="text-2xl font-bold tracking-widest text-white"
-            style={{
-              animation: `medaskca-pulse 2s ease-in-out ${i * 80}ms infinite`,
-            }}
+            style={{ animation: `medaskca-pulse 2s ease-in-out ${i * 80}ms infinite` }}
           >
             {letter}
           </span>
         ))}
       </div>
 
-      {/* Dot loader */}
       <div className="flex gap-2 mb-4">
         {[0, 1, 2].map((i) => (
           <span
@@ -60,61 +54,35 @@ function LoadingScreen({ message }: { message: string }) {
 }
 
 export default function AppGate({ children }: { children: React.ReactNode }) {
-  const router   = useRouter()
+  const router = useRouter()
   const pathname = usePathname()
 
-  const [user,            setUser]            = useState<User | null | undefined>(undefined)
-  const [profileChecking, setProfileChecking] = useState(false)
+  const [user, setUser] = useState<User | null | undefined>(undefined)
 
-  // Auth listener
   useEffect(() => {
     return onAuthChange((u) => setUser(u))
   }, [])
 
-  // When signed-in with no local profile, fall back to Firestore
-  useEffect(() => {
-    if (!user) return
-    if (hasProfile()) return
-    if (PUBLIC_ROUTES.includes(pathname) || pathname === ONBOARDING_ROUTE) return
-
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setProfileChecking(true)
-    // Bail out after 4s so a slow/unreachable Firestore never leaves user stuck
-    const bailout = setTimeout(() => setProfileChecking(false), 4000)
-    resolveProfile(user.uid)
-      .catch(() => null)
-      .finally(() => { clearTimeout(bailout); setProfileChecking(false) })
-    return () => clearTimeout(bailout)
-  }, [user, pathname])
-
-  // ── All router.replace() calls live here — never during render ──────────
   useEffect(() => {
     if (user === undefined) return
-    if (profileChecking)   return
 
-    const isPublic     = PUBLIC_ROUTES.includes(pathname)
+    const isPublic = PUBLIC_ROUTES.includes(pathname)
     const isOnboarding = pathname === ONBOARDING_ROUTE
-    const isAdmin      = pathname.startsWith(ADMIN_ROUTE)
+    const isAdmin = pathname.startsWith(ADMIN_ROUTE)
 
-    if (!user && !isPublic)                                    { router.replace("/login");      return }
-    if (user && isPublic)                                      { router.replace("/");           return }
-    if (user && hasProfile() && isOnboarding)                  { router.replace("/");           return }
-    if (user && !hasProfile() && !isOnboarding && !isAdmin)    { router.replace("/onboarding"); return }
-  }, [user, profileChecking, pathname, router])
+    if (!user && !isPublic) { router.replace("/login"); return }
+    if (user && isPublic) { router.replace("/"); return }
+    if (user && hasProfile() && isOnboarding) { router.replace("/"); return }
+    if (user && !hasProfile() && !isOnboarding && !isAdmin) { router.replace("/onboarding"); return }
+  }, [user, pathname, router])
 
-  // ── Auth resolving ──────────────────────────────────────────────────────
   if (user === undefined) {
-    return <LoadingScreen message="Loading…" />
+    return <LoadingScreen message="Loading..." />
   }
 
-  // ── Profile resolving ───────────────────────────────────────────────────
-  if (profileChecking) {
-    return <LoadingScreen message="Setting up your profile…" />
-  }
-
-  const isPublic     = PUBLIC_ROUTES.includes(pathname)
+  const isPublic = PUBLIC_ROUTES.includes(pathname)
   const isOnboarding = pathname === ONBOARDING_ROUTE
-  const isAdmin      = pathname.startsWith(ADMIN_ROUTE)
+  const isAdmin = pathname.startsWith(ADMIN_ROUTE)
   const isTrueHomePage =
     pathname === "/" &&
     (typeof window !== "undefined" ? window.location.search.length === 0 : false)
@@ -122,11 +90,11 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
   if (!user) {
     return isPublic
       ? <><AdminUnlocker />{children}</>
-      : <LoadingScreen message="Loading…" />
+      : <LoadingScreen message="Loading..." />
   }
 
   if (isPublic) {
-    return <LoadingScreen message="Loading…" />
+    return <LoadingScreen message="Loading..." />
   }
 
   if (!hasProfile()) {
@@ -134,19 +102,17 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
       ? <><AdminUnlocker />{children}</>
       : isAdmin
         ? <><AdminUnlocker />{children}</>
-        : <LoadingScreen message="Loading…" />
+        : <LoadingScreen message="Loading..." />
   }
 
   if (isOnboarding) {
-    return <LoadingScreen message="Loading…" />
+    return <LoadingScreen message="Loading..." />
   }
 
-  // Admin — full-screen, no sidebar/drawer
   if (isAdmin) {
     return <><AdminUnlocker />{children}</>
   }
 
-  // ── Fully authenticated with profile ────────────────────────────────────
   return (
     <div className="flex min-h-screen bg-[#F4F7FA]">
       <aside className="hidden lg:flex shrink-0 h-screen sticky top-0">

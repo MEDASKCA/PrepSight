@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { ChevronRight, Check, Search } from "lucide-react"
-import { saveProfile, hasProfile } from "@/lib/profile"
+import { saveProfile, hasProfile, resolveProfile } from "@/lib/profile"
 import { UserRole, PrepSightProfile } from "@/lib/types"
 import { SETTING_SPECIALTIES } from "@/lib/settings"
 import { onAuthChange, type User } from "@/lib/auth"
@@ -99,6 +99,14 @@ export default function OnboardingPage() {
 
   useEffect(() => { if (hasProfile()) router.replace("/") }, [router])
   useEffect(() => { return onAuthChange((u) => setUser(u ?? null)) }, [])
+  useEffect(() => {
+    if (!user) return
+    resolveProfile(user.uid)
+      .then((profile) => {
+        if (profile) router.replace("/")
+      })
+      .catch(() => null)
+  }, [user, router])
 
   // Close suggestions on outside click
   useEffect(() => {
