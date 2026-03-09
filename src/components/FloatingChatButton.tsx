@@ -20,60 +20,6 @@ function clampPosition(x: number, y: number) {
   }
 }
 
-function AiBubbleIcon() {
-  return (
-    <svg viewBox="0 0 96 96" className="h-[60px] w-[60px]" aria-hidden="true">
-      <defs>
-        <linearGradient id="iconStroke" x1="10%" y1="22%" x2="88%" y2="76%">
-          <stop offset="0%" stopColor="#16B6FF" />
-          <stop offset="100%" stopColor="#20E7C7" />
-        </linearGradient>
-        <filter id="iconGlow" x="-40%" y="-40%" width="180%" height="180%">
-          <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="#17CFFF" floodOpacity="0.35" />
-          <feDropShadow dx="0" dy="0" stdDeviation="6" floodColor="#19E5D0" floodOpacity="0.18" />
-        </filter>
-      </defs>
-
-      <g
-        fill="none"
-        stroke="url(#iconStroke)"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        filter="url(#iconGlow)"
-      >
-        <path
-          d="M22 47c0-15.4 11.8-27 27.9-27 13.9 0 24.6 8.3 27.5 20.7"
-          strokeWidth="6"
-        />
-        <path
-          d="M77.4 42.5c.4 1.6.6 3 .6 4.5 0 11.8-9.4 21-22 21H45.5l-8.4 7v-7.1C28.1 66.1 22 57.6 22 47"
-          strokeWidth="6"
-        />
-        <path
-          d="M16 42v11"
-          strokeWidth="6"
-        />
-        <path d="M82 42v11" strokeWidth="6" />
-        <rect x="12" y="41" width="8" height="14" rx="4" strokeWidth="4" />
-        <rect x="78" y="41" width="8" height="14" rx="4" strokeWidth="4" />
-      </g>
-
-      <g
-        fill="none"
-        stroke="url(#iconStroke)"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        filter="url(#iconGlow)"
-        strokeWidth="6"
-      >
-        <path d="M33 58V37l15 13 15-13v21" />
-        <path d="M33 37h11L48 50l4-13h11" />
-        <path d="M33 58h11l4-8 4 8h11" />
-      </g>
-    </svg>
-  )
-}
-
 export default function FloatingChatButton() {
   const [position, setPosition] = useState<{ x: number; y: number } | null>(() => {
     if (typeof window === "undefined") return null
@@ -133,7 +79,14 @@ export default function FloatingChatButton() {
         height: `${BUTTON_SIZE}px`,
       }}
     >
-      <AiBubbleIcon />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/AIchaticon.png"
+        alt=""
+        aria-hidden="true"
+        className="h-[60px] w-[60px] object-contain"
+        draggable="false"
+      />
     </button>
   )
 }
