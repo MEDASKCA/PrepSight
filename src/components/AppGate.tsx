@@ -1,12 +1,13 @@
 "use client"
 
 import { useEffect, useState, Suspense } from "react"
-import { useRouter, usePathname } from "next/navigation"
+import { useRouter, usePathname, useSearchParams } from "next/navigation"
 import { onAuthChange, type User } from "@/lib/auth"
 import { hasProfile, resolveProfile } from "@/lib/profile"
 import Sidebar from "./Sidebar"
 import MobileDrawer from "./MobileDrawer"
 import AdminUnlocker from "./AdminUnlocker"
+import FloatingChatButton from "./FloatingChatButton"
 
 const PUBLIC_ROUTES    = ["/login"]
 const ONBOARDING_ROUTE = "/onboarding"
@@ -61,6 +62,7 @@ function LoadingScreen({ message }: { message: string }) {
 export default function AppGate({ children }: { children: React.ReactNode }) {
   const router   = useRouter()
   const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   const [user,            setUser]            = useState<User | null | undefined>(undefined)
   const [profileChecking, setProfileChecking] = useState(false)
@@ -113,6 +115,7 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
   const isPublic     = PUBLIC_ROUTES.includes(pathname)
   const isOnboarding = pathname === ONBOARDING_ROUTE
   const isAdmin      = pathname.startsWith(ADMIN_ROUTE)
+  const isTrueHomePage = pathname === "/" && searchParams.size === 0
 
   if (!user) {
     return isPublic
@@ -152,6 +155,7 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
           <MobileDrawer />
         </Suspense>
         <main className="flex-1">{children}</main>
+        {!isTrueHomePage && <FloatingChatButton />}
       </div>
       <AdminUnlocker />
     </div>
