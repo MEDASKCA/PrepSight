@@ -1,6 +1,18 @@
 import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: "/__/auth/:path*",
+        destination: "https://prepsight-e90d7.firebaseapp.com/__/auth/:path*",
+      },
+      {
+        source: "/__/firebase/init.json",
+        destination: "https://prepsight-e90d7.firebaseapp.com/__/firebase/init.json",
+      },
+    ]
+  },
   async headers() {
     return [
       {
