@@ -181,7 +181,7 @@ export default function OnboardingPage() {
                 className="text-sm text-[#64748b] mb-6 line-reveal"
                 style={{ animationDelay: "420ms" }}
               >
-                PrepSight works best when it knows where you are. Tell us your trust or hospital and we'll build your view around it.
+                PrepSight works best when it knows where you are. Tell us your trust or hospital and we&apos;ll build your view around it.
               </p>
 
               {/* Hospital input */}
