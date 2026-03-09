@@ -83,7 +83,7 @@ function buildCardSectionsFromRecord(record: RawCardRecord): Section[] {
       id: "nurse-prep-notes",
       title: "Nurse Prep Notes",
       sectionType: "nurse_prep_notes",
-      nurseNotes: record.nurse_prep_notes.join("\n"),
+      nurseNotes: (record.nurse_prep_notes ?? []).join("\n"),
       items: [],
     })
   }
