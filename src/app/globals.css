@@ -54,6 +54,22 @@ body {
   100% { opacity: 0; }
 }
 
+@keyframes aiIconSurge {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 6px rgba(22, 182, 255, 0.35))
+      drop-shadow(0 0 12px rgba(32, 231, 199, 0.24));
+    transform: scale(1);
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 10px rgba(22, 182, 255, 0.65))
+      drop-shadow(0 0 20px rgba(32, 231, 199, 0.52))
+      drop-shadow(0 0 28px rgba(22, 182, 255, 0.28));
+    transform: scale(1.03);
+  }
+}
+
 .animate-fade-in  { animation: fadeIn      0.5s  ease-out both; }
 .animate-step-in  { animation: fadeSlideUp 0.3s  ease-out both; }
 .line-reveal      { animation: lineReveal  0.4s  ease-out both; }

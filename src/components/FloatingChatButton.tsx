@@ -86,6 +86,11 @@ export default function FloatingChatButton() {
         aria-hidden="true"
         className="h-[60px] w-[60px] object-contain"
         draggable="false"
+        style={{
+          animation: "ai-icon-surge 2.8s ease-in-out infinite",
+          filter:
+            "drop-shadow(0 0 6px rgba(22,182,255,0.45)) drop-shadow(0 0 12px rgba(32,231,199,0.35))",
+        }}
       />
     </button>
   )
