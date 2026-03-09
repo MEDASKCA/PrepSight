@@ -31,18 +31,24 @@ async function prepareAuth() {
   return auth
 }
 
+if (auth) {
+  void setPersistence(auth, browserLocalPersistence).catch(() => {})
+}
+
 export async function signInWithGoogle() {
-  const authInstance = await prepareAuth()
+  if (!auth) throw new Error("Firebase not configured")
   if (shouldUseRedirect()) {
+    const authInstance = await prepareAuth()
     await signInWithRedirect(authInstance, googleProvider)
     return { method: "redirect" as const }
   }
   try {
-    const result = await signInWithPopup(authInstance, googleProvider)
+    const result = await signInWithPopup(auth, googleProvider)
     return { method: "popup" as const, result }
   } catch (e: unknown) {
     const code = (e as { code?: string }).code ?? ""
     if (code === "auth/popup-blocked" || code === "auth/popup-closed-by-user") {
+      const authInstance = await prepareAuth()
       await signInWithRedirect(authInstance, googleProvider)
       return { method: "redirect" as const }
     }
@@ -51,17 +57,19 @@ export async function signInWithGoogle() {
 }
 
 export async function signInWithMicrosoft() {
-  const authInstance = await prepareAuth()
+  if (!auth) throw new Error("Firebase not configured")
   if (shouldUseRedirect()) {
+    const authInstance = await prepareAuth()
     await signInWithRedirect(authInstance, microsoftProvider)
     return { method: "redirect" as const }
   }
   try {
-    const result = await signInWithPopup(authInstance, microsoftProvider)
+    const result = await signInWithPopup(auth, microsoftProvider)
     return { method: "popup" as const, result }
   } catch (e: unknown) {
     const code = (e as { code?: string }).code ?? ""
     if (code === "auth/popup-blocked" || code === "auth/popup-closed-by-user") {
+      const authInstance = await prepareAuth()
       await signInWithRedirect(authInstance, microsoftProvider)
       return { method: "redirect" as const }
     }
