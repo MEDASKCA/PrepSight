@@ -113,8 +113,6 @@ export default function OnboardingPage() {
     new Set(departments.flatMap((d) => DEPT_TO_SPECIALTY[d] ?? []))
   )
 
-  useEffect(() => { setSpecialtySearch("") }, [departments])
-
   function handleHospitalInput(val: string) {
     setHospital(val)
     if (val.trim().length < 2) { setHospitalSuggestions([]); setShowSuggestions(false); return }
@@ -233,14 +231,14 @@ export default function OnboardingPage() {
                 A procedure card. Reimagined.
               </h2>
               <p className="text-sm text-[#64748b] mb-6">
-                You already know what a Kardex is. PrepSight does the same job, digitally, consistently, and always with you.
+                Preparation information has a habit of living everywhere. A notebook somewhere. A screenshot on a phone. A preference list saved in a folder. And occasionally... memory! We bring it together in one place. Each card acts as a guide to the key details used to prepare procedures, organised by setting and specialty.
               </p>
 
               <div className="space-y-4">
                 {[
-                  "Every procedure has a structured card covering equipment, instruments, positioning, medications, and more.",
-                  "Cards are organised by setting, specialty, and surgeon, so you find what you need quickly.",
-                  "PrepSight supports your preparation. Your trust's policy and your clinical judgement always come first.",
+                  "Each card brings the key preparation details together in one place.",
+                  "Cards are organised by setting and specialty, so you find what you need quickly.",
+                  "PrepSight supports your preparation. Your trust&apos;s policy and your clinical judgement always come first.",
                 ].map((point, i) => (
                   <div
                     key={i}
@@ -342,9 +340,12 @@ export default function OnboardingPage() {
                       <button
                         key={d}
                         type="button"
-                        onClick={() => setDepartments((prev) =>
-                          prev.includes(d) ? prev.filter((x) => x !== d) : [...prev, d]
-                        )}
+                        onClick={() => {
+                          setSpecialtySearch("")
+                          setDepartments((prev) =>
+                            prev.includes(d) ? prev.filter((x) => x !== d) : [...prev, d]
+                          )
+                        }}
                         className={`chip-reveal flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-medium transition-all text-left ${
                           departments.includes(d)
                             ? "bg-[#4DA3FF] text-white shadow-md"
@@ -402,7 +403,7 @@ export default function OnboardingPage() {
           {/* ── Step 5 — Confirm ──────────────────────────────────────── */}
           {step === 5 && (
             <div className="animate-step-in">
-              <h2 className="text-2xl font-bold text-[#3F4752] mb-1">You're set up.</h2>
+              <h2 className="text-2xl font-bold text-[#3F4752] mb-1">You&apos;re set up.</h2>
               <p className="text-sm text-[#64748b] mb-6">
                 Your view is personalised. Cards most relevant to your role and area will appear first.
               </p>

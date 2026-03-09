@@ -264,9 +264,10 @@ export default function LoginPage() {
         >
           <p className="text-[#e5e5e5] font-semibold text-sm mb-3">Every case. Every setting. Every team.</p>
           <p className="text-xs text-[#666] leading-relaxed">
-            You already know what a Kardex is. PrepSight does the same job, digitally,
-            consistently, and always with you. Every card covers equipment, instruments,
-            positioning, medications, and more. Organised by setting, specialty, and surgeon.
+            Preparation information has a habit of living everywhere. A notebook somewhere.
+            A screenshot on a phone. A preference list saved in a folder. And occasionally...
+            memory! We bring it together in one place. Each card acts as a guide to the key
+            details used to prepare procedures, organised by setting and specialty.
           </p>
           <p className="text-xs text-[#444] mt-3 leading-relaxed">
             PrepSight supports your preparation. Your trust&apos;s policy and your

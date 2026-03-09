@@ -50,7 +50,7 @@ export const CONTENT_REGISTRY: ContentEntry[] = [
     key:          "login.body_1",
     page:         "Login",
     label:        "Body paragraph 1",
-    defaultValue: "You already know what a Kardex is. PrepSight does the same job, digitally, consistently, and always with you. Every card covers equipment, instruments, positioning, medications, and more. Organised by setting, specialty, and surgeon.",
+    defaultValue: "Preparation information has a habit of living everywhere. A notebook somewhere. A screenshot on a phone. A preference list saved in a folder. And occasionally... memory! We bring it together in one place. Each card acts as a guide to the key details used to prepare procedures, organised by setting and specialty.",
     multiline:    true,
   },
   {
