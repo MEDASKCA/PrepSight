@@ -88,16 +88,22 @@ export default function LoginPage() {
   async function handleGoogle() {
     setError(null); setLoading("google")
     try {
+      if (typeof window !== "undefined") {
+        window.sessionStorage.setItem(PENDING_PROVIDER_KEY, "google")
+      }
       const signIn = await signInWithGoogle()
       if (signIn.method === "redirect") {
-        if (typeof window !== "undefined") {
-          window.sessionStorage.setItem(PENDING_PROVIDER_KEY, "google")
-        }
         return
+      }
+      if (typeof window !== "undefined") {
+        window.sessionStorage.removeItem(PENDING_PROVIDER_KEY)
       }
       setAuthenticated(true)
       setTimeout(() => router.push("/"), 800)
     } catch (e: unknown) {
+      if (typeof window !== "undefined") {
+        window.sessionStorage.removeItem(PENDING_PROVIDER_KEY)
+      }
       const msg = e instanceof Error ? e.message : "Sign-in failed"
       if (!msg.includes("popup-closed")) setError(msg)
       setLoading(null)
@@ -107,16 +113,22 @@ export default function LoginPage() {
   async function handleMicrosoft() {
     setError(null); setLoading("microsoft")
     try {
+      if (typeof window !== "undefined") {
+        window.sessionStorage.setItem(PENDING_PROVIDER_KEY, "microsoft")
+      }
       const signIn = await signInWithMicrosoft()
       if (signIn.method === "redirect") {
-        if (typeof window !== "undefined") {
-          window.sessionStorage.setItem(PENDING_PROVIDER_KEY, "microsoft")
-        }
         return
+      }
+      if (typeof window !== "undefined") {
+        window.sessionStorage.removeItem(PENDING_PROVIDER_KEY)
       }
       setAuthenticated(true)
       setTimeout(() => router.push("/"), 800)
     } catch (e: unknown) {
+      if (typeof window !== "undefined") {
+        window.sessionStorage.removeItem(PENDING_PROVIDER_KEY)
+      }
       const msg = e instanceof Error ? e.message : "Sign-in failed"
       if (!msg.includes("popup-closed")) setError(msg)
       setLoading(null)
