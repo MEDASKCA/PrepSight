@@ -81,6 +81,15 @@ export default function LoginPage() {
     })
   }, [router])
 
+  useEffect(() => {
+    if (!loading) return
+    const timer = window.setTimeout(() => {
+      setLoading(null)
+      setError("Sign-in did not complete. If no Google window opened, allow popups and try again.")
+    }, 10000)
+    return () => window.clearTimeout(timer)
+  }, [loading])
+
   function handleLight() {
     if (!lit) setLit(true)
   }

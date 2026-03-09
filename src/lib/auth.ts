@@ -22,7 +22,7 @@ function isMobile() {
 
 function shouldUseRedirect() {
   if (typeof window === "undefined") return false
-  return isMobile() || window.location.hostname === "localhost"
+  return isMobile()
 }
 
 async function prepareAuth() {
