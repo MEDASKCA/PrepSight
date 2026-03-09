@@ -70,7 +70,7 @@ function buildCardSectionsFromRecord(record: RawCardRecord): Section[] {
       id: "procedure-reference",
       title: "Operative References",
       sectionType: "procedure_reference",
-      externalLinks: record.operative_references.map((label, index) => ({
+      externalLinks: (record.operative_references ?? []).map((label, index) => ({
         label,
         url: `#reference-${index + 1}`,
       })),
