@@ -83,9 +83,12 @@ export default async function HomePage({ searchParams }: Props) {
         ...getDescendantAnatomyIds(anatomy),
       ])
 
-      theatreProcedures = theatreProcedures.filter((p) =>
-        "anatomy_id" in p && allowedAnatomyIds.has(p.anatomy_id),
-      )
+      theatreProcedures = theatreProcedures.filter((p) => {
+        if (!("anatomy_id" in p) || typeof p.anatomy_id !== "string") {
+          return false
+        }
+        return allowedAnatomyIds.has(p.anatomy_id)
+      })
     }
   }
 
