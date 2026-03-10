@@ -962,6 +962,8 @@ export default function HomeHero({
               <div className="justify-self-end text-right">
                 <p className="text-[11px] uppercase tracking-[0.18em] text-white/40">{getGreeting().replace(".", "")}</p>
                 <p className="mt-2 text-sm text-white/70">{profile ? getContextBadge(profile) : "Browse and reference"}</p>
+                <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-white/36">Procedure cards available</p>
+                <p className="mt-2 text-[34px] font-semibold tracking-[-0.05em] text-white">0</p>
               </div>
             </div>
           </div>
