@@ -105,6 +105,59 @@ function AnatomyOutline({ name, color }: { name: string; color: string }) {
   )
 }
 
+function SubspecialtyArtwork({
+  name,
+  palette,
+}: {
+  name: string
+  palette: NonNullable<SpecialtyTab["palette"]>
+}) {
+  const key = name.toLowerCase()
+  const stroke = "rgba(255,255,255,0.92)"
+  const accent = palette.soft
+
+  if (key.includes("arthropl")) {
+    return (
+      <svg viewBox="0 0 300 170" className="h-full w-full" fill="none" aria-hidden="true">
+        <rect x="14" y="14" width="272" height="142" rx="24" fill="rgba(255,255,255,0.08)" />
+        <path d="M108 42c10 22 10 42-1 61l-10 19c-6 10-3 21 9 27" stroke={stroke} strokeWidth="7" strokeLinecap="round" />
+        <path d="M192 42c-10 22-10 42 1 61l10 19c6 10 3 21-9 27" stroke={stroke} strokeWidth="7" strokeLinecap="round" />
+        <circle cx="109" cy="109" r="16" stroke={accent} strokeWidth="8" />
+        <circle cx="191" cy="109" r="16" stroke={accent} strokeWidth="8" />
+        <path d="M126 74h48" stroke={stroke} strokeWidth="7" strokeLinecap="round" />
+      </svg>
+    )
+  }
+
+  if (key.includes("foot") || key.includes("ankle")) {
+    return (
+      <svg viewBox="0 0 300 170" className="h-full w-full" fill="none" aria-hidden="true">
+        <rect x="14" y="14" width="272" height="142" rx="24" fill="rgba(255,255,255,0.08)" />
+        <path d="M140 38v56l46 30c11 7 10 18-1 24H122" stroke={stroke} strokeWidth="7" strokeLinecap="round" />
+        <path d="M140 94l-20 38" stroke={accent} strokeWidth="7" strokeLinecap="round" />
+      </svg>
+    )
+  }
+
+  if (key.includes("hand") || key.includes("wrist")) {
+    return (
+      <svg viewBox="0 0 300 170" className="h-full w-full" fill="none" aria-hidden="true">
+        <rect x="14" y="14" width="272" height="142" rx="24" fill="rgba(255,255,255,0.08)" />
+        <path d="M112 122V68m22 54V58m22 64V62m22 60V78" stroke={stroke} strokeWidth="7" strokeLinecap="round" />
+        <path d="M106 122c0 17 18 26 44 26s44-9 44-26" stroke={accent} strokeWidth="7" strokeLinecap="round" />
+      </svg>
+    )
+  }
+
+  return (
+    <svg viewBox="0 0 300 170" className="h-full w-full" fill="none" aria-hidden="true">
+      <rect x="14" y="14" width="272" height="142" rx="24" fill="rgba(255,255,255,0.08)" />
+      <path d="M96 126c18-46 35-70 54-70s36 24 54 70" stroke={stroke} strokeWidth="7" strokeLinecap="round" />
+      <circle cx="150" cy="58" r="15" stroke={accent} strokeWidth="8" />
+    </svg>
+  )
+}
+
 export default function OperatingTheatreTabs({
   tabs = [],
   initialExpanded,
@@ -203,21 +256,7 @@ export default function OperatingTheatreTabs({
               <div className="divide-y divide-[#E6EEF7] lg:divide-y-0 lg:bg-[#08131F] lg:p-6">
                 {specialtyFirst && (
                   <div className="hidden lg:block">
-                    <div className="mb-5 flex items-end justify-between gap-6">
-                      <div>
-                        <p className="text-[13px] font-semibold uppercase tracking-[0.22em] text-white/40">
-                          Subspecialties
-                        </p>
-                        <p className="mt-2 text-[18px] leading-8 text-white/62">
-                          Slide through the subspecialty rail and open anatomy files below.
-                        </p>
-                      </div>
-                      <div className="rounded-full border border-white/10 bg-white/6 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/58">
-                        {tab.serviceLines.length} folders
-                      </div>
-                    </div>
-
-                    <div className="relative overflow-hidden rounded-[40px] border border-white/8 bg-[#0B1724] px-10 py-10">
+                    <div className="relative overflow-hidden rounded-[40px] bg-transparent px-12 py-3">
                       <button
                         type="button"
                         onClick={() => {
@@ -225,7 +264,7 @@ export default function OperatingTheatreTabs({
                             activeDesktopIndex <= 0 ? tab.serviceLines.length - 1 : activeDesktopIndex - 1
                           setExpandedServiceLine(tab.serviceLines[nextIndex]?.id ?? defaultDesktopServiceLine)
                         }}
-                        className="absolute left-6 top-1/2 z-30 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-white/8 text-white/76 transition hover:bg-white/14"
+                        className="absolute left-6 top-1/2 z-30 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#274561] shadow-[0_14px_30px_rgba(15,23,42,0.22)] transition hover:scale-105"
                         aria-label="Previous subspecialty"
                       >
                         <ChevronLeft size={24} />
@@ -240,13 +279,13 @@ export default function OperatingTheatreTabs({
                               : activeDesktopIndex + 1
                           setExpandedServiceLine(tab.serviceLines[nextIndex]?.id ?? defaultDesktopServiceLine)
                         }}
-                        className="absolute right-6 top-1/2 z-30 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-white/8 text-white/76 transition hover:bg-white/14"
+                        className="absolute right-6 top-1/2 z-30 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#274561] shadow-[0_14px_30px_rgba(15,23,42,0.22)] transition hover:scale-105"
                         aria-label="Next subspecialty"
                       >
                         <ChevronRight size={24} />
                       </button>
 
-                      <div className="relative flex h-[400px] items-center justify-center" style={{ perspective: "2600px" }}>
+                      <div className="relative flex h-[660px] items-center justify-center" style={{ perspective: "1800px" }}>
                         {tab.serviceLines.map((line, index) => {
                           const anatomyNodes = getAnatomyForServiceLine(line.id)
                           const isActiveLine = activeDesktopServiceLine === line.id
@@ -268,38 +307,38 @@ export default function OperatingTheatreTabs({
 
                           const translateXMap: Record<number, string> = {
                             0: "0px",
-                            1: "470px",
-                            2: "880px",
-                            [-1]: "-470px",
-                            [-2]: "-880px",
+                            1: "285px",
+                            2: "470px",
+                            [-1]: "-285px",
+                            [-2]: "-470px",
                           }
                           const rotateYMap: Record<number, string> = {
                             0: "0deg",
-                            1: "-52deg",
-                            2: "-78deg",
-                            [-1]: "52deg",
-                            [-2]: "78deg",
+                            1: "-24deg",
+                            2: "-38deg",
+                            [-1]: "24deg",
+                            [-2]: "38deg",
                           }
                           const scaleMap: Record<number, number> = {
-                            0: 3,
-                            1: 0.9,
-                            2: 0.8,
-                            [-1]: 0.9,
-                            [-2]: 0.8,
+                            0: 1,
+                            1: 0.82,
+                            2: 0.7,
+                            [-1]: 0.82,
+                            [-2]: 0.7,
                           }
                           const opacityMap: Record<number, number> = {
                             0: 1,
-                            1: 1,
-                            2: 1,
-                            [-1]: 1,
-                            [-2]: 1,
+                            1: 0.92,
+                            2: 0.72,
+                            [-1]: 0.92,
+                            [-2]: 0.72,
                           }
                           const depthMap: Record<number, string> = {
                             0: "0px",
-                            1: "-40px",
-                            2: "-100px",
-                            [-1]: "-40px",
-                            [-2]: "-100px",
+                            1: "-12px",
+                            2: "-30px",
+                            [-1]: "-12px",
+                            [-2]: "-30px",
                           }
                           const zIndexMap: Record<number, number> = {
                             0: 30,
@@ -314,74 +353,98 @@ export default function OperatingTheatreTabs({
                               key={`desktop-line-${line.id}`}
                               type="button"
                               onClick={() => setExpandedServiceLine(line.id)}
-                              className="group absolute left-1/2 top-1/2 w-[420px] -translate-y-1/2 overflow-visible text-left transition-all duration-500"
+                              className="group absolute left-1/2 top-[66%] w-[390px] -translate-y-1/2 overflow-visible text-left transition-all duration-500"
                               style={{
                                 transform: `translate(-50%, -50%) translateX(${translateXMap[wrappedOffset]}) translateZ(${depthMap[wrappedOffset]}) rotateY(${rotateYMap[wrappedOffset]}) scale(${scaleMap[wrappedOffset]})`,
                                 transformStyle: "preserve-3d",
                                 boxShadow: isActiveLine
-                                  ? `0 40px 70px ${palette.header}42`
-                                  : "0 24px 44px rgba(15,23,42,0.18)",
+                                  ? `0 26px 44px ${palette.header}45`
+                                  : "0 16px 28px rgba(15,23,42,0.18)",
                                 opacity: opacityMap[wrappedOffset],
                                 zIndex: zIndexMap[wrappedOffset],
                               }}
                             >
                               <div
-                                className="absolute inset-y-5 -left-4 w-5 rounded-l-[18px]"
-                                style={{
-                                  backgroundColor: isActiveLine ? palette.hover : "#10243E",
-                                  transform: "rotateY(90deg) translateZ(2px)",
-                                  transformOrigin: "left center",
-                                }}
-                              />
-                              <div
-                                className="absolute inset-y-5 -right-4 w-5 rounded-r-[18px]"
-                                style={{
-                                  backgroundColor: isActiveLine ? palette.hover : "#10243E",
-                                  transform: "rotateY(-90deg) translateZ(2px)",
-                                  transformOrigin: "right center",
-                                }}
-                              />
-                              <div
-                                className="relative overflow-hidden rounded-[36px] border px-8 py-8"
+                                className="relative overflow-hidden rounded-[30px] border px-6 py-6"
                                 style={{
                                   background: isActiveLine
                                     ? `linear-gradient(145deg, ${palette.header} 0%, ${palette.hover} 100%)`
-                                    : "linear-gradient(145deg, #1A2B3D 0%, #102030 100%)",
+                                    : "linear-gradient(145deg, #23384C 0%, #12273A 100%)",
                                   borderColor: isActiveLine ? `${palette.softBorder}99` : "rgba(255,255,255,0.14)",
                                 }}
                               >
-                                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0))]" />
+                                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.03))]" />
                                 <div className="relative">
-                                <div className="flex items-start justify-between gap-4">
-                                  <div
-                                    className="flex h-16 w-16 items-center justify-center rounded-[22px]"
-                                    style={{
-                                      backgroundColor: isActiveLine ? "rgba(255,255,255,0.16)" : palette.soft,
-                                      color: isActiveLine ? "white" : palette.softText,
-                                    }}
-                                  >
-                                    <FolderOpen size={24} />
-                                  </div>
-                                  <span className={`rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] ${
-                                    isActiveLine ? "border border-white/16 bg-white/10 text-white/76" : ""
-                                  }`}
-                                  style={
-                                    isActiveLine
-                                      ? undefined
-                                      : { backgroundColor: palette.soft, color: palette.softText }
+                                  <div className="flex items-start justify-between gap-4">
+                                    <span className={`rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] ${
+                                      isActiveLine ? "border border-white/16 bg-white/10 text-white/76" : ""
+                                    }`}
+                                    style={
+                                      isActiveLine
+                                        ? undefined
+                                        : { backgroundColor: palette.soft, color: palette.softText }
                                   }>
                                     {anatomyNodes.length} anatomy
                                   </span>
                                 </div>
-                                <p className={`mt-7 font-semibold leading-[1.02] tracking-[-0.05em] text-white ${
-                                  isActiveLine ? "text-[40px]" : "text-[32px]"
+                                <div className="mt-4 h-[138px] overflow-hidden rounded-[22px] border border-white/14 bg-white/6">
+                                  <SubspecialtyArtwork name={line.name} palette={palette} />
+                                </div>
+                                <p className={`mt-5 font-semibold leading-[1.02] tracking-[-0.05em] text-white ${
+                                  isActiveLine ? "text-[34px]" : "text-[28px]"
                                 }`}>
                                   {formatSubspecialtyLabel(line.name)}
                                 </p>
-                                <p className={`mt-3 text-sm leading-7 ${isActiveLine ? "text-white/76" : "text-white/50"}`}>
+                                <p className={`mt-2 text-sm leading-6 ${isActiveLine ? "text-white/76" : "text-white/56"}`}>
                                   Select this folder to browse its anatomy files.
-                                </p>
+                                  </p>
+                                </div>
                               </div>
+                              <div
+                                className="pointer-events-none absolute left-3 right-3 top-[calc(100%+8px)] overflow-hidden rounded-[24px] opacity-30 blur-[1px]"
+                                style={{
+                                  transform: "scaleY(-1)",
+                                  maskImage: "linear-gradient(to bottom, rgba(0,0,0,0.55), transparent)",
+                                  WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,0.55), transparent)",
+                                }}
+                              >
+                                <div
+                                  className="overflow-hidden rounded-[30px] border px-6 py-6"
+                                  style={{
+                                    background: isActiveLine
+                                      ? `linear-gradient(145deg, ${palette.header} 0%, ${palette.hover} 100%)`
+                                      : "linear-gradient(145deg, #23384C 0%, #12273A 100%)",
+                                    borderColor: isActiveLine ? `${palette.softBorder}66` : "rgba(255,255,255,0.08)",
+                                  }}
+                                >
+                                  <div className="relative">
+                                    <div className="flex items-start justify-between gap-4">
+                                      <span
+                                        className={`rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] ${
+                                          isActiveLine ? "border border-white/16 bg-white/10 text-white/76" : ""
+                                        }`}
+                                        style={
+                                          isActiveLine
+                                            ? undefined
+                                            : { backgroundColor: palette.soft, color: palette.softText }
+                                        }
+                                      >
+                                        {anatomyNodes.length} anatomy
+                                      </span>
+                                    </div>
+                                    <div className="mt-4 h-[138px] overflow-hidden rounded-[22px] border border-white/14 bg-white/6">
+                                      <SubspecialtyArtwork name={line.name} palette={palette} />
+                                    </div>
+                                    <p className={`mt-5 font-semibold leading-[1.02] tracking-[-0.05em] text-white ${
+                                      isActiveLine ? "text-[34px]" : "text-[28px]"
+                                    }`}>
+                                      {formatSubspecialtyLabel(line.name)}
+                                    </p>
+                                    <p className={`mt-2 text-sm leading-6 ${isActiveLine ? "text-white/76" : "text-white/56"}`}>
+                                      Select this folder to browse its anatomy files.
+                                    </p>
+                                  </div>
+                                </div>
                               </div>
                             </button>
                           )
@@ -399,9 +462,9 @@ export default function OperatingTheatreTabs({
                   const anatomyNodes = getAnatomyForServiceLine(line.id)
 
                   return (
-                    <div key={line.id} className={`bg-white lg:bg-transparent ${specialtyFirst ? "hidden lg:block" : ""} ${specialtyFirst && !isSelectedLine ? "lg:hidden" : ""}`}>
+                    <div key={line.id} className={`bg-white lg:bg-transparent ${specialtyFirst && !isSelectedLine ? "lg:hidden" : ""}`}>
                       {specialtyFirst ? (
-                        <div className="hidden lg:block">
+                        <div className="hidden lg:block lg:-mt-20">
                           <div className="mb-4 flex items-end justify-between gap-6">
                             <div className="flex items-center gap-4">
                               <div
@@ -501,7 +564,7 @@ export default function OperatingTheatreTabs({
                         )}
                       </button>
 
-                      {!specialtyFirst && isSelectedLine && (
+                      {(specialtyFirst ? mobileOpen : isSelectedLine) && (
                         <div className="border-t border-[#E6EEF7] bg-white lg:hidden">
                           {anatomyNodes.length > 0 ? (
                             <div className="divide-y divide-[#DCEAF8]">

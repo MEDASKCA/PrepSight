@@ -35,14 +35,6 @@ type ProcedureTabsProps = {
   palette?: Palette;
 };
 
-function chunkIntoColumns<T>(items: T[], columns: number): T[][] {
-  const buckets = Array.from({ length: columns }, () => [] as T[]);
-  items.forEach((item, index) => {
-    buckets[index % columns].push(item);
-  });
-  return buckets;
-}
-
 function Chevron({ expanded, className = "" }: { expanded: boolean; className?: string }) {
   return (
     <svg
@@ -58,6 +50,19 @@ function Chevron({ expanded, className = "" }: { expanded: boolean; className?: 
       />
     </svg>
   );
+}
+
+function formatSystemMeta(system: SystemWithSupplier) {
+  const categorySuffix =
+    system.category?.split("—")[1]?.trim() ||
+    system.category?.split("-")[1]?.trim() ||
+    "";
+  const systemType = system.system_type || categorySuffix;
+  return {
+    supplier: system.supplier?.name ? `by ${system.supplier.name}` : "",
+    type: systemType || "",
+  };
+
 }
 
 function SystemRow({
@@ -83,11 +88,18 @@ function SystemRow({
         <div className="text-sm font-medium text-slate-900 lg:text-[22px] lg:font-semibold lg:tracking-[-0.03em] lg:text-[#10243E]">
           {system.name}
         </div>
-        {(system.supplier?.name || system.category || system.system_type) && (
-          <div className="mt-1 text-xs text-slate-500 lg:text-sm lg:text-[#61758B]">
-            {[system.supplier?.name, system.category, system.system_type]
-              .filter(Boolean)
-              .join(" · ")}
+        {(formatSystemMeta(system).type || formatSystemMeta(system).supplier) && (
+          <div className="mt-1 space-y-0.5">
+            {formatSystemMeta(system).type && (
+              <div className="text-xs font-semibold uppercase tracking-[0.08em] text-slate-600 lg:text-[12px] lg:text-[#51677E]">
+                {formatSystemMeta(system).type}
+              </div>
+            )}
+            {formatSystemMeta(system).supplier && (
+              <div className="text-xs text-slate-500 lg:text-sm lg:text-[#61758B]">
+                {formatSystemMeta(system).supplier}
+              </div>
+            )}
           </div>
         )}
         {system.description && (
@@ -205,11 +217,212 @@ function VariantSection({
             />
           ))
         ) : (
-          <div className="border-t border-[#D5DCE3] bg-white px-5 py-4 text-sm text-slate-500 lg:border-white/10 lg:bg-transparent lg:text-white/56">
+          <div className="border-t border-[#D5DCE3] bg-white px-5 py-4 text-sm text-slate-500 lg:border-[#D8E3EE] lg:bg-white lg:text-[#61758B]">
             No systems linked yet for this variant.
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+function DesktopProcedureMatrix({
+  proceduresWithVariants,
+  selectedSystemId,
+  palette,
+}: {
+  proceduresWithVariants: Array<{
+    procedure: ProcedureListItem;
+    variants: VariantWithSystems[];
+    suppressBranching: boolean;
+  }>;
+  selectedSystemId?: string;
+  palette: Palette;
+}) {
+  const [collapsedCards, setCollapsedCards] = useState<Record<string, boolean>>({});
+
+  return (
+    <div className="hidden space-y-5 lg:block">
+      {proceduresWithVariants.map(({ procedure, variants, suppressBranching }) => {
+        const procedureApproaches = suppressBranching
+          ? []
+          : variants.map((variant) => ({
+              id: variant.id,
+              name: variant.name,
+              description: variant.description,
+              systems: variant.systems,
+            }));
+
+        return (
+          <div
+            key={procedure.id}
+            className="overflow-visible"
+          >
+            <div className="grid grid-cols-[280px_minmax(0,1fr)] items-start gap-5 overflow-visible">
+              <div className="px-2 py-5">
+                <div
+                  className="rounded-[22px] px-5 py-5"
+                  style={{ backgroundColor: palette.hover }}
+                >
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/72">
+                  Procedure
+                </p>
+                <p className="mt-2 text-[20px] font-semibold tracking-[-0.03em] text-white">
+                  {procedure.name}
+                </p>
+                {procedure.description && (
+                  <p className="mt-2 text-sm leading-6 text-white/78">
+                    {procedure.description}
+                  </p>
+                )}
+                </div>
+              </div>
+
+              <div className="min-w-0 p-0 overflow-visible">
+                {procedureApproaches.length > 0 ? (
+                  <div
+                    className="grid items-start gap-4 overflow-visible"
+                    style={{ gridTemplateColumns: `repeat(${procedureApproaches.length}, minmax(0, 1fr))` }}
+                  >
+                    {procedureApproaches.map((approach) => {
+                      const cardKey = `${procedure.id}:${approach.id}`;
+                      const isCollapsed = collapsedCards[cardKey] ?? true;
+
+                      return (
+                        <div
+                          key={`${procedure.id}-${approach.id}`}
+                          className={`relative overflow-hidden rounded-[24px] border bg-white shadow-[0_8px_18px_rgba(15,23,42,0.04)] ${
+                            isCollapsed ? "min-h-[220px]" : ""
+                          }`}
+                          style={{
+                            borderColor: `${palette.softBorder}55`,
+                            backgroundColor: "transparent",
+                          }}
+                        >
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setCollapsedCards((current) => ({
+                                ...current,
+                                [cardKey]: !isCollapsed,
+                              }))
+                            }
+                            className="w-full text-left transition-[filter] duration-200 hover:brightness-[0.98]"
+                          >
+                            <div
+                              className={`px-4 ${isCollapsed ? 'flex min-h-[220px] items-center py-8' : 'py-3 border-b'}`}
+                              style={{
+                                borderColor: `${palette.softBorder}55`,
+                                backgroundColor: `${palette.soft}`,
+                              }}
+                            >
+                              <div className="flex w-full flex-col items-center justify-center gap-3 text-center">
+                                <div className="flex flex-col items-center text-center">
+                                  <p
+                                    className="text-[13px] font-semibold uppercase tracking-[0.12em]"
+                                    style={{ color: palette.softText }}
+                                  >
+                                    Approach
+                                  </p>
+                                  <p className="mt-1.5 text-[25px] font-semibold tracking-[-0.03em] text-[#10243E]">
+                                    {approach.name}
+                                  </p>
+                                  {approach.description && !isCollapsed && (
+                                    <p className="mt-2 max-w-xl text-[14px] leading-6 text-[#61758B]">
+                                      {approach.description}
+                                    </p>
+                                  )}
+                                </div>
+                                <span
+                                  className="text-[13px] font-semibold uppercase tracking-[0.12em]"
+                                  style={{ color: palette.softText }}
+                                >
+                                  {approach.systems.length} system options
+                                </span>
+                                <Chevron expanded={!isCollapsed} className="text-[#46607A]" />
+                              </div>
+                            </div>
+                          </button>
+
+                          {!isCollapsed && (
+                            <div
+                              className="border-t p-3"
+                              style={{
+                                backgroundColor: `${palette.soft}`,
+                                borderColor: `${palette.softBorder}55`,
+                              }}
+                            >
+                              {approach.systems.length > 0 ? (
+                                <div className="space-y-2">
+                                  {approach.systems.map((system) => (
+                                    <Link
+                                      key={`${procedure.id}-${approach.id}-${system.id}`}
+                                      href={`/procedures/${procedure.id}?variant=${encodeURIComponent(approach.id)}&system=${encodeURIComponent(system.id)}`}
+                                      className={[
+                                        'block rounded-[16px] border px-3 py-3 transition',
+                                        selectedSystemId === system.id
+                                          ? 'shadow-[0_10px_24px_rgba(15,23,42,0.10)]'
+                                          : 'hover:bg-white/90',
+                                      ].join(' ')}
+                                      style={
+                                        selectedSystemId === system.id
+                                          ? {
+                                              borderColor: `${palette.header}66`,
+                                              backgroundColor: palette.header,
+                                            }
+                                          : {
+                                              borderColor: `${palette.header}33`,
+                                              backgroundColor: palette.hover,
+                                            }
+                                      }
+                                    >
+                                      <div className="min-w-0">
+                                        <div className="text-[19px] font-semibold leading-6 text-white">
+                                          {system.name}
+                                        </div>
+                                        {(formatSystemMeta(system).type ||
+                                          formatSystemMeta(system).supplier) && (
+                                          <div className="mt-1 space-y-0.5">
+                                            {formatSystemMeta(system).type && (
+                                              <div className="text-[12px] font-semibold uppercase tracking-[0.08em] text-white/82">
+                                                {formatSystemMeta(system).type}
+                                              </div>
+                                            )}
+                                            {formatSystemMeta(system).supplier && (
+                                              <div className="text-[15px] leading-5 text-white/70">
+                                                {formatSystemMeta(system).supplier}
+                                              </div>
+                                            )}
+                                          </div>
+                                        )}
+                                      </div>
+                                    </Link>
+                                  ))}
+                                </div>
+                              ) : (
+                                <div
+                                  className="rounded-[16px] border border-dashed bg-[#FAFCFE] px-3 py-4 text-[17px]"
+                                  style={{ borderColor: `${palette.softBorder}66`, color: palette.softText }}
+                                >
+                                  No systems
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="px-2 py-3 text-sm text-[#A2B2C2]">
+                    No clinically reliable branching available yet.
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -228,58 +441,118 @@ function ProcedureSection({
   palette: Palette;
 }) {
   const [openVariantId, setOpenVariantId] = useState<string | null>(null);
+  const [desktopExpanded, setDesktopExpanded] = useState(false);
 
   return (
-    <div className="overflow-hidden rounded-xl border border-[#D5DCE3] bg-white shadow-sm lg:mb-6 lg:inline-block lg:w-full lg:break-inside-avoid lg:rounded-[34px] lg:border-[#D8E3EE] lg:bg-white lg:shadow-[0_22px_50px_rgba(15,23,42,0.09)]">
+    <div className="overflow-hidden rounded-xl border border-[#D5DCE3] bg-white shadow-sm lg:inline-block lg:w-full lg:break-inside-avoid lg:rounded-[28px] lg:border-[#D8E3EE] lg:bg-white lg:shadow-[0_18px_42px_rgba(15,23,42,0.08)]">
+      <button
+        type="button"
+        onClick={() => setDesktopExpanded((current) => !current)}
+        className="hidden w-full lg:block"
+      >
+        <div
+          className="flex items-stretch text-white"
+        style={{ background: `linear-gradient(145deg, ${palette.header} 0%, ${palette.hover} 100%)` }}
+        >
+          <div className="flex min-w-0 flex-1 items-center gap-3 px-4 py-4 text-left lg:px-5 lg:py-4">
+            <div className="min-w-0 flex-1">
+              <p className="hidden lg:block lg:text-[11px] lg:font-semibold lg:uppercase lg:tracking-[0.18em] lg:text-white/62">
+                Menu
+              </p>
+              <div className="text-sm font-semibold text-white lg:text-[24px] lg:font-semibold lg:tracking-[-0.04em]">
+                {procedure.name}
+              </div>
+              {desktopExpanded && procedure.description && (
+                <div className="mt-1 line-clamp-2 text-xs text-white/85 lg:max-w-3xl lg:text-[13px] lg:leading-5">
+                  {procedure.description}
+                </div>
+              )}
+            </div>
+            <div className="hidden lg:flex lg:items-center lg:gap-3">
+              <span className="rounded-full border border-white/14 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/80">
+                {variants.length || 1} approaches
+              </span>
+              <Chevron expanded={desktopExpanded} className="text-white/80" />
+            </div>
+          </div>
+        </div>
+      </button>
+
       <div
-        className="flex items-stretch text-white"
+        className="flex items-stretch text-white lg:hidden"
         style={{ background: `linear-gradient(145deg, ${palette.header} 0%, ${palette.hover} 100%)` }}
       >
-        <div className="flex min-w-0 flex-1 items-center gap-3 px-4 py-4 text-left lg:px-7 lg:py-7">
+        <div className="flex min-w-0 flex-1 items-center gap-3 px-4 py-4 text-left">
           <div className="min-w-0 flex-1">
-            <p className="hidden lg:block lg:text-[11px] lg:font-semibold lg:uppercase lg:tracking-[0.18em] lg:text-white/62">
-              Menu
-            </p>
-            <div className="text-sm font-semibold text-white lg:text-[34px] lg:font-semibold lg:tracking-[-0.05em]">
+            <div className="text-sm font-semibold text-white">
               {procedure.name}
             </div>
             {procedure.description && (
-              <div className="mt-2 line-clamp-2 text-xs text-white/85 lg:max-w-3xl lg:text-sm lg:leading-7">
+              <div className="mt-1 line-clamp-2 text-xs text-white/85">
                 {procedure.description}
               </div>
             )}
-          </div>
-          <div className="hidden lg:block">
-            <span className="rounded-full border border-white/14 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80">
-              {variants.length || 1} approaches
-            </span>
           </div>
         </div>
       </div>
 
       {!suppressBranching && (
-        <div className="bg-white lg:bg-white">
-          {variants.length > 0 ? (
-            variants.map((variant, index) => (
-              <VariantSection
-                key={variant.id}
-                procedureId={procedure.id}
-                variant={variant}
-                expanded={openVariantId === variant.id}
-                selectedSystemId={selectedSystemId}
-                isFirst={index === 0}
-                palette={palette}
-                onToggle={() =>
-                  setOpenVariantId((current) => (current === variant.id ? null : variant.id))
-                }
-              />
-            ))
-          ) : (
-            <div className="border-t border-[#D5DCE3] bg-white px-5 py-4 text-sm text-slate-500 lg:border-[#E4EDF6] lg:bg-white lg:text-[#61758B]">
-              No clinically reliable branching available yet.
-            </div>
-          )}
-        </div>
+        <>
+          <div className="bg-white lg:hidden">
+            {variants.length > 0 ? (
+              variants.map((variant, index) => (
+                <VariantSection
+                  key={variant.id}
+                  procedureId={procedure.id}
+                  variant={variant}
+                  expanded={openVariantId === variant.id}
+                  selectedSystemId={selectedSystemId}
+                  isFirst={index === 0}
+                  palette={palette}
+                  onToggle={() =>
+                    setOpenVariantId((current) => (current === variant.id ? null : variant.id))
+                  }
+                />
+              ))
+            ) : (
+              <div className="border-t border-[#D5DCE3] bg-white px-5 py-4 text-sm text-slate-500">
+                No clinically reliable branching available yet.
+              </div>
+            )}
+          </div>
+
+          <div className={`hidden lg:block lg:bg-white ${desktopExpanded ? "" : "lg:hidden"}`}>
+            {variants.length > 0 ? (
+              <div
+                className="grid gap-0"
+                style={{ gridTemplateColumns: `repeat(${variants.length}, minmax(0, 1fr))` }}
+              >
+                {variants.map((variant, index) => (
+                  <div
+                    key={variant.id}
+                    className={index === 0 ? "min-w-0" : "min-w-0 border-l border-[#E4EDF6]"}
+                  >
+                    <VariantSection
+                      procedureId={procedure.id}
+                      variant={variant}
+                      expanded
+                      selectedSystemId={selectedSystemId}
+                      isFirst
+                      palette={palette}
+                      onToggle={() => {
+                        setOpenVariantId((current) => (current === variant.id ? null : variant.id));
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="border-t border-[#E4EDF6] bg-white px-5 py-4 text-sm text-[#61758B]">
+                No clinically reliable branching available yet.
+              </div>
+            )}
+          </div>
+        </>
       )}
     </div>
   );
@@ -305,11 +578,6 @@ export default function ProcedureTabs({
         suppressBranching: hasOnlySyntheticBranching(procedure.id, procedure.name),
       }));
   }, [procedures]);
-  const desktopColumns = useMemo(
-    () => chunkIntoColumns(proceduresWithVariants, 3),
-    [proceduresWithVariants],
-  );
-
   if (!proceduresWithVariants.length) {
     return (
       <div className="rounded-xl border border-dashed border-slate-300 bg-white px-5 py-6 text-sm text-slate-500 lg:rounded-[28px] lg:border-[#D8E3EE] lg:bg-white lg:px-7 lg:py-7 lg:text-[#61758B]">
@@ -333,22 +601,12 @@ export default function ProcedureTabs({
         ))}
       </div>
 
-      <div className="hidden lg:grid lg:grid-cols-3 lg:gap-6">
-        {desktopColumns.map((column, columnIndex) => (
-          <div key={`menu-column-${columnIndex}`} className="space-y-6">
-            {column.map(({ procedure, variants, suppressBranching }) => (
-              <ProcedureSection
-                key={procedure.id}
-                procedure={procedure}
-                variants={variants}
-                suppressBranching={suppressBranching}
-                selectedSystemId={selectedSystemId}
-                palette={palette}
-              />
-            ))}
-          </div>
-        ))}
-      </div>
+      <DesktopProcedureMatrix
+        proceduresWithVariants={proceduresWithVariants}
+        selectedSystemId={selectedSystemId}
+        palette={palette}
+      />
+
     </>
   );
 }
