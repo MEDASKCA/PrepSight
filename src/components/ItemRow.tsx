@@ -11,6 +11,7 @@ interface Props {
   item: Item
   editMode?: boolean
   onDelete?: () => void
+  allowEdit?: boolean
 }
 
 type UrgencyLevel = "info" | "advisory" | "urgent" | "critical"
@@ -33,7 +34,12 @@ function today() {
   return new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
 }
 
-export default function ItemRow({ item, editMode = false, onDelete }: Props) {
+export default function ItemRow({
+  item,
+  editMode = false,
+  onDelete,
+  allowEdit = true,
+}: Props) {
   const [showInfo, setShowInfo]             = useState(false)
   const [localImage, setLocalImage]         = useState<string | null>(item.imageUrl ?? null)
   const [pendingImage, setPendingImage]     = useState<string | null>(null)
@@ -205,7 +211,14 @@ export default function ItemRow({ item, editMode = false, onDelete }: Props) {
           /* ── Edit mode — clean row with action icons ──────────────── */
           <>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-semibold text-[#3F4752] truncate">{localName}</p>
+              <div className="flex items-center gap-2 min-w-0">
+                <p className="text-sm font-semibold text-[#3F4752] truncate">{localName}</p>
+                {!allowEdit && (
+                  <span className="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-600">
+                    Fixed
+                  </span>
+                )}
+              </div>
               {localProduct && (
                 <p className="text-xs text-[#94a3b8] truncate leading-snug mt-0.5">{localProduct}</p>
               )}
@@ -224,20 +237,24 @@ export default function ItemRow({ item, editMode = false, onDelete }: Props) {
               <div className="w-10 text-center text-sm font-medium text-[#3F4752]">
                 {localQty || "-"}
               </div>
-              <button
-                onClick={openEditModal}
-                className="w-7 h-7 shrink-0 rounded-full bg-[#F87171]/10 flex items-center justify-center text-[#F87171] hover:bg-[#F87171]/20 transition-colors"
-                aria-label="Edit item"
-              >
-                <Pencil size={13} />
-              </button>
-              <button
-                onClick={onDelete}
-                className="w-7 h-7 shrink-0 rounded-full bg-[#F87171]/10 flex items-center justify-center text-[#F87171] hover:bg-[#F87171]/20 transition-colors"
-                aria-label="Remove item"
-              >
-                <Trash2 size={13} />
-              </button>
+              {allowEdit && (
+                <>
+                  <button
+                    onClick={openEditModal}
+                    className="w-7 h-7 shrink-0 rounded-full bg-[#F87171]/10 flex items-center justify-center text-[#F87171] hover:bg-[#F87171]/20 transition-colors"
+                    aria-label="Edit item"
+                  >
+                    <Pencil size={13} />
+                  </button>
+                  <button
+                    onClick={onDelete}
+                    className="w-7 h-7 shrink-0 rounded-full bg-[#F87171]/10 flex items-center justify-center text-[#F87171] hover:bg-[#F87171]/20 transition-colors"
+                    aria-label="Remove item"
+                  >
+                    <Trash2 size={13} />
+                  </button>
+                </>
+              )}
             </div>
           </>
         ) : (

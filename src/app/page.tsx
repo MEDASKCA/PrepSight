@@ -13,6 +13,7 @@ import {
   getAnatomyNameById,
   getDescendantAnatomyIds,
 } from "@/lib/operating-theatre-taxonomy"
+import { hasVariantsForProcedure } from "@/lib/variants"
 
 interface Props {
   searchParams: Promise<{
@@ -24,6 +25,31 @@ interface Props {
     procedure_variant?: string
     system?: string
   }>
+}
+
+function normalizeText(value?: string) {
+  return (value ?? "").trim().toLowerCase()
+}
+
+function dedupeProceduresForDisplay(list: Procedure[]): Procedure[] {
+  const grouped = new Map<string, Procedure[]>()
+
+  for (const procedure of list) {
+    const key = [
+      normalizeText(procedure.name),
+      normalizeText("service_line_id" in procedure ? String(procedure.service_line_id) : ""),
+      normalizeText("anatomy_id" in procedure ? String(procedure.anatomy_id) : ""),
+    ].join("|")
+    const rows = grouped.get(key) ?? []
+    rows.push(procedure)
+    grouped.set(key, rows)
+  }
+
+  return Array.from(grouped.values()).map((candidates) => {
+    const withVariants = candidates.find((row) => hasVariantsForProcedure(row.id))
+    const withSections = candidates.find((row) => row.sections.length > 0)
+    return withVariants ?? withSections ?? candidates[0]
+  })
 }
 
 export default async function HomePage({ searchParams }: Props) {
@@ -90,6 +116,12 @@ export default async function HomePage({ searchParams }: Props) {
         return allowedAnatomyIds.has(p.anatomy_id)
       })
     }
+
+    theatreProcedures = dedupeProceduresForDisplay(
+      theatreProcedures.filter(
+        (p) => hasVariantsForProcedure(p.id) || p.sections.length > 0,
+      ),
+    )
   }
 
   const backHref = anatomy

@@ -3,7 +3,7 @@ import {
   collection, getDocs,
 } from "firebase/firestore"
 import { db } from "./firebase"
-import { PrepSightProfile } from "./types"
+import { ChecklistEntry, PrepSightProfile, Section } from "./types"
 
 // ── User profile ──────────────────────────────────────────────────────────────
 
@@ -168,4 +168,76 @@ export async function approveFirestoreSurgeon(uid: string, id: string): Promise<
 export async function deleteFirestoreSurgeon(id: string): Promise<void> {
   if (!db) return
   await deleteDoc(doc(db, "surgeons", id))
+}
+
+// Card checklist state (mutable, user/hospital specific)
+
+function checklistDocId(uid: string, cardKey: string) {
+  return `${uid}__${cardKey.replace(/[^a-z0-9_-]+/gi, "-")}`
+}
+
+export async function getCardChecklist(
+  uid: string,
+  cardKey: string,
+): Promise<ChecklistEntry[]> {
+  if (!db) return []
+  try {
+    const snap = await getDoc(doc(db, "card_checklists", checklistDocId(uid, cardKey)))
+    if (!snap.exists()) return []
+    const entries = snap.data().entries
+    return Array.isArray(entries) ? (entries as ChecklistEntry[]) : []
+  } catch (err) {
+    console.warn("[PrepSight] Firestore getCardChecklist failed:", err)
+    return []
+  }
+}
+
+export async function saveCardChecklist(
+  uid: string,
+  cardKey: string,
+  entries: ChecklistEntry[],
+): Promise<void> {
+  if (!db) return
+  try {
+    await setDoc(doc(db, "card_checklists", checklistDocId(uid, cardKey)), {
+      entries,
+      updatedAt: new Date().toISOString(),
+      updatedBy: uid,
+    })
+  } catch (err) {
+    console.warn("[PrepSight] Firestore saveCardChecklist failed:", err)
+  }
+}
+
+export async function getCardCustomSections(
+  uid: string,
+  cardKey: string,
+): Promise<Section[]> {
+  if (!db) return []
+  try {
+    const snap = await getDoc(doc(db, "card_custom_sections", checklistDocId(uid, cardKey)))
+    if (!snap.exists()) return []
+    const sections = snap.data().sections
+    return Array.isArray(sections) ? (sections as Section[]) : []
+  } catch (err) {
+    console.warn("[PrepSight] Firestore getCardCustomSections failed:", err)
+    return []
+  }
+}
+
+export async function saveCardCustomSections(
+  uid: string,
+  cardKey: string,
+  sections: Section[],
+): Promise<void> {
+  if (!db) return
+  try {
+    await setDoc(doc(db, "card_custom_sections", checklistDocId(uid, cardKey)), {
+      sections,
+      updatedAt: new Date().toISOString(),
+      updatedBy: uid,
+    })
+  } catch (err) {
+    console.warn("[PrepSight] Firestore saveCardCustomSections failed:", err)
+  }
 }

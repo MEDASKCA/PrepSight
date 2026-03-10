@@ -25,7 +25,9 @@
     "specialty_id": "SPEC_GYNECOLOGY",
     "service_line_id": "SL_BENIGN_GYNECOLOGY",
     "anatomy_id": "ANAT_SPEC_GYNECOLOGY_UTERUS",
-    "aliases": ["Hysteroscopic Myomectomy"],
+    "aliases": [
+      "Hysteroscopic Myomectomy"
+    ],
     "description": "Hysteroscopic resection of submucous fibroid.",
     "status": "active"
   },
@@ -45,7 +47,9 @@
     "specialty_id": "SPEC_GYNECOLOGY",
     "service_line_id": "SL_BENIGN_GYNECOLOGY",
     "anatomy_id": "ANAT_SPEC_GYNECOLOGY_UTERUS",
-    "aliases": ["D&C"],
+    "aliases": [
+      "D&C"
+    ],
     "description": "Dilatation of cervix and curettage of uterine cavity.",
     "status": "active"
   },
@@ -55,7 +59,9 @@
     "specialty_id": "SPEC_GYNECOLOGY",
     "service_line_id": "SL_BENIGN_GYNECOLOGY",
     "anatomy_id": "ANAT_SPEC_GYNECOLOGY_UTERUS",
-    "aliases": ["TAH"],
+    "aliases": [
+      "TAH"
+    ],
     "description": "Removal of uterus and cervix via abdominal approach.",
     "status": "active"
   },
@@ -65,7 +71,9 @@
     "specialty_id": "SPEC_GYNECOLOGY",
     "service_line_id": "SL_BENIGN_GYNECOLOGY",
     "anatomy_id": "ANAT_SPEC_GYNECOLOGY_UTERUS",
-    "aliases": ["TLH"],
+    "aliases": [
+      "TLH"
+    ],
     "description": "Removal of uterus and cervix using laparoscopic approach.",
     "status": "active"
   },
@@ -75,7 +83,9 @@
     "specialty_id": "SPEC_GYNECOLOGY",
     "service_line_id": "SL_BENIGN_GYNECOLOGY",
     "anatomy_id": "ANAT_SPEC_GYNECOLOGY_UTERUS",
-    "aliases": ["LAVH"],
+    "aliases": [
+      "LAVH"
+    ],
     "description": "Hysterectomy performed using laparoscopic assistance and vaginal removal.",
     "status": "active"
   },
@@ -159,7 +169,6 @@
     "description": "Excision of benign or suspicious vulval lesion.",
     "status": "active"
   },
-
   {
     "id": "PROC_RADICAL_HYSTERECTOMY",
     "name": "Radical Hysterectomy",
@@ -176,7 +185,9 @@
     "specialty_id": "SPEC_GYNECOLOGY",
     "service_line_id": "SL_GYNECOLOGIC_ONCOLOGY",
     "anatomy_id": "ANAT_SPEC_GYNECOLOGY_ADNEXA",
-    "aliases": ["TAH and BSO"],
+    "aliases": [
+      "TAH and BSO"
+    ],
     "description": "Removal of uterus, cervix, both tubes, and both ovaries.",
     "status": "active"
   },
@@ -186,7 +197,9 @@
     "specialty_id": "SPEC_GYNECOLOGY",
     "service_line_id": "SL_GYNECOLOGIC_ONCOLOGY",
     "anatomy_id": "ANAT_SPEC_GYNECOLOGY_OVARIES",
-    "aliases": ["Cytoreductive Surgery for Ovarian Cancer"],
+    "aliases": [
+      "Cytoreductive Surgery for Ovarian Cancer"
+    ],
     "description": "Tumour debulking surgery for ovarian malignancy.",
     "status": "active"
   },
@@ -230,7 +243,6 @@
     "description": "Cone excision of cervix for diagnosis or treatment of premalignant or early malignant disease.",
     "status": "active"
   },
-
   {
     "id": "PROC_ANTERIOR_COLPORRHAPHY",
     "name": "Anterior Colporrhaphy",
@@ -301,14 +313,15 @@
     "description": "Injection treatment for stress urinary incontinence.",
     "status": "active"
   },
-
   {
     "id": "PROC_LAPAROSCOPIC_TUBAL_PATENCY_TEST",
     "name": "Laparoscopic Tubal Patency Test",
     "specialty_id": "SPEC_GYNECOLOGY",
     "service_line_id": "SL_REPRODUCTIVE_SURGERY",
     "anatomy_id": "ANAT_SPEC_GYNECOLOGY_FALLOPIAN_TUBES",
-    "aliases": ["Laparoscopic Dye Test"],
+    "aliases": [
+      "Laparoscopic Dye Test"
+    ],
     "description": "Assessment of tubal patency using laparoscopy and dye.",
     "status": "active"
   },
@@ -352,7 +365,6 @@
     "description": "Adhesiolysis performed to improve reproductive anatomy and function.",
     "status": "active"
   },
-
   {
     "id": "PROC_DIAGNOSTIC_LAPAROSCOPY_IN_GYNAECOLOGY",
     "name": "Diagnostic Laparoscopy in Gynaecology",

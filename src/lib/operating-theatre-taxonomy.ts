@@ -31,6 +31,10 @@ interface AnatomyRecord {
   tags?: string[]
 }
 
+const CURATED_ANATOMY_ORDER: Record<string, string[]> = {
+  SL_ARTHROPLASTY: ["Hip", "Knee", "Shoulder", "Elbow", "Ankle"],
+}
+
 function normalizeKey(value: string): string {
   return value.trim().toLowerCase()
 }
@@ -105,7 +109,44 @@ export function getAnatomyForServiceLine(serviceLineId: string): AnatomyRecord[]
     if (found) resolved.push(found)
   }
 
-  return resolved
+  const byName = new Map<string, AnatomyRecord[]>()
+  for (const row of resolved) {
+    const key = normalizeKey(row.name)
+    const list = byName.get(key) ?? []
+    list.push(row)
+    byName.set(key, list)
+  }
+
+  const deduped = Array.from(byName.values()).map((candidates) => {
+    const preferredWithParent = candidates.find(
+      (row) => row.id.startsWith("ANAT_SPEC_") && row.parent_id,
+    )
+    const preferredScoped = candidates.find((row) =>
+      row.id.startsWith("ANAT_SPEC_"),
+    )
+    return preferredWithParent ?? preferredScoped ?? candidates[0]
+  })
+
+  const curatedOrder = CURATED_ANATOMY_ORDER[serviceLineId]
+  if (curatedOrder) {
+    const rank = new Map(
+      curatedOrder.map((name, index) => [normalizeKey(name), index]),
+    )
+    return deduped
+      .filter((row) => rank.has(normalizeKey(row.name)))
+      .sort(
+        (a, b) =>
+          (rank.get(normalizeKey(a.name)) ?? Number.MAX_SAFE_INTEGER) -
+          (rank.get(normalizeKey(b.name)) ?? Number.MAX_SAFE_INTEGER),
+      )
+  }
+
+  return deduped.sort((a, b) => {
+    const aScoped = a.id.startsWith("ANAT_SPEC_") ? 0 : 1
+    const bScoped = b.id.startsWith("ANAT_SPEC_") ? 0 : 1
+    if (aScoped !== bScoped) return aScoped - bScoped
+    return a.name.localeCompare(b.name)
+  })
 }
 
 export function getServiceLineNameById(serviceLineId: string): string | undefined {

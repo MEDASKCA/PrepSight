@@ -117,6 +117,7 @@ export default function LoginPage() {
       if (typeof window !== "undefined") {
         window.sessionStorage.removeItem(PENDING_PROVIDER_KEY)
       }
+      setLoading(null)
       setAuthenticated(true)
       setTimeout(() => router.push("/"), 800)
     } catch (e: unknown) {
@@ -142,6 +143,7 @@ export default function LoginPage() {
       if (typeof window !== "undefined") {
         window.sessionStorage.removeItem(PENDING_PROVIDER_KEY)
       }
+      setLoading(null)
       setAuthenticated(true)
       setTimeout(() => router.push("/"), 800)
     } catch (e: unknown) {

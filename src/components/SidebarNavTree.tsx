@@ -18,8 +18,6 @@ interface Props {
 
 type ViewMode = "setting" | "surgeon" | "supplier"
 
-const SUPPLIER_PLACEHOLDERS = ["Stryker", "Zimmer Biomet", "Arthrex", "Olympus", "Smith+Nephew"]
-
 const TAB_ACTIVE = "bg-[#4DA3FF] text-white"
 const TAB_IDLE   = "text-[#64748b] hover:bg-[#F4F7FA]"
 
@@ -27,11 +25,9 @@ export default function SidebarNavTree({ onNavigate }: Props) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const activeSetting   = searchParams.get("setting")
-  const activeSpecialty = searchParams.get("specialty")
 
   const [query, setQuery]                                 = useState("")
   const [viewMode, setViewMode]                           = useState<ViewMode>("setting")
-  const [expandedSettings, setExpandedSettings]           = useState<Set<string>>(new Set())
   const [expandedSurgeons, setExpandedSurgeons]           = useState<Set<string>>(new Set())
   const [showAllAreas, setShowAllAreas]                   = useState(false)
 
@@ -86,11 +82,6 @@ export default function SidebarNavTree({ onNavigate }: Props) {
   const otherEntries    = Array.from(filteredTree.entries()).filter(([s]) => !relevantSettings.includes(s))
   const hasRelevant     = relevantEntries.length > 0 && !query.trim()
 
-  // Auto-expand settings when searching
-  const effectiveExpandedSettings = query.trim()
-    ? new Set(Array.from(filteredTree.keys()) as string[])
-    : expandedSettings
-
   // ── Surgeon tree ─────────────────────────────────────────────────────────────
   const surgeonTree = useMemo(() => {
     const map = new Map<string, Procedure[]>()
@@ -119,17 +110,14 @@ export default function SidebarNavTree({ onNavigate }: Props) {
   }, [surgeonTree, query])
 
   // ── Handlers ─────────────────────────────────────────────────────────────────
-  function toggleSetting(s: string) {
-    setExpandedSettings((prev) => {
-      const next = new Set(prev)
-      next.has(s) ? next.delete(s) : next.add(s)
-      return next
-    })
-  }
   function toggleSurgeon(name: string) {
     setExpandedSurgeons((prev) => {
       const next = new Set(prev)
-      next.has(name) ? next.delete(name) : next.add(name)
+      if (next.has(name)) {
+        next.delete(name)
+      } else {
+        next.add(name)
+      }
       return next
     })
   }
@@ -137,57 +125,25 @@ export default function SidebarNavTree({ onNavigate }: Props) {
   // ── Section card renderer ─────────────────────────────────────────────────────
   function renderSettingCards(entries: [ClinicalSetting, Map<string, typeof procedures>][]) {
     return entries.map(([setting, specMap]) => {
-      const isExpanded = effectiveExpandedSettings.has(setting)
       return (
-        <div key={setting} className="rounded-xl overflow-hidden border border-[#D5DCE3] shadow-sm">
-          {/* Card header */}
-          <button
-            onClick={() => toggleSetting(setting)}
-            className={`w-full flex items-start gap-2 px-4 min-h-12 py-3 text-left transition-colors ${
-              isExpanded ? "bg-[#2F8EF7]" : "bg-[#4DA3FF] hover:bg-[#2F8EF7]"
-            }`}
-          >
-            <span className="flex-1 min-w-0 whitespace-normal break-words text-sm font-bold text-white leading-snug">
-              {setting}
-            </span>
-            <span className="mt-0.5 text-xs text-white/70 tabular-nums shrink-0">
+        <Link
+          key={setting}
+          href={`/?setting=${encodeURIComponent(setting)}`}
+          onClick={onNavigate}
+          className={`flex items-start gap-3 rounded-2xl border px-4 py-3 transition-all ${
+            activeSetting === setting
+              ? "border-[#7CC6FF] bg-gradient-to-br from-[#EFF8FF] via-white to-[#E8F7FF] shadow-sm"
+              : "border-[#D5DCE3] bg-white hover:border-[#B8DBFF] hover:bg-[#F8FAFC]"
+          }`}
+        >
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-semibold leading-snug text-[#1E293B]">{setting}</p>
+            <p className="mt-1 text-xs text-[#64748b]">
               {specMap.size} {specMap.size === 1 ? "specialty" : "specialties"}
-            </span>
-            <ChevronRight
-              size={14}
-              className={`mt-0.5 shrink-0 text-white/60 transition-transform duration-200 ${isExpanded ? "rotate-90" : ""}`}
-            />
-          </button>
-
-          {/* Specialties — navigate directly, no drill-down */}
-          {isExpanded && (
-            <div className="border-t border-[#F0F4F8]">
-              {Array.from(specMap.entries()).map(([spec, procs]) => {
-                const isActive = activeSetting === setting && activeSpecialty === spec
-                return (
-                  <Link
-                    key={spec}
-                    href={`/?setting=${encodeURIComponent(setting)}&specialty=${encodeURIComponent(spec)}`}
-                    onClick={onNavigate}
-                    className={`flex items-start justify-between gap-2 px-4 min-h-10 py-2 text-sm border-b border-[#F0F4F8] last:border-b-0 transition-colors ${
-                      isActive
-                        ? "bg-[#EFF8FF] text-[#2F8EF7] font-semibold"
-                        : "bg-[#F8FAFC] text-[#475569] hover:bg-[#EFF8FF] hover:text-[#2F8EF7]"
-                    }`}
-                  >
-                    <span className="flex-1 min-w-0 whitespace-normal break-words leading-snug pr-2">{spec}</span>
-                    <div className="ml-3 flex items-center gap-1.5 shrink-0 pt-0.5">
-                      <ChevronRight size={11} className="text-[#94a3b8] shrink-0" />
-                      <span className="text-xs text-[#94a3b8] tabular-nums text-right min-w-[5.5rem] shrink-0">
-                        {procs.length} {procs.length === 1 ? "procedure" : "procedures"}
-                      </span>
-                    </div>
-                  </Link>
-                )
-              })}
-            </div>
-          )}
-        </div>
+            </p>
+          </div>
+          <ChevronRight size={14} className="mt-1 shrink-0 text-[#94a3b8]" />
+        </Link>
       )
     })
   }
@@ -325,18 +281,38 @@ export default function SidebarNavTree({ onNavigate }: Props) {
 
         {/* ── Supplier view ─────────────────────────────────────────────────── */}
         {viewMode === "supplier" && (
-          <div className="px-3 py-3 space-y-1">
-            {SUPPLIER_PLACEHOLDERS.map((name) => (
-              <div
-                key={name}
-                className="flex items-center gap-2 h-10 px-2.5 opacity-40 cursor-default"
-              >
-                <Package size={14} className="text-[#94a3b8] shrink-0" />
-                <span className="flex-1 text-sm text-[#3F4752]">{name}</span>
-                <span className="text-xs bg-[#F4F7FA] text-[#94a3b8] px-1.5 py-0.5 rounded">Soon</span>
+          <div className="px-3 py-3 space-y-3">
+            <Link
+              href="/catalogue"
+              onClick={onNavigate}
+              className={`block rounded-2xl border px-4 py-4 transition-all ${
+                pathname === "/catalogue"
+                  ? "border-[#7CC6FF] bg-gradient-to-br from-[#EAF7FF] via-white to-[#E9FBFF] shadow-sm"
+                  : "border-[#D5DCE3] bg-white hover:border-[#B8DBFF] hover:bg-[#F8FAFC]"
+              }`}
+            >
+              <div className="flex items-start gap-3">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-[#A7D8FF] bg-[#DFF2FF] text-[#1596AE]">
+                  <Package size={18} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-semibold text-[#1E293B]">Catalogue</p>
+                  <p className="mt-1 text-xs leading-5 text-[#64748b]">
+                    Supplier products, implants, trays, consumables, equipment, and sizing.
+                  </p>
+                </div>
+                <ChevronRight size={14} className="mt-1 shrink-0 text-[#94a3b8]" />
               </div>
-            ))}
-            <p className="px-2 pt-3 text-xs text-[#94a3b8] text-center">Supplier catalogues coming soon</p>
+            </Link>
+
+            <div className="rounded-2xl border border-[#D5DCE3] bg-[#F8FAFC] px-4 py-3">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#94a3b8]">
+                Supplier View
+              </p>
+              <p className="mt-2 text-sm leading-6 text-[#475569]">
+                This tab is now the catalogue home. Fixed supplier trays, implants, and product banks live there.
+              </p>
+            </div>
           </div>
         )}
 

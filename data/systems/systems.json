@@ -3046,33 +3046,6 @@
     "status": "active"
   },
   {
-    "id": "SYS_PERSONA_KNEE_SYSTEM",
-    "name": "Persona Knee System",
-    "supplier_id": "SUP_ZIMMER_BIOMET",
-    "system_type": "knee_implant",
-    "category": "arthroplasty",
-    "description": "Persona Knee System mapped to Primary Total Knee Replacement variant Cemented.",
-    "status": "active"
-  },
-  {
-    "id": "SYS_TRIATHLON_KNEE_SYSTEM",
-    "name": "Triathlon Knee System",
-    "supplier_id": "SUP_STRYKER",
-    "system_type": "knee_implant",
-    "category": "arthroplasty",
-    "description": "Triathlon Knee System mapped to Primary Total Knee Replacement variant Cementless.",
-    "status": "active"
-  },
-  {
-    "id": "SYS_ATTUNE_KNEE_SYSTEM",
-    "name": "ATTUNE Knee System",
-    "supplier_id": "SUP_DEPUY_SYNTHES",
-    "system_type": "knee_implant",
-    "category": "arthroplasty",
-    "description": "ATTUNE Knee System mapped to Primary Total Knee Replacement within Arthroplasty.",
-    "status": "active"
-  },
-  {
     "id": "SYS_CORIN_APOLLOKNEE_OR_COMPARABLE_KNEE_PORTFOLIO",
     "name": "Corin / ApolloKnee or comparable knee portfolio",
     "supplier_id": "SUP_CORIN",
@@ -3232,15 +3205,6 @@
     "system_type": "shoulder_implant",
     "category": "arthroplasty",
     "description": "AltiVate Shoulder System mapped to Primary Total Shoulder Replacement within Arthroplasty.",
-    "status": "active"
-  },
-  {
-    "id": "SYS_EQUINOXE_SHOULDER_SYSTEM",
-    "name": "Equinoxe Shoulder System",
-    "supplier_id": "SUP_EXACTECH",
-    "system_type": "shoulder_implant",
-    "category": "arthroplasty",
-    "description": "Equinoxe Shoulder System mapped to Primary Total Shoulder Replacement within Arthroplasty.",
     "status": "active"
   },
   {
@@ -5887,15 +5851,6 @@
     "system_type": "trauma_plate_system",
     "category": "hand_wrist_trauma",
     "description": "Aptus Radius Distal System mapped to Open Reduction and Internal Fixation of Distal Radius Fracture within Orthopaedic Trauma Surgery.",
-    "status": "active"
-  },
-  {
-    "id": "SYS_DISTAL_RADIUS_FIXATION_SYSTEM",
-    "name": "Distal Radius Fixation System",
-    "supplier_id": "SUP_TRIMED",
-    "system_type": "trauma_plate_system",
-    "category": "hand_wrist_trauma",
-    "description": "Distal Radius Fixation System mapped to Open Reduction and Internal Fixation of Distal Radius Fracture within Orthopaedic Trauma Surgery.",
     "status": "active"
   },
   {

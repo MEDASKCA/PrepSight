@@ -5,7 +5,9 @@
     "specialty_id": "SPEC_ANAESTHESIA",
     "service_line_id": "SL_GENERAL_ANAESTHESIA",
     "anatomy_id": "ANAT_SPEC_ANAESTHESIA_AIRWAY",
-    "aliases": ["Induction of General Anaesthesia"],
+    "aliases": [
+      "Induction of General Anaesthesia"
+    ],
     "description": "Induction of general anaesthesia using intravenous or inhalational agents.",
     "status": "active"
   },
@@ -25,7 +27,9 @@
     "specialty_id": "SPEC_ANAESTHESIA",
     "service_line_id": "SL_GENERAL_ANAESTHESIA",
     "anatomy_id": "ANAT_SPEC_ANAESTHESIA_AIRWAY",
-    "aliases": ["LMA Insertion"],
+    "aliases": [
+      "LMA Insertion"
+    ],
     "description": "Insertion of supraglottic airway device for airway management.",
     "status": "active"
   },
@@ -35,7 +39,9 @@
     "specialty_id": "SPEC_ANAESTHESIA",
     "service_line_id": "SL_GENERAL_ANAESTHESIA",
     "anatomy_id": "ANAT_SPEC_ANAESTHESIA_AIRWAY",
-    "aliases": ["RSI"],
+    "aliases": [
+      "RSI"
+    ],
     "description": "Rapid induction technique to minimise aspiration risk.",
     "status": "active"
   },
@@ -59,7 +65,6 @@
     "description": "Removal of endotracheal tube after anaesthesia.",
     "status": "active"
   },
-
   {
     "id": "PROC_SPINAL_ANAESTHESIA",
     "name": "Spinal Anaesthesia",
@@ -71,22 +76,14 @@
     "status": "active"
   },
   {
-    "id": "PROC_EPIRURAL_ANAESTHESIA",
-    "name": "Epidural Anaesthesia",
-    "specialty_id": "SPEC_ANAESTHESIA",
-    "service_line_id": "SL_REGIONAL_ANAESTHESIA",
-    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_SPINE",
-    "aliases": [],
-    "description": "Placement of epidural catheter for anaesthesia or analgesia.",
-    "status": "active"
-  },
-  {
     "id": "PROC_COMBINED_SPINAL_EPIRURAL_ANAESTHESIA",
     "name": "Combined Spinal Epidural Anaesthesia",
     "specialty_id": "SPEC_ANAESTHESIA",
     "service_line_id": "SL_REGIONAL_ANAESTHESIA",
     "anatomy_id": "ANAT_SPEC_ANAESTHESIA_SPINE",
-    "aliases": ["CSE Anaesthesia"],
+    "aliases": [
+      "CSE Anaesthesia"
+    ],
     "description": "Combined spinal and epidural technique for anaesthesia.",
     "status": "active"
   },
@@ -130,14 +127,15 @@
     "description": "Regional anaesthesia targeting the sciatic nerve.",
     "status": "active"
   },
-
   {
     "id": "PROC_OBSTETRIC_EPIRURAL_ANALGESIA",
     "name": "Obstetric Epidural Analgesia",
     "specialty_id": "SPEC_ANAESTHESIA",
     "service_line_id": "SL_OBSTETRIC_ANAESTHESIA",
     "anatomy_id": "ANAT_SPEC_ANAESTHESIA_SPINE",
-    "aliases": ["Labour Epidural"],
+    "aliases": [
+      "Labour Epidural"
+    ],
     "description": "Epidural analgesia for labour pain management.",
     "status": "active"
   },
@@ -161,7 +159,6 @@
     "description": "General anaesthesia administered during obstetric surgery.",
     "status": "active"
   },
-
   {
     "id": "PROC_PAEDIATRIC_GENERAL_ANAESTHESIA",
     "name": "Paediatric General Anaesthesia",
@@ -182,7 +179,6 @@
     "description": "Caudal epidural analgesia technique used in paediatric anaesthesia.",
     "status": "active"
   },
-
   {
     "id": "PROC_CARDIOPULMONARY_BYPASS_ANAESTHETIC_MANAGEMENT",
     "name": "Cardiopulmonary Bypass Anaesthetic Management",
@@ -199,11 +195,12 @@
     "specialty_id": "SPEC_ANAESTHESIA",
     "service_line_id": "SL_CARDIOTHORACIC_ANAESTHESIA",
     "anatomy_id": "ANAT_SPEC_ANAESTHESIA_OESOPHAGUS",
-    "aliases": ["Intraoperative TEE"],
+    "aliases": [
+      "Intraoperative TEE"
+    ],
     "description": "Use of transoesophageal echocardiography during cardiac surgery.",
     "status": "active"
   },
-
   {
     "id": "PROC_ARTERIAL_LINE_INSERTION",
     "name": "Arterial Line Insertion",
@@ -222,6 +219,116 @@
     "anatomy_id": "ANAT_SPEC_ANAESTHESIA_CENTRAL_VEINS",
     "aliases": [],
     "description": "Insertion of central venous catheter for monitoring or access.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_ONE_LUNG_VENTILATION",
+    "name": "One-Lung Ventilation",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_CARDIOTHORACIC_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_THORAX",
+    "aliases": [
+      "OLV",
+      "Lung Isolation"
+    ],
+    "description": "Anaesthetic airway management for single-lung ventilation and thoracic surgery.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_BAG_MASK_VENTILATION",
+    "name": "Bag Mask Ventilation",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_GENERAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_FACE_MASK",
+    "aliases": [
+      "Mask Ventilation",
+      "BMV"
+    ],
+    "description": "Manual ventilation using a face mask and breathing circuit.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_CAUDAL_EPIDURAL_BLOCK",
+    "name": "Caudal Epidural Block",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_PAEDIATRIC_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_SACRAL_HIATUS",
+    "aliases": [
+      "Caudal Block"
+    ],
+    "description": "Caudal epidural analgesia technique used in paediatric anaesthesia.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_MONITORED_ANAESTHESIA_CARE",
+    "name": "Monitored Anaesthesia Care",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_PROCEDURAL_SEDATION",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_SYSTEMIC",
+    "aliases": [
+      "MAC"
+    ],
+    "description": "Anaesthesia professional-provided monitoring and sedation care during procedures.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_PROCEDURAL_SEDATION",
+    "name": "Procedural Sedation",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_PROCEDURAL_SEDATION",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_SYSTEMIC",
+    "aliases": [
+      "Conscious Sedation"
+    ],
+    "description": "Sedation for diagnostic or therapeutic procedures without full general anaesthesia.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_ADDUCTOR_CANAL_BLOCK",
+    "name": "Adductor Canal Block",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_REGIONAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_ADDUCTOR_CANAL",
+    "aliases": [
+      "Saphenous Nerve Block"
+    ],
+    "description": "Regional anaesthesia block procedure: adductor canal block.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_TRANSVERSUS_ABDOMINIS_PLANE_BLOCK",
+    "name": "Transversus Abdominis Plane Block",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_REGIONAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_ANTERIOR_ABDOMINAL_WALL",
+    "aliases": [
+      "TAP Block"
+    ],
+    "description": "Regional anaesthesia block procedure: transversus abdominis plane block.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_ERECTOR_SPINAE_PLANE_BLOCK",
+    "name": "Erector Spinae Plane Block",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_REGIONAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_POSTERIOR_THORAX",
+    "aliases": [
+      "ESP Block"
+    ],
+    "description": "Regional anaesthesia block procedure: erector spinae plane block.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_EPIDURAL_ANAESTHESIA",
+    "name": "Epidural Anaesthesia",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "service_line_id": "SL_REGIONAL_ANAESTHESIA",
+    "anatomy_id": "ANAT_SPEC_ANAESTHESIA_SPINE",
+    "aliases": [
+      "Epidural Block"
+    ],
+    "description": "Placement of an epidural catheter for anaesthesia or analgesia.",
     "status": "active"
   }
 ]

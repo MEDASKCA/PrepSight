@@ -1,12 +1,15 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState, useTransition } from "react"
 import Link from "next/link"
 import { ArrowLeft, House } from "lucide-react"
 import KardexSection from "./KardexSection"
+import ChecklistPanel from "./ChecklistPanel"
 import { Procedure, Section } from "@/lib/types"
 import { SETTING_COLOUR } from "@/lib/settings"
 import { getProfile } from "@/lib/profile"
+import { getCardCustomSections, saveCardCustomSections } from "@/lib/firestore"
+import { onAuthChange } from "@/lib/auth"
 
 interface LastEdit {
   date: string
@@ -16,6 +19,7 @@ interface LastEdit {
 interface Props {
   procedure: Procedure
   cardSections: Section[]
+  cardKey: string
   title?: string
   subtitle?: string
   tertiaryLabel?: string
@@ -38,20 +42,69 @@ function today(): string {
 export default function ProcedurePageClient({
   procedure,
   cardSections,
+  cardKey,
   title,
   subtitle,
   tertiaryLabel,
 }: Props) {
   const [lastEdit, setLastEdit] = useState<LastEdit | null>(null)
+  const [sectionsState, setSectionsState] = useState<Section[]>(cardSections)
+  const [uid, setUid] = useState<string | null>(null)
+  const [, startTransition] = useTransition()
 
   const settingColour =
     SETTING_COLOUR[procedure.setting] ?? "bg-gray-100 text-gray-700"
-  const hasSections = cardSections.length > 0
+  const hasSections = sectionsState.length > 0
+
+  useEffect(() => onAuthChange((user) => setUid(user?.uid ?? null)), [])
+
+  useEffect(() => {
+    setSectionsState(cardSections)
+  }, [cardSections])
+
+  useEffect(() => {
+    let cancelled = false
+    async function load() {
+      if (!uid) return
+      const customSections = await getCardCustomSections(uid, cardKey)
+      if (cancelled || customSections.length === 0) return
+      setSectionsState((current) =>
+        current.map((section) => {
+          if (section.contentMode === "fixed") return section
+          const override = customSections.find((item) => item.id === section.id)
+          return override ?? section
+        }),
+      )
+    }
+    void load()
+    return () => {
+      cancelled = true
+    }
+  }, [cardKey, uid])
 
   function handleSectionSave() {
     const profile = getProfile()
     const by = profile?.name ? formatName(profile.name) : "You"
     setLastEdit({ date: today(), by })
+  }
+
+  function handleSectionChange(updatedSection: Section) {
+    setSectionsState((current) => {
+      const next = current.map((section) =>
+        section.id === updatedSection.id ? updatedSection : section,
+      )
+
+      if (uid) {
+        const editableSections = next.filter(
+          (section) => section.contentMode !== "fixed",
+        )
+        startTransition(() => {
+          void saveCardCustomSections(uid, cardKey, editableSections)
+        })
+      }
+
+      return next
+    })
   }
 
   return (
@@ -116,12 +169,14 @@ export default function ProcedurePageClient({
       <main className="relative mx-auto max-w-4xl select-none px-4 py-4">
         {hasSections ? (
           <>
-            {cardSections.map((section) => (
+            <ChecklistPanel cardKey={cardKey} sections={sectionsState} />
+            {sectionsState.map((section) => (
               <KardexSection
-                key={section.id}
+                key={`${section.id}:${section.items.length}:${section.nurseNotes ?? ""}:${section.patientPositionInstructions ?? ""}:${section.externalLinks?.length ?? 0}`}
                 section={section}
                 defaultOpen={false}
                 onSave={handleSectionSave}
+                onSectionChange={handleSectionChange}
               />
             ))}
           </>

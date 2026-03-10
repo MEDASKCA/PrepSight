@@ -75,7 +75,9 @@
     "specialty_id": "SPEC_NEUROSURGERY",
     "service_line_id": "SL_CRANIAL_NEUROSURGERY",
     "anatomy_id": "ANAT_SPEC_NEUROSURGERY_VENTRICLES",
-    "aliases": ["VP Shunt Insertion"],
+    "aliases": [
+      "VP Shunt Insertion"
+    ],
     "description": "Insertion of shunt from cerebral ventricles to peritoneal cavity.",
     "status": "active"
   },
@@ -85,7 +87,9 @@
     "specialty_id": "SPEC_NEUROSURGERY",
     "service_line_id": "SL_CRANIAL_NEUROSURGERY",
     "anatomy_id": "ANAT_SPEC_NEUROSURGERY_VENTRICLES",
-    "aliases": ["EVD Insertion"],
+    "aliases": [
+      "EVD Insertion"
+    ],
     "description": "Insertion of external ventricular drain for CSF diversion and pressure monitoring.",
     "status": "active"
   },
@@ -95,7 +99,9 @@
     "specialty_id": "SPEC_NEUROSURGERY",
     "service_line_id": "SL_CRANIAL_NEUROSURGERY",
     "anatomy_id": "ANAT_SPEC_NEUROSURGERY_VENTRICLES",
-    "aliases": ["ETV"],
+    "aliases": [
+      "ETV"
+    ],
     "description": "Endoscopic CSF diversion procedure via the floor of the third ventricle.",
     "status": "active"
   },
@@ -109,7 +115,6 @@
     "description": "Endonasal or transsphenoidal resection of pituitary lesion.",
     "status": "active"
   },
-
   {
     "id": "PROC_LUMBAR_MICRODISCECTOMY",
     "name": "Lumbar Microdiscectomy",
@@ -146,7 +151,9 @@
     "specialty_id": "SPEC_NEUROSURGERY",
     "service_line_id": "SL_SPINAL_NEUROSURGERY",
     "anatomy_id": "ANAT_SPEC_NEUROSURGERY_CERVICAL_SPINE",
-    "aliases": ["ACDF"],
+    "aliases": [
+      "ACDF"
+    ],
     "description": "Anterior cervical decompression with fusion.",
     "status": "active"
   },
@@ -220,14 +227,15 @@
     "description": "Balloon-assisted vertebral augmentation procedure.",
     "status": "active"
   },
-
   {
     "id": "PROC_DEEP_BRAIN_STIMULATION_LEAD_INSERTION",
     "name": "Deep Brain Stimulation Lead Insertion",
     "specialty_id": "SPEC_NEUROSURGERY",
     "service_line_id": "SL_FUNCTIONAL_NEUROSURGERY",
     "anatomy_id": "ANAT_SPEC_NEUROSURGERY_BRAIN",
-    "aliases": ["DBS Lead Insertion"],
+    "aliases": [
+      "DBS Lead Insertion"
+    ],
     "description": "Stereotactic insertion of deep brain stimulation leads.",
     "status": "active"
   },
@@ -237,7 +245,9 @@
     "specialty_id": "SPEC_NEUROSURGERY",
     "service_line_id": "SL_FUNCTIONAL_NEUROSURGERY",
     "anatomy_id": "ANAT_SPEC_NEUROSURGERY_CHEST_WALL",
-    "aliases": ["DBS Generator Insertion"],
+    "aliases": [
+      "DBS Generator Insertion"
+    ],
     "description": "Insertion of pulse generator for deep brain stimulation system.",
     "status": "active"
   },
@@ -247,7 +257,9 @@
     "specialty_id": "SPEC_NEUROSURGERY",
     "service_line_id": "SL_FUNCTIONAL_NEUROSURGERY",
     "anatomy_id": "ANAT_SPEC_NEUROSURGERY_NECK",
-    "aliases": ["VNS Insertion"],
+    "aliases": [
+      "VNS Insertion"
+    ],
     "description": "Insertion of vagus nerve stimulation device.",
     "status": "active"
   },
@@ -281,7 +293,6 @@
     "description": "Insertion of intrathecal drug delivery system for spasticity management.",
     "status": "active"
   },
-
   {
     "id": "PROC_RESECTION_OF_GLIOMA",
     "name": "Resection of Glioma",
@@ -308,7 +319,9 @@
     "specialty_id": "SPEC_NEUROSURGERY",
     "service_line_id": "SL_NEUROONCOLOGIC_SURGERY",
     "anatomy_id": "ANAT_SPEC_NEUROSURGERY_CEREBELLOPONTINE_ANGLE",
-    "aliases": ["Acoustic Neuroma Resection"],
+    "aliases": [
+      "Acoustic Neuroma Resection"
+    ],
     "description": "Resection of vestibular schwannoma in the cerebellopontine angle.",
     "status": "active"
   },
@@ -332,7 +345,6 @@
     "description": "Awake craniotomy for tumour resection in eloquent brain regions.",
     "status": "active"
   },
-
   {
     "id": "PROC_PAEDIATRIC_VENTRICULOPERITONEAL_SHUNT_INSERTION",
     "name": "Paediatric Ventriculoperitoneal Shunt Insertion",

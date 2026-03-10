@@ -17,8 +17,26 @@ const microsoftProvider = new OAuthProvider("microsoft.com")
 microsoftProvider.setCustomParameters({ prompt: "select_account" })
 const DEV_AUTH_KEY = "prepsight_dev_auth"
 
-function isLocalhost() {
-  return typeof window !== "undefined" && window.location.hostname === "localhost"
+function isPrivateLanHost(host: string) {
+  if (/^192\.168\.\d{1,3}\.\d{1,3}$/.test(host)) return true
+  if (/^10\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(host)) return true
+  const match172 = host.match(/^172\.(\d{1,3})\.\d{1,3}\.\d{1,3}$/)
+  if (match172) {
+    const secondOctet = Number(match172[1])
+    return secondOctet >= 16 && secondOctet <= 31
+  }
+  return false
+}
+
+function isLocalDevHost() {
+  if (typeof window === "undefined") return false
+  const host = window.location.hostname
+  return (
+    host === "localhost" ||
+    host === "127.0.0.1" ||
+    host === "::1" ||
+    isPrivateLanHost(host)
+  )
 }
 
 function isMobile() {
@@ -41,7 +59,7 @@ if (auth) {
 }
 
 export async function signInWithGoogle() {
-  if (isLocalhost()) {
+  if (isLocalDevHost()) {
     sessionStorage.setItem(DEV_AUTH_KEY, "true")
     window.dispatchEvent(new Event("prepsight-dev-auth"))
     return { method: "popup" as const, result: null }
@@ -67,7 +85,7 @@ export async function signInWithGoogle() {
 }
 
 export async function signInWithMicrosoft() {
-  if (isLocalhost()) {
+  if (isLocalDevHost()) {
     sessionStorage.setItem(DEV_AUTH_KEY, "true")
     window.dispatchEvent(new Event("prepsight-dev-auth"))
     return { method: "popup" as const, result: null }
@@ -93,13 +111,13 @@ export async function signInWithMicrosoft() {
 }
 
 export async function getLoginRedirectResult() {
-  if (isLocalhost()) return null
+  if (isLocalDevHost()) return null
   if (!auth) return null
   return getRedirectResult(auth)
 }
 
 export async function signOut() {
-  if (isLocalhost()) {
+  if (isLocalDevHost()) {
     sessionStorage.removeItem(DEV_AUTH_KEY)
     window.dispatchEvent(new Event("prepsight-dev-auth"))
     return
@@ -109,7 +127,7 @@ export async function signOut() {
 }
 
 export function onAuthChange(callback: (user: User | null) => void) {
-  if (isLocalhost()) {
+  if (isLocalDevHost()) {
     const emit = () => {
       const enabled = sessionStorage.getItem(DEV_AUTH_KEY) === "true"
       if (!enabled) {

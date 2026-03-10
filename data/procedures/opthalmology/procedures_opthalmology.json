@@ -5,7 +5,10 @@
     "specialty_id": "SPEC_OPHTHALMOLOGY",
     "service_line_id": "SL_CATARACT_SURGERY",
     "anatomy_id": "ANAT_SPEC_OPHTHALMOLOGY_LENS",
-    "aliases": ["Cataract Surgery", "Phaco and IOL"],
+    "aliases": [
+      "Cataract Surgery",
+      "Phaco and IOL"
+    ],
     "description": "Removal of cataractous lens with insertion of intraocular lens.",
     "status": "active"
   },
@@ -15,7 +18,9 @@
     "specialty_id": "SPEC_OPHTHALMOLOGY",
     "service_line_id": "SL_CATARACT_SURGERY",
     "anatomy_id": "ANAT_SPEC_OPHTHALMOLOGY_LENS",
-    "aliases": ["ECCE"],
+    "aliases": [
+      "ECCE"
+    ],
     "description": "Manual extracapsular extraction of cataractous lens.",
     "status": "active"
   },
@@ -39,14 +44,15 @@
     "description": "Laser capsulotomy for posterior capsule opacification after cataract surgery.",
     "status": "active"
   },
-
   {
     "id": "PROC_PARS_PLANA_VITRECTOMY",
     "name": "Pars Plana Vitrectomy",
     "specialty_id": "SPEC_OPHTHALMOLOGY",
     "service_line_id": "SL_VITREORETINAL_SURGERY",
     "anatomy_id": "ANAT_SPEC_OPHTHALMOLOGY_VITREOUS",
-    "aliases": ["PPV"],
+    "aliases": [
+      "PPV"
+    ],
     "description": "Vitrectomy performed via pars plana approach.",
     "status": "active"
   },
@@ -100,7 +106,6 @@
     "description": "Removal of intraocular foreign body through vitreoretinal approach.",
     "status": "active"
   },
-
   {
     "id": "PROC_TRABECULECTOMY",
     "name": "Trabeculectomy",
@@ -117,7 +122,9 @@
     "specialty_id": "SPEC_OPHTHALMOLOGY",
     "service_line_id": "SL_GLAUCOMA_SURGERY",
     "anatomy_id": "ANAT_SPEC_OPHTHALMOLOGY_ANTERIOR_CHAMBER",
-    "aliases": ["Tube Shunt Surgery"],
+    "aliases": [
+      "Tube Shunt Surgery"
+    ],
     "description": "Insertion of glaucoma drainage implant to control intraocular pressure.",
     "status": "active"
   },
@@ -127,7 +134,9 @@
     "specialty_id": "SPEC_OPHTHALMOLOGY",
     "service_line_id": "SL_GLAUCOMA_SURGERY",
     "anatomy_id": "ANAT_SPEC_OPHTHALMOLOGY_ANTERIOR_CHAMBER",
-    "aliases": ["MIGS"],
+    "aliases": [
+      "MIGS"
+    ],
     "description": "Minimally invasive glaucoma procedure to reduce intraocular pressure.",
     "status": "active"
   },
@@ -151,7 +160,6 @@
     "description": "Procedure to reduce aqueous production by treating ciliary body tissue.",
     "status": "active"
   },
-
   {
     "id": "PROC_PENETRATING_KERATOPLASTY",
     "name": "Penetrating Keratoplasty",
@@ -168,7 +176,9 @@
     "specialty_id": "SPEC_OPHTHALMOLOGY",
     "service_line_id": "SL_CORNEAL_AND_ANTERIOR_SEGMENT_SURGERY",
     "anatomy_id": "ANAT_SPEC_OPHTHALMOLOGY_CORNEA",
-    "aliases": ["DALK"],
+    "aliases": [
+      "DALK"
+    ],
     "description": "Lamellar corneal transplantation preserving recipient endothelium.",
     "status": "active"
   },
@@ -178,7 +188,10 @@
     "specialty_id": "SPEC_OPHTHALMOLOGY",
     "service_line_id": "SL_CORNEAL_AND_ANTERIOR_SEGMENT_SURGERY",
     "anatomy_id": "ANAT_SPEC_OPHTHALMOLOGY_CORNEA",
-    "aliases": ["DMEK", "DSAEK"],
+    "aliases": [
+      "DMEK",
+      "DSAEK"
+    ],
     "description": "Selective endothelial corneal transplantation.",
     "status": "active"
   },
@@ -212,7 +225,6 @@
     "description": "Washout of anterior chamber for blood, inflammatory material, or debris.",
     "status": "active"
   },
-
   {
     "id": "PROC_PTOSIS_REPAIR",
     "name": "Ptosis Repair",
@@ -259,7 +271,9 @@
     "specialty_id": "SPEC_OPHTHALMOLOGY",
     "service_line_id": "SL_OCULOPLASTIC_SURGERY",
     "anatomy_id": "ANAT_SPEC_OPHTHALMOLOGY_LACRIMAL_SYSTEM",
-    "aliases": ["DCR"],
+    "aliases": [
+      "DCR"
+    ],
     "description": "Creation of drainage passage from lacrimal sac to nasal cavity.",
     "status": "active"
   },
@@ -303,14 +317,15 @@
     "description": "Removal of intraocular contents while preserving scleral shell.",
     "status": "active"
   },
-
   {
     "id": "PROC_SQUINT_SURGERY",
     "name": "Squint Surgery",
     "specialty_id": "SPEC_OPHTHALMOLOGY",
     "service_line_id": "SL_PAEDIATRIC_OPHTHALMOLOGY",
     "anatomy_id": "ANAT_SPEC_OPHTHALMOLOGY_EXTRAOCULAR_MUSCLES",
-    "aliases": ["Strabismus Surgery"],
+    "aliases": [
+      "Strabismus Surgery"
+    ],
     "description": "Surgical correction of ocular misalignment by extraocular muscle adjustment.",
     "status": "active"
   },

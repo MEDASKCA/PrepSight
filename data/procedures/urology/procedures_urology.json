@@ -5,7 +5,9 @@
     "specialty_id": "SPEC_UROLOGY",
     "service_line_id": "SL_ENDOUROLOGY",
     "anatomy_id": "ANAT_SPEC_UROLOGY_URETER",
-    "aliases": ["URS and Stone Extraction"],
+    "aliases": [
+      "URS and Stone Extraction"
+    ],
     "description": "Endoscopic treatment of ureteric stone disease.",
     "status": "active"
   },
@@ -15,7 +17,9 @@
     "specialty_id": "SPEC_UROLOGY",
     "service_line_id": "SL_ENDOUROLOGY",
     "anatomy_id": "ANAT_SPEC_UROLOGY_URETER",
-    "aliases": ["URS and Laser Lithotripsy"],
+    "aliases": [
+      "URS and Laser Lithotripsy"
+    ],
     "description": "Endoscopic fragmentation of ureteric or renal calculi using laser.",
     "status": "active"
   },
@@ -25,7 +29,10 @@
     "specialty_id": "SPEC_UROLOGY",
     "service_line_id": "SL_ENDOUROLOGY",
     "anatomy_id": "ANAT_SPEC_UROLOGY_KIDNEY",
-    "aliases": ["Flexible URS", "FURS"],
+    "aliases": [
+      "Flexible URS",
+      "FURS"
+    ],
     "description": "Flexible endoscopic inspection and treatment of the upper urinary tract.",
     "status": "active"
   },
@@ -35,7 +42,9 @@
     "specialty_id": "SPEC_UROLOGY",
     "service_line_id": "SL_ENDOUROLOGY",
     "anatomy_id": "ANAT_SPEC_UROLOGY_KIDNEY",
-    "aliases": ["PCNL"],
+    "aliases": [
+      "PCNL"
+    ],
     "description": "Percutaneous removal of renal calculi.",
     "status": "active"
   },
@@ -45,7 +54,10 @@
     "specialty_id": "SPEC_UROLOGY",
     "service_line_id": "SL_ENDOUROLOGY",
     "anatomy_id": "ANAT_SPEC_UROLOGY_URETER",
-    "aliases": ["JJ Stent Insertion", "Double J Stent Insertion"],
+    "aliases": [
+      "JJ Stent Insertion",
+      "Double J Stent Insertion"
+    ],
     "description": "Endoscopic insertion of ureteric stent for drainage or patency.",
     "status": "active"
   },
@@ -65,7 +77,9 @@
     "specialty_id": "SPEC_UROLOGY",
     "service_line_id": "SL_UROLOGIC_ONCOLOGY",
     "anatomy_id": "ANAT_SPEC_UROLOGY_BLADDER",
-    "aliases": ["TURBT"],
+    "aliases": [
+      "TURBT"
+    ],
     "description": "Endoscopic resection of bladder tumour.",
     "status": "active"
   },
@@ -105,7 +119,9 @@
     "specialty_id": "SPEC_UROLOGY",
     "service_line_id": "SL_UROLOGIC_ONCOLOGY",
     "anatomy_id": "ANAT_SPEC_UROLOGY_KIDNEY",
-    "aliases": ["Nephron-Sparing Surgery"],
+    "aliases": [
+      "Nephron-Sparing Surgery"
+    ],
     "description": "Partial removal of kidney preserving renal parenchyma.",
     "status": "active"
   },
@@ -125,7 +141,9 @@
     "specialty_id": "SPEC_UROLOGY",
     "service_line_id": "SL_UROLOGIC_ONCOLOGY",
     "anatomy_id": "ANAT_SPEC_UROLOGY_TESTIS",
-    "aliases": ["Radical Orchiectomy"],
+    "aliases": [
+      "Radical Orchiectomy"
+    ],
     "description": "Removal of testis via inguinal approach for malignancy.",
     "status": "active"
   },
@@ -155,7 +173,9 @@
     "specialty_id": "SPEC_UROLOGY",
     "service_line_id": "SL_FUNCTIONAL_UROLOGY_AND_INCONTINENCE",
     "anatomy_id": "ANAT_SPEC_UROLOGY_PROSTATE",
-    "aliases": ["TURP"],
+    "aliases": [
+      "TURP"
+    ],
     "description": "Endoscopic resection of prostatic tissue causing obstruction.",
     "status": "active"
   },
@@ -165,7 +185,9 @@
     "specialty_id": "SPEC_UROLOGY",
     "service_line_id": "SL_FUNCTIONAL_UROLOGY_AND_INCONTINENCE",
     "anatomy_id": "ANAT_SPEC_UROLOGY_PROSTATE",
-    "aliases": ["HoLEP"],
+    "aliases": [
+      "HoLEP"
+    ],
     "description": "Laser enucleation of obstructing prostatic adenoma.",
     "status": "active"
   },
@@ -245,7 +267,9 @@
     "specialty_id": "SPEC_UROLOGY",
     "service_line_id": "SL_ANDROLOGY",
     "anatomy_id": "ANAT_SPEC_UROLOGY_TESTIS",
-    "aliases": ["Vasovasostomy"],
+    "aliases": [
+      "Vasovasostomy"
+    ],
     "description": "Microsurgical reversal of vasectomy.",
     "status": "active"
   },
@@ -265,7 +289,9 @@
     "specialty_id": "SPEC_UROLOGY",
     "service_line_id": "SL_ANDROLOGY",
     "anatomy_id": "ANAT_SPEC_UROLOGY_SCROTUM",
-    "aliases": ["Hydrocele Repair"],
+    "aliases": [
+      "Hydrocele Repair"
+    ],
     "description": "Repair or excision of hydrocoele sac.",
     "status": "active"
   },
@@ -315,7 +341,9 @@
     "specialty_id": "SPEC_UROLOGY",
     "service_line_id": "SL_PAEDIATRIC_UROLOGY",
     "anatomy_id": "ANAT_SPEC_UROLOGY_TESTIS",
-    "aliases": ["Orchiopexy"],
+    "aliases": [
+      "Orchiopexy"
+    ],
     "description": "Fixation of undescended testis within the scrotum.",
     "status": "active"
   },
@@ -357,6 +385,18 @@
     "anatomy_id": "ANAT_SPEC_UROLOGY_URETER",
     "aliases": [],
     "description": "Reimplantation of ureter into the bladder.",
+    "status": "active"
+  },
+  {
+    "id": "PROC_URETEROSCOPY_LASER",
+    "name": "Ureteroscopy Laser Lithotripsy",
+    "specialty_id": "SPEC_UROLOGY",
+    "service_line_id": "SL_ENDOUROLOGY",
+    "anatomy_id": "ANAT_SPEC_UROLOGY_URETER",
+    "aliases": [
+      "URS Laser"
+    ],
+    "description": "Endoscopic fragmentation of ureteric stones",
     "status": "active"
   }
 ]

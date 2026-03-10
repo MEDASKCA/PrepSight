@@ -5,7 +5,9 @@
     "specialty_id": "SPEC_GENERAL_SURGERY",
     "service_line_id": "SL_EMERGENCY_GENERAL_SURGERY",
     "anatomy_id": "ANAT_SPEC_GENERAL_SURGERY_APPENDIX",
-    "aliases": ["Appendectomy"],
+    "aliases": [
+      "Appendectomy"
+    ],
     "description": "Removal of the appendix.",
     "status": "active"
   },
@@ -105,7 +107,9 @@
     "specialty_id": "SPEC_GENERAL_SURGERY",
     "service_line_id": "SL_BREAST_SURGERY",
     "anatomy_id": "ANAT_SPEC_GENERAL_SURGERY_BREAST",
-    "aliases": ["Lumpectomy"],
+    "aliases": [
+      "Lumpectomy"
+    ],
     "description": "Breast-conserving excision of focal breast lesion.",
     "status": "active"
   },
@@ -135,7 +139,9 @@
     "specialty_id": "SPEC_GENERAL_SURGERY",
     "service_line_id": "SL_BREAST_SURGERY",
     "anatomy_id": "ANAT_SPEC_GENERAL_SURGERY_AXILLA",
-    "aliases": ["Axillary Lymph Node Dissection"],
+    "aliases": [
+      "Axillary Lymph Node Dissection"
+    ],
     "description": "Clearance of axillary lymph nodes.",
     "status": "active"
   },
@@ -175,7 +181,9 @@
     "specialty_id": "SPEC_GENERAL_SURGERY",
     "service_line_id": "SL_COLORECTAL_SURGERY",
     "anatomy_id": "ANAT_SPEC_GENERAL_SURGERY_COLON",
-    "aliases": ["Sigmoidectomy"],
+    "aliases": [
+      "Sigmoidectomy"
+    ],
     "description": "Resection of sigmoid colon.",
     "status": "active"
   },
@@ -205,7 +213,9 @@
     "specialty_id": "SPEC_GENERAL_SURGERY",
     "service_line_id": "SL_COLORECTAL_SURGERY",
     "anatomy_id": "ANAT_SPEC_GENERAL_SURGERY_RECTUM",
-    "aliases": ["APR"],
+    "aliases": [
+      "APR"
+    ],
     "description": "Resection of distal rectum and anus with permanent stoma.",
     "status": "active"
   },
@@ -265,7 +275,9 @@
     "specialty_id": "SPEC_GENERAL_SURGERY",
     "service_line_id": "SL_COLORECTAL_SURGERY",
     "anatomy_id": "ANAT_SPEC_GENERAL_SURGERY_ANUS",
-    "aliases": ["Hemorrhoidectomy"],
+    "aliases": [
+      "Hemorrhoidectomy"
+    ],
     "description": "Excision of haemorrhoids.",
     "status": "active"
   },
@@ -305,7 +317,9 @@
     "specialty_id": "SPEC_GENERAL_SURGERY",
     "service_line_id": "SL_UPPER_GASTROINTESTINAL_SURGERY",
     "anatomy_id": "ANAT_SPEC_GENERAL_SURGERY_OESOPHAGUS",
-    "aliases": ["Esophagectomy"],
+    "aliases": [
+      "Esophagectomy"
+    ],
     "description": "Resection of the oesophagus.",
     "status": "active"
   },
@@ -325,7 +339,9 @@
     "specialty_id": "SPEC_GENERAL_SURGERY",
     "service_line_id": "SL_UPPER_GASTROINTESTINAL_SURGERY",
     "anatomy_id": "ANAT_SPEC_GENERAL_SURGERY_STOMACH",
-    "aliases": ["Partial Gastrectomy"],
+    "aliases": [
+      "Partial Gastrectomy"
+    ],
     "description": "Partial resection of the stomach.",
     "status": "active"
   },
@@ -335,7 +351,9 @@
     "specialty_id": "SPEC_GENERAL_SURGERY",
     "service_line_id": "SL_UPPER_GASTROINTESTINAL_SURGERY",
     "anatomy_id": "ANAT_SPEC_GENERAL_SURGERY_GASTROOESOPHAGEAL_JUNCTION",
-    "aliases": ["Fundoplication"],
+    "aliases": [
+      "Fundoplication"
+    ],
     "description": "Anti-reflux procedure at the gastrooesophageal junction.",
     "status": "active"
   },
@@ -345,7 +363,9 @@
     "specialty_id": "SPEC_GENERAL_SURGERY",
     "service_line_id": "SL_UPPER_GASTROINTESTINAL_SURGERY",
     "anatomy_id": "ANAT_SPEC_GENERAL_SURGERY_DIAPHRAGM",
-    "aliases": ["Hiatal Hernia Repair"],
+    "aliases": [
+      "Hiatal Hernia Repair"
+    ],
     "description": "Repair of hiatus hernia.",
     "status": "active"
   },
@@ -445,7 +465,9 @@
     "specialty_id": "SPEC_GENERAL_SURGERY",
     "service_line_id": "SL_HEPATOPANCREATOBILIARY_SURGERY",
     "anatomy_id": "ANAT_SPEC_GENERAL_SURGERY_PANCREAS",
-    "aliases": ["Whipple Procedure"],
+    "aliases": [
+      "Whipple Procedure"
+    ],
     "description": "Resection of pancreatic head and duodenum.",
     "status": "active"
   },
@@ -475,7 +497,9 @@
     "specialty_id": "SPEC_GENERAL_SURGERY",
     "service_line_id": "SL_TRANSPLANT_SURGERY",
     "anatomy_id": "ANAT_SPEC_GENERAL_SURGERY_SMALL_INTESTINE",
-    "aliases": ["Intestinal Transplantation"],
+    "aliases": [
+      "Intestinal Transplantation"
+    ],
     "description": "Transplantation of donor small intestine.",
     "status": "active"
   },
@@ -505,7 +529,9 @@
     "specialty_id": "SPEC_GENERAL_SURGERY",
     "service_line_id": "SL_BARIATRIC_SURGERY",
     "anatomy_id": "ANAT_SPEC_GENERAL_SURGERY_STOMACH",
-    "aliases": ["Mini Gastric Bypass"],
+    "aliases": [
+      "Mini Gastric Bypass"
+    ],
     "description": "Single-anastomosis bariatric bypass procedure.",
     "status": "active"
   },
@@ -535,7 +561,9 @@
     "specialty_id": "SPEC_GENERAL_SURGERY",
     "service_line_id": "SL_ENDOCRINE_SURGERY",
     "anatomy_id": "ANAT_SPEC_GENERAL_SURGERY_THYROID_GLAND",
-    "aliases": ["Thyroid Lobectomy"],
+    "aliases": [
+      "Thyroid Lobectomy"
+    ],
     "description": "Removal of one thyroid lobe.",
     "status": "active"
   },

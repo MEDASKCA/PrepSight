@@ -5,7 +5,9 @@
     "specialty_id": "SPEC_OMFS",
     "service_line_id": "SL_MAXILLOFACIAL_TRAUMA_SURGERY",
     "anatomy_id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_MANDIBLE",
-    "aliases": ["Mandibular Fracture ORIF"],
+    "aliases": [
+      "Mandibular Fracture ORIF"
+    ],
     "description": "Open reduction and internal fixation of fracture of the mandible.",
     "status": "active"
   },
@@ -15,7 +17,9 @@
     "specialty_id": "SPEC_OMFS",
     "service_line_id": "SL_MAXILLOFACIAL_TRAUMA_SURGERY",
     "anatomy_id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_MAXILLA",
-    "aliases": ["Maxillary Fracture ORIF"],
+    "aliases": [
+      "Maxillary Fracture ORIF"
+    ],
     "description": "Open reduction and internal fixation of fracture of the maxilla.",
     "status": "active"
   },
@@ -25,7 +29,9 @@
     "specialty_id": "SPEC_OMFS",
     "service_line_id": "SL_MAXILLOFACIAL_TRAUMA_SURGERY",
     "anatomy_id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_ZYGOMA",
-    "aliases": ["Zygomatic Fracture ORIF"],
+    "aliases": [
+      "Zygomatic Fracture ORIF"
+    ],
     "description": "Open reduction and internal fixation of zygomatic complex fracture.",
     "status": "active"
   },
@@ -35,7 +41,9 @@
     "specialty_id": "SPEC_OMFS",
     "service_line_id": "SL_MAXILLOFACIAL_TRAUMA_SURGERY",
     "anatomy_id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_ORBIT",
-    "aliases": ["Orbital Fracture ORIF"],
+    "aliases": [
+      "Orbital Fracture ORIF"
+    ],
     "description": "Open reduction and internal fixation of orbital fracture.",
     "status": "active"
   },
@@ -69,7 +77,6 @@
     "description": "Application of arch bars for maxillomandibular fixation in facial fracture management.",
     "status": "active"
   },
-
   {
     "id": "PROC_LEFORT_I_OSTEOTOMY",
     "name": "Le Fort I Osteotomy",
@@ -86,7 +93,9 @@
     "specialty_id": "SPEC_OMFS",
     "service_line_id": "SL_ORTHOGNATHIC_SURGERY",
     "anatomy_id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_MANDIBLE",
-    "aliases": ["BSSO"],
+    "aliases": [
+      "BSSO"
+    ],
     "description": "Mandibular osteotomy for orthognathic repositioning.",
     "status": "active"
   },
@@ -110,7 +119,6 @@
     "description": "Combined maxillary and mandibular osteotomy surgery for dentofacial deformity.",
     "status": "active"
   },
-
   {
     "id": "PROC_WIDE_LOCAL_EXCISION_OF_ORAL_CAVITY_LESION",
     "name": "Wide Local Excision of Oral Cavity Lesion",
@@ -191,7 +199,6 @@
     "description": "Reconstruction of oral cavity defect after excision.",
     "status": "active"
   },
-
   {
     "id": "PROC_ARTHROCENTESIS_OF_TEMPOROMANDIBULAR_JOINT",
     "name": "Arthrocentesis of Temporomandibular Joint",
@@ -242,7 +249,6 @@
     "description": "Replacement of the temporomandibular joint with prosthetic components.",
     "status": "active"
   },
-
   {
     "id": "PROC_SURGICAL_EXTRACTION_OF_IMPACTED_TOOTH",
     "name": "Surgical Extraction of Impacted Tooth",
@@ -259,7 +265,9 @@
     "specialty_id": "SPEC_OMFS",
     "service_line_id": "SL_DENTOALVEOLAR_SURGERY",
     "anatomy_id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_TEETH_AND_ALVEOLAR_BONE",
-    "aliases": ["Third Molar Extraction"],
+    "aliases": [
+      "Third Molar Extraction"
+    ],
     "description": "Removal of third molar tooth.",
     "status": "active"
   },
@@ -279,7 +287,9 @@
     "specialty_id": "SPEC_OMFS",
     "service_line_id": "SL_DENTOALVEOLAR_SURGERY",
     "anatomy_id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_TEETH_AND_ALVEOLAR_BONE",
-    "aliases": ["Root End Resection"],
+    "aliases": [
+      "Root End Resection"
+    ],
     "description": "Surgical resection of the apex of a tooth root.",
     "status": "active"
   },

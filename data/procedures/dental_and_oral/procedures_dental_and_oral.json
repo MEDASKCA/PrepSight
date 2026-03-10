@@ -25,7 +25,9 @@
     "specialty_id": "SPEC_DENTAL_ORAL_SURGERY",
     "service_line_id": "SL_ORAL_SURGERY",
     "anatomy_id": "ANAT_SPEC_DENTAL_AND_ORAL_SURGERY_ORAL_CAVITY",
-    "aliases": ["Excision of Mucocele"],
+    "aliases": [
+      "Excision of Mucocele"
+    ],
     "description": "Excision of mucous cyst of the oral cavity.",
     "status": "active"
   },
@@ -65,7 +67,9 @@
     "specialty_id": "SPEC_DENTAL_ORAL_SURGERY",
     "service_line_id": "SL_ORAL_SURGERY",
     "anatomy_id": "ANAT_SPEC_DENTAL_AND_ORAL_SURGERY_TEETH_AND_ALVEOLAR_BONE",
-    "aliases": ["Third Molar Extraction"],
+    "aliases": [
+      "Third Molar Extraction"
+    ],
     "description": "Removal of third molar tooth.",
     "status": "active"
   },
@@ -75,7 +79,9 @@
     "specialty_id": "SPEC_DENTAL_ORAL_SURGERY",
     "service_line_id": "SL_ORAL_SURGERY",
     "anatomy_id": "ANAT_SPEC_DENTAL_AND_ORAL_SURGERY_TEETH_AND_ALVEOLAR_BONE",
-    "aliases": ["Root End Resection"],
+    "aliases": [
+      "Root End Resection"
+    ],
     "description": "Surgical resection of tooth root apex.",
     "status": "active"
   },
@@ -119,7 +125,6 @@
     "description": "Surgical exposure of impacted tooth for orthodontic traction or management.",
     "status": "active"
   },
-
   {
     "id": "PROC_SIMPLE_TOOTH_EXTRACTION",
     "name": "Simple Tooth Extraction",

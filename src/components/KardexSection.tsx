@@ -1,21 +1,28 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronDown, ChevronUp, ExternalLink, Save, Check, X, Clock, SquarePen, Plus, Trash2 } from "lucide-react"
+import { ChevronDown, ChevronUp, ExternalLink, Save, Check, Clock, SquarePen, Plus, Trash2 } from "lucide-react"
 import ItemRow from "./ItemRow"
+import CataloguePickerModal from "./CataloguePickerModal"
 import { Section, Item } from "@/lib/types"
 
 interface Props {
   section: Section
   defaultOpen?: boolean
   onSave?: () => void
+  onSectionChange?: (section: Section) => void
 }
 
 function today() {
   return new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
 }
 
-export default function KardexSection({ section, defaultOpen = false, onSave }: Props) {
+export default function KardexSection({
+  section,
+  defaultOpen = false,
+  onSave,
+  onSectionChange,
+}: Props) {
   const [open, setOpen]             = useState(defaultOpen)
   const [editMode, setEditMode]     = useState(false)
   const [savedFeedback, setSavedFeedback] = useState(false)
@@ -37,8 +44,10 @@ export default function KardexSection({ section, defaultOpen = false, onSave }: 
   const [localExternalLinks,  setLocalExternalLinks]   = useState<{ url: string; label: string }[]>(
     section.externalLinks ?? []
   )
+  const [showCataloguePicker, setShowCataloguePicker] = useState(false)
 
   function handleEditSave() {
+    if (!canEditSection) return
     if (editMode) {
       // Commit nurse notes
       if (notesDraft !== nurseNotes) {
@@ -50,7 +59,14 @@ export default function KardexSection({ section, defaultOpen = false, onSave }: 
         setPositionText(positionDraft)
         setPositionPending(true)
       }
-      // TODO: persist all changes to Firestore proposed_changes
+      emitSectionChange({
+        items: localItems,
+        nurseNotes: notesDraft,
+        patientPositionInstructions: positionDraft,
+        operativeTechniqueUrl: localOpTechUrl,
+        implantGuideUrl: localImplantUrl,
+        externalLinks: localExternalLinks,
+      })
       setEditMode(false)
       setSavedFeedback(true)
       setTimeout(() => setSavedFeedback(false), 1500)
@@ -64,7 +80,11 @@ export default function KardexSection({ section, defaultOpen = false, onSave }: 
   }
 
   function deleteItem(id: string) {
-    setLocalItems((prev) => prev.filter((i) => i.id !== id))
+    setLocalItems((prev) => {
+      const next = prev.filter((i) => i.id !== id)
+      onSectionChange?.({ ...section, items: next })
+      return next
+    })
   }
 
   function addExternalLink() {
@@ -81,6 +101,15 @@ export default function KardexSection({ section, defaultOpen = false, onSave }: 
     setLocalExternalLinks((prev) => prev.filter((_, idx) => idx !== i))
   }
 
+  function addItemFromCatalogue(item: Item) {
+    setLocalItems((prev) => {
+      const next = [...prev, item]
+      onSectionChange?.({ ...section, items: next })
+      return next
+    })
+    setShowCataloguePicker(false)
+  }
+
   const isProcedureRef  = section.sectionType === "procedure_reference"
   const isNurseNotes    = section.sectionType === "nurse_prep_notes"
   const isPositioning   = section.sectionType === "patient_positioning"
@@ -88,6 +117,20 @@ export default function KardexSection({ section, defaultOpen = false, onSave }: 
   const isPostCare      = section.sectionType === "post_procedure_care"
   const isDischarge     = section.sectionType === "discharge_criteria"
   const isComplications = section.sectionType === "complications_escalation"
+  const canEditSection  = section.contentMode !== "fixed"
+
+  function emitSectionChange(overrides?: Partial<Section>) {
+    onSectionChange?.({
+      ...section,
+      items: localItems,
+      nurseNotes,
+      patientPositionInstructions: positionText,
+      operativeTechniqueUrl: localOpTechUrl,
+      implantGuideUrl: localImplantUrl,
+      externalLinks: localExternalLinks,
+      ...overrides,
+    })
+  }
 
   return (
     <div className="bg-white border border-[#D5DCE3] rounded-xl overflow-hidden mb-3">
@@ -97,9 +140,14 @@ export default function KardexSection({ section, defaultOpen = false, onSave }: 
           className="flex-1 flex items-center gap-3 px-4 py-3.5 hover:bg-[#2F8EF7] transition-colors text-white font-semibold text-base text-left"
         >
           <span className="flex-1">{section.title}</span>
+          {section.contentMode === "fixed" && (
+            <span className="shrink-0 rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+              Supplier fixed
+            </span>
+          )}
         </button>
 
-        {open && (
+        {open && canEditSection && (
           savedFeedback ? (
             <div className="ml-2 mr-1 w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center shrink-0">
               <Check size={14} className="text-white" />
@@ -366,6 +414,17 @@ export default function KardexSection({ section, defaultOpen = false, onSave }: 
           )}
 
           {/* ── ITEMS LIST ────────────────────────────────────────── */}
+          {editMode && canEditSection && (
+            <div className="mb-3 flex justify-end">
+              <button
+                onClick={() => setShowCataloguePicker(true)}
+                className="inline-flex items-center gap-1.5 rounded-lg bg-[#E7F1FB] px-3 py-1.5 text-xs font-semibold text-[#1E293B] transition-colors hover:bg-[#D8E9FA]"
+              >
+                <Plus size={13} /> Add from catalogue
+              </button>
+            </div>
+          )}
+
           {localItems.length > 0 && (
             <>
               <div className="flex items-center pt-1 pb-1.5 text-xs uppercase tracking-wider text-[#94a3b8] border-b border-[#D5DCE3]">
@@ -381,6 +440,7 @@ export default function KardexSection({ section, defaultOpen = false, onSave }: 
                   key={item.id}
                   item={item}
                   editMode={editMode}
+                  allowEdit={!item.isFixed}
                   onDelete={() => deleteItem(item.id)}
                 />
               ))}
@@ -388,6 +448,14 @@ export default function KardexSection({ section, defaultOpen = false, onSave }: 
           )}
 
         </div>
+      )}
+
+      {showCataloguePicker && (
+        <CataloguePickerModal
+          sectionType={section.sectionType}
+          onClose={() => setShowCataloguePicker(false)}
+          onSelect={addItemFromCatalogue}
+        />
       )}
     </div>
   )

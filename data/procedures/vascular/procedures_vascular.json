@@ -79,14 +79,15 @@
     "description": "Major amputation performed for critical limb ischaemia or unsalvageable vascular disease.",
     "status": "active"
   },
-
   {
     "id": "PROC_OPEN_REPAIR_OF_ABDOMINAL_AORTIC_ANEURYSM",
     "name": "Open Repair of Abdominal Aortic Aneurysm",
     "specialty_id": "SPEC_VASCULAR_SURGERY",
     "service_line_id": "SL_AORTIC_SURGERY",
     "anatomy_id": "ANAT_SPEC_VASCULAR_SURGERY_AORTA",
-    "aliases": ["Open AAA Repair"],
+    "aliases": [
+      "Open AAA Repair"
+    ],
     "description": "Open surgical replacement of aneurysmal abdominal aorta.",
     "status": "active"
   },
@@ -96,7 +97,9 @@
     "specialty_id": "SPEC_VASCULAR_SURGERY",
     "service_line_id": "SL_AORTIC_SURGERY",
     "anatomy_id": "ANAT_SPEC_VASCULAR_SURGERY_AORTA",
-    "aliases": ["EVAR"],
+    "aliases": [
+      "EVAR"
+    ],
     "description": "Endovascular stent graft repair of abdominal aortic aneurysm.",
     "status": "active"
   },
@@ -116,7 +119,9 @@
     "specialty_id": "SPEC_VASCULAR_SURGERY",
     "service_line_id": "SL_AORTIC_SURGERY",
     "anatomy_id": "ANAT_SPEC_VASCULAR_SURGERY_THORACIC_AORTA",
-    "aliases": ["TEVAR"],
+    "aliases": [
+      "TEVAR"
+    ],
     "description": "Thoracic endovascular stent graft repair of aortic pathology.",
     "status": "active"
   },
@@ -126,7 +131,9 @@
     "specialty_id": "SPEC_VASCULAR_SURGERY",
     "service_line_id": "SL_AORTIC_SURGERY",
     "anatomy_id": "ANAT_SPEC_VASCULAR_SURGERY_AORTA",
-    "aliases": ["FEVAR"],
+    "aliases": [
+      "FEVAR"
+    ],
     "description": "Fenestrated endovascular repair for complex aortic aneurysm.",
     "status": "active"
   },
@@ -136,7 +143,9 @@
     "specialty_id": "SPEC_VASCULAR_SURGERY",
     "service_line_id": "SL_AORTIC_SURGERY",
     "anatomy_id": "ANAT_SPEC_VASCULAR_SURGERY_AORTA",
-    "aliases": ["BEVAR"],
+    "aliases": [
+      "BEVAR"
+    ],
     "description": "Branched endovascular repair for complex aortic aneurysm.",
     "status": "active"
   },
@@ -160,14 +169,15 @@
     "description": "Open or endovascular repair for aortic dissection.",
     "status": "active"
   },
-
   {
     "id": "PROC_ARTERIOVENOUS_FISTULA_CREATION",
     "name": "Arteriovenous Fistula Creation",
     "specialty_id": "SPEC_VASCULAR_SURGERY",
     "service_line_id": "SL_VASCULAR_ACCESS_SURGERY",
     "anatomy_id": "ANAT_SPEC_VASCULAR_SURGERY_UPPER_LIMB_VESSELS",
-    "aliases": ["AV Fistula Creation"],
+    "aliases": [
+      "AV Fistula Creation"
+    ],
     "description": "Creation of autogenous arteriovenous fistula for dialysis access.",
     "status": "active"
   },
@@ -177,7 +187,9 @@
     "specialty_id": "SPEC_VASCULAR_SURGERY",
     "service_line_id": "SL_VASCULAR_ACCESS_SURGERY",
     "anatomy_id": "ANAT_SPEC_VASCULAR_SURGERY_UPPER_LIMB_VESSELS",
-    "aliases": ["AV Graft Insertion"],
+    "aliases": [
+      "AV Graft Insertion"
+    ],
     "description": "Insertion of prosthetic graft for dialysis vascular access.",
     "status": "active"
   },
@@ -221,7 +233,6 @@
     "description": "Insertion of tunnelled central venous catheter for haemodialysis.",
     "status": "active"
   },
-
   {
     "id": "PROC_CAROTID_ENDARTERECTOMY",
     "name": "Carotid Endarterectomy",

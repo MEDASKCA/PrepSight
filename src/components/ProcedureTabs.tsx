@@ -3,7 +3,8 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import {
-  getVariantsForProcedureWithSystems,
+  getCuratedVariantsForProcedureWithSystems,
+  hasOnlySyntheticBranching,
   type SystemWithSupplier,
   type VariantWithSystems,
 } from "@/lib/variants";
@@ -120,7 +121,7 @@ function VariantSection({
         <div className="flex shrink-0 items-center gap-2">
           {variant.systems.length > 0 && (
             <span className="text-xs tabular-nums text-[#0F766E]">
-              {variant.systems.length} system{variant.systems.length === 1 ? "" : "s"}
+              {variant.systems.length} option{variant.systems.length === 1 ? "" : "s"}
             </span>
           )}
           <Chevron expanded={expanded} className="text-[#0F766E]" />
@@ -153,19 +154,21 @@ function VariantSection({
 function ProcedureSection({
   procedure,
   variants,
+  suppressBranching,
   expanded,
   selectedSystemId,
   onToggle,
 }: {
   procedure: ProcedureListItem;
   variants: VariantWithSystems[];
+  suppressBranching: boolean;
   expanded: boolean;
   selectedSystemId?: string;
   onToggle: () => void;
 }) {
   const [openVariantId, setOpenVariantId] = useState<string | null>(null);
   const firstVariantWithSystem = variants.find((variant) => variant.systems.length > 0);
-  const quickCardHref = firstVariantWithSystem
+  const quickCardHref = !suppressBranching && firstVariantWithSystem
     ? `/procedures/${procedure.id}?variant=${encodeURIComponent(firstVariantWithSystem.id)}&system=${encodeURIComponent(firstVariantWithSystem.systems[0].id)}`
     : `/procedures/${procedure.id}`;
 
@@ -175,7 +178,7 @@ function ProcedureSection({
       <div className="flex items-stretch bg-[#4DA3FF]">
         <button
           type="button"
-          onClick={onToggle}
+          onClick={suppressBranching ? undefined : onToggle}
           className="flex min-w-0 flex-1 items-center gap-3 px-4 py-4 text-left transition hover:bg-[#4398F0]"
         >
           <div className="min-w-0 flex-1">
@@ -185,12 +188,12 @@ function ProcedureSection({
             )}
           </div>
           <div className="flex shrink-0 items-center gap-2">
-            {variants.length > 0 && (
+            {!suppressBranching && variants.length > 0 && (
               <span className="text-xs tabular-nums text-white/85">
-                {variants.length} variant{variants.length === 1 ? "" : "s"}
+                {variants.length} option{variants.length === 1 ? "" : "s"}
               </span>
             )}
-            <Chevron expanded={expanded} className="text-white" />
+            {!suppressBranching && <Chevron expanded={expanded} className="text-white" />}
           </div>
         </button>
 
@@ -205,7 +208,7 @@ function ProcedureSection({
         </Link>
       </div>
 
-      {expanded && (
+      {expanded && !suppressBranching && (
         <div className="bg-white">
           {variants.length > 0 ? (
             variants.map((variant, index) => (
@@ -225,7 +228,7 @@ function ProcedureSection({
             ))
           ) : (
             <div className="border-t border-[#D5DCE3] bg-white px-5 py-4 text-sm text-slate-500">
-              No procedure variants available yet.
+              No clinically reliable branching available yet.
             </div>
           )}
         </div>
@@ -245,7 +248,14 @@ export default function ProcedureTabs({
       .filter((procedure) => procedure.status !== "inactive")
       .map((procedure) => ({
         procedure,
-        variants: getVariantsForProcedureWithSystems(procedure.id),
+        variants: getCuratedVariantsForProcedureWithSystems(
+          procedure.id,
+          procedure.name,
+        ),
+        suppressBranching: hasOnlySyntheticBranching(
+          procedure.id,
+          procedure.name,
+        ),
       }));
   }, [procedures]);
 
@@ -259,11 +269,12 @@ export default function ProcedureTabs({
 
   return (
     <div className="space-y-4">
-      {proceduresWithVariants.map(({ procedure, variants }) => (
+      {proceduresWithVariants.map(({ procedure, variants, suppressBranching }) => (
         <ProcedureSection
           key={procedure.id}
           procedure={procedure}
           variants={variants}
+          suppressBranching={suppressBranching}
           expanded={openProcedureId === procedure.id}
           selectedSystemId={selectedSystemId}
           onToggle={() =>

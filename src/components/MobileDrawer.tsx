@@ -1,10 +1,8 @@
 "use client"
 
-import { useState, Suspense } from "react"
-import { Menu, X } from "lucide-react"
+import { useState } from "react"
+import { BotMessageSquare, Paperclip, SendHorizonal, Sparkles, X } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
-import SidebarNavTree from "./SidebarNavTree"
 import ProfileButton from "./ProfileButton"
 
 export default function MobileDrawer() {
@@ -12,14 +10,16 @@ export default function MobileDrawer() {
 
   return (
     <>
-      {/* Top bar — always visible on mobile */}
-      <div data-dev-trigger className="lg:hidden grid grid-cols-3 items-center px-4 py-3 bg-white border-b border-[#D5DCE3] sticky top-0 z-40">
+      <div
+        data-dev-trigger
+        className="sticky top-0 z-40 grid grid-cols-3 items-center border-b border-[#D5DCE3] bg-white px-4 py-3 lg:hidden"
+      >
         <button
           onClick={() => setOpen(true)}
-          aria-label="Open navigation"
-          className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-[#F4F7FA] transition-colors"
+          aria-label="Open AI assistant"
+          className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#D5DCE3] bg-[#F8FBFF] transition-colors hover:bg-[#EFF8FF]"
         >
-          <Menu size={22} className="text-[#4DA3FF]" />
+          <Sparkles size={18} className="text-[#4DA3FF]" />
         </button>
 
         <Link href="/" className="flex justify-center">
@@ -31,58 +31,117 @@ export default function MobileDrawer() {
         </div>
       </div>
 
-      {/* Overlay */}
       {open && (
         <div
-          className="fixed inset-0 bg-black/40 z-40 lg:hidden"
+          className="fixed inset-0 z-40 bg-black/40 lg:hidden"
           onClick={() => setOpen(false)}
           aria-hidden="true"
         />
       )}
 
-      {/* Drawer panel */}
       <div
-        className={`fixed left-0 top-0 h-full w-[300px] bg-white shadow-xl z-50 flex flex-col lg:hidden transition-transform duration-200 ${
-          open ? "translate-x-0" : "-translate-x-[300px]"
+        className={`fixed left-0 top-0 z-50 flex h-full w-[320px] flex-col bg-white shadow-xl transition-transform duration-200 lg:hidden ${
+          open ? "translate-x-0" : "-translate-x-[320px]"
         }`}
       >
-        {/* Drawer header */}
-        <div className="flex items-center justify-between px-4 py-4 border-b border-[#D5DCE3]">
+        <div className="flex items-center justify-between border-b border-[#D5DCE3] px-4 py-4">
           <div className="flex items-center gap-2">
-            <Image src="/ps-mark.png" alt="PrepSight" width={48} height={28} className="w-auto h-7" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-[#B8DBFF] bg-[#EAF7FF] text-[#1D8DCC]">
+              <BotMessageSquare size={18} />
+            </div>
             <div>
-              <p className="text-base font-bold text-[#00B4D8] tracking-tight leading-none">PrepSight</p>
-              <p className="text-xs text-[#94a3b8] mt-0.5">Clinical Procedure Reference</p>
+              <p className="leading-none text-base font-bold tracking-tight text-[#00B4D8]">PrepSight AI</p>
+              <p className="mt-0.5 text-xs text-[#94a3b8]">Contextual clinical assist</p>
             </div>
           </div>
           <button
             onClick={() => setOpen(false)}
-            aria-label="Close navigation"
-            className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[#F4F7FA] transition-colors"
+            aria-label="Close AI assistant"
+            className="flex h-8 w-8 items-center justify-center rounded-lg transition-colors hover:bg-[#F4F7FA]"
           >
             <X size={18} className="text-[#64748b]" />
           </button>
         </div>
 
-        {/* New card */}
-        <div className="px-3 pt-3">
-          <Link
-            href="/procedures/new"
-            onClick={() => setOpen(false)}
-            className="w-full flex items-center justify-center gap-1.5 py-2 rounded-lg border border-dashed border-[#4DA3FF] text-[#4DA3FF] text-xs font-semibold hover:bg-[#EFF8FF] transition-colors"
-          >
-            <span className="text-base leading-none">+</span> New procedure card
-          </Link>
+        <div className="border-b border-[#D5DCE3] bg-gradient-to-b from-[#F8FBFF] to-white px-4 py-4">
+          <div className="space-y-3">
+            <div className="max-w-[85%] rounded-[20px] rounded-tl-md bg-[#F8FAFC] px-4 py-3 text-sm leading-6 text-[#475569]">
+              Hi. I can help with procedure summaries, implant sizes, tray items, and supplier product lookup.
+            </div>
+            <div className="ml-auto max-w-[78%] rounded-[20px] rounded-tr-md bg-[#1E293B] px-4 py-3 text-sm leading-6 text-white">
+              What can you help me with for this card?
+            </div>
+            <div className="max-w-[88%] rounded-[20px] rounded-tl-md bg-[#EAF7FF] px-4 py-3 text-sm leading-6 text-[#1E293B]">
+              Try asking:
+              <div className="mt-2 flex flex-wrap gap-2">
+                {[
+                  "Summarise this card",
+                  "Check implant sizes",
+                  "Find tray items",
+                ].map((prompt) => (
+                  <button
+                    key={prompt}
+                    type="button"
+                    className="rounded-full border border-[#B8DBFF] bg-white px-3 py-1.5 text-[11px] font-medium text-[#1D8DCC]"
+                  >
+                    {prompt}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Nav tree */}
-        <div className="flex-1 min-h-0">
-          <Suspense fallback={<div className="p-3 text-sm text-[#94a3b8]">Loading...</div>}>
-            <SidebarNavTree onNavigate={() => setOpen(false)} />
-          </Suspense>
+        <div className="min-h-0 flex-1 bg-[#F8FAFC] px-4 py-4">
+          <div className="flex h-full flex-col rounded-[28px] border border-[#D5DCE3] bg-white shadow-sm">
+            <div className="border-b border-[#EEF2F6] px-4 py-3">
+              <p className="text-sm font-semibold text-[#1E293B]">Conversation</p>
+              <p className="mt-1 text-xs text-[#94a3b8]">
+                Context-aware clinical assist
+              </p>
+            </div>
+
+            <div className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4">
+              <div className="max-w-[88%] rounded-[20px] rounded-tl-md bg-[#F8FAFC] px-4 py-3 text-sm leading-6 text-[#475569]">
+                I can use the current page context to answer questions about cards, equipment, products, and preparation.
+              </div>
+
+              <div className="ml-auto max-w-[78%] rounded-[20px] rounded-tr-md bg-[#EAF7FF] px-4 py-3 text-sm leading-6 text-[#1E293B]">
+                Show me the implant sizes I should have ready.
+              </div>
+
+              <div className="max-w-[88%] rounded-[20px] rounded-tl-md bg-[#F8FAFC] px-4 py-3 text-sm leading-6 text-[#475569]">
+                I would list the common implant size range, related trials, and linked supplier items from the catalogue.
+              </div>
+            </div>
+
+            <div className="border-t border-[#EEF2F6] px-3 py-3">
+              <div className="flex items-end gap-2 rounded-[24px] border border-[#D5DCE3] bg-[#F8FAFC] px-3 py-2">
+                <button
+                  type="button"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl text-[#64748b] transition-colors hover:bg-white hover:text-[#1D8DCC]"
+                  aria-label="Attach"
+                >
+                  <Paperclip size={16} />
+                </button>
+                <textarea
+                  rows={1}
+                  placeholder="Message PrepSight..."
+                  className="max-h-28 min-h-[36px] flex-1 resize-none border-0 bg-transparent px-1 py-1.5 text-sm text-[#1E293B] placeholder-[#94a3b8] focus:outline-none"
+                />
+                <button
+                  type="button"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-[#1E293B] text-white transition-colors hover:bg-[#162033]"
+                  aria-label="Send"
+                >
+                  <SendHorizonal size={16} />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="px-4 py-3 border-t border-[#D5DCE3]">
+        <div className="border-t border-[#D5DCE3] px-4 py-3">
           <p className="text-xs text-[#94a3b8]">PrepSight · v0.4</p>
         </div>
       </div>

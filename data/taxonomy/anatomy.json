@@ -1,242 +1,2868 @@
 [
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB", "name": "Upper Limb", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": null, "sort_order": 10, "tags": ["upper limb"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER", "name": "Shoulder", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB", "sort_order": 11, "tags": ["shoulder"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_CLAVICLE", "name": "Clavicle", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB", "sort_order": 12, "tags": ["clavicle"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SCAPULA", "name": "Scapula", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB", "sort_order": 13, "tags": ["scapula"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HUMERUS", "name": "Humerus", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB", "sort_order": 14, "tags": ["humerus"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ELBOW", "name": "Elbow", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB", "sort_order": 15, "tags": ["elbow"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOREARM", "name": "Forearm", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB", "sort_order": 16, "tags": ["radius", "ulna", "forearm"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WRIST", "name": "Wrist", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB", "sort_order": 17, "tags": ["wrist"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HAND", "name": "Hand", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB", "sort_order": 18, "tags": ["hand"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS", "name": "Digits", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HAND", "sort_order": 19, "tags": ["fingers", "thumb"] },
-
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB", "name": "Lower Limb", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": null, "sort_order": 20, "tags": ["lower limb"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP_AND_PELVIS", "name": "Hip and Pelvis", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB", "sort_order": 21, "tags": ["hip", "pelvis"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PELVIS", "name": "Pelvis", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP_AND_PELVIS", "sort_order": 22, "tags": ["pelvis"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ACETABULUM", "name": "Acetabulum", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP", "sort_order": 23, "tags": ["acetabulum"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP", "name": "Hip", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP_AND_PELVIS", "sort_order": 24, "tags": ["hip"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FEMUR", "name": "Femur", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB", "sort_order": 25, "tags": ["femur"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE", "name": "Knee", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB", "sort_order": 26, "tags": ["knee"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PATELLA", "name": "Patella", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE", "sort_order": 27, "tags": ["patella"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_TIBIA", "name": "Tibia", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB", "sort_order": 28, "tags": ["tibia"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FIBULA", "name": "Fibula", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB", "sort_order": 29, "tags": ["fibula"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE", "name": "Ankle", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB", "sort_order": 30, "tags": ["ankle"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOOT", "name": "Foot", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB", "sort_order": 31, "tags": ["foot"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HINDFOOT", "name": "Hindfoot", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOOT", "sort_order": 32, "tags": ["hindfoot"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_MIDFOOT", "name": "Midfoot", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOOT", "sort_order": 33, "tags": ["midfoot"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOREFOOT", "name": "Forefoot", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOOT", "sort_order": 34, "tags": ["forefoot"] },
-
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SPINE", "name": "Spine", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": null, "sort_order": 40, "tags": ["spine"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_CERVICAL_SPINE", "name": "Cervical Spine", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SPINE", "sort_order": 41, "tags": ["cervical spine"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_THORACIC_SPINE", "name": "Thoracic Spine", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SPINE", "sort_order": 42, "tags": ["thoracic spine"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LUMBAR_SPINE", "name": "Lumbar Spine", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SPINE", "sort_order": 43, "tags": ["lumbar spine"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SACRUM", "name": "Sacrum", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SPINE", "sort_order": 44, "tags": ["sacrum"] },
-
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_BONE", "name": "Bone", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": null, "sort_order": 50, "tags": ["bone"] },
-  { "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SOFT_TISSUE", "name": "Soft Tissue", "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS", "parent_id": null, "sort_order": 60, "tags": ["soft tissue"] },
-
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_HEAD_AND_NECK", "name": "Head and Neck", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": null, "sort_order": 100, "tags": ["head", "neck"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_THYROID_GLAND", "name": "Thyroid Gland", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_HEAD_AND_NECK", "sort_order": 101, "tags": ["thyroid"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_PARATHYROID_GLANDS", "name": "Parathyroid Glands", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_HEAD_AND_NECK", "sort_order": 102, "tags": ["parathyroid"] },
-
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_BREAST", "name": "Breast", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": null, "sort_order": 110, "tags": ["breast"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_AXILLA", "name": "Axilla", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_BREAST", "sort_order": 111, "tags": ["axilla"] },
-
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "name": "Abdomen", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": null, "sort_order": 120, "tags": ["abdomen"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMINAL_WALL", "name": "Abdominal Wall", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 121, "tags": ["abdominal wall"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_GROIN", "name": "Groin", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMINAL_WALL", "sort_order": 122, "tags": ["inguinal"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_UMBILICUS", "name": "Umbilicus", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMINAL_WALL", "sort_order": 123, "tags": ["umbilicus"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_DIAPHRAGM", "name": "Diaphragm", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 124, "tags": ["diaphragm"] },
-
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_OESOPHAGUS", "name": "Oesophagus", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 130, "tags": ["oesophagus"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_GASTROOESOPHAGEAL_JUNCTION", "name": "Gastrooesophageal Junction", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 131, "tags": ["gastrooesophageal junction"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_STOMACH", "name": "Stomach", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 132, "tags": ["stomach"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_DUODENUM", "name": "Duodenum", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 133, "tags": ["duodenum"] },
-
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_LIVER", "name": "Liver", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 140, "tags": ["liver"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_GALLBLADDER", "name": "Gallbladder", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 141, "tags": ["gallbladder"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_BILE_DUCTS", "name": "Bile Ducts", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 142, "tags": ["bile ducts"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_PANCREAS", "name": "Pancreas", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 143, "tags": ["pancreas"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_SPLEEN", "name": "Spleen", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 144, "tags": ["spleen"] },
-
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_SMALL_INTESTINE", "name": "Small Intestine", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 150, "tags": ["small bowel"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_APPENDIX", "name": "Appendix", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 151, "tags": ["appendix"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_COLON", "name": "Colon", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 152, "tags": ["colon"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_RECTUM", "name": "Rectum", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 153, "tags": ["rectum"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_ANUS", "name": "Anus", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 154, "tags": ["anus"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_PELVIC_FLOOR", "name": "Pelvic Floor", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 155, "tags": ["pelvic floor"] },
-
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_PERITONEUM", "name": "Peritoneum", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN", "sort_order": 160, "tags": ["peritoneum"] },
-  { "id": "ANAT_SPEC_GENERAL_SURGERY_ADRENAL_GLANDS", "name": "Adrenal Glands", "specialty_id": "SPEC_GENERAL_SURGERY", "parent_id": null, "sort_order": 170, "tags": ["adrenal"] },
-
-  { "id": "ANAT_SPEC_UROLOGY_URINARY_TRACT", "name": "Urinary Tract", "specialty_id": "SPEC_UROLOGY", "parent_id": null, "sort_order": 200, "tags": ["urinary tract"] },
-  { "id": "ANAT_SPEC_UROLOGY_UPPER_URINARY_TRACT", "name": "Upper Urinary Tract", "specialty_id": "SPEC_UROLOGY", "parent_id": "ANAT_SPEC_UROLOGY_URINARY_TRACT", "sort_order": 201, "tags": ["upper urinary tract"] },
-  { "id": "ANAT_SPEC_UROLOGY_KIDNEY", "name": "Kidney", "specialty_id": "SPEC_UROLOGY", "parent_id": "ANAT_SPEC_UROLOGY_UPPER_URINARY_TRACT", "sort_order": 202, "tags": ["kidney"] },
-  { "id": "ANAT_SPEC_UROLOGY_RENAL_PELVIS", "name": "Renal Pelvis", "specialty_id": "SPEC_UROLOGY", "parent_id": "ANAT_SPEC_UROLOGY_UPPER_URINARY_TRACT", "sort_order": 203, "tags": ["renal pelvis"] },
-  { "id": "ANAT_SPEC_UROLOGY_URETER", "name": "Ureter", "specialty_id": "SPEC_UROLOGY", "parent_id": "ANAT_SPEC_UROLOGY_UPPER_URINARY_TRACT", "sort_order": 204, "tags": ["ureter"] },
-
-  { "id": "ANAT_SPEC_UROLOGY_LOWER_URINARY_TRACT", "name": "Lower Urinary Tract", "specialty_id": "SPEC_UROLOGY", "parent_id": "ANAT_SPEC_UROLOGY_URINARY_TRACT", "sort_order": 210, "tags": ["lower urinary tract"] },
-  { "id": "ANAT_SPEC_UROLOGY_BLADDER", "name": "Bladder", "specialty_id": "SPEC_UROLOGY", "parent_id": "ANAT_SPEC_UROLOGY_LOWER_URINARY_TRACT", "sort_order": 211, "tags": ["bladder"] },
-  { "id": "ANAT_SPEC_UROLOGY_URETHRA", "name": "Urethra", "specialty_id": "SPEC_UROLOGY", "parent_id": "ANAT_SPEC_UROLOGY_LOWER_URINARY_TRACT", "sort_order": 212, "tags": ["urethra"] },
-
-  { "id": "ANAT_SPEC_UROLOGY_MALE_REPRODUCTIVE_SYSTEM", "name": "Male Reproductive System", "specialty_id": "SPEC_UROLOGY", "parent_id": null, "sort_order": 220, "tags": ["male reproductive system"] },
-  { "id": "ANAT_SPEC_UROLOGY_PROSTATE", "name": "Prostate", "specialty_id": "SPEC_UROLOGY", "parent_id": "ANAT_SPEC_UROLOGY_MALE_REPRODUCTIVE_SYSTEM", "sort_order": 221, "tags": ["prostate"] },
-  { "id": "ANAT_SPEC_UROLOGY_SEMINAL_VESICLES", "name": "Seminal Vesicles", "specialty_id": "SPEC_UROLOGY", "parent_id": "ANAT_SPEC_UROLOGY_MALE_REPRODUCTIVE_SYSTEM", "sort_order": 222, "tags": ["seminal vesicles"] },
-  { "id": "ANAT_SPEC_UROLOGY_TESTIS", "name": "Testis", "specialty_id": "SPEC_UROLOGY", "parent_id": "ANAT_SPEC_UROLOGY_MALE_REPRODUCTIVE_SYSTEM", "sort_order": 223, "tags": ["testis"] },
-  { "id": "ANAT_SPEC_UROLOGY_EPIDIDYMIS", "name": "Epididymis", "specialty_id": "SPEC_UROLOGY", "parent_id": "ANAT_SPEC_UROLOGY_MALE_REPRODUCTIVE_SYSTEM", "sort_order": 224, "tags": ["epididymis"] },
-  { "id": "ANAT_SPEC_UROLOGY_SCROTUM", "name": "Scrotum", "specialty_id": "SPEC_UROLOGY", "parent_id": "ANAT_SPEC_UROLOGY_MALE_REPRODUCTIVE_SYSTEM", "sort_order": 225, "tags": ["scrotum"] },
-  { "id": "ANAT_SPEC_UROLOGY_PENIS", "name": "Penis", "specialty_id": "SPEC_UROLOGY", "parent_id": "ANAT_SPEC_UROLOGY_MALE_REPRODUCTIVE_SYSTEM", "sort_order": 226, "tags": ["penis"] },
-
-  { "id": "ANAT_SPEC_UROLOGY_PELVIC_FLOOR", "name": "Pelvic Floor", "specialty_id": "SPEC_UROLOGY", "parent_id": null, "sort_order": 230, "tags": ["pelvic floor"] },
-
-  { "id": "ANAT_SPEC_GYNECOLOGY_FEMALE_REPRODUCTIVE_SYSTEM", "name": "Female Reproductive System", "specialty_id": "SPEC_GYNECOLOGY", "parent_id": null, "sort_order": 300, "tags": ["female reproductive system"] },
-  { "id": "ANAT_SPEC_GYNECOLOGY_VULVA", "name": "Vulva", "specialty_id": "SPEC_GYNECOLOGY", "parent_id": "ANAT_SPEC_GYNECOLOGY_FEMALE_REPRODUCTIVE_SYSTEM", "sort_order": 301, "tags": ["vulva"] },
-  { "id": "ANAT_SPEC_GYNECOLOGY_VAGINA", "name": "Vagina", "specialty_id": "SPEC_GYNECOLOGY", "parent_id": "ANAT_SPEC_GYNECOLOGY_FEMALE_REPRODUCTIVE_SYSTEM", "sort_order": 302, "tags": ["vagina"] },
-  { "id": "ANAT_SPEC_GYNECOLOGY_CERVIX", "name": "Cervix", "specialty_id": "SPEC_GYNECOLOGY", "parent_id": "ANAT_SPEC_GYNECOLOGY_FEMALE_REPRODUCTIVE_SYSTEM", "sort_order": 303, "tags": ["cervix"] },
-  { "id": "ANAT_SPEC_GYNECOLOGY_UTERUS", "name": "Uterus", "specialty_id": "SPEC_GYNECOLOGY", "parent_id": "ANAT_SPEC_GYNECOLOGY_FEMALE_REPRODUCTIVE_SYSTEM", "sort_order": 304, "tags": ["uterus"] },
-  { "id": "ANAT_SPEC_GYNECOLOGY_FALLOPIAN_TUBES", "name": "Fallopian Tubes", "specialty_id": "SPEC_GYNECOLOGY", "parent_id": "ANAT_SPEC_GYNECOLOGY_FEMALE_REPRODUCTIVE_SYSTEM", "sort_order": 305, "tags": ["fallopian tubes"] },
-  { "id": "ANAT_SPEC_GYNECOLOGY_OVARIES", "name": "Ovaries", "specialty_id": "SPEC_GYNECOLOGY", "parent_id": "ANAT_SPEC_GYNECOLOGY_FEMALE_REPRODUCTIVE_SYSTEM", "sort_order": 306, "tags": ["ovaries"] },
-  { "id": "ANAT_SPEC_GYNECOLOGY_ADNEXA", "name": "Adnexa", "specialty_id": "SPEC_GYNECOLOGY", "parent_id": "ANAT_SPEC_GYNECOLOGY_FEMALE_REPRODUCTIVE_SYSTEM", "sort_order": 307, "tags": ["adnexa"] },
-
-  { "id": "ANAT_SPEC_GYNECOLOGY_PELVIS", "name": "Pelvis", "specialty_id": "SPEC_GYNECOLOGY", "parent_id": null, "sort_order": 310, "tags": ["pelvis"] },
-  { "id": "ANAT_SPEC_GYNECOLOGY_PELVIC_FLOOR", "name": "Pelvic Floor", "specialty_id": "SPEC_GYNECOLOGY", "parent_id": "ANAT_SPEC_GYNECOLOGY_PELVIS", "sort_order": 311, "tags": ["pelvic floor"] },
-  { "id": "ANAT_SPEC_GYNECOLOGY_PERITONEUM", "name": "Peritoneum", "specialty_id": "SPEC_GYNECOLOGY", "parent_id": "ANAT_SPEC_GYNECOLOGY_PELVIS", "sort_order": 312, "tags": ["peritoneum"] },
-
-  { "id": "ANAT_SPEC_GYNECOLOGY_PELVIC_ORGANS", "name": "Pelvic Organs", "specialty_id": "SPEC_GYNECOLOGY", "parent_id": "ANAT_SPEC_GYNECOLOGY_PELVIS", "sort_order": 320, "tags": ["pelvic organs"] },
-  { "id": "ANAT_SPEC_GYNECOLOGY_BLADDER", "name": "Bladder", "specialty_id": "SPEC_GYNECOLOGY", "parent_id": "ANAT_SPEC_GYNECOLOGY_PELVIC_ORGANS", "sort_order": 321, "tags": ["bladder"] },
-  { "id": "ANAT_SPEC_GYNECOLOGY_URETHRA", "name": "Urethra", "specialty_id": "SPEC_GYNECOLOGY", "parent_id": "ANAT_SPEC_GYNECOLOGY_PELVIC_ORGANS", "sort_order": 322, "tags": ["urethra"] },
-
-  { "id": "ANAT_SPEC_OBSTETRICS_PREGNANCY_ANATOMY", "name": "Pregnancy Anatomy", "specialty_id": "SPEC_OBSTETRICS", "parent_id": null, "sort_order": 400, "tags": ["pregnancy"] },
-  { "id": "ANAT_SPEC_OBSTETRICS_UTERUS", "name": "Uterus", "specialty_id": "SPEC_OBSTETRICS", "parent_id": "ANAT_SPEC_OBSTETRICS_PREGNANCY_ANATOMY", "sort_order": 401, "tags": ["uterus"] },
-  { "id": "ANAT_SPEC_OBSTETRICS_CERVIX", "name": "Cervix", "specialty_id": "SPEC_OBSTETRICS", "parent_id": "ANAT_SPEC_OBSTETRICS_PREGNANCY_ANATOMY", "sort_order": 402, "tags": ["cervix"] },
-  { "id": "ANAT_SPEC_OBSTETRICS_PLACENTA", "name": "Placenta", "specialty_id": "SPEC_OBSTETRICS", "parent_id": "ANAT_SPEC_OBSTETRICS_PREGNANCY_ANATOMY", "sort_order": 403, "tags": ["placenta"] },
-
-  { "id": "ANAT_SPEC_OBSTETRICS_LABOUR_AND_DELIVERY", "name": "Labour and Delivery", "specialty_id": "SPEC_OBSTETRICS", "parent_id": null, "sort_order": 410, "tags": ["labour", "delivery"] },
-  { "id": "ANAT_SPEC_OBSTETRICS_BIRTH_CANAL", "name": "Birth Canal", "specialty_id": "SPEC_OBSTETRICS", "parent_id": "ANAT_SPEC_OBSTETRICS_LABOUR_AND_DELIVERY", "sort_order": 411, "tags": ["birth canal"] },
-  { "id": "ANAT_SPEC_OBSTETRICS_PERINEUM", "name": "Perineum", "specialty_id": "SPEC_OBSTETRICS", "parent_id": "ANAT_SPEC_OBSTETRICS_LABOUR_AND_DELIVERY", "sort_order": 412, "tags": ["perineum"] },
-  { "id": "ANAT_SPEC_OBSTETRICS_MATERNAL_PELVIS", "name": "Maternal Pelvis", "specialty_id": "SPEC_OBSTETRICS", "parent_id": "ANAT_SPEC_OBSTETRICS_LABOUR_AND_DELIVERY", "sort_order": 413, "tags": ["maternal pelvis"] },
-
-  { "id": "ANAT_SPEC_OBSTETRICS_ABDOMINAL_ACCESS", "name": "Abdominal Access", "specialty_id": "SPEC_OBSTETRICS", "parent_id": null, "sort_order": 420, "tags": ["abdominal access"] },
-  { "id": "ANAT_SPEC_OBSTETRICS_ABDOMINAL_WALL", "name": "Abdominal Wall", "specialty_id": "SPEC_OBSTETRICS", "parent_id": "ANAT_SPEC_OBSTETRICS_ABDOMINAL_ACCESS", "sort_order": 421, "tags": ["abdominal wall"] },
-
-  { "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_HEAD_AND_NECK", "name": "Head and Neck", "specialty_id": "SPEC_ENT", "parent_id": null, "sort_order": 500, "tags": ["head", "neck"] },
-  { "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_NECK", "name": "Neck", "specialty_id": "SPEC_ENT", "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_HEAD_AND_NECK", "sort_order": 501, "tags": ["neck"] },
-  { "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_PHARYNX", "name": "Pharynx", "specialty_id": "SPEC_ENT", "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_HEAD_AND_NECK", "sort_order": 502, "tags": ["pharynx"] },
-  { "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_LARYNX", "name": "Larynx", "specialty_id": "SPEC_ENT", "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_HEAD_AND_NECK", "sort_order": 503, "tags": ["larynx"] },
-  { "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_SALIVARY_GLANDS", "name": "Salivary Glands", "specialty_id": "SPEC_ENT", "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_HEAD_AND_NECK", "sort_order": 504, "tags": ["salivary glands"] },
-
-  { "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_NOSE_AND_SINUSES", "name": "Nose and Sinuses", "specialty_id": "SPEC_ENT", "parent_id": null, "sort_order": 510, "tags": ["nose", "sinuses"] },
-  { "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_NOSE", "name": "Nose", "specialty_id": "SPEC_ENT", "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_NOSE_AND_SINUSES", "sort_order": 511, "tags": ["nose"] },
-  { "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_PARANASAL_SINUSES", "name": "Paranasal Sinuses", "specialty_id": "SPEC_ENT", "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_NOSE_AND_SINUSES", "sort_order": 512, "tags": ["paranasal sinuses"] },
-  { "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_SKULL_BASE", "name": "Skull Base", "specialty_id": "SPEC_ENT", "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_NOSE_AND_SINUSES", "sort_order": 513, "tags": ["skull base"] },
-
-  { "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_EAR", "name": "Ear", "specialty_id": "SPEC_ENT", "parent_id": null, "sort_order": 520, "tags": ["ear"] },
-  { "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_EXTERNAL_EAR", "name": "External Ear", "specialty_id": "SPEC_ENT", "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_EAR", "sort_order": 521, "tags": ["external ear"] },
-  { "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_MIDDLE_EAR", "name": "Middle Ear", "specialty_id": "SPEC_ENT", "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_EAR", "sort_order": 522, "tags": ["middle ear"] },
-  { "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_INNER_EAR", "name": "Inner Ear", "specialty_id": "SPEC_ENT", "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_EAR", "sort_order": 523, "tags": ["inner ear"] },
-
-  { "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_AIRWAY", "name": "Airway", "specialty_id": "SPEC_ENT", "parent_id": null, "sort_order": 530, "tags": ["airway"] },
-  { "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_TRACHEA", "name": "Trachea", "specialty_id": "SPEC_ENT", "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_AIRWAY", "sort_order": 531, "tags": ["trachea"] },
-  { "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_TONSILS_AND_ADENOIDS", "name": "Tonsils and Adenoids", "specialty_id": "SPEC_ENT", "parent_id": null, "sort_order": 540, "tags": ["tonsils", "adenoids"] },
-
-  { "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_FACE", "name": "Face", "specialty_id": "SPEC_OMFS", "parent_id": null, "sort_order": 600, "tags": ["face"] },
-  { "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_MANDIBLE", "name": "Mandible", "specialty_id": "SPEC_OMFS", "parent_id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_FACE", "sort_order": 601, "tags": ["mandible"] },
-  { "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_MAXILLA", "name": "Maxilla", "specialty_id": "SPEC_OMFS", "parent_id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_FACE", "sort_order": 602, "tags": ["maxilla"] },
-  { "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_ZYGOMA", "name": "Zygoma", "specialty_id": "SPEC_OMFS", "parent_id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_FACE", "sort_order": 603, "tags": ["zygoma"] },
-  { "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_ORBIT", "name": "Orbit", "specialty_id": "SPEC_OMFS", "parent_id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_FACE", "sort_order": 604, "tags": ["orbit"] },
-
-  { "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_ORAL_CAVITY", "name": "Oral Cavity", "specialty_id": "SPEC_OMFS", "parent_id": null, "sort_order": 610, "tags": ["oral cavity"] },
-  { "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_TEETH_AND_ALVEOLAR_BONE", "name": "Teeth and Alveolar Bone", "specialty_id": "SPEC_OMFS", "parent_id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_ORAL_CAVITY", "sort_order": 611, "tags": ["teeth", "alveolar bone"] },
-  { "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_TEMPOROMANDIBULAR_JOINT", "name": "Temporomandibular Joint", "specialty_id": "SPEC_OMFS", "parent_id": null, "sort_order": 620, "tags": ["temporomandibular joint"] },
-  { "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_NECK", "name": "Neck", "specialty_id": "SPEC_OMFS", "parent_id": null, "sort_order": 630, "tags": ["neck"] },
-
-  { "id": "ANAT_SPEC_DENTAL_AND_ORAL_SURGERY_ORAL_CAVITY", "name": "Oral Cavity", "specialty_id": "SPEC_DENTAL_ORAL_SURGERY", "parent_id": null, "sort_order": 700, "tags": ["oral cavity"] },
-  { "id": "ANAT_SPEC_DENTAL_AND_ORAL_SURGERY_TEETH_AND_ALVEOLAR_BONE", "name": "Teeth and Alveolar Bone", "specialty_id": "SPEC_DENTAL_ORAL_SURGERY", "parent_id": "ANAT_SPEC_DENTAL_AND_ORAL_SURGERY_ORAL_CAVITY", "sort_order": 701, "tags": ["teeth", "alveolar bone"] },
-  { "id": "ANAT_SPEC_DENTAL_AND_ORAL_SURGERY_TEETH", "name": "Teeth", "specialty_id": "SPEC_DENTAL_ORAL_SURGERY", "parent_id": "ANAT_SPEC_DENTAL_AND_ORAL_SURGERY_ORAL_CAVITY", "sort_order": 702, "tags": ["teeth"] },
-
-  { "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_FACE", "name": "Face", "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY", "parent_id": null, "sort_order": 800, "tags": ["face"] },
-  { "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKULL", "name": "Skull", "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY", "parent_id": null, "sort_order": 801, "tags": ["skull"] },
-  { "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_LIP", "name": "Lip", "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY", "parent_id": null, "sort_order": 802, "tags": ["lip"] },
-  { "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_PALATE", "name": "Palate", "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY", "parent_id": null, "sort_order": 803, "tags": ["palate"] },
-
-  { "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_TRUNK", "name": "Trunk", "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY", "parent_id": null, "sort_order": 810, "tags": ["trunk"] },
-  { "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_CHEST_WALL", "name": "Chest Wall", "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY", "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_TRUNK", "sort_order": 811, "tags": ["chest wall"] },
-  { "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_BREAST", "name": "Breast", "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY", "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_TRUNK", "sort_order": 812, "tags": ["breast"] },
-
-  { "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_UPPER_LIMB", "name": "Upper Limb", "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY", "parent_id": null, "sort_order": 820, "tags": ["upper limb"] },
-  { "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_FOREARM", "name": "Forearm", "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY", "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_UPPER_LIMB", "sort_order": 821, "tags": ["forearm"] },
-  { "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_WRIST", "name": "Wrist", "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY", "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_UPPER_LIMB", "sort_order": 822, "tags": ["wrist"] },
-  { "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_HAND", "name": "Hand", "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY", "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_UPPER_LIMB", "sort_order": 823, "tags": ["hand"] },
-
-  { "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_LOWER_LIMB", "name": "Lower Limb", "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY", "parent_id": null, "sort_order": 830, "tags": ["lower limb"] },
-
-  { "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN", "name": "Skin", "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY", "parent_id": null, "sort_order": 840, "tags": ["skin"] },
-  { "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN_OF_HEAD_AND_NECK", "name": "Skin of Head and Neck", "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY", "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN", "sort_order": 841, "tags": ["head", "neck", "skin"] },
-  { "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN_OF_TRUNK", "name": "Skin of Trunk", "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY", "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN", "sort_order": 842, "tags": ["trunk", "skin"] },
-  { "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN_OF_UPPER_LIMB", "name": "Skin of Upper Limb", "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY", "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN", "sort_order": 843, "tags": ["upper limb", "skin"] },
-  { "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN_OF_LOWER_LIMB", "name": "Skin of Lower Limb", "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY", "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN", "sort_order": 844, "tags": ["lower limb", "skin"] },
-
-  { "id": "ANAT_SPEC_NEUROSURGERY_CRANIUM", "name": "Cranium", "specialty_id": "SPEC_NEUROSURGERY", "parent_id": null, "sort_order": 900, "tags": ["cranium"] },
-  { "id": "ANAT_SPEC_NEUROSURGERY_BRAIN", "name": "Brain", "specialty_id": "SPEC_NEUROSURGERY", "parent_id": "ANAT_SPEC_NEUROSURGERY_CRANIUM", "sort_order": 901, "tags": ["brain"] },
-  { "id": "ANAT_SPEC_NEUROSURGERY_SKULL", "name": "Skull", "specialty_id": "SPEC_NEUROSURGERY", "parent_id": "ANAT_SPEC_NEUROSURGERY_CRANIUM", "sort_order": 902, "tags": ["skull"] },
-  { "id": "ANAT_SPEC_NEUROSURGERY_BRAIN_DEEP_STRUCTURES", "name": "Brain Deep Structures", "specialty_id": "SPEC_NEUROSURGERY", "parent_id": "ANAT_SPEC_NEUROSURGERY_BRAIN", "sort_order": 903, "tags": ["brain deep structures"] },
-
-  { "id": "ANAT_SPEC_NEUROSURGERY_SPINE", "name": "Spine", "specialty_id": "SPEC_NEUROSURGERY", "parent_id": null, "sort_order": 910, "tags": ["spine"] },
-  { "id": "ANAT_SPEC_NEUROSURGERY_CERVICAL_SPINE", "name": "Cervical Spine", "specialty_id": "SPEC_NEUROSURGERY", "parent_id": "ANAT_SPEC_NEUROSURGERY_SPINE", "sort_order": 911, "tags": ["cervical spine"] },
-  { "id": "ANAT_SPEC_NEUROSURGERY_THORACIC_SPINE", "name": "Thoracic Spine", "specialty_id": "SPEC_NEUROSURGERY", "parent_id": "ANAT_SPEC_NEUROSURGERY_SPINE", "sort_order": 912, "tags": ["thoracic spine"] },
-  { "id": "ANAT_SPEC_NEUROSURGERY_LUMBAR_SPINE", "name": "Lumbar Spine", "specialty_id": "SPEC_NEUROSURGERY", "parent_id": "ANAT_SPEC_NEUROSURGERY_SPINE", "sort_order": 913, "tags": ["lumbar spine"] },
-
-  { "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_HEART", "name": "Heart", "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY", "parent_id": null, "sort_order": 1000, "tags": ["heart"] },
-  { "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_GREAT_VESSELS", "name": "Great Vessels", "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY", "parent_id": null, "sort_order": 1001, "tags": ["great vessels"] },
-  { "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_LUNG", "name": "Lung", "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY", "parent_id": null, "sort_order": 1010, "tags": ["lung"] },
-  { "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_PLEURA", "name": "Pleura", "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY", "parent_id": null, "sort_order": 1011, "tags": ["pleura"] },
-  { "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_MEDIASTINUM", "name": "Mediastinum", "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY", "parent_id": null, "sort_order": 1012, "tags": ["mediastinum"] },
-  { "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_CHEST_WALL", "name": "Chest Wall", "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY", "parent_id": null, "sort_order": 1013, "tags": ["chest wall"] },
-
-  { "id": "ANAT_SPEC_VASCULAR_SURGERY_CAROTID_ARTERIES", "name": "Carotid Arteries", "specialty_id": "SPEC_VASCULAR_SURGERY", "parent_id": null, "sort_order": 1100, "tags": ["carotid"] },
-  { "id": "ANAT_SPEC_VASCULAR_SURGERY_UPPER_LIMB", "name": "Upper Limb", "specialty_id": "SPEC_VASCULAR_SURGERY", "parent_id": null, "sort_order": 1101, "tags": ["upper limb"] },
-  { "id": "ANAT_SPEC_VASCULAR_SURGERY_LOWER_LIMB", "name": "Lower Limb", "specialty_id": "SPEC_VASCULAR_SURGERY", "parent_id": null, "sort_order": 1102, "tags": ["lower limb"] },
-  { "id": "ANAT_SPEC_VASCULAR_SURGERY_THORACIC_AORTA", "name": "Thoracic Aorta", "specialty_id": "SPEC_VASCULAR_SURGERY", "parent_id": null, "sort_order": 1110, "tags": ["thoracic aorta"] },
-  { "id": "ANAT_SPEC_VASCULAR_SURGERY_ABDOMINAL_AORTA", "name": "Abdominal Aorta", "specialty_id": "SPEC_VASCULAR_SURGERY", "parent_id": null, "sort_order": 1111, "tags": ["abdominal aorta"] },
-  { "id": "ANAT_SPEC_VASCULAR_SURGERY_ARTERIOVENOUS_FISTULA", "name": "Arteriovenous Fistula", "specialty_id": "SPEC_VASCULAR_SURGERY", "parent_id": null, "sort_order": 1120, "tags": ["arteriovenous fistula"] },
-  { "id": "ANAT_SPEC_VASCULAR_SURGERY_CENTRAL_VEINS", "name": "Central Veins", "specialty_id": "SPEC_VASCULAR_SURGERY", "parent_id": null, "sort_order": 1121, "tags": ["central veins"] },
-
-  { "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_NEONATAL_ANATOMY", "name": "Neonatal Anatomy", "specialty_id": "SPEC_PAEDIATRIC_SURGERY", "parent_id": null, "sort_order": 1200, "tags": ["neonatal"] },
-  { "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_OESOPHAGUS", "name": "Oesophagus", "specialty_id": "SPEC_PAEDIATRIC_SURGERY", "parent_id": "ANAT_SPEC_PAEDIATRIC_SURGERY_NEONATAL_ANATOMY", "sort_order": 1201, "tags": ["oesophagus"] },
-  { "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_DIAPHRAGM", "name": "Diaphragm", "specialty_id": "SPEC_PAEDIATRIC_SURGERY", "parent_id": "ANAT_SPEC_PAEDIATRIC_SURGERY_NEONATAL_ANATOMY", "sort_order": 1202, "tags": ["diaphragm"] },
-  { "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_ABDOMINAL_WALL", "name": "Abdominal Wall", "specialty_id": "SPEC_PAEDIATRIC_SURGERY", "parent_id": "ANAT_SPEC_PAEDIATRIC_SURGERY_NEONATAL_ANATOMY", "sort_order": 1203, "tags": ["abdominal wall"] },
-  { "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_INTESTINE", "name": "Intestine", "specialty_id": "SPEC_PAEDIATRIC_SURGERY", "parent_id": "ANAT_SPEC_PAEDIATRIC_SURGERY_NEONATAL_ANATOMY", "sort_order": 1204, "tags": ["intestine"] },
-
-  { "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_APPENDIX", "name": "Appendix", "specialty_id": "SPEC_PAEDIATRIC_SURGERY", "parent_id": null, "sort_order": 1210, "tags": ["appendix"] },
-  { "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_HERNIA", "name": "Hernia", "specialty_id": "SPEC_PAEDIATRIC_SURGERY", "parent_id": null, "sort_order": 1211, "tags": ["hernia"] },
-  { "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_BOWEL", "name": "Bowel", "specialty_id": "SPEC_PAEDIATRIC_SURGERY", "parent_id": null, "sort_order": 1212, "tags": ["bowel"] },
-
-  { "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_LUNG", "name": "Lung", "specialty_id": "SPEC_PAEDIATRIC_SURGERY", "parent_id": null, "sort_order": 1220, "tags": ["lung"] },
-  { "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_MEDIASTINUM", "name": "Mediastinum", "specialty_id": "SPEC_PAEDIATRIC_SURGERY", "parent_id": null, "sort_order": 1221, "tags": ["mediastinum"] },
-  { "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_CHEST", "name": "Chest", "specialty_id": "SPEC_PAEDIATRIC_SURGERY", "parent_id": null, "sort_order": 1222, "tags": ["chest"] },
-  { "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_ABDOMEN", "name": "Abdomen", "specialty_id": "SPEC_PAEDIATRIC_SURGERY", "parent_id": null, "sort_order": 1223, "tags": ["abdomen"] },
-
-  { "id": "ANAT_SPEC_OPHTHALMOLOGY_EYE", "name": "Eye", "specialty_id": "SPEC_OPHTHALMOLOGY", "parent_id": null, "sort_order": 1300, "tags": ["eye"] },
-  { "id": "ANAT_SPEC_OPHTHALMOLOGY_LENS", "name": "Lens", "specialty_id": "SPEC_OPHTHALMOLOGY", "parent_id": "ANAT_SPEC_OPHTHALMOLOGY_EYE", "sort_order": 1301, "tags": ["lens"] },
-  { "id": "ANAT_SPEC_OPHTHALMOLOGY_RETINA", "name": "Retina", "specialty_id": "SPEC_OPHTHALMOLOGY", "parent_id": "ANAT_SPEC_OPHTHALMOLOGY_EYE", "sort_order": 1302, "tags": ["retina"] },
-  { "id": "ANAT_SPEC_OPHTHALMOLOGY_VITREOUS", "name": "Vitreous", "specialty_id": "SPEC_OPHTHALMOLOGY", "parent_id": "ANAT_SPEC_OPHTHALMOLOGY_EYE", "sort_order": 1303, "tags": ["vitreous"] },
-  { "id": "ANAT_SPEC_OPHTHALMOLOGY_ANTERIOR_CHAMBER_ANGLE", "name": "Anterior Chamber Angle", "specialty_id": "SPEC_OPHTHALMOLOGY", "parent_id": "ANAT_SPEC_OPHTHALMOLOGY_EYE", "sort_order": 1304, "tags": ["anterior chamber angle"] },
-  { "id": "ANAT_SPEC_OPHTHALMOLOGY_CORNEA", "name": "Cornea", "specialty_id": "SPEC_OPHTHALMOLOGY", "parent_id": "ANAT_SPEC_OPHTHALMOLOGY_EYE", "sort_order": 1305, "tags": ["cornea"] },
-  { "id": "ANAT_SPEC_OPHTHALMOLOGY_CONJUNCTIVA", "name": "Conjunctiva", "specialty_id": "SPEC_OPHTHALMOLOGY", "parent_id": "ANAT_SPEC_OPHTHALMOLOGY_EYE", "sort_order": 1306, "tags": ["conjunctiva"] },
-  { "id": "ANAT_SPEC_OPHTHALMOLOGY_EYELIDS", "name": "Eyelids", "specialty_id": "SPEC_OPHTHALMOLOGY", "parent_id": null, "sort_order": 1310, "tags": ["eyelids"] },
-  { "id": "ANAT_SPEC_OPHTHALMOLOGY_LACRIMAL_SYSTEM", "name": "Lacrimal System", "specialty_id": "SPEC_OPHTHALMOLOGY", "parent_id": null, "sort_order": 1311, "tags": ["lacrimal system"] },
-  { "id": "ANAT_SPEC_OPHTHALMOLOGY_ORBIT", "name": "Orbit", "specialty_id": "SPEC_OPHTHALMOLOGY", "parent_id": null, "sort_order": 1312, "tags": ["orbit"] },
-  { "id": "ANAT_SPEC_OPHTHALMOLOGY_EXTRAOCULAR_MUSCLES", "name": "Extraocular Muscles", "specialty_id": "SPEC_OPHTHALMOLOGY", "parent_id": null, "sort_order": 1313, "tags": ["extraocular muscles"] },
-
-  { "id": "ANAT_SPEC_PODIATRIC_SURGERY_FOOT", "name": "Foot", "specialty_id": "SPEC_PODIATRIC_SURGERY", "parent_id": null, "sort_order": 1400, "tags": ["foot"] },
-  { "id": "ANAT_SPEC_PODIATRIC_SURGERY_FOREFOOT", "name": "Forefoot", "specialty_id": "SPEC_PODIATRIC_SURGERY", "parent_id": "ANAT_SPEC_PODIATRIC_SURGERY_FOOT", "sort_order": 1401, "tags": ["forefoot"] },
-  { "id": "ANAT_SPEC_PODIATRIC_SURGERY_MIDFOOT", "name": "Midfoot", "specialty_id": "SPEC_PODIATRIC_SURGERY", "parent_id": "ANAT_SPEC_PODIATRIC_SURGERY_FOOT", "sort_order": 1402, "tags": ["midfoot"] },
-  { "id": "ANAT_SPEC_PODIATRIC_SURGERY_REARFOOT", "name": "Rearfoot", "specialty_id": "SPEC_PODIATRIC_SURGERY", "parent_id": "ANAT_SPEC_PODIATRIC_SURGERY_FOOT", "sort_order": 1403, "tags": ["rearfoot"] },
-  { "id": "ANAT_SPEC_PODIATRIC_SURGERY_ANKLE", "name": "Ankle", "specialty_id": "SPEC_PODIATRIC_SURGERY", "parent_id": null, "sort_order": 1404, "tags": ["ankle"] },
-  { "id": "ANAT_SPEC_PODIATRIC_SURGERY_DIABETIC_FOOT", "name": "Diabetic Foot", "specialty_id": "SPEC_PODIATRIC_SURGERY", "parent_id": "ANAT_SPEC_PODIATRIC_SURGERY_FOOT", "sort_order": 1405, "tags": ["diabetic foot"] },
-
-  { "id": "ANAT_SPEC_ANAESTHESIA_AIRWAY", "name": "Airway", "specialty_id": "SPEC_ANAESTHESIA", "parent_id": null, "sort_order": 1500, "tags": ["airway"] },
-  { "id": "ANAT_SPEC_ANAESTHESIA_NEURAXIS", "name": "Neuraxis", "specialty_id": "SPEC_ANAESTHESIA", "parent_id": null, "sort_order": 1501, "tags": ["neuraxis"] },
-  { "id": "ANAT_SPEC_ANAESTHESIA_PERIPHERAL_NERVES", "name": "Peripheral Nerves", "specialty_id": "SPEC_ANAESTHESIA", "parent_id": null, "sort_order": 1502, "tags": ["peripheral nerves"] },
-  { "id": "ANAT_SPEC_ANAESTHESIA_VASCULAR_ACCESS", "name": "Vascular Access", "specialty_id": "SPEC_ANAESTHESIA", "parent_id": null, "sort_order": 1503, "tags": ["vascular access"] }
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB",
+    "name": "Upper Limb",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "upper limb"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "name": "Shoulder",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB",
+    "sort_order": 11,
+    "tags": [
+      "shoulder"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_CLAVICLE",
+    "name": "Clavicle",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB",
+    "sort_order": 12,
+    "tags": [
+      "clavicle"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SCAPULA",
+    "name": "Scapula",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB",
+    "sort_order": 13,
+    "tags": [
+      "scapula"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HUMERUS",
+    "name": "Humerus",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB",
+    "sort_order": 14,
+    "tags": [
+      "humerus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ELBOW",
+    "name": "Elbow",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB",
+    "sort_order": 15,
+    "tags": [
+      "elbow"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOREARM",
+    "name": "Forearm",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB",
+    "sort_order": 16,
+    "tags": [
+      "radius",
+      "ulna",
+      "forearm"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WRIST",
+    "name": "Wrist",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB",
+    "sort_order": 17,
+    "tags": [
+      "wrist"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HAND",
+    "name": "Hand",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LIMB",
+    "sort_order": 18,
+    "tags": [
+      "hand"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS",
+    "name": "Digits",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HAND",
+    "sort_order": 19,
+    "tags": [
+      "fingers",
+      "thumb"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB",
+    "name": "Lower Limb",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 20,
+    "tags": [
+      "lower limb"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP_AND_PELVIS",
+    "name": "Hip and Pelvis",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB",
+    "sort_order": 21,
+    "tags": [
+      "hip",
+      "pelvis"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PELVIS",
+    "name": "Pelvis",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP_AND_PELVIS",
+    "sort_order": 22,
+    "tags": [
+      "pelvis"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ACETABULUM",
+    "name": "Acetabulum",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "sort_order": 23,
+    "tags": [
+      "acetabulum"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "name": "Hip",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP_AND_PELVIS",
+    "sort_order": 24,
+    "tags": [
+      "hip"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FEMUR",
+    "name": "Femur",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB",
+    "sort_order": 25,
+    "tags": [
+      "femur"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "name": "Knee",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB",
+    "sort_order": 26,
+    "tags": [
+      "knee"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PATELLA",
+    "name": "Patella",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "sort_order": 27,
+    "tags": [
+      "patella"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_TIBIA",
+    "name": "Tibia",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB",
+    "sort_order": 28,
+    "tags": [
+      "tibia"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FIBULA",
+    "name": "Fibula",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB",
+    "sort_order": 29,
+    "tags": [
+      "fibula"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE",
+    "name": "Ankle",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB",
+    "sort_order": 30,
+    "tags": [
+      "ankle"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOOT",
+    "name": "Foot",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LIMB",
+    "sort_order": 31,
+    "tags": [
+      "foot"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HINDFOOT",
+    "name": "Hindfoot",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOOT",
+    "sort_order": 32,
+    "tags": [
+      "hindfoot"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_MIDFOOT",
+    "name": "Midfoot",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOOT",
+    "sort_order": 33,
+    "tags": [
+      "midfoot"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOREFOOT",
+    "name": "Forefoot",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOOT",
+    "sort_order": 34,
+    "tags": [
+      "forefoot"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SPINE",
+    "name": "Spine",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 40,
+    "tags": [
+      "spine"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_CERVICAL_SPINE",
+    "name": "Cervical Spine",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SPINE",
+    "sort_order": 41,
+    "tags": [
+      "cervical spine"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_THORACIC_SPINE",
+    "name": "Thoracic Spine",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SPINE",
+    "sort_order": 42,
+    "tags": [
+      "thoracic spine"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LUMBAR_SPINE",
+    "name": "Lumbar Spine",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SPINE",
+    "sort_order": 43,
+    "tags": [
+      "lumbar spine"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SACRUM",
+    "name": "Sacrum",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SPINE",
+    "sort_order": 44,
+    "tags": [
+      "sacrum"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_BONE",
+    "name": "Bone",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 50,
+    "tags": [
+      "bone"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SOFT_TISSUE",
+    "name": "Soft Tissue",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 60,
+    "tags": [
+      "soft tissue"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_HEAD_AND_NECK",
+    "name": "Head and Neck",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": null,
+    "sort_order": 100,
+    "tags": [
+      "head",
+      "neck"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_THYROID_GLAND",
+    "name": "Thyroid Gland",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_HEAD_AND_NECK",
+    "sort_order": 101,
+    "tags": [
+      "thyroid"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_PARATHYROID_GLANDS",
+    "name": "Parathyroid Glands",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_HEAD_AND_NECK",
+    "sort_order": 102,
+    "tags": [
+      "parathyroid"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_BREAST",
+    "name": "Breast",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": null,
+    "sort_order": 110,
+    "tags": [
+      "breast"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_AXILLA",
+    "name": "Axilla",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_BREAST",
+    "sort_order": 111,
+    "tags": [
+      "axilla"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "name": "Abdomen",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": null,
+    "sort_order": 120,
+    "tags": [
+      "abdomen"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMINAL_WALL",
+    "name": "Abdominal Wall",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 121,
+    "tags": [
+      "abdominal wall"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_GROIN",
+    "name": "Groin",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMINAL_WALL",
+    "sort_order": 122,
+    "tags": [
+      "inguinal"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_UMBILICUS",
+    "name": "Umbilicus",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMINAL_WALL",
+    "sort_order": 123,
+    "tags": [
+      "umbilicus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_DIAPHRAGM",
+    "name": "Diaphragm",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 124,
+    "tags": [
+      "diaphragm"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_OESOPHAGUS",
+    "name": "Oesophagus",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 130,
+    "tags": [
+      "oesophagus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_GASTROOESOPHAGEAL_JUNCTION",
+    "name": "Gastrooesophageal Junction",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 131,
+    "tags": [
+      "gastrooesophageal junction"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_STOMACH",
+    "name": "Stomach",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 132,
+    "tags": [
+      "stomach"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_DUODENUM",
+    "name": "Duodenum",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 133,
+    "tags": [
+      "duodenum"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_LIVER",
+    "name": "Liver",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 140,
+    "tags": [
+      "liver"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_GALLBLADDER",
+    "name": "Gallbladder",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 141,
+    "tags": [
+      "gallbladder"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_BILE_DUCTS",
+    "name": "Bile Ducts",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 142,
+    "tags": [
+      "bile ducts"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_PANCREAS",
+    "name": "Pancreas",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 143,
+    "tags": [
+      "pancreas"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_SPLEEN",
+    "name": "Spleen",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 144,
+    "tags": [
+      "spleen"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_SMALL_INTESTINE",
+    "name": "Small Intestine",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 150,
+    "tags": [
+      "small bowel"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_APPENDIX",
+    "name": "Appendix",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 151,
+    "tags": [
+      "appendix"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_COLON",
+    "name": "Colon",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 152,
+    "tags": [
+      "colon"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_RECTUM",
+    "name": "Rectum",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 153,
+    "tags": [
+      "rectum"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_ANUS",
+    "name": "Anus",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 154,
+    "tags": [
+      "anus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_PELVIC_FLOOR",
+    "name": "Pelvic Floor",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 155,
+    "tags": [
+      "pelvic floor"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_PERITONEUM",
+    "name": "Peritoneum",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": "ANAT_SPEC_GENERAL_SURGERY_ABDOMEN",
+    "sort_order": 160,
+    "tags": [
+      "peritoneum"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GENERAL_SURGERY_ADRENAL_GLANDS",
+    "name": "Adrenal Glands",
+    "specialty_id": "SPEC_GENERAL_SURGERY",
+    "parent_id": null,
+    "sort_order": 170,
+    "tags": [
+      "adrenal"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_UROLOGY_URINARY_TRACT",
+    "name": "Urinary Tract",
+    "specialty_id": "SPEC_UROLOGY",
+    "parent_id": null,
+    "sort_order": 200,
+    "tags": [
+      "urinary tract"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_UROLOGY_UPPER_URINARY_TRACT",
+    "name": "Upper Urinary Tract",
+    "specialty_id": "SPEC_UROLOGY",
+    "parent_id": "ANAT_SPEC_UROLOGY_URINARY_TRACT",
+    "sort_order": 201,
+    "tags": [
+      "upper urinary tract"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_UROLOGY_KIDNEY",
+    "name": "Kidney",
+    "specialty_id": "SPEC_UROLOGY",
+    "parent_id": "ANAT_SPEC_UROLOGY_UPPER_URINARY_TRACT",
+    "sort_order": 202,
+    "tags": [
+      "kidney"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_UROLOGY_RENAL_PELVIS",
+    "name": "Renal Pelvis",
+    "specialty_id": "SPEC_UROLOGY",
+    "parent_id": "ANAT_SPEC_UROLOGY_UPPER_URINARY_TRACT",
+    "sort_order": 203,
+    "tags": [
+      "renal pelvis"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_UROLOGY_URETER",
+    "name": "Ureter",
+    "specialty_id": "SPEC_UROLOGY",
+    "parent_id": "ANAT_SPEC_UROLOGY_UPPER_URINARY_TRACT",
+    "sort_order": 204,
+    "tags": [
+      "ureter"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_UROLOGY_LOWER_URINARY_TRACT",
+    "name": "Lower Urinary Tract",
+    "specialty_id": "SPEC_UROLOGY",
+    "parent_id": "ANAT_SPEC_UROLOGY_URINARY_TRACT",
+    "sort_order": 210,
+    "tags": [
+      "lower urinary tract"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_UROLOGY_BLADDER",
+    "name": "Bladder",
+    "specialty_id": "SPEC_UROLOGY",
+    "parent_id": "ANAT_SPEC_UROLOGY_LOWER_URINARY_TRACT",
+    "sort_order": 211,
+    "tags": [
+      "bladder"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_UROLOGY_URETHRA",
+    "name": "Urethra",
+    "specialty_id": "SPEC_UROLOGY",
+    "parent_id": "ANAT_SPEC_UROLOGY_LOWER_URINARY_TRACT",
+    "sort_order": 212,
+    "tags": [
+      "urethra"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_UROLOGY_MALE_REPRODUCTIVE_SYSTEM",
+    "name": "Male Reproductive System",
+    "specialty_id": "SPEC_UROLOGY",
+    "parent_id": null,
+    "sort_order": 220,
+    "tags": [
+      "male reproductive system"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_UROLOGY_PROSTATE",
+    "name": "Prostate",
+    "specialty_id": "SPEC_UROLOGY",
+    "parent_id": "ANAT_SPEC_UROLOGY_MALE_REPRODUCTIVE_SYSTEM",
+    "sort_order": 221,
+    "tags": [
+      "prostate"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_UROLOGY_SEMINAL_VESICLES",
+    "name": "Seminal Vesicles",
+    "specialty_id": "SPEC_UROLOGY",
+    "parent_id": "ANAT_SPEC_UROLOGY_MALE_REPRODUCTIVE_SYSTEM",
+    "sort_order": 222,
+    "tags": [
+      "seminal vesicles"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_UROLOGY_TESTIS",
+    "name": "Testis",
+    "specialty_id": "SPEC_UROLOGY",
+    "parent_id": "ANAT_SPEC_UROLOGY_MALE_REPRODUCTIVE_SYSTEM",
+    "sort_order": 223,
+    "tags": [
+      "testis"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_UROLOGY_EPIDIDYMIS",
+    "name": "Epididymis",
+    "specialty_id": "SPEC_UROLOGY",
+    "parent_id": "ANAT_SPEC_UROLOGY_MALE_REPRODUCTIVE_SYSTEM",
+    "sort_order": 224,
+    "tags": [
+      "epididymis"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_UROLOGY_SCROTUM",
+    "name": "Scrotum",
+    "specialty_id": "SPEC_UROLOGY",
+    "parent_id": "ANAT_SPEC_UROLOGY_MALE_REPRODUCTIVE_SYSTEM",
+    "sort_order": 225,
+    "tags": [
+      "scrotum"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_UROLOGY_PENIS",
+    "name": "Penis",
+    "specialty_id": "SPEC_UROLOGY",
+    "parent_id": "ANAT_SPEC_UROLOGY_MALE_REPRODUCTIVE_SYSTEM",
+    "sort_order": 226,
+    "tags": [
+      "penis"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_UROLOGY_PELVIC_FLOOR",
+    "name": "Pelvic Floor",
+    "specialty_id": "SPEC_UROLOGY",
+    "parent_id": null,
+    "sort_order": 230,
+    "tags": [
+      "pelvic floor"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GYNECOLOGY_FEMALE_REPRODUCTIVE_SYSTEM",
+    "name": "Female Reproductive System",
+    "specialty_id": "SPEC_GYNECOLOGY",
+    "parent_id": null,
+    "sort_order": 300,
+    "tags": [
+      "female reproductive system"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GYNECOLOGY_VULVA",
+    "name": "Vulva",
+    "specialty_id": "SPEC_GYNECOLOGY",
+    "parent_id": "ANAT_SPEC_GYNECOLOGY_FEMALE_REPRODUCTIVE_SYSTEM",
+    "sort_order": 301,
+    "tags": [
+      "vulva"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GYNECOLOGY_VAGINA",
+    "name": "Vagina",
+    "specialty_id": "SPEC_GYNECOLOGY",
+    "parent_id": "ANAT_SPEC_GYNECOLOGY_FEMALE_REPRODUCTIVE_SYSTEM",
+    "sort_order": 302,
+    "tags": [
+      "vagina"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GYNECOLOGY_CERVIX",
+    "name": "Cervix",
+    "specialty_id": "SPEC_GYNECOLOGY",
+    "parent_id": "ANAT_SPEC_GYNECOLOGY_FEMALE_REPRODUCTIVE_SYSTEM",
+    "sort_order": 303,
+    "tags": [
+      "cervix"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GYNECOLOGY_UTERUS",
+    "name": "Uterus",
+    "specialty_id": "SPEC_GYNECOLOGY",
+    "parent_id": "ANAT_SPEC_GYNECOLOGY_FEMALE_REPRODUCTIVE_SYSTEM",
+    "sort_order": 304,
+    "tags": [
+      "uterus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GYNECOLOGY_FALLOPIAN_TUBES",
+    "name": "Fallopian Tubes",
+    "specialty_id": "SPEC_GYNECOLOGY",
+    "parent_id": "ANAT_SPEC_GYNECOLOGY_FEMALE_REPRODUCTIVE_SYSTEM",
+    "sort_order": 305,
+    "tags": [
+      "fallopian tubes"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GYNECOLOGY_OVARIES",
+    "name": "Ovaries",
+    "specialty_id": "SPEC_GYNECOLOGY",
+    "parent_id": "ANAT_SPEC_GYNECOLOGY_FEMALE_REPRODUCTIVE_SYSTEM",
+    "sort_order": 306,
+    "tags": [
+      "ovaries"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GYNECOLOGY_ADNEXA",
+    "name": "Adnexa",
+    "specialty_id": "SPEC_GYNECOLOGY",
+    "parent_id": "ANAT_SPEC_GYNECOLOGY_FEMALE_REPRODUCTIVE_SYSTEM",
+    "sort_order": 307,
+    "tags": [
+      "adnexa"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GYNECOLOGY_PELVIS",
+    "name": "Pelvis",
+    "specialty_id": "SPEC_GYNECOLOGY",
+    "parent_id": null,
+    "sort_order": 310,
+    "tags": [
+      "pelvis"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GYNECOLOGY_PELVIC_FLOOR",
+    "name": "Pelvic Floor",
+    "specialty_id": "SPEC_GYNECOLOGY",
+    "parent_id": "ANAT_SPEC_GYNECOLOGY_PELVIS",
+    "sort_order": 311,
+    "tags": [
+      "pelvic floor"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GYNECOLOGY_PERITONEUM",
+    "name": "Peritoneum",
+    "specialty_id": "SPEC_GYNECOLOGY",
+    "parent_id": "ANAT_SPEC_GYNECOLOGY_PELVIS",
+    "sort_order": 312,
+    "tags": [
+      "peritoneum"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GYNECOLOGY_PELVIC_ORGANS",
+    "name": "Pelvic Organs",
+    "specialty_id": "SPEC_GYNECOLOGY",
+    "parent_id": "ANAT_SPEC_GYNECOLOGY_PELVIS",
+    "sort_order": 320,
+    "tags": [
+      "pelvic organs"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GYNECOLOGY_BLADDER",
+    "name": "Bladder",
+    "specialty_id": "SPEC_GYNECOLOGY",
+    "parent_id": "ANAT_SPEC_GYNECOLOGY_PELVIC_ORGANS",
+    "sort_order": 321,
+    "tags": [
+      "bladder"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_GYNECOLOGY_URETHRA",
+    "name": "Urethra",
+    "specialty_id": "SPEC_GYNECOLOGY",
+    "parent_id": "ANAT_SPEC_GYNECOLOGY_PELVIC_ORGANS",
+    "sort_order": 322,
+    "tags": [
+      "urethra"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OBSTETRICS_PREGNANCY_ANATOMY",
+    "name": "Pregnancy Anatomy",
+    "specialty_id": "SPEC_OBSTETRICS",
+    "parent_id": null,
+    "sort_order": 400,
+    "tags": [
+      "pregnancy"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OBSTETRICS_UTERUS",
+    "name": "Uterus",
+    "specialty_id": "SPEC_OBSTETRICS",
+    "parent_id": "ANAT_SPEC_OBSTETRICS_PREGNANCY_ANATOMY",
+    "sort_order": 401,
+    "tags": [
+      "uterus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OBSTETRICS_CERVIX",
+    "name": "Cervix",
+    "specialty_id": "SPEC_OBSTETRICS",
+    "parent_id": "ANAT_SPEC_OBSTETRICS_PREGNANCY_ANATOMY",
+    "sort_order": 402,
+    "tags": [
+      "cervix"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OBSTETRICS_PLACENTA",
+    "name": "Placenta",
+    "specialty_id": "SPEC_OBSTETRICS",
+    "parent_id": "ANAT_SPEC_OBSTETRICS_PREGNANCY_ANATOMY",
+    "sort_order": 403,
+    "tags": [
+      "placenta"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OBSTETRICS_LABOUR_AND_DELIVERY",
+    "name": "Labour and Delivery",
+    "specialty_id": "SPEC_OBSTETRICS",
+    "parent_id": null,
+    "sort_order": 410,
+    "tags": [
+      "labour",
+      "delivery"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OBSTETRICS_BIRTH_CANAL",
+    "name": "Birth Canal",
+    "specialty_id": "SPEC_OBSTETRICS",
+    "parent_id": "ANAT_SPEC_OBSTETRICS_LABOUR_AND_DELIVERY",
+    "sort_order": 411,
+    "tags": [
+      "birth canal"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OBSTETRICS_PERINEUM",
+    "name": "Perineum",
+    "specialty_id": "SPEC_OBSTETRICS",
+    "parent_id": "ANAT_SPEC_OBSTETRICS_LABOUR_AND_DELIVERY",
+    "sort_order": 412,
+    "tags": [
+      "perineum"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OBSTETRICS_MATERNAL_PELVIS",
+    "name": "Maternal Pelvis",
+    "specialty_id": "SPEC_OBSTETRICS",
+    "parent_id": "ANAT_SPEC_OBSTETRICS_LABOUR_AND_DELIVERY",
+    "sort_order": 413,
+    "tags": [
+      "maternal pelvis"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OBSTETRICS_ABDOMINAL_ACCESS",
+    "name": "Abdominal Access",
+    "specialty_id": "SPEC_OBSTETRICS",
+    "parent_id": null,
+    "sort_order": 420,
+    "tags": [
+      "abdominal access"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OBSTETRICS_ABDOMINAL_WALL",
+    "name": "Abdominal Wall",
+    "specialty_id": "SPEC_OBSTETRICS",
+    "parent_id": "ANAT_SPEC_OBSTETRICS_ABDOMINAL_ACCESS",
+    "sort_order": 421,
+    "tags": [
+      "abdominal wall"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_HEAD_AND_NECK",
+    "name": "Head and Neck",
+    "specialty_id": "SPEC_ENT",
+    "parent_id": null,
+    "sort_order": 500,
+    "tags": [
+      "head",
+      "neck"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_NECK",
+    "name": "Neck",
+    "specialty_id": "SPEC_ENT",
+    "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_HEAD_AND_NECK",
+    "sort_order": 501,
+    "tags": [
+      "neck"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_PHARYNX",
+    "name": "Pharynx",
+    "specialty_id": "SPEC_ENT",
+    "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_HEAD_AND_NECK",
+    "sort_order": 502,
+    "tags": [
+      "pharynx"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_LARYNX",
+    "name": "Larynx",
+    "specialty_id": "SPEC_ENT",
+    "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_HEAD_AND_NECK",
+    "sort_order": 503,
+    "tags": [
+      "larynx"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_SALIVARY_GLANDS",
+    "name": "Salivary Glands",
+    "specialty_id": "SPEC_ENT",
+    "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_HEAD_AND_NECK",
+    "sort_order": 504,
+    "tags": [
+      "salivary glands"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_NOSE_AND_SINUSES",
+    "name": "Nose and Sinuses",
+    "specialty_id": "SPEC_ENT",
+    "parent_id": null,
+    "sort_order": 510,
+    "tags": [
+      "nose",
+      "sinuses"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_NOSE",
+    "name": "Nose",
+    "specialty_id": "SPEC_ENT",
+    "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_NOSE_AND_SINUSES",
+    "sort_order": 511,
+    "tags": [
+      "nose"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_PARANASAL_SINUSES",
+    "name": "Paranasal Sinuses",
+    "specialty_id": "SPEC_ENT",
+    "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_NOSE_AND_SINUSES",
+    "sort_order": 512,
+    "tags": [
+      "paranasal sinuses"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_SKULL_BASE",
+    "name": "Skull Base",
+    "specialty_id": "SPEC_ENT",
+    "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_NOSE_AND_SINUSES",
+    "sort_order": 513,
+    "tags": [
+      "skull base"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_EAR",
+    "name": "Ear",
+    "specialty_id": "SPEC_ENT",
+    "parent_id": null,
+    "sort_order": 520,
+    "tags": [
+      "ear"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_EXTERNAL_EAR",
+    "name": "External Ear",
+    "specialty_id": "SPEC_ENT",
+    "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_EAR",
+    "sort_order": 521,
+    "tags": [
+      "external ear"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_MIDDLE_EAR",
+    "name": "Middle Ear",
+    "specialty_id": "SPEC_ENT",
+    "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_EAR",
+    "sort_order": 522,
+    "tags": [
+      "middle ear"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_INNER_EAR",
+    "name": "Inner Ear",
+    "specialty_id": "SPEC_ENT",
+    "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_EAR",
+    "sort_order": 523,
+    "tags": [
+      "inner ear"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_AIRWAY",
+    "name": "Airway",
+    "specialty_id": "SPEC_ENT",
+    "parent_id": null,
+    "sort_order": 530,
+    "tags": [
+      "airway"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_TRACHEA",
+    "name": "Trachea",
+    "specialty_id": "SPEC_ENT",
+    "parent_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_AIRWAY",
+    "sort_order": 531,
+    "tags": [
+      "trachea"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_TONSILS_AND_ADENOIDS",
+    "name": "Tonsils and Adenoids",
+    "specialty_id": "SPEC_ENT",
+    "parent_id": null,
+    "sort_order": 540,
+    "tags": [
+      "tonsils",
+      "adenoids"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_FACE",
+    "name": "Face",
+    "specialty_id": "SPEC_OMFS",
+    "parent_id": null,
+    "sort_order": 600,
+    "tags": [
+      "face"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_MANDIBLE",
+    "name": "Mandible",
+    "specialty_id": "SPEC_OMFS",
+    "parent_id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_FACE",
+    "sort_order": 601,
+    "tags": [
+      "mandible"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_MAXILLA",
+    "name": "Maxilla",
+    "specialty_id": "SPEC_OMFS",
+    "parent_id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_FACE",
+    "sort_order": 602,
+    "tags": [
+      "maxilla"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_ZYGOMA",
+    "name": "Zygoma",
+    "specialty_id": "SPEC_OMFS",
+    "parent_id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_FACE",
+    "sort_order": 603,
+    "tags": [
+      "zygoma"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_ORBIT",
+    "name": "Orbit",
+    "specialty_id": "SPEC_OMFS",
+    "parent_id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_FACE",
+    "sort_order": 604,
+    "tags": [
+      "orbit"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_ORAL_CAVITY",
+    "name": "Oral Cavity",
+    "specialty_id": "SPEC_OMFS",
+    "parent_id": null,
+    "sort_order": 610,
+    "tags": [
+      "oral cavity"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_TEETH_AND_ALVEOLAR_BONE",
+    "name": "Teeth and Alveolar Bone",
+    "specialty_id": "SPEC_OMFS",
+    "parent_id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_ORAL_CAVITY",
+    "sort_order": 611,
+    "tags": [
+      "teeth",
+      "alveolar bone"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_TEMPOROMANDIBULAR_JOINT",
+    "name": "Temporomandibular Joint",
+    "specialty_id": "SPEC_OMFS",
+    "parent_id": null,
+    "sort_order": 620,
+    "tags": [
+      "temporomandibular joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ORAL_AND_MAXILLOFACIAL_SURGERY_NECK",
+    "name": "Neck",
+    "specialty_id": "SPEC_OMFS",
+    "parent_id": null,
+    "sort_order": 630,
+    "tags": [
+      "neck"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_DENTAL_AND_ORAL_SURGERY_ORAL_CAVITY",
+    "name": "Oral Cavity",
+    "specialty_id": "SPEC_DENTAL_ORAL_SURGERY",
+    "parent_id": null,
+    "sort_order": 700,
+    "tags": [
+      "oral cavity"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_DENTAL_AND_ORAL_SURGERY_TEETH_AND_ALVEOLAR_BONE",
+    "name": "Teeth and Alveolar Bone",
+    "specialty_id": "SPEC_DENTAL_ORAL_SURGERY",
+    "parent_id": "ANAT_SPEC_DENTAL_AND_ORAL_SURGERY_ORAL_CAVITY",
+    "sort_order": 701,
+    "tags": [
+      "teeth",
+      "alveolar bone"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_DENTAL_AND_ORAL_SURGERY_TEETH",
+    "name": "Teeth",
+    "specialty_id": "SPEC_DENTAL_ORAL_SURGERY",
+    "parent_id": "ANAT_SPEC_DENTAL_AND_ORAL_SURGERY_ORAL_CAVITY",
+    "sort_order": 702,
+    "tags": [
+      "teeth"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_FACE",
+    "name": "Face",
+    "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+    "parent_id": null,
+    "sort_order": 800,
+    "tags": [
+      "face"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKULL",
+    "name": "Skull",
+    "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+    "parent_id": null,
+    "sort_order": 801,
+    "tags": [
+      "skull"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_LIP",
+    "name": "Lip",
+    "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+    "parent_id": null,
+    "sort_order": 802,
+    "tags": [
+      "lip"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_PALATE",
+    "name": "Palate",
+    "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+    "parent_id": null,
+    "sort_order": 803,
+    "tags": [
+      "palate"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_TRUNK",
+    "name": "Trunk",
+    "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+    "parent_id": null,
+    "sort_order": 810,
+    "tags": [
+      "trunk"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_CHEST_WALL",
+    "name": "Chest Wall",
+    "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+    "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_TRUNK",
+    "sort_order": 811,
+    "tags": [
+      "chest wall"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_BREAST",
+    "name": "Breast",
+    "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+    "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_TRUNK",
+    "sort_order": 812,
+    "tags": [
+      "breast"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_UPPER_LIMB",
+    "name": "Upper Limb",
+    "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+    "parent_id": null,
+    "sort_order": 820,
+    "tags": [
+      "upper limb"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_FOREARM",
+    "name": "Forearm",
+    "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+    "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_UPPER_LIMB",
+    "sort_order": 821,
+    "tags": [
+      "forearm"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_WRIST",
+    "name": "Wrist",
+    "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+    "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_UPPER_LIMB",
+    "sort_order": 822,
+    "tags": [
+      "wrist"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_HAND",
+    "name": "Hand",
+    "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+    "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_UPPER_LIMB",
+    "sort_order": 823,
+    "tags": [
+      "hand"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_LOWER_LIMB",
+    "name": "Lower Limb",
+    "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+    "parent_id": null,
+    "sort_order": 830,
+    "tags": [
+      "lower limb"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN",
+    "name": "Skin",
+    "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+    "parent_id": null,
+    "sort_order": 840,
+    "tags": [
+      "skin"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN_OF_HEAD_AND_NECK",
+    "name": "Skin of Head and Neck",
+    "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+    "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN",
+    "sort_order": 841,
+    "tags": [
+      "head",
+      "neck",
+      "skin"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN_OF_TRUNK",
+    "name": "Skin of Trunk",
+    "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+    "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN",
+    "sort_order": 842,
+    "tags": [
+      "trunk",
+      "skin"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN_OF_UPPER_LIMB",
+    "name": "Skin of Upper Limb",
+    "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+    "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN",
+    "sort_order": 843,
+    "tags": [
+      "upper limb",
+      "skin"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN_OF_LOWER_LIMB",
+    "name": "Skin of Lower Limb",
+    "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
+    "parent_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_SKIN",
+    "sort_order": 844,
+    "tags": [
+      "lower limb",
+      "skin"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_NEUROSURGERY_CRANIUM",
+    "name": "Cranium",
+    "specialty_id": "SPEC_NEUROSURGERY",
+    "parent_id": null,
+    "sort_order": 900,
+    "tags": [
+      "cranium"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_NEUROSURGERY_BRAIN",
+    "name": "Brain",
+    "specialty_id": "SPEC_NEUROSURGERY",
+    "parent_id": "ANAT_SPEC_NEUROSURGERY_CRANIUM",
+    "sort_order": 901,
+    "tags": [
+      "brain"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_NEUROSURGERY_SKULL",
+    "name": "Skull",
+    "specialty_id": "SPEC_NEUROSURGERY",
+    "parent_id": "ANAT_SPEC_NEUROSURGERY_CRANIUM",
+    "sort_order": 902,
+    "tags": [
+      "skull"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_NEUROSURGERY_BRAIN_DEEP_STRUCTURES",
+    "name": "Brain Deep Structures",
+    "specialty_id": "SPEC_NEUROSURGERY",
+    "parent_id": "ANAT_SPEC_NEUROSURGERY_BRAIN",
+    "sort_order": 903,
+    "tags": [
+      "brain deep structures"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_NEUROSURGERY_SPINE",
+    "name": "Spine",
+    "specialty_id": "SPEC_NEUROSURGERY",
+    "parent_id": null,
+    "sort_order": 910,
+    "tags": [
+      "spine"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_NEUROSURGERY_CERVICAL_SPINE",
+    "name": "Cervical Spine",
+    "specialty_id": "SPEC_NEUROSURGERY",
+    "parent_id": "ANAT_SPEC_NEUROSURGERY_SPINE",
+    "sort_order": 911,
+    "tags": [
+      "cervical spine"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_NEUROSURGERY_THORACIC_SPINE",
+    "name": "Thoracic Spine",
+    "specialty_id": "SPEC_NEUROSURGERY",
+    "parent_id": "ANAT_SPEC_NEUROSURGERY_SPINE",
+    "sort_order": 912,
+    "tags": [
+      "thoracic spine"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_NEUROSURGERY_LUMBAR_SPINE",
+    "name": "Lumbar Spine",
+    "specialty_id": "SPEC_NEUROSURGERY",
+    "parent_id": "ANAT_SPEC_NEUROSURGERY_SPINE",
+    "sort_order": 913,
+    "tags": [
+      "lumbar spine"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_HEART",
+    "name": "Heart",
+    "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 1000,
+    "tags": [
+      "heart"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_GREAT_VESSELS",
+    "name": "Great Vessels",
+    "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 1001,
+    "tags": [
+      "great vessels"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_LUNG",
+    "name": "Lung",
+    "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 1010,
+    "tags": [
+      "lung"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_PLEURA",
+    "name": "Pleura",
+    "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 1011,
+    "tags": [
+      "pleura"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_MEDIASTINUM",
+    "name": "Mediastinum",
+    "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 1012,
+    "tags": [
+      "mediastinum"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_CHEST_WALL",
+    "name": "Chest Wall",
+    "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 1013,
+    "tags": [
+      "chest wall"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_VASCULAR_SURGERY_CAROTID_ARTERIES",
+    "name": "Carotid Arteries",
+    "specialty_id": "SPEC_VASCULAR_SURGERY",
+    "parent_id": null,
+    "sort_order": 1100,
+    "tags": [
+      "carotid"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_VASCULAR_SURGERY_UPPER_LIMB",
+    "name": "Upper Limb",
+    "specialty_id": "SPEC_VASCULAR_SURGERY",
+    "parent_id": null,
+    "sort_order": 1101,
+    "tags": [
+      "upper limb"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_VASCULAR_SURGERY_LOWER_LIMB",
+    "name": "Lower Limb",
+    "specialty_id": "SPEC_VASCULAR_SURGERY",
+    "parent_id": null,
+    "sort_order": 1102,
+    "tags": [
+      "lower limb"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_VASCULAR_SURGERY_THORACIC_AORTA",
+    "name": "Thoracic Aorta",
+    "specialty_id": "SPEC_VASCULAR_SURGERY",
+    "parent_id": null,
+    "sort_order": 1110,
+    "tags": [
+      "thoracic aorta"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_VASCULAR_SURGERY_ABDOMINAL_AORTA",
+    "name": "Abdominal Aorta",
+    "specialty_id": "SPEC_VASCULAR_SURGERY",
+    "parent_id": null,
+    "sort_order": 1111,
+    "tags": [
+      "abdominal aorta"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_VASCULAR_SURGERY_ARTERIOVENOUS_FISTULA",
+    "name": "Arteriovenous Fistula",
+    "specialty_id": "SPEC_VASCULAR_SURGERY",
+    "parent_id": null,
+    "sort_order": 1120,
+    "tags": [
+      "arteriovenous fistula"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_VASCULAR_SURGERY_CENTRAL_VEINS",
+    "name": "Central Veins",
+    "specialty_id": "SPEC_VASCULAR_SURGERY",
+    "parent_id": null,
+    "sort_order": 1121,
+    "tags": [
+      "central veins"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_NEONATAL_ANATOMY",
+    "name": "Neonatal Anatomy",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 1200,
+    "tags": [
+      "neonatal"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_OESOPHAGUS",
+    "name": "Oesophagus",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": "ANAT_SPEC_PAEDIATRIC_SURGERY_NEONATAL_ANATOMY",
+    "sort_order": 1201,
+    "tags": [
+      "oesophagus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_DIAPHRAGM",
+    "name": "Diaphragm",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": "ANAT_SPEC_PAEDIATRIC_SURGERY_NEONATAL_ANATOMY",
+    "sort_order": 1202,
+    "tags": [
+      "diaphragm"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_ABDOMINAL_WALL",
+    "name": "Abdominal Wall",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": "ANAT_SPEC_PAEDIATRIC_SURGERY_NEONATAL_ANATOMY",
+    "sort_order": 1203,
+    "tags": [
+      "abdominal wall"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_INTESTINE",
+    "name": "Intestine",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": "ANAT_SPEC_PAEDIATRIC_SURGERY_NEONATAL_ANATOMY",
+    "sort_order": 1204,
+    "tags": [
+      "intestine"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_APPENDIX",
+    "name": "Appendix",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 1210,
+    "tags": [
+      "appendix"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_HERNIA",
+    "name": "Hernia",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 1211,
+    "tags": [
+      "hernia"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_BOWEL",
+    "name": "Bowel",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 1212,
+    "tags": [
+      "bowel"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_LUNG",
+    "name": "Lung",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 1220,
+    "tags": [
+      "lung"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_MEDIASTINUM",
+    "name": "Mediastinum",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 1221,
+    "tags": [
+      "mediastinum"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_CHEST",
+    "name": "Chest",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 1222,
+    "tags": [
+      "chest"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_ABDOMEN",
+    "name": "Abdomen",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 1223,
+    "tags": [
+      "abdomen"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OPHTHALMOLOGY_EYE",
+    "name": "Eye",
+    "specialty_id": "SPEC_OPHTHALMOLOGY",
+    "parent_id": null,
+    "sort_order": 1300,
+    "tags": [
+      "eye"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OPHTHALMOLOGY_LENS",
+    "name": "Lens",
+    "specialty_id": "SPEC_OPHTHALMOLOGY",
+    "parent_id": "ANAT_SPEC_OPHTHALMOLOGY_EYE",
+    "sort_order": 1301,
+    "tags": [
+      "lens"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OPHTHALMOLOGY_RETINA",
+    "name": "Retina",
+    "specialty_id": "SPEC_OPHTHALMOLOGY",
+    "parent_id": "ANAT_SPEC_OPHTHALMOLOGY_EYE",
+    "sort_order": 1302,
+    "tags": [
+      "retina"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OPHTHALMOLOGY_VITREOUS",
+    "name": "Vitreous",
+    "specialty_id": "SPEC_OPHTHALMOLOGY",
+    "parent_id": "ANAT_SPEC_OPHTHALMOLOGY_EYE",
+    "sort_order": 1303,
+    "tags": [
+      "vitreous"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OPHTHALMOLOGY_ANTERIOR_CHAMBER_ANGLE",
+    "name": "Anterior Chamber Angle",
+    "specialty_id": "SPEC_OPHTHALMOLOGY",
+    "parent_id": "ANAT_SPEC_OPHTHALMOLOGY_EYE",
+    "sort_order": 1304,
+    "tags": [
+      "anterior chamber angle"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OPHTHALMOLOGY_CORNEA",
+    "name": "Cornea",
+    "specialty_id": "SPEC_OPHTHALMOLOGY",
+    "parent_id": "ANAT_SPEC_OPHTHALMOLOGY_EYE",
+    "sort_order": 1305,
+    "tags": [
+      "cornea"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OPHTHALMOLOGY_CONJUNCTIVA",
+    "name": "Conjunctiva",
+    "specialty_id": "SPEC_OPHTHALMOLOGY",
+    "parent_id": "ANAT_SPEC_OPHTHALMOLOGY_EYE",
+    "sort_order": 1306,
+    "tags": [
+      "conjunctiva"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OPHTHALMOLOGY_EYELIDS",
+    "name": "Eyelids",
+    "specialty_id": "SPEC_OPHTHALMOLOGY",
+    "parent_id": null,
+    "sort_order": 1310,
+    "tags": [
+      "eyelids"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OPHTHALMOLOGY_LACRIMAL_SYSTEM",
+    "name": "Lacrimal System",
+    "specialty_id": "SPEC_OPHTHALMOLOGY",
+    "parent_id": null,
+    "sort_order": 1311,
+    "tags": [
+      "lacrimal system"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OPHTHALMOLOGY_ORBIT",
+    "name": "Orbit",
+    "specialty_id": "SPEC_OPHTHALMOLOGY",
+    "parent_id": null,
+    "sort_order": 1312,
+    "tags": [
+      "orbit"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OPHTHALMOLOGY_EXTRAOCULAR_MUSCLES",
+    "name": "Extraocular Muscles",
+    "specialty_id": "SPEC_OPHTHALMOLOGY",
+    "parent_id": null,
+    "sort_order": 1313,
+    "tags": [
+      "extraocular muscles"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PODIATRIC_SURGERY_FOOT",
+    "name": "Foot",
+    "specialty_id": "SPEC_PODIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 1400,
+    "tags": [
+      "foot"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PODIATRIC_SURGERY_FOREFOOT",
+    "name": "Forefoot",
+    "specialty_id": "SPEC_PODIATRIC_SURGERY",
+    "parent_id": "ANAT_SPEC_PODIATRIC_SURGERY_FOOT",
+    "sort_order": 1401,
+    "tags": [
+      "forefoot"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PODIATRIC_SURGERY_MIDFOOT",
+    "name": "Midfoot",
+    "specialty_id": "SPEC_PODIATRIC_SURGERY",
+    "parent_id": "ANAT_SPEC_PODIATRIC_SURGERY_FOOT",
+    "sort_order": 1402,
+    "tags": [
+      "midfoot"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PODIATRIC_SURGERY_REARFOOT",
+    "name": "Rearfoot",
+    "specialty_id": "SPEC_PODIATRIC_SURGERY",
+    "parent_id": "ANAT_SPEC_PODIATRIC_SURGERY_FOOT",
+    "sort_order": 1403,
+    "tags": [
+      "rearfoot"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PODIATRIC_SURGERY_ANKLE",
+    "name": "Ankle",
+    "specialty_id": "SPEC_PODIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 1404,
+    "tags": [
+      "ankle"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PODIATRIC_SURGERY_DIABETIC_FOOT",
+    "name": "Diabetic Foot",
+    "specialty_id": "SPEC_PODIATRIC_SURGERY",
+    "parent_id": "ANAT_SPEC_PODIATRIC_SURGERY_FOOT",
+    "sort_order": 1405,
+    "tags": [
+      "diabetic foot"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_AIRWAY",
+    "name": "Airway",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 1500,
+    "tags": [
+      "airway"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_NEURAXIS",
+    "name": "Neuraxis",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 1501,
+    "tags": [
+      "neuraxis"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_PERIPHERAL_NERVES",
+    "name": "Peripheral Nerves",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 1502,
+    "tags": [
+      "peripheral nerves"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_VASCULAR_ACCESS",
+    "name": "Vascular Access",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 1503,
+    "tags": [
+      "vascular access"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_HEART_AND_LUNGS",
+    "name": "Heart and Lungs",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "heart and lungs"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_OESOPHAGUS",
+    "name": "Oesophagus",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "oesophagus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_THORAX",
+    "name": "Thorax",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "thorax"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_ARTERY",
+    "name": "Arterial System",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "arterial system"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_CENTRAL_VEINS",
+    "name": "Central Veins",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "central veins"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_FACE_MASK",
+    "name": "Face and Upper Airway",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "face and upper airway"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_SPINE",
+    "name": "Spine",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "spine"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_SACRAL_HIATUS",
+    "name": "Sacral Hiatus",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "sacral hiatus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_SYSTEMIC",
+    "name": "Systemic",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "systemic"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_ADDUCTOR_CANAL",
+    "name": "Adductor Canal",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "adductor canal"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_ANTERIOR_ABDOMINAL_WALL",
+    "name": "Anterior Abdominal Wall",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "anterior abdominal wall"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_BRACHIAL_PLEXUS",
+    "name": "Brachial Plexus",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "brachial plexus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_FEMORAL_NERVE",
+    "name": "Femoral Nerve",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "femoral nerve"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_POSTERIOR_THORAX",
+    "name": "Posterior Thorax",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "posterior thorax"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_ANAESTHESIA_SCIATIC_NERVE",
+    "name": "Sciatic Nerve",
+    "specialty_id": "SPEC_ANAESTHESIA",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "sciatic nerve"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_AORTA",
+    "name": "Aorta",
+    "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "aorta"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_HEART_VALVES",
+    "name": "Heart Valves",
+    "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "heart valves"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_PERICARDIUM",
+    "name": "Pericardium",
+    "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "pericardium"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_AIRWAY",
+    "name": "Airway",
+    "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "airway"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_CHEST_CAVITY",
+    "name": "Chest Cavity",
+    "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "chest cavity"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_DIAPHRAGM",
+    "name": "Diaphragm",
+    "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "diaphragm"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_OESOPHAGUS",
+    "name": "Oesophagus",
+    "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "oesophagus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_CARDIOTHORACIC_SURGERY_TRACHEA",
+    "name": "Trachea",
+    "specialty_id": "SPEC_CARDIOTHORACIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "trachea"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_NEUROSURGERY_SKULL_BASE",
+    "name": "Skull Base",
+    "specialty_id": "SPEC_NEUROSURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "skull base"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_NEUROSURGERY_VENTRICLES",
+    "name": "Ventricles",
+    "specialty_id": "SPEC_NEUROSURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "ventricles"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_NEUROSURGERY_CHEST_WALL",
+    "name": "Chest Wall",
+    "specialty_id": "SPEC_NEUROSURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "chest wall"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_NEUROSURGERY_NECK",
+    "name": "Neck",
+    "specialty_id": "SPEC_NEUROSURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "neck"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_NEUROSURGERY_CEREBELLOPONTINE_ANGLE",
+    "name": "Cerebellopontine Angle",
+    "specialty_id": "SPEC_NEUROSURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "cerebellopontine angle"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_NEUROSURGERY_POSTERIOR_FOSSA",
+    "name": "Posterior Fossa",
+    "specialty_id": "SPEC_NEUROSURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "posterior fossa"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_NEUROSURGERY_SPINAL_CORD",
+    "name": "Spinal Cord",
+    "specialty_id": "SPEC_NEUROSURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "spinal cord"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OPHTHALMOLOGY_ANTERIOR_CHAMBER",
+    "name": "Anterior Chamber",
+    "specialty_id": "SPEC_OPHTHALMOLOGY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "anterior chamber"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OPHTHALMOLOGY_CILIARY_BODY",
+    "name": "Ciliary Body",
+    "specialty_id": "SPEC_OPHTHALMOLOGY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "ciliary body"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OPHTHALMOLOGY_EYELID",
+    "name": "Eyelid",
+    "specialty_id": "SPEC_OPHTHALMOLOGY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "eyelid"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OPHTHALMOLOGY_GLOBE",
+    "name": "Globe",
+    "specialty_id": "SPEC_OPHTHALMOLOGY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "globe"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_OPHTHALMOLOGY_MACULA",
+    "name": "Macula",
+    "specialty_id": "SPEC_OPHTHALMOLOGY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "macula"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_ANORECTUM",
+    "name": "Anorectum",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "anorectum"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_SMALL_INTESTINE",
+    "name": "Small Intestine",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "small intestine"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_STOMACH",
+    "name": "Stomach",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "stomach"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_CENTRAL_VEINS",
+    "name": "Central Veins",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "central veins"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_GROIN",
+    "name": "Groin",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "groin"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_NECK",
+    "name": "Neck",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "neck"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_SCROTUM",
+    "name": "Scrotum",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "scrotum"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_TESTIS",
+    "name": "Testis",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "testis"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_UMBILICUS",
+    "name": "Umbilicus",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "umbilicus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_PLEURA",
+    "name": "Pleura",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "pleura"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PAEDIATRIC_SURGERY_SPLEEN",
+    "name": "Spleen",
+    "specialty_id": "SPEC_PAEDIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "spleen"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PODIATRIC_SURGERY_TOES",
+    "name": "Toes",
+    "specialty_id": "SPEC_PODIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "toes"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PODIATRIC_SURGERY_FIRST_METATARSOPHALANGEAL_JOINT",
+    "name": "First Metatarsophalangeal Joint",
+    "specialty_id": "SPEC_PODIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "first metatarsophalangeal joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_PODIATRIC_SURGERY_ACHILLES_TENDON",
+    "name": "Achilles Tendon",
+    "specialty_id": "SPEC_PODIATRIC_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "achilles tendon"
+    ]
+  },
+  {
+    "id": "ANAT_ACETABULUM",
+    "name": "Acetabulum",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "acetabulum"
+    ]
+  },
+  {
+    "id": "ANAT_ANKLE",
+    "name": "Ankle",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "ankle"
+    ]
+  },
+  {
+    "id": "ANAT_ELBOW",
+    "name": "Elbow",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "elbow"
+    ]
+  },
+  {
+    "id": "ANAT_FEMUR",
+    "name": "Femur",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "femur"
+    ]
+  },
+  {
+    "id": "ANAT_HIP",
+    "name": "Hip",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "hip"
+    ]
+  },
+  {
+    "id": "ANAT_KNEE",
+    "name": "Knee",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "knee"
+    ]
+  },
+  {
+    "id": "ANAT_PATELLA",
+    "name": "Patella",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "patella"
+    ]
+  },
+  {
+    "id": "ANAT_PELVIS",
+    "name": "Pelvis",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "pelvis"
+    ]
+  },
+  {
+    "id": "ANAT_SHOULDER",
+    "name": "Shoulder",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "shoulder"
+    ]
+  },
+  {
+    "id": "ANAT_WRIST",
+    "name": "Wrist",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "wrist"
+    ]
+  },
+  {
+    "id": "ANAT_DIGITS",
+    "name": "Digits",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "digits"
+    ]
+  },
+  {
+    "id": "ANAT_FOOT",
+    "name": "Foot",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "foot"
+    ]
+  },
+  {
+    "id": "ANAT_FOREFOOT",
+    "name": "Forefoot",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "forefoot"
+    ]
+  },
+  {
+    "id": "ANAT_HINDFOOT",
+    "name": "Hindfoot",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "hindfoot"
+    ]
+  },
+  {
+    "id": "ANAT_MIDFOOT",
+    "name": "Midfoot",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "midfoot"
+    ]
+  },
+  {
+    "id": "ANAT_HAND",
+    "name": "Hand",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "hand"
+    ]
+  },
+  {
+    "id": "ANAT_BONE",
+    "name": "Bone",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "bone"
+    ]
+  },
+  {
+    "id": "ANAT_HUMERUS",
+    "name": "Humerus",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "humerus"
+    ]
+  },
+  {
+    "id": "ANAT_SOFT_TISSUE",
+    "name": "Soft Tissue",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "soft tissue"
+    ]
+  },
+  {
+    "id": "ANAT_SPINE",
+    "name": "Spine",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "spine"
+    ]
+  },
+  {
+    "id": "ANAT_TIBIA",
+    "name": "Tibia",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "tibia"
+    ]
+  },
+  {
+    "id": "ANAT_GENERIC_BONE",
+    "name": "Bone",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "bone"
+    ]
+  },
+  {
+    "id": "ANAT_CLAVICLE",
+    "name": "Clavicle",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "clavicle"
+    ]
+  },
+  {
+    "id": "ANAT_DISTAL_FEMUR",
+    "name": "Distal Femur",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "distal femur"
+    ]
+  },
+  {
+    "id": "ANAT_DISTAL_TIBIA",
+    "name": "Distal Tibia",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "distal tibia"
+    ]
+  },
+  {
+    "id": "ANAT_FOREARM",
+    "name": "Forearm",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "forearm"
+    ]
+  },
+  {
+    "id": "ANAT_LOWER_LIMB",
+    "name": "Lower Limb",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "lower limb"
+    ]
+  },
+  {
+    "id": "ANAT_CERVICAL_SPINE",
+    "name": "Cervical Spine",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "cervical spine"
+    ]
+  },
+  {
+    "id": "ANAT_LUMBAR_SPINE",
+    "name": "Lumbar Spine",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "lumbar spine"
+    ]
+  },
+  {
+    "id": "ANAT_THORACIC_SPINE",
+    "name": "Thoracic Spine",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "thoracic spine"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_VASCULAR_SURGERY_AORTA",
+    "name": "Aorta",
+    "specialty_id": "SPEC_VASCULAR_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "aorta"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_VASCULAR_SURGERY_AXILLARY_ARTERY",
+    "name": "Axillary Artery",
+    "specialty_id": "SPEC_VASCULAR_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "axillary artery"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_VASCULAR_SURGERY_CAROTID_ARTERY",
+    "name": "Carotid Artery",
+    "specialty_id": "SPEC_VASCULAR_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "carotid artery"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_VASCULAR_SURGERY_FEMORAL_ARTERY",
+    "name": "Femoral Artery",
+    "specialty_id": "SPEC_VASCULAR_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "femoral artery"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_VASCULAR_SURGERY_LOWER_LIMB_ARTERIES",
+    "name": "Lower Limb Arteries",
+    "specialty_id": "SPEC_VASCULAR_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "lower limb arteries"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_VASCULAR_SURGERY_PERIPHERAL_ARTERIES",
+    "name": "Peripheral Arteries",
+    "specialty_id": "SPEC_VASCULAR_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "peripheral arteries"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_VASCULAR_SURGERY_SUPERFICIAL_VEINS",
+    "name": "Superficial Veins",
+    "specialty_id": "SPEC_VASCULAR_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "superficial veins"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_VASCULAR_SURGERY_UPPER_LIMB_VESSELS",
+    "name": "Upper Limb Vessels",
+    "specialty_id": "SPEC_VASCULAR_SURGERY",
+    "parent_id": null,
+    "sort_order": 10,
+    "tags": [
+      "upper limb vessels"
+    ]
+  }
 ]

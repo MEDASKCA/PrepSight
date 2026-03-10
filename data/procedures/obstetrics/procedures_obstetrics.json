@@ -5,7 +5,9 @@
     "specialty_id": "SPEC_OBSTETRICS",
     "service_line_id": "SL_OPERATIVE_DELIVERY",
     "anatomy_id": "ANAT_SPEC_OBSTETRICS_BIRTH_CANAL",
-    "aliases": ["Vacuum-Assisted Delivery"],
+    "aliases": [
+      "Vacuum-Assisted Delivery"
+    ],
     "description": "Instrumental vaginal delivery using vacuum extraction.",
     "status": "active"
   },
@@ -55,7 +57,9 @@
     "specialty_id": "SPEC_OBSTETRICS",
     "service_line_id": "SL_OPERATIVE_DELIVERY",
     "anatomy_id": "ANAT_SPEC_OBSTETRICS_PERINEUM",
-    "aliases": ["OASI Repair"],
+    "aliases": [
+      "OASI Repair"
+    ],
     "description": "Repair of obstetric anal sphincter injury following childbirth.",
     "status": "active"
   },
@@ -69,14 +73,16 @@
     "description": "Manual rotation of fetal head followed by assisted vaginal delivery.",
     "status": "active"
   },
-
   {
     "id": "PROC_ELECTIVE_CAESAREAN_BIRTH",
     "name": "Elective Caesarean Birth",
     "specialty_id": "SPEC_OBSTETRICS",
     "service_line_id": "SL_CAESAREAN_BIRTH",
     "anatomy_id": "ANAT_SPEC_OBSTETRICS_UTERUS",
-    "aliases": ["Elective Caesarean Section", "Planned Caesarean Birth"],
+    "aliases": [
+      "Elective Caesarean Section",
+      "Planned Caesarean Birth"
+    ],
     "description": "Planned caesarean birth performed before onset of labour.",
     "status": "active"
   },
@@ -86,7 +92,9 @@
     "specialty_id": "SPEC_OBSTETRICS",
     "service_line_id": "SL_CAESAREAN_BIRTH",
     "anatomy_id": "ANAT_SPEC_OBSTETRICS_UTERUS",
-    "aliases": ["Emergency Caesarean Section"],
+    "aliases": [
+      "Emergency Caesarean Section"
+    ],
     "description": "Urgent caesarean birth performed for maternal or fetal indication.",
     "status": "active"
   },
@@ -96,7 +104,9 @@
     "specialty_id": "SPEC_OBSTETRICS",
     "service_line_id": "SL_CAESAREAN_BIRTH",
     "anatomy_id": "ANAT_SPEC_OBSTETRICS_UTERUS",
-    "aliases": ["Repeat Caesarean Section"],
+    "aliases": [
+      "Repeat Caesarean Section"
+    ],
     "description": "Caesarean birth in a patient with prior caesarean delivery.",
     "status": "active"
   },
@@ -120,7 +130,6 @@
     "description": "Repair of unintended uterine incision extension during caesarean birth.",
     "status": "active"
   },
-
   {
     "id": "PROC_MANUAL_REMOVAL_OF_PLACENTA",
     "name": "Manual Removal of Placenta",
@@ -167,7 +176,9 @@
     "specialty_id": "SPEC_OBSTETRICS",
     "service_line_id": "SL_HIGH_RISK_OBSTETRICS",
     "anatomy_id": "ANAT_SPEC_OBSTETRICS_UTERUS",
-    "aliases": ["B-Lynch Suture"],
+    "aliases": [
+      "B-Lynch Suture"
+    ],
     "description": "Application of uterine compression sutures to control postpartum haemorrhage.",
     "status": "active"
   },
@@ -197,7 +208,9 @@
     "specialty_id": "SPEC_OBSTETRICS",
     "service_line_id": "SL_HIGH_RISK_OBSTETRICS",
     "anatomy_id": "ANAT_SPEC_OBSTETRICS_PLACENTA",
-    "aliases": ["Placenta Accreta Spectrum Surgery"],
+    "aliases": [
+      "Placenta Accreta Spectrum Surgery"
+    ],
     "description": "Surgical management of placenta accreta spectrum disorder.",
     "status": "active"
   },

@@ -79,14 +79,15 @@
     "description": "Partial or total removal of the larynx.",
     "status": "active"
   },
-
   {
     "id": "PROC_FUNCTIONAL_ENDOSCOPIC_SINUS_SURGERY",
     "name": "Functional Endoscopic Sinus Surgery",
     "specialty_id": "SPEC_ENT",
     "service_line_id": "SL_RHINOLOGY_AND_SINUS_SURGERY",
     "anatomy_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_PARANASAL_SINUSES",
-    "aliases": ["FESS"],
+    "aliases": [
+      "FESS"
+    ],
     "description": "Endoscopic surgery to open and clear diseased paranasal sinuses.",
     "status": "active"
   },
@@ -160,14 +161,15 @@
     "description": "Endoscopic transnasal approach to skull base pathology.",
     "status": "active"
   },
-
   {
     "id": "PROC_MYRINGOTOMY_AND_GROMMET_INSERTION",
     "name": "Myringotomy and Grommet Insertion",
     "specialty_id": "SPEC_ENT",
     "service_line_id": "SL_OTOLOGY_AND_NEUROTOLOGY",
     "anatomy_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_MIDDLE_EAR",
-    "aliases": ["Ventilation Tube Insertion"],
+    "aliases": [
+      "Ventilation Tube Insertion"
+    ],
     "description": "Incision of tympanic membrane with insertion of ventilation tube.",
     "status": "active"
   },
@@ -207,7 +209,9 @@
     "specialty_id": "SPEC_ENT",
     "service_line_id": "SL_OTOLOGY_AND_NEUROTOLOGY",
     "anatomy_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_MIDDLE_EAR",
-    "aliases": ["Stapedotomy"],
+    "aliases": [
+      "Stapedotomy"
+    ],
     "description": "Middle ear surgery for otosclerosis involving the stapes.",
     "status": "active"
   },
@@ -241,7 +245,6 @@
     "description": "Excision of lesion of the external ear.",
     "status": "active"
   },
-
   {
     "id": "PROC_MICROLARYNGOSCOPY",
     "name": "Microlaryngoscopy",
@@ -268,7 +271,9 @@
     "specialty_id": "SPEC_ENT",
     "service_line_id": "SL_LARYNGOLOGY_AND_AIRWAY_SURGERY",
     "anatomy_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_LARYNX",
-    "aliases": ["Injection Laryngoplasty"],
+    "aliases": [
+      "Injection Laryngoplasty"
+    ],
     "description": "Injection augmentation of the vocal cord.",
     "status": "active"
   },
@@ -302,7 +307,6 @@
     "description": "Open reconstructive airway surgery for laryngotracheal stenosis.",
     "status": "active"
   },
-
   {
     "id": "PROC_TONSILLECTOMY",
     "name": "Tonsillectomy",
@@ -329,7 +333,9 @@
     "specialty_id": "SPEC_ENT",
     "service_line_id": "SL_PAEDIATRIC_OTOLARYNGOLOGY",
     "anatomy_id": "ANAT_SPEC_OTOLARYNGOLOGY_EAR_NOSE_AND_THROAT_TONSILS_AND_ADENOIDS",
-    "aliases": ["T&A"],
+    "aliases": [
+      "T&A"
+    ],
     "description": "Combined tonsillectomy and adenoidectomy.",
     "status": "active"
   },

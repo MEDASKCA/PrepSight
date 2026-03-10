@@ -127,6 +127,41 @@ function sortByOrderThenName<T extends { sort_order?: number; name?: string }>(
   return (a.name || "").localeCompare(b.name || "");
 }
 
+function normalizeKey(value?: string): string {
+  return (value || "").trim().toLowerCase();
+}
+
+function dedupeSystemsByName(
+  systemsList: SystemWithSupplier[],
+): SystemWithSupplier[] {
+  const grouped = new Map<string, SystemWithSupplier[]>();
+
+  for (const system of systemsList) {
+    const key = normalizeKey(system.name);
+    const list = grouped.get(key) ?? [];
+    list.push(system);
+    grouped.set(key, list);
+  }
+
+  const deduped = Array.from(grouped.values()).map((candidates) => {
+    const preferredRich = candidates.find(
+      (system) =>
+        Boolean(system.specialty_id) ||
+        (system.service_line_ids?.length ?? 0) > 0 ||
+        (system.anatomy_ids?.length ?? 0) > 0,
+    );
+    const preferredDefault = candidates.find((system) => system.is_default);
+    return preferredRich ?? preferredDefault ?? candidates[0];
+  });
+
+  return deduped.sort((a, b) => {
+    if ((a.is_default ?? false) !== (b.is_default ?? false)) {
+      return a.is_default ? -1 : 1;
+    }
+    return a.name.localeCompare(b.name);
+  });
+}
+
 export function getAllProcedureVariants(): ProcedureVariant[] {
   return [...procedureVariants].sort(sortByOrderThenName);
 }
@@ -189,21 +224,141 @@ export function getSystemsWithSuppliers(
     })
     .filter((item): item is SystemWithSupplier => item !== null);
 
-  return mapped.sort((a, b) => {
-      if ((a.is_default ?? false) !== (b.is_default ?? false)) {
-        return a.is_default ? -1 : 1;
-      }
-      return a.name.localeCompare(b.name);
-    });
+  return dedupeSystemsByName(mapped);
 }
 
 export function getVariantsForProcedureWithSystems(
   procedureId: string,
 ): VariantWithSystems[] {
-  return getVariantsByProcedure(procedureId).map((variant) => ({
-    ...variant,
-    systems: getSystemsWithSuppliers(variant.id),
-  }));
+  const variants = getVariantsByProcedure(procedureId);
+  const grouped = new Map<string, ProcedureVariant[]>();
+
+  for (const variant of variants) {
+    const key = normalizeKey(variant.name);
+    const list = grouped.get(key) ?? [];
+    list.push(variant);
+    grouped.set(key, list);
+  }
+
+  const merged = Array.from(grouped.values()).map((group) => {
+    const representative = [...group].sort(sortByOrderThenName)[0];
+    const systems = dedupeSystemsByName(
+      group.flatMap((variant) => getSystemsWithSuppliers(variant.id)),
+    );
+
+    const descriptions = group
+      .map((variant) => variant.description)
+      .filter((value): value is string => Boolean(value && value.trim()))
+      .sort((a, b) => b.length - a.length);
+
+    return {
+      ...representative,
+      description: descriptions[0] ?? representative.description,
+      systems,
+    };
+  });
+
+  return merged.sort(sortByOrderThenName);
+}
+
+const GENERIC_SYNTHETIC_VARIANTS = new Set([
+  "flexible scope",
+  "rigid scope",
+  "holmium laser",
+  "thulium laser",
+  "open approach",
+  "laparoscopic approach",
+  "robotic approach",
+]);
+
+function looksSyntheticVariant(variant: VariantWithSystems): boolean {
+  const name = normalizeKey(variant.name);
+  const description = normalizeKey(variant.description);
+  return (
+    GENERIC_SYNTHETIC_VARIANTS.has(name) &&
+    (!!description && description.endsWith("variant"))
+  );
+}
+
+export function hasOnlySyntheticBranching(
+  procedureId: string,
+  procedureName: string,
+): boolean {
+  const variants = getVariantsForProcedureWithSystems(procedureId);
+  if (variants.length === 0) return false;
+  const allSynthetic = variants.every(looksSyntheticVariant);
+  if (!allSynthetic) return false;
+
+  const text = normalizeKey(procedureName);
+  return !/(hip|knee|shoulder|elbow|ankle|arthroplasty|replacement|revision|fusion|fixation)/.test(
+    text,
+  );
+}
+
+export function getCuratedVariantsForProcedureWithSystems(
+  procedureId: string,
+  procedureName: string,
+): VariantWithSystems[] {
+  const variants = getVariantsForProcedureWithSystems(procedureId);
+  if (variants.length === 0) return variants;
+
+  const allSynthetic = variants.every(looksSyntheticVariant);
+  if (!allSynthetic) return variants;
+
+  const text = normalizeKey(procedureName);
+
+  if (
+    /(circumcision|vasectomy|frenuloplasty|orchidopexy|orchidectomy|hydrocele)/.test(
+      text,
+    )
+  ) {
+    return variants.filter((variant) => normalizeKey(variant.name) === "open approach");
+  }
+
+  if (
+    /(transurethral|cystoscopy|ureteroscopy|ureterorenoscopy|pcnl|nephrolithotomy|lithotripsy|endoscopic|bladder|prostate|stone)/.test(
+      text,
+    )
+  ) {
+    const allowed = variants.filter((variant) =>
+      ["flexible scope", "rigid scope", "holmium laser", "thulium laser"].includes(
+        normalizeKey(variant.name),
+      ),
+    );
+
+    if (/holmium/.test(text)) {
+      return allowed.filter((variant) =>
+        ["flexible scope", "rigid scope", "holmium laser"].includes(
+          normalizeKey(variant.name),
+        ),
+      );
+    }
+
+    if (/thulium/.test(text)) {
+      return allowed.filter((variant) =>
+        ["flexible scope", "rigid scope", "thulium laser"].includes(
+          normalizeKey(variant.name),
+        ),
+      );
+    }
+
+    return allowed.length > 0 ? allowed : variants;
+  }
+
+  if (
+    /(laparoscopic|robotic|colectomy|gastrectomy|nephrectomy|prostatectomy|hysterectomy|hernia)/.test(
+      text,
+    )
+  ) {
+    const allowed = variants.filter((variant) =>
+      ["open approach", "laparoscopic approach", "robotic approach"].includes(
+        normalizeKey(variant.name),
+      ),
+    );
+    return allowed.length > 0 ? allowed : variants;
+  }
+
+  return variants;
 }
 
 export function hasVariantsForProcedure(procedureId: string): boolean {

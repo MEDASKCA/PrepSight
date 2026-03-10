@@ -25,7 +25,9 @@
     "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
     "service_line_id": "SL_BURNS_SURGERY",
     "anatomy_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_TRUNK",
-    "aliases": ["STSG for Burn"],
+    "aliases": [
+      "STSG for Burn"
+    ],
     "description": "Skin graft reconstruction following burn excision.",
     "status": "active"
   },
@@ -35,7 +37,9 @@
     "specialty_id": "SPEC_PLASTIC_RECONSTRUCTIVE_SURGERY",
     "service_line_id": "SL_BURNS_SURGERY",
     "anatomy_id": "ANAT_SPEC_PLASTIC_AND_RECONSTRUCTIVE_SURGERY_FACE",
-    "aliases": ["FTSG for Burn"],
+    "aliases": [
+      "FTSG for Burn"
+    ],
     "description": "Full thickness skin graft reconstruction following burn injury.",
     "status": "active"
   },
@@ -69,7 +73,6 @@
     "description": "Release of burn scar contracture with reconstruction.",
     "status": "active"
   },
-
   {
     "id": "PROC_EXCISION_OF_SKIN_LESION_OF_HEAD_AND_NECK",
     "name": "Excision of Skin Lesion of Head and Neck",
@@ -140,7 +143,6 @@
     "description": "Local flap coverage of a skin and soft tissue defect.",
     "status": "active"
   },
-
   {
     "id": "PROC_CARPAL_TUNNEL_RELEASE_BY_PLASTICS",
     "name": "Carpal Tunnel Release",
@@ -221,7 +223,6 @@
     "description": "Microsurgical free flap reconstruction of upper limb defect.",
     "status": "active"
   },
-
   {
     "id": "PROC_CRANIOSYNOSTOSIS_RECONSTRUCTION",
     "name": "Craniosynostosis Reconstruction",
@@ -252,7 +253,6 @@
     "description": "Reconstruction of orbital region deformity or defect.",
     "status": "active"
   },
-
   {
     "id": "PROC_CLEFT_LIP_REPAIR",
     "name": "Cleft Lip Repair",
@@ -303,7 +303,6 @@
     "description": "Closure of palatal fistula following cleft palate repair.",
     "status": "active"
   },
-
   {
     "id": "PROC_IMPLANT_BASED_BREAST_RECONSTRUCTION",
     "name": "Implant Based Breast Reconstruction",

@@ -7,6 +7,7 @@ import {
   getSystemById,
 } from "@/lib/variants"
 import { buildSystemCardSections } from "@/lib/system-card"
+import { decorateCardSections } from "@/lib/catalogue"
 
 interface Props {
   params: Promise<{ id: string }>
@@ -66,6 +67,11 @@ export default async function ProcedurePage({ params, searchParams }: Props) {
         )
       : procedure.sections
 
+  const decoratedSections = decorateCardSections(cardSections)
+  const cardKey = [procedure.id, procedureVariant?.id, procedureSystem?.id]
+    .filter(Boolean)
+    .join("__")
+
   return (
     <>
       <HistoryTracker
@@ -75,7 +81,8 @@ export default async function ProcedurePage({ params, searchParams }: Props) {
       />
       <ProcedurePageClient
         procedure={procedure}
-        cardSections={cardSections}
+        cardSections={decoratedSections}
+        cardKey={cardKey}
         title={procedure.name}
         subtitle={procedureVariant?.name ?? procedure.approach}
         tertiaryLabel={procedureSystem?.name ?? procedure.implantSystem}

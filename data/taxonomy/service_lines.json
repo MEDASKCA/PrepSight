@@ -408,5 +408,10 @@
     "id": "SL_VASCULAR_ACCESS_SURGERY",
     "name": "Vascular Access Surgery",
     "specialty_id": "SPEC_VASCULAR_SURGERY"
+  },
+  {
+    "id": "SL_PROCEDURAL_SEDATION",
+    "name": "Procedural Sedation",
+    "specialty_id": "SPEC_ANAESTHESIA"
   }
 ]

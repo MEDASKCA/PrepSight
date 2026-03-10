@@ -5,7 +5,9 @@
     "specialty_id": "SPEC_PODIATRIC_SURGERY",
     "service_line_id": "SL_FOREFOOT_SURGERY",
     "anatomy_id": "ANAT_SPEC_PODIATRIC_SURGERY_FOREFOOT",
-    "aliases": ["Bunion Correction"],
+    "aliases": [
+      "Bunion Correction"
+    ],
     "description": "Corrective surgery for hallux valgus deformity of the forefoot.",
     "status": "active"
   },
@@ -15,7 +17,9 @@
     "specialty_id": "SPEC_PODIATRIC_SURGERY",
     "service_line_id": "SL_FOREFOOT_SURGERY",
     "anatomy_id": "ANAT_SPEC_PODIATRIC_SURGERY_FIRST_METATARSOPHALANGEAL_JOINT",
-    "aliases": ["First MTP Joint Fusion"],
+    "aliases": [
+      "First MTP Joint Fusion"
+    ],
     "description": "Arthrodesis of the first metatarsophalangeal joint.",
     "status": "active"
   },
@@ -55,7 +59,9 @@
     "specialty_id": "SPEC_PODIATRIC_SURGERY",
     "service_line_id": "SL_FOREFOOT_SURGERY",
     "anatomy_id": "ANAT_SPEC_PODIATRIC_SURGERY_FOREFOOT",
-    "aliases": ["Weil Osteotomy"],
+    "aliases": [
+      "Weil Osteotomy"
+    ],
     "description": "Distal metatarsal osteotomy for metatarsalgia or lesser toe pathology.",
     "status": "active"
   },
@@ -65,7 +71,9 @@
     "specialty_id": "SPEC_PODIATRIC_SURGERY",
     "service_line_id": "SL_FOREFOOT_SURGERY",
     "anatomy_id": "ANAT_SPEC_PODIATRIC_SURGERY_FOREFOOT",
-    "aliases": ["Excision of Morton's Neuroma"],
+    "aliases": [
+      "Excision of Morton's Neuroma"
+    ],
     "description": "Excision of interdigital neuroma of the forefoot.",
     "status": "active"
   },
@@ -79,14 +87,15 @@
     "description": "Repair of plantar plate instability of a lesser metatarsophalangeal joint.",
     "status": "active"
   },
-
   {
     "id": "PROC_MIDFOOT_FUSION_BY_PODIATRIC_SURGERY",
     "name": "Midfoot Fusion",
     "specialty_id": "SPEC_PODIATRIC_SURGERY",
     "service_line_id": "SL_MIDFOOT_SURGERY",
     "anatomy_id": "ANAT_SPEC_PODIATRIC_SURGERY_MIDFOOT",
-    "aliases": ["Midfoot Arthrodesis"],
+    "aliases": [
+      "Midfoot Arthrodesis"
+    ],
     "description": "Fusion of one or more midfoot joints.",
     "status": "active"
   },
@@ -130,14 +139,15 @@
     "description": "Opening wedge medial cuneiform osteotomy for flatfoot reconstruction.",
     "status": "active"
   },
-
   {
     "id": "PROC_ANKLE_FUSION_BY_PODIATRIC_SURGERY",
     "name": "Ankle Fusion",
     "specialty_id": "SPEC_PODIATRIC_SURGERY",
     "service_line_id": "SL_REARFOOT_AND_ANKLE_SURGERY",
     "anatomy_id": "ANAT_SPEC_PODIATRIC_SURGERY_ANKLE",
-    "aliases": ["Ankle Arthrodesis"],
+    "aliases": [
+      "Ankle Arthrodesis"
+    ],
     "description": "Fusion of the ankle joint.",
     "status": "active"
   },
@@ -147,7 +157,9 @@
     "specialty_id": "SPEC_PODIATRIC_SURGERY",
     "service_line_id": "SL_REARFOOT_AND_ANKLE_SURGERY",
     "anatomy_id": "ANAT_SPEC_PODIATRIC_SURGERY_REARFOOT",
-    "aliases": ["Subtalar Arthrodesis"],
+    "aliases": [
+      "Subtalar Arthrodesis"
+    ],
     "description": "Fusion of the subtalar joint.",
     "status": "active"
   },
@@ -157,7 +169,9 @@
     "specialty_id": "SPEC_PODIATRIC_SURGERY",
     "service_line_id": "SL_REARFOOT_AND_ANKLE_SURGERY",
     "anatomy_id": "ANAT_SPEC_PODIATRIC_SURGERY_REARFOOT",
-    "aliases": ["Triple Arthrodesis"],
+    "aliases": [
+      "Triple Arthrodesis"
+    ],
     "description": "Fusion of the subtalar, talonavicular, and calcaneocuboid joints.",
     "status": "active"
   },
@@ -207,7 +221,9 @@
     "specialty_id": "SPEC_PODIATRIC_SURGERY",
     "service_line_id": "SL_REARFOOT_AND_ANKLE_SURGERY",
     "anatomy_id": "ANAT_SPEC_PODIATRIC_SURGERY_ANKLE",
-    "aliases": ["Brostrom Procedure"],
+    "aliases": [
+      "Brostrom Procedure"
+    ],
     "description": "Reconstruction of lateral ankle ligament complex for instability.",
     "status": "active"
   },
@@ -221,7 +237,6 @@
     "description": "Diagnostic or therapeutic arthroscopy of the ankle joint.",
     "status": "active"
   },
-
   {
     "id": "PROC_DEBRIDEMENT_OF_DIABETIC_FOOT_ULCER",
     "name": "Debridement of Diabetic Foot Ulcer",

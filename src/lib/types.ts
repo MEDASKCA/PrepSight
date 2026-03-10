@@ -47,13 +47,20 @@ export interface Item {
   notes?: string
   defaultQty?: number
   location?: string
+  catalogueItemId?: string
+  sourceType?: "supplier" | "hospital" | "catalogue"
+  isFixed?: boolean
 }
+
+export type CardContentMode = "fixed" | "editable" | "mixed"
 
 export interface Section {
   id: string
   title: string
   sectionType: SectionType
   items: Item[]
+  contentMode?: CardContentMode
+  sourceType?: "supplier" | "hospital" | "catalogue"
   // patient_positioning
   patientPositionInstructions?: string
   // procedure_reference
@@ -72,6 +79,34 @@ export interface Section {
   dischargeCriteria?: string[]
   // complications_escalation
   commonComplications?: string[]
+}
+
+export interface CatalogueItemRecord {
+  id: string
+  name: string
+  sku?: string
+  product?: string
+  description?: string
+  manufacturer?: string
+  supplier?: Supplier
+  category: SectionType | "implant_system" | "positioning_equipment"
+  aliases?: string[]
+  sourceType: "supplier" | "hospital" | "catalogue"
+  isFixed: boolean
+  variantGroupId?: string
+  sizeLabel?: string
+}
+
+export interface ChecklistEntry {
+  catalogueItemId?: string
+  itemName: string
+  sectionType: SectionType
+  requiredQty?: number
+  checkedQty?: number
+  checked: boolean
+  note?: string
+  updatedAt: string
+  updatedBy?: string
 }
 
 export interface ProcedureFamily {
