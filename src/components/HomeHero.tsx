@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent, type UIEvent } from "react"
 import {
   Activity,
+  ArrowRightLeft,
   Baby,
   BedSingle,
   Bone,
@@ -26,6 +27,7 @@ import {
   Wrench,
 } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { procedures } from "@/lib/data"
 import { getHistory } from "@/lib/history"
@@ -36,20 +38,20 @@ import {
   PrepSightProfile,
   USER_ROLE_LABEL,
 } from "@/lib/types"
-import { SETTING_COLOUR, SETTING_SPECIALTIES } from "@/lib/settings"
+import { SETTING_SPECIALTIES } from "@/lib/settings"
 
 const WORKSPACE_META: Record<
   ClinicalSetting,
-  { icon: typeof Stethoscope; tile: string }
+  { icon: typeof Stethoscope; tile: string; solid: string }
 > = {
-  "Operating Theatre": { icon: Stethoscope, tile: "bg-[#4DA3FF]" },
-  "Endoscopy Suite": { icon: Waves, tile: "bg-[#14B8A6]" },
-  "Interventional Radiology / Cath Lab": { icon: Activity, tile: "bg-[#7C5CFC]" },
-  "Emergency Department": { icon: HeartPulse, tile: "bg-[#F97316]" },
-  "Intensive Care Unit": { icon: BedSingle, tile: "bg-[#2563EB]" },
-  Ward: { icon: Building2, tile: "bg-[#10B981]" },
-  "Outpatient / Clinic": { icon: Pill, tile: "bg-[#6366F1]" },
-  "Maternity & Obstetrics": { icon: HeartPulse, tile: "bg-[#EC4899]" },
+  "Operating Theatre": { icon: Stethoscope, tile: "bg-[#4DA3FF]", solid: "#4DA3FF" },
+  "Endoscopy Suite": { icon: Waves, tile: "bg-[#14B8A6]", solid: "#14B8A6" },
+  "Interventional Radiology / Cath Lab": { icon: Activity, tile: "bg-[#7C5CFC]", solid: "#7C5CFC" },
+  "Emergency Department": { icon: HeartPulse, tile: "bg-[#F97316]", solid: "#F97316" },
+  "Intensive Care Unit": { icon: BedSingle, tile: "bg-[#2563EB]", solid: "#2563EB" },
+  Ward: { icon: Building2, tile: "bg-[#10B981]", solid: "#10B981" },
+  "Outpatient / Clinic": { icon: Pill, tile: "bg-[#6366F1]", solid: "#6366F1" },
+  "Maternity & Obstetrics": { icon: HeartPulse, tile: "bg-[#EC4899]", solid: "#EC4899" },
 }
 
 const SPECIALTY_TILE_COLOURS = [
@@ -300,7 +302,11 @@ function formatRecentSubtitle(procedureName: string, variantName?: string | null
   return variantName ? `${procedureName} ${variantName}` : procedureName
 }
 
-export default function HomeHero() {
+export default function HomeHero({
+  initialWorkspace,
+}: {
+  initialWorkspace?: ClinicalSetting
+}) {
   const router = useRouter()
   const [profile] = useState<PrepSightProfile | null>(() => getProfile())
   const [recentEntries] = useState<ReturnType<typeof getHistory>>(() => getHistory())
@@ -310,7 +316,7 @@ export default function HomeHero() {
     profile ? getRelevantSettings(profile) : [],
   )
   const [activeWorkspace, setActiveWorkspace] = useState<ClinicalSetting>(() =>
-    relevantSettings[0] ?? "Operating Theatre",
+    initialWorkspace ?? relevantSettings[0] ?? "Operating Theatre",
   )
   const [launcherPage, setLauncherPage] = useState(0)
   const [dockItemIds, setDockItemIds] = useState<string[]>(() => {
@@ -418,9 +424,11 @@ export default function HomeHero() {
     href: `/?setting=${encodeURIComponent(setting)}`,
     icon: WORKSPACE_META[setting].icon,
     tile: WORKSPACE_META[setting].tile,
+    solid: WORKSPACE_META[setting].solid,
   }))
   const activeWorkspaceItem = workspaceItems.find((item) => item.id === `setting-${activeWorkspace}`) ?? workspaceItems[0]
   const activeWorkspaceMeta = WORKSPACE_HERO_META[activeWorkspace]
+  const canSwitchWorkspace = workspaceItems.length > 1
   const specialtyItems = (SETTING_SPECIALTIES[activeWorkspace] ?? []).map((specialty) => ({
     id: `${activeWorkspace}-${specialty}`,
     shortLabel: SPECIALTY_SHORT_LABELS[specialty] ?? specialty,
@@ -890,80 +898,194 @@ export default function HomeHero() {
   }, [dragState])
 
   return (
-    <div className="relative flex h-[calc(100dvh-61px)] max-w-xl flex-col overflow-hidden animate-step-in bg-[#E8EEF6] px-3 pb-24 pt-3 lg:h-auto lg:max-w-xl lg:overflow-visible lg:bg-transparent lg:px-8 lg:py-12">
+    <div className="relative flex h-[calc(100dvh-61px)] max-w-xl flex-col overflow-hidden animate-step-in bg-[#E8EEF6] px-3 pb-24 pt-3 lg:h-auto lg:max-w-none lg:overflow-visible lg:bg-transparent lg:px-10 lg:py-10">
       <div className="pointer-events-none absolute inset-0 lg:hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.9),_rgba(232,238,246,0.82)_38%,_rgba(221,231,244,0.9)_100%)]" />
         <div className="absolute -left-10 top-8 h-36 w-36 rounded-full bg-[#8EC5FF]/38 blur-3xl" />
         <div className="absolute right-[-24px] top-20 h-32 w-32 rounded-full bg-[#95EAD9]/30 blur-3xl" />
         <div className="absolute bottom-24 left-10 h-28 w-28 rounded-full bg-[#C7B9FF]/24 blur-3xl" />
       </div>
-      <div className="mb-8 hidden lg:block">
-        <h1 className="mb-2.5 text-2xl font-bold text-[#3F4752]">
-          {getGreeting()}
-        </h1>
-        {profile && (
-          <span className="inline-block rounded-full border border-[#D5DCE3] bg-white px-3 py-1.5 text-xs font-semibold text-[#64748b]">
-            {getContextBadge(profile)}
-          </span>
-        )}
-      </div>
-
-      <div className="mb-6 hidden overflow-hidden rounded-2xl border border-[#D5DCE3] bg-white shadow-sm lg:block">
-        <div className="bg-[#1E293B] px-5 py-4">
-          <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-white/50">
-            Find a procedure
-          </p>
-          <p className="text-base font-semibold text-white">
-            Search by name or specialty.
-          </p>
-        </div>
-
-        <div className="p-5">
-          <div className="relative">
-            <Search
-              size={15}
-              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#94a3b8]"
-            />
-            <input
-              ref={inputRef}
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onFocus={() => setFocused(true)}
-              onBlur={() => setTimeout(() => setFocused(false), 150)}
-              placeholder="e.g. Total knee replacement, Orthopaedics..."
-              className="w-full rounded-xl border border-[#D5DCE3] bg-[#F8FBFF] py-3 pl-10 pr-4 text-sm text-[#3F4752] placeholder-[#94a3b8] transition-colors focus:border-[#4DA3FF] focus:outline-none focus:ring-2 focus:ring-[#CFE6FF]"
-            />
-          </div>
-        </div>
-
-        {showResults && results.length > 0 && (
-          <div className="mx-5 mb-5 overflow-hidden rounded-xl border border-[#D5DCE3] bg-white">
-            {results.map((p) => (
-              <Link
-                key={p.id}
-                href={`/procedures/${p.id}`}
-                className="flex items-center justify-between border-b border-[#F4F7FA] px-4 py-3 transition-colors last:border-0 hover:bg-[#F4F7FA]"
-              >
-                <div className="mr-3 min-w-0">
-                  <p className="truncate text-sm font-semibold text-[#3F4752]">
-                    {p.name}
-                  </p>
-                  <p className="text-xs text-[#94a3b8]">{p.specialty}</p>
+      <div className="mb-10 hidden lg:block">
+        <div className="relative overflow-hidden rounded-[40px] border border-[#12304C] bg-[#07111E] shadow-[0_40px_90px_rgba(15,23,42,0.32)]">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(77,163,255,0.18),_transparent_30%),radial-gradient(circle_at_85%_12%,_rgba(20,184,166,0.14),_transparent_22%),linear-gradient(140deg,#07111E_0%,#091827_38%,#0C2237_100%)]" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/10" />
+          <div className="relative z-10 border-b border-white/10 px-8 py-5">
+            <div className="grid grid-cols-[auto_1fr_auto] items-center gap-6">
+              <div className="flex items-center gap-4">
+                <Image src="/AIchaticon.png" alt="" width={64} height={64} className="h-16 w-16 object-contain" />
+                <div>
+                  <p className="text-[13px] font-semibold uppercase tracking-[0.24em] text-[#7DD3FC]">PS</p>
+                  <p className="text-[28px] font-semibold tracking-[-0.05em] text-white">PrepSight</p>
                 </div>
-                <span
-                  className={`shrink-0 rounded-full px-2 py-0.5 text-xs font-medium ${SETTING_COLOUR[p.setting] ?? "bg-gray-100 text-gray-600"}`}
-                >
-                  {p.setting.split(" ")[0]}
-                </span>
-              </Link>
-            ))}
-          </div>
-        )}
+              </div>
 
-        {showResults && results.length === 0 && (
-          <p className="mx-5 mb-5 text-sm text-[#94a3b8]">No procedures found.</p>
-        )}
+              <div className="relative">
+                <Search size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-white/38" />
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  onFocus={() => setFocused(true)}
+                  onBlur={() => setTimeout(() => setFocused(false), 150)}
+                  placeholder="Search procedure, anatomy, implant system, product, or catalogue item..."
+                  className="w-full rounded-[22px] border border-white/10 bg-white/8 py-4 pl-13 pr-5 text-[15px] text-white placeholder:text-white/38 backdrop-blur-xl transition-colors focus:border-[#7DD3FC]/70 focus:outline-none focus:ring-2 focus:ring-[#7DD3FC]/20"
+                />
+
+                {showResults && results.length > 0 && (
+                  <div className="absolute inset-x-0 top-[calc(100%+16px)] z-30 overflow-hidden rounded-[26px] border border-white/10 bg-[#0D1926] shadow-[0_30px_70px_rgba(15,23,42,0.32)]">
+                    {results.map((p) => (
+                      <Link
+                        key={p.id}
+                        href={`/procedures/${p.id}`}
+                        className="flex items-center justify-between border-b border-white/8 px-5 py-4 transition-colors last:border-0 hover:bg-white/5"
+                      >
+                        <div className="mr-3 min-w-0">
+                          <p className="truncate text-sm font-semibold text-white">{p.name}</p>
+                          <p className="mt-1 text-xs text-white/52">{p.specialty}</p>
+                        </div>
+                        <span className="rounded-full border border-white/10 bg-white/6 px-3 py-1 text-xs font-medium text-white/74">
+                          {p.setting}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+
+                {showResults && results.length === 0 && (
+                  <div className="absolute inset-x-0 top-[calc(100%+16px)] z-30 rounded-[26px] border border-white/10 bg-[#0D1926] px-5 py-4 text-sm text-white/60 shadow-[0_30px_70px_rgba(15,23,42,0.32)]">
+                    No procedures found.
+                  </div>
+                )}
+              </div>
+
+              <div className="justify-self-end text-right">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-white/40">{getGreeting().replace(".", "")}</p>
+                <p className="mt-2 text-sm text-white/70">{profile ? getContextBadge(profile) : "Browse and reference"}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative z-10 px-8 pb-8 pt-7">
+            <div className="grid grid-cols-[1.45fr_0.9fr] gap-6">
+              <div className="min-w-0">
+                <p className="text-[14px] font-medium tracking-[0.2em] text-white/42">Workspace</p>
+                <h1 className="mt-4 max-w-[11ch] text-[78px] font-semibold leading-[0.92] tracking-[-0.07em] text-white">
+                  {activeWorkspaceItem?.label ?? "Operating Theatre"}
+                </h1>
+                <p className="mt-5 max-w-2xl text-[16px] leading-8 text-[#B9CDE2]">
+                  Open the current area like a browser engine for procedural knowledge. Move from specialty to anatomy to authored cards without losing the visual thread.
+                </p>
+              </div>
+
+              <div className="rounded-[30px] border border-white/10 bg-white/6 p-6 backdrop-blur-xl">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-white/42">Registered areas</p>
+                <div className="mt-5 grid gap-3">
+                  {workspaceItems.map((item, index) => (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => setActiveWorkspace(item.id.replace("setting-", "") as ClinicalSetting)}
+                      className="rounded-[24px] px-5 py-5 text-left text-white transition-transform hover:-translate-y-1 [animation:desktopCardRise_0.55s_cubic-bezier(0.2,0.8,0.2,1)_both]"
+                      style={{
+                        animationDelay: `${index * 60}ms`,
+                        backgroundColor: item.solid,
+                        boxShadow: `0 24px 40px ${item.solid}40`,
+                      }}
+                    >
+                      <p className="text-[28px] font-semibold tracking-[-0.04em]">{item.label}</p>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 grid grid-cols-[1.25fr_0.75fr] gap-6">
+              <div>
+                <div className="mb-5 flex items-end justify-between">
+                  <div>
+                    <p className="text-[14px] font-medium tracking-[0.2em] text-white/42">Specialties</p>
+                    <h2 className="mt-3 text-[42px] font-semibold tracking-[-0.06em] text-white">
+                      {activeWorkspaceItem?.label ?? "Operating Theatre"}
+                    </h2>
+                  </div>
+                  <p className="max-w-sm text-right text-sm leading-7 text-white/48">
+                    Open any specialty as its own dedicated browser space.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-3 gap-4">
+                  {orderedSpecialtyItems.map((specialty, index) => (
+                    <Link
+                      key={specialty.id}
+                      href={specialty.href}
+                      className="min-h-[230px] rounded-[30px] px-6 py-6 text-white transition-transform hover:-translate-y-1 [animation:desktopCardRise_0.55s_cubic-bezier(0.2,0.8,0.2,1)_both]"
+                      style={{
+                        animationDelay: `${index * 45}ms`,
+                        background: `linear-gradient(145deg, ${specialty.tileColor} 0%, ${specialty.tileColor}DD 100%)`,
+                        boxShadow: `0 30px 50px ${specialty.tileColor}3D`,
+                      }}
+                    >
+                      <div className="flex h-full flex-col justify-between">
+                        <p className="max-w-[10ch] text-[34px] font-semibold leading-[1.02] tracking-[-0.05em]">
+                          {specialty.fullLabel}
+                        </p>
+                        <p className="max-w-[22ch] text-sm leading-7 text-white/82">
+                          Open this specialty workspace and continue into subspecialties, anatomy, and cards.
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="grid content-start gap-4">
+                <div className="rounded-[30px] border border-white/10 bg-white/6 p-6 backdrop-blur-xl">
+                  <p className="text-[14px] font-medium tracking-[0.2em] text-white/42">Workflow tools</p>
+                  <div className="mt-5 grid gap-3">
+                    {WORKFLOW_TOOLS.map((tool, index) => (
+                      <Link
+                        key={tool.label}
+                        href={tool.available && tool.href ? tool.href : "#"}
+                        className={`rounded-[24px] px-5 py-5 text-white transition-transform hover:-translate-y-1 [animation:desktopCardRise_0.55s_cubic-bezier(0.2,0.8,0.2,1)_both] ${!tool.available ? "pointer-events-none opacity-55" : ""}`}
+                        style={{
+                          animationDelay: `${index * 50}ms`,
+                          background: `linear-gradient(145deg, ${tool.tileColor} 0%, ${tool.tileColor}D9 100%)`,
+                          boxShadow: `0 24px 40px ${tool.tileColor}38`,
+                        }}
+                      >
+                        <p className="text-[25px] font-semibold tracking-[-0.04em]">{tool.label}</p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                {recentCards.length > 0 && (
+                  <div className="rounded-[30px] border border-white/10 bg-white/6 p-6 backdrop-blur-xl">
+                    <p className="text-[14px] font-medium tracking-[0.2em] text-white/42">Recently viewed</p>
+                    <div className="mt-5 grid gap-3">
+                      {recentCards.map((card, index) => (
+                        <Link
+                          key={`${card.entry.procedureId}-${card.entry.variantId ?? "base"}-${card.entry.systemId ?? "base"}`}
+                          href={card.href}
+                          className="rounded-[24px] border border-white/10 bg-white/6 px-5 py-5 text-white transition-colors hover:bg-white/10 [animation:desktopCardRise_0.55s_cubic-bezier(0.2,0.8,0.2,1)_both]"
+                          style={{ animationDelay: `${index * 45}ms` }}
+                        >
+                          <p className="text-[24px] font-semibold tracking-[-0.04em]">
+                            {card.system?.name ?? card.procedure.name}
+                          </p>
+                          <p className="mt-3 text-sm leading-7 text-white/62">
+                            {formatRecentSubtitle(card.procedure.name, card.variant?.name)}
+                          </p>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="relative z-10 flex min-h-0 flex-1 flex-col lg:hidden">
@@ -981,38 +1103,23 @@ export default function HomeHero() {
                     {activeWorkspaceItem?.label ?? "Operating Theatre"}
                   </h2>
                 </div>
-                <div className={`flex h-10 w-10 items-center justify-center rounded-[15px] ${activeWorkspaceMeta.accent} shadow-[0_10px_20px_rgba(15,23,42,0.16)]`}>
-                  {activeWorkspaceItem && (
-                    <activeWorkspaceItem.icon size={16} className="text-[#10243E]" />
-                  )}
-                </div>
-              </div>
-
-              <div className="mb-1.5 flex items-center gap-1.5 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                {workspaceItems.map((item) => {
-                  const active = item.id === `setting-${activeWorkspace}`
-                  return (
-                    <button
-                      key={`workspace-chip-${item.id}`}
-                      type="button"
-                      onClick={() => {
-                        const nextWorkspace = item.id.replace("setting-", "") as ClinicalSetting
-                        setActiveWorkspace(nextWorkspace)
-                        setLauncherPage(0)
-                        if (launcherScrollerRef.current) {
-                          launcherScrollerRef.current.scrollTo({ left: 0, behavior: "smooth" })
-                        }
-                      }}
-                      className={`shrink-0 rounded-full px-2.5 py-1 text-[10px] font-semibold transition-colors ${
-                        active
-                          ? "bg-white text-[#10243E] shadow-[0_8px_18px_rgba(15,23,42,0.16)]"
-                          : "bg-white/12 text-white/82"
-                      }`}
-                    >
-                      {item.label}
-                    </button>
-                  )
-                })}
+                {canSwitchWorkspace ? (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const currentIndex = workspaceItems.findIndex((item) => item.id === `setting-${activeWorkspace}`)
+                      const nextItem = workspaceItems[(currentIndex + 1) % workspaceItems.length] ?? workspaceItems[0]
+                      const nextWorkspace = nextItem.id.replace("setting-", "") as ClinicalSetting
+                      setActiveWorkspace(nextWorkspace)
+                      setLauncherPage(0)
+                      launcherScrollerRef.current?.scrollTo({ left: 0, behavior: "smooth" })
+                    }}
+                    className={`flex h-10 w-10 items-center justify-center rounded-[15px] ${activeWorkspaceMeta.accent} shadow-[0_10px_20px_rgba(15,23,42,0.16)]`}
+                    aria-label="Switch workspace"
+                  >
+                    <ArrowRightLeft size={16} className="text-[#10243E]" />
+                  </button>
+                ) : null}
               </div>
 
               <div className="relative z-20">
@@ -1194,7 +1301,7 @@ export default function HomeHero() {
         </div>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-40 px-3 pb-[calc(env(safe-area-inset-bottom,0px)+8px)] pt-1 lg:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-40 px-3 pb-[calc(env(safe-area-inset-bottom,0px)+14px)] pt-1 lg:hidden">
         <div
           className="rounded-[28px] bg-white/74 px-2.5 py-2 shadow-[0_12px_28px_rgba(15,23,42,0.12)] backdrop-blur-xl"
           data-dock-slot={Math.min(visibleDockItems.length, 3)}
@@ -1272,66 +1379,6 @@ export default function HomeHero() {
           </div>
         </div>
       </div>
-
-      <div className="hidden rounded-[24px] border border-[#D5DCE3] bg-white px-3 py-3 shadow-sm lg:block">
-        <div className="mb-3 flex items-center justify-between">
-          <p className="text-xs font-semibold uppercase tracking-wider text-[#94a3b8]">
-            Workflow tools
-          </p>
-        </div>
-        <div className="grid grid-cols-4 gap-x-2.5 gap-y-3">
-          {WORKFLOW_TOOLS.map((tool) => {
-            const Icon = tool.icon
-            return (
-              <Link
-                key={tool.label}
-                href={tool.href || "#"}
-                className="flex flex-col items-center text-center"
-              >
-                <div
-                  className="mb-1.5 flex h-14 w-14 items-center justify-center rounded-[20px] shadow-[0_10px_22px_rgba(15,23,42,0.12)] ring-1 ring-black/5"
-                  style={{ backgroundColor: tool.tileColor }}
-                >
-                  <Icon size={20} className="text-white" />
-                </div>
-                <p className="line-clamp-2 text-[11px] font-semibold leading-4 text-[#1E293B]">
-                  {tool.label}
-                </p>
-              </Link>
-            )
-          })}
-        </div>
-      </div>
-
-      {recentCards.length > 0 && (
-        <div className="hidden lg:block">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-[#94a3b8]">
-            Recently viewed
-          </p>
-          <div className="space-y-1.5">
-            {recentCards.map((card) => (
-              <Link
-                key={`${card.entry.procedureId}-${card.entry.variantId ?? "base"}-${card.entry.systemId ?? "base"}`}
-                href={card.href}
-                className="flex items-center justify-between rounded-lg px-1 py-1.5 transition-colors hover:bg-[#EFF8FF]"
-              >
-                <div className="min-w-0">
-                  <p className="text-sm font-semibold text-[#1E293B]">
-                    {card.system?.name ?? card.procedure.name}
-                  </p>
-                  <p className="text-xs text-[#64748b]">
-                    {formatRecentSubtitle(
-                      card.procedure.name,
-                      card.variant?.name,
-                    )}
-                  </p>
-                </div>
-                <ChevronRight size={14} className="shrink-0 text-[#94a3b8]" />
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
 
       {dragState && dragPreviewItem && (
         <div

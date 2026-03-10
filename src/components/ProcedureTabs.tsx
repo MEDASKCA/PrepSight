@@ -17,6 +17,14 @@ type ProcedureListItem = {
   status?: string;
 };
 
+type Palette = {
+  header: string;
+  hover: string;
+  soft: string;
+  softBorder: string;
+  softText: string;
+};
+
 type ProcedureTabsProps = {
   procedures: ProcedureListItem[];
   setting?: string;
@@ -24,7 +32,16 @@ type ProcedureTabsProps = {
   serviceLine?: string;
   anatomy?: string;
   selectedSystemId?: string;
+  palette?: Palette;
 };
+
+function chunkIntoColumns<T>(items: T[], columns: number): T[][] {
+  const buckets = Array.from({ length: columns }, () => [] as T[]);
+  items.forEach((item, index) => {
+    buckets[index % columns].push(item);
+  });
+  return buckets;
+}
 
 function Chevron({ expanded, className = "" }: { expanded: boolean; className?: string }) {
   return (
@@ -58,30 +75,34 @@ function SystemRow({
     <Link
       href={`/procedures/${procedureId}?variant=${encodeURIComponent(variantId)}&system=${encodeURIComponent(system.id)}`}
       className={[
-        "flex w-full items-center justify-between gap-3 border-t border-[#D5DCE3] px-5 py-4 text-left transition",
-        isSelected ? "bg-[#E1F3F0]" : "bg-white hover:bg-[#F4FBFA]",
+        "flex w-full items-center justify-between gap-3 border-t border-[#D5DCE3] px-5 py-4 text-left transition lg:border-[#D8E3EE] lg:px-6 lg:py-5",
+        isSelected ? "bg-[#E1F3F0] lg:bg-[#EEF7FF]" : "bg-white hover:bg-[#F4FBFA] lg:bg-white lg:hover:bg-[#F7FBFF]",
       ].join(" ")}
     >
       <div className="min-w-0">
-        <div className="text-sm font-medium text-slate-900">{system.name}</div>
+        <div className="text-sm font-medium text-slate-900 lg:text-[22px] lg:font-semibold lg:tracking-[-0.03em] lg:text-[#10243E]">
+          {system.name}
+        </div>
         {(system.supplier?.name || system.category || system.system_type) && (
-          <div className="mt-1 text-xs text-slate-500">
+          <div className="mt-1 text-xs text-slate-500 lg:text-sm lg:text-[#61758B]">
             {[system.supplier?.name, system.category, system.system_type]
               .filter(Boolean)
               .join(" · ")}
           </div>
         )}
         {system.description && (
-          <div className="mt-1 line-clamp-2 text-xs text-slate-500">{system.description}</div>
+          <div className="mt-1 line-clamp-2 text-xs text-slate-500 lg:text-sm lg:leading-6 lg:text-[#61758B]">
+            {system.description}
+          </div>
         )}
       </div>
       <div className="flex shrink-0 items-center gap-2">
         {system.is_default && (
-          <span className="rounded-full bg-[#E1F3F0] px-2 py-0.5 text-[11px] font-medium text-[#134E4A]">
+          <span className="rounded-full bg-[#E1F3F0] px-2 py-0.5 text-[11px] font-medium text-[#134E4A] lg:border lg:border-[#D6E6F5] lg:bg-[#F3FAF9] lg:px-3 lg:py-1 lg:text-[#134E4A]">
             Default
           </span>
         )}
-        <Chevron expanded={false} className="text-[#7BA9A3]" />
+        <Chevron expanded={false} className="text-[#7BA9A3] lg:text-[#8AA2BA]" />
       </div>
     </Link>
   );
@@ -94,6 +115,7 @@ function VariantSection({
   selectedSystemId,
   onToggle,
   isFirst,
+  palette,
 }: {
   procedureId: string;
   variant: VariantWithSystems;
@@ -101,35 +123,58 @@ function VariantSection({
   selectedSystemId?: string;
   onToggle: () => void;
   isFirst: boolean;
+  palette: Palette;
 }) {
   return (
-    <div className={isFirst ? "" : "border-t border-[#D5DCE3]"}>
+    <div className={isFirst ? "" : "border-t border-[#D5DCE3] lg:border-white/10"}>
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left transition"
+        className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left transition lg:hidden"
         style={{
-          backgroundColor: "#C7ECE8",
+          backgroundColor: palette.soft,
+          color: palette.softText,
+          borderLeft: `4px solid ${palette.softBorder}`,
         }}
       >
         <div className="min-w-0">
-          <div className="text-sm font-medium text-[#134E4A]">{variant.name}</div>
+          <div className="text-sm font-medium lg:text-[26px] lg:font-semibold lg:tracking-[-0.04em]">
+            {variant.name}
+          </div>
           {variant.description && (
-            <div className="mt-1 line-clamp-2 text-xs text-[#0F766E]">{variant.description}</div>
+            <div className="mt-1 line-clamp-2 text-xs opacity-90 lg:text-sm lg:leading-6">
+              {variant.description}
+            </div>
           )}
         </div>
         <div className="flex shrink-0 items-center gap-2">
-          {variant.systems.length > 0 && (
-            <span className="text-xs tabular-nums text-[#0F766E]">
-              {variant.systems.length} option{variant.systems.length === 1 ? "" : "s"}
-            </span>
-          )}
-          <Chevron expanded={expanded} className="text-[#0F766E]" />
+          <Chevron expanded={expanded} className="opacity-80" />
         </div>
       </button>
 
+      <div className="hidden lg:block lg:px-6 lg:py-5" style={{ backgroundColor: palette.soft, color: palette.softText }}>
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
+              Approach
+            </p>
+            <p className="mt-2 text-[26px] font-semibold tracking-[-0.04em]">
+              {variant.name}
+            </p>
+            {variant.description && (
+              <p className="mt-2 max-w-xl text-sm leading-6 opacity-78">
+                {variant.description}
+              </p>
+            )}
+          </div>
+          <span className="rounded-full border border-black/10 bg-white/55 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em]">
+            {variant.systems.length} systems
+          </span>
+        </div>
+      </div>
+
       {expanded && (
-        <div className="bg-white">
+        <div className="bg-white lg:hidden">
           {variant.systems.length > 0 ? (
             variant.systems.map((system) => (
               <SystemRow
@@ -141,12 +186,30 @@ function VariantSection({
               />
             ))
           ) : (
-            <div className="border-t border-[#D5DCE3] bg-white px-5 py-4 text-sm text-slate-500">
+            <div className="border-t border-[#D5DCE3] bg-white px-5 py-4 text-sm text-slate-500 lg:border-white/10 lg:bg-transparent lg:text-white/56">
               No systems linked yet for this variant.
             </div>
           )}
         </div>
       )}
+
+      <div className="hidden lg:block lg:bg-transparent">
+        {variant.systems.length > 0 ? (
+          variant.systems.map((system) => (
+            <SystemRow
+              key={system.id}
+              system={system}
+              procedureId={procedureId}
+              variantId={variant.id}
+              isSelected={selectedSystemId === system.id}
+            />
+          ))
+        ) : (
+          <div className="border-t border-[#D5DCE3] bg-white px-5 py-4 text-sm text-slate-500 lg:border-white/10 lg:bg-transparent lg:text-white/56">
+            No systems linked yet for this variant.
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -155,61 +218,47 @@ function ProcedureSection({
   procedure,
   variants,
   suppressBranching,
-  expanded,
   selectedSystemId,
-  onToggle,
+  palette,
 }: {
   procedure: ProcedureListItem;
   variants: VariantWithSystems[];
   suppressBranching: boolean;
-  expanded: boolean;
   selectedSystemId?: string;
-  onToggle: () => void;
+  palette: Palette;
 }) {
   const [openVariantId, setOpenVariantId] = useState<string | null>(null);
-  const firstVariantWithSystem = variants.find((variant) => variant.systems.length > 0);
-  const quickCardHref = !suppressBranching && firstVariantWithSystem
-    ? `/procedures/${procedure.id}?variant=${encodeURIComponent(firstVariantWithSystem.id)}&system=${encodeURIComponent(firstVariantWithSystem.systems[0].id)}`
-    : `/procedures/${procedure.id}`;
 
   return (
-    <div className="overflow-hidden rounded-xl border border-[#D5DCE3] bg-white shadow-sm">
-      {/* Header row: expand/collapse toggle + "View card" link */}
-      <div className="flex items-stretch bg-[#4DA3FF]">
-        <button
-          type="button"
-          onClick={suppressBranching ? undefined : onToggle}
-          className="flex min-w-0 flex-1 items-center gap-3 px-4 py-4 text-left transition hover:bg-[#4398F0]"
-        >
+    <div className="overflow-hidden rounded-xl border border-[#D5DCE3] bg-white shadow-sm lg:mb-6 lg:inline-block lg:w-full lg:break-inside-avoid lg:rounded-[34px] lg:border-[#D8E3EE] lg:bg-white lg:shadow-[0_22px_50px_rgba(15,23,42,0.09)]">
+      <div
+        className="flex items-stretch text-white"
+        style={{ background: `linear-gradient(145deg, ${palette.header} 0%, ${palette.hover} 100%)` }}
+      >
+        <div className="flex min-w-0 flex-1 items-center gap-3 px-4 py-4 text-left lg:px-7 lg:py-7">
           <div className="min-w-0 flex-1">
-            <div className="text-sm font-semibold text-white">{procedure.name}</div>
+            <p className="hidden lg:block lg:text-[11px] lg:font-semibold lg:uppercase lg:tracking-[0.18em] lg:text-white/62">
+              Menu
+            </p>
+            <div className="text-sm font-semibold text-white lg:text-[34px] lg:font-semibold lg:tracking-[-0.05em]">
+              {procedure.name}
+            </div>
             {procedure.description && (
-              <div className="mt-1 line-clamp-2 text-xs text-white/85">{procedure.description}</div>
+              <div className="mt-2 line-clamp-2 text-xs text-white/85 lg:max-w-3xl lg:text-sm lg:leading-7">
+                {procedure.description}
+              </div>
             )}
           </div>
-          <div className="flex shrink-0 items-center gap-2">
-            {!suppressBranching && variants.length > 0 && (
-              <span className="text-xs tabular-nums text-white/85">
-                {variants.length} option{variants.length === 1 ? "" : "s"}
-              </span>
-            )}
-            {!suppressBranching && <Chevron expanded={expanded} className="text-white" />}
+          <div className="hidden lg:block">
+            <span className="rounded-full border border-white/14 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80">
+              {variants.length || 1} approaches
+            </span>
           </div>
-        </button>
-
-        {/* View card link */}
-        <Link
-          href={quickCardHref}
-          onClick={(e) => e.stopPropagation()}
-          className="flex items-center border-l border-white/20 px-3 text-xs font-semibold text-white/80 transition hover:bg-[#4398F0] hover:text-white shrink-0"
-          title="View procedure card"
-        >
-          Card&nbsp;→
-        </Link>
+        </div>
       </div>
 
-      {expanded && !suppressBranching && (
-        <div className="bg-white">
+      {!suppressBranching && (
+        <div className="bg-white lg:bg-white">
           {variants.length > 0 ? (
             variants.map((variant, index) => (
               <VariantSection
@@ -219,15 +268,14 @@ function ProcedureSection({
                 expanded={openVariantId === variant.id}
                 selectedSystemId={selectedSystemId}
                 isFirst={index === 0}
+                palette={palette}
                 onToggle={() =>
-                  setOpenVariantId((current) =>
-                    current === variant.id ? null : variant.id,
-                  )
+                  setOpenVariantId((current) => (current === variant.id ? null : variant.id))
                 }
               />
             ))
           ) : (
-            <div className="border-t border-[#D5DCE3] bg-white px-5 py-4 text-sm text-slate-500">
+            <div className="border-t border-[#D5DCE3] bg-white px-5 py-4 text-sm text-slate-500 lg:border-[#E4EDF6] lg:bg-white lg:text-[#61758B]">
               No clinically reliable branching available yet.
             </div>
           )}
@@ -240,50 +288,67 @@ function ProcedureSection({
 export default function ProcedureTabs({
   procedures,
   selectedSystemId,
+  palette = {
+    header: "#4DA3FF",
+    hover: "#2F8EF7",
+    soft: "#C7ECE8",
+    softBorder: "#99D8D1",
+    softText: "#134E4A",
+  },
 }: ProcedureTabsProps) {
-  const [openProcedureId, setOpenProcedureId] = useState<string | null>(null);
-
   const proceduresWithVariants = useMemo(() => {
     return procedures
       .filter((procedure) => procedure.status !== "inactive")
       .map((procedure) => ({
         procedure,
-        variants: getCuratedVariantsForProcedureWithSystems(
-          procedure.id,
-          procedure.name,
-        ),
-        suppressBranching: hasOnlySyntheticBranching(
-          procedure.id,
-          procedure.name,
-        ),
+        variants: getCuratedVariantsForProcedureWithSystems(procedure.id, procedure.name),
+        suppressBranching: hasOnlySyntheticBranching(procedure.id, procedure.name),
       }));
   }, [procedures]);
+  const desktopColumns = useMemo(
+    () => chunkIntoColumns(proceduresWithVariants, 3),
+    [proceduresWithVariants],
+  );
 
   if (!proceduresWithVariants.length) {
     return (
-      <div className="rounded-xl border border-dashed border-slate-300 bg-white px-5 py-6 text-sm text-slate-500">
+      <div className="rounded-xl border border-dashed border-slate-300 bg-white px-5 py-6 text-sm text-slate-500 lg:rounded-[28px] lg:border-[#D8E3EE] lg:bg-white lg:px-7 lg:py-7 lg:text-[#61758B]">
         No procedures found for this anatomy.
       </div>
     );
   }
 
   return (
-    <div className="space-y-4">
-      {proceduresWithVariants.map(({ procedure, variants, suppressBranching }) => (
-        <ProcedureSection
-          key={procedure.id}
-          procedure={procedure}
-          variants={variants}
-          suppressBranching={suppressBranching}
-          expanded={openProcedureId === procedure.id}
-          selectedSystemId={selectedSystemId}
-          onToggle={() =>
-            setOpenProcedureId((current) =>
-              current === procedure.id ? null : procedure.id,
-            )
-          }
-        />
-      ))}
-    </div>
+    <>
+      <div className="space-y-4 lg:hidden">
+        {proceduresWithVariants.map(({ procedure, variants, suppressBranching }) => (
+          <ProcedureSection
+            key={procedure.id}
+            procedure={procedure}
+            variants={variants}
+            suppressBranching={suppressBranching}
+            selectedSystemId={selectedSystemId}
+            palette={palette}
+          />
+        ))}
+      </div>
+
+      <div className="hidden lg:grid lg:grid-cols-3 lg:gap-6">
+        {desktopColumns.map((column, columnIndex) => (
+          <div key={`menu-column-${columnIndex}`} className="space-y-6">
+            {column.map(({ procedure, variants, suppressBranching }) => (
+              <ProcedureSection
+                key={procedure.id}
+                procedure={procedure}
+                variants={variants}
+                suppressBranching={suppressBranching}
+                selectedSystemId={selectedSystemId}
+                palette={palette}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+    </>
   );
 }

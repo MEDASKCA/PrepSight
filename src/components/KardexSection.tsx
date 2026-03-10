@@ -133,15 +133,15 @@ export default function KardexSection({
   }
 
   return (
-    <div className="bg-white border border-[#D5DCE3] rounded-xl overflow-hidden mb-3">
+    <div className="mb-3 overflow-hidden rounded-xl border border-[#D5DCE3] bg-white lg:mb-5 lg:rounded-[30px] lg:border-[#14304B] lg:bg-[#08131F] lg:shadow-[0_28px_64px_rgba(15,23,42,0.24)]">
       <div className="flex items-center bg-[#4DA3FF] transition-colors">
         <button
           onClick={() => setOpen(!open)}
-          className="flex-1 flex items-center gap-3 px-4 py-3.5 hover:bg-[#2F8EF7] transition-colors text-white font-semibold text-base text-left"
+          className="flex-1 flex items-center gap-3 px-4 py-3.5 text-left text-base font-semibold text-white transition-colors hover:bg-[#2F8EF7] lg:px-7 lg:py-6 lg:text-[30px] lg:font-semibold lg:tracking-[-0.05em]"
         >
           <span className="flex-1">{section.title}</span>
           {section.contentMode === "fixed" && (
-            <span className="shrink-0 rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+            <span className="shrink-0 rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white lg:px-4 lg:py-1.5 lg:text-[11px]">
               Supplier fixed
             </span>
           )}
@@ -155,7 +155,7 @@ export default function KardexSection({
           ) : (
             <button
               onClick={handleEditSave}
-              className={`ml-2 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors shrink-0 ${
+              className={`ml-2 flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-bold transition-colors shrink-0 lg:mr-2 lg:px-4 lg:py-2 lg:text-sm ${
                 editMode
                   ? "bg-[#F87171] text-white hover:bg-[#ef4444]"
                   : "bg-white/20 text-white hover:bg-white/35"
@@ -172,32 +172,32 @@ export default function KardexSection({
 
         <button
           onClick={() => setOpen(!open)}
-          className="px-4 py-3.5 hover:bg-[#2F8EF7] transition-colors text-white"
+          className="px-4 py-3.5 text-white transition-colors hover:bg-[#2F8EF7] lg:px-6"
         >
           {open ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
         </button>
       </div>
 
       {open && (
-        <div className="px-4 py-2">
+        <div className="px-4 py-2 lg:px-7 lg:py-6 lg:text-white/78">
 
           {/* ── OVERVIEW ───────────────────────────────────────────── */}
           {isOverview && (section.summary || section.duration || section.anaesthesiaType) && (
             <div className="py-2 space-y-2">
               {section.summary && (
-                <p className="text-base text-[#475569] leading-relaxed">{section.summary}</p>
+                    <p className="text-base leading-relaxed text-[#475569] lg:text-lg lg:leading-8 lg:text-white/72">{section.summary}</p>
               )}
               <div className="flex flex-wrap gap-4">
                 {section.duration && (
                   <div>
-                    <p className="text-xs uppercase tracking-wide text-[#94a3b8]">Duration</p>
-                    <p className="text-sm font-semibold text-[#3F4752]">{section.duration}</p>
+                    <p className="text-xs uppercase tracking-wide text-[#94a3b8] lg:text-white/38">Duration</p>
+                    <p className="text-sm font-semibold text-[#3F4752] lg:text-white">{section.duration}</p>
                   </div>
                 )}
                 {section.anaesthesiaType && (
                   <div>
-                    <p className="text-xs uppercase tracking-wide text-[#94a3b8]">Anaesthesia</p>
-                    <p className="text-sm font-semibold text-[#3F4752]">{section.anaesthesiaType}</p>
+                    <p className="text-xs uppercase tracking-wide text-[#94a3b8] lg:text-white/38">Anaesthesia</p>
+                    <p className="text-sm font-semibold text-[#3F4752] lg:text-white">{section.anaesthesiaType}</p>
                   </div>
                 )}
               </div>
@@ -221,7 +221,7 @@ export default function KardexSection({
                       value={localOpTechUrl}
                       onChange={(e) => setLocalOpTechUrl(e.target.value)}
                       placeholder="https://"
-                      className="w-full text-sm border border-[#D5DCE3] rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#F87171] focus:border-transparent placeholder:text-[#D5DCE3]"
+                        className="w-full rounded-xl border border-[#D5DCE3] px-3 py-2.5 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#F87171] placeholder:text-[#D5DCE3] lg:border-white/10 lg:bg-white/6 lg:text-white"
                     />
                   </div>
 
@@ -234,7 +234,7 @@ export default function KardexSection({
                       value={localImplantUrl}
                       onChange={(e) => setLocalImplantUrl(e.target.value)}
                       placeholder="https://"
-                      className="w-full text-sm border border-[#D5DCE3] rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#F87171] focus:border-transparent placeholder:text-[#D5DCE3]"
+                        className="w-full rounded-xl border border-[#D5DCE3] px-3 py-2.5 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#F87171] placeholder:text-[#D5DCE3] lg:border-white/10 lg:bg-white/6 lg:text-white"
                     />
                   </div>
 
@@ -246,14 +246,14 @@ export default function KardexSection({
                           value={link.label}
                           onChange={(e) => updateExternalLink(i, "label", e.target.value)}
                           placeholder="Link label"
-                          className="w-full text-sm border border-[#D5DCE3] rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#F87171] focus:border-transparent placeholder:text-[#D5DCE3]"
+                          className="w-full rounded-xl border border-[#D5DCE3] px-3 py-2 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#F87171] placeholder:text-[#D5DCE3] lg:border-white/10 lg:bg-white/6 lg:text-white"
                         />
                         <input
                           type="url"
                           value={link.url}
                           onChange={(e) => updateExternalLink(i, "url", e.target.value)}
                           placeholder="https://"
-                          className="w-full text-sm border border-[#D5DCE3] rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#F87171] focus:border-transparent placeholder:text-[#D5DCE3]"
+                          className="w-full rounded-xl border border-[#D5DCE3] px-3 py-2 text-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#F87171] placeholder:text-[#D5DCE3] lg:border-white/10 lg:bg-white/6 lg:text-white"
                         />
                       </div>
                       <button
@@ -320,18 +320,18 @@ export default function KardexSection({
 
           {/* ── NURSE PREP NOTES ───────────────────────────────────── */}
           {isNurseNotes && (
-            <div className="border border-[#D5DCE3] rounded-xl p-4 bg-[#f8fafc] my-2">
+            <div className="my-2 rounded-xl border border-[#D5DCE3] bg-[#f8fafc] p-4 lg:border-white/10 lg:bg-white/6">
               <p className="text-xs uppercase tracking-wide text-[#94a3b8] mb-2">Nurse prep notes</p>
               {editMode ? (
                 <textarea
                   value={notesDraft}
                   onChange={(e) => setNotesDraft(e.target.value)}
                   rows={5}
-                  className="w-full text-base border border-[#D5DCE3] rounded-xl px-3 py-2.5 resize-none focus:outline-none focus:ring-2 focus:ring-[#F87171] bg-white"
+                  className="w-full resize-none rounded-xl border border-[#D5DCE3] bg-white px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-[#F87171] lg:border-white/10 lg:bg-white/6 lg:text-white"
                 />
               ) : (
                 <>
-                  <p className="text-base text-[#475569] leading-relaxed whitespace-pre-wrap">
+                  <p className="whitespace-pre-wrap text-base leading-relaxed text-[#475569] lg:text-white/72">
                     {nurseNotes || <span className="text-[#cbd5e1]">No prep notes added yet.</span>}
                   </p>
                   {notesLastEdited && (
@@ -346,7 +346,7 @@ export default function KardexSection({
 
           {/* ── PATIENT POSITIONING ────────────────────────────────── */}
           {isPositioning && (
-            <div className="border border-[#D5DCE3] rounded-xl p-4 bg-[#f8fafc] mt-2 mb-3">
+            <div className="mt-2 mb-3 rounded-xl border border-[#D5DCE3] bg-[#f8fafc] p-4 lg:border-white/10 lg:bg-white/6">
               <p className="text-xs uppercase tracking-wide text-[#94a3b8] mb-2">Patient positioning</p>
               {editMode ? (
                 <>
@@ -354,7 +354,7 @@ export default function KardexSection({
                     value={positionDraft}
                     onChange={(e) => setPositionDraft(e.target.value)}
                     rows={5}
-                    className="w-full text-base border border-[#D5DCE3] rounded-xl px-3 py-2.5 resize-none focus:outline-none focus:ring-2 focus:ring-[#F87171] bg-white"
+                    className="w-full resize-none rounded-xl border border-[#D5DCE3] bg-white px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-[#F87171] lg:border-white/10 lg:bg-white/6 lg:text-white"
                   />
                   <p className="mt-2 text-xs text-amber-600 flex items-center gap-1">
                     ⚠ Changes to patient positioning require clinical approval before publishing.
@@ -362,7 +362,7 @@ export default function KardexSection({
                 </>
               ) : (
                 <>
-                  <p className="text-base text-[#475569] leading-relaxed whitespace-pre-wrap">
+                  <p className="whitespace-pre-wrap text-base leading-relaxed text-[#475569] lg:text-white/72">
                     {positionText || <span className="text-[#cbd5e1]">No positioning instructions set.</span>}
                   </p>
                   {positionPending && (
@@ -377,9 +377,9 @@ export default function KardexSection({
 
           {/* ── POST-PROCEDURE CARE ────────────────────────────────── */}
           {isPostCare && section.recoveryNotes && (
-            <div className="border border-[#D5DCE3] rounded-xl p-4 bg-[#f8fafc] my-2">
+            <div className="my-2 rounded-xl border border-[#D5DCE3] bg-[#f8fafc] p-4 lg:border-white/10 lg:bg-white/6">
               <p className="text-xs uppercase tracking-wide text-[#94a3b8] mb-2">Recovery notes</p>
-              <p className="text-base text-[#475569] leading-relaxed whitespace-pre-wrap">{section.recoveryNotes}</p>
+              <p className="whitespace-pre-wrap text-base leading-relaxed text-[#475569] lg:text-white/72">{section.recoveryNotes}</p>
             </div>
           )}
 

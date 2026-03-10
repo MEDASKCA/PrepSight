@@ -102,18 +102,18 @@ export default function ChecklistPanel({ cardKey, sections }: Props) {
   }
 
   return (
-    <section className="mb-4 rounded-2xl border border-[#D5DCE3] bg-white shadow-sm">
-      <div className="flex items-center justify-between border-b border-[#E2E8F0] bg-[#E7F1FB] px-4 py-3">
+    <section className="mb-4 rounded-2xl border border-[#D5DCE3] bg-white shadow-sm lg:mb-6 lg:rounded-[30px] lg:border-[#14304B] lg:bg-[#08131F] lg:shadow-[0_28px_64px_rgba(15,23,42,0.24)]">
+      <div className="flex items-center justify-between border-b border-[#E2E8F0] bg-[#E7F1FB] px-4 py-3 lg:border-white/10 lg:bg-[#0B1C2B] lg:px-7 lg:py-5">
         <div className="flex items-center gap-2">
-          <ClipboardCheck size={18} className="text-[#1E293B]" />
+          <ClipboardCheck size={18} className="text-[#1E293B] lg:text-[#7DD3FC]" />
           <div>
-            <h2 className="text-sm font-bold text-[#1E293B]">Case Prep Checklist</h2>
-            <p className="text-xs text-slate-500">
+            <h2 className="text-sm font-bold text-[#1E293B] lg:text-[24px] lg:font-semibold lg:tracking-[-0.04em] lg:text-white">Case Prep Checklist</h2>
+            <p className="text-xs text-slate-500 lg:text-sm lg:text-white/52">
               Supplier-fixed items for this card
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-xs text-slate-500">
+        <div className="flex items-center gap-2 text-xs text-slate-500 lg:text-sm lg:text-white/56">
           {loading || isPending ? (
             <Loader2 size={14} className="animate-spin" />
           ) : (
@@ -125,11 +125,11 @@ export default function ChecklistPanel({ cardKey, sections }: Props) {
         </div>
       </div>
 
-      <div className="divide-y divide-[#EEF2F6]">
+      <div className="divide-y divide-[#EEF2F6] lg:divide-white/8">
         {entries.map((entry, index) => (
           <label
             key={`${entry.sectionType}-${entry.itemName}-${index}`}
-            className="flex cursor-pointer items-start gap-3 px-4 py-3"
+            className="flex cursor-pointer items-start gap-3 px-4 py-3 lg:px-7 lg:py-5"
           >
             <input
               type="checkbox"
@@ -138,9 +138,9 @@ export default function ChecklistPanel({ cardKey, sections }: Props) {
               className="mt-1 h-4 w-4 rounded border-slate-300 text-[#4DA3FF] focus:ring-[#4DA3FF]"
             />
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-semibold text-slate-800">{entry.itemName}</p>
-              <div className="mt-1 flex flex-wrap gap-2 text-[11px] text-slate-500">
-                <span className="rounded-full bg-slate-100 px-2 py-0.5">
+              <p className="text-sm font-semibold text-slate-800 lg:text-[22px] lg:font-semibold lg:tracking-[-0.03em] lg:text-white">{entry.itemName}</p>
+              <div className="mt-1 flex flex-wrap gap-2 text-[11px] text-slate-500 lg:mt-2 lg:text-sm lg:text-white/56">
+                <span className="rounded-full bg-slate-100 px-2 py-0.5 lg:border lg:border-white/10 lg:bg-white/8 lg:text-white/66">
                   {sectionLabel(entry.sectionType)}
                 </span>
                 <span>Qty: {entry.requiredQty ?? 1}</span>

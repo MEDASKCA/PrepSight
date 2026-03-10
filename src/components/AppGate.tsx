@@ -1,13 +1,11 @@
 "use client"
 
 import { useEffect, useState, Suspense } from "react"
-import { useRouter, usePathname, useSearchParams } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 import { onAuthChange, type User } from "@/lib/auth"
 import { hasProfile } from "@/lib/profile"
-import Sidebar from "./Sidebar"
 import MobileDrawer from "./MobileDrawer"
 import AdminUnlocker from "./AdminUnlocker"
-import FloatingChatButton from "./FloatingChatButton"
 
 const PUBLIC_ROUTES    = ["/login"]
 const ONBOARDING_ROUTE = "/onboarding"
@@ -56,7 +54,6 @@ function LoadingScreen({ message }: { message: string }) {
 export default function AppGate({ children }: { children: React.ReactNode }) {
   const router = useRouter()
   const pathname = usePathname()
-  const searchParams = useSearchParams()
 
   const [user, setUser] = useState<User | null | undefined>(undefined)
 
@@ -84,8 +81,6 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
   const isPublic = PUBLIC_ROUTES.includes(pathname)
   const isOnboarding = pathname === ONBOARDING_ROUTE
   const isAdmin = pathname.startsWith(ADMIN_ROUTE)
-  const isTrueHomePage = pathname === "/" && searchParams.size === 0
-
   if (!user) {
     return isPublic
       ? <><AdminUnlocker />{children}</>
@@ -113,16 +108,12 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="flex min-h-screen bg-[#F4F7FA]">
-      <aside className="hidden lg:flex shrink-0 h-screen sticky top-0">
-        <Sidebar />
-      </aside>
-      <div className="flex-1 min-w-0 flex flex-col">
+    <div className="min-h-screen bg-[#F4F7FA]">
+      <div className="min-w-0 flex min-h-screen flex-col">
         <Suspense>
           <MobileDrawer />
         </Suspense>
         <main className="flex-1">{children}</main>
-        {!isTrueHomePage && <FloatingChatButton />}
       </div>
       <AdminUnlocker />
     </div>

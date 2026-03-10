@@ -15,6 +15,15 @@ import {
 } from "@/lib/operating-theatre-taxonomy"
 import { hasVariantsForProcedure } from "@/lib/variants"
 
+const SPECIALTY_PAGE_COLOURS = [
+  { header: "#3B82F6", hover: "#2563EB", soft: "#DBEAFE", softBorder: "#93C5FD", softText: "#1D4ED8" },
+  { header: "#14B8A6", hover: "#0F766E", soft: "#CCFBF1", softBorder: "#5EEAD4", softText: "#0F766E" },
+  { header: "#7C5CFC", hover: "#6D28D9", soft: "#EDE9FE", softBorder: "#C4B5FD", softText: "#6D28D9" },
+  { header: "#F97316", hover: "#EA580C", soft: "#FFEDD5", softBorder: "#FDBA74", softText: "#C2410C" },
+  { header: "#2563EB", hover: "#1D4ED8", soft: "#DBEAFE", softBorder: "#93C5FD", softText: "#1D4ED8" },
+  { header: "#10B981", hover: "#059669", soft: "#D1FAE5", softBorder: "#6EE7B7", softText: "#047857" },
+]
+
 interface Props {
   searchParams: Promise<{
     setting?: string
@@ -65,21 +74,33 @@ export default async function HomePage({ searchParams }: Props) {
   const isOperatingTheatre = activeSetting === "Operating Theatre"
 
   const isSettingOverview = !activeSpecialty
-  const isOperatingTheatreSpecialtiesPage = isOperatingTheatre && !anatomy
+  const isOperatingTheatreOverviewPage = isOperatingTheatre && !activeSpecialty
+  const isOperatingTheatreSpecialtyPage = isOperatingTheatre && !!activeSpecialty && !anatomy
   const isAnatomyPage = isOperatingTheatre && !!activeSpecialty && !!anatomy
+
+  if (isSettingOverview) {
+    return <HomeHero initialWorkspace={activeSetting} />
+  }
 
   const settingColour =
     SETTING_COLOUR[activeSetting] ?? "bg-gray-100 text-gray-700"
 
   const operatingTheatreTabs = isOperatingTheatre
-    ? SETTING_SPECIALTIES["Operating Theatre"].map((spec) => {
+    ? SETTING_SPECIALTIES["Operating Theatre"]
+      .filter((spec) => !activeSpecialty || spec === activeSpecialty)
+      .map((spec) => {
         const specId = getOperatingTheatreSpecialtyIdByLabel(spec)
         const serviceLines = specId ? getServiceLinesForSpecialty(specId) : []
+        const palette =
+          SPECIALTY_PAGE_COLOURS[
+            SETTING_SPECIALTIES["Operating Theatre"].indexOf(spec) % SPECIALTY_PAGE_COLOURS.length
+          ] ?? SPECIALTY_PAGE_COLOURS[0]
 
         return {
           name: spec,
           subspecialtyCount: serviceLines.length,
           serviceLines,
+          palette,
         }
       })
     : []
@@ -91,6 +112,12 @@ export default async function HomePage({ searchParams }: Props) {
   const anatomyLabel = anatomy
     ? getAnatomyNameById(anatomy) ?? anatomy
     : undefined
+
+  const activeSpecialtyPalette = activeSpecialty
+    ? SPECIALTY_PAGE_COLOURS[
+        SETTING_SPECIALTIES["Operating Theatre"].indexOf(activeSpecialty) % SPECIALTY_PAGE_COLOURS.length
+      ] ?? SPECIALTY_PAGE_COLOURS[0]
+    : SPECIALTY_PAGE_COLOURS[0]
 
   let theatreProcedures: Procedure[] = procedures
 
@@ -136,48 +163,49 @@ export default async function HomePage({ searchParams }: Props) {
     ? serviceLineLabel && anatomyLabel
       ? `${serviceLineLabel}: ${anatomyLabel}`
       : anatomyLabel ?? anatomy!
-    : isOperatingTheatreSpecialtiesPage
+    : isOperatingTheatreOverviewPage
       ? activeSetting
       : activeSpecialty ?? activeSetting
 
   return (
-    <div className="min-h-screen bg-[#F4F7FA]">
-      <header className="sticky top-0 z-30 border-b border-white/10 bg-[#1E293B]">
-        <div className="mx-auto flex max-w-4xl items-center gap-3 px-4 py-3">
+    <div className="min-h-screen bg-[#F4F7FA] lg:bg-[#06111D]">
+      <div className="hidden lg:block lg:fixed lg:inset-0 lg:pointer-events-none lg:bg-[radial-gradient(circle_at_top_left,_rgba(77,163,255,0.14),_transparent_26%),radial-gradient(circle_at_86%_14%,_rgba(20,184,166,0.12),_transparent_22%),linear-gradient(145deg,#06111D_0%,#091725_48%,#0B2134_100%)]" />
+      <header className="sticky top-0 z-30 border-b border-white/10 bg-[#1E293B] lg:border-b lg:border-white/8 lg:bg-[#08131F]/88 lg:backdrop-blur-2xl">
+        <div className="mx-auto flex max-w-4xl items-center gap-3 px-4 py-3 lg:max-w-none lg:px-12 lg:py-5">
           <Link
             href={backHref}
-            className="shrink-0 text-white/60 transition-colors hover:text-white"
+            className="shrink-0 text-white/60 transition-colors hover:text-white lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[20px] lg:border lg:border-white/10 lg:bg-white/6"
           >
             <ArrowLeft size={20} />
           </Link>
 
           <div className="min-w-0 flex-1">
-            <h1 className="text-base font-bold leading-snug text-white">
+            <h1 className="text-base font-bold leading-snug text-white lg:text-[40px] lg:font-semibold lg:tracking-[-0.05em]">
               {pageTitle}
             </h1>
 
-            {isOperatingTheatreSpecialtiesPage ? (
+            {isOperatingTheatreOverviewPage ? (
               <div className="mt-0.5 flex flex-wrap items-center gap-1.5">
-                <span className="rounded-full bg-white/10 px-2 py-0.5 text-xs text-white/60">
+                <span className="rounded-full bg-white/10 px-2 py-0.5 text-xs text-white/60 lg:border lg:border-white/10 lg:bg-white/8 lg:px-4 lg:py-1.5 lg:text-[11px] lg:font-semibold lg:uppercase lg:tracking-[0.16em]">
                   Specialties
                 </span>
               </div>
             ) : (
               <div className="mt-0.5 flex flex-wrap items-center gap-1.5">
                 <span
-                  className={`rounded-full px-2 py-0.5 text-xs font-semibold ${settingColour}`}
+                  className={`rounded-full px-2 py-0.5 text-xs font-semibold ${settingColour} lg:px-4 lg:py-1.5 lg:text-[11px] lg:uppercase lg:tracking-[0.16em]`}
                 >
                   {activeSetting}
                 </span>
 
                 {activeSpecialty && (
-                  <span className="rounded-full bg-white/10 px-2 py-0.5 text-xs text-white/60">
+                  <span className="rounded-full bg-white/10 px-2 py-0.5 text-xs text-white/60 lg:border lg:border-white/10 lg:bg-white/8 lg:px-4 lg:py-1.5 lg:text-[11px] lg:uppercase lg:tracking-[0.16em]">
                     {activeSpecialty}
                   </span>
                 )}
 
                 {isAnatomyPage && anatomyLabel && (
-                  <span className="rounded-full bg-white/10 px-2 py-0.5 text-xs text-white/60">
+                  <span className="rounded-full bg-white/10 px-2 py-0.5 text-xs text-white/60 lg:border lg:border-white/10 lg:bg-white/8 lg:px-4 lg:py-1.5 lg:text-[11px] lg:uppercase lg:tracking-[0.16em]">
                     {anatomyLabel}
                   </span>
                 )}
@@ -187,7 +215,7 @@ export default async function HomePage({ searchParams }: Props) {
 
           <Link
             href="/"
-            className="shrink-0 rounded-lg p-2 text-white/60 transition-colors hover:bg-white/10 hover:text-white"
+            className="shrink-0 rounded-lg p-2 text-white/60 transition-colors hover:bg-white/10 hover:text-white lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[20px] lg:border lg:border-white/10 lg:bg-white/6"
             aria-label="Home"
           >
             <House size={18} />
@@ -195,40 +223,19 @@ export default async function HomePage({ searchParams }: Props) {
         </div>
       </header>
 
-      <main className="mx-auto max-w-4xl space-y-4 px-4 py-5">
-        {isSettingOverview && !isOperatingTheatre && (
-          <div className="space-y-3">
-            {(SETTING_SPECIALTIES[activeSetting] ?? []).map((spec) => {
-              const count = procedures.filter(
-                (p) => p.setting === activeSetting && p.specialty === spec,
-              ).length
-              return (
-                <Link
-                  key={spec}
-                  href={`/?setting=${encodeURIComponent(activeSetting)}&specialty=${encodeURIComponent(spec)}`}
-                  className="flex items-center justify-between rounded-xl border border-[#D5DCE3] bg-white px-5 py-4 transition hover:border-[#4DA3FF]"
-                >
-                  <div className="min-w-0">
-                    <p className="text-sm font-semibold text-[#3F4752]">{spec}</p>
-                    {count > 0 && (
-                      <p className="mt-0.5 text-xs text-[#94a3b8]">
-                        {count} {count === 1 ? "procedure" : "procedures"}
-                      </p>
-                    )}
-                  </div>
-                  <svg className="h-4 w-4 shrink-0 text-[#D5DCE3]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L10.94 10 7.23 6.29a.75.75 0 1 1 1.06-1.06l4.24 4.24a.75.75 0 0 1 0 1.06l-4.24 4.24a.75.75 0 0 1-1.08-.02Z" clipRule="evenodd" />
-                  </svg>
-                </Link>
-              )
-            })}
-          </div>
-        )}
-
-        {isOperatingTheatreSpecialtiesPage && (
+      <main className="relative mx-auto max-w-4xl space-y-4 px-4 py-5 lg:max-w-none lg:space-y-8 lg:px-12 lg:py-10">
+        {isOperatingTheatreOverviewPage && (
           <OperatingTheatreTabs
             tabs={operatingTheatreTabs}
             selectedServiceLineId={service_line}
+          />
+        )}
+
+        {isOperatingTheatreSpecialtyPage && (
+          <OperatingTheatreTabs
+            tabs={operatingTheatreTabs}
+            selectedServiceLineId={service_line}
+            specialtyFirst
           />
         )}
 
@@ -236,6 +243,7 @@ export default async function HomePage({ searchParams }: Props) {
           <ProcedureTabs
             procedures={theatreProcedures}
             selectedSystemId={system}
+            palette={activeSpecialtyPalette}
           />
         )}
       </main>
