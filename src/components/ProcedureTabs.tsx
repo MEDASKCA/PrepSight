@@ -57,7 +57,10 @@ function formatSystemMeta(system: SystemWithSupplier) {
     system.category?.split("—")[1]?.trim() ||
     system.category?.split("-")[1]?.trim() ||
     "";
-  const systemType = system.system_type || categorySuffix;
+  const rawSystemType = system.system_type?.trim() || "";
+  const systemType =
+    categorySuffix ||
+    (rawSystemType.toLowerCase() === "implant" ? "" : rawSystemType);
   return {
     supplier: system.supplier?.name ? `by ${system.supplier.name}` : "",
     type: systemType || "",
