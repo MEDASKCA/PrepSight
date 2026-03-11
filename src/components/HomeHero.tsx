@@ -1,8 +1,10 @@
 "use client"
 
-import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent, type UIEvent } from "react"
+import { useDeferredValue, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent, type UIEvent } from "react"
+import Fuse from "fuse.js"
 import {
   Activity,
+  ArrowUp,
   ArrowRightLeft,
   Baby,
   BedSingle,
@@ -40,7 +42,7 @@ import {
   USER_ROLE_LABEL,
 } from "@/lib/types"
 import { SETTING_SPECIALTIES } from "@/lib/settings"
-import { SPECIALTY_SVG_ICON } from "@/components/SpecialtyIcons"
+import { SPECIALTY_SVG_ICON, StomachIcon } from "@/components/SpecialtyIcons"
 
 const WORKSPACE_META: Record<
   ClinicalSetting,
@@ -138,6 +140,17 @@ const WORKFLOW_TOOLS = [
   },
 ] as const
 
+const WORKFLOW_IMAGE_MAP: Record<string, string> = {
+  "New card": "/icons/workflow/new-card.png",
+  Catalogue: "/icons/workflow/catalogue.png",
+  Surgeons: "/icons/workflow/surgeons.png",
+  Directory: "/icons/workflow/directory.png",
+  Implants: "/icons/workflow/implants.png",
+  "Product ID": "/icons/workflow/product-id.png",
+  Stockroom: "/icons/workflow/stockroom.png",
+  "Tray audit": "/icons/workflow/tray-audit.png",
+}
+
 const SPECIALTY_SHORT_LABELS: Record<string, string> = {
   "Trauma and Orthopaedics": "Ortho",
   "General Surgery": "GenSurg",
@@ -149,7 +162,7 @@ const SPECIALTY_SHORT_LABELS: Record<string, string> = {
   "Dental and Oral": "Dental",
   "Plastic and Reconstructive": "Plastics",
   Neurosurgery: "Neuro",
-  Cardiothoracic: "CTS",
+  Cardiothoracic: "Cardiac",
   Vascular: "Vascular",
   Paediatric: "Paeds",
   Ophthalmology: "Eyes",
@@ -269,6 +282,10 @@ const SPECIALTY_ICON_MAP: Record<string, typeof Stethoscope> = {
   Postnatal: Baby,
 }
 
+const MOBILE_SPECIALTY_SVG_ICON: Record<string, typeof StomachIcon> = {
+  "General Surgery": StomachIcon,
+}
+
 const WORKSPACE_HERO_META: Record<
   ClinicalSetting,
   { surface: string; accent: string; glow: string; blip: string }
@@ -336,11 +353,133 @@ const DRAGGABLE_ITEM_STYLE: CSSProperties = {
   touchAction: "none",
 }
 
+function withAlpha(hex: string, alpha: string): string {
+  return /^#[0-9A-Fa-f]{6}$/.test(hex) ? `${hex}${alpha}` : hex
+}
+
+function mobileIconShellStyle(color: string): CSSProperties {
+  return {
+    background: `linear-gradient(180deg, ${withAlpha(color, "FF")} 0%, ${withAlpha(color, "F0")} 42%, ${withAlpha(color, "D2")} 100%)`,
+    boxShadow: `0 10px 18px ${withAlpha(color, "24")}, inset 0 1px 0 rgba(255,255,255,0.34), inset 0 -12px 18px rgba(15,23,42,0.14)`,
+  }
+}
+
+function mobileIconGlossStyle(color: string): CSSProperties {
+  return {
+    background: `linear-gradient(180deg, rgba(255,255,255,0.48) 0%, rgba(255,255,255,0.18) 48%, rgba(255,255,255,0) 100%)`,
+    boxShadow: `inset 0 1px 0 rgba(255,255,255,0.22)`,
+  }
+}
+
+function mobileSpecialtyIconSize(label: string): number {
+  if (label === "Trauma and Orthopaedics") return 26
+  return 24
+}
+
+function mobileSpecialtyImageClassName(label: string): string {
+  if (label === "Trauma and Orthopaedics") return "h-10 w-10 scale-[1.12] object-contain"
+  if (label === "General Surgery") return "h-10 w-10 scale-[1.1] object-contain"
+  if (label === "Urology") return "h-10 w-10 scale-[1.08] object-contain"
+  if (label === "Obstetrics") return "h-9 w-9 scale-105 object-contain"
+  return "h-10 w-10 scale-[1.1] object-contain"
+}
+
+function mobileWorkflowImageClassName(label: string): string {
+  if (label === "New card") return "h-9 w-9 scale-105 object-contain"
+  return "h-10 w-10 scale-[1.08] object-contain"
+}
+
+function getMobileSpecialtyImageSrc(src?: string): string | undefined {
+  if (!src) return undefined
+  return src.replace(/(\.[a-z0-9]+)$/i, "-1$1")
+}
+
 function getGreeting(): string {
   const h = new Date().getHours()
   if (h < 12) return "Good morning."
   if (h < 17) return "Good afternoon."
   return "Good evening."
+}
+
+function normalizeSearchText(value: string | undefined): string {
+  return (value ?? "").toLowerCase().trim()
+}
+
+function getSearchableProcedureAliases(procedure: (typeof procedures)[number]): string[] {
+  const aliases = (procedure as { aliases?: unknown }).aliases
+  if (Array.isArray(aliases)) {
+    return aliases
+      .filter((alias): alias is string => typeof alias === "string")
+      .map(normalizeSearchText)
+      .filter(Boolean)
+  }
+
+  if (typeof aliases === "string") {
+    const alias = normalizeSearchText(aliases)
+    return alias ? [alias] : []
+  }
+
+  return []
+}
+
+function getSearchableProcedureDescription(procedure: (typeof procedures)[number]): string {
+  const descriptionValue = "description" in procedure ? (procedure as { description?: unknown }).description : ""
+  return typeof descriptionValue === "string"
+    ? normalizeSearchText(descriptionValue)
+    : normalizeSearchText(String(descriptionValue ?? ""))
+}
+
+const procedureLookup = new Map(procedures.map((procedure) => [procedure.id, procedure]))
+
+const searchableProcedures = procedures.map((procedure) => ({
+  id: procedure.id,
+  name: normalizeSearchText(procedure.name),
+  specialty: normalizeSearchText(procedure.specialty),
+  setting: normalizeSearchText(procedure.setting),
+  description: getSearchableProcedureDescription(procedure),
+  aliases: getSearchableProcedureAliases(procedure),
+}))
+
+const procedureSearchIndex = new Fuse(searchableProcedures, {
+  includeScore: true,
+  threshold: 0.34,
+  ignoreLocation: true,
+  minMatchCharLength: 2,
+  keys: [
+    { name: "name", weight: 0.52 },
+    { name: "aliases", weight: 0.24 },
+    { name: "specialty", weight: 0.14 },
+    { name: "description", weight: 0.07 },
+    { name: "setting", weight: 0.03 },
+  ],
+})
+
+function searchProcedures(rawQuery: string): Array<(typeof procedures)[number]> {
+  const query = normalizeSearchText(rawQuery)
+  if (query.length < 2) return []
+
+  return procedureSearchIndex
+    .search(query, { limit: 8 })
+    .sort((a, b) => {
+      const scoreDelta = (a.score ?? 1) - (b.score ?? 1)
+      if (Math.abs(scoreDelta) > 0.015) return scoreDelta
+
+      const aName = a.item.name
+      const bName = b.item.name
+      const aStarts = aName.startsWith(query) ? 1 : 0
+      const bStarts = bName.startsWith(query) ? 1 : 0
+      if (aStarts !== bStarts) return bStarts - aStarts
+
+      const aIncludes = aName.includes(query) ? 1 : 0
+      const bIncludes = bName.includes(query) ? 1 : 0
+      if (aIncludes !== bIncludes) return bIncludes - aIncludes
+
+      const aProcedure = procedureLookup.get(a.item.id)
+      const bProcedure = procedureLookup.get(b.item.id)
+      return (aProcedure?.name ?? a.item.name).localeCompare(bProcedure?.name ?? b.item.name)
+    })
+    .map((entry) => procedureLookup.get(entry.item.id))
+    .filter((procedure): procedure is (typeof procedures)[number] => Boolean(procedure))
 }
 
 function getContextBadge(profile: PrepSightProfile): string {
@@ -366,6 +505,7 @@ export default function HomeHero({
   const [profile] = useState<PrepSightProfile | null>(() => getProfile())
   const [recentEntries] = useState<ReturnType<typeof getHistory>>(() => getHistory())
   const [query, setQuery] = useState("")
+  const deferredQuery = useDeferredValue(query)
   const [focused, setFocused] = useState(false)
   const [relevantSettings] = useState<ClinicalSetting[]>(() =>
     profile ? getRelevantSettings(profile) : [],
@@ -419,11 +559,8 @@ export default function HomeHero({
     target: HTMLElement
   } | null>(null)
 
-  const results = query.trim().length > 1
-    ? procedures.filter((p) =>
-        p.name.toLowerCase().includes(query.toLowerCase()) ||
-        p.specialty.toLowerCase().includes(query.toLowerCase()),
-      ).slice(0, 8)
+  const results = deferredQuery.trim().length > 1
+    ? searchProcedures(deferredQuery)
     : []
 
   const recentCards = recentEntries
@@ -495,6 +632,8 @@ export default function HomeHero({
         (SETTING_SPECIALTIES[activeWorkspace] ?? []).indexOf(specialty) % SPECIALTY_TILE_COLOURS.length
       ] ?? "#3B82F6",
     icon: SPECIALTY_ICON_MAP[specialty] ?? Stethoscope,
+    svgIcon: MOBILE_SPECIALTY_SVG_ICON[specialty] ?? SPECIALTY_SVG_ICON[specialty],
+    imageSrc: getMobileSpecialtyImageSrc(SPECIALTY_IMAGE_MAP[specialty]),
     available: true,
     category: "specialty" as const,
   }))
@@ -504,9 +643,15 @@ export default function HomeHero({
     href: tool.href,
     tileColor: tool.tileColor,
     icon: tool.icon,
+    imageSrc: WORKFLOW_IMAGE_MAP[tool.label],
     available: tool.available,
     category: "workflow" as const,
   }))
+  const iconPreloadSources = [
+    ...specialtyItems.slice(0, 8).map((item) => item.imageSrc).filter((src): src is string => Boolean(src)),
+    ...workflowLauncherItems.slice(0, 4).map((item) => item.imageSrc).filter((src): src is string => Boolean(src)),
+  ]
+  const iconPreloadKey = iconPreloadSources.join("|")
   const orderedSpecialtyIds = specialtyOrderMap[activeWorkspace] ?? specialtyItems.map((item) => item.id)
   const orderedSpecialtyItems = [
     ...orderedSpecialtyIds
@@ -572,6 +717,13 @@ export default function HomeHero({
     }
     return baseDockIds as Array<string | null>
   })()
+
+  function submitSearch() {
+    const topResult = results[0]
+    if (!topResult) return
+    setFocused(false)
+    router.push(`/procedures/${topResult.id}`)
+  }
   const dockRenderItems: Array<(typeof dockLibrary)[number] | null> = (
     previewDockSlots.length > 0 ? previewDockSlots : DEFAULT_DOCK_ITEM_IDS
   ).map((id) => (id ? dockLookup[id] ?? null : null))
@@ -636,6 +788,23 @@ export default function HomeHero({
       isAdminSession() && window.localStorage.getItem(HOMEPAGE_IMAGES_KEY) === "true",
     )
   }, [searchParams])
+
+  useEffect(() => {
+    if (typeof window === "undefined") return
+
+    const imageNodes = iconPreloadSources.map((src) => {
+      const image = new window.Image()
+      image.decoding = "async"
+      image.src = src
+      return image
+    })
+
+    return () => {
+      for (const image of imageNodes) {
+        image.src = ""
+      }
+    }
+  }, [iconPreloadKey])
 
   useLayoutEffect(() => {
     const nextRects = new Map<string, DOMRect>()
@@ -1251,17 +1420,33 @@ export default function HomeHero({
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault()
+                      submitSearch()
+                    }
+                  }}
                   onFocus={() => setFocused(true)}
                   onBlur={() => setTimeout(() => setFocused(false), 150)}
-                  placeholder="Search procedure or specialty..."
-                  className="w-full rounded-[16px] border border-white/12 bg-white/12 py-2.5 pl-10 pr-3 text-[13px] text-white placeholder:text-white/45 backdrop-blur-sm transition-colors focus:border-white/35 focus:outline-none focus:ring-2 focus:ring-white/15"
+                  placeholder="Search any keyword..."
+                  className="w-full rounded-[16px] border border-white/12 bg-white/12 py-2.5 pl-10 pr-12 text-[13px] text-white placeholder:text-white/45 backdrop-blur-sm transition-colors focus:border-white/35 focus:outline-none focus:ring-2 focus:ring-white/15"
                 />
+                <button
+                  type="button"
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={submitSearch}
+                  disabled={results.length === 0}
+                  aria-label="Search"
+                  className="absolute right-1.5 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#10243E] shadow-[0_8px_18px_rgba(15,23,42,0.18)] transition-transform hover:scale-[1.03] disabled:cursor-default disabled:opacity-35"
+                >
+                  <ArrowUp size={14} strokeWidth={2.4} />
+                </button>
               </div>
             </div>
           </div>
 
           {showResults && results.length > 0 && (
-            <div className="absolute inset-x-4 top-[calc(100%-6px)] z-30 overflow-hidden rounded-[24px] border border-[#D5DCE3] bg-white shadow-[0_18px_40px_rgba(15,23,42,0.22)]">
+            <div className="pointer-events-auto absolute inset-x-2 top-[calc(100%-2px)] z-50 overflow-hidden rounded-[24px] border border-[#D5DCE3] bg-white shadow-[0_24px_44px_rgba(15,23,42,0.24)]">
               {results.slice(0, 5).map((p) => (
                 <Link
                   key={p.id}
@@ -1279,7 +1464,7 @@ export default function HomeHero({
           )}
 
           {showResults && results.length === 0 && (
-            <p className="absolute inset-x-4 top-[calc(100%-6px)] z-30 rounded-[24px] border border-[#D5DCE3] bg-white px-4 py-3 text-sm text-[#94a3b8] shadow-[0_18px_40px_rgba(15,23,42,0.22)]">
+            <p className="pointer-events-auto absolute inset-x-2 top-[calc(100%-2px)] z-50 rounded-[24px] border border-[#D5DCE3] bg-white px-4 py-3 text-sm text-[#94a3b8] shadow-[0_24px_44px_rgba(15,23,42,0.24)]">
               No procedures found.
             </p>
           )}
@@ -1331,10 +1516,29 @@ export default function HomeHero({
                         style={DRAGGABLE_ITEM_STYLE}
                       >
                         <div
-                          className="mb-1.5 flex h-14 w-14 items-center justify-center rounded-[20px] shadow-[0_10px_22px_rgba(15,23,42,0.12)] ring-1 ring-black/5 transition-transform duration-200 ease-out group-hover:-translate-y-0.5"
-                          style={{ backgroundColor: specialty.tileColor }}
+                          className="relative mb-1.5 flex h-14 w-14 items-center justify-center rounded-[20px] ring-1 ring-black/5 transition-transform duration-200 ease-out group-hover:-translate-y-0.5"
+                          style={mobileIconShellStyle(specialty.tileColor)}
                         >
-                          <specialty.icon size={20} className="text-white" />
+                          <div
+                            className="pointer-events-none absolute inset-x-1.5 top-1.5 h-5 rounded-[14px]"
+                            style={mobileIconGlossStyle(specialty.tileColor)}
+                          />
+                          {specialty.imageSrc && !failedImages.has(specialty.fullLabel) ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={specialty.imageSrc}
+                              alt=""
+                              loading="eager"
+                              fetchPriority="high"
+                              decoding="async"
+                              className={`${mobileSpecialtyImageClassName(specialty.fullLabel)} drop-shadow-[0_1px_2px_rgba(15,23,42,0.22)]`}
+                              onError={() => setFailedImages((prev) => new Set(prev).add(specialty.fullLabel))}
+                            />
+                          ) : specialty.svgIcon ? (
+                            <specialty.svgIcon size={mobileSpecialtyIconSize(specialty.fullLabel)} className="text-white drop-shadow-[0_1px_2px_rgba(15,23,42,0.28)]" />
+                          ) : (
+                            <specialty.icon size={mobileSpecialtyIconSize(specialty.fullLabel)} className="text-white drop-shadow-[0_1px_2px_rgba(15,23,42,0.28)]" />
+                          )}
                         </div>
                         <p className="line-clamp-1 text-[11px] font-semibold leading-4 text-[#1E293B]">
                           {specialty.shortLabel}
@@ -1377,10 +1581,27 @@ export default function HomeHero({
                     const content = (
                       <>
                         <div
-                          className="mb-1.5 flex h-14 w-14 items-center justify-center rounded-[20px] shadow-[0_10px_22px_rgba(15,23,42,0.12)] ring-1 ring-black/5 transition-transform duration-200 ease-out group-hover:-translate-y-0.5"
-                          style={{ backgroundColor: tool.tileColor }}
+                          className="relative mb-1.5 flex h-14 w-14 items-center justify-center rounded-[20px] ring-1 ring-black/5 transition-transform duration-200 ease-out group-hover:-translate-y-0.5"
+                          style={mobileIconShellStyle(tool.tileColor)}
                         >
-                          <Icon size={20} className="text-white" />
+                          <div
+                            className="pointer-events-none absolute inset-x-1.5 top-1.5 h-5 rounded-[14px]"
+                            style={mobileIconGlossStyle(tool.tileColor)}
+                          />
+                          {tool.imageSrc && !failedImages.has(tool.id) ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={tool.imageSrc}
+                              alt=""
+                              loading="eager"
+                              fetchPriority="high"
+                              decoding="async"
+                              className={`${mobileWorkflowImageClassName(tool.label)} drop-shadow-[0_1px_2px_rgba(15,23,42,0.22)]`}
+                              onError={() => setFailedImages((prev) => new Set(prev).add(tool.id))}
+                            />
+                          ) : (
+                            <Icon size={24} className="text-white drop-shadow-[0_1px_2px_rgba(15,23,42,0.28)]" />
+                          )}
                         </div>
                         <p className="line-clamp-2 text-[11px] font-semibold leading-4 text-[#1E293B]">
                           {tool.label}
@@ -1457,10 +1678,40 @@ export default function HomeHero({
                       style={DRAGGABLE_ITEM_STYLE}
                     >
                       <div
-                        className="mb-1 flex h-14 w-14 items-center justify-center rounded-[20px] shadow-[0_10px_24px_rgba(15,23,42,0.14)] transition-transform duration-200 ease-out"
-                        style={{ backgroundColor: item.tileColor }}
+                        className="relative mb-1 flex h-14 w-14 items-center justify-center rounded-[20px] transition-transform duration-200 ease-out"
+                        style={mobileIconShellStyle(item.tileColor)}
                       >
-                        <item.icon size={20} className="text-white" />
+                        <div
+                          className="pointer-events-none absolute inset-x-1.5 top-1.5 h-5 rounded-[14px]"
+                          style={mobileIconGlossStyle(item.tileColor)}
+                        />
+                        {"imageSrc" in item && "fullLabel" in item && item.imageSrc && !failedImages.has(item.fullLabel) ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={item.imageSrc}
+                            alt=""
+                            loading="eager"
+                            fetchPriority="high"
+                            decoding="async"
+                            className={`${mobileSpecialtyImageClassName(item.fullLabel)} drop-shadow-[0_1px_2px_rgba(15,23,42,0.22)]`}
+                            onError={() => setFailedImages((prev) => new Set(prev).add(item.fullLabel))}
+                          />
+                        ) : "imageSrc" in item && "label" in item && item.imageSrc && !failedImages.has(item.id) ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={item.imageSrc}
+                            alt=""
+                            loading="eager"
+                            fetchPriority="high"
+                            decoding="async"
+                            className={`${mobileWorkflowImageClassName(item.label)} drop-shadow-[0_1px_2px_rgba(15,23,42,0.22)]`}
+                            onError={() => setFailedImages((prev) => new Set(prev).add(item.id))}
+                          />
+                        ) : "svgIcon" in item && item.svgIcon ? (
+                          <item.svgIcon size={"fullLabel" in item ? mobileSpecialtyIconSize(item.fullLabel) : 24} className="text-white drop-shadow-[0_1px_2px_rgba(15,23,42,0.28)]" />
+                        ) : (
+                          <item.icon size={"fullLabel" in item ? mobileSpecialtyIconSize(item.fullLabel) : 24} className="text-white drop-shadow-[0_1px_2px_rgba(15,23,42,0.28)]" />
+                        )}
                       </div>
                       <p className="line-clamp-2 text-[11px] font-semibold leading-4 text-[#10243E]">
                         {"shortLabel" in item ? item.shortLabel : item.label}
@@ -1478,10 +1729,27 @@ export default function HomeHero({
                       style={DRAGGABLE_ITEM_STYLE}
                     >
                       <div
-                        className="mb-1 flex h-14 w-14 items-center justify-center rounded-[20px] shadow-[0_10px_24px_rgba(15,23,42,0.14)] transition-transform duration-200 ease-out"
-                        style={{ backgroundColor: item.tileColor }}
+                        className="relative mb-1 flex h-14 w-14 items-center justify-center rounded-[20px] transition-transform duration-200 ease-out"
+                        style={mobileIconShellStyle(item.tileColor)}
                       >
-                        <item.icon size={20} className="text-white" />
+                        <div
+                          className="pointer-events-none absolute inset-x-1.5 top-1.5 h-5 rounded-[14px]"
+                          style={mobileIconGlossStyle(item.tileColor)}
+                        />
+                        {"imageSrc" in item && "label" in item && item.imageSrc && !failedImages.has(item.id) ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={item.imageSrc}
+                            alt=""
+                            loading="eager"
+                            fetchPriority="high"
+                            decoding="async"
+                            className={`${mobileWorkflowImageClassName(item.label)} drop-shadow-[0_1px_2px_rgba(15,23,42,0.22)]`}
+                            onError={() => setFailedImages((prev) => new Set(prev).add(item.id))}
+                          />
+                        ) : (
+                          <item.icon size={24} className="text-white drop-shadow-[0_1px_2px_rgba(15,23,42,0.28)]" />
+                        )}
                       </div>
                       <p className="line-clamp-2 text-[11px] font-semibold leading-4 text-[#10243E]">
                         {"shortLabel" in item ? item.shortLabel : item.label}
@@ -1510,10 +1778,40 @@ export default function HomeHero({
         >
           <div className="flex flex-col items-center text-center">
             <div
-              className="mb-1 flex h-16 w-16 items-center justify-center rounded-[22px] shadow-[0_22px_40px_rgba(15,23,42,0.32)] ring-2 ring-white/80"
-              style={{ backgroundColor: dragPreviewItem.tileColor }}
+              className="relative mb-1 flex h-16 w-16 items-center justify-center rounded-[22px] shadow-[0_22px_40px_rgba(15,23,42,0.32)] ring-2 ring-white/80"
+              style={mobileIconShellStyle(dragPreviewItem.tileColor)}
             >
-              <dragPreviewItem.icon size={20} className="text-white" />
+              <div
+                className="pointer-events-none absolute inset-x-2 top-2 h-6 rounded-[16px]"
+                style={mobileIconGlossStyle(dragPreviewItem.tileColor)}
+              />
+              {"imageSrc" in dragPreviewItem && "fullLabel" in dragPreviewItem && dragPreviewItem.imageSrc && !failedImages.has(dragPreviewItem.fullLabel) ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={dragPreviewItem.imageSrc}
+                  alt=""
+                  className={`${mobileSpecialtyImageClassName(dragPreviewItem.fullLabel)} drop-shadow-[0_1px_2px_rgba(15,23,42,0.22)]`}
+                  onError={() => setFailedImages((prev) => new Set(prev).add(dragPreviewItem.fullLabel))}
+                />
+              ) : "imageSrc" in dragPreviewItem && "label" in dragPreviewItem && dragPreviewItem.imageSrc && !failedImages.has(dragPreviewItem.id) ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={dragPreviewItem.imageSrc}
+                  alt=""
+                  className={`${mobileWorkflowImageClassName(dragPreviewItem.label)} drop-shadow-[0_1px_2px_rgba(15,23,42,0.22)]`}
+                  onError={() => setFailedImages((prev) => new Set(prev).add(dragPreviewItem.id))}
+                />
+              ) : "svgIcon" in dragPreviewItem && dragPreviewItem.svgIcon ? (
+                <dragPreviewItem.svgIcon
+                  size={"fullLabel" in dragPreviewItem ? mobileSpecialtyIconSize(dragPreviewItem.fullLabel) : 24}
+                  className="text-white drop-shadow-[0_1px_2px_rgba(15,23,42,0.28)]"
+                />
+              ) : (
+                <dragPreviewItem.icon
+                  size={"fullLabel" in dragPreviewItem ? mobileSpecialtyIconSize(dragPreviewItem.fullLabel) : 24}
+                  className="text-white drop-shadow-[0_1px_2px_rgba(15,23,42,0.28)]"
+                />
+              )}
             </div>
             <p className="max-w-[64px] text-[10px] font-semibold leading-3 text-[#10243E]">
               {"shortLabel" in dragPreviewItem ? dragPreviewItem.shortLabel : dragPreviewItem.label}
