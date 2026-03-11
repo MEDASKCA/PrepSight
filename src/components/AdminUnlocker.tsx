@@ -36,6 +36,35 @@ export default function AdminUnlocker() {
     return () => document.removeEventListener("click", handleDocClick)
   }, [handleDocClick])
 
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      const hasShortcutModifier = e.ctrlKey || e.metaKey
+      if (!hasShortcutModifier || !e.shiftKey) return
+      if (e.repeat) return
+      if (e.key.toLowerCase() !== "d") return
+
+      const target = e.target
+      if (
+        target instanceof HTMLElement &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.tagName === "SELECT" ||
+          target.isContentEditable)
+      ) {
+        return
+      }
+
+      e.preventDefault()
+      setShowModal(true)
+      setError(false)
+      setPassword("")
+      clickTimesRef.current = []
+    }
+
+    document.addEventListener("keydown", handleKeyDown)
+    return () => document.removeEventListener("keydown", handleKeyDown)
+  }, [])
+
   // Auto-focus password field when modal opens
   useEffect(() => {
     if (showModal) {

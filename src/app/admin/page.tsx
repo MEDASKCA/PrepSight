@@ -30,6 +30,7 @@ if (storage) {
 }
 
 type Tab = "content" | "hospitals" | "surgeons" | "images" | "stats" | "csv"
+const HOMEPAGE_IMAGES_KEY = "prepsight_homepage_images"
 
 // ── Toast ─────────────────────────────────────────────────────────────────────
 interface Toast { id: number; message: string; type: "ok" | "err" }
@@ -63,6 +64,7 @@ export default function AdminPage() {
   const router = useRouter()
   const { toasts, push } = useToast()
   const [tab, setTab] = useState<Tab>("content")
+  const [homepageImagesEnabled, setHomepageImagesEnabled] = useState(false)
 
   // Content state
   const [contentOverrides, setContentOverrides]   = useState<Record<string, string>>({})
@@ -124,6 +126,11 @@ export default function AdminPage() {
     if (tab === "hospitals") loadHospitals()
     if (tab === "surgeons")  loadSurgeons()
   }, [tab])
+
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    setHomepageImagesEnabled(window.localStorage.getItem(HOMEPAGE_IMAGES_KEY) === "true")
+  }, [])
 
   // ── Content actions ───────────────────────────────────────────────────────
   async function saveContent(key: string) {
@@ -218,6 +225,15 @@ export default function AdminPage() {
     router.replace("/")
   }
 
+  function toggleHomepageImages() {
+    if (typeof window === "undefined") return
+    setHomepageImagesEnabled((current) => {
+      const next = !current
+      window.localStorage.setItem(HOMEPAGE_IMAGES_KEY, next ? "true" : "false")
+      return next
+    })
+  }
+
   // ── Stats ─────────────────────────────────────────────────────────────────
   const stats = buildStats()
   const grouped = groupedContent()
@@ -254,13 +270,28 @@ export default function AdminPage() {
             <p className="text-sm font-bold text-slate-900 leading-none">Dev Mode</p>
           </div>
         </div>
-        <button
-          onClick={exitDevMode}
-          className="flex items-center gap-2 text-xs text-slate-500 hover:text-slate-900 transition-colors px-3 py-1.5 rounded-lg border border-slate-200 hover:border-slate-400"
-        >
-          <LogOut size={13} />
-          Exit dev mode
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={toggleHomepageImages}
+            className="flex items-center gap-2 text-xs text-slate-500 hover:text-slate-900 transition-colors px-3 py-1.5 rounded-lg border border-slate-200 hover:border-slate-400"
+          >
+            <ImageIcon size={13} />
+            Homepage images: {homepageImagesEnabled ? "On" : "Off"}
+          </button>
+          <button
+            onClick={() => router.push("/")}
+            className="flex items-center gap-2 text-xs text-slate-500 hover:text-slate-900 transition-colors px-3 py-1.5 rounded-lg border border-slate-200 hover:border-slate-400"
+          >
+            View homepage
+          </button>
+          <button
+            onClick={exitDevMode}
+            className="flex items-center gap-2 text-xs text-slate-500 hover:text-slate-900 transition-colors px-3 py-1.5 rounded-lg border border-slate-200 hover:border-slate-400"
+          >
+            <LogOut size={13} />
+            Exit dev mode
+          </button>
+        </div>
       </header>
 
       {/* Tab bar */}

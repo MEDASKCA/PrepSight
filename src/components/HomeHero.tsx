@@ -28,8 +28,9 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { procedures } from "@/lib/data"
+import { isAdminSession } from "@/lib/admin"
 import { getHistory } from "@/lib/history"
 import { getProfile, getRelevantSettings } from "@/lib/profile"
 import { getProcedureVariantById, getSystemById } from "@/lib/variants"
@@ -39,6 +40,7 @@ import {
   USER_ROLE_LABEL,
 } from "@/lib/types"
 import { SETTING_SPECIALTIES } from "@/lib/settings"
+import { SPECIALTY_SVG_ICON } from "@/components/SpecialtyIcons"
 
 const WORKSPACE_META: Record<
   ClinicalSetting,
@@ -177,6 +179,55 @@ const SPECIALTY_SHORT_LABELS: Record<string, string> = {
   Postnatal: "Postnatal",
 }
 
+const SPECIALTY_IMAGE_MAP: Record<string, string> = {
+  // Operating Theatre
+  "Trauma and Orthopaedics":               "/icons/specialties/trauma-and-orthopaedics.png",
+  "General Surgery":                        "/icons/specialties/general-surgery.png",
+  "Urology":                                "/icons/specialties/urology.png",
+  "Obstetrics":                             "/icons/specialties/obstetrics.png",
+  "Gynecology":                             "/icons/specialties/gynecology.png",
+  "Otolaryngology (Ear, Nose and Throat)":  "/icons/specialties/otolaryngology.png",
+  "Oral and Maxillofacial":                 "/icons/specialties/oral-and-maxillofacial.png",
+  "Dental and Oral":                        "/icons/specialties/dental-and-oral.png",
+  "Plastic and Reconstructive":             "/icons/specialties/plastic-and-reconstructive.png",
+  "Neurosurgery":                           "/icons/specialties/neurosurgery.png",
+  "Cardiothoracic":                         "/icons/specialties/cardiothoracic.png",
+  "Vascular":                               "/icons/specialties/vascular.png",
+  "Paediatric":                             "/icons/specialties/paediatric.png",
+  "Ophthalmology":                          "/icons/specialties/ophthalmology.png",
+  "Podiatric":                              "/icons/specialties/podiatric.png",
+  "Anaesthesia":                            "/icons/specialties/anaesthesia.png",
+  // Endoscopy Suite
+  "Upper GI":                               "/icons/specialties/upper-gi.png",
+  "Lower GI":                               "/icons/specialties/lower-gi.png",
+  "Hepatobiliary":                          "/icons/specialties/hepatobiliary.png",
+  "Respiratory":                            "/icons/specialties/respiratory.png",
+  // IR / Cath Lab
+  "Interventional Radiology":               "/icons/specialties/interventional-radiology.png",
+  "Cardiology":                             "/icons/specialties/cardiology.png",
+  "Neuroradiology":                         "/icons/specialties/neuroradiology.png",
+  // Emergency Department
+  "Resuscitation":                          "/icons/specialties/resuscitation.png",
+  "Trauma":                                 "/icons/specialties/trauma.png",
+  "Procedural":                             "/icons/specialties/procedural.png",
+  // ICU
+  "General ICU":                            "/icons/specialties/general-icu.png",
+  "Cardiac ICU":                            "/icons/specialties/cardiac-icu.png",
+  "Neuro ICU":                              "/icons/specialties/neuro-icu.png",
+  // Ward
+  "General Ward":                           "/icons/specialties/general-ward.png",
+  "Surgical Ward":                          "/icons/specialties/surgical-ward.png",
+  "Medical Ward":                           "/icons/specialties/medical-ward.png",
+  // Outpatient
+  "Outpatients":                            "/icons/specialties/outpatients.png",
+  "Minor Procedures":                       "/icons/specialties/minor-procedures.png",
+  "Specialist Clinic":                      "/icons/specialties/specialist-clinic.png",
+  // Maternity
+  "Labour Ward":                            "/icons/specialties/labour-ward.png",
+  "Obstetric Theatre":                      "/icons/specialties/obstetric-theatre.png",
+  "Postnatal":                              "/icons/specialties/postnatal.png",
+}
+
 const SPECIALTY_ICON_MAP: Record<string, typeof Stethoscope> = {
   "Trauma and Orthopaedics": Bone,
   "General Surgery": Scissors,
@@ -273,6 +324,7 @@ const WORKSPACE_HERO_META: Record<
 }
 
 const MOBILE_DOCK_KEY = "prepsight_mobile_dock"
+const HOMEPAGE_IMAGES_KEY = "prepsight_homepage_images"
 const DEFAULT_DOCK_ITEM_IDS = [
   "tool-new-card",
   "tool-catalogue",
@@ -308,6 +360,9 @@ export default function HomeHero({
   initialWorkspace?: ClinicalSetting
 }) {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const [failedImages, setFailedImages] = useState<Set<string>>(new Set())
+  const [showHomepageImages, setShowHomepageImages] = useState(false)
   const [profile] = useState<PrepSightProfile | null>(() => getProfile())
   const [recentEntries] = useState<ReturnType<typeof getHistory>>(() => getHistory())
   const [query, setQuery] = useState("")
@@ -428,6 +483,7 @@ export default function HomeHero({
   }))
   const activeWorkspaceItem = workspaceItems.find((item) => item.id === `setting-${activeWorkspace}`) ?? workspaceItems[0]
   const activeWorkspaceMeta = WORKSPACE_HERO_META[activeWorkspace]
+  const hideHomepageImages = !showHomepageImages
   const canSwitchWorkspace = workspaceItems.length > 1
   const specialtyItems = (SETTING_SPECIALTIES[activeWorkspace] ?? []).map((specialty) => ({
     id: `${activeWorkspace}-${specialty}`,
@@ -559,6 +615,27 @@ export default function HomeHero({
     if (typeof window === "undefined") return
     window.localStorage.setItem(MOBILE_DOCK_KEY, JSON.stringify(dockItemIds.slice(0, 4)))
   }, [dockItemIds])
+
+  useEffect(() => {
+    if (typeof window === "undefined") return
+
+    const forceHideImages = searchParams.get("hideImages") === "1"
+    const forceShowImages = searchParams.get("showImages") === "1"
+
+    if (forceHideImages) {
+      setShowHomepageImages(false)
+      return
+    }
+
+    if (forceShowImages) {
+      setShowHomepageImages(true)
+      return
+    }
+
+    setShowHomepageImages(
+      isAdminSession() && window.localStorage.getItem(HOMEPAGE_IMAGES_KEY) === "true",
+    )
+  }, [searchParams])
 
   useLayoutEffect(() => {
     const nextRects = new Map<string, DOMRect>()
@@ -912,7 +989,13 @@ export default function HomeHero({
           <div className="relative z-10 border-b border-white/10 px-8 py-5">
             <div className="grid grid-cols-[auto_1fr_auto] items-center gap-6">
               <div className="flex items-center gap-4">
-                <Image src="/AIchaticon.png" alt="" width={64} height={64} className="h-16 w-16 object-contain" />
+                {hideHomepageImages ? (
+                  <div className="flex h-16 min-w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/6 px-4">
+                    <span className="text-[13px] font-semibold uppercase tracking-[0.24em] text-[#7DD3FC]">PS</span>
+                  </div>
+                ) : (
+                  <Image src="/AIchaticon.png" alt="" width={64} height={64} className="h-16 w-16 object-contain" />
+                )}
                 <div>
                   <p className="text-[13px] font-semibold uppercase tracking-[0.24em] text-[#7DD3FC]">PS</p>
                   <p className="text-[28px] font-semibold tracking-[-0.05em] text-white">PrepSight</p>
@@ -962,8 +1045,10 @@ export default function HomeHero({
               <div className="justify-self-end text-right">
                 <p className="text-[11px] uppercase tracking-[0.18em] text-white/40">{getGreeting().replace(".", "")}</p>
                 <p className="mt-2 text-sm text-white/70">{profile ? getContextBadge(profile) : "Browse and reference"}</p>
-                <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-white/36">Procedure cards available</p>
-                <p className="mt-2 text-[34px] font-semibold tracking-[-0.05em] text-white">0</p>
+                <div className="mt-5 inline-flex min-w-[220px] flex-col rounded-[24px] border border-white/10 bg-white/8 px-5 py-4 text-left shadow-[0_18px_34px_rgba(15,23,42,0.18)] backdrop-blur-xl">
+                  <p className="text-[11px] uppercase tracking-[0.18em] text-white/42">Procedure cards available</p>
+                  <p className="mt-2 text-[40px] font-semibold leading-none tracking-[-0.06em] text-white">0</p>
+                </div>
               </div>
             </div>
           </div>
@@ -1021,21 +1106,53 @@ export default function HomeHero({
                     <Link
                       key={specialty.id}
                       href={specialty.href}
-                      className="min-h-[230px] rounded-[30px] px-6 py-6 text-white transition-transform hover:-translate-y-1 [animation:desktopCardRise_0.55s_cubic-bezier(0.2,0.8,0.2,1)_both]"
+                      className="relative min-h-[270px] overflow-hidden rounded-[30px] text-white transition-transform hover:-translate-y-1 [animation:desktopCardRise_0.55s_cubic-bezier(0.2,0.8,0.2,1)_both]"
                       style={{
                         animationDelay: `${index * 45}ms`,
                         background: `linear-gradient(145deg, ${specialty.tileColor} 0%, ${specialty.tileColor}DD 100%)`,
                         boxShadow: `0 30px 50px ${specialty.tileColor}3D`,
                       }}
                     >
-                      <div className="flex h-full flex-col justify-between">
-                        <p className="max-w-[10ch] text-[34px] font-semibold leading-[1.02] tracking-[-0.05em]">
-                          {specialty.fullLabel}
-                        </p>
-                        <p className="max-w-[22ch] text-sm leading-7 text-white/82">
-                          Open this specialty workspace and continue into subspecialties, anatomy, and cards.
-                        </p>
-                      </div>
+                      {!hideHomepageImages && SPECIALTY_IMAGE_MAP[specialty.fullLabel] && !failedImages.has(specialty.fullLabel) ? (
+                        <>
+                          {/* Image centered, bleeds to edges */}
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={SPECIALTY_IMAGE_MAP[specialty.fullLabel]!}
+                            alt=""
+                            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[60%] object-contain opacity-75"
+                            style={{ width: 270, height: 270, mixBlendMode: "multiply" }}
+                            onError={() => setFailedImages((prev) => new Set(prev).add(specialty.fullLabel))}
+                          />
+                          {/* Gradient scrim at bottom so text stays readable */}
+                          <div
+                            className="absolute inset-x-0 bottom-0 h-20 rounded-b-[30px]"
+                            style={{ background: `linear-gradient(to top, ${specialty.tileColor}EE 0%, transparent 100%)` }}
+                          />
+                          {/* Text pinned bottom */}
+                          <p className="absolute inset-x-0 bottom-0 px-5 pb-5 text-center font-semibold leading-tight tracking-[-0.03em]" style={{ fontSize: 32 }}>
+                            {specialty.fullLabel}
+                          </p>
+                        </>
+                      ) : hideHomepageImages ? (
+                        <div className="flex h-full min-h-[270px] items-center justify-center px-8 py-8">
+                          <p className="text-center text-[34px] font-semibold leading-[1.05] tracking-[-0.04em] text-white">
+                            {specialty.fullLabel}
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="flex h-full min-h-[270px] flex-col items-center justify-center gap-5 px-6 py-6">
+                          {(() => {
+                            const SvgIcon = SPECIALTY_SVG_ICON[specialty.fullLabel]
+                            if (SvgIcon) return <SvgIcon size={80} className="opacity-80" />
+                            const LucideIcon = specialty.icon
+                            return <LucideIcon size={64} strokeWidth={1.2} className="opacity-70" />
+                          })()}
+                          <p className="text-center text-[22px] font-semibold leading-tight tracking-[-0.03em]">
+                            {specialty.fullLabel}
+                          </p>
+                        </div>
+                      )}
                     </Link>
                   ))}
                 </div>
