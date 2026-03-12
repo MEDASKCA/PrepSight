@@ -105,6 +105,83 @@ function AnatomyOutline({ name, color }: { name: string; color: string }) {
   )
 }
 
+const SERVICE_LINE_IMAGE_MAP: Record<string, string> = {
+  // Trauma and Orthopaedics
+  "Arthroplasty":                           "/icons/service-lines/arthroplasty.jpg",
+  "Foot and Ankle Surgery":                 "/icons/service-lines/foot-and-ankle-surgery.jpg",
+  "Hand and Wrist Surgery":                 "/icons/service-lines/hand-and-wrist-surgery.jpg",
+  "Orthopaedic Oncology":                   "/icons/service-lines/orthopaedic-oncology.jpg",
+  "Orthopaedic Trauma Surgery":             "/icons/service-lines/orthopaedic-trauma-surgery.jpg",
+  "Paediatric Orthopaedic Surgery":         "/icons/service-lines/paediatric-orthopaedic-surgery.jpg",
+  "Shoulder and Elbow Surgery":             "/icons/service-lines/shoulder-and-elbow-surgery.jpg",
+  "Spine Surgery":                          "/icons/service-lines/spine-surgery.jpg",
+  "Sports and Knee Surgery":                "/icons/service-lines/sports-and-knee-surgery.jpg",
+  // General Surgery
+  "Acute Care Surgery":                     "/icons/service-lines/acute-care-surgery.jpg",
+  "Bariatric Surgery":                      "/icons/service-lines/bariatric-surgery.jpg",
+  "Breast Surgery":                         "/icons/service-lines/breast-surgery.jpg",
+  "Colorectal Surgery":                     "/icons/service-lines/colorectal-surgery.jpg",
+  "Emergency General Surgery":              "/icons/service-lines/emergency-general-surgery.jpg",
+  "Endocrine Surgery":                      "/icons/service-lines/endocrine-surgery.jpg",
+  "Hepatopancreatobiliary Surgery":         "/icons/service-lines/hepatopancreatobiliary-surgery.jpg",
+  "Hernia Surgery":                         "/icons/service-lines/hernia-surgery.jpg",
+  "Surgical Oncology":                      "/icons/service-lines/surgical-oncology.jpg",
+  "Transplant Surgery":                     "/icons/service-lines/transplant-surgery.jpg",
+  "Upper Gastrointestinal Surgery":         "/icons/service-lines/upper-gastrointestinal-surgery.jpg",
+  // Neurosurgery
+  "Cranial Neurosurgery":                   "/icons/service-lines/cranial-neurosurgery.jpg",
+  "Functional Neurosurgery":                "/icons/service-lines/functional-neurosurgery.jpg",
+  "Neurooncologic Surgery":                 "/icons/service-lines/neurooncologic-surgery.jpg",
+  "Paediatric Neurosurgery":                "/icons/service-lines/paediatric-neurosurgery.jpg",
+  "Spinal Neurosurgery":                    "/icons/service-lines/spinal-neurosurgery.jpg",
+  // Cardiothoracic
+  "Cardiac Surgery":                        "/icons/service-lines/cardiac-surgery.jpg",
+  "Congenital Cardiac Surgery":             "/icons/service-lines/congenital-cardiac-surgery.jpg",
+  "Thoracic Surgery":                       "/icons/service-lines/thoracic-surgery.jpg",
+  // Vascular
+  "Aortic Surgery":                         "/icons/service-lines/aortic-surgery.jpg",
+  "Peripheral Vascular Surgery":            "/icons/service-lines/peripheral-vascular-surgery.jpg",
+  "Vascular Access Surgery":                "/icons/service-lines/vascular-access-surgery.jpg",
+  // Ophthalmology
+  "Cataract Surgery":                       "/icons/service-lines/cataract-surgery.jpg",
+  "Corneal and Anterior Segment Surgery":   "/icons/service-lines/corneal-and-anterior-segment-surgery.jpg",
+  "Glaucoma Surgery":                       "/icons/service-lines/glaucoma-surgery.jpg",
+  "Oculoplastic Surgery":                   "/icons/service-lines/oculoplastic-surgery.jpg",
+  "Vitreoretinal Surgery":                  "/icons/service-lines/vitreoretinal-surgery.jpg",
+  // Urology
+  "Andrology":                              "/icons/service-lines/andrology.jpg",
+  "Endourology":                            "/icons/service-lines/endourology.jpg",
+  "Functional Urology and Incontinence":    "/icons/service-lines/functional-urology-and-incontinence.jpg",
+  "Reconstructive Urology":                 "/icons/service-lines/reconstructive-urology.jpg",
+  "Urologic Oncology":                      "/icons/service-lines/urologic-oncology.jpg",
+  // Gynecology
+  "Benign Gynecology":                      "/icons/service-lines/benign-gynecology.jpg",
+  "Gynecologic Oncology":                   "/icons/service-lines/gynecologic-oncology.jpg",
+  "Minimally Invasive Gynecologic Surgery": "/icons/service-lines/minimally-invasive-gynecologic-surgery.jpg",
+  "Urogynecology and Pelvic Floor Surgery": "/icons/service-lines/urogynecology-and-pelvic-floor-surgery.jpg",
+  // Plastic and Reconstructive
+  "Breast Reconstruction Surgery":          "/icons/service-lines/breast-reconstruction-surgery.jpg",
+  "Burns Surgery":                          "/icons/service-lines/burns-surgery.jpg",
+  "Cleft Lip and Palate Surgery":           "/icons/service-lines/cleft-lip-and-palate-surgery.jpg",
+  "Hand and Microsurgery":                  "/icons/service-lines/hand-and-microsurgery.jpg",
+  // ENT
+  "Head and Neck Surgery":                  "/icons/service-lines/head-and-neck-surgery.jpg",
+  "Laryngology and Airway Surgery":         "/icons/service-lines/laryngology-and-airway-surgery.jpg",
+  "Otology and Neurotology":                "/icons/service-lines/otology-and-neurotology.jpg",
+  "Rhinology and Sinus Surgery":            "/icons/service-lines/rhinology-and-sinus-surgery.jpg",
+  // Anaesthesia
+  "Cardiothoracic Anaesthesia":             "/icons/service-lines/cardiothoracic-anaesthesia.jpg",
+  "General Anaesthesia":                    "/icons/service-lines/general-anaesthesia.jpg",
+  "Obstetric Anaesthesia":                  "/icons/service-lines/obstetric-anaesthesia.jpg",
+  "Paediatric Anaesthesia":                 "/icons/service-lines/paediatric-anaesthesia.jpg",
+  "Regional Anaesthesia":                   "/icons/service-lines/regional-anaesthesia.jpg",
+  // Podiatric
+  "Diabetic Foot Surgery":                  "/icons/service-lines/diabetic-foot-surgery.jpg",
+  "Forefoot Surgery":                       "/icons/service-lines/forefoot-surgery.jpg",
+  "Midfoot Surgery":                        "/icons/service-lines/midfoot-surgery.jpg",
+  "Rearfoot and Ankle Surgery":             "/icons/service-lines/rearfoot-and-ankle-surgery.jpg",
+}
+
 function SubspecialtyArtwork({
   name,
   palette,
@@ -112,20 +189,24 @@ function SubspecialtyArtwork({
   name: string
   palette: NonNullable<SpecialtyTab["palette"]>
 }) {
+  const [imgFailed, setImgFailed] = useState(false)
   const key = name.toLowerCase()
   const stroke = "rgba(255,255,255,0.92)"
   const accent = palette.soft
+  const imageSrc = SERVICE_LINE_IMAGE_MAP[name]
 
-  if (key.includes("arthropl")) {
+  if (imageSrc && !imgFailed) {
     return (
-      <svg viewBox="0 0 300 170" className="h-full w-full" fill="none" aria-hidden="true">
-        <rect x="14" y="14" width="272" height="142" rx="24" fill="rgba(255,255,255,0.08)" />
-        <path d="M108 42c10 22 10 42-1 61l-10 19c-6 10-3 21 9 27" stroke={stroke} strokeWidth="7" strokeLinecap="round" />
-        <path d="M192 42c-10 22-10 42 1 61l10 19c6 10 3 21-9 27" stroke={stroke} strokeWidth="7" strokeLinecap="round" />
-        <circle cx="109" cy="109" r="16" stroke={accent} strokeWidth="8" />
-        <circle cx="191" cy="109" r="16" stroke={accent} strokeWidth="8" />
-        <path d="M126 74h48" stroke={stroke} strokeWidth="7" strokeLinecap="round" />
-      </svg>
+      <div className="relative h-full w-full overflow-hidden rounded-[24px]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={imageSrc}
+          alt=""
+          className="h-full w-full object-cover"
+          onError={() => setImgFailed(true)}
+        />
+        <div className="absolute inset-0 rounded-[24px] bg-gradient-to-t from-black/40 to-transparent" />
+      </div>
     )
   }
 

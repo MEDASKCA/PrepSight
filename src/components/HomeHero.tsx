@@ -1730,18 +1730,12 @@ export default function HomeHero({
                         key={specialty.id}
                         ref={bindLayoutNode(`specialty-${specialty.id}`)}
                         type="button"
-                        onPointerDown={(event) =>
-                          beginPress(event, specialty.id, "launcher", () => router.push(specialty.href))
-                        }
-                        onPointerMove={movePress}
-                        onPointerUp={endPress}
-                        onPointerCancel={endPress}
+                        onClick={() => router.push(specialty.href)}
                         onContextMenu={(event) => event.preventDefault()}
                         className={`group flex select-none flex-col items-center text-center ${dragState?.itemId === specialty.id ? "opacity-0" : ""}`}
                         data-launcher-slot={index}
                         data-launcher-category="specialty"
                         title={specialty.fullLabel}
-                        style={DRAGGABLE_ITEM_STYLE}
                       >
                         <div
                           className="relative mb-1.5 flex h-14 w-14 items-center justify-center rounded-[20px] ring-1 ring-black/5 transition-transform duration-200 ease-out group-hover:-translate-y-0.5"
@@ -1842,21 +1836,15 @@ export default function HomeHero({
                         key={`workflow-page-${tool.label}`}
                         ref={bindLayoutNode(`workflow-${tool.id}`)}
                         type="button"
-                        onPointerDown={(event) =>
-                          beginPress(event, tool.id, "launcher", () => {
-                            if (tool.available && tool.href) {
-                              router.push(tool.href)
-                            }
-                          })
-                        }
-                        onPointerMove={movePress}
-                        onPointerUp={endPress}
-                        onPointerCancel={endPress}
+                        onClick={() => {
+                          if (tool.available && tool.href) {
+                            router.push(tool.href)
+                          }
+                        }}
                         onContextMenu={(event) => event.preventDefault()}
                         className={`group flex select-none flex-col items-center text-center ${dragState?.itemId === tool.id ? "opacity-0" : ""}`}
                         data-launcher-slot={index}
                         data-launcher-category="workflow"
-                        style={DRAGGABLE_ITEM_STYLE}
                       >
                         {content}
                       </button>

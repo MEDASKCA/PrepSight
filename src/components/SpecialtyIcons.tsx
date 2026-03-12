@@ -190,6 +190,20 @@ export function FootIcon(p: P) {
   )
 }
 
+export function HipIcon(p: P) {
+  return (
+    <Icon {...p} strokeWidth="2.2">
+      <path d="M10 10 C14 6 20 5 25 7 C28 8 30 10 31 13" />
+      <path d="M11 14 C14 11 18 10 22 11 C25 12 27 14 28 17" />
+      <circle cx="29" cy="23" r="5.5" />
+      <path d="M25 26 L19 32 C17 34 17 38 18 42" />
+      <path d="M21 31 L26 36" />
+      <path d="M31 17 L36 12 C38 10 41 10 43 12" />
+      <path d="M33 28 L38 33 C40 35 40 39 38 42" />
+    </Icon>
+  )
+}
+
 export function UterusIcon(p: P) {
   return (
     <Icon {...p}>
@@ -337,7 +351,7 @@ export function LiverIcon(p: P) {
 
 // Mapping from specialty name to icon component
 export const SPECIALTY_SVG_ICON: Record<string, React.ComponentType<P>> = {
-  "Trauma and Orthopaedics": FootIcon, // overridden by PNG; fallback only
+  "Trauma and Orthopaedics": HipIcon, // overridden by PNG; fallback only
   "General Surgery": ScalpelIcon,
   Urology: KidneyIcon,
   Obstetrics: BabyIcon,
