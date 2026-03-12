@@ -16,21 +16,12 @@ interface ChatMessage {
 
 function AIIcon({ className = "h-[68px] w-[68px]" }: { className?: string }) {
   return (
-    <span
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/ps-mark.png"
+      alt="P.S."
       aria-hidden="true"
-      className={`${className} [animation:aiIconSurge_1.8s_ease-in-out_infinite]`}
-      style={{
-        background:
-          "linear-gradient(135deg, #7DD3FC 0%, #38BDF8 35%, #14B8A6 68%, #5EEAD4 100%)",
-        WebkitMaskImage: "url('/AIchaticon.png')",
-        WebkitMaskRepeat: "no-repeat",
-        WebkitMaskPosition: "center",
-        WebkitMaskSize: "contain",
-        maskImage: "url('/AIchaticon.png')",
-        maskRepeat: "no-repeat",
-        maskPosition: "center",
-        maskSize: "contain",
-      }}
+      className={`${className} object-contain [animation:aiIconSurge_1.8s_ease-in-out_infinite]`}
     />
   )
 }
@@ -39,10 +30,7 @@ function SearchlessBrand() {
   return (
     <div className="flex h-11 shrink-0 items-center gap-2 rounded-[14px] border border-[#D8E3EE] bg-[#F8FBFF] px-3">
       <AIIcon className="h-[28px] w-[28px]" />
-      <div className="flex items-center gap-1">
-        <span className="text-sm font-bold tracking-[-0.03em] text-[#10243E]">PS</span>
-        <span className="text-sm font-semibold text-[#3F78A6]">PrepSight</span>
-      </div>
+      <span className="text-sm font-semibold text-[#00B4D8]">PrepSight</span>
     </div>
   )
 }

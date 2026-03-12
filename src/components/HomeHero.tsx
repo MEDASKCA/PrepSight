@@ -1,6 +1,7 @@
 "use client"
 
-import { useDeferredValue, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent, type UIEvent } from "react"
+import { useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent, type UIEvent } from "react"
+import { createPortal } from "react-dom"
 import Fuse from "fuse.js"
 import {
   Activity,
@@ -31,12 +32,18 @@ import {
 import Link from "next/link"
 import Image from "next/image"
 import { useRouter, useSearchParams } from "next/navigation"
+import ProfileButton from "@/components/ProfileButton"
+import {
+  type AssistantReply,
+  buildAssistantContext,
+  buildAssistantReply,
+} from "@/lib/assistant"
+import { getCatalogueItems } from "@/lib/catalogue"
 import { procedures } from "@/lib/data"
 import { isAdminSession } from "@/lib/admin"
 import { getHistory } from "@/lib/history"
 import { getProfile, getRelevantSettings } from "@/lib/profile"
-import { getProcedureVariantById, getSystemById } from "@/lib/variants"
-import { hasVariantsForProcedure } from "@/lib/variants"
+import { getAllProcedureVariants, getProcedureVariantById, getSystemById, getVariantsByProcedure, hasVariantsForProcedure } from "@/lib/variants"
 import {
   ClinicalSetting,
   PrepSightProfile,
@@ -343,15 +350,10 @@ const WORKSPACE_HERO_META: Record<
 
 const MOBILE_DOCK_KEY = "prepsight_mobile_dock"
 const HOMEPAGE_IMAGES_KEY = "prepsight_homepage_images"
-const DEFAULT_DOCK_ITEM_IDS = [
-  "tool-new-card",
-  "tool-catalogue",
-  "tool-surgeons",
-  "tool-directory",
-]
+const DEFAULT_DOCK_ITEM_IDS: string[] = []
 const DRAGGABLE_ITEM_STYLE: CSSProperties = {
   WebkitTouchCallout: "none",
-  touchAction: "none",
+  touchAction: "pan-x",
 }
 
 function withAlpha(hex: string, alpha: string): string {
@@ -431,56 +433,142 @@ function getSearchableProcedureDescription(procedure: (typeof procedures)[number
 }
 
 const procedureLookup = new Map(procedures.map((procedure) => [procedure.id, procedure]))
+const allProcedureVariants = getAllProcedureVariants()
+const catalogueItems = getCatalogueItems()
 
-const searchableProcedures = procedures.map((procedure) => ({
-  id: procedure.id,
-  name: normalizeSearchText(procedure.name),
-  specialty: normalizeSearchText(procedure.specialty),
-  setting: normalizeSearchText(procedure.setting),
-  description: getSearchableProcedureDescription(procedure),
-  aliases: getSearchableProcedureAliases(procedure),
-}))
+type SearchResultItem = {
+  id: string
+  href: string
+  title: string
+  subtitle: string
+  badge: {
+    label: string
+    className: string
+  }
+  searchValue: string
+  searchAliases: string[]
+  rankGroup: number
+}
 
-const procedureSearchIndex = new Fuse(searchableProcedures, {
+interface ChatMessage {
+  id: string
+  role: "assistant" | "user"
+  reply: AssistantReply
+}
+
+const searchableAppEntries: SearchResultItem[] = [
+  ...procedures.map((procedure) => ({
+    id: `procedure-${procedure.id}`,
+    href: getProcedureSearchHref(procedure),
+    title: procedure.name,
+    subtitle: procedure.specialty,
+    badge: getProcedureSearchBadge(procedure),
+    searchValue: [
+      procedure.name,
+      procedure.specialty,
+      procedure.setting,
+      getSearchableProcedureDescription(procedure),
+      ...getSearchableProcedureAliases(procedure),
+    ]
+      .filter(Boolean)
+      .join(" "),
+    searchAliases: getSearchableProcedureAliases(procedure),
+    rankGroup: 0,
+  })),
+  ...allProcedureVariants.map((variant) => {
+    const procedure = procedureLookup.get(variant.procedure_id)
+    return {
+      id: `variant-${variant.id}`,
+      href: procedure ? getProcedureSearchHref(procedure) : "/",
+      title: variant.name,
+      subtitle: procedure ? `${procedure.name} · ${procedure.specialty}` : "Procedure variant",
+      badge: {
+        label: "Variant",
+        className: "border-[#DDD6FE] bg-[#F5F3FF] text-[#6D28D9]",
+      },
+      searchValue: [
+        variant.name,
+        variant.description,
+        variant.approach,
+        procedure?.name,
+        procedure?.specialty,
+      ]
+        .filter(Boolean)
+        .join(" "),
+      searchAliases: [variant.approach, variant.description].filter((value): value is string => Boolean(value)),
+      rankGroup: 1,
+    }
+  }),
+  ...catalogueItems.map((item) => ({
+    id: `catalogue-${item.id}`,
+    href: "/catalogue",
+    title: item.name,
+    subtitle: item.supplier?.name ?? item.product ?? item.manufacturer ?? "Catalogue item",
+    badge: item.category === "implant_system"
+      ? {
+          label: "System",
+          className: "border-[#BFDBFE] bg-[#EFF6FF] text-[#1D4ED8]",
+        }
+      : {
+          label: "Catalogue",
+          className: "border-[#D5E3EF] bg-[#F8FBFF] text-[#64748B]",
+        },
+    searchValue: [
+      item.name,
+      item.sku,
+      item.product,
+      item.description,
+      item.manufacturer,
+      item.supplier?.name,
+      ...(item.aliases ?? []),
+    ]
+      .filter(Boolean)
+      .join(" "),
+    searchAliases: item.aliases ?? [],
+    rankGroup: item.category === "implant_system" ? 2 : 3,
+  })),
+]
+
+const appSearchIndex = new Fuse(searchableAppEntries, {
   includeScore: true,
-  threshold: 0.34,
+  threshold: 0.31,
   ignoreLocation: true,
   minMatchCharLength: 1,
   keys: [
-    { name: "name", weight: 0.52 },
-    { name: "aliases", weight: 0.24 },
-    { name: "specialty", weight: 0.14 },
-    { name: "description", weight: 0.07 },
-    { name: "setting", weight: 0.03 },
+    { name: "title", weight: 0.52 },
+    { name: "searchAliases", weight: 0.23 },
+    { name: "subtitle", weight: 0.15 },
+    { name: "searchValue", weight: 0.1 },
   ],
 })
 
-function searchProcedures(rawQuery: string): Array<(typeof procedures)[number]> {
+function searchApp(rawQuery: string): SearchResultItem[] {
   const query = normalizeSearchText(rawQuery)
   if (query.length < 1) return []
+  const queryTokens = query.split(/\s+/).filter(Boolean)
 
-  return procedureSearchIndex
+  return appSearchIndex
     .search(query, { limit: 8 })
     .sort((a, b) => {
+      const aTitle = normalizeSearchText(a.item.title)
+      const bTitle = normalizeSearchText(b.item.title)
+      const aStartsFull = aTitle.startsWith(query) ? 1 : 0
+      const bStartsFull = bTitle.startsWith(query) ? 1 : 0
+      if (aStartsFull !== bStartsFull) return bStartsFull - aStartsFull
+
+      const aMatchesAllTokens = queryTokens.every((token) => aTitle.includes(token)) ? 1 : 0
+      const bMatchesAllTokens = queryTokens.every((token) => bTitle.includes(token)) ? 1 : 0
+      if (aMatchesAllTokens !== bMatchesAllTokens) return bMatchesAllTokens - aMatchesAllTokens
+
+      const rankGroupDelta = a.item.rankGroup - b.item.rankGroup
+      if (rankGroupDelta !== 0) return rankGroupDelta
+
       const scoreDelta = (a.score ?? 1) - (b.score ?? 1)
       if (Math.abs(scoreDelta) > 0.015) return scoreDelta
 
-      const aName = a.item.name
-      const bName = b.item.name
-      const aStarts = aName.startsWith(query) ? 1 : 0
-      const bStarts = bName.startsWith(query) ? 1 : 0
-      if (aStarts !== bStarts) return bStarts - aStarts
-
-      const aIncludes = aName.includes(query) ? 1 : 0
-      const bIncludes = bName.includes(query) ? 1 : 0
-      if (aIncludes !== bIncludes) return bIncludes - aIncludes
-
-      const aProcedure = procedureLookup.get(a.item.id)
-      const bProcedure = procedureLookup.get(b.item.id)
-      return (aProcedure?.name ?? a.item.name).localeCompare(bProcedure?.name ?? b.item.name)
+      return a.item.title.localeCompare(b.item.title)
     })
-    .map((entry) => procedureLookup.get(entry.item.id))
-    .filter((procedure): procedure is (typeof procedures)[number] => Boolean(procedure))
+    .map((entry) => entry.item)
 }
 
 function getProcedureSearchHref(procedure: (typeof procedures)[number]): string {
@@ -506,6 +594,24 @@ function getProcedureSearchHref(procedure: (typeof procedures)[number]): string 
   return `/procedures/${procedure.id}`
 }
 
+function getProcedureSearchBadge(procedure: (typeof procedures)[number]): {
+  label: string
+  className: string
+} {
+  const variantCount = getVariantsByProcedure(procedure.id).length
+  if (variantCount > 0) {
+    return {
+      label: variantCount === 1 ? "1 variant" : `${variantCount} variants`,
+      className: "border-[#BFDBFE] bg-[#EFF6FF] text-[#1D4ED8]",
+    }
+  }
+
+  return {
+    label: "Direct card",
+    className: "border-[#D5E3EF] bg-[#F8FBFF] text-[#64748B]",
+  }
+}
+
 function getContextBadge(profile: PrepSightProfile): string {
   const parts: string[] = [USER_ROLE_LABEL[profile.role] ?? profile.role]
   if (profile.departments[0]) parts.push(profile.departments[0])
@@ -515,6 +621,50 @@ function getContextBadge(profile: PrepSightProfile): string {
 
 function formatRecentSubtitle(procedureName: string, variantName?: string | null): string {
   return variantName ? `${procedureName} ${variantName}` : procedureName
+}
+
+function AssistantBubble({
+  message,
+  onAction,
+}: {
+  message: ChatMessage
+  onAction: (href: string) => void
+}) {
+  const isAssistant = message.role === "assistant"
+
+  return (
+    <div className={`flex ${isAssistant ? "justify-start" : "justify-end"}`}>
+      <div
+        className={`max-w-[88%] overflow-hidden rounded-[24px] border px-4 py-3 shadow-sm ${
+          isAssistant
+            ? "rounded-bl-md border-[#D7E6F4] bg-white text-[#1E293B]"
+            : "rounded-br-md border-[#0F172A] bg-[#0F172A] text-white"
+        }`}
+      >
+        <p className="text-[14px] leading-6">{message.reply.text}</p>
+
+        {message.reply.actions && message.reply.actions.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {message.reply.actions.map((action) => (
+              <button
+                key={`${message.id}-${action.label}-${action.href}`}
+                type="button"
+                onClick={() => onAction(action.href)}
+                className={`rounded-full px-3 py-2 text-xs font-semibold transition-colors ${
+                  action.tone === "primary"
+                    ? "bg-[#0F172A] text-white"
+                    : "border border-[#BFD8F2] bg-white text-[#1D4ED8]"
+                }`}
+              >
+                {action.label}
+              </button>
+            ))}
+          </div>
+        )}
+
+      </div>
+    </div>
+  )
 }
 
 export default function HomeHero({
@@ -531,6 +681,7 @@ export default function HomeHero({
   const [query, setQuery] = useState("")
   const deferredQuery = useDeferredValue(query)
   const [focused, setFocused] = useState(false)
+  const [messages, setMessages] = useState<ChatMessage[]>([])
   const [relevantSettings] = useState<ClinicalSetting[]>(() =>
     profile ? getRelevantSettings(profile) : [],
   )
@@ -565,7 +716,11 @@ export default function HomeHero({
   } | null>(null)
   const [specialtyOrderMap, setSpecialtyOrderMap] = useState<Record<string, string[]>>({})
   const [workflowOrder, setWorkflowOrder] = useState<string[]>([])
+  const [mobileResultsDrawerStyle, setMobileResultsDrawerStyle] = useState<CSSProperties | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const mobileInputRef = useRef<HTMLTextAreaElement>(null)
+  const mobileComposerRef = useRef<HTMLDivElement>(null)
+  const threadScrollerRef = useRef<HTMLDivElement | null>(null)
   const launcherScrollerRef = useRef<HTMLDivElement>(null)
   const layoutNodeMapRef = useRef(new Map<string, HTMLElement>())
   const previousRectMapRef = useRef(new Map<string, DOMRect>())
@@ -582,10 +737,16 @@ export default function HomeHero({
     pointerId: number
     target: HTMLElement
   } | null>(null)
+  const messageSeedRef = useRef(0)
 
   const results = deferredQuery.trim().length > 0
-    ? searchProcedures(deferredQuery)
+    ? searchApp(deferredQuery)
     : []
+  const hasAssistantConversation = messages.length > 0
+  const assistantContext = useMemo(
+    () => buildAssistantContext("/", new URLSearchParams(searchParams.toString())),
+    [searchParams],
+  )
 
   const recentCards = recentEntries
     .map((entry) => {
@@ -696,8 +857,8 @@ export default function HomeHero({
   const hiddenWorkflowIds = orderedWorkflowItems
     .filter((item) => dockItemIds.includes(item.id))
     .map((item) => item.id)
-  const visibleSpecialtyItems = orderedSpecialtyItems.filter((item) => !dockItemIds.includes(item.id))
-  const visibleWorkflowLauncherItems = orderedWorkflowItems.filter((item) => !dockItemIds.includes(item.id))
+  const visibleSpecialtyItems = orderedSpecialtyItems
+  const visibleWorkflowLauncherItems = orderedWorkflowItems
   const dockLibrary = [...specialtyItems, ...workflowLauncherItems]
   const dockLookup = Object.fromEntries(dockLibrary.map((item) => [item.id, item]))
   const dragPreviewItem = dragState ? dockLookup[dragState.itemId] : null
@@ -742,18 +903,34 @@ export default function HomeHero({
     return baseDockIds as Array<string | null>
   })()
 
-  function submitSearch() {
-    const topResult = results[0]
-    if (!topResult) return
+  function submitSearch(nextValue?: string) {
+    const value = (nextValue ?? query).trim()
+    if (!value) return
+
+    setMessages((current) => [
+      ...current,
+      {
+        id: `user-${++messageSeedRef.current}`,
+        role: "user",
+        reply: { text: value },
+      },
+      {
+        id: `assistant-${++messageSeedRef.current}`,
+        role: "assistant",
+        reply: buildAssistantReply(assistantContext, value),
+      },
+    ])
+    setQuery("")
     setFocused(false)
-    router.push(getProcedureSearchHref(topResult))
+  }
+
+  function handleAssistantAction(href: string) {
+    setFocused(false)
+    router.push(href)
   }
   const dockRenderItems: Array<(typeof dockLibrary)[number] | null> = (
     previewDockSlots.length > 0 ? previewDockSlots : DEFAULT_DOCK_ITEM_IDS
   ).map((id) => (id ? dockLookup[id] ?? null : null))
-  const visibleDockItems = dockRenderItems.filter(
-    (item): item is (typeof dockLibrary)[number] => Boolean(item),
-  )
   const specialtyRenderItems: Array<(typeof visibleSpecialtyItems)[number] | null> = (() => {
     if (!dragState || !launcherHoverTarget || launcherHoverTarget.category !== "specialty") {
       if (dragState && dockLookup[dragState.itemId]?.category === "specialty") {
@@ -856,6 +1033,38 @@ export default function HomeHero({
     previousRectMapRef.current = nextRects
   }, [specialtyRenderItems, workflowRenderItems, dockRenderItems, dragHoverSlot, launcherHoverTarget])
 
+  useLayoutEffect(() => {
+    if (!showResults || typeof window === "undefined") {
+      setMobileResultsDrawerStyle(null)
+      return
+    }
+
+    function updateMobileResultsDrawerPosition() {
+      const composerNode = mobileComposerRef.current
+      if (!composerNode || window.innerWidth >= 1024) {
+        setMobileResultsDrawerStyle(null)
+        return
+      }
+
+      const rect = composerNode.getBoundingClientRect()
+      setMobileResultsDrawerStyle({
+        left: rect.left,
+        top: rect.bottom - 1,
+        width: rect.width,
+        maxHeight: Math.min(window.innerHeight - rect.bottom - 18, 340),
+      })
+    }
+
+    updateMobileResultsDrawerPosition()
+    window.addEventListener("resize", updateMobileResultsDrawerPosition)
+    window.addEventListener("scroll", updateMobileResultsDrawerPosition, true)
+
+    return () => {
+      window.removeEventListener("resize", updateMobileResultsDrawerPosition)
+      window.removeEventListener("scroll", updateMobileResultsDrawerPosition, true)
+    }
+  }, [showResults, results.length, query])
+
   function bindLayoutNode(key: string) {
     return (node: HTMLElement | null) => {
       if (node) {
@@ -883,7 +1092,9 @@ export default function HomeHero({
     origin: "launcher" | "dock",
     onTap: () => void,
   ) {
-    event.preventDefault()
+    if (origin === "dock") {
+      event.preventDefault()
+    }
     activePointerIdRef.current = event.pointerId
     if (pressTimerRef.current) {
       window.clearTimeout(pressTimerRef.current)
@@ -1167,13 +1378,18 @@ export default function HomeHero({
     }
   }, [dragState])
 
+  useEffect(() => {
+    if (!threadScrollerRef.current) return
+    threadScrollerRef.current.scrollTop = threadScrollerRef.current.scrollHeight
+  }, [messages])
+
   return (
-    <div className="relative flex h-[calc(100dvh-61px)] max-w-xl flex-col overflow-hidden animate-step-in bg-[#E8EEF6] px-3 pb-24 pt-3 lg:h-auto lg:max-w-none lg:overflow-visible lg:bg-transparent lg:px-10 lg:py-10">
+    <div className="relative flex h-[100dvh] max-w-xl flex-col overflow-hidden animate-step-in bg-[#07111E] px-3 pb-6 pt-3 lg:h-auto lg:max-w-none lg:overflow-visible lg:bg-transparent lg:px-10 lg:py-10">
       <div className="pointer-events-none absolute inset-0 lg:hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.9),_rgba(232,238,246,0.82)_38%,_rgba(221,231,244,0.9)_100%)]" />
-        <div className="absolute -left-10 top-8 h-36 w-36 rounded-full bg-[#8EC5FF]/38 blur-3xl" />
-        <div className="absolute right-[-24px] top-20 h-32 w-32 rounded-full bg-[#95EAD9]/30 blur-3xl" />
-        <div className="absolute bottom-24 left-10 h-28 w-28 rounded-full bg-[#C7B9FF]/24 blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(18,38,58,0.96),_rgba(7,17,30,0.98)_40%,_rgba(3,9,18,1)_100%)]" />
+        <div className="absolute -left-10 top-8 h-36 w-36 rounded-full bg-[#0EA5E9]/18 blur-3xl" />
+        <div className="absolute right-[-24px] top-20 h-32 w-32 rounded-full bg-[#14B8A6]/12 blur-3xl" />
+        <div className="absolute bottom-24 left-10 h-28 w-28 rounded-full bg-[#1D4ED8]/14 blur-3xl" />
       </div>
       <div className="mb-10 hidden lg:block">
         <div className="relative overflow-hidden rounded-[40px] border border-[#12304C] bg-[#07111E] shadow-[0_40px_90px_rgba(15,23,42,0.32)]">
@@ -1184,13 +1400,13 @@ export default function HomeHero({
               <div className="flex items-center gap-4">
                 {hideHomepageImages ? (
                   <div className="flex h-16 min-w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/6 px-4">
-                    <span className="text-[13px] font-semibold uppercase tracking-[0.24em] text-[#7DD3FC]">PS</span>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/ps-mark.png" alt="P.S." className="h-9 w-auto opacity-95" />
                   </div>
                 ) : (
-                  <Image src="/AIchaticon.png" alt="" width={64} height={64} className="h-16 w-16 object-contain" />
+                  <Image src="/ps-mark.png" alt="P.S." width={64} height={64} className="h-16 w-auto object-contain" />
                 )}
                 <div>
-                  <p className="text-[13px] font-semibold uppercase tracking-[0.24em] text-[#7DD3FC]">PS</p>
                   <p className="text-[28px] font-semibold tracking-[-0.05em] text-white">PrepSight</p>
                 </div>
               </div>
@@ -1210,19 +1426,23 @@ export default function HomeHero({
 
                 {showResults && results.length > 0 && (
                   <div className="absolute inset-x-0 top-[calc(100%+16px)] z-30 overflow-hidden rounded-[26px] border border-white/10 bg-[#0D1926] shadow-[0_30px_70px_rgba(15,23,42,0.32)]">
-                    {results.map((p) => (
+                    {results.map((result) => (
                       <Link
-                        key={p.id}
-                        href={getProcedureSearchHref(p)}
+                        key={result.id}
+                        href={result.href}
                         className="flex items-center justify-between border-b border-white/8 px-5 py-4 transition-colors last:border-0 hover:bg-white/5"
                       >
                         <div className="mr-3 min-w-0">
-                          <p className="truncate text-sm font-semibold text-white">{p.name}</p>
-                          <p className="mt-1 text-xs text-white/52">{p.specialty}</p>
+                          <p className="truncate text-sm font-semibold text-white">{result.title}</p>
+                          <p className="mt-1 text-xs text-white/52">
+                            {result.subtitle}
+                          </p>
                         </div>
-                        <span className="rounded-full border border-white/10 bg-white/6 px-3 py-1 text-xs font-medium text-white/74">
-                          {p.setting}
-                        </span>
+                        <div className="ml-3 flex shrink-0 flex-col items-end gap-1">
+                          <span className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold ${result.badge.className}`}>
+                            {result.badge.label}
+                          </span>
+                        </div>
                       </Link>
                     ))}
                   </div>
@@ -1400,117 +1620,101 @@ export default function HomeHero({
         </div>
       </div>
 
-      <div className="relative z-10 flex min-h-0 flex-1 flex-col lg:hidden">
-        <div className={`mb-3 overflow-visible rounded-[30px] bg-gradient-to-br ${activeWorkspaceMeta.surface} px-3 pb-2.5 pt-2.5 text-white shadow-[0_18px_38px_rgba(15,23,42,0.2)]`}>
-          <div className="relative overflow-hidden rounded-[24px] border border-white/15 bg-white/8 px-3 py-2.5 backdrop-blur-[14px]">
-            <div className={`pointer-events-none absolute -right-5 -top-5 h-16 w-16 rounded-full ${activeWorkspaceMeta.glow} blur-2xl`} />
-            <div className={`pointer-events-none absolute bottom-2 right-6 h-10 w-10 rounded-full ${activeWorkspaceMeta.blip} opacity-25 blur-xl`} />
-            <div className="relative z-10">
-              <div className="mb-2 flex items-start justify-between gap-2">
-                <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/55">
-                    Workspace
-                  </p>
-                  <h2 className="mt-0.5 text-[18px] font-semibold leading-5">
-                    {activeWorkspaceItem?.label ?? "Operating Theatre"}
-                  </h2>
-                </div>
-                {canSwitchWorkspace ? (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const currentIndex = workspaceItems.findIndex((item) => item.id === `setting-${activeWorkspace}`)
-                      const nextItem = workspaceItems[(currentIndex + 1) % workspaceItems.length] ?? workspaceItems[0]
-                      const nextWorkspace = nextItem.id.replace("setting-", "") as ClinicalSetting
-                      setActiveWorkspace(nextWorkspace)
-                      setLauncherPage(0)
-                      launcherScrollerRef.current?.scrollTo({ left: 0, behavior: "smooth" })
-                    }}
-                    className={`flex h-10 w-10 items-center justify-center rounded-[15px] ${activeWorkspaceMeta.accent} shadow-[0_10px_20px_rgba(15,23,42,0.16)]`}
-                    aria-label="Switch workspace"
-                  >
-                    <ArrowRightLeft size={16} className="text-[#10243E]" />
-                  </button>
-                ) : null}
-              </div>
+      <div className="relative z-10 flex min-h-0 flex-1 flex-col pt-[calc(env(safe-area-inset-top,0px)+6px)] lg:hidden">
+        <div className="mb-3 flex items-start justify-between px-1">
+          <div className="flex items-center gap-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/ps-mark.png" alt="P.S." className="h-10 w-auto" />
+            <p className="text-[28px] font-bold tracking-[-0.05em] text-[#00B4D8]">PrepSight</p>
+          </div>
+          <div className="flex items-center gap-2">
+            {canSwitchWorkspace ? (
+              <button
+                type="button"
+                onClick={() => {
+                  const currentIndex = workspaceItems.findIndex((item) => item.id === `setting-${activeWorkspace}`)
+                  const nextItem = workspaceItems[(currentIndex + 1) % workspaceItems.length] ?? workspaceItems[0]
+                  const nextWorkspace = nextItem.id.replace("setting-", "") as ClinicalSetting
+                  setActiveWorkspace(nextWorkspace)
+                  setLauncherPage(0)
+                  launcherScrollerRef.current?.scrollTo({ left: 0, behavior: "smooth" })
+                }}
+                className={`mt-1 flex h-10 w-10 items-center justify-center rounded-[15px] ${activeWorkspaceMeta.accent} shadow-[0_10px_20px_rgba(15,23,42,0.12)]`}
+                aria-label="Switch workspace"
+              >
+                <ArrowRightLeft size={16} className="text-[#10243E]" />
+              </button>
+            ) : null}
+            <div className="mt-1">
+              <ProfileButton />
+            </div>
+          </div>
+        </div>
 
-              <div className="relative z-20">
-                <Search
-                  size={14}
-                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/45"
-                />
-                <input
-                  ref={inputRef}
-                  type="text"
+        <div className="mb-3 px-1">
+          <p className="text-[22px] font-semibold leading-7 tracking-[-0.04em] text-white">
+            {activeWorkspaceItem?.label ?? "Operating Theatre"}
+          </p>
+        </div>
+
+        <div className="mb-3 px-1">
+          <div className="overflow-hidden rounded-[30px] border border-white/10 bg-[#0B1624]/92 shadow-[0_22px_44px_rgba(0,0,0,0.34)] backdrop-blur-xl">
+            {hasAssistantConversation && (
+              <div
+                ref={threadScrollerRef}
+                className="max-h-[24dvh] min-h-[14dvh] space-y-3 overflow-y-auto px-3 py-3"
+              >
+                {messages.map((message) => (
+                  <AssistantBubble
+                    key={message.id}
+                    message={message}
+                    onAction={handleAssistantAction}
+                  />
+                ))}
+              </div>
+            )}
+            <div className={hasAssistantConversation ? "border-t border-white/10 px-3 py-3" : "px-3 py-3"}>
+              <div
+                ref={mobileComposerRef}
+                className="flex items-end gap-2 rounded-[26px] border border-[#7DD3FC]/40 bg-[linear-gradient(180deg,rgba(248,251,255,0.98)_0%,rgba(239,246,255,0.98)_100%)] px-3 py-2 shadow-[0_14px_30px_rgba(0,180,216,0.12)]"
+              >
+                <textarea
+                  ref={mobileInputRef}
+                  rows={1}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={(e) => {
-                    if (e.key === "Enter") {
+                    if (e.key === "Enter" && !e.shiftKey) {
                       e.preventDefault()
                       submitSearch()
                     }
                   }}
                   onFocus={() => setFocused(true)}
                   onBlur={() => setTimeout(() => setFocused(false), 150)}
-                  placeholder="Search any keyword..."
-                  className="w-full rounded-[16px] border border-white/12 bg-white/12 py-2.5 pl-10 pr-12 text-[13px] text-white placeholder:text-white/45 backdrop-blur-sm transition-colors focus:border-white/35 focus:outline-none focus:ring-2 focus:ring-white/15"
+                  placeholder=""
+                  className="max-h-28 min-h-[38px] flex-1 resize-none border-0 bg-transparent px-1 py-1.5 text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none"
                 />
+
                 <button
                   type="button"
                   onMouseDown={(e) => e.preventDefault()}
-                  onClick={submitSearch}
-                  disabled={results.length === 0}
-                  aria-label="Search"
-                  className="absolute right-1.5 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#10243E] shadow-[0_8px_18px_rgba(15,23,42,0.18)] transition-transform hover:scale-[1.03] disabled:cursor-default disabled:opacity-35"
+                  onClick={() => submitSearch()}
+                  disabled={query.trim().length === 0}
+                  aria-label="Send"
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#00B4D8] text-white shadow-[0_10px_22px_rgba(0,180,216,0.32)] transition-colors hover:bg-[#12C4E7] disabled:bg-[#CBD5E1] disabled:text-white/80 disabled:shadow-none"
                 >
-                  <ArrowUp size={14} strokeWidth={2.4} />
+                  <ArrowUp size={18} />
                 </button>
               </div>
             </div>
           </div>
-
-          {showResults && results.length > 0 && (
-            <div className="pointer-events-auto absolute inset-x-2 top-[calc(100%-2px)] z-50 overflow-hidden rounded-[24px] border border-[#D5DCE3] bg-white shadow-[0_24px_44px_rgba(15,23,42,0.24)]">
-              {results.slice(0, 5).map((p) => (
-                <Link
-                  key={p.id}
-                  href={getProcedureSearchHref(p)}
-                  className="flex items-center justify-between border-b border-[#F4F7FA] px-4 py-3 transition-colors last:border-0 hover:bg-[#F8FBFF]"
-                >
-                  <div className="mr-3 min-w-0">
-                    <p className="truncate text-sm font-semibold text-[#3F4752]">{p.name}</p>
-                    <p className="text-xs text-[#94a3b8]">{p.specialty}</p>
-                  </div>
-                  <ChevronRight size={14} className="shrink-0 text-[#94a3b8]" />
-                </Link>
-              ))}
-            </div>
-          )}
-
-          {showResults && results.length === 0 && (
-            <p className="pointer-events-auto absolute inset-x-2 top-[calc(100%-2px)] z-50 rounded-[24px] border border-[#D5DCE3] bg-white px-4 py-3 text-sm text-[#94a3b8] shadow-[0_24px_44px_rgba(15,23,42,0.24)]">
-              No procedures found.
-            </p>
-          )}
         </div>
 
-        <div className="min-h-0 flex-1 px-0.5 pt-1">
+        <div className="relative z-0 min-h-0 flex-1 px-0.5 pt-1">
           <div className="mb-1 px-1">
-            <p className="text-sm font-semibold text-[#10243E]">
+            <p className="text-[19px] font-semibold tracking-[-0.03em] text-white">
               {launcherPage === 0 ? "Specialties" : "Workflow tools"}
             </p>
-          </div>
-          <div className="mb-2 flex justify-center">
-            <div className="flex items-center gap-2 rounded-full bg-[#F8FBFF]/85 px-3 py-1.5 shadow-[0_10px_24px_rgba(15,23,42,0.12)] backdrop-blur-xl">
-              {[0, 1].map((index) => (
-                <span
-                  key={`launcher-dot-${index}`}
-                  className={`h-1.5 rounded-full transition-all ${
-                    launcherPage === index ? "w-6 bg-[#10243E]" : "w-2 bg-[#CBD5E1]"
-                  }`}
-                />
-              ))}
-            </div>
           </div>
           <div
             ref={launcherScrollerRef}
@@ -1519,7 +1723,7 @@ export default function HomeHero({
           >
             <div className="flex">
               <div className="w-full shrink-0 snap-center px-1">
-                <div className="grid grid-cols-4 gap-x-2.5 gap-y-4 rounded-[28px] bg-white/30 px-2 py-2.5 backdrop-blur-[6px]">
+                <div className="grid grid-cols-4 gap-x-2.5 gap-y-4 px-2 py-2.5">
                   {specialtyRenderItems.map((specialty, index) => (
                     specialty ? (
                       <button
@@ -1564,7 +1768,7 @@ export default function HomeHero({
                             <specialty.icon size={mobileSpecialtyIconSize(specialty.fullLabel)} className="text-white drop-shadow-[0_1px_2px_rgba(15,23,42,0.28)]" />
                           )}
                         </div>
-                        <p className="line-clamp-1 text-[11px] font-semibold leading-4 text-[#1E293B]">
+                        <p className="line-clamp-1 text-[11px] font-semibold leading-4 text-white">
                           {specialty.shortLabel}
                         </p>
                       </button>
@@ -1584,7 +1788,7 @@ export default function HomeHero({
                 </div>
               </div>
               <div className="w-full shrink-0 snap-center px-1">
-                <div className="grid grid-cols-4 gap-x-2.5 gap-y-4 rounded-[28px] bg-white/30 px-2 py-2.5 backdrop-blur-[6px]">
+                <div className="grid grid-cols-4 gap-x-2.5 gap-y-4 px-2 py-2.5">
                   {workflowRenderItems.map((tool, index) => {
                     if (!tool) {
                       return (
@@ -1627,7 +1831,7 @@ export default function HomeHero({
                             <Icon size={24} className="text-white drop-shadow-[0_1px_2px_rgba(15,23,42,0.28)]" />
                           )}
                         </div>
-                        <p className="line-clamp-2 text-[11px] font-semibold leading-4 text-[#1E293B]">
+                        <p className="line-clamp-2 text-[11px] font-semibold leading-4 text-white">
                           {tool.label}
                         </p>
                       </>
@@ -1662,134 +1866,51 @@ export default function HomeHero({
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="fixed inset-x-0 bottom-0 z-40 px-3 pb-[calc(env(safe-area-inset-bottom,0px)+14px)] pt-1 lg:hidden">
-        <div
-          className="rounded-[28px] bg-white/74 px-2.5 py-2 shadow-[0_12px_28px_rgba(15,23,42,0.12)] backdrop-blur-xl"
-          data-dock-slot={Math.min(visibleDockItems.length, 3)}
-        >
-          <div
-            className="grid gap-2"
-            style={{ gridTemplateColumns: `repeat(${Math.max(dragState ? Math.max(dockRenderItems.length, 4) : dockRenderItems.length, 1)}, minmax(0, 1fr))` }}
-          >
-            {(dragState
-              ? [...dockRenderItems, ...Array(Math.max(0, 4 - dockRenderItems.length)).fill(null)]
-              : dockRenderItems
-            ).map((item, index) => {
-              return (
-                <div
-                  key={`dock-slot-${item ? item.id : index}`}
-                  ref={bindLayoutNode(`dock-${item ? item.id : `slot-${index}`}`)}
-                  data-dock-slot={index}
-                  className={`flex justify-center rounded-[20px] transition-colors ${
-                    dragHoverSlot === index ? "bg-[#DCEEFF]/85" : ""
+          <div className="mt-5 flex justify-center">
+            <div className="flex items-center gap-2 rounded-full bg-white/8 px-3 py-1.5 shadow-[0_10px_24px_rgba(0,0,0,0.22)] backdrop-blur-xl">
+              {[0, 1].map((index) => (
+                <span
+                  key={`launcher-dot-${index}`}
+                  className={`h-1.5 rounded-full transition-all ${
+                    launcherPage === index ? "w-6 bg-white" : "w-2 bg-white/28"
                   }`}
-                  style={dragState ? { marginTop: -24, paddingTop: 24 } : undefined}
-                >
-                  {item ? item.available ? (
-                    <button
-                      type="button"
-                      onPointerDown={(event) =>
-                        beginPress(event, item.id, "dock", () => router.push(item.href))
-                      }
-                      onPointerMove={movePress}
-                      onPointerUp={endPress}
-                      onPointerCancel={endPress}
-                      onContextMenu={(event) => event.preventDefault()}
-                      className={`group flex w-full select-none flex-col items-center px-1 py-1 text-center ${dragState?.itemId === item.id ? "opacity-0" : ""}`}
-                      style={DRAGGABLE_ITEM_STYLE}
-                    >
-                      <div
-                        className="relative mb-1 flex h-14 w-14 items-center justify-center rounded-[20px] transition-transform duration-200 ease-out"
-                        style={mobileIconShellStyle(item.tileColor)}
-                      >
-                        <div
-                          className="pointer-events-none absolute inset-x-1.5 top-1.5 h-5 rounded-[14px]"
-                          style={mobileIconGlossStyle(item.tileColor)}
-                        />
-                        {"imageSrc" in item && "fullLabel" in item && item.imageSrc && !failedImages.has(item.fullLabel) ? (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            src={item.imageSrc}
-                            alt=""
-                            loading="eager"
-                            fetchPriority="high"
-                            decoding="async"
-                            className={`${mobileSpecialtyImageClassName(item.fullLabel)} drop-shadow-[0_1px_2px_rgba(15,23,42,0.22)]`}
-                            onError={() => setFailedImages((prev) => new Set(prev).add(item.fullLabel))}
-                          />
-                        ) : "imageSrc" in item && "label" in item && item.imageSrc && !failedImages.has(item.id) ? (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            src={item.imageSrc}
-                            alt=""
-                            loading="eager"
-                            fetchPriority="high"
-                            decoding="async"
-                            className={`${mobileWorkflowImageClassName(item.label)} drop-shadow-[0_1px_2px_rgba(15,23,42,0.22)]`}
-                            onError={() => setFailedImages((prev) => new Set(prev).add(item.id))}
-                          />
-                        ) : "svgIcon" in item && item.svgIcon ? (
-                          <item.svgIcon size={"fullLabel" in item ? mobileSpecialtyIconSize(item.fullLabel) : 24} className="text-white drop-shadow-[0_1px_2px_rgba(15,23,42,0.28)]" />
-                        ) : (
-                          <item.icon size={"fullLabel" in item ? mobileSpecialtyIconSize(item.fullLabel) : 24} className="text-white drop-shadow-[0_1px_2px_rgba(15,23,42,0.28)]" />
-                        )}
-                      </div>
-                      <p className="line-clamp-2 text-[11px] font-semibold leading-4 text-[#10243E]">
-                        {"shortLabel" in item ? item.shortLabel : item.label}
-                      </p>
-                    </button>
-                  ) : (
-                    <button
-                      type="button"
-                      onPointerDown={(event) => beginPress(event, item.id, "dock", () => {})}
-                      onPointerMove={movePress}
-                      onPointerUp={endPress}
-                      onPointerCancel={endPress}
-                      onContextMenu={(event) => event.preventDefault()}
-                      className={`group flex w-full select-none flex-col items-center px-1 py-1 text-center ${dragState?.itemId === item.id ? "opacity-0" : ""}`}
-                      style={DRAGGABLE_ITEM_STYLE}
-                    >
-                      <div
-                        className="relative mb-1 flex h-14 w-14 items-center justify-center rounded-[20px] transition-transform duration-200 ease-out"
-                        style={mobileIconShellStyle(item.tileColor)}
-                      >
-                        <div
-                          className="pointer-events-none absolute inset-x-1.5 top-1.5 h-5 rounded-[14px]"
-                          style={mobileIconGlossStyle(item.tileColor)}
-                        />
-                        {"imageSrc" in item && "label" in item && item.imageSrc && !failedImages.has(item.id) ? (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            src={item.imageSrc}
-                            alt=""
-                            loading="eager"
-                            fetchPriority="high"
-                            decoding="async"
-                            className={`${mobileWorkflowImageClassName(item.label)} drop-shadow-[0_1px_2px_rgba(15,23,42,0.22)]`}
-                            onError={() => setFailedImages((prev) => new Set(prev).add(item.id))}
-                          />
-                        ) : (
-                          <item.icon size={24} className="text-white drop-shadow-[0_1px_2px_rgba(15,23,42,0.28)]" />
-                        )}
-                      </div>
-                      <p className="line-clamp-2 text-[11px] font-semibold leading-4 text-[#10243E]">
-                        {"shortLabel" in item ? item.shortLabel : item.label}
-                      </p>
-                    </button>
-                  ) : (
-                    <div className="flex min-h-[84px] w-full items-center justify-center rounded-[20px]">
-                      <div className={`h-14 w-14 rounded-[20px] border-2 border-dashed transition-all duration-150 ${dragHoverSlot === index ? "border-[#4DA3FF] bg-[#DCEEFF]/92 scale-105" : "border-[#93C5FD] bg-white/28"}`} />
-                    </div>
-                  )}
-                </div>
-              )
-            })}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
+
+      {showResults && mobileResultsDrawerStyle && typeof document !== "undefined" && createPortal(
+        results.length > 0 ? (
+          <div
+            className="pointer-events-auto fixed z-[140] overflow-hidden rounded-b-[24px] rounded-t-[12px] border border-[#D5DCE3] bg-white shadow-[0_24px_44px_rgba(15,23,42,0.18)] lg:hidden"
+            style={mobileResultsDrawerStyle}
+          >
+            {results.slice(0, 6).map((result) => (
+              <Link
+                key={result.id}
+                href={result.href}
+                className="flex items-center justify-between border-b border-[#F4F7FA] px-4 py-2.5 transition-colors last:border-0 hover:bg-[#F8FBFF]"
+              >
+                <div className="mr-3 min-w-0">
+                  <p className="truncate text-sm font-semibold text-[#3F4752]">{result.title}</p>
+                  <p className="mt-0.5 truncate text-xs text-[#94a3b8]">{result.subtitle}</p>
+                </div>
+                <ChevronRight size={14} className="shrink-0 text-[#94a3b8]" />
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p
+            className="pointer-events-auto fixed z-[140] rounded-b-[24px] rounded-t-[12px] border border-[#D5DCE3] bg-white px-4 py-3 text-sm text-[#94a3b8] shadow-[0_24px_44px_rgba(15,23,42,0.18)] lg:hidden"
+            style={mobileResultsDrawerStyle}
+          >
+            No matches found.
+          </p>
+        ),
+        document.body,
+      )}
 
       {dragState && dragPreviewItem && (
         <div
@@ -1843,6 +1964,7 @@ export default function HomeHero({
           </div>
         </div>
       )}
+
     </div>
   )
 }

@@ -20,21 +20,12 @@ interface ChatMessage {
 
 function AIIcon({ className = "h-[92px] w-[92px]" }: { className?: string }) {
   return (
-    <span
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/ps-mark.png"
+      alt="P.S."
       aria-hidden="true"
-      className={`${className} [animation:aiIconSurge_1.8s_ease-in-out_infinite]`}
-      style={{
-        background:
-          "linear-gradient(135deg, #7DD3FC 0%, #38BDF8 35%, #14B8A6 68%, #5EEAD4 100%)",
-        WebkitMaskImage: "url('/AIchaticon.png')",
-        WebkitMaskRepeat: "no-repeat",
-        WebkitMaskPosition: "center",
-        WebkitMaskSize: "contain",
-        maskImage: "url('/AIchaticon.png')",
-        maskRepeat: "no-repeat",
-        maskPosition: "center",
-        maskSize: "contain",
-      }}
+      className={`${className} object-contain [animation:aiIconSurge_1.8s_ease-in-out_infinite]`}
     />
   )
 }

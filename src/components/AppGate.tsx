@@ -1,11 +1,9 @@
 "use client"
 
-import { useEffect, useState, Suspense } from "react"
+import { useEffect, useState } from "react"
 import { useRouter, usePathname } from "next/navigation"
 import { onAuthChange, type User } from "@/lib/auth"
 import { hasProfile } from "@/lib/profile"
-import MobileDrawer from "./MobileDrawer"
-import PersistentMobileDock from "./PersistentMobileDock"
 import AdminUnlocker from "./AdminUnlocker"
 
 const PUBLIC_ROUTES    = ["/login"]
@@ -111,13 +109,7 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-[#F4F7FA]">
       <div className="min-w-0 flex min-h-screen flex-col">
-        <Suspense>
-          <MobileDrawer />
-        </Suspense>
         <main className="flex-1">{children}</main>
-        <Suspense>
-          <PersistentMobileDock />
-        </Suspense>
       </div>
       <AdminUnlocker />
     </div>

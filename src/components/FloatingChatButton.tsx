@@ -81,8 +81,8 @@ export default function FloatingChatButton() {
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/AIchaticon.png"
-        alt=""
+        src="/ps-mark.png"
+        alt="P.S."
         aria-hidden="true"
         className="h-[60px] w-[60px] object-contain"
         draggable="false"
