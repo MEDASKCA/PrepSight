@@ -2,9 +2,10 @@
 
 import { useEffect, useState, useTransition } from "react"
 import Link from "next/link"
-import { ArrowLeft, House } from "lucide-react"
+import { House } from "lucide-react"
 import KardexSection from "./KardexSection"
 import ChecklistPanel from "./ChecklistPanel"
+import HistoryBackButton from "./HistoryBackButton"
 import { Procedure, Section } from "@/lib/types"
 import { SETTING_COLOUR } from "@/lib/settings"
 import { getProfile } from "@/lib/profile"
@@ -112,12 +113,10 @@ export default function ProcedurePageClient({
       <div className="hidden lg:block lg:fixed lg:inset-0 lg:pointer-events-none lg:bg-[radial-gradient(circle_at_top_left,_rgba(77,163,255,0.14),_transparent_24%),radial-gradient(circle_at_88%_14%,_rgba(20,184,166,0.1),_transparent_18%),linear-gradient(145deg,#06111D_0%,#091725_48%,#0B2134_100%)]" />
       <header className="sticky top-0 z-30 border-b border-white/10 bg-[#1E293B] lg:bg-[#08131F]/88 lg:backdrop-blur-2xl">
         <div className="mx-auto flex max-w-4xl items-start gap-3 px-4 py-3 lg:max-w-none lg:px-12 lg:py-6">
-          <Link
-            href="/"
+          <HistoryBackButton
+            fallbackHref="/"
             className="mt-0.5 shrink-0 text-white/60 transition-colors hover:text-white lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[20px] lg:border lg:border-white/10 lg:bg-white/6"
-          >
-            <ArrowLeft size={20} />
-          </Link>
+          />
 
           <div className="min-w-0 flex-1">
             <h1 className="text-base font-bold leading-snug text-white lg:text-[42px] lg:font-semibold lg:tracking-[-0.05em]">

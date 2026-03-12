@@ -36,6 +36,7 @@ import { isAdminSession } from "@/lib/admin"
 import { getHistory } from "@/lib/history"
 import { getProfile, getRelevantSettings } from "@/lib/profile"
 import { getProcedureVariantById, getSystemById } from "@/lib/variants"
+import { hasVariantsForProcedure } from "@/lib/variants"
 import {
   ClinicalSetting,
   PrepSightProfile,
@@ -444,7 +445,7 @@ const procedureSearchIndex = new Fuse(searchableProcedures, {
   includeScore: true,
   threshold: 0.34,
   ignoreLocation: true,
-  minMatchCharLength: 2,
+  minMatchCharLength: 1,
   keys: [
     { name: "name", weight: 0.52 },
     { name: "aliases", weight: 0.24 },
@@ -456,7 +457,7 @@ const procedureSearchIndex = new Fuse(searchableProcedures, {
 
 function searchProcedures(rawQuery: string): Array<(typeof procedures)[number]> {
   const query = normalizeSearchText(rawQuery)
-  if (query.length < 2) return []
+  if (query.length < 1) return []
 
   return procedureSearchIndex
     .search(query, { limit: 8 })
@@ -480,6 +481,29 @@ function searchProcedures(rawQuery: string): Array<(typeof procedures)[number]> 
     })
     .map((entry) => procedureLookup.get(entry.item.id))
     .filter((procedure): procedure is (typeof procedures)[number] => Boolean(procedure))
+}
+
+function getProcedureSearchHref(procedure: (typeof procedures)[number]): string {
+  const params = new URLSearchParams({
+    setting: procedure.setting,
+    specialty: procedure.specialty,
+  })
+
+  const serviceLineId = "service_line_id" in procedure && typeof procedure.service_line_id === "string"
+    ? procedure.service_line_id
+    : null
+  const anatomyId = "anatomy_id" in procedure && typeof procedure.anatomy_id === "string"
+    ? procedure.anatomy_id
+    : null
+
+  if (serviceLineId) params.set("service_line", serviceLineId)
+  if (anatomyId) params.set("anatomy", anatomyId)
+
+  if (hasVariantsForProcedure(procedure.id) || anatomyId || serviceLineId) {
+    return `/?${params.toString()}`
+  }
+
+  return `/procedures/${procedure.id}`
 }
 
 function getContextBadge(profile: PrepSightProfile): string {
@@ -559,7 +583,7 @@ export default function HomeHero({
     target: HTMLElement
   } | null>(null)
 
-  const results = deferredQuery.trim().length > 1
+  const results = deferredQuery.trim().length > 0
     ? searchProcedures(deferredQuery)
     : []
 
@@ -598,7 +622,7 @@ export default function HomeHero({
       } => card !== null,
     )
 
-  const showResults = focused && query.trim().length > 1
+  const showResults = focused && query.trim().length > 0
   const workspaceSettings: ClinicalSetting[] = relevantSettings.length > 0
     ? relevantSettings
     : ["Operating Theatre"]
@@ -722,7 +746,7 @@ export default function HomeHero({
     const topResult = results[0]
     if (!topResult) return
     setFocused(false)
-    router.push(`/procedures/${topResult.id}`)
+    router.push(getProcedureSearchHref(topResult))
   }
   const dockRenderItems: Array<(typeof dockLibrary)[number] | null> = (
     previewDockSlots.length > 0 ? previewDockSlots : DEFAULT_DOCK_ITEM_IDS
@@ -1189,7 +1213,7 @@ export default function HomeHero({
                     {results.map((p) => (
                       <Link
                         key={p.id}
-                        href={`/procedures/${p.id}`}
+                        href={getProcedureSearchHref(p)}
                         className="flex items-center justify-between border-b border-white/8 px-5 py-4 transition-colors last:border-0 hover:bg-white/5"
                       >
                         <div className="mr-3 min-w-0">
@@ -1450,7 +1474,7 @@ export default function HomeHero({
               {results.slice(0, 5).map((p) => (
                 <Link
                   key={p.id}
-                  href={`/procedures/${p.id}`}
+                  href={getProcedureSearchHref(p)}
                   className="flex items-center justify-between border-b border-[#F4F7FA] px-4 py-3 transition-colors last:border-0 hover:bg-[#F8FBFF]"
                 >
                   <div className="mr-3 min-w-0">

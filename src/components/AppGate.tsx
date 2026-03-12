@@ -5,6 +5,7 @@ import { useRouter, usePathname } from "next/navigation"
 import { onAuthChange, type User } from "@/lib/auth"
 import { hasProfile } from "@/lib/profile"
 import MobileDrawer from "./MobileDrawer"
+import PersistentMobileDock from "./PersistentMobileDock"
 import AdminUnlocker from "./AdminUnlocker"
 
 const PUBLIC_ROUTES    = ["/login"]
@@ -114,6 +115,9 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
           <MobileDrawer />
         </Suspense>
         <main className="flex-1">{children}</main>
+        <Suspense>
+          <PersistentMobileDock />
+        </Suspense>
       </div>
       <AdminUnlocker />
     </div>

@@ -1,11 +1,12 @@
 import { procedures, getProceduresBySpecialty } from "@/lib/data"
 import { ClinicalSetting, Procedure } from "@/lib/types"
 import { SETTING_COLOUR, SETTING_SPECIALTIES } from "@/lib/settings"
-import { ArrowLeft, House } from "lucide-react"
+import { House } from "lucide-react"
 import Link from "next/link"
 import HomeHero from "@/components/HomeHero"
 import OperatingTheatreTabs from "@/components/OperatingTheatreTabs"
 import ProcedureTabs from "@/components/ProcedureTabs"
+import HistoryBackButton from "@/components/HistoryBackButton"
 import {
   getOperatingTheatreSpecialtyIdByLabel,
   getServiceLinesForSpecialty,
@@ -172,12 +173,10 @@ export default async function HomePage({ searchParams }: Props) {
       <div className="hidden lg:block lg:fixed lg:inset-0 lg:pointer-events-none lg:bg-[radial-gradient(circle_at_top_left,_rgba(77,163,255,0.14),_transparent_26%),radial-gradient(circle_at_86%_14%,_rgba(20,184,166,0.12),_transparent_22%),linear-gradient(145deg,#06111D_0%,#091725_48%,#0B2134_100%)]" />
       <header className="sticky top-0 z-30 border-b border-white/10 bg-[#1E293B] lg:border-b lg:border-white/8 lg:bg-[#08131F]/88 lg:backdrop-blur-2xl">
         <div className="mx-auto flex max-w-4xl items-center gap-3 px-4 py-3 lg:max-w-none lg:px-12 lg:py-5">
-          <Link
-            href={backHref}
+          <HistoryBackButton
+            fallbackHref={backHref}
             className="shrink-0 text-white/60 transition-colors hover:text-white lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[20px] lg:border lg:border-white/10 lg:bg-white/6"
-          >
-            <ArrowLeft size={20} />
-          </Link>
+          />
 
           <div className="min-w-0 flex-1">
             <h1 className="text-base font-bold leading-snug text-white lg:text-[40px] lg:font-semibold lg:tracking-[-0.05em]">
@@ -223,7 +222,7 @@ export default async function HomePage({ searchParams }: Props) {
         </div>
       </header>
 
-      <main className="relative mx-auto max-w-4xl space-y-4 px-4 py-5 lg:max-w-none lg:space-y-8 lg:px-12 lg:py-10">
+      <main className="relative mx-auto max-w-4xl space-y-4 px-4 pb-28 pt-5 lg:max-w-none lg:space-y-8 lg:px-12 lg:pb-10 lg:pt-10">
         {isOperatingTheatreOverviewPage && (
           <OperatingTheatreTabs
             tabs={operatingTheatreTabs}
