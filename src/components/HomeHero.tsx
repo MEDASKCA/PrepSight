@@ -1,11 +1,10 @@
 "use client"
 
-import { useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent, type UIEvent } from "react"
+import { useDeferredValue, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties, type PointerEvent as ReactPointerEvent, type UIEvent } from "react"
 import { createPortal } from "react-dom"
 import Fuse from "fuse.js"
 import {
   Activity,
-  ArrowUp,
   ArrowRightLeft,
   Baby,
   BedSingle,
@@ -42,7 +41,7 @@ import { getCatalogueItems } from "@/lib/catalogue"
 import { procedures } from "@/lib/data"
 import { isAdminSession } from "@/lib/admin"
 import { getHistory } from "@/lib/history"
-import { getProfile, getRelevantSettings } from "@/lib/profile"
+import { getRelevantSettings } from "@/lib/profile"
 import { getAllProcedureVariants, getProcedureVariantById, getSystemById, getVariantsByProcedure, hasVariantsForProcedure } from "@/lib/variants"
 import {
   ClinicalSetting,
@@ -350,11 +349,20 @@ const WORKSPACE_HERO_META: Record<
 
 const MOBILE_DOCK_KEY = "prepsight_mobile_dock"
 const HOMEPAGE_IMAGES_KEY = "prepsight_homepage_images"
+const PROFILE_STORAGE_KEY = "prepsight_profile"
+const HISTORY_STORAGE_KEY = "prepsight_history"
 const DEFAULT_DOCK_ITEM_IDS: string[] = []
+const EMPTY_HISTORY: ReturnType<typeof getHistory> = []
 const DRAGGABLE_ITEM_STYLE: CSSProperties = {
   WebkitTouchCallout: "none",
   touchAction: "pan-x",
 }
+const emptySubscribe = () => () => undefined
+
+let cachedProfileRaw: string | null | undefined
+let cachedProfileSnapshot: PrepSightProfile | null = null
+let cachedHistoryRaw: string | null | undefined
+let cachedHistorySnapshot: ReturnType<typeof getHistory> = EMPTY_HISTORY
 
 function withAlpha(hex: string, alpha: string): string {
   return /^#[0-9A-Fa-f]{6}$/.test(hex) ? `${hex}${alpha}` : hex
@@ -402,6 +410,49 @@ function getGreeting(): string {
   if (h < 12) return "Good morning."
   if (h < 17) return "Good afternoon."
   return "Good evening."
+}
+
+function getProfileBrowserSnapshot(): PrepSightProfile | null {
+  if (typeof window === "undefined") return null
+  const raw = window.localStorage.getItem(PROFILE_STORAGE_KEY)
+  if (raw === cachedProfileRaw) return cachedProfileSnapshot
+
+  cachedProfileRaw = raw
+  if (!raw) {
+    cachedProfileSnapshot = null
+    return cachedProfileSnapshot
+  }
+
+  try {
+    cachedProfileSnapshot = JSON.parse(raw) as PrepSightProfile
+  } catch {
+    cachedProfileSnapshot = null
+  }
+
+  return cachedProfileSnapshot
+}
+
+function getHistoryBrowserSnapshot(): ReturnType<typeof getHistory> {
+  if (typeof window === "undefined") return EMPTY_HISTORY
+  const raw = window.localStorage.getItem(HISTORY_STORAGE_KEY)
+  if (raw === cachedHistoryRaw) return cachedHistorySnapshot
+
+  cachedHistoryRaw = raw
+  if (!raw) {
+    cachedHistorySnapshot = EMPTY_HISTORY
+    return cachedHistorySnapshot
+  }
+
+  try {
+    const parsed = JSON.parse(raw) as Array<string | ReturnType<typeof getHistory>[number]>
+    cachedHistorySnapshot = parsed.map((item) =>
+      typeof item === "string" ? { procedureId: item } : item,
+    )
+  } catch {
+    cachedHistorySnapshot = EMPTY_HISTORY
+  }
+
+  return cachedHistorySnapshot
 }
 
 function normalizeSearchText(value: string | undefined): string {
@@ -676,17 +727,31 @@ export default function HomeHero({
   const searchParams = useSearchParams()
   const [failedImages, setFailedImages] = useState<Set<string>>(new Set())
   const [showHomepageImages, setShowHomepageImages] = useState(false)
-  const [profile] = useState<PrepSightProfile | null>(() => getProfile())
-  const [recentEntries] = useState<ReturnType<typeof getHistory>>(() => getHistory())
+  const hasHydrated = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  )
+  const profile = useSyncExternalStore(
+    emptySubscribe,
+    getProfileBrowserSnapshot,
+    () => null,
+  )
+  const recentEntries = useSyncExternalStore(
+    emptySubscribe,
+    getHistoryBrowserSnapshot,
+    () => EMPTY_HISTORY,
+  )
   const [query, setQuery] = useState("")
   const deferredQuery = useDeferredValue(query)
   const [focused, setFocused] = useState(false)
   const [messages, setMessages] = useState<ChatMessage[]>([])
-  const [relevantSettings] = useState<ClinicalSetting[]>(() =>
-    profile ? getRelevantSettings(profile) : [],
+  const relevantSettings = useMemo<ClinicalSetting[]>(
+    () => (profile ? getRelevantSettings(profile) : []),
+    [profile],
   )
   const [activeWorkspace, setActiveWorkspace] = useState<ClinicalSetting>(() =>
-    initialWorkspace ?? relevantSettings[0] ?? "Operating Theatre",
+    initialWorkspace ?? "Operating Theatre",
   )
   const [launcherPage, setLauncherPage] = useState(0)
   const [dockItemIds, setDockItemIds] = useState<string[]>(() => {
@@ -738,6 +803,8 @@ export default function HomeHero({
     target: HTMLElement
   } | null>(null)
   const messageSeedRef = useRef(0)
+  const greetingText = hasHydrated ? getGreeting().replace(".", "") : "Welcome"
+  const contextBadge = hasHydrated && profile ? getContextBadge(profile) : "Browse and reference"
 
   const results = deferredQuery.trim().length > 0
     ? searchApp(deferredQuery)
@@ -1384,22 +1451,22 @@ export default function HomeHero({
   }, [messages])
 
   return (
-    <div className="relative flex h-[100dvh] max-w-xl flex-col overflow-hidden animate-step-in bg-[#07111E] px-3 pb-6 pt-3 lg:h-auto lg:max-w-none lg:overflow-visible lg:bg-transparent lg:px-10 lg:py-10">
+    <div className="relative flex h-[100dvh] max-w-xl flex-col overflow-hidden animate-step-in bg-[linear-gradient(180deg,#F7FBFF_0%,#EEF6FB_52%,#E7F0F7_100%)] px-3 pb-6 pt-3 lg:h-auto lg:max-w-none lg:overflow-visible lg:bg-transparent lg:px-10 lg:py-10">
       <div className="pointer-events-none absolute inset-0 lg:hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(18,38,58,0.96),_rgba(7,17,30,0.98)_40%,_rgba(3,9,18,1)_100%)]" />
-        <div className="absolute -left-10 top-8 h-36 w-36 rounded-full bg-[#0EA5E9]/18 blur-3xl" />
-        <div className="absolute right-[-24px] top-20 h-32 w-32 rounded-full bg-[#14B8A6]/12 blur-3xl" />
-        <div className="absolute bottom-24 left-10 h-28 w-28 rounded-full bg-[#1D4ED8]/14 blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.92),_rgba(239,246,255,0.96)_42%,_rgba(231,240,247,1)_100%)]" />
+        <div className="absolute -left-10 top-8 h-36 w-36 rounded-full bg-[#0EA5E9]/10 blur-3xl" />
+        <div className="absolute right-[-24px] top-20 h-32 w-32 rounded-full bg-[#14B8A6]/8 blur-3xl" />
+        <div className="absolute bottom-24 left-10 h-28 w-28 rounded-full bg-[#1D4ED8]/8 blur-3xl" />
       </div>
       <div className="mb-10 hidden lg:block">
-        <div className="relative overflow-hidden rounded-[40px] border border-[#12304C] bg-[#07111E] shadow-[0_40px_90px_rgba(15,23,42,0.32)]">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(77,163,255,0.18),_transparent_30%),radial-gradient(circle_at_85%_12%,_rgba(20,184,166,0.14),_transparent_22%),linear-gradient(140deg,#07111E_0%,#091827_38%,#0C2237_100%)]" />
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/10" />
-          <div className="relative z-10 border-b border-white/10 px-8 py-5">
+        <div className="relative overflow-hidden rounded-[40px] border border-[#D5E3EF] bg-[linear-gradient(160deg,#F8FBFF_0%,#F2F8FD_38%,#EAF3F9_100%)] shadow-[0_36px_80px_rgba(148,163,184,0.18)]">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(77,163,255,0.12),_transparent_30%),radial-gradient(circle_at_85%_12%,_rgba(20,184,166,0.1),_transparent_22%)]" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/70" />
+          <div className="relative z-10 border-b border-[#D5E3EF] px-8 py-5">
             <div className="grid grid-cols-[auto_1fr_auto] items-center gap-6">
               <div className="flex items-center gap-4">
                 {hideHomepageImages ? (
-                  <div className="flex h-16 min-w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/6 px-4">
+                  <div className="flex h-16 min-w-16 items-center justify-center rounded-2xl border border-[#D5E3EF] bg-white px-4 shadow-[0_10px_24px_rgba(148,163,184,0.12)]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/ps-mark.png" alt="P.S." className="h-9 w-auto opacity-95" />
                   </div>
@@ -1407,12 +1474,12 @@ export default function HomeHero({
                   <Image src="/ps-mark.png" alt="P.S." width={64} height={64} className="h-16 w-auto object-contain" />
                 )}
                 <div>
-                  <p className="text-[28px] font-semibold tracking-[-0.05em] text-white">PrepSight</p>
+                  <p className="text-[28px] font-semibold tracking-[-0.05em] text-[#10243E]">PrepSight</p>
                 </div>
               </div>
 
-              <div className="relative">
-                <Search size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-white/38" />
+              <div className="relative rounded-[28px] border border-[#8ADFF0] bg-[#AEEAF7] p-2 shadow-[0_18px_34px_rgba(0,180,216,0.18)]">
+                <Search size={18} className="absolute left-7 top-1/2 -translate-y-1/2 text-[#3F6780]" />
                 <input
                   ref={inputRef}
                   type="text"
@@ -1421,20 +1488,20 @@ export default function HomeHero({
                   onFocus={() => setFocused(true)}
                   onBlur={() => setTimeout(() => setFocused(false), 150)}
                   placeholder="Search procedure, anatomy, implant system, product, or catalogue item..."
-                  className="w-full rounded-[22px] border border-white/10 bg-white/8 py-4 pl-13 pr-5 text-[15px] text-white placeholder:text-white/38 backdrop-blur-xl transition-colors focus:border-[#7DD3FC]/70 focus:outline-none focus:ring-2 focus:ring-[#7DD3FC]/20"
+                  className="w-full rounded-[22px] border border-[#D6F5FB] bg-[#EAF8FC] py-4 pl-13 pr-5 text-[15px] text-[#10243E] placeholder:text-[#7290A7] shadow-[inset_0_1px_0_rgba(255,255,255,0.92),0_10px_24px_rgba(86,167,191,0.08)] transition-colors focus:border-[#C9F1F8] focus:outline-none focus:ring-2 focus:ring-[#7DD3FC]/20"
                 />
 
                 {showResults && results.length > 0 && (
-                  <div className="absolute inset-x-0 top-[calc(100%+16px)] z-30 overflow-hidden rounded-[26px] border border-white/10 bg-[#0D1926] shadow-[0_30px_70px_rgba(15,23,42,0.32)]">
+                  <div className="absolute inset-x-0 top-[calc(100%+16px)] z-30 overflow-hidden rounded-[26px] border border-[#BFEAF5] bg-white shadow-[0_30px_70px_rgba(0,180,216,0.14)]">
                     {results.map((result) => (
                       <Link
                         key={result.id}
                         href={result.href}
-                        className="flex items-center justify-between border-b border-white/8 px-5 py-4 transition-colors last:border-0 hover:bg-white/5"
+                        className="flex items-center justify-between border-b border-[#EEF4F8] px-5 py-4 transition-colors last:border-0 hover:bg-[#F8FBFF]"
                       >
                         <div className="mr-3 min-w-0">
-                          <p className="truncate text-sm font-semibold text-white">{result.title}</p>
-                          <p className="mt-1 text-xs text-white/52">
+                          <p className="truncate text-sm font-semibold text-[#10243E]">{result.title}</p>
+                          <p className="mt-1 text-xs text-[#64748B]">
                             {result.subtitle}
                           </p>
                         </div>
@@ -1449,18 +1516,18 @@ export default function HomeHero({
                 )}
 
                 {showResults && results.length === 0 && (
-                  <div className="absolute inset-x-0 top-[calc(100%+16px)] z-30 rounded-[26px] border border-white/10 bg-[#0D1926] px-5 py-4 text-sm text-white/60 shadow-[0_30px_70px_rgba(15,23,42,0.32)]">
+                  <div className="absolute inset-x-0 top-[calc(100%+16px)] z-30 rounded-[26px] border border-[#BFEAF5] bg-white px-5 py-4 text-sm text-[#64748B] shadow-[0_30px_70px_rgba(0,180,216,0.14)]">
                     No procedures found.
                   </div>
                 )}
               </div>
 
               <div className="justify-self-end text-right">
-                <p className="text-[11px] uppercase tracking-[0.18em] text-white/40">{getGreeting().replace(".", "")}</p>
-                <p className="mt-2 text-sm text-white/70">{profile ? getContextBadge(profile) : "Browse and reference"}</p>
-                <div className="mt-5 inline-flex min-w-[220px] flex-col rounded-[24px] border border-white/10 bg-white/8 px-5 py-4 text-left shadow-[0_18px_34px_rgba(15,23,42,0.18)] backdrop-blur-xl">
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-white/42">Procedure cards available</p>
-                  <p className="mt-2 text-[40px] font-semibold leading-none tracking-[-0.06em] text-white">0</p>
+                <p className="text-[11px] uppercase tracking-[0.18em] text-[#64748B]">{greetingText}</p>
+                <p className="mt-2 text-sm text-[#475569]">{contextBadge}</p>
+                <div className="mt-5 inline-flex min-w-[220px] flex-col rounded-[24px] border border-[#D5E3EF] bg-white px-5 py-4 text-left shadow-[0_18px_34px_rgba(148,163,184,0.16)]">
+                  <p className="text-[11px] uppercase tracking-[0.18em] text-[#64748B]">Procedure cards available</p>
+                  <p className="mt-2 text-[40px] font-semibold leading-none tracking-[-0.06em] text-[#10243E]">0</p>
                 </div>
               </div>
             </div>
@@ -1469,17 +1536,17 @@ export default function HomeHero({
           <div className="relative z-10 px-8 pb-8 pt-7">
             <div className="grid grid-cols-[1.45fr_0.9fr] gap-6">
               <div className="min-w-0">
-                <p className="text-[14px] font-medium tracking-[0.2em] text-white/42">Workspace</p>
-                <h1 className="mt-4 max-w-[11ch] text-[78px] font-semibold leading-[0.92] tracking-[-0.07em] text-white">
+                <p className="text-[14px] font-medium tracking-[0.2em] text-[#64748B]">Workspace</p>
+                <h1 className="mt-4 max-w-[11ch] text-[78px] font-semibold leading-[0.92] tracking-[-0.07em] text-[#10243E]">
                   {activeWorkspaceItem?.label ?? "Operating Theatre"}
                 </h1>
-                <p className="mt-5 max-w-2xl text-[16px] leading-8 text-[#B9CDE2]">
+                <p className="mt-5 max-w-2xl text-[16px] leading-8 text-[#526579]">
                   Open the current area like a browser engine for procedural knowledge. Move from specialty to anatomy to authored cards without losing the visual thread.
                 </p>
               </div>
 
-              <div className="rounded-[30px] border border-white/10 bg-white/6 p-6 backdrop-blur-xl">
-                <p className="text-[11px] uppercase tracking-[0.18em] text-white/42">Registered areas</p>
+              <div className="rounded-[30px] border border-[#D5E3EF] bg-white/92 p-6 shadow-[0_20px_40px_rgba(148,163,184,0.16)]">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-[#64748B]">Registered areas</p>
                 <div className="mt-5 grid gap-3">
                   {workspaceItems.map((item, index) => (
                     <button
@@ -1504,12 +1571,12 @@ export default function HomeHero({
               <div>
                 <div className="mb-5 flex items-end justify-between">
                   <div>
-                    <p className="text-[14px] font-medium tracking-[0.2em] text-white/42">Specialties</p>
-                    <h2 className="mt-3 text-[42px] font-semibold tracking-[-0.06em] text-white">
+                    <p className="text-[14px] font-medium tracking-[0.2em] text-[#64748B]">Specialties</p>
+                    <h2 className="mt-3 text-[42px] font-semibold tracking-[-0.06em] text-[#10243E]">
                       {activeWorkspaceItem?.label ?? "Operating Theatre"}
                     </h2>
                   </div>
-                  <p className="max-w-sm text-right text-sm leading-7 text-white/48">
+                  <p className="max-w-sm text-right text-sm leading-7 text-[#64748B]">
                     Open any specialty as its own dedicated browser space.
                   </p>
                 </div>
@@ -1572,8 +1639,8 @@ export default function HomeHero({
               </div>
 
               <div className="grid content-start gap-4">
-                <div className="rounded-[30px] border border-white/10 bg-white/6 p-6 backdrop-blur-xl">
-                  <p className="text-[14px] font-medium tracking-[0.2em] text-white/42">Workflow tools</p>
+                <div className="rounded-[30px] border border-[#D5E3EF] bg-white/92 p-6 shadow-[0_20px_40px_rgba(148,163,184,0.16)]">
+                  <p className="text-[14px] font-medium tracking-[0.2em] text-[#64748B]">Workflow tools</p>
                   <div className="mt-5 grid gap-3">
                     {WORKFLOW_TOOLS.map((tool, index) => (
                       <Link
@@ -1593,20 +1660,20 @@ export default function HomeHero({
                 </div>
 
                 {recentCards.length > 0 && (
-                  <div className="rounded-[30px] border border-white/10 bg-white/6 p-6 backdrop-blur-xl">
-                    <p className="text-[14px] font-medium tracking-[0.2em] text-white/42">Recently viewed</p>
+                  <div className="rounded-[30px] border border-[#D5E3EF] bg-white/92 p-6 shadow-[0_20px_40px_rgba(148,163,184,0.16)]">
+                    <p className="text-[14px] font-medium tracking-[0.2em] text-[#64748B]">Recently viewed</p>
                     <div className="mt-5 grid gap-3">
                       {recentCards.map((card, index) => (
                         <Link
                           key={`${card.entry.procedureId}-${card.entry.variantId ?? "base"}-${card.entry.systemId ?? "base"}`}
                           href={card.href}
-                          className="rounded-[24px] border border-white/10 bg-white/6 px-5 py-5 text-white transition-colors hover:bg-white/10 [animation:desktopCardRise_0.55s_cubic-bezier(0.2,0.8,0.2,1)_both]"
+                          className="rounded-[24px] border border-[#D5E3EF] bg-[#F8FBFE] px-5 py-5 text-[#10243E] shadow-[0_14px_28px_rgba(148,163,184,0.12)] transition-colors hover:bg-white [animation:desktopCardRise_0.55s_cubic-bezier(0.2,0.8,0.2,1)_both]"
                           style={{ animationDelay: `${index * 45}ms` }}
                         >
                           <p className="text-[24px] font-semibold tracking-[-0.04em]">
                             {card.system?.name ?? card.procedure.name}
                           </p>
-                          <p className="mt-3 text-sm leading-7 text-white/62">
+                          <p className="mt-3 text-sm leading-7 text-[#64748B]">
                             {formatRecentSubtitle(card.procedure.name, card.variant?.name)}
                           </p>
                         </Link>
@@ -1652,13 +1719,13 @@ export default function HomeHero({
         </div>
 
         <div className="mb-3 px-1">
-          <p className="text-[22px] font-semibold leading-7 tracking-[-0.04em] text-white">
+          <p className="text-[22px] font-semibold leading-7 tracking-[-0.04em] text-[#10243E]">
             {activeWorkspaceItem?.label ?? "Operating Theatre"}
           </p>
         </div>
 
         <div className="mb-3 px-1">
-          <div className="overflow-hidden rounded-[30px] border border-white/10 bg-[#0B1624]/92 shadow-[0_22px_44px_rgba(0,0,0,0.34)] backdrop-blur-xl">
+          <div className="overflow-hidden rounded-[30px] border border-[#9ADFEB] bg-[#DDF7FC] shadow-[0_22px_44px_rgba(0,180,216,0.14)]">
             {hasAssistantConversation && (
               <div
                 ref={threadScrollerRef}
@@ -1673,10 +1740,10 @@ export default function HomeHero({
                 ))}
               </div>
             )}
-            <div className={hasAssistantConversation ? "border-t border-white/10 px-3 py-3" : "px-3 py-3"}>
+              <div className={hasAssistantConversation ? "border-t border-[#BFEAF5] px-3 py-3" : "px-3 py-3"}>
               <div
                 ref={mobileComposerRef}
-                className="flex items-end gap-2 rounded-[26px] border border-[#7DD3FC]/40 bg-[linear-gradient(180deg,rgba(248,251,255,0.98)_0%,rgba(239,246,255,0.98)_100%)] px-3 py-2 shadow-[0_14px_30px_rgba(0,180,216,0.12)]"
+                className="flex items-end gap-2 rounded-[26px] border border-[#8ADFF0] bg-[#AEEAF7] px-3 py-2 shadow-[0_14px_30px_rgba(0,180,216,0.14)]"
               >
                 <textarea
                   ref={mobileInputRef}
@@ -1692,7 +1759,7 @@ export default function HomeHero({
                   onFocus={() => setFocused(true)}
                   onBlur={() => setTimeout(() => setFocused(false), 150)}
                   placeholder=""
-                  className="max-h-28 min-h-[38px] flex-1 resize-none border-0 bg-transparent px-1 py-1.5 text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none"
+                  className="max-h-28 min-h-[38px] flex-1 resize-none rounded-[20px] border-0 bg-[#EAF8FC] px-1 py-1.5 text-sm text-[#0F172A] placeholder:text-[#94A3B8] focus:outline-none"
                 />
 
                 <button
@@ -1700,10 +1767,10 @@ export default function HomeHero({
                   onMouseDown={(e) => e.preventDefault()}
                   onClick={() => submitSearch()}
                   disabled={query.trim().length === 0}
-                  aria-label="Send"
+                  aria-label="Search"
                   className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#00B4D8] text-white shadow-[0_10px_22px_rgba(0,180,216,0.32)] transition-colors hover:bg-[#12C4E7] disabled:bg-[#CBD5E1] disabled:text-white/80 disabled:shadow-none"
                 >
-                  <ArrowUp size={18} />
+                  <Search size={18} />
                 </button>
               </div>
             </div>
@@ -1712,7 +1779,7 @@ export default function HomeHero({
 
         <div className="relative z-0 min-h-0 flex-1 px-0.5 pt-1">
           <div className="mb-1 px-1">
-            <p className="text-[19px] font-semibold tracking-[-0.03em] text-white">
+            <p className="text-[19px] font-semibold tracking-[-0.03em] text-[#10243E]">
               {launcherPage === 0 ? "Specialties" : "Workflow tools"}
             </p>
           </div>
@@ -1762,7 +1829,7 @@ export default function HomeHero({
                             <specialty.icon size={mobileSpecialtyIconSize(specialty.fullLabel)} className="text-white drop-shadow-[0_1px_2px_rgba(15,23,42,0.28)]" />
                           )}
                         </div>
-                        <p className="line-clamp-1 text-[11px] font-semibold leading-4 text-white">
+                        <p className="line-clamp-1 text-[11px] font-semibold leading-4 text-[#334155]">
                           {specialty.shortLabel}
                         </p>
                       </button>
@@ -1825,7 +1892,7 @@ export default function HomeHero({
                             <Icon size={24} className="text-white drop-shadow-[0_1px_2px_rgba(15,23,42,0.28)]" />
                           )}
                         </div>
-                        <p className="line-clamp-2 text-[11px] font-semibold leading-4 text-white">
+                        <p className="line-clamp-2 text-[11px] font-semibold leading-4 text-[#334155]">
                           {tool.label}
                         </p>
                       </>
@@ -1855,12 +1922,12 @@ export default function HomeHero({
             </div>
           </div>
           <div className="mt-5 flex justify-center">
-            <div className="flex items-center gap-2 rounded-full bg-white/8 px-3 py-1.5 shadow-[0_10px_24px_rgba(0,0,0,0.22)] backdrop-blur-xl">
+            <div className="flex items-center gap-2 rounded-full bg-white/92 px-3 py-1.5 shadow-[0_10px_24px_rgba(148,163,184,0.18)] backdrop-blur-xl">
               {[0, 1].map((index) => (
                 <span
                   key={`launcher-dot-${index}`}
                   className={`h-1.5 rounded-full transition-all ${
-                    launcherPage === index ? "w-6 bg-white" : "w-2 bg-white/28"
+                    launcherPage === index ? "w-6 bg-[#10243E]" : "w-2 bg-[#CBD5E1]"
                   }`}
                 />
               ))}

@@ -47,13 +47,10 @@ export default function ProfileButton() {
     <>
       <button
         onClick={() => setOpen(true)}
-        aria-label="Your profile"
-        className={`w-9 h-9 rounded-full overflow-hidden shrink-0 shadow-sm ${!photoURL ? `${colour} text-white text-sm font-bold flex items-center justify-center` : ""}`}
+        aria-label="Settings"
+        className="shrink-0 leading-none"
       >
-        {photoURL
-          ? <img src={photoURL} alt={displayName} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-          : initials
-        }
+        <img src="/settings.png" alt="" className="h-10 w-10 object-contain" />
       </button>
 
       {open && (
