@@ -4,7 +4,7 @@ import { useMemo, useState } from "react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp, FolderOpen } from "lucide-react"
-import { getAnatomyForServiceLine } from "@/lib/operating-theatre-taxonomy"
+import { getAnatomyForServiceLine, getChildAnatomy } from "@/lib/operating-theatre-taxonomy"
 
 interface SpecialtyTab {
   name: string
@@ -116,14 +116,18 @@ function AnatomyOutline({ name, color }: { name: string; color: string }) {
 const SERVICE_LINE_IMAGE_MAP: Record<string, string> = {
   // Trauma and Orthopaedics
   "Arthroplasty":                           "/icons/service-lines/arthroplasty.jpg",
-  "Foot and Ankle Surgery":                 "/icons/service-lines/foot-and-ankle-surgery.jpg",
-  "Hand and Wrist Surgery":                 "/icons/service-lines/hand-and-wrist-surgery.jpg",
+  "Revision Arthroplasty":                  "/icons/service-lines/arthroplasty.jpg",
+  "Hip Preservation":                       "/icons/service-lines/arthroplasty.jpg",
+  "Sports & Knee":                          "/icons/service-lines/sports-and-knee-surgery.jpg",
+  "Shoulder & Elbow":                       "/icons/service-lines/shoulder-and-elbow-surgery.jpg",
+  "Foot & Ankle":                           "/icons/service-lines/foot-and-ankle-surgery.jpg",
+  "Hand & Wrist":                           "/icons/service-lines/hand-and-wrist-surgery.jpg",
   "Orthopaedic Oncology":                   "/icons/service-lines/orthopaedic-oncology.jpg",
-  "Orthopaedic Trauma Surgery":             "/icons/service-lines/orthopaedic-trauma-surgery.jpg",
-  "Paediatric Orthopaedic Surgery":         "/icons/service-lines/paediatric-orthopaedic-surgery.jpg",
-  "Shoulder and Elbow Surgery":             "/icons/service-lines/shoulder-and-elbow-surgery.jpg",
-  "Spine Surgery":                          "/icons/service-lines/spine-surgery.jpg",
-  "Sports and Knee Surgery":                "/icons/service-lines/sports-and-knee-surgery.jpg",
+  "Orthopaedic Trauma":                     "/icons/service-lines/orthopaedic-trauma-surgery.jpg",
+  "Paediatric Orthopaedics":                "/icons/service-lines/paediatric-orthopaedic-surgery.jpg",
+  "Spine":                                  "/icons/service-lines/spine-surgery.jpg",
+  "Limb Reconstruction / Deformity":        "/icons/service-lines/orthopaedic-trauma-surgery.jpg",
+  "Orthopaedic Infection":                  "/icons/service-lines/orthopaedic-trauma-surgery.jpg",
   // General Surgery
   "Acute Care Surgery":                     "/icons/service-lines/acute-care-surgery.jpg",
   "Bariatric Surgery":                      "/icons/service-lines/bariatric-surgery.jpg",
@@ -244,6 +248,12 @@ function SubspecialtyArtwork({
       <path d="M96 126c18-46 35-70 54-70s36 24 54 70" stroke={stroke} strokeWidth="7" strokeLinecap="round" />
       <circle cx="150" cy="58" r="15" stroke={accent} strokeWidth="8" />
     </svg>
+  )
+}
+
+function getSubanatomyPreview(anatomyId: string): string[] {
+  return Array.from(
+    new Set(getChildAnatomy(anatomyId).map((item) => item.name)),
   )
 }
 
@@ -591,6 +601,7 @@ export default function OperatingTheatreTabs({
                               <div className={`grid gap-4 ${anatomyNodes.length >= 4 ? "grid-cols-4" : anatomyNodes.length === 3 ? "grid-cols-3" : "grid-cols-2"}`}>
                                 {anatomyNodes.map((node) => {
                                   const isActiveAnatomy = currentAnatomy === node.id
+                                  const subanatomyPreview = getSubanatomyPreview(node.id)
 
                                   return (
                                     <Link
@@ -618,9 +629,18 @@ export default function OperatingTheatreTabs({
                                           <p className="text-[30px] font-semibold leading-[1.02] tracking-[-0.05em]">
                                             {node.name}
                                           </p>
-                                          <p className="mt-3 text-sm leading-7 opacity-76">
-                                            Open the procedure files for this anatomy.
-                                          </p>
+                                          {subanatomyPreview.length > 0 && (
+                                            <div className="mt-4 flex flex-wrap gap-2">
+                                              {subanatomyPreview.slice(0, 6).map((label) => (
+                                                <span
+                                                  key={`${node.id}-${label}`}
+                                                  className="rounded-full border border-black/10 bg-white/35 px-2.5 py-1 text-[11px] font-medium leading-none opacity-90"
+                                                >
+                                                  {label}
+                                                </span>
+                                              ))}
+                                            </div>
+                                          )}
                                         </div>
                                       </div>
                                     </Link>
@@ -689,6 +709,7 @@ export default function OperatingTheatreTabs({
                             <div className={`ot-anatomy-list ${specialtyFirst ? "divide-y divide-[#DCEAF8]" : "divide-y divide-[#DCEAF8]"}`}>
                               {anatomyNodes.map((node) => {
                                 const isActiveAnatomy = currentAnatomy === node.id
+                                const subanatomyPreview = getSubanatomyPreview(node.id)
 
                                 return (
                                   <Link
@@ -699,7 +720,7 @@ export default function OperatingTheatreTabs({
                                       service_line: line.id,
                                       anatomy: node.id,
                                     })}
-                                    className={`ot-anatomy-row flex w-full items-center gap-2 px-6 py-3 text-sm transition-colors ${
+                                    className={`ot-anatomy-row flex w-full items-center gap-2 px-4 py-2 text-sm transition-colors ${
                                       isActiveAnatomy
                                         ? "bg-[#E7F2FF] font-semibold text-[#1E3A5F]"
                                         : "text-[#334155] hover:bg-[#F8FBFF]"
@@ -708,11 +729,22 @@ export default function OperatingTheatreTabs({
                                       backgroundColor: isActiveAnatomy ? "#E7F2FF" : undefined,
                                     }}
                                   >
-                                    <span className="min-w-0 flex-1 whitespace-normal break-words leading-snug">
-                                      {node.name}
-                                    </span>
+                                    <div className="min-w-0 flex-1">
+                                      <div className="whitespace-normal break-words leading-[1.2]">
+                                        {node.name}
+                                      </div>
+                                      {subanatomyPreview.length > 0 && (
+                                        <div className="mt-0.5 text-[10px] leading-[1.25] text-[#64748b] opacity-82">
+                                          <span className="font-medium uppercase tracking-[0.08em] text-[#94a3b8]">
+                                            Includes
+                                          </span>
+                                          {" · "}
+                                          {subanatomyPreview.slice(0, 4).join(" · ")}
+                                        </div>
+                                      )}
+                                    </div>
                                     <ChevronRight
-                                      size={14}
+                                      size={12}
                                       className={`shrink-0 ${isActiveAnatomy ? "text-[#64748b]" : "text-[#94a3b8]"}`}
                                     />
                                   </Link>

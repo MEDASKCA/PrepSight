@@ -32,7 +32,19 @@ interface AnatomyRecord {
 }
 
 const CURATED_ANATOMY_ORDER: Record<string, string[]> = {
-  SL_ARTHROPLASTY: ["Hip", "Knee", "Shoulder", "Elbow", "Ankle"],
+  SL_ARTHROPLASTY: ["Hip", "Knee", "Shoulder", "Elbow", "Ankle", "Wrist", "Hand", "Foot"],
+  SL_FOOT_AND_ANKLE_SURGERY: ["Ankle", "Hindfoot", "Midfoot", "Forefoot", "Digits / Toes"],
+  SL_HAND_AND_WRIST_SURGERY: ["Wrist", "Hand", "Digits", "Forearm"],
+  SL_HIP_PRESERVATION: ["Hip"],
+  SL_LIMB_RECONSTRUCTION_DEFORMITY: ["Femur", "Tibia", "Fibula", "Upper Limb", "Whole Limb"],
+  SL_ORTHOPAEDIC_INFECTION: ["Hip", "Knee", "Shoulder", "Long Bones", "Soft Tissue"],
+  SL_ORTHOPAEDIC_ONCOLOGY: ["Femur", "Tibia", "Humerus", "Pelvis", "Spine"],
+  SL_ORTHOPAEDIC_TRAUMA_SURGERY: ["Shoulder", "Elbow", "Wrist", "Hip", "Femur", "Knee", "Tibia", "Foot & Ankle"],
+  SL_PAEDIATRIC_ORTHOPAEDIC_SURGERY: ["Hip", "Spine", "Lower Limb", "Foot", "Upper Limb"],
+  SL_REVISION_ARTHROPLASTY: ["Hip", "Knee", "Shoulder", "Elbow"],
+  SL_SHOULDER_AND_ELBOW_SURGERY: ["Shoulder", "Elbow"],
+  SL_SPINE_SURGERY: ["Cervical Spine", "Thoracic Spine", "Lumbar Spine", "Sacrum"],
+  SL_SPORTS_AND_KNEE_SURGERY: ["Knee", "Shoulder", "Hip", "Ankle"],
 }
 
 function normalizeKey(value: string): string {
@@ -175,4 +187,10 @@ export function getDescendantAnatomyIds(anatomyId: string): string[] {
 
   walk(anatomyId)
   return Array.from(collected)
+}
+
+export function getChildAnatomy(parentId: string): AnatomyRecord[] {
+  return anatomyRows
+    .filter((row) => row.parent_id === parentId)
+    .sort((a, b) => a.sort_order - b.sort_order || a.name.localeCompare(b.name))
 }

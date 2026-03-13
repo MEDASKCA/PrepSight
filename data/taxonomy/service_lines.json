@@ -325,12 +325,32 @@
     "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS"
   },
   {
-    "name": "Foot and Ankle Surgery",
+    "name": "Revision Arthroplasty",
+    "id": "SL_REVISION_ARTHROPLASTY",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS"
+  },
+  {
+    "name": "Hip Preservation",
+    "id": "SL_HIP_PRESERVATION",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS"
+  },
+  {
+    "name": "Sports & Knee",
+    "id": "SL_SPORTS_AND_KNEE_SURGERY",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS"
+  },
+  {
+    "name": "Shoulder & Elbow",
+    "id": "SL_SHOULDER_AND_ELBOW_SURGERY",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS"
+  },
+  {
+    "name": "Foot & Ankle",
     "id": "SL_FOOT_AND_ANKLE_SURGERY",
     "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS"
   },
   {
-    "name": "Hand and Wrist Surgery",
+    "name": "Hand & Wrist",
     "id": "SL_HAND_AND_WRIST_SURGERY",
     "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS"
   },
@@ -340,28 +360,28 @@
     "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS"
   },
   {
-    "name": "Orthopaedic Trauma Surgery",
+    "name": "Orthopaedic Trauma",
     "id": "SL_ORTHOPAEDIC_TRAUMA_SURGERY",
     "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS"
   },
   {
-    "name": "Paediatric Orthopaedic Surgery",
+    "name": "Paediatric Orthopaedics",
     "id": "SL_PAEDIATRIC_ORTHOPAEDIC_SURGERY",
     "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS"
   },
   {
-    "name": "Shoulder and Elbow Surgery",
-    "id": "SL_SHOULDER_AND_ELBOW_SURGERY",
-    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS"
-  },
-  {
-    "name": "Spine Surgery",
+    "name": "Spine",
     "id": "SL_SPINE_SURGERY",
     "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS"
   },
   {
-    "id": "SL_SPORTS_AND_KNEE_SURGERY",
-    "name": "Sports and Knee Surgery",
+    "name": "Limb Reconstruction / Deformity",
+    "id": "SL_LIMB_RECONSTRUCTION_DEFORMITY",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS"
+  },
+  {
+    "name": "Orthopaedic Infection",
+    "id": "SL_ORTHOPAEDIC_INFECTION",
     "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS"
   },
   {

@@ -2864,5 +2864,1237 @@
     "tags": [
       "upper limb vessels"
     ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP_WHOLE_JOINT",
+    "name": "Whole Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "sort_order": 241,
+    "tags": [
+      "whole joint",
+      "hip joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FEMORAL_HEAD",
+    "name": "Femoral Head",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "sort_order": 242,
+    "tags": [
+      "femoral head"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FEMORAL_NECK",
+    "name": "Femoral Neck",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "sort_order": 243,
+    "tags": [
+      "femoral neck"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PROXIMAL_FEMUR",
+    "name": "Proximal Femur",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "sort_order": 244,
+    "tags": [
+      "proximal femur"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE_WHOLE_JOINT",
+    "name": "Whole Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "sort_order": 261,
+    "tags": [
+      "whole joint",
+      "knee joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE_DISTAL_FEMUR",
+    "name": "Distal Femur",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "sort_order": 262,
+    "tags": [
+      "distal femur"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PROXIMAL_TIBIA",
+    "name": "Proximal Tibia",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "sort_order": 263,
+    "tags": [
+      "proximal tibia"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PATELLOFEMORAL_JOINT",
+    "name": "Patellofemoral Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "sort_order": 265,
+    "tags": [
+      "patellofemoral joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_MEDIAL_COMPARTMENT",
+    "name": "Medial Compartment",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "sort_order": 266,
+    "tags": [
+      "medial compartment"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LATERAL_COMPARTMENT",
+    "name": "Lateral Compartment",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "sort_order": 267,
+    "tags": [
+      "lateral compartment"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER_WHOLE_JOINT",
+    "name": "Whole Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "sort_order": 111,
+    "tags": [
+      "whole joint",
+      "shoulder joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_GLENOID",
+    "name": "Glenoid",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "sort_order": 112,
+    "tags": [
+      "glenoid"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HUMERAL_HEAD",
+    "name": "Humeral Head",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "sort_order": 113,
+    "tags": [
+      "humeral head"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PROXIMAL_HUMERUS",
+    "name": "Proximal Humerus",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "sort_order": 114,
+    "tags": [
+      "proximal humerus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ELBOW_WHOLE_JOINT",
+    "name": "Whole Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ELBOW",
+    "sort_order": 151,
+    "tags": [
+      "whole joint",
+      "elbow joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DISTAL_HUMERUS",
+    "name": "Distal Humerus",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ELBOW",
+    "sort_order": 152,
+    "tags": [
+      "distal humerus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PROXIMAL_ULNA",
+    "name": "Proximal Ulna",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ELBOW",
+    "sort_order": 153,
+    "tags": [
+      "proximal ulna"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_RADIAL_HEAD",
+    "name": "Radial Head",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ELBOW",
+    "sort_order": 154,
+    "tags": [
+      "radial head"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE_WHOLE_JOINT",
+    "name": "Whole Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE",
+    "sort_order": 301,
+    "tags": [
+      "whole joint",
+      "ankle joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE_DISTAL_TIBIA",
+    "name": "Distal Tibia",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE",
+    "sort_order": 302,
+    "tags": [
+      "distal tibia"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_TALUS",
+    "name": "Talus",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE",
+    "sort_order": 303,
+    "tags": [
+      "talus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_TIBIOTALAR_JOINT",
+    "name": "Tibiotalar Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE",
+    "sort_order": 305,
+    "tags": [
+      "tibiotalar joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WRIST_WHOLE_JOINT",
+    "name": "Whole Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WRIST",
+    "sort_order": 171,
+    "tags": [
+      "whole joint",
+      "wrist joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WRIST_DISTAL_RADIUS",
+    "name": "Distal Radius",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WRIST",
+    "sort_order": 172,
+    "tags": [
+      "distal radius"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_RADIOCARPAL_JOINT",
+    "name": "Radiocarpal Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WRIST",
+    "sort_order": 173,
+    "tags": [
+      "radiocarpal joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_CARPAL_BONES",
+    "name": "Carpal Bones",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WRIST",
+    "sort_order": 174,
+    "tags": [
+      "carpal bones"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_THUMB_CMC_JOINT",
+    "name": "Thumb CMC Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HAND",
+    "sort_order": 181,
+    "tags": [
+      "thumb cmc joint",
+      "thumb carpometacarpal joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_MCP_JOINTS",
+    "name": "Metacarpophalangeal (MCP) Joints",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HAND",
+    "sort_order": 182,
+    "tags": [
+      "mcp joints",
+      "metacarpophalangeal joints"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PIP_JOINTS",
+    "name": "Proximal Interphalangeal (PIP) Joints",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HAND",
+    "sort_order": 183,
+    "tags": [
+      "pip joints",
+      "proximal interphalangeal joints"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIP_JOINTS",
+    "name": "Distal Interphalangeal (DIP) Joints",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HAND",
+    "sort_order": 184,
+    "tags": [
+      "dip joints",
+      "distal interphalangeal joints"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FIRST_MTP_JOINT",
+    "name": "First Metatarsophalangeal (MTP) Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOOT",
+    "sort_order": 311,
+    "tags": [
+      "first metatarsophalangeal joint",
+      "first mtp joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LESSER_MTP_JOINTS",
+    "name": "Lesser Metatarsophalangeal Joints",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOOT",
+    "sort_order": 312,
+    "tags": [
+      "lesser metatarsophalangeal joints",
+      "lesser mtp joints"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_INTERPHALANGEAL_JOINTS",
+    "name": "Interphalangeal Joints",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOOT",
+    "sort_order": 313,
+    "tags": [
+      "interphalangeal joints"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SUBTALAR_JOINT",
+    "name": "Subtalar Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOOT",
+    "sort_order": 314,
+    "tags": [
+      "subtalar joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_MIDFOOT_JOINTS",
+    "name": "Midfoot Joints",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOOT",
+    "sort_order": 315,
+    "tags": [
+      "midfoot joints"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DISTAL_FIBULA",
+    "name": "Distal Fibula",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE",
+    "sort_order": 307,
+    "tags": [
+      "distal fibula"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SYNDESMOSIS",
+    "name": "Syndesmosis",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE",
+    "sort_order": 308,
+    "tags": [
+      "syndesmosis"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_CALCANEUS",
+    "name": "Calcaneus",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HINDFOOT",
+    "sort_order": 321,
+    "tags": [
+      "calcaneus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HINDFOOT_TALUS",
+    "name": "Talus",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HINDFOOT",
+    "sort_order": 322,
+    "tags": [
+      "talus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SUBTALAR_JOINT_FOOT_ANKLE",
+    "name": "Subtalar Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HINDFOOT",
+    "sort_order": 323,
+    "tags": [
+      "subtalar joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_TALOCALCANEAL_JOINT",
+    "name": "Talocalcaneal Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HINDFOOT",
+    "sort_order": 324,
+    "tags": [
+      "talocalcaneal joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_NAVICULAR",
+    "name": "Navicular",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_MIDFOOT",
+    "sort_order": 341,
+    "tags": [
+      "navicular"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_CUBOID",
+    "name": "Cuboid",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_MIDFOOT",
+    "sort_order": 342,
+    "tags": [
+      "cuboid"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_MEDIAL_CUNEIFORM",
+    "name": "Medial Cuneiform",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_MIDFOOT",
+    "sort_order": 343,
+    "tags": [
+      "medial cuneiform"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_INTERMEDIATE_CUNEIFORM",
+    "name": "Intermediate Cuneiform",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_MIDFOOT",
+    "sort_order": 344,
+    "tags": [
+      "intermediate cuneiform"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LATERAL_CUNEIFORM",
+    "name": "Lateral Cuneiform",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_MIDFOOT",
+    "sort_order": 345,
+    "tags": [
+      "lateral cuneiform"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_TARSOMETATARSAL_LISFRANC_JOINT",
+    "name": "Tarsometatarsal (Lisfranc) Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_MIDFOOT",
+    "sort_order": 346,
+    "tags": [
+      "tarsometatarsal joint",
+      "lisfranc joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_METATARSALS",
+    "name": "Metatarsals",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOREFOOT",
+    "sort_order": 351,
+    "tags": [
+      "metatarsals"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOREFOOT_MTP_JOINTS",
+    "name": "Metatarsophalangeal (MTP) Joints",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOREFOOT",
+    "sort_order": 352,
+    "tags": [
+      "metatarsophalangeal joints",
+      "mtp joints"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SESAMOIDS",
+    "name": "Sesamoids",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOREFOOT",
+    "sort_order": 353,
+    "tags": [
+      "sesamoids"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS_TOES",
+    "name": "Digits / Toes",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 35,
+    "tags": [
+      "digits",
+      "toes"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PROXIMAL_PHALANX",
+    "name": "Proximal Phalanx",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS_TOES",
+    "sort_order": 361,
+    "tags": [
+      "proximal phalanx"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_MIDDLE_PHALANX",
+    "name": "Middle Phalanx",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS_TOES",
+    "sort_order": 362,
+    "tags": [
+      "middle phalanx"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DISTAL_PHALANX",
+    "name": "Distal Phalanx",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS_TOES",
+    "sort_order": 363,
+    "tags": [
+      "distal phalanx"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS_PIP_JOINT",
+    "name": "Proximal Interphalangeal (PIP) Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS_TOES",
+    "sort_order": 364,
+    "tags": [
+      "proximal interphalangeal joint",
+      "pip joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS_DIP_JOINT",
+    "name": "Distal Interphalangeal (DIP) Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS_TOES",
+    "sort_order": 365,
+    "tags": [
+      "distal interphalangeal joint",
+      "dip joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DISTAL_ULNA",
+    "name": "Distal Ulna",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WRIST",
+    "sort_order": 175,
+    "tags": [
+      "distal ulna"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DISTAL_RADIOULNAR_JOINT",
+    "name": "Distal Radioulnar Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WRIST",
+    "sort_order": 176,
+    "tags": [
+      "distal radioulnar joint",
+      "druj"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_METACARPALS",
+    "name": "Metacarpals",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HAND",
+    "sort_order": 185,
+    "tags": [
+      "metacarpals"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_CMC_JOINTS",
+    "name": "Carpometacarpal (CMC) Joints",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HAND",
+    "sort_order": 186,
+    "tags": [
+      "carpometacarpal joints",
+      "cmc joints"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_INTRINSIC_HAND_REGION",
+    "name": "Intrinsic Hand Region",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HAND",
+    "sort_order": 187,
+    "tags": [
+      "intrinsic hand region"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_THUMB",
+    "name": "Thumb",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS",
+    "sort_order": 191,
+    "tags": [
+      "thumb"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_INDEX_FINGER",
+    "name": "Index Finger",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS",
+    "sort_order": 192,
+    "tags": [
+      "index finger"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_MIDDLE_FINGER",
+    "name": "Middle Finger",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS",
+    "sort_order": 193,
+    "tags": [
+      "middle finger"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_RING_FINGER",
+    "name": "Ring Finger",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS",
+    "sort_order": 194,
+    "tags": [
+      "ring finger"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LITTLE_FINGER",
+    "name": "Little Finger",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DIGITS",
+    "sort_order": 195,
+    "tags": [
+      "little finger"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_RADIUS",
+    "name": "Radius",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOREARM",
+    "sort_order": 161,
+    "tags": [
+      "radius"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ULNA",
+    "name": "Ulna",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOREARM",
+    "sort_order": 162,
+    "tags": [
+      "ulna"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_INTEROSSEOUS_MEMBRANE",
+    "name": "Interosseous Membrane",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOREARM",
+    "sort_order": 163,
+    "tags": [
+      "interosseous membrane"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ACETABULAR_LABRUM",
+    "name": "Acetabular Labrum",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "sort_order": 245,
+    "tags": [
+      "acetabular labrum",
+      "labrum"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP_CAPSULE",
+    "name": "Hip Capsule",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "sort_order": 246,
+    "tags": [
+      "hip capsule"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FEMORAL_SHAFT",
+    "name": "Femoral Shaft",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FEMUR",
+    "sort_order": 251,
+    "tags": [
+      "femoral shaft"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_TIBIAL_SHAFT",
+    "name": "Tibial Shaft",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_TIBIA",
+    "sort_order": 281,
+    "tags": [
+      "tibial shaft",
+      "shaft"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PROXIMAL_FIBULA",
+    "name": "Proximal Fibula",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FIBULA",
+    "sort_order": 291,
+    "tags": [
+      "proximal fibula"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FIBULAR_SHAFT",
+    "name": "Fibular Shaft",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FIBULA",
+    "sort_order": 292,
+    "tags": [
+      "fibular shaft"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WHOLE_LIMB",
+    "name": "Whole Limb",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 36,
+    "tags": [
+      "whole limb"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WHOLE_LIMB_LOWER_LIMB",
+    "name": "Lower Limb",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WHOLE_LIMB",
+    "sort_order": 361,
+    "tags": [
+      "lower limb"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WHOLE_LIMB_UPPER_LIMB",
+    "name": "Upper Limb",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_WHOLE_LIMB",
+    "sort_order": 362,
+    "tags": [
+      "upper limb"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LONG_BONES",
+    "name": "Long Bones",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 37,
+    "tags": [
+      "long bones"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LONG_BONES_FEMUR",
+    "name": "Femur",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LONG_BONES",
+    "sort_order": 371,
+    "tags": [
+      "femur"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LONG_BONES_TIBIA",
+    "name": "Tibia",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LONG_BONES",
+    "sort_order": 372,
+    "tags": [
+      "tibia"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LONG_BONES_HUMERUS",
+    "name": "Humerus",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LONG_BONES",
+    "sort_order": 373,
+    "tags": [
+      "humerus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FEMORAL_SIDE",
+    "name": "Femoral Side",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "sort_order": 247,
+    "tags": [
+      "femoral side"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE_FEMORAL_SIDE",
+    "name": "Femoral Side",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "sort_order": 268,
+    "tags": [
+      "femoral side"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_TIBIAL_SIDE",
+    "name": "Tibial Side",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "sort_order": 269,
+    "tags": [
+      "tibial side"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HUMERAL_SIDE",
+    "name": "Humeral Side",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "sort_order": 115,
+    "tags": [
+      "humeral side"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SURGICAL_SITE",
+    "name": "Surgical Site",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SOFT_TISSUE",
+    "sort_order": 601,
+    "tags": [
+      "surgical site"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_DEEP_INFECTION",
+    "name": "Deep Infection",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SOFT_TISSUE",
+    "sort_order": 602,
+    "tags": [
+      "deep infection"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HUMERAL_SHAFT",
+    "name": "Humeral Shaft",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HUMERUS",
+    "sort_order": 141,
+    "tags": [
+      "humeral shaft"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ILIUM",
+    "name": "Ilium",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PELVIS",
+    "sort_order": 221,
+    "tags": [
+      "ilium"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ISCHIUM",
+    "name": "Ischium",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PELVIS",
+    "sort_order": 222,
+    "tags": [
+      "ischium"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PUBIS",
+    "name": "Pubis",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PELVIS",
+    "sort_order": 223,
+    "tags": [
+      "pubis"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_INTERTROCHANTERIC_REGION",
+    "name": "Intertrochanteric Region",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "sort_order": 248,
+    "tags": [
+      "intertrochanteric region"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_OLECRANON",
+    "name": "Olecranon",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ELBOW",
+    "sort_order": 155,
+    "tags": [
+      "olecranon"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_TIBIAL_PLATEAU",
+    "name": "Tibial Plateau",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "sort_order": 270,
+    "tags": [
+      "tibial plateau"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOOT_AND_ANKLE",
+    "name": "Foot & Ankle",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": null,
+    "sort_order": 38,
+    "tags": [
+      "foot and ankle"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE_JOINT",
+    "name": "Ankle Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FOOT_AND_ANKLE",
+    "sort_order": 381,
+    "tags": [
+      "ankle joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ACETABULAR_SIDE",
+    "name": "Acetabular Side",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "sort_order": 249,
+    "tags": [
+      "acetabular side"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FEMORAL_COMPONENT",
+    "name": "Femoral Component",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "sort_order": 271,
+    "tags": [
+      "femoral component"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_TIBIAL_COMPONENT",
+    "name": "Tibial Component",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "sort_order": 272,
+    "tags": [
+      "tibial component"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_GLENOID_COMPONENT",
+    "name": "Glenoid Component",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "sort_order": 116,
+    "tags": [
+      "glenoid component"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HUMERAL_COMPONENT",
+    "name": "Humeral Component",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "sort_order": 117,
+    "tags": [
+      "humeral component"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ULNAR_COMPONENT",
+    "name": "Ulnar Component",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ELBOW",
+    "sort_order": 156,
+    "tags": [
+      "ulnar component"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ACROMION",
+    "name": "Acromion",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "sort_order": 118,
+    "tags": [
+      "acromion"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_CERVICAL",
+    "name": "Upper Cervical",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_CERVICAL_SPINE",
+    "sort_order": 411,
+    "tags": [
+      "upper cervical"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_CERVICAL",
+    "name": "Lower Cervical",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_CERVICAL_SPINE",
+    "sort_order": 412,
+    "tags": [
+      "lower cervical"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_THORACIC",
+    "name": "Upper Thoracic",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_THORACIC_SPINE",
+    "sort_order": 421,
+    "tags": [
+      "upper thoracic"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_THORACIC",
+    "name": "Lower Thoracic",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_THORACIC_SPINE",
+    "sort_order": 422,
+    "tags": [
+      "lower thoracic"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_UPPER_LUMBAR",
+    "name": "Upper Lumbar",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LUMBAR_SPINE",
+    "sort_order": 431,
+    "tags": [
+      "upper lumbar"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LOWER_LUMBAR",
+    "name": "Lower Lumbar",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LUMBAR_SPINE",
+    "sort_order": 432,
+    "tags": [
+      "lower lumbar"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SACROILIAC_JOINT",
+    "name": "Sacroiliac Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SACRUM",
+    "sort_order": 441,
+    "tags": [
+      "sacroiliac joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_COCCYX",
+    "name": "Coccyx",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SACRUM",
+    "sort_order": 442,
+    "tags": [
+      "coccyx"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ACL",
+    "name": "ACL",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "sort_order": 273,
+    "tags": [
+      "acl"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PCL",
+    "name": "PCL",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "sort_order": 274,
+    "tags": [
+      "pcl"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_MEDIAL_MENISCUS",
+    "name": "Medial Meniscus",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "sort_order": 275,
+    "tags": [
+      "medial meniscus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LATERAL_MENISCUS",
+    "name": "Lateral Meniscus",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+    "sort_order": 276,
+    "tags": [
+      "lateral meniscus"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ROTATOR_CUFF",
+    "name": "Rotator Cuff",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "sort_order": 119,
+    "tags": [
+      "rotator cuff"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ACROMIOCLAVICULAR_JOINT",
+    "name": "Acromioclavicular Joint",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+    "sort_order": 120,
+    "tags": [
+      "acromioclavicular joint",
+      "ac joint"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LABRUM",
+    "name": "Labrum",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "sort_order": 250,
+    "tags": [
+      "labrum"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FEMORAL_HEAD_NECK_JUNCTION",
+    "name": "Femoral Head-Neck Junction",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+    "sort_order": 251,
+    "tags": [
+      "femoral head-neck junction"
+    ]
+  },
+  {
+    "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_LATERAL_LIGAMENT_COMPLEX",
+    "name": "Lateral Ligament Complex",
+    "specialty_id": "SPEC_TRAUMA_ORTHOPAEDICS",
+    "parent_id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE",
+    "sort_order": 309,
+    "tags": [
+      "lateral ligament complex"
+    ]
   }
 ]
