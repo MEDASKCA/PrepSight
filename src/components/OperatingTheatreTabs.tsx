@@ -24,6 +24,14 @@ function formatSubspecialtyLabel(name: string): string {
   return name.endsWith(" Surgery") ? name.slice(0, -8) : name
 }
 
+function getServiceLineIconSrc(name: string): string {
+  return `/icons/service-line-icons/${name
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")}.svg`
+}
+
 function AnatomyOutline({ name, color }: { name: string; color: string }) {
   const key = name.toLowerCase()
 
@@ -308,7 +316,11 @@ export default function OperatingTheatreTabs({
         return (
           <div
             key={tab.name}
-            className="overflow-hidden rounded-xl border border-[#D5DCE3] bg-white shadow-sm lg:rounded-[36px] lg:border-[#14304B] lg:bg-[#08131F] lg:shadow-[0_30px_70px_rgba(15,23,42,0.26)]"
+            className={`operating-tabs-root overflow-hidden ${
+              specialtyFirst
+                ? "rounded-none border-0 bg-transparent shadow-none"
+                : "rounded-xl border border-[#D5DCE3] bg-white shadow-sm"
+            } lg:rounded-[36px] lg:border-[#14304B] lg:bg-[#08131F] lg:shadow-[0_30px_70px_rgba(15,23,42,0.26)]`}
           >
             {specialtyFirst ? null : (
               <button
@@ -334,7 +346,7 @@ export default function OperatingTheatreTabs({
             )}
 
             {isOpen && (
-              <div className="divide-y divide-[#E6EEF7] lg:divide-y-0 lg:bg-[#08131F] lg:p-6">
+              <div className={`${specialtyFirst ? "divide-y-0 bg-transparent" : "divide-y divide-[#E6EEF7]"} lg:divide-y-0 lg:bg-[#08131F] lg:p-6`}>
                 {specialtyFirst && (
                   <div className="hidden lg:block">
                     <div className="relative overflow-hidden rounded-[40px] bg-transparent px-12 py-3">
@@ -543,7 +555,7 @@ export default function OperatingTheatreTabs({
                   const anatomyNodes = getAnatomyForServiceLine(line.id)
 
                   return (
-                    <div key={line.id} className={`bg-white lg:bg-transparent ${specialtyFirst && !isSelectedLine ? "lg:hidden" : ""}`}>
+                    <div key={line.id} className={`ot-line-block ${specialtyFirst ? "bg-transparent" : "bg-white"} lg:bg-transparent ${specialtyFirst && !isSelectedLine ? "lg:hidden" : ""}`}>
                       {specialtyFirst ? (
                         <div className="hidden lg:block lg:-mt-20">
                           <div className="mb-4 flex items-end justify-between gap-6">
@@ -624,31 +636,57 @@ export default function OperatingTheatreTabs({
                         </div>
                       ) : null}
 
-                      <button
-                        type="button"
-                        onClick={() => toggleServiceLine(line.id)}
-                        className="flex w-full items-center gap-2 px-4 py-2.5 text-sm transition-colors lg:hidden"
-                        style={{
-                          backgroundColor: palette.soft,
-                          color: palette.softText,
-                          borderLeft: `4px solid ${palette.softBorder}`,
-                        }}
-                      >
-                        <span className="min-w-0 flex-1 text-left whitespace-normal break-words leading-snug font-medium">
-                          {formatSubspecialtyLabel(line.name)}
-                        </span>
+                      <div className={`${specialtyFirst ? "px-2.5 py-1.5" : ""} lg:hidden`}>
+                        <button
+                          type="button"
+                          onClick={() => toggleServiceLine(line.id)}
+                          className={`ot-service-line-bar flex w-full items-center gap-3 px-4 py-3 text-sm transition-colors ${
+                            specialtyFirst ? "rounded-[20px]" : ""
+                          }`}
+                          style={{
+                            backgroundColor: specialtyFirst ? "#FFFFFF" : palette.soft,
+                            color: specialtyFirst ? "#334155" : palette.softText,
+                            borderLeft: specialtyFirst ? undefined : `4px solid ${palette.softBorder}`,
+                            border: specialtyFirst ? "1px solid rgba(213,220,227,0.92)" : undefined,
+                            boxShadow: specialtyFirst
+                              ? "inset 0 1px 0 rgba(255,255,255,0.96), inset 0 -1px 0 rgba(15,23,42,0.06), 0 8px 18px rgba(15,23,42,0.08)"
+                              : undefined,
+                          }}
+                        >
+                          {specialtyFirst && (
+                            <div
+                              className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full"
+                              style={{
+                                background: `linear-gradient(180deg, ${palette.soft} 0%, ${palette.softBorder} 100%)`,
+                                boxShadow:
+                                  "inset 0 1px 0 rgba(255,255,255,0.82), inset 0 -1px 0 rgba(15,23,42,0.08), 0 4px 10px rgba(15,23,42,0.08)",
+                              }}
+                            >
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={getServiceLineIconSrc(line.name)}
+                                alt=""
+                                className="h-5 w-5 object-contain"
+                              />
+                            </div>
+                          )}
 
-                        {mobileOpen ? (
-                          <ChevronDown size={14} className="shrink-0" style={{ color: palette.softText }} />
-                        ) : (
-                          <ChevronRight size={14} className="shrink-0" style={{ color: palette.softText }} />
-                        )}
-                      </button>
+                          <span className="min-w-0 flex-1 text-left whitespace-normal break-words leading-snug font-medium">
+                            {formatSubspecialtyLabel(line.name)}
+                          </span>
+
+                          {mobileOpen ? (
+                            <ChevronDown size={14} className="shrink-0" style={{ color: palette.softText }} />
+                          ) : (
+                            <ChevronRight size={14} className="shrink-0" style={{ color: palette.softText }} />
+                          )}
+                        </button>
+                      </div>
 
                       {(specialtyFirst ? mobileOpen : isSelectedLine) && (
-                        <div className="border-t border-[#E6EEF7] bg-white lg:hidden">
+                        <div className={`ot-mobile-panel lg:hidden ${specialtyFirst ? "bg-transparent px-0 pb-1.5" : "border-t border-[#E6EEF7] bg-white"}`}>
                           {anatomyNodes.length > 0 ? (
-                            <div className="divide-y divide-[#DCEAF8]">
+                            <div className={`ot-anatomy-list ${specialtyFirst ? "divide-y divide-[#DCEAF8]" : "divide-y divide-[#DCEAF8]"}`}>
                               {anatomyNodes.map((node) => {
                                 const isActiveAnatomy = currentAnatomy === node.id
 
@@ -661,7 +699,7 @@ export default function OperatingTheatreTabs({
                                       service_line: line.id,
                                       anatomy: node.id,
                                     })}
-                                    className={`flex w-full items-center gap-2 px-6 py-2.5 text-sm transition-colors ${
+                                    className={`ot-anatomy-row flex w-full items-center gap-2 px-6 py-3 text-sm transition-colors ${
                                       isActiveAnatomy
                                         ? "bg-[#E7F2FF] font-semibold text-[#1E3A5F]"
                                         : "text-[#334155] hover:bg-[#F8FBFF]"
@@ -682,7 +720,7 @@ export default function OperatingTheatreTabs({
                               })}
                             </div>
                           ) : (
-                            <p className="px-6 py-3 text-sm text-[#94a3b8]">
+                            <p className={`ot-empty-state ${specialtyFirst ? "px-6 py-3" : "px-6 py-3"} text-sm text-[#94a3b8]`}>
                               No anatomy nodes mapped for this subspecialty yet.
                             </p>
                           )}

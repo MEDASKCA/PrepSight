@@ -40,6 +40,7 @@ export default function ItemRow({
   onDelete,
   allowEdit = true,
 }: Props) {
+  const [isDark, setIsDark] = useState(false)
   const [showInfo, setShowInfo]             = useState(false)
   const [localImage, setLocalImage]         = useState<string | null>(item.imageUrl ?? null)
   const [pendingImage, setPendingImage]     = useState<string | null>(null)
@@ -56,6 +57,15 @@ export default function ItemRow({
       if (snap.exists()) setLocalImage(snap.data().url as string)
     }).catch(() => {})
   }, [item.id, item.imageUrl])
+
+  useEffect(() => {
+    const syncTheme = () => setIsDark(document.documentElement.dataset.theme === "dark")
+    syncTheme()
+    window.addEventListener("prepsight:preferences-changed", syncTheme as EventListener)
+    return () => {
+      window.removeEventListener("prepsight:preferences-changed", syncTheme as EventListener)
+    }
+  }, [])
 
   const [showNotes, setShowNotes]                   = useState(false)
   const [instruction, setInstruction]               = useState("")
@@ -205,14 +215,14 @@ export default function ItemRow({
   return (
     <>
       {/* ── Compact row ─────────────────────────────────────────────── */}
-      <div className={`flex items-center gap-2 border-b border-[#D5DCE3] py-2.5 ${editMode ? "bg-[#fff8f5]" : ""}`}>
+      <div className={`item-row flex items-center gap-2 border-b py-2.5 ${isDark ? "border-[#334155] bg-[#111E30]" : "border-[#D5DCE3]"} ${editMode ? (isDark ? "bg-[#1A2433]" : "bg-[#fff8f5]") : ""}`}>
 
         {editMode ? (
           /* ── Edit mode — clean row with action icons ──────────────── */
           <>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 min-w-0">
-                <p className="text-sm font-semibold text-[#3F4752] truncate">{localName}</p>
+                <p className={`text-sm font-semibold truncate ${isDark ? "text-white" : "text-[#3F4752]"}`}>{localName}</p>
                 {!allowEdit && (
                   <span className="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-600">
                     Fixed
@@ -220,21 +230,21 @@ export default function ItemRow({
                 )}
               </div>
               {localProduct && (
-                <p className="text-xs text-[#94a3b8] truncate leading-snug mt-0.5">{localProduct}</p>
+                <p className={`mt-0.5 truncate text-xs leading-snug ${isDark ? "text-[#C7D2E0]" : "text-[#94a3b8]"}`}>{localProduct}</p>
               )}
             </div>
             <div className="flex items-center gap-2 shrink-0">
               <div className="w-14 text-center">
                 {localLocation
                   ? localLocation.split("/").map((part, i) => (
-                      <span key={i} className="text-[10px] text-[#64748b] leading-tight block">
+                      <span key={i} className={`block text-[10px] leading-tight ${isDark ? "text-[#C7D2E0]" : "text-[#64748b]"}`}>
                         {part.trim()}
                       </span>
                     ))
-                  : <span className="text-[10px] text-[#D5DCE3]">-</span>
+                  : <span className={`text-[10px] ${isDark ? "text-[#64748B]" : "text-[#D5DCE3]"}`}>-</span>
                 }
               </div>
-              <div className="w-10 text-center text-sm font-medium text-[#3F4752]">
+              <div className={`w-10 text-center text-sm font-medium ${isDark ? "text-white" : "text-[#3F4752]"}`}>
                 {localQty || "-"}
               </div>
               {allowEdit && (
@@ -264,7 +274,7 @@ export default function ItemRow({
               <div className="flex items-center gap-1.5 min-w-0">
                 <button
                   onClick={() => setShowInfo(true)}
-                  className="text-sm font-semibold text-[#2F8EF7] underline underline-offset-2 truncate text-left leading-snug min-w-0"
+                  className={`min-w-0 truncate text-left text-sm font-semibold leading-snug underline underline-offset-2 ${isDark ? "text-white" : "text-[#2F8EF7]"}`}
                 >
                   {localName}
                 </button>
@@ -273,8 +283,8 @@ export default function ItemRow({
                   className={[
                     "shrink-0 w-4 h-4 rounded-full border flex items-center justify-center text-[9px] font-bold leading-none transition-colors",
                     hasNotes
-                      ? "border-[#2F8EF7] text-[#2F8EF7]"
-                      : "border-[#94a3b8] text-[#94a3b8] hover:border-[#2F8EF7] hover:text-[#2F8EF7]",
+                      ? isDark ? "border-[#7DD3FC] text-[#7DD3FC]" : "border-[#2F8EF7] text-[#2F8EF7]"
+                      : isDark ? "border-[#64748B] text-[#C7D2E0] hover:border-[#7DD3FC] hover:text-[#7DD3FC]" : "border-[#94a3b8] text-[#94a3b8] hover:border-[#2F8EF7] hover:text-[#2F8EF7]",
                   ].join(" ")}
                   aria-label="Notes and comments"
                 >
@@ -282,7 +292,7 @@ export default function ItemRow({
                 </button>
               </div>
               {localProduct && (
-                <p className="text-xs text-[#94a3b8] truncate leading-snug mt-0.5">
+                <p className={`mt-0.5 truncate text-xs leading-snug ${isDark ? "text-[#C7D2E0]" : "text-[#94a3b8]"}`}>
                   {localProduct}
                 </p>
               )}
@@ -292,14 +302,14 @@ export default function ItemRow({
               <div className="w-14 text-center">
                 {localLocation
                   ? localLocation.split("/").map((part, i) => (
-                      <span key={i} className="text-[10px] text-[#64748b] leading-tight block">
+                      <span key={i} className={`block text-[10px] leading-tight ${isDark ? "text-[#C7D2E0]" : "text-[#64748b]"}`}>
                         {part.trim()}
                       </span>
                     ))
-                  : <span className="text-[10px] text-[#D5DCE3]">-</span>
+                  : <span className={`text-[10px] ${isDark ? "text-[#64748B]" : "text-[#D5DCE3]"}`}>-</span>
                 }
               </div>
-              <div className="w-10 text-center text-sm font-medium text-[#3F4752]">
+              <div className={`w-10 text-center text-sm font-medium ${isDark ? "text-white" : "text-[#3F4752]"}`}>
                 {localQty || "-"}
               </div>
             </div>

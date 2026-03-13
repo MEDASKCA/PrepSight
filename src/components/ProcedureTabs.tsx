@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
   getCuratedVariantsForProcedureWithSystems,
@@ -73,51 +73,59 @@ function SystemRow({
   procedureId,
   variantId,
   isSelected,
+  isDark,
 }: {
   system: SystemWithSupplier;
   procedureId: string;
   variantId: string;
   isSelected: boolean;
+  isDark: boolean;
 }) {
+  const rowClassName = isDark
+    ? `procedure-system-row flex w-full items-center justify-between gap-3 border-t px-5 py-4 text-left transition lg:px-6 lg:py-5 ${
+        isSelected ? "bg-[#334155]" : "bg-[#243244] hover:bg-[#2B3B50]"
+      } border-[#334155]`
+    : [
+        "procedure-system-row flex w-full items-center justify-between gap-3 border-t border-[#D5DCE3] px-5 py-4 text-left transition lg:border-[#D8E3EE] lg:px-6 lg:py-5",
+        isSelected ? "bg-[#E1F3F0] lg:bg-[#EEF7FF]" : "bg-white hover:bg-[#F4FBFA] lg:bg-white lg:hover:bg-[#F7FBFF]",
+      ].join(" ");
+
   return (
     <Link
       href={`/procedures/${procedureId}?variant=${encodeURIComponent(variantId)}&system=${encodeURIComponent(system.id)}`}
-      className={[
-        "flex w-full items-center justify-between gap-3 border-t border-[#D5DCE3] px-5 py-4 text-left transition lg:border-[#D8E3EE] lg:px-6 lg:py-5",
-        isSelected ? "bg-[#E1F3F0] lg:bg-[#EEF7FF]" : "bg-white hover:bg-[#F4FBFA] lg:bg-white lg:hover:bg-[#F7FBFF]",
-      ].join(" ")}
+      className={rowClassName}
     >
       <div className="min-w-0">
-        <div className="text-sm font-medium text-slate-900 lg:text-[22px] lg:font-semibold lg:tracking-[-0.03em] lg:text-[#10243E]">
+        <div className={`text-sm font-medium lg:text-[22px] lg:font-semibold lg:tracking-[-0.03em] ${isDark ? "text-white" : "text-slate-900 lg:text-[#10243E]"}`}>
           {system.name}
         </div>
         {(formatSystemMeta(system).type || formatSystemMeta(system).supplier) && (
           <div className="mt-1 space-y-0.5">
             {formatSystemMeta(system).type && (
-              <div className="text-xs font-semibold uppercase tracking-[0.08em] text-slate-600 lg:text-[12px] lg:text-[#51677E]">
+              <div className={`text-xs font-semibold uppercase tracking-[0.08em] lg:text-[12px] ${isDark ? "text-[#C7D2E0]" : "text-slate-600 lg:text-[#51677E]"}`}>
                 {formatSystemMeta(system).type}
               </div>
             )}
             {formatSystemMeta(system).supplier && (
-              <div className="text-xs text-slate-500 lg:text-sm lg:text-[#61758B]">
+              <div className={`text-xs lg:text-sm ${isDark ? "text-[#C7D2E0]" : "text-slate-500 lg:text-[#61758B]"}`}>
                 {formatSystemMeta(system).supplier}
               </div>
             )}
           </div>
         )}
         {system.description && (
-          <div className="mt-1 line-clamp-2 text-xs text-slate-500 lg:text-sm lg:leading-6 lg:text-[#61758B]">
+          <div className={`mt-1 line-clamp-2 text-xs lg:text-sm lg:leading-6 ${isDark ? "text-[#C7D2E0]" : "text-slate-500 lg:text-[#61758B]"}`}>
             {system.description}
           </div>
         )}
       </div>
       <div className="flex shrink-0 items-center gap-2">
         {system.is_default && (
-          <span className="rounded-full bg-[#E1F3F0] px-2 py-0.5 text-[11px] font-medium text-[#134E4A] lg:border lg:border-[#D6E6F5] lg:bg-[#F3FAF9] lg:px-3 lg:py-1 lg:text-[#134E4A]">
+          <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium lg:border lg:px-3 lg:py-1 ${isDark ? "border-[#334155] bg-[#132238] text-[#E5EEF9]" : "bg-[#E1F3F0] text-[#134E4A] lg:border-[#D6E6F5] lg:bg-[#F3FAF9] lg:text-[#134E4A]"}`}>
             Default
           </span>
         )}
-        <Chevron expanded={false} className="text-[#7BA9A3] lg:text-[#8AA2BA]" />
+        <Chevron expanded={false} className={isDark ? "text-[#C7D2E0]" : "text-[#7BA9A3] lg:text-[#8AA2BA]"} />
       </div>
     </Link>
   );
@@ -131,6 +139,7 @@ function VariantSection({
   onToggle,
   isFirst,
   palette,
+  isDark,
 }: {
   procedureId: string;
   variant: VariantWithSystems;
@@ -139,17 +148,18 @@ function VariantSection({
   onToggle: () => void;
   isFirst: boolean;
   palette: Palette;
+  isDark: boolean;
 }) {
   return (
-    <div className={isFirst ? "" : "border-t border-[#D5DCE3] lg:border-white/10"}>
+    <div className={isFirst ? "" : "procedure-variant-divider border-t border-[#D5DCE3] lg:border-white/10"}>
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left transition lg:hidden"
+        className="procedure-variant-bar flex w-full items-center justify-between gap-3 px-5 py-4 text-left transition lg:hidden"
         style={{
-          backgroundColor: palette.soft,
-          color: palette.softText,
-          borderLeft: `4px solid ${palette.softBorder}`,
+          backgroundColor: isDark ? "#243244" : palette.soft,
+          color: isDark ? "#E5EEF9" : palette.softText,
+          borderLeft: `4px solid ${isDark ? "#334155" : palette.softBorder}`,
         }}
       >
         <div className="min-w-0">
@@ -167,7 +177,7 @@ function VariantSection({
         </div>
       </button>
 
-      <div className="hidden lg:block lg:px-6 lg:py-5" style={{ backgroundColor: palette.soft, color: palette.softText }}>
+      <div className="procedure-variant-bar hidden lg:block lg:px-6 lg:py-5" style={{ backgroundColor: isDark ? "#243244" : palette.soft, color: isDark ? "#E5EEF9" : palette.softText }}>
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] opacity-60">
@@ -182,14 +192,14 @@ function VariantSection({
               </p>
             )}
           </div>
-          <span className="rounded-full border border-black/10 bg-white/55 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em]">
+          <span className={`rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] ${isDark ? "border border-[#334155] bg-[#132238] text-[#E5EEF9]" : "border border-black/10 bg-white/55"}`}>
             {variant.systems.length} systems
           </span>
         </div>
       </div>
 
       {expanded && (
-        <div className="bg-white lg:hidden">
+        <div className={`procedure-variant-content lg:hidden ${isDark ? "bg-[#243244]" : "bg-white"}`}>
           {variant.systems.length > 0 ? (
             variant.systems.map((system) => (
               <SystemRow
@@ -198,10 +208,11 @@ function VariantSection({
                 procedureId={procedureId}
                 variantId={variant.id}
                 isSelected={selectedSystemId === system.id}
+                isDark={isDark}
               />
             ))
           ) : (
-            <div className="border-t border-[#D5DCE3] bg-white px-5 py-4 text-sm text-slate-500 lg:border-white/10 lg:bg-transparent lg:text-white/56">
+            <div className={`procedure-empty-row border-t px-5 py-4 text-sm ${isDark ? "border-[#334155] bg-[#243244] text-[#C7D2E0]" : "border-[#D5DCE3] bg-white text-slate-500 lg:border-white/10 lg:bg-transparent lg:text-white/56"}`}>
               No systems linked yet for this variant.
             </div>
           )}
@@ -217,10 +228,11 @@ function VariantSection({
               procedureId={procedureId}
               variantId={variant.id}
               isSelected={selectedSystemId === system.id}
+              isDark={isDark}
             />
           ))
         ) : (
-          <div className="border-t border-[#D5DCE3] bg-white px-5 py-4 text-sm text-slate-500 lg:border-[#D8E3EE] lg:bg-white lg:text-[#61758B]">
+          <div className={`procedure-empty-row border-t px-5 py-4 text-sm ${isDark ? "border-[#334155] bg-[#243244] text-[#C7D2E0]" : "border-[#D5DCE3] bg-white text-slate-500 lg:border-[#D8E3EE] lg:bg-white lg:text-[#61758B]"}`}>
             No systems linked yet for this variant.
           </div>
         )}
@@ -233,6 +245,7 @@ function DesktopProcedureMatrix({
   proceduresWithVariants,
   selectedSystemId,
   palette,
+  isDark,
 }: {
   proceduresWithVariants: Array<{
     procedure: ProcedureListItem;
@@ -241,6 +254,7 @@ function DesktopProcedureMatrix({
   }>;
   selectedSystemId?: string;
   palette: Palette;
+  isDark: boolean;
 }) {
   const [collapsedCards, setCollapsedCards] = useState<Record<string, boolean>>({});
 
@@ -294,12 +308,12 @@ function DesktopProcedureMatrix({
                       return (
                         <div
                           key={`${procedure.id}-${approach.id}`}
-                          className={`relative overflow-hidden rounded-[24px] border bg-white shadow-[0_8px_18px_rgba(15,23,42,0.04)] ${
+                          className={`procedure-approach-card relative overflow-hidden rounded-[24px] border shadow-[0_8px_18px_rgba(15,23,42,0.04)] ${
                             isCollapsed ? "min-h-[220px]" : ""
-                          }`}
+                          } ${isDark ? "bg-[#243244] border-[#334155]" : "bg-white"}`}
                           style={{
-                            borderColor: `${palette.softBorder}55`,
-                            backgroundColor: "transparent",
+                            borderColor: isDark ? "#334155" : `${palette.softBorder}55`,
+                            backgroundColor: isDark ? "#243244" : "transparent",
                           }}
                         >
                           <button
@@ -313,10 +327,10 @@ function DesktopProcedureMatrix({
                             className="w-full text-left transition-[filter] duration-200 hover:brightness-[0.98]"
                           >
                             <div
-                              className={`px-4 ${isCollapsed ? 'flex min-h-[220px] items-center py-8' : 'py-3 border-b'}`}
+                              className={`procedure-approach-bar px-4 ${isCollapsed ? "flex min-h-[220px] items-center py-8" : "border-b py-3"}`}
                               style={{
-                                borderColor: `${palette.softBorder}55`,
-                                backgroundColor: `${palette.soft}`,
+                                borderColor: isDark ? "#334155" : `${palette.softBorder}55`,
+                                backgroundColor: isDark ? "#243244" : `${palette.soft}`,
                               }}
                             >
                               <div className="flex w-full flex-col items-center justify-center gap-3 text-center">
@@ -327,11 +341,11 @@ function DesktopProcedureMatrix({
                                   >
                                     Approach
                                   </p>
-                                  <p className="mt-1.5 text-[25px] font-semibold tracking-[-0.03em] text-[#10243E]">
+                                  <p className={`mt-1.5 text-[25px] font-semibold tracking-[-0.03em] ${isDark ? "text-white" : "text-[#10243E]"}`}>
                                     {approach.name}
                                   </p>
                                   {approach.description && !isCollapsed && (
-                                    <p className="mt-2 max-w-xl text-[14px] leading-6 text-[#61758B]">
+                                    <p className={`mt-2 max-w-xl text-[14px] leading-6 ${isDark ? "text-[#C7D2E0]" : "text-[#61758B]"}`}>
                                       {approach.description}
                                     </p>
                                   )}
@@ -342,17 +356,17 @@ function DesktopProcedureMatrix({
                                 >
                                   {approach.systems.length} system options
                                 </span>
-                                <Chevron expanded={!isCollapsed} className="text-[#46607A]" />
+                                <Chevron expanded={!isCollapsed} className={isDark ? "text-[#C7D2E0]" : "text-[#46607A]"} />
                               </div>
                             </div>
                           </button>
 
                           {!isCollapsed && (
                             <div
-                              className="border-t p-3"
+                              className="procedure-approach-content border-t p-3"
                               style={{
-                                backgroundColor: `${palette.soft}`,
-                                borderColor: `${palette.softBorder}55`,
+                                backgroundColor: isDark ? "#243244" : `${palette.soft}`,
+                                borderColor: isDark ? "#334155" : `${palette.softBorder}55`,
                               }}
                             >
                               {approach.systems.length > 0 ? (
@@ -362,20 +376,22 @@ function DesktopProcedureMatrix({
                                       key={`${procedure.id}-${approach.id}-${system.id}`}
                                       href={`/procedures/${procedure.id}?variant=${encodeURIComponent(approach.id)}&system=${encodeURIComponent(system.id)}`}
                                       className={[
-                                        'block rounded-[16px] border px-3 py-3 transition',
+                                        "block rounded-[16px] border px-3 py-3 transition",
                                         selectedSystemId === system.id
-                                          ? 'shadow-[0_10px_24px_rgba(15,23,42,0.10)]'
-                                          : 'hover:bg-white/90',
-                                      ].join(' ')}
+                                          ? "shadow-[0_10px_24px_rgba(15,23,42,0.10)]"
+                                          : isDark
+                                            ? "hover:bg-[#2B3B50]"
+                                            : "hover:bg-white/90",
+                                      ].join(" ")}
                                       style={
                                         selectedSystemId === system.id
                                           ? {
-                                              borderColor: `${palette.header}66`,
-                                              backgroundColor: palette.header,
+                                              borderColor: isDark ? "#475569" : `${palette.header}66`,
+                                              backgroundColor: isDark ? "#334155" : palette.header,
                                             }
                                           : {
-                                              borderColor: `${palette.header}33`,
-                                              backgroundColor: palette.hover,
+                                              borderColor: isDark ? "#334155" : `${palette.header}33`,
+                                              backgroundColor: isDark ? "#243244" : palette.hover,
                                             }
                                       }
                                     >
@@ -404,8 +420,8 @@ function DesktopProcedureMatrix({
                                 </div>
                               ) : (
                                 <div
-                                  className="rounded-[16px] border border-dashed bg-[#FAFCFE] px-3 py-4 text-[17px]"
-                                  style={{ borderColor: `${palette.softBorder}66`, color: palette.softText }}
+                                  className={`procedure-empty-row rounded-[16px] border border-dashed px-3 py-4 text-[17px] ${isDark ? "bg-[#243244]" : "bg-[#FAFCFE]"}`}
+                                  style={{ borderColor: isDark ? "#334155" : `${palette.softBorder}66`, color: isDark ? "#C7D2E0" : palette.softText }}
                                 >
                                   No systems
                                 </div>
@@ -436,18 +452,20 @@ function ProcedureSection({
   suppressBranching,
   selectedSystemId,
   palette,
+  isDark,
 }: {
   procedure: ProcedureListItem;
   variants: VariantWithSystems[];
   suppressBranching: boolean;
   selectedSystemId?: string;
   palette: Palette;
+  isDark: boolean;
 }) {
   const [openVariantId, setOpenVariantId] = useState<string | null>(null);
   const [desktopExpanded, setDesktopExpanded] = useState(false);
 
   return (
-    <div className="overflow-hidden rounded-xl border border-[#D5DCE3] bg-white shadow-sm lg:inline-block lg:w-full lg:break-inside-avoid lg:rounded-[28px] lg:border-[#D8E3EE] lg:bg-white lg:shadow-[0_18px_42px_rgba(15,23,42,0.08)]">
+    <div className={`procedure-section-card overflow-hidden rounded-xl border shadow-sm lg:inline-block lg:w-full lg:break-inside-avoid lg:rounded-[28px] lg:shadow-[0_18px_42px_rgba(15,23,42,0.08)] ${isDark ? "border-[#334155] bg-[#243244] lg:bg-[#243244]" : "border-[#D5DCE3] bg-white lg:border-[#D8E3EE] lg:bg-white"}`}>
       <button
         type="button"
         onClick={() => setDesktopExpanded((current) => !current)}
@@ -501,7 +519,7 @@ function ProcedureSection({
 
       {!suppressBranching && (
         <>
-          <div className="bg-white lg:hidden">
+          <div className={`procedure-variant-content lg:hidden ${isDark ? "bg-[#243244]" : "bg-white"}`}>
             {variants.length > 0 ? (
               variants.map((variant, index) => (
                 <VariantSection
@@ -512,19 +530,20 @@ function ProcedureSection({
                   selectedSystemId={selectedSystemId}
                   isFirst={index === 0}
                   palette={palette}
+                  isDark={isDark}
                   onToggle={() =>
                     setOpenVariantId((current) => (current === variant.id ? null : variant.id))
                   }
                 />
               ))
             ) : (
-              <div className="border-t border-[#D5DCE3] bg-white px-5 py-4 text-sm text-slate-500">
+              <div className={`procedure-empty-row border-t px-5 py-4 text-sm ${isDark ? "border-[#334155] bg-[#243244] text-[#C7D2E0]" : "border-[#D5DCE3] bg-white text-slate-500"}`}>
                 No clinically reliable branching available yet.
               </div>
             )}
           </div>
 
-          <div className={`hidden lg:block lg:bg-white ${desktopExpanded ? "" : "lg:hidden"}`}>
+          <div className={`procedure-variant-content hidden lg:block ${isDark ? "lg:bg-[#243244]" : "lg:bg-white"} ${desktopExpanded ? "" : "lg:hidden"}`}>
             {variants.length > 0 ? (
               <div
                 className="grid gap-0"
@@ -542,6 +561,7 @@ function ProcedureSection({
                       selectedSystemId={selectedSystemId}
                       isFirst
                       palette={palette}
+                      isDark={isDark}
                       onToggle={() => {
                         setOpenVariantId((current) => (current === variant.id ? null : variant.id));
                       }}
@@ -550,7 +570,7 @@ function ProcedureSection({
                 ))}
               </div>
             ) : (
-              <div className="border-t border-[#E4EDF6] bg-white px-5 py-4 text-sm text-[#61758B]">
+              <div className={`procedure-empty-row border-t px-5 py-4 text-sm ${isDark ? "border-[#334155] bg-[#243244] text-[#C7D2E0]" : "border-[#E4EDF6] bg-white text-[#61758B]"}`}>
                 No clinically reliable branching available yet.
               </div>
             )}
@@ -572,6 +592,23 @@ export default function ProcedureTabs({
     softText: "#134E4A",
   },
 }: ProcedureTabsProps) {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const syncTheme = () => {
+      setIsDark(document.documentElement.dataset.theme === "dark");
+    };
+
+    syncTheme();
+    window.addEventListener("storage", syncTheme);
+    window.addEventListener("prepsight:preferences-changed", syncTheme as EventListener);
+
+    return () => {
+      window.removeEventListener("storage", syncTheme);
+      window.removeEventListener("prepsight:preferences-changed", syncTheme as EventListener);
+    };
+  }, []);
+
   const proceduresWithVariants = useMemo(() => {
     return procedures
       .filter((procedure) => procedure.status !== "inactive")
@@ -583,7 +620,7 @@ export default function ProcedureTabs({
   }, [procedures]);
   if (!proceduresWithVariants.length) {
     return (
-      <div className="rounded-xl border border-dashed border-slate-300 bg-white px-5 py-6 text-sm text-slate-500 lg:rounded-[28px] lg:border-[#D8E3EE] lg:bg-white lg:px-7 lg:py-7 lg:text-[#61758B]">
+      <div className={`procedure-empty-row rounded-xl border border-dashed px-5 py-6 text-sm lg:rounded-[28px] lg:px-7 lg:py-7 ${isDark ? "border-[#334155] bg-[#243244] text-[#C7D2E0]" : "border-slate-300 bg-white text-slate-500 lg:border-[#D8E3EE] lg:bg-white lg:text-[#61758B]"}`}>
         No procedures found for this anatomy.
       </div>
     );
@@ -600,6 +637,7 @@ export default function ProcedureTabs({
             suppressBranching={suppressBranching}
             selectedSystemId={selectedSystemId}
             palette={palette}
+            isDark={isDark}
           />
         ))}
       </div>
@@ -608,6 +646,7 @@ export default function ProcedureTabs({
         proceduresWithVariants={proceduresWithVariants}
         selectedSystemId={selectedSystemId}
         palette={palette}
+        isDark={isDark}
       />
 
     </>

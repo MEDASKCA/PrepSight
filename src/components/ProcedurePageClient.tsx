@@ -109,26 +109,25 @@ export default function ProcedurePageClient({
   }
 
   return (
-    <div className="min-h-screen bg-[#F4F7FA] lg:bg-[#06111D]">
-      <div className="hidden lg:block lg:fixed lg:inset-0 lg:pointer-events-none lg:bg-[radial-gradient(circle_at_top_left,_rgba(77,163,255,0.14),_transparent_24%),radial-gradient(circle_at_88%_14%,_rgba(20,184,166,0.1),_transparent_18%),linear-gradient(145deg,#06111D_0%,#091725_48%,#0B2134_100%)]" />
-      <header className="sticky top-0 z-30 border-b border-white/10 bg-[#00B4D8] lg:bg-[#08131F]/88 lg:backdrop-blur-2xl">
+    <div className="app-shell-bg min-h-screen">
+      <header className="app-header-bg sticky top-0 z-30 border-b app-card-border lg:backdrop-blur-2xl">
         <div className="mx-auto flex max-w-4xl items-start gap-3 px-4 pb-2.5 pt-[calc(env(safe-area-inset-top,0px)+8px)] lg:max-w-none lg:px-12 lg:py-6">
           <HistoryBackButton
             fallbackHref="/"
-            className="mt-0.5 shrink-0 text-[#10243E]/70 transition-colors hover:text-[#10243E] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[20px] lg:border lg:border-white/10 lg:bg-white/6 lg:text-white/60 lg:hover:text-white"
+            className="app-header-muted mt-0.5 shrink-0 transition-colors hover:opacity-80 lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[20px] lg:border lg:border-white/10 lg:bg-white/6"
           />
 
           <div className="min-w-0 flex-1">
-            <h1 className="text-[18px] font-medium leading-snug text-[#10243E] lg:text-[42px] lg:font-semibold lg:tracking-[-0.05em] lg:text-white">
+            <h1 className="app-header-text text-[18px] font-medium leading-snug lg:text-[42px] lg:font-semibold lg:tracking-[-0.05em]">
               {title ?? procedure.name}
             </h1>
 
             {subtitle && (
-              <p className="mt-2 text-[15px] text-[#10243E]/68 lg:text-xl lg:font-medium lg:text-white/72">{subtitle}</p>
+              <p className="app-header-muted mt-2 text-[15px] lg:text-xl lg:font-medium">{subtitle}</p>
             )}
 
             {tertiaryLabel && (
-              <p className="mt-1 text-[15px] font-normal text-[#10243E]/68 lg:text-lg lg:text-white/52">
+              <p className="app-header-muted mt-1 text-[15px] font-normal lg:text-lg">
                 {tertiaryLabel}
               </p>
             )}
@@ -140,16 +139,16 @@ export default function ProcedurePageClient({
                 {procedure.setting}
               </span>
               {lastEdit && (
-                <span className="shrink-0 text-[11px] text-[#10243E]/52 lg:text-xs lg:text-white/40">
+                <span className="app-header-muted shrink-0 text-[11px] lg:text-xs">
                   Updated: {lastEdit.date}
                 </span>
               )}
             </div>
 
             <div className="mt-0.5 flex items-baseline justify-between gap-2 lg:mt-2">
-              <span className="text-[13px] text-[#10243E]/52 lg:text-sm lg:text-white/52">{procedure.specialty}</span>
+              <span className="app-header-muted text-[13px] lg:text-sm">{procedure.specialty}</span>
               {lastEdit && (
-                <span className="shrink-0 text-[11px] text-[#10243E]/52 lg:text-xs lg:text-white/40">
+                <span className="app-header-muted shrink-0 text-[11px] lg:text-xs">
                   by: {lastEdit.by}
                 </span>
               )}
@@ -158,7 +157,7 @@ export default function ProcedurePageClient({
 
           <Link
             href="/"
-            className="mt-0.5 shrink-0 rounded-lg p-2 text-[#10243E]/70 transition-colors hover:bg-[#10243E]/8 hover:text-[#10243E] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[20px] lg:border lg:border-white/10 lg:bg-white/6 lg:text-white/60 lg:hover:bg-white/10 lg:hover:text-white"
+            className="app-header-muted mt-0.5 shrink-0 rounded-lg p-2 transition-colors hover:opacity-80 lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[20px] lg:border lg:border-white/10 lg:bg-white/6 lg:hover:bg-white/10"
             aria-label="Home"
           >
             <House size={18} />
@@ -181,13 +180,13 @@ export default function ProcedurePageClient({
             ))}
           </>
         ) : (
-          <div className="rounded-xl border border-dashed border-slate-300 bg-white px-5 py-8 text-center text-sm text-slate-400 lg:rounded-[28px] lg:border-white/10 lg:bg-white/6 lg:text-white/56">
+          <div className="app-card-bg app-card-border app-text-muted rounded-xl border border-dashed px-5 py-8 text-center text-sm lg:rounded-[28px]">
             No procedure card content available yet.
           </div>
         )}
 
-        <footer className="mt-6 border-t border-[#D5DCE3] pt-4 lg:mt-10 lg:border-white/10 lg:pt-6">
-          <p className="text-[13px] text-[#94a3b8] lg:text-sm lg:text-white/42">
+        <footer className="app-card-border mt-6 border-t pt-4 lg:mt-10 lg:pt-6">
+          <p className="app-text-muted text-[13px] lg:text-sm">
             {procedure.updatedAt
               ? `Reviewed ${new Date(procedure.updatedAt).toLocaleDateString("en-GB", {
                   month: "long",

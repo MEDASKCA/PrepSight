@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { ArrowLeft, Search, ChevronRight, Plus, Check } from "lucide-react"
+import { ArrowLeft, House, Search, ChevronRight, Plus, Check } from "lucide-react"
 import Fuse from "fuse.js"
 import { procedures } from "@/lib/seed-data/index"
 import { CLINICAL_SETTINGS } from "@/lib/settings"
@@ -41,50 +41,53 @@ export default function NewCardPage() {
   // ── Step 1: Search ──────────────────────────────────────────────────────────
   if (step === "search") {
     return (
-      <div className="min-h-screen bg-[#F4F7FA]">
-        <header className="sticky top-0 z-30 border-b border-white/10 bg-[#00B4D8]">
+      <div className="app-shell-bg min-h-screen">
+        <header className="app-header-bg app-card-border sticky top-0 z-30 border-b">
           <div className="max-w-2xl mx-auto flex items-center gap-3 px-4 pb-2.5 pt-[calc(env(safe-area-inset-top,0px)+8px)] lg:pt-3">
-            <Link href="/" className="shrink-0 text-[#10243E]/70 transition-colors hover:text-[#10243E]">
+            <Link href="/" className="app-header-muted shrink-0 transition-colors hover:opacity-80">
               <ArrowLeft size={20} />
             </Link>
-            <h1 className="text-[18px] font-medium text-[#10243E] lg:text-base">New procedure card</h1>
+            <h1 className="app-header-text flex-1 text-[18px] font-medium lg:text-base">New procedure card</h1>
+            <Link href="/" className="app-header-muted shrink-0 rounded-lg p-2 transition-colors hover:opacity-80" aria-label="Home">
+              <House size={18} />
+            </Link>
           </div>
         </header>
 
         <main className="max-w-2xl mx-auto px-4 py-8">
-          <p className="mb-1 text-xl font-bold text-[#3F4752] lg:text-lg">What procedure is this card for?</p>
-          <p className="mb-6 text-[15px] text-[#94a3b8] lg:text-sm">
-            Type a name — we'll check if it already exists in the registry.
+          <p className="app-text-strong mb-1 text-xl font-bold lg:text-lg">What procedure is this card for?</p>
+          <p className="app-text-muted mb-6 text-[15px] lg:text-sm">
+            Type a name — we&apos;ll check if it already exists in the registry.
           </p>
 
           {/* Search input */}
           <div className="relative mb-4">
-            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#94a3b8]" />
+            <Search size={16} className="app-text-muted absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="e.g. Total Hip Replacement…"
               autoFocus
-              className="w-full rounded-xl border border-[#D5DCE3] bg-white py-3.5 pl-10 pr-4 text-[17px] text-[#3F4752] placeholder:text-[#cbd5e1] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#4DA3FF] lg:text-base"
+              className="app-card-bg app-card-border app-text-strong w-full rounded-xl border py-3.5 pl-10 pr-4 text-[17px] placeholder:text-[#cbd5e1] focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[#4DA3FF] lg:text-base"
             />
           </div>
 
           {/* Fuzzy matches */}
           {matches.length > 0 && (
-            <div className="bg-white rounded-xl border border-[#D5DCE3] overflow-hidden mb-4">
-              <p className="border-b border-[#F4F7FA] px-4 py-2.5 text-[11px] uppercase tracking-wide text-[#94a3b8] lg:text-xs">
+            <div className="app-card-bg app-card-border mb-4 overflow-hidden rounded-xl border">
+              <p className="app-text-muted app-card-border border-b px-4 py-2.5 text-[11px] uppercase tracking-wide lg:text-xs">
                 Closest matches in registry
               </p>
               {matches.map(({ item }) => (
                 <button
                   key={item.id}
                   onClick={() => { setSelected(item); setStep("confirm-existing") }}
-                  className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-[#F8FAFC] transition-colors border-b border-[#F4F7FA] last:border-0 text-left"
+                  className="app-card-border hover:app-card-bg-soft flex w-full items-center justify-between border-b px-4 py-3.5 text-left transition-colors last:border-0"
                 >
                   <div className="min-w-0 mr-3">
-                    <p className="text-[15px] font-semibold leading-snug text-[#3F4752] lg:text-sm">{item.name}</p>
-                    <p className="text-xs text-[#94a3b8] mt-0.5">{item.specialty} · {item.setting}</p>
+                    <p className="app-text-strong text-[15px] font-semibold leading-snug lg:text-sm">{item.name}</p>
+                    <p className="app-text-muted mt-0.5 text-xs">{item.specialty} · {item.setting}</p>
                   </div>
                   <span className="flex shrink-0 items-center gap-0.5 whitespace-nowrap text-[13px] font-semibold text-[#4DA3FF] lg:text-xs">
                     Use this <ChevronRight size={13} />
@@ -98,11 +101,11 @@ export default function NewCardPage() {
           {query.trim().length >= 3 && (
             <button
               onClick={() => { setNewName(query.trim()); setStep("register-new") }}
-              className="w-full flex items-center justify-between px-4 py-3.5 bg-white border border-dashed border-[#4DA3FF] rounded-xl hover:bg-[#EFF8FF] transition-colors text-left"
+              className="app-card-bg app-primary-text w-full flex items-center justify-between rounded-xl border border-dashed border-[#4DA3FF] px-4 py-3.5 text-left transition-colors hover:bg-[#EFF8FF]"
             >
               <div className="min-w-0 mr-3">
                 <p className="text-[15px] font-semibold text-[#4DA3FF] lg:text-sm">This is a completely new procedure</p>
-                <p className="mt-0.5 text-[13px] text-[#94a3b8] lg:text-xs">
+                <p className="app-text-muted mt-0.5 text-[13px] lg:text-xs">
                   Add &ldquo;{query.trim()}&rdquo; to the registry and start a blank card
                 </p>
               </div>
@@ -117,39 +120,42 @@ export default function NewCardPage() {
   // ── Step 2a: Confirm existing ───────────────────────────────────────────────
   if (step === "confirm-existing" && selected) {
     return (
-      <div className="min-h-screen bg-[#F4F7FA]">
-        <header className="sticky top-0 z-30 border-b border-white/10 bg-[#00B4D8]">
+      <div className="app-shell-bg min-h-screen">
+        <header className="app-header-bg app-card-border sticky top-0 z-30 border-b">
           <div className="max-w-2xl mx-auto flex items-center gap-3 px-4 pb-2.5 pt-[calc(env(safe-area-inset-top,0px)+8px)] lg:pt-3">
             <button
               onClick={() => setStep("search")}
-              className="shrink-0 text-[#10243E]/70 transition-colors hover:text-[#10243E]"
+              className="app-header-muted shrink-0 transition-colors hover:opacity-80"
             >
               <ArrowLeft size={20} />
             </button>
-            <h1 className="text-[18px] font-medium text-[#10243E] lg:text-base">Confirm procedure</h1>
+            <h1 className="app-header-text flex-1 text-[18px] font-medium lg:text-base">Confirm procedure</h1>
+            <Link href="/" className="app-header-muted shrink-0 rounded-lg p-2 transition-colors hover:opacity-80" aria-label="Home">
+              <House size={18} />
+            </Link>
           </div>
         </header>
 
         <main className="max-w-2xl mx-auto px-4 py-8">
-          <p className="mb-4 text-[15px] text-[#94a3b8] lg:text-sm">
+          <p className="app-text-muted mb-4 text-[15px] lg:text-sm">
             Is this the procedure you&apos;re creating a card for?
           </p>
 
-          <div className="bg-white rounded-xl border border-[#D5DCE3] px-4 py-4 mb-6">
-            <p className="text-[17px] font-bold leading-snug text-[#3F4752] lg:text-base">{selected.name}</p>
-            <p className="text-xs text-[#94a3b8] mt-1.5">{selected.specialty} · {selected.setting}</p>
+          <div className="app-card-bg app-card-border mb-6 rounded-xl border px-4 py-4">
+            <p className="app-text-strong text-[17px] font-bold leading-snug lg:text-base">{selected.name}</p>
+            <p className="app-text-muted mt-1.5 text-xs">{selected.specialty} · {selected.setting}</p>
           </div>
 
           <div className="flex gap-3 mb-4">
             <button
               onClick={() => router.push(`/procedures/${selected.id}`)}
-              className="flex-1 flex items-center justify-center gap-2 bg-[#4DA3FF] text-white font-semibold py-3 rounded-xl hover:bg-[#2F8EF7] transition-colors"
+              className="app-primary-bg flex-1 flex items-center justify-center gap-2 rounded-xl py-3 font-semibold text-white transition-colors hover:bg-[#2F8EF7]"
             >
               <Check size={16} /> Yes, create card
             </button>
             <button
               onClick={() => setStep("search")}
-              className="rounded-xl border border-[#D5DCE3] px-5 py-3 text-[15px] font-semibold text-[#64748b] transition-colors hover:bg-[#F4F7FA] lg:text-base"
+              className="app-card-border app-text rounded-xl border px-5 py-3 text-[15px] font-semibold transition-colors hover:bg-[#F4F7FA] lg:text-base"
             >
               Go back
             </button>
@@ -157,7 +163,7 @@ export default function NewCardPage() {
 
           <button
             onClick={() => { setNewName(query.trim()); setStep("register-new") }}
-            className="w-full text-center text-[15px] text-[#94a3b8] transition-colors hover:text-[#4DA3FF] lg:text-sm"
+            className="app-text-muted w-full text-center text-[15px] transition-colors hover:text-[#4DA3FF] lg:text-sm"
           >
             No — &ldquo;{query}&rdquo; is a different procedure →
           </button>
@@ -171,22 +177,25 @@ export default function NewCardPage() {
     const canSubmit = newName.trim() && newSetting && newSpecialty.trim()
 
     return (
-      <div className="min-h-screen bg-[#F4F7FA]">
-        <header className="sticky top-0 z-30 border-b border-white/10 bg-[#00B4D8]">
+      <div className="app-shell-bg min-h-screen">
+        <header className="app-header-bg app-card-border sticky top-0 z-30 border-b">
           <div className="max-w-2xl mx-auto flex items-center gap-3 px-4 pb-2.5 pt-[calc(env(safe-area-inset-top,0px)+8px)] lg:pt-3">
             <button
               onClick={() => setStep("search")}
-              className="shrink-0 text-[#10243E]/70 transition-colors hover:text-[#10243E]"
+              className="app-header-muted shrink-0 transition-colors hover:opacity-80"
             >
               <ArrowLeft size={20} />
             </button>
-            <h1 className="text-[18px] font-medium text-[#10243E] lg:text-base">Register new procedure</h1>
+            <h1 className="app-header-text flex-1 text-[18px] font-medium lg:text-base">Register new procedure</h1>
+            <Link href="/" className="app-header-muted shrink-0 rounded-lg p-2 transition-colors hover:opacity-80" aria-label="Home">
+              <House size={18} />
+            </Link>
           </div>
         </header>
 
         <main className="max-w-2xl mx-auto px-4 py-8">
-          <p className="mb-1 text-xl font-bold text-[#3F4752] lg:text-lg">New procedure details</p>
-          <p className="mb-6 text-[15px] text-[#94a3b8] lg:text-sm">
+          <p className="app-text-strong mb-1 text-xl font-bold lg:text-lg">New procedure details</p>
+          <p className="app-text-muted mb-6 text-[15px] lg:text-sm">
             This adds the procedure to the registry and starts a blank card.
           </p>
 

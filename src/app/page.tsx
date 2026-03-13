@@ -169,23 +169,22 @@ export default async function HomePage({ searchParams }: Props) {
       : activeSpecialty ?? activeSetting
 
   return (
-    <div className="min-h-screen bg-[#F4F7FA] lg:bg-[#06111D]">
-      <div className="hidden lg:block lg:fixed lg:inset-0 lg:pointer-events-none lg:bg-[radial-gradient(circle_at_top_left,_rgba(77,163,255,0.14),_transparent_26%),radial-gradient(circle_at_86%_14%,_rgba(20,184,166,0.12),_transparent_22%),linear-gradient(145deg,#06111D_0%,#091725_48%,#0B2134_100%)]" />
-      <header className="sticky top-0 z-30 border-b border-white/10 bg-[#00B4D8] lg:border-b lg:border-white/8 lg:bg-[#08131F]/88 lg:backdrop-blur-2xl">
+    <div className="app-shell-bg min-h-screen">
+      <header className="app-header-bg sticky top-0 z-30 border-b app-card-border lg:backdrop-blur-2xl">
         <div className="mx-auto flex max-w-4xl items-center gap-3 px-4 pb-2.5 pt-[calc(env(safe-area-inset-top,0px)+8px)] lg:max-w-none lg:px-12 lg:py-5">
           <HistoryBackButton
             fallbackHref={backHref}
-            className="shrink-0 text-[#10243E]/70 transition-colors hover:text-[#10243E] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[20px] lg:border lg:border-white/10 lg:bg-white/6 lg:text-white/60 lg:hover:text-white"
+            className="app-header-muted transition-colors hover:opacity-80 lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[20px] lg:border lg:border-white/10 lg:bg-white/6"
           />
 
           <div className="min-w-0 flex-1">
-            <h1 className="text-[18px] font-medium leading-snug text-[#10243E] lg:text-[40px] lg:font-semibold lg:tracking-[-0.05em] lg:text-white">
+            <h1 className="app-header-text text-[18px] font-medium leading-snug lg:text-[40px] lg:font-semibold lg:tracking-[-0.05em]">
               {pageTitle}
             </h1>
 
             {isOperatingTheatreOverviewPage ? (
               <div className="mt-0.5 flex flex-wrap items-center gap-1.5">
-                <span className="rounded-full bg-[#10243E]/8 px-2 py-0.5 text-xs text-[#10243E]/68 lg:border lg:border-white/10 lg:bg-white/8 lg:px-4 lg:py-1.5 lg:text-[11px] lg:font-semibold lg:uppercase lg:tracking-[0.16em] lg:text-white/60">
+                <span className="app-header-muted rounded-full px-2 py-0.5 text-xs lg:border lg:border-white/10 lg:bg-white/8 lg:px-4 lg:py-1.5 lg:text-[11px] lg:font-semibold lg:uppercase lg:tracking-[0.16em]">
                   Specialties
                 </span>
               </div>
@@ -198,13 +197,13 @@ export default async function HomePage({ searchParams }: Props) {
                 </span>
 
                 {activeSpecialty && (
-                  <span className="rounded-full bg-[#10243E]/8 px-2 py-0.5 text-xs text-[#10243E]/68 lg:border lg:border-white/10 lg:bg-white/8 lg:px-4 lg:py-1.5 lg:text-[11px] lg:uppercase lg:tracking-[0.16em] lg:text-white/60">
+                  <span className="app-header-muted rounded-full px-2 py-0.5 text-xs lg:border lg:border-white/10 lg:bg-white/8 lg:px-4 lg:py-1.5 lg:text-[11px] lg:uppercase lg:tracking-[0.16em]">
                     {activeSpecialty}
                   </span>
                 )}
 
                 {isAnatomyPage && anatomyLabel && (
-                  <span className="rounded-full bg-[#10243E]/8 px-2 py-0.5 text-xs text-[#10243E]/68 lg:border lg:border-white/10 lg:bg-white/8 lg:px-4 lg:py-1.5 lg:text-[11px] lg:uppercase lg:tracking-[0.16em] lg:text-white/60">
+                  <span className="app-header-muted rounded-full px-2 py-0.5 text-xs lg:border lg:border-white/10 lg:bg-white/8 lg:px-4 lg:py-1.5 lg:text-[11px] lg:uppercase lg:tracking-[0.16em]">
                     {anatomyLabel}
                   </span>
                 )}
@@ -214,7 +213,7 @@ export default async function HomePage({ searchParams }: Props) {
 
           <Link
             href="/"
-            className="shrink-0 rounded-lg p-2 text-[#10243E]/70 transition-colors hover:bg-[#10243E]/8 hover:text-[#10243E] lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[20px] lg:border lg:border-white/10 lg:bg-white/6 lg:text-white/60 lg:hover:bg-white/10 lg:hover:text-white"
+            className="app-header-muted shrink-0 rounded-lg p-2 transition-colors hover:opacity-80 lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[20px] lg:border lg:border-white/10 lg:bg-white/6 lg:hover:bg-white/10"
             aria-label="Home"
           >
             <House size={18} />

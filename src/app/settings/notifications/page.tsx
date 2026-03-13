@@ -14,9 +14,9 @@ function ToggleRow({
   onChange: (checked: boolean) => void
 }) {
   return (
-    <label className="flex items-center justify-between gap-4 border-b border-[#E2EDF2] py-3">
+    <label className="settings-border flex items-center justify-between gap-4 border-b py-3">
       <div className="min-w-0">
-        <p className="text-sm font-medium text-[#213547]">{label}</p>
+        <p className="settings-text text-sm font-medium">{label}</p>
       </div>
       <span
         className={`relative inline-flex h-6 w-11 shrink-0 rounded-full transition-colors ${

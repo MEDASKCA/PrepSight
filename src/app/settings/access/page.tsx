@@ -35,14 +35,14 @@ export default function AccessSettingsPage() {
     <SettingsPageShell
       title="Permissions & Access"
     >
-      <div className="grid gap-3">
-        <div className="rounded-[18px] border border-[#E5EEF7] bg-[#F8FBFE] p-3.5">
+      <div className="grid gap-5">
+        <div>
           <div className="flex items-start gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-[14px] bg-white text-[#0F172A] shadow-[0_8px_18px_rgba(148,163,184,0.18)]">
+            <div className="settings-surface-subtle settings-text flex h-9 w-9 items-center justify-center rounded-[14px]">
               {preferences.access.appearance === "dark" ? <Moon size={18} /> : <Sun size={18} />}
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-semibold text-[#213547]">Appearance</p>
+              <p className="settings-text text-sm font-medium">Appearance</p>
             </div>
           </div>
           <div className="mt-3 grid grid-cols-2 gap-2.5">
@@ -54,10 +54,10 @@ export default function AccessSettingsPage() {
                   access: { ...current.access, appearance: "light" },
                 }))
               }
-              className={`rounded-[16px] border px-3 py-2.5 text-sm font-semibold transition-colors ${
+              className={`rounded-[12px] border px-3 py-2.5 text-sm font-medium transition-colors ${
                 preferences.access.appearance === "light"
                   ? "border-[#7DD3FC] bg-[#E0F2FE] text-[#0C4A6E]"
-                  : "border-[#D8E6F2] bg-white text-[#475569]"
+                  : "settings-border settings-surface settings-muted"
               }`}
             >
               <span className="inline-flex items-center gap-2">
@@ -73,10 +73,10 @@ export default function AccessSettingsPage() {
                   access: { ...current.access, appearance: "dark" },
                 }))
               }
-              className={`rounded-[16px] border px-3 py-2.5 text-sm font-semibold transition-colors ${
+              className={`rounded-[12px] border px-3 py-2.5 text-sm font-medium transition-colors ${
                 preferences.access.appearance === "dark"
                   ? "border-[#1E293B] bg-[#0F172A] text-[#E2E8F0]"
-                  : "border-[#D8E6F2] bg-white text-[#475569]"
+                  : "settings-border settings-surface settings-muted"
               }`}
             >
               <span className="inline-flex items-center gap-2">
@@ -87,17 +87,17 @@ export default function AccessSettingsPage() {
           </div>
         </div>
 
-        <div className="rounded-[18px] border border-[#E5EEF7] bg-[#F8FBFE] p-3.5">
+        <div className="settings-border border-t pt-4">
           <div className="flex items-start gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-[14px] bg-white text-[#0F172A] shadow-[0_8px_18px_rgba(148,163,184,0.18)]">
+            <div className="settings-surface-subtle settings-text flex h-9 w-9 items-center justify-center rounded-[14px]">
               <Globe size={18} />
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-semibold text-[#213547]">Language settings</p>
+              <p className="settings-text text-sm font-medium">Language settings</p>
             </div>
           </div>
           <label className="mt-3 grid gap-2">
-            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#64748B]">Preferred language</span>
+            <span className="settings-muted text-xs font-medium uppercase tracking-[0.16em]">Preferred language</span>
             <select
               value={preferences.access.language}
               onChange={(event) =>
@@ -109,7 +109,7 @@ export default function AccessSettingsPage() {
                   },
                 }))
               }
-              className="rounded-[16px] border border-[#D8E6F2] bg-white px-3 py-2.5 text-sm text-[#10243E] outline-none transition-colors focus:border-[#7DD3FC]"
+              className="settings-border settings-surface settings-text rounded-[12px] border px-3 py-2.5 text-sm outline-none transition-colors focus:border-[#7DD3FC]"
             >
               {LANGUAGE_OPTIONS.map((option) => (
                 <option key={option.value} value={option.value}>

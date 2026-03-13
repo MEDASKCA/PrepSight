@@ -21,10 +21,10 @@ function SettingsRow({
     <button
       type="button"
       onClick={onClick}
-      className="flex w-full items-center gap-3 border-b border-[#E2EDF2] py-3 text-left transition-colors hover:text-[#0891B2]"
+      className="flex w-full items-center gap-3 border-b settings-border py-3 text-left transition-colors hover:opacity-80"
     >
-      <span className="text-[#0891B2]">{icon}</span>
-      <p className="text-sm font-medium text-[#10243E]">{title}</p>
+      <span className="settings-accent">{icon}</span>
+      <p className="settings-text text-sm font-medium">{title}</p>
     </button>
   )
 }
@@ -79,7 +79,7 @@ export default function ProfileButton() {
           onClick={() => setOpen(false)}
         >
           <div
-            className="w-full overflow-hidden rounded-t-[30px] bg-[#F4F8FC] shadow-[0_28px_70px_rgba(15,23,42,0.22)] sm:max-w-xl sm:rounded-[30px]"
+            className="settings-surface settings-overlay-panel w-full overflow-hidden rounded-t-[30px] sm:max-w-xl sm:rounded-[30px]"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-start justify-between bg-[linear-gradient(135deg,#67E8F9_0%,#06B6D4_100%)] px-5 pb-5 pt-5">
@@ -97,13 +97,13 @@ export default function ProfileButton() {
                   )}
                 </div>
                 <div>
-                  <p className="text-base font-medium text-[#083344]">{displayName}</p>
-                  <p className="mt-0.5 text-sm text-[#155E75]">{displayRole}</p>
+                  <p className="settings-header-text text-base font-medium">{displayName}</p>
+                  <p className="settings-header-muted mt-0.5 text-sm">{displayRole}</p>
                 </div>
               </div>
               <button
                 onClick={() => setOpen(false)}
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-white/30 text-[#083344] transition-colors hover:bg-white/45"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-white/30 text-white transition-colors hover:bg-white/45"
               >
                 <X size={16} />
               </button>
@@ -136,7 +136,7 @@ export default function ProfileButton() {
                   </span>
                   <div className="min-w-0">
                     <p className="text-sm font-medium text-red-600">Sign out</p>
-                    <p className="text-xs text-[#94A3B8]">{user?.email}</p>
+                    <p className="settings-muted text-xs">{user?.email}</p>
                   </div>
                 </button>
               </div>

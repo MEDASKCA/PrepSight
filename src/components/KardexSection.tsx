@@ -133,8 +133,8 @@ export default function KardexSection({
   }
 
   return (
-    <div className="mb-3 overflow-hidden rounded-xl border border-[#D5DCE3] bg-white lg:mb-5 lg:rounded-[30px] lg:border-[#14304B] lg:bg-[#08131F] lg:shadow-[0_28px_64px_rgba(15,23,42,0.24)]">
-      <div className="flex items-center bg-[#4DA3FF] transition-colors">
+    <div className="kardex-section mb-3 overflow-hidden rounded-xl border border-[#D5DCE3] bg-white lg:mb-5 lg:rounded-[30px] lg:border-[#14304B] lg:bg-[#08131F] lg:shadow-[0_28px_64px_rgba(15,23,42,0.24)]">
+      <div className="kardex-section-header flex items-center bg-[#4DA3FF] transition-colors">
         <button
           onClick={() => setOpen(!open)}
           className="flex-1 flex items-center gap-3 px-4 py-3.5 text-left text-base font-semibold text-white transition-colors hover:bg-[#2F8EF7] lg:px-7 lg:py-6 lg:text-[30px] lg:font-semibold lg:tracking-[-0.05em]"
@@ -179,7 +179,7 @@ export default function KardexSection({
       </div>
 
       {open && (
-        <div className="px-4 py-2 lg:px-7 lg:py-6 lg:text-white/78">
+        <div className="kardex-section-body px-4 py-2 lg:px-7 lg:py-6 lg:text-white/78">
 
           {/* ── OVERVIEW ───────────────────────────────────────────── */}
           {isOverview && (section.summary || section.duration || section.anaesthesiaType) && (

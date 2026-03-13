@@ -1451,22 +1451,22 @@ export default function HomeHero({
   }, [messages])
 
   return (
-    <div className="relative flex h-[100dvh] max-w-xl flex-col overflow-hidden animate-step-in bg-[linear-gradient(180deg,#F7FBFF_0%,#EEF6FB_52%,#E7F0F7_100%)] px-3 pb-6 pt-3 lg:h-auto lg:max-w-none lg:overflow-visible lg:bg-transparent lg:px-10 lg:py-10">
-      <div className="pointer-events-none absolute inset-0 lg:hidden">
+    <div className="homehero-root app-shell-bg relative flex h-[100dvh] max-w-xl flex-col overflow-hidden animate-step-in px-3 pb-6 pt-3 lg:h-auto lg:max-w-none lg:overflow-visible lg:px-10 lg:py-10">
+      <div className="homehero-mobile-backdrop pointer-events-none absolute inset-0 lg:hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.92),_rgba(239,246,255,0.96)_42%,_rgba(231,240,247,1)_100%)]" />
         <div className="absolute -left-10 top-8 h-36 w-36 rounded-full bg-[#0EA5E9]/10 blur-3xl" />
         <div className="absolute right-[-24px] top-20 h-32 w-32 rounded-full bg-[#14B8A6]/8 blur-3xl" />
         <div className="absolute bottom-24 left-10 h-28 w-28 rounded-full bg-[#1D4ED8]/8 blur-3xl" />
       </div>
       <div className="mb-10 hidden lg:block">
-        <div className="relative overflow-hidden rounded-[40px] border border-[#D5E3EF] bg-[linear-gradient(160deg,#F8FBFF_0%,#F2F8FD_38%,#EAF3F9_100%)] shadow-[0_36px_80px_rgba(148,163,184,0.18)]">
+        <div className="homehero-surface app-card-bg app-card-border relative overflow-hidden rounded-[40px] border shadow-[0_36px_80px_rgba(148,163,184,0.18)]">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(77,163,255,0.12),_transparent_30%),radial-gradient(circle_at_85%_12%,_rgba(20,184,166,0.1),_transparent_22%)]" />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/70" />
-          <div className="relative z-10 border-b border-[#D5E3EF] px-8 py-5">
+          <div className="app-card-border relative z-10 border-b px-8 py-5">
             <div className="grid grid-cols-[auto_1fr_auto] items-center gap-6">
               <div className="flex items-center gap-4">
                 {hideHomepageImages ? (
-                  <div className="flex h-16 min-w-16 items-center justify-center rounded-2xl border border-[#D5E3EF] bg-white px-4 shadow-[0_10px_24px_rgba(148,163,184,0.12)]">
+                  <div className="app-card-bg app-card-border flex h-16 min-w-16 items-center justify-center rounded-2xl border px-4 shadow-[0_10px_24px_rgba(148,163,184,0.12)]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/ps-mark.png" alt="P.S." className="h-9 w-auto opacity-95" />
                   </div>
@@ -1474,12 +1474,12 @@ export default function HomeHero({
                   <Image src="/ps-mark.png" alt="P.S." width={64} height={64} className="h-16 w-auto object-contain" />
                 )}
                 <div>
-                  <p className="text-[28px] font-semibold tracking-[-0.05em] text-[#10243E]">PrepSight</p>
+                  <p className="app-text-strong text-[28px] font-semibold tracking-[-0.05em]">PrepSight</p>
                 </div>
               </div>
 
-              <div className="relative rounded-[28px] border border-[#8ADFF0] bg-[#AEEAF7] p-2 shadow-[0_18px_34px_rgba(0,180,216,0.18)]">
-                <Search size={18} className="absolute left-7 top-1/2 -translate-y-1/2 text-[#3F6780]" />
+              <div className="app-card-bg app-card-border relative rounded-[28px] border p-2 shadow-[0_18px_34px_rgba(0,180,216,0.18)]">
+                <Search size={18} className="app-text-muted absolute left-7 top-1/2 -translate-y-1/2" />
                 <input
                   ref={inputRef}
                   type="text"
@@ -1488,20 +1488,20 @@ export default function HomeHero({
                   onFocus={() => setFocused(true)}
                   onBlur={() => setTimeout(() => setFocused(false), 150)}
                   placeholder="Search procedure, anatomy, implant system, product, or catalogue item..."
-                  className="w-full rounded-[22px] border border-[#D6F5FB] bg-[#EAF8FC] py-4 pl-13 pr-5 text-[15px] text-[#10243E] placeholder:text-[#7290A7] shadow-[inset_0_1px_0_rgba(255,255,255,0.92),0_10px_24px_rgba(86,167,191,0.08)] transition-colors focus:border-[#C9F1F8] focus:outline-none focus:ring-2 focus:ring-[#7DD3FC]/20"
+                  className="app-card-bg app-card-border app-text-strong w-full rounded-[22px] border py-4 pl-13 pr-5 text-[15px] placeholder:text-[#7290A7] shadow-[inset_0_1px_0_rgba(255,255,255,0.92),0_10px_24px_rgba(86,167,191,0.08)] transition-colors focus:border-[#C9F1F8] focus:outline-none focus:ring-2 focus:ring-[#7DD3FC]/20"
                 />
 
                 {showResults && results.length > 0 && (
-                  <div className="absolute inset-x-0 top-[calc(100%+16px)] z-30 overflow-hidden rounded-[26px] border border-[#BFEAF5] bg-white shadow-[0_30px_70px_rgba(0,180,216,0.14)]">
+                  <div className="app-card-bg app-card-border absolute inset-x-0 top-[calc(100%+16px)] z-30 overflow-hidden rounded-[26px] border shadow-[0_30px_70px_rgba(0,180,216,0.14)]">
                     {results.map((result) => (
                       <Link
                         key={result.id}
                         href={result.href}
-                        className="flex items-center justify-between border-b border-[#EEF4F8] px-5 py-4 transition-colors last:border-0 hover:bg-[#F8FBFF]"
+                        className="app-card-border hover:app-card-bg-soft flex items-center justify-between border-b px-5 py-4 transition-colors last:border-0"
                       >
                         <div className="mr-3 min-w-0">
-                          <p className="truncate text-sm font-semibold text-[#10243E]">{result.title}</p>
-                          <p className="mt-1 text-xs text-[#64748B]">
+                          <p className="app-text-strong truncate text-sm font-semibold">{result.title}</p>
+                          <p className="app-text-muted mt-1 text-xs">
                             {result.subtitle}
                           </p>
                         </div>
@@ -1516,18 +1516,18 @@ export default function HomeHero({
                 )}
 
                 {showResults && results.length === 0 && (
-                  <div className="absolute inset-x-0 top-[calc(100%+16px)] z-30 rounded-[26px] border border-[#BFEAF5] bg-white px-5 py-4 text-sm text-[#64748B] shadow-[0_30px_70px_rgba(0,180,216,0.14)]">
+                  <div className="app-card-bg app-card-border app-text-muted absolute inset-x-0 top-[calc(100%+16px)] z-30 rounded-[26px] border px-5 py-4 text-sm shadow-[0_30px_70px_rgba(0,180,216,0.14)]">
                     No procedures found.
                   </div>
                 )}
               </div>
 
               <div className="justify-self-end text-right">
-                <p className="text-[11px] uppercase tracking-[0.18em] text-[#64748B]">{greetingText}</p>
-                <p className="mt-2 text-sm text-[#475569]">{contextBadge}</p>
-                <div className="mt-5 inline-flex min-w-[220px] flex-col rounded-[24px] border border-[#D5E3EF] bg-white px-5 py-4 text-left shadow-[0_18px_34px_rgba(148,163,184,0.16)]">
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-[#64748B]">Procedure cards available</p>
-                  <p className="mt-2 text-[40px] font-semibold leading-none tracking-[-0.06em] text-[#10243E]">0</p>
+                <p className="app-text-muted text-[11px] uppercase tracking-[0.18em]">{greetingText}</p>
+                <p className="app-text mt-2 text-sm">{contextBadge}</p>
+                <div className="app-card-bg app-card-border mt-5 inline-flex min-w-[220px] flex-col rounded-[24px] border px-5 py-4 text-left shadow-[0_18px_34px_rgba(148,163,184,0.16)]">
+                  <p className="app-text-muted text-[11px] uppercase tracking-[0.18em]">Procedure cards available</p>
+                  <p className="app-text-strong mt-2 text-[40px] font-semibold leading-none tracking-[-0.06em]">0</p>
                 </div>
               </div>
             </div>
@@ -1536,17 +1536,17 @@ export default function HomeHero({
           <div className="relative z-10 px-8 pb-8 pt-7">
             <div className="grid grid-cols-[1.45fr_0.9fr] gap-6">
               <div className="min-w-0">
-                <p className="text-[14px] font-medium tracking-[0.2em] text-[#64748B]">Workspace</p>
-                <h1 className="mt-4 max-w-[11ch] text-[78px] font-semibold leading-[0.92] tracking-[-0.07em] text-[#10243E]">
+                <p className="app-text-muted text-[14px] font-medium tracking-[0.2em]">Workspace</p>
+                <h1 className="app-text-strong mt-4 max-w-[11ch] text-[78px] font-semibold leading-[0.92] tracking-[-0.07em]">
                   {activeWorkspaceItem?.label ?? "Operating Theatre"}
                 </h1>
-                <p className="mt-5 max-w-2xl text-[16px] leading-8 text-[#526579]">
+                <p className="app-text mt-5 max-w-2xl text-[16px] leading-8">
                   Open the current area like a browser engine for procedural knowledge. Move from specialty to anatomy to authored cards without losing the visual thread.
                 </p>
               </div>
 
-              <div className="rounded-[30px] border border-[#D5E3EF] bg-white/92 p-6 shadow-[0_20px_40px_rgba(148,163,184,0.16)]">
-                <p className="text-[11px] uppercase tracking-[0.18em] text-[#64748B]">Registered areas</p>
+              <div className="app-card-bg app-card-border rounded-[30px] border p-6 shadow-[0_20px_40px_rgba(148,163,184,0.16)]">
+                <p className="app-text-muted text-[11px] uppercase tracking-[0.18em]">Registered areas</p>
                 <div className="mt-5 grid gap-3">
                   {workspaceItems.map((item, index) => (
                     <button
@@ -1571,12 +1571,12 @@ export default function HomeHero({
               <div>
                 <div className="mb-5 flex items-end justify-between">
                   <div>
-                    <p className="text-[14px] font-medium tracking-[0.2em] text-[#64748B]">Specialties</p>
-                    <h2 className="mt-3 text-[42px] font-semibold tracking-[-0.06em] text-[#10243E]">
+                    <p className="app-text-muted text-[14px] font-medium tracking-[0.2em]">Specialties</p>
+                    <h2 className="app-text-strong mt-3 text-[42px] font-semibold tracking-[-0.06em]">
                       {activeWorkspaceItem?.label ?? "Operating Theatre"}
                     </h2>
                   </div>
-                  <p className="max-w-sm text-right text-sm leading-7 text-[#64748B]">
+                  <p className="app-text-muted max-w-sm text-right text-sm leading-7">
                     Open any specialty as its own dedicated browser space.
                   </p>
                 </div>
@@ -1639,8 +1639,8 @@ export default function HomeHero({
               </div>
 
               <div className="grid content-start gap-4">
-                <div className="rounded-[30px] border border-[#D5E3EF] bg-white/92 p-6 shadow-[0_20px_40px_rgba(148,163,184,0.16)]">
-                  <p className="text-[14px] font-medium tracking-[0.2em] text-[#64748B]">Workflow tools</p>
+                <div className="app-card-bg app-card-border rounded-[30px] border p-6 shadow-[0_20px_40px_rgba(148,163,184,0.16)]">
+                  <p className="app-text-muted text-[14px] font-medium tracking-[0.2em]">Workflow tools</p>
                   <div className="mt-5 grid gap-3">
                     {WORKFLOW_TOOLS.map((tool, index) => (
                       <Link
@@ -1660,20 +1660,20 @@ export default function HomeHero({
                 </div>
 
                 {recentCards.length > 0 && (
-                  <div className="rounded-[30px] border border-[#D5E3EF] bg-white/92 p-6 shadow-[0_20px_40px_rgba(148,163,184,0.16)]">
-                    <p className="text-[14px] font-medium tracking-[0.2em] text-[#64748B]">Recently viewed</p>
+                  <div className="app-card-bg app-card-border rounded-[30px] border p-6 shadow-[0_20px_40px_rgba(148,163,184,0.16)]">
+                    <p className="app-text-muted text-[14px] font-medium tracking-[0.2em]">Recently viewed</p>
                     <div className="mt-5 grid gap-3">
                       {recentCards.map((card, index) => (
                         <Link
                           key={`${card.entry.procedureId}-${card.entry.variantId ?? "base"}-${card.entry.systemId ?? "base"}`}
                           href={card.href}
-                          className="rounded-[24px] border border-[#D5E3EF] bg-[#F8FBFE] px-5 py-5 text-[#10243E] shadow-[0_14px_28px_rgba(148,163,184,0.12)] transition-colors hover:bg-white [animation:desktopCardRise_0.55s_cubic-bezier(0.2,0.8,0.2,1)_both]"
+                          className="app-card-bg app-card-border app-text-strong hover:app-card-bg-soft rounded-[24px] border px-5 py-5 shadow-[0_14px_28px_rgba(148,163,184,0.12)] transition-colors [animation:desktopCardRise_0.55s_cubic-bezier(0.2,0.8,0.2,1)_both]"
                           style={{ animationDelay: `${index * 45}ms` }}
                         >
                           <p className="text-[24px] font-semibold tracking-[-0.04em]">
                             {card.system?.name ?? card.procedure.name}
                           </p>
-                          <p className="mt-3 text-sm leading-7 text-[#64748B]">
+                          <p className="app-text-muted mt-3 text-sm leading-7">
                             {formatRecentSubtitle(card.procedure.name, card.variant?.name)}
                           </p>
                         </Link>

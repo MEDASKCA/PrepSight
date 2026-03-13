@@ -77,4 +77,5 @@ export function applyUserPreferences(preferences: UserPreferences): void {
   const root = window.document.documentElement
   root.dataset.theme = preferences.access.appearance
   root.lang = LANGUAGE_TO_HTML_LANG[preferences.access.language]
+  window.dispatchEvent(new Event("prepsight:preferences-changed"))
 }
