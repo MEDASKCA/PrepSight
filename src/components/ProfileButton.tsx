@@ -1,34 +1,60 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { X, Edit, LogOut, Bell, Shield } from "lucide-react"
-import { getInitials, avatarColour } from "@/lib/utils"
-import { getProfile, clearProfile } from "@/lib/profile"
+import { Bell, LogOut, Settings2, UserRound, X } from "lucide-react"
 import { onAuthChange, signOut, type User } from "@/lib/auth"
-import { PrepSightProfile } from "@/lib/types"
+import { clearProfile, getProfile } from "@/lib/profile"
+import { type PrepSightProfile, USER_ROLE_LABEL } from "@/lib/types"
+import { avatarColour, getInitials } from "@/lib/utils"
+
+function SettingsRow({
+  icon,
+  title,
+  onClick,
+}: {
+  icon: React.ReactNode
+  title: string
+  onClick: () => void
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="flex w-full items-center gap-3 border-b border-[#E2EDF2] py-3 text-left transition-colors hover:text-[#0891B2]"
+    >
+      <span className="text-[#0891B2]">{icon}</span>
+      <p className="text-sm font-medium text-[#10243E]">{title}</p>
+    </button>
+  )
+}
 
 export default function ProfileButton() {
   const router = useRouter()
   const [open, setOpen] = useState(false)
   const [user, setUser] = useState<User | null>(null)
-  const [profile, setProfile] = useState<PrepSightProfile | null>(null)
+  const [profile, setProfile] = useState<PrepSightProfile | null>(() => getProfile())
 
   useEffect(() => {
-    const unsub = onAuthChange((u) => setUser(u))
+    const unsub = onAuthChange((nextUser) => setUser(nextUser))
     return unsub
   }, [])
 
-  useEffect(() => {
-    setProfile(getProfile())
-  }, [open])
-
-  const displayName = user?.displayName ?? user?.email ?? "You"
-  const displayRole = profile?.role ?? "No role set"
-  const photoURL    = user?.photoURL
-
+  const displayName = user?.displayName ?? user?.email ?? profile?.name ?? "You"
+  const displayRole = profile ? USER_ROLE_LABEL[profile.role] ?? profile.role : "No role set"
+  const photoURL = user?.photoURL
   const initials = getInitials(displayName)
-  const colour   = avatarColour(displayName)
+  const colour = avatarColour(displayName)
+
+  function handleOpen() {
+    setProfile(getProfile())
+    setOpen(true)
+  }
+
+  function openSettingsPage(path: string) {
+    setOpen(false)
+    router.push(path)
+  }
 
   async function handleSignOut() {
     clearProfile()
@@ -37,16 +63,10 @@ export default function ProfileButton() {
     router.push("/login")
   }
 
-  function handleEditProfile() {
-    clearProfile()
-    setOpen(false)
-    router.push("/onboarding")
-  }
-
   return (
     <>
       <button
-        onClick={() => setOpen(true)}
+        onClick={handleOpen}
         aria-label="Settings"
         className="shrink-0 leading-none"
       >
@@ -55,89 +75,71 @@ export default function ProfileButton() {
 
       {open && (
         <div
-          className="fixed inset-0 bg-black/40 flex items-end sm:items-center justify-center z-50 p-0 sm:p-4"
+          className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 p-0 sm:items-center sm:p-4"
           onClick={() => setOpen(false)}
         >
           <div
-            className="bg-white w-full sm:max-w-sm sm:rounded-2xl rounded-t-2xl shadow-xl overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
+            className="w-full overflow-hidden rounded-t-[30px] bg-[#F4F8FC] shadow-[0_28px_70px_rgba(15,23,42,0.22)] sm:max-w-xl sm:rounded-[30px]"
+            onClick={(event) => event.stopPropagation()}
           >
-            {/* Header */}
-            <div className="bg-[#4DA3FF] px-5 pt-6 pb-8 flex items-start justify-between">
+            <div className="flex items-start justify-between bg-[linear-gradient(135deg,#67E8F9_0%,#06B6D4_100%)] px-5 pb-5 pt-5">
               <div className="flex items-center gap-3">
-                <div className={`w-14 h-14 rounded-full overflow-hidden shrink-0 ${!photoURL ? `${colour} text-white text-xl font-bold flex items-center justify-center` : ""}`}>
-                  {photoURL
-                    ? <img src={photoURL} alt={displayName} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                    : initials
-                  }
+                <div className={`flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full ${!photoURL ? `${colour} text-white text-sm font-semibold` : ""}`}>
+                  {photoURL ? (
+                    <img
+                      src={photoURL}
+                      alt={displayName}
+                      className="h-full w-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    initials
+                  )}
                 </div>
                 <div>
-                  <p className="text-white font-bold text-lg leading-snug">{displayName}</p>
-                  <p className="text-white/70 text-sm">{displayRole}</p>
-                  {profile?.hospital && (
-                    <p className="text-white/50 text-xs mt-0.5">{profile.hospital}</p>
-                  )}
+                  <p className="text-base font-medium text-[#083344]">{displayName}</p>
+                  <p className="mt-0.5 text-sm text-[#155E75]">{displayRole}</p>
                 </div>
               </div>
               <button
                 onClick={() => setOpen(false)}
-                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors mt-0.5"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-white/30 text-[#083344] transition-colors hover:bg-white/45"
               >
                 <X size={16} />
               </button>
             </div>
 
-            {/* Menu */}
-            <div className="divide-y divide-[#F4F7FA]">
-              <button
-                onClick={handleEditProfile}
-                className="w-full flex items-center gap-3 px-5 py-4 text-left hover:bg-[#f8fafc] transition-colors"
-              >
-                <div className="w-9 h-9 rounded-full bg-[#e0f2fe] flex items-center justify-center shrink-0">
-                  <Edit size={18} className="text-[#2F8EF7]" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-[#3F4752]">Edit profile</p>
-                  <p className="text-xs text-[#94a3b8]">Update hospital and preferences</p>
-                </div>
-              </button>
+            <div className="px-5 py-3 sm:px-6">
+              <SettingsRow
+                icon={<UserRound size={16} />}
+                title="Profile settings"
+                onClick={() => openSettingsPage("/settings/profile")}
+              />
+              <SettingsRow
+                icon={<Bell size={16} />}
+                title="Notifications"
+                onClick={() => openSettingsPage("/settings/notifications")}
+              />
+              <SettingsRow
+                icon={<Settings2 size={16} />}
+                title="Permissions & Access"
+                onClick={() => openSettingsPage("/settings/access")}
+              />
 
-              <button className="w-full flex items-center gap-3 px-5 py-4 text-left hover:bg-[#f8fafc] transition-colors">
-                <div className="w-9 h-9 rounded-full bg-[#e0f2fe] flex items-center justify-center shrink-0">
-                  <Bell size={18} className="text-[#2F8EF7]" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-[#3F4752]">Notifications</p>
-                  <p className="text-xs text-[#94a3b8]">Coming soon</p>
-                </div>
-              </button>
-
-              <button className="w-full flex items-center gap-3 px-5 py-4 text-left hover:bg-[#f8fafc] transition-colors">
-                <div className="w-9 h-9 rounded-full bg-[#e0f2fe] flex items-center justify-center shrink-0">
-                  <Shield size={18} className="text-[#2F8EF7]" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-[#3F4752]">Permissions &amp; Access</p>
-                  <p className="text-xs text-[#94a3b8]">Coming soon</p>
-                </div>
-              </button>
-
-              <button
-                onClick={handleSignOut}
-                className="w-full flex items-center gap-3 px-5 py-4 text-left hover:bg-[#fff5f5] transition-colors"
-              >
-                <div className="w-9 h-9 rounded-full bg-[#fee2e2] flex items-center justify-center shrink-0">
-                  <LogOut size={18} className="text-red-500" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-red-600">Sign out</p>
-                  <p className="text-xs text-[#94a3b8]">{user?.email}</p>
-                </div>
-              </button>
-            </div>
-
-            <div className="px-5 py-3 bg-[#f8fafc]">
-              <p className="text-xs text-[#94a3b8] text-center">PrepSight · v0.2 · No patient data stored</p>
+              <div className="pt-2">
+                <button
+                  onClick={handleSignOut}
+                  className="flex w-full items-center gap-3 py-3 text-left transition-colors hover:text-red-600"
+                >
+                  <span className="text-red-500">
+                    <LogOut size={16} />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium text-red-600">Sign out</p>
+                    <p className="text-xs text-[#94A3B8]">{user?.email}</p>
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import { Manrope } from "next/font/google"
+import UserPreferencesBoot from "@/components/UserPreferencesBoot"
 import "./globals.css"
 
 const manrope = Manrope({
@@ -44,7 +45,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={manrope.className}>
-      <body>{children}</body>
+      <body>
+        <UserPreferencesBoot />
+        {children}
+      </body>
     </html>
   )
 }
