@@ -12,6 +12,21 @@ const ADMIN_ROUTE      = "/admin"
 
 const BRAND_LETTERS = "MEDASKCA".split("")
 
+function isPrivateLanHost(host: string) {
+  if (/^192\.168\.\d{1,3}\.\d{1,3}$/.test(host)) return true
+  if (/^10\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(host)) return true
+  const match172 = host.match(/^172\.(\d{1,3})\.\d{1,3}\.\d{1,3}$/)
+  if (!match172) return false
+  const secondOctet = Number(match172[1])
+  return secondOctet >= 16 && secondOctet <= 31
+}
+
+function isLocalPreviewHost() {
+  if (typeof window === "undefined") return false
+  const host = window.location.hostname
+  return host === "localhost" || host === "127.0.0.1" || host === "::1" || isPrivateLanHost(host)
+}
+
 function LoadingScreen({ message }: { message: string }) {
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black">
@@ -57,10 +72,15 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null | undefined>(undefined)
 
   useEffect(() => {
+    if (isLocalPreviewHost()) {
+      setUser(null)
+      return
+    }
     return onAuthChange((u) => setUser(u))
   }, [])
 
   useEffect(() => {
+    if (isLocalPreviewHost()) return
     if (user === undefined) return
 
     const isPublic = PUBLIC_ROUTES.includes(pathname)
@@ -75,6 +95,17 @@ export default function AppGate({ children }: { children: React.ReactNode }) {
 
   if (user === undefined) {
     return <LoadingScreen message="Loading..." />
+  }
+
+  if (isLocalPreviewHost()) {
+    return (
+      <div className="min-h-screen bg-[#F4F7FA]">
+        <div className="min-w-0 flex min-h-screen flex-col">
+          <main className="flex-1">{children}</main>
+        </div>
+        <AdminUnlocker />
+      </div>
+    )
   }
 
   const isPublic = PUBLIC_ROUTES.includes(pathname)

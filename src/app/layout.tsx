@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import { Manrope } from "next/font/google"
 import "./globals.css"
-import AppGate from "@/components/AppGate"
-import PWARegistrar from "@/components/PWARegistrar"
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -46,10 +44,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={manrope.className}>
-      <body>
-        <PWARegistrar />
-        <AppGate>{children}</AppGate>
-      </body>
+      <body>{children}</body>
     </html>
   )
 }

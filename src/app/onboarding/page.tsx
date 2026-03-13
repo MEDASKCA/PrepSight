@@ -164,7 +164,7 @@ export default function OnboardingPage() {
     <div className="min-h-screen bg-white flex flex-col">
 
       {/* Progress bar */}
-      <div className="h-0.5 bg-[#E2E8F0]">
+      <div className="mt-[env(safe-area-inset-top,0px)] h-0.5 bg-[#E2E8F0] lg:mt-0">
         <div
           className="h-full bg-[#4DA3FF] transition-all duration-500 ease-out"
           style={{ width: `${progressPct}%` }}
@@ -172,7 +172,7 @@ export default function OnboardingPage() {
       </div>
 
       {/* Content */}
-      <div className="flex-1 flex flex-col items-center justify-center px-6 pb-28 pt-10">
+      <div className="flex-1 flex flex-col items-center justify-center px-6 pb-28 pt-8 sm:pt-10 lg:pt-10">
         <div className="w-full max-w-md" key={animKey}>
 
           {/* ── Step 1 — Clinical environment ─────────────────────────── */}
@@ -214,7 +214,7 @@ export default function OnboardingPage() {
                     setShowSuggestions(true)
                   }}
                   placeholder="Search for your hospital or trust"
-                  className="w-full px-4 py-3.5 border border-[#D5DCE3] rounded-xl text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#4DA3FF] transition-shadow"
+                  className="w-full rounded-xl border border-[#D5DCE3] bg-white px-4 py-3.5 text-[15px] focus:outline-none focus:ring-2 focus:ring-[#4DA3FF] transition-shadow lg:text-sm"
                   autoFocus
                 />
                 {showSuggestions && (
@@ -224,7 +224,7 @@ export default function OnboardingPage() {
                         key={i}
                         type="button"
                         onMouseDown={() => { setHospital(h.hospital); setShowSuggestions(false) }}
-                        className="w-full text-left px-4 py-3 text-sm hover:bg-[#F4F7FA] transition-colors"
+                        className="w-full px-4 py-3 text-left text-[15px] transition-colors hover:bg-[#F4F7FA] lg:text-sm"
                       >
                         <p className="text-[#3F4752] font-medium">{h.hospital}</p>
                         <p className="text-xs text-[#94a3b8] mt-0.5">{h.trust}{h.postcode ? ` · ${h.postcode}` : ""}</p>
@@ -232,7 +232,7 @@ export default function OnboardingPage() {
                     ))}
                   </div>
                 )}
-                <p className="text-xs text-[#94a3b8] mt-2">
+                <p className="mt-2 text-[13px] text-[#94a3b8] lg:text-xs">
                   Not listed? Type it in and it will be saved as entered.
                 </p>
               </div>
@@ -457,7 +457,7 @@ export default function OnboardingPage() {
       </div>
 
       {/* Fixed bottom nav */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-[#D5DCE3] px-6 py-4">
+      <div className="fixed bottom-0 left-0 right-0 border-t border-[#D5DCE3] bg-white/95 px-6 pb-[calc(env(safe-area-inset-bottom,0px)+16px)] pt-4 backdrop-blur lg:py-4">
         <div className="max-w-md mx-auto flex items-center gap-3">
 
           {step > 1 && (
