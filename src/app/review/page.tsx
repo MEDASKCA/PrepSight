@@ -5,7 +5,8 @@ import Link from "next/link"
 import {
   ArrowLeft,
   Check,
-  ChevronRight,
+  ChevronDown,
+  ChevronUp,
   CircleAlert,
   Info,
   Package,
@@ -20,18 +21,16 @@ import {
 import liveMapping from "../../../data/systems/trauma_and_orthopaedics_full_live_mapping.json"
 import {
   addSystemMappingRevision,
-  FIXATION_LABELS,
   buildSystemMappingId,
   getReviewActor,
   getReviewerStatus,
+  getSystemMappingHistory,
   getSystemMappingReviewSnapshot,
   isTrustedReviewer,
   reviewSystemMapping,
   setReviewerStatus,
-  setSystemFixationLabel,
   subscribeToSystemMappingReviews,
   voteOnSystemMapping,
-  type FixationLabel,
   type MappingStatus,
   type ReviewerStatus,
 } from "@/lib/system-mapping-review"
@@ -40,27 +39,17 @@ import type { PrepSightProfile } from "@/lib/types"
 
 type ReviewTab = "systems" | "trays" | "implants" | "skus" | "cards"
 
-const POSITIVE_FEEDBACK_OPTIONS = [
-  "Commonly used for this branch",
-  "Clinically appropriate",
-  "Matches current practice",
-  "Supported by supplier documentation",
-  "Seen in real cases",
-  "Other",
+const INCORRECT_REASON_OPTIONS = [
+  { value: "procedure_mapping", label: "Procedure mapping" },
+  { value: "implant_type", label: "Implant type" },
+  { value: "missing_information", label: "Missing information" },
+  { value: "other", label: "Other" },
 ] as const
 
-const NEGATIVE_FEEDBACK_OPTIONS = [
-  "Wrong procedure match",
-  "Wrong approach",
-  "Wrong anatomy or joint",
-  "Legacy system",
-  "Duplicate mapping",
-  "Site-specific only",
-  "Needs evidence",
-  "Other",
-] as const
-
-const IMPLANT_TYPE_OPTIONS = [...FIXATION_LABELS, "other"] as const
+type ReviewableSectionKey = "systems" | "trays" | "skus"
+type SectionAnswer = "" | "correct" | "incorrect" | "not_sure"
+type SectionIssue = (typeof INCORRECT_REASON_OPTIONS)[number]["value"] | ""
+type ImproveMode = "" | "flag_only" | "suggest_correction" | "add_missing"
 
 type LiveBranch = (typeof liveMapping)[number]
 type LiveSystem = LiveBranch["subanatomy_groups"][number]["procedures"][number]["variants"][number]["systems"][number]
@@ -241,6 +230,93 @@ function rowContainerClass(status: MappingStatus, revisionCount: number, reviewC
   return "border-amber-200 bg-amber-50/45 hover:border-amber-300"
 }
 
+function ReviewSection({
+  title,
+  subtitle,
+  status,
+  open,
+  onToggle,
+  children,
+}: {
+  title: string
+  subtitle?: string
+  status?: "Unverified" | "Reviewed" | "Needs review"
+  open: boolean
+  onToggle: () => void
+  children: React.ReactNode
+}) {
+  const statusClass =
+    status === "Reviewed"
+      ? "bg-emerald-500/18 text-white"
+      : status === "Needs review"
+        ? "bg-rose-500/18 text-white"
+        : "bg-white/18 text-white"
+
+  return (
+    <div className="kardex-section mt-4 overflow-hidden rounded-xl border border-[#D5DCE3] bg-white lg:rounded-[30px] lg:border-[#14304B] lg:bg-[#08131F] lg:shadow-[0_28px_64px_rgba(15,23,42,0.24)]">
+      <div className="kardex-section-header flex items-center bg-[#4DA3FF] transition-colors">
+        <button
+          type="button"
+          onClick={onToggle}
+          className="flex-1 px-4 py-3.5 text-left text-base font-semibold text-white transition-colors hover:bg-[#2F8EF7] lg:px-7 lg:py-6 lg:text-[30px] lg:font-semibold lg:tracking-[-0.05em]"
+        >
+          <span className="block">{title}</span>
+          {subtitle ? <span className="mt-1 block text-[11px] uppercase tracking-[0.14em] text-white/78 lg:text-[13px]">{subtitle}</span> : null}
+        </button>
+
+        {status ? (
+          <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide lg:px-4 lg:py-1.5 lg:text-[11px] ${statusClass}`}>
+            {status}
+          </span>
+        ) : null}
+
+        <button
+          type="button"
+          onClick={onToggle}
+          className="px-4 py-3.5 text-white transition-colors hover:bg-[#2F8EF7] lg:px-6"
+        >
+          {open ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+        </button>
+      </div>
+      {open ? <div className="kardex-section-body px-4 py-2 lg:px-7 lg:py-6 lg:text-white/78">{children}</div> : null}
+    </div>
+  )
+}
+
+function ValidationChoices({
+  value,
+  onChange,
+}: {
+  value: SectionAnswer
+  onChange: (value: SectionAnswer) => void
+}) {
+  return (
+    <div className="grid gap-3">
+      {[
+        { value: "correct" as const, label: "Correct", active: "border-emerald-500 bg-emerald-50 text-emerald-800" },
+        { value: "incorrect" as const, label: "Incorrect", active: "border-rose-500 bg-rose-50 text-rose-800" },
+        { value: "not_sure" as const, label: "Not sure", active: "border-amber-500 bg-amber-50 text-amber-800" },
+      ].map((option) => (
+        <label
+          key={option.value}
+          className={`flex min-h-[56px] items-center gap-3 rounded-[18px] border px-4 py-3 text-[16px] font-medium ${
+            value === option.value ? option.active : "border-[#D8E3EE] bg-white text-[#334155]"
+          }`}
+        >
+          <input
+            type="radio"
+            name={`section_answer_${option.value}`}
+            checked={value === option.value}
+            onChange={() => onChange(option.value)}
+            className="h-4 w-4 border-slate-300 text-[#06B6D4] focus:ring-[#06B6D4]"
+          />
+          <span>{option.label}</span>
+        </label>
+      ))}
+    </div>
+  )
+}
+
 export default function ReviewPage() {
   const [activeTab, setActiveTab] = useState<ReviewTab>("systems")
   const [rows, setRows] = useState<ReviewRow[]>([])
@@ -250,18 +326,78 @@ export default function ReviewPage() {
   const [reviewerName, setReviewerName] = useState("")
   const [reviewerStatus, setLocalReviewerStatus] = useState<ReviewerStatus>("active")
   const [selectedRow, setSelectedRow] = useState<ReviewRow | null>(null)
-  const [voteDirection, setVoteDirection] = useState<"up" | "down">("up")
-  const [voteReason, setVoteReason] = useState("")
-  const [positiveReason, setPositiveReason] = useState<string>("Commonly used for this branch")
-  const [negativeReason, setNegativeReason] = useState<string>("Wrong procedure match")
-  const [customReason, setCustomReason] = useState("")
-  const [reviewStatusInput, setReviewStatusInput] = useState<MappingStatus>("review_required")
-  const [fixationInput, setFixationInput] = useState<FixationLabel>("unknown")
-  const [customImplantType, setCustomImplantType] = useState("")
-  const [reviewNotesInput, setReviewNotesInput] = useState("")
-  const [variantValidation, setVariantValidation] = useState<"correct" | "incorrect">("correct")
-  const [implantValidation, setImplantValidation] = useState<"correct" | "incorrect">("correct")
-  const [correctedVariant, setCorrectedVariant] = useState("")
+  const [sectionReviews, setSectionReviews] = useState<Record<
+    ReviewableSectionKey,
+    {
+      answer: SectionAnswer
+      issue: SectionIssue
+      note: string
+      improveMode: ImproveMode
+      procedureVariant: string
+      implantType: string
+      sourceRationale: string
+      trayName: string
+      trayCategory: string
+      traySupplier: string
+      skuCode: string
+      productName: string
+      skuCategory: string
+    }
+  >>({
+    systems: {
+      answer: "",
+      issue: "",
+      note: "",
+      improveMode: "",
+      procedureVariant: "",
+      implantType: "",
+      sourceRationale: "",
+      trayName: "",
+      trayCategory: "",
+      traySupplier: "",
+      skuCode: "",
+      productName: "",
+      skuCategory: "",
+    },
+    trays: {
+      answer: "",
+      issue: "",
+      note: "",
+      improveMode: "",
+      procedureVariant: "",
+      implantType: "",
+      sourceRationale: "",
+      trayName: "",
+      trayCategory: "",
+      traySupplier: "",
+      skuCode: "",
+      productName: "",
+      skuCategory: "",
+    },
+    skus: {
+      answer: "",
+      issue: "",
+      note: "",
+      improveMode: "",
+      procedureVariant: "",
+      implantType: "",
+      sourceRationale: "",
+      trayName: "",
+      trayCategory: "",
+      traySupplier: "",
+      skuCode: "",
+      productName: "",
+      skuCategory: "",
+    },
+  })
+  const [openSections, setOpenSections] = useState({
+    systems: true,
+    trays: false,
+    skus: false,
+    cards: false,
+    reviews: false,
+    revisions: false,
+  })
 
   useEffect(() => {
     const currentProfile = getProfile()
@@ -305,103 +441,165 @@ export default function ReviewPage() {
 
   useEffect(() => {
     if (!selectedRow) return
-    setVoteDirection("up")
-    setVoteReason("")
-    setPositiveReason("Commonly used for this branch")
-    setNegativeReason("Wrong procedure match")
-    setCustomReason("")
-    setReviewStatusInput(selectedRow.mappingStatus)
-    setFixationInput((selectedRow.fixationClass as FixationLabel) || "unknown")
-    setCustomImplantType("")
-    setReviewNotesInput(selectedRow.reviewNotes)
-    setVariantValidation("correct")
-    setImplantValidation("correct")
-    setCorrectedVariant(selectedRow.variant)
+    setOpenSections({
+      systems: true,
+      trays: false,
+      skus: false,
+      cards: false,
+      reviews: false,
+      revisions: false,
+    })
+    setSectionReviews({
+      systems: {
+        answer:
+          selectedRow.mappingStatus === "confirmed"
+            ? "correct"
+            : selectedRow.mappingStatus === "rejected"
+              ? "incorrect"
+              : "",
+        issue: "",
+        note: selectedRow.reviewNotes,
+        improveMode: "",
+        procedureVariant: selectedRow.variant || "",
+        implantType: selectedRow.fixationClass !== "unknown" ? formatFixationLabel(selectedRow.fixationClass) : "",
+        sourceRationale: "",
+        trayName: "",
+        trayCategory: "",
+        traySupplier: selectedRow.supplier,
+        skuCode: "",
+        productName: "",
+        skuCategory: "",
+      },
+      trays: {
+        answer: "",
+        issue: "",
+        note: "",
+        improveMode: "",
+        procedureVariant: "",
+        implantType: "",
+        sourceRationale: "",
+        trayName: "",
+        trayCategory: "",
+        traySupplier: selectedRow.supplier,
+        skuCode: "",
+        productName: "",
+        skuCategory: "",
+      },
+      skus: {
+        answer: "",
+        issue: "",
+        note: "",
+        improveMode: "",
+        procedureVariant: "",
+        implantType: "",
+        sourceRationale: "",
+        trayName: "",
+        trayCategory: "",
+        traySupplier: selectedRow.supplier,
+        skuCode: "",
+        productName: "",
+        skuCategory: "",
+      },
+    })
   }, [selectedRow])
 
-  function submitReviewForm() {
+  function setSectionReviewValue(
+    section: ReviewableSectionKey,
+    updates: Partial<{
+      answer: SectionAnswer
+      issue: SectionIssue
+      note: string
+      improveMode: ImproveMode
+      procedureVariant: string
+      implantType: string
+      sourceRationale: string
+      trayName: string
+      trayCategory: string
+      traySupplier: string
+      skuCode: string
+      productName: string
+      skuCategory: string
+    }>,
+  ) {
+    setSectionReviews((current) => ({
+      ...current,
+      [section]: {
+        ...current[section],
+        ...updates,
+      },
+    }))
+  }
+
+  function saveSectionReview(section: ReviewableSectionKey) {
     if (!selectedRow) return
+    const current = sectionReviews[section]
 
-    const resolvedReason =
-      voteDirection === "up"
-        ? (positiveReason === "Other" ? customReason.trim() : positiveReason)
-        : (negativeReason === "Other" ? customReason.trim() : negativeReason)
+    if (current.answer === "incorrect" && !current.issue) {
+      if (typeof window !== "undefined") window.alert("Choose what is wrong before saving.")
+      return
+    }
 
-    if (voteDirection === "down") {
-      if (!resolvedReason) {
-        if (typeof window !== "undefined") window.alert("Reason for low confidence is required.")
-        return
-      }
+    const issueLabel = INCORRECT_REASON_OPTIONS.find((option) => option.value === current.issue)?.label ?? "Other"
+
+    if (section === "systems" && current.answer === "correct") {
+      voteOnSystemMapping(selectedRow.mappingId, "up", {
+        actor: reviewerName,
+        reason: "Systems section marked correct",
+      })
+      reviewSystemMapping(selectedRow.mappingId, {
+        mapping_status: "confirmed",
+        review_notes: current.note.trim(),
+        approved_by_admin: canModerate ? true : undefined,
+      })
+      return
+    }
+
+    if (current.answer === "incorrect") {
       voteOnSystemMapping(selectedRow.mappingId, "down", {
         actor: reviewerName,
-        reason: resolvedReason,
+        reason: `${section}: ${issueLabel}`,
       })
-    } else {
-      if (!resolvedReason) {
-        if (typeof window !== "undefined") window.alert("Reason for high confidence is required.")
-        return
+
+      if (current.improveMode === "suggest_correction") {
+        const summary =
+          section === "systems"
+            ? `Proposed correction for Systems: variant ${current.procedureVariant || "n/a"}, implant type ${current.implantType || "n/a"}${current.sourceRationale ? `. ${current.sourceRationale}` : ""}${current.note.trim() ? `. ${current.note.trim()}` : ""}`
+            : section === "trays"
+              ? `Proposed correction for Trays: ${current.trayName || "n/a"}${current.trayCategory ? `, ${current.trayCategory}` : ""}${current.traySupplier ? `, ${current.traySupplier}` : ""}${current.note.trim() ? `. ${current.note.trim()}` : ""}`
+              : `Proposed correction for SKUs: ${current.skuCode || "n/a"}${current.productName ? `, ${current.productName}` : ""}${current.skuCategory ? `, ${current.skuCategory}` : ""}${current.note.trim() ? `. ${current.note.trim()}` : ""}`
+        addSystemMappingRevision(selectedRow.mappingId, summary, "suggestion")
+      } else if (current.improveMode === "add_missing") {
+        const summary =
+          section === "systems"
+            ? `Proposed addition for Systems: variant ${current.procedureVariant || "n/a"}, implant type ${current.implantType || "n/a"}${current.sourceRationale ? `. ${current.sourceRationale}` : ""}${current.note.trim() ? `. ${current.note.trim()}` : ""}`
+            : section === "trays"
+              ? `Proposed addition for Trays: ${current.trayName || "n/a"}${current.trayCategory ? `, ${current.trayCategory}` : ""}${current.traySupplier ? `, ${current.traySupplier}` : ""}${current.note.trim() ? `. ${current.note.trim()}` : ""}`
+              : `Proposed addition for SKUs: ${current.skuCode || "n/a"}${current.productName ? `, ${current.productName}` : ""}${current.skuCategory ? `, ${current.skuCategory}` : ""}${current.note.trim() ? `. ${current.note.trim()}` : ""}`
+        addSystemMappingRevision(selectedRow.mappingId, summary, "suggestion")
+      } else {
+        addSystemMappingRevision(
+          selectedRow.mappingId,
+          current.note.trim() ? `${section}: flagged as incorrect (${issueLabel}). ${current.note.trim()}` : `${section}: flagged as incorrect (${issueLabel})`,
+          "suggestion",
+        )
       }
-      voteOnSystemMapping(selectedRow.mappingId, "up", { actor: reviewerName, reason: resolvedReason })
     }
 
-    const implantTypeChanged =
-      implantValidation === "incorrect" &&
-      ((customImplantType.trim() && customImplantType.trim().toLowerCase() !== selectedRow.fixationClass.toLowerCase()) ||
-        (!customImplantType.trim() && fixationInput !== selectedRow.fixationClass))
-
-    const variantChanged =
-      variantValidation === "incorrect" &&
-      correctedVariant.trim() &&
-      correctedVariant.trim() !== selectedRow.variant
-
-    const notesChanged = reviewNotesInput.trim() !== selectedRow.reviewNotes.trim()
-    const statusChanged = reviewStatusInput !== selectedRow.mappingStatus
-
-    if (implantTypeChanged && !customImplantType.trim()) {
-      setSystemFixationLabel(selectedRow.mappingId, fixationInput)
-    }
-
-    if (implantTypeChanged) {
+    if (section !== "systems" && current.answer === "correct") {
       addSystemMappingRevision(
         selectedRow.mappingId,
-        customImplantType.trim()
-          ? `Suggested implant type: ${customImplantType.trim()}`
-          : `Implant type changed to ${fixationInput.replaceAll("_", " ")}`,
-        "fixation",
-      )
-    }
-
-    if (variantChanged) {
-      addSystemMappingRevision(
-        selectedRow.mappingId,
-        `Suggested procedure variant: ${correctedVariant.trim()}`,
+        `${section}: marked correct`,
         "suggestion",
       )
     }
 
-    reviewSystemMapping(selectedRow.mappingId, {
-      mapping_status: reviewStatusInput,
-      review_notes: reviewNotesInput.trim(),
-      approved_by_admin: canModerate ? reviewStatusInput === "confirmed" : undefined,
-    })
-
-    setSelectedRow(null)
-  }
-
-  function revertReviewForm() {
-    if (!selectedRow) return
-    setVoteDirection("up")
-    setVoteReason("")
-    setPositiveReason("Commonly used for this branch")
-    setNegativeReason("Wrong procedure match")
-    setCustomReason("")
-    setReviewStatusInput(selectedRow.mappingStatus)
-    setFixationInput((selectedRow.fixationClass as FixationLabel) || "unknown")
-    setCustomImplantType("")
-    setReviewNotesInput(selectedRow.reviewNotes)
-    setVariantValidation("correct")
-    setImplantValidation("correct")
-    setCorrectedVariant(selectedRow.variant)
+    if (section === "systems") {
+      reviewSystemMapping(selectedRow.mappingId, {
+        mapping_status: current.answer === "correct" ? "confirmed" : "review_required",
+        review_notes: current.note.trim(),
+        approved_by_admin: canModerate && current.answer === "correct" ? true : undefined,
+      })
+    }
   }
 
   const filteredRows = useMemo(() => {
@@ -423,9 +621,52 @@ export default function ReviewPage() {
     return counts
   }, [rows])
 
+  const selectedHistory = useMemo(() => {
+    if (!selectedRow) {
+      return { reviewHistory: [], revisionHistory: [] }
+    }
+    return getSystemMappingHistory(selectedRow.mappingId)
+  }, [selectedRow, rows])
+
+  const validationSummary = useMemo(() => {
+    const reviewableSections: ReviewableSectionKey[] = ["systems", "trays", "skus"]
+    const reviewedCount = reviewableSections.filter((section) => sectionReviews[section].answer !== "").length
+    const correctCount = reviewableSections.filter((section) => sectionReviews[section].answer === "correct").length
+    const incorrectCount = reviewableSections.filter((section) => sectionReviews[section].answer === "incorrect").length
+
+    let label = "Unverified"
+    if (incorrectCount > 0) {
+      label = "Needs review"
+    } else if (correctCount === 3) {
+      label = "Validated"
+    } else if (reviewedCount > 0) {
+      label = "Partially validated"
+    }
+
+    return { label, reviewedCount, correctCount, incorrectCount }
+  }, [sectionReviews])
+
+  const sectionStatus = useMemo(() => {
+    const toStatus = (answer: SectionAnswer): "Unverified" | "Reviewed" | "Needs review" => {
+      if (answer === "") return "Unverified"
+      if (answer === "incorrect") return "Needs review"
+      return "Reviewed"
+    }
+
+    return {
+      systems: toStatus(sectionReviews.systems.answer),
+      trays: toStatus(sectionReviews.trays.answer),
+      skus: toStatus(sectionReviews.skus.answer),
+    }
+  }, [sectionReviews])
+
+  function toggleSection(section: keyof typeof openSections) {
+    setOpenSections((current) => ({ ...current, [section]: !current[section] }))
+  }
+
   return (
     <main className="min-h-screen bg-[#F4F8FB] text-[#10243E]">
-      <div className="mx-auto max-w-7xl px-4 py-5 lg:px-8 lg:py-8">
+      <div className="mx-auto max-w-7xl px-4 pb-5 pt-[calc(env(safe-area-inset-top)+1.5rem)] lg:px-8 lg:pb-8 lg:pt-8">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <Link href="/" className="flex h-10 w-10 items-center justify-center rounded-[16px] border border-[#D8E3EE] bg-white">
@@ -608,9 +849,10 @@ export default function ReviewPage() {
       </div>
 
       {selectedRow ? (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-[#0F172A]/40 p-3 lg:items-center">
-          <div className="w-full max-w-2xl rounded-[28px] border border-[#D8E3EE] bg-white p-4 shadow-[0_24px_60px_rgba(15,23,42,0.22)] lg:p-5">
-            <div className="flex items-start justify-between gap-3">
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-[#F4F8FB] text-[#10243E]">
+          <div className="mx-auto min-h-screen w-full max-w-4xl">
+            <div className="sticky top-0 z-10 border-b border-[#D8E3EE] bg-white/95 backdrop-blur">
+              <div className="flex items-start justify-between gap-3 px-4 pb-3 pt-[calc(env(safe-area-inset-top,0px)+12px)] lg:px-6 lg:pb-5 lg:pt-5">
               <div>
                 <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#0891B2]">Data Review</p>
                 <h2 className="mt-1 text-[26px] font-semibold tracking-[-0.04em] text-[#10243E]">{selectedRow.system}</h2>
@@ -624,237 +866,161 @@ export default function ReviewPage() {
                 Close
               </button>
             </div>
-
-
-            <div className="mt-4 flex flex-wrap items-center gap-2">
-              <StatusPill status={selectedRow.mappingStatus} revisionCount={selectedRow.revisionCount} reviewCount={selectedRow.reviewCount} />
-              <span className="rounded-full bg-[#EEF4F8] px-2.5 py-1 text-[12px] font-semibold uppercase tracking-[0.08em] text-[#334155]">
-                Poll {selectedRow.confidencePercent}%
-              </span>
             </div>
 
-            <div className="mt-4 space-y-2 text-[15px] leading-6 text-[#475569]">
-              <p>
-                <span className="font-semibold text-[#10243E]">Subspecialty:</span> {selectedRow.subspecialty}
-              </p>
-              <p>
-                <span className="font-semibold text-[#10243E]">Anatomy:</span> {selectedRow.anatomy}
-              </p>
-              <p>
-                <span className="font-semibold text-[#10243E]">Subclass:</span> {selectedRow.subanatomyGroup}
-              </p>
-              <p>
-                <span className="font-semibold text-[#10243E]">Procedure name:</span> {selectedRow.procedure}
-              </p>
-              <p>
-                <span className="font-semibold text-[#10243E]">Procedure variant:</span> {selectedRow.variant || "Not specified"}
-              </p>
-              <p>
-                <span className="font-semibold text-[#10243E]">Implant type:</span>{" "}
-                {selectedRow.fixationClass !== "unknown" ? formatFixationLabel(selectedRow.fixationClass) : "Not specified"}
-              </p>
-              {selectedRow.reviewNotes ? <p className="text-[#64748B]">{selectedRow.reviewNotes}</p> : null}
-              {selectedRow.latestDownvoteReason ? <p className="text-amber-700">Latest concern: {selectedRow.latestDownvoteReason}</p> : null}
+            <div className="px-4 py-4 lg:px-6 lg:py-6">
+            <div className="rounded-[20px] border border-[#D8E3EE] bg-white px-4 py-3">
+              <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#0891B2]">Record validation</p>
+              <div className="mt-2 flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2">
+                  {validationSummary.label === "Validated" ? (
+                    <Check size={16} className="text-emerald-600" />
+                  ) : validationSummary.label === "Needs review" ? (
+                    <CircleAlert size={16} className="text-rose-600" />
+                  ) : validationSummary.label === "Partially validated" ? (
+                    <ScanSearch size={16} className="text-sky-600" />
+                  ) : (
+                    <CircleAlert size={16} className="text-amber-600" />
+                  )}
+                  <p className="text-[22px] font-semibold tracking-[-0.03em] text-[#10243E]">{validationSummary.label}</p>
+                </div>
+                <StatusPill status={selectedRow.mappingStatus} revisionCount={selectedRow.revisionCount} reviewCount={selectedRow.reviewCount} />
+              </div>
+              <div className="mt-2 flex flex-wrap items-center gap-2 text-[13px] text-[#64748B]">
+                <span>{validationSummary.reviewedCount} of 3 sections reviewed</span>
+                <span className="text-[#CBD5E1]">•</span>
+                <span>{validationSummary.correctCount} correct</span>
+                {validationSummary.incorrectCount > 0 ? (
+                  <>
+                    <span className="text-[#CBD5E1]">•</span>
+                    <span>{validationSummary.incorrectCount} need review</span>
+                  </>
+                ) : null}
+              </div>
             </div>
 
-            <div className="mt-5 rounded-[22px] border border-[#E2E8F0] bg-[#F8FBFD] p-4">
-              <div className="grid gap-4 md:grid-cols-2">
-                <label className="block">
-                  <span className="flex items-center gap-2 text-[13px] font-semibold text-[#475569]">
-                    Confidence vote
-                    <InfoHint text="Choose whether you feel confident or concerned about this system being listed under this procedure branch." />
-                  </span>
-                  <select
-                    value={voteDirection}
-                    onChange={(event) => setVoteDirection(event.target.value as "up" | "down")}
-                    className="mt-1 w-full rounded-[14px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
-                  >
-                    <option value="up">High confidence</option>
-                    <option value="down">Low confidence</option>
-                  </select>
-                </label>
+            <ReviewSection
+              title="Systems"
+              subtitle="Linked system data"
+              status={sectionStatus.systems}
+              open={openSections.systems}
+              onToggle={() => toggleSection("systems")}
+            >
+              <div className="rounded-[18px] border border-[#D8E3EE] bg-white px-4 py-3">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#0891B2]">Currently held</p>
+                <div className="mt-3 space-y-2 text-[15px] leading-6 text-[#475569]">
+                  <p>
+                    <span className="font-semibold text-[#10243E]">Supplier:</span> {selectedRow.supplier}
+                  </p>
+                  <p>
+                    <span className="font-semibold text-[#10243E]">Portfolio / item name:</span> {selectedRow.system}
+                  </p>
+                  <p>
+                    <span className="font-semibold text-[#10243E]">Procedure variant:</span> {selectedRow.variant || "Not specified"}
+                  </p>
+                  <p>
+                    <span className="font-semibold text-[#10243E]">Implant type:</span>{" "}
+                    {selectedRow.fixationClass !== "unknown" ? formatFixationLabel(selectedRow.fixationClass) : "Not specified"}
+                  </p>
+                  {selectedRow.reviewNotes ? (
+                    <p>
+                      <span className="font-semibold text-[#10243E]">Note / source context:</span> {selectedRow.reviewNotes}
+                    </p>
+                  ) : null}
+                </div>
+              </div>
 
-                <label className="block">
-                  <span className="flex items-center gap-2 text-[13px] font-semibold text-[#475569]">
-                    Review outcome
-                    <InfoHint text="Set the current outcome for this system: keep under review, confirm it, or reject it." />
-                  </span>
-                  <select
-                    value={reviewStatusInput}
-                    onChange={(event) => setReviewStatusInput(event.target.value as MappingStatus)}
-                    className="mt-1 w-full rounded-[14px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
-                  >
-                    <option value="review_required">Needs review</option>
-                    <option value="confirmed">Confirmed</option>
-                    <option value="rejected">Rejected</option>
-                  </select>
-                </label>
+              <div className="mt-4 space-y-4">
+                <div>
+                  <p className="text-[17px] font-semibold text-[#10243E]">Is this section correct?</p>
+                </div>
+                <ValidationChoices
+                  value={sectionReviews.systems.answer}
+                  onChange={(value) => setSectionReviewValue("systems", { answer: value, issue: value === "incorrect" ? sectionReviews.systems.issue : "", note: sectionReviews.systems.note })}
+                />
+              </div>
 
-                <label className="block md:col-span-2">
-                  <span className="flex items-center gap-2 text-[13px] font-semibold text-[#475569]">
-                    {voteDirection === "up" ? "Why it looks right" : "Reason for concern"}
-                    <InfoHint
-                      text={
-                        voteDirection === "up"
-                          ? "Choose the best reason why this mapping looks correct."
-                          : "Choose the main reason why this mapping looks wrong or uncertain."
-                      }
+              {sectionReviews.systems.answer === "incorrect" ? (
+                <fieldset className="mt-4 block">
+                  <legend className="text-[13px] font-semibold text-[#475569]">What is wrong?</legend>
+                  <div className="mt-2 grid gap-2">
+                    {INCORRECT_REASON_OPTIONS.map((option) => (
+                      <label key={option.value} className="flex min-h-[48px] items-center gap-3 rounded-[16px] border border-[#D8E3EE] bg-white px-4 py-2 text-[15px] text-[#334155]">
+                        <input
+                          type="radio"
+                          name="systems_incorrect_reason"
+                          checked={sectionReviews.systems.issue === option.value}
+                          onChange={() => setSectionReviewValue("systems", { issue: option.value })}
+                          className="h-4 w-4 border-slate-300 text-[#06B6D4] focus:ring-[#06B6D4]"
+                        />
+                        <span>{option.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              ) : null}
+
+              {sectionReviews.systems.answer === "incorrect" ? (
+                <fieldset className="mt-4 block">
+                  <legend className="text-[13px] font-semibold text-[#475569]">Help improve this section</legend>
+                  <div className="mt-2 grid gap-2">
+                    {[
+                      { value: "suggest_correction" as const, label: "Suggest correction" },
+                      { value: "add_missing" as const, label: "Add missing data" },
+                      { value: "flag_only" as const, label: "Flag only" },
+                    ].map((option) => (
+                      <label key={option.value} className="flex min-h-[48px] items-center gap-3 rounded-[16px] border border-[#D8E3EE] bg-white px-4 py-2 text-[15px] text-[#334155]">
+                        <input
+                          type="radio"
+                          name="systems_improve_mode"
+                          checked={sectionReviews.systems.improveMode === option.value}
+                          onChange={() => setSectionReviewValue("systems", { improveMode: option.value })}
+                          className="h-4 w-4 border-slate-300 text-[#06B6D4] focus:ring-[#06B6D4]"
+                        />
+                        <span>{option.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              ) : null}
+
+              {sectionReviews.systems.improveMode === "suggest_correction" || sectionReviews.systems.improveMode === "add_missing" ? (
+                <div className="mt-4 grid gap-4">
+                  <label className="block">
+                    <span className="text-[13px] font-semibold text-[#475569]">Procedure variant</span>
+                    <input
+                      value={sectionReviews.systems.procedureVariant}
+                      onChange={(event) => setSectionReviewValue("systems", { procedureVariant: event.target.value })}
+                      className="mt-1 w-full rounded-[16px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
                     />
-                  </span>
-                  <select
-                    value={voteDirection === "up" ? positiveReason : negativeReason}
-                    onChange={(event) => {
-                      setVoteReason(event.target.value)
-                      if (voteDirection === "up") {
-                        setPositiveReason(event.target.value)
-                      } else {
-                        setNegativeReason(event.target.value)
-                      }
-                    }}
-                    className="mt-1 w-full rounded-[14px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
-                  >
-                    {(voteDirection === "up" ? POSITIVE_FEEDBACK_OPTIONS : NEGATIVE_FEEDBACK_OPTIONS).map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-              </div>
-
-              <div className="mt-4 grid gap-4 md:grid-cols-2">
-                <div className="block">
-                  <span className="flex items-center gap-2 text-[13px] font-semibold text-[#475569]">
-                    Procedure variant looks correct?
-                    <InfoHint text="If this variant is wrong, choose incorrect and enter the corrected variant." />
-                  </span>
-                  <div className="mt-1 flex gap-2">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setVariantValidation("correct")
-                        setCorrectedVariant(selectedRow.variant)
-                      }}
-                      className={variantValidation === "correct" ? "rounded-full bg-emerald-600 px-3 py-2 text-[14px] font-semibold text-white" : "rounded-full border border-[#D8E3EE] bg-white px-3 py-2 text-[14px] font-semibold text-[#475569]"}
-                    >
-                      Correct
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setVariantValidation("incorrect")}
-                      className={variantValidation === "incorrect" ? "rounded-full bg-amber-500 px-3 py-2 text-[14px] font-semibold text-white" : "rounded-full border border-[#D8E3EE] bg-white px-3 py-2 text-[14px] font-semibold text-[#475569]"}
-                    >
-                      Incorrect
-                    </button>
-                  </div>
+                  </label>
+                  <label className="block">
+                    <span className="text-[13px] font-semibold text-[#475569]">Implant type</span>
+                    <input
+                      value={sectionReviews.systems.implantType}
+                      onChange={(event) => setSectionReviewValue("systems", { implantType: event.target.value })}
+                      className="mt-1 w-full rounded-[16px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="text-[13px] font-semibold text-[#475569]">Source / rationale (optional)</span>
+                    <input
+                      value={sectionReviews.systems.sourceRationale}
+                      onChange={(event) => setSectionReviewValue("systems", { sourceRationale: event.target.value })}
+                      className="mt-1 w-full rounded-[16px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
+                    />
+                  </label>
                 </div>
-
-                <div className="block">
-                  <span className="flex items-center gap-2 text-[13px] font-semibold text-[#475569]">
-                    Implant type looks correct?
-                    <InfoHint text="If this implant type is wrong, choose incorrect and select the correct implant type." />
-                  </span>
-                  <div className="mt-1 flex gap-2">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setImplantValidation("correct")
-                        setCustomImplantType("")
-                        setFixationInput((selectedRow.fixationClass as FixationLabel) || "unknown")
-                      }}
-                      className={implantValidation === "correct" ? "rounded-full bg-emerald-600 px-3 py-2 text-[14px] font-semibold text-white" : "rounded-full border border-[#D8E3EE] bg-white px-3 py-2 text-[14px] font-semibold text-[#475569]"}
-                    >
-                      Correct
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setImplantValidation("incorrect")}
-                      className={implantValidation === "incorrect" ? "rounded-full bg-amber-500 px-3 py-2 text-[14px] font-semibold text-white" : "rounded-full border border-[#D8E3EE] bg-white px-3 py-2 text-[14px] font-semibold text-[#475569]"}
-                    >
-                      Incorrect
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {variantValidation === "incorrect" ? (
-                <label className="mt-4 block">
-                  <span className="flex items-center gap-2 text-[13px] font-semibold text-[#475569]">
-                    What should the procedure variant be?
-                    <InfoHint text="Enter the corrected procedure variant if the current one is wrong." />
-                  </span>
-                  <input
-                    value={correctedVariant}
-                    onChange={(event) => setCorrectedVariant(event.target.value)}
-                    className="mt-1 w-full rounded-[14px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
-                  />
-                </label>
-              ) : null}
-
-              {implantValidation === "incorrect" ? (
-                <label className="mt-4 block">
-                  <span className="flex items-center gap-2 text-[13px] font-semibold text-[#475569]">
-                    What should the implant type be?
-                    <InfoHint text="Choose the corrected implant type for this mapping." />
-                  </span>
-                  <select
-                    value={customImplantType ? "other" : fixationInput}
-                    onChange={(event) => {
-                      if (event.target.value === "other") {
-                        setCustomImplantType(" ")
-                        return
-                      }
-                      setCustomImplantType("")
-                      setFixationInput(event.target.value as FixationLabel)
-                    }}
-                    className="mt-1 w-full rounded-[14px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
-                  >
-                    {IMPLANT_TYPE_OPTIONS.map((label) => (
-                      <option key={label} value={label}>
-                        {label === "other" ? "Other" : formatFixationLabel(label)}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-              ) : null}
-
-              {implantValidation === "incorrect" && customImplantType !== "" ? (
-                <label className="mt-4 block">
-                  <span className="flex items-center gap-2 text-[13px] font-semibold text-[#475569]">
-                    What implant type should be added?
-                    <InfoHint text="Use this when the implant type you need is not in the list." />
-                  </span>
-                  <input
-                    value={customImplantType.trimStart()}
-                    onChange={(event) => setCustomImplantType(event.target.value)}
-                    className="mt-1 w-full rounded-[14px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
-                  />
-                </label>
-              ) : null}
-
-              {((voteDirection === "up" && positiveReason === "Other") || (voteDirection === "down" && negativeReason === "Other")) ? (
-                <label className="mt-4 block">
-                  <span className="flex items-center gap-2 text-[13px] font-semibold text-[#475569]">
-                    Add detail
-                    <InfoHint text="Use this only when the standard feedback options do not fit." />
-                  </span>
-                  <input
-                    value={customReason}
-                    onChange={(event) => setCustomReason(event.target.value)}
-                    className="mt-1 w-full rounded-[14px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
-                  />
-                </label>
               ) : null}
 
               <label className="mt-4 block">
                 <span className="flex items-center gap-2 text-[13px] font-semibold text-[#475569]">
-                  Review notes
-                  <InfoHint text="Add anything helpful for future reviewers, such as site-specific use, uncertainty, or context." />
+                  Add note or correction (optional)
                 </span>
                 <textarea
-                  value={reviewNotesInput}
-                  onChange={(event) => setReviewNotesInput(event.target.value)}
-                  rows={4}
+                  value={sectionReviews.systems.note}
+                  onChange={(event) => setSectionReviewValue("systems", { note: event.target.value })}
+                  rows={3}
                   className="mt-1 w-full rounded-[16px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
                 />
               </label>
@@ -862,20 +1028,306 @@ export default function ReviewPage() {
               <div className="mt-4 flex flex-wrap items-center gap-2">
                 <button
                   type="button"
-                  onClick={submitReviewForm}
+                  onClick={() => saveSectionReview("systems")}
                   className="inline-flex items-center gap-1.5 rounded-full bg-[#06B6D4] px-4 py-2.5 text-[13px] font-semibold uppercase tracking-[0.12em] text-white"
                 >
                   <Check size={13} />
-                  Save Review
-                </button>
-                <button
-                  type="button"
-                  onClick={revertReviewForm}
-                  className="inline-flex items-center gap-1 rounded-full bg-[#E6F9FD] px-3 py-2.5 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#0891B2]"
-                >
-                  Cancel changes
+                  {sectionReviews.systems.improveMode === "suggest_correction" || sectionReviews.systems.improveMode === "add_missing" ? "Submit suggestion" : "Save review"}
                 </button>
               </div>
+            </ReviewSection>
+
+            <ReviewSection
+              title="Trays"
+              subtitle="Held tray data"
+              status={sectionStatus.trays}
+              open={openSections.trays}
+              onToggle={() => toggleSection("trays")}
+            >
+              <div className="rounded-[18px] border border-[#D8E3EE] bg-white px-4 py-3">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#0891B2]">Current linked data</p>
+                <p className="mt-3 text-[15px] leading-6 text-[#475569]">No tray data is linked to this record yet.</p>
+              </div>
+
+              <div className="mt-4 space-y-4">
+                <p className="text-[17px] font-semibold text-[#10243E]">Is this section correct?</p>
+                <ValidationChoices
+                  value={sectionReviews.trays.answer}
+                  onChange={(value) => setSectionReviewValue("trays", { answer: value, issue: value === "incorrect" ? sectionReviews.trays.issue : "" })}
+                />
+              </div>
+
+              {sectionReviews.trays.answer === "incorrect" ? (
+                <fieldset className="mt-4 block">
+                  <legend className="text-[13px] font-semibold text-[#475569]">What is wrong?</legend>
+                  <div className="mt-2 grid gap-2">
+                    {INCORRECT_REASON_OPTIONS.map((option) => (
+                      <label key={option.value} className="flex min-h-[48px] items-center gap-3 rounded-[16px] border border-[#D8E3EE] bg-white px-4 py-2 text-[15px] text-[#334155]">
+                        <input
+                          type="radio"
+                          name="trays_incorrect_reason"
+                          checked={sectionReviews.trays.issue === option.value}
+                          onChange={() => setSectionReviewValue("trays", { issue: option.value })}
+                          className="h-4 w-4 border-slate-300 text-[#06B6D4] focus:ring-[#06B6D4]"
+                        />
+                        <span>{option.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              ) : null}
+
+              {sectionReviews.trays.answer === "incorrect" ? (
+                <fieldset className="mt-4 block">
+                  <legend className="text-[13px] font-semibold text-[#475569]">Help improve this section</legend>
+                  <div className="mt-2 grid gap-2">
+                    {[
+                      { value: "suggest_correction" as const, label: "Suggest correction" },
+                      { value: "add_missing" as const, label: "Add missing data" },
+                      { value: "flag_only" as const, label: "Flag only" },
+                    ].map((option) => (
+                      <label key={option.value} className="flex min-h-[48px] items-center gap-3 rounded-[16px] border border-[#D8E3EE] bg-white px-4 py-2 text-[15px] text-[#334155]">
+                        <input
+                          type="radio"
+                          name="trays_improve_mode"
+                          checked={sectionReviews.trays.improveMode === option.value}
+                          onChange={() => setSectionReviewValue("trays", { improveMode: option.value })}
+                          className="h-4 w-4 border-slate-300 text-[#06B6D4] focus:ring-[#06B6D4]"
+                        />
+                        <span>{option.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              ) : null}
+
+              {sectionReviews.trays.improveMode === "suggest_correction" || sectionReviews.trays.improveMode === "add_missing" ? (
+                <div className="mt-4 grid gap-4">
+                  <label className="block">
+                    <span className="text-[13px] font-semibold text-[#475569]">Tray name</span>
+                    <input
+                      value={sectionReviews.trays.trayName}
+                      onChange={(event) => setSectionReviewValue("trays", { trayName: event.target.value })}
+                      className="mt-1 w-full rounded-[16px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="text-[13px] font-semibold text-[#475569]">Tray type / category (optional)</span>
+                    <input
+                      value={sectionReviews.trays.trayCategory}
+                      onChange={(event) => setSectionReviewValue("trays", { trayCategory: event.target.value })}
+                      className="mt-1 w-full rounded-[16px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="text-[13px] font-semibold text-[#475569]">Supplier (optional)</span>
+                    <input
+                      value={sectionReviews.trays.traySupplier}
+                      onChange={(event) => setSectionReviewValue("trays", { traySupplier: event.target.value })}
+                      className="mt-1 w-full rounded-[16px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
+                    />
+                  </label>
+                </div>
+              ) : null}
+
+              <label className="mt-4 block">
+                <span className="text-[13px] font-semibold text-[#475569]">Add note or correction (optional)</span>
+                <textarea
+                  value={sectionReviews.trays.note}
+                  onChange={(event) => setSectionReviewValue("trays", { note: event.target.value })}
+                  rows={3}
+                  className="mt-1 w-full rounded-[16px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
+                />
+              </label>
+
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                <button type="button" onClick={() => saveSectionReview("trays")} className="inline-flex items-center gap-1.5 rounded-full bg-[#06B6D4] px-4 py-2.5 text-[13px] font-semibold uppercase tracking-[0.12em] text-white">
+                  <Check size={13} />
+                  {sectionReviews.trays.improveMode === "suggest_correction" || sectionReviews.trays.improveMode === "add_missing" ? "Submit suggestion" : "Save review"}
+                </button>
+              </div>
+            </ReviewSection>
+
+            <ReviewSection
+              title="SKUs"
+              subtitle="Held SKU data"
+              status={sectionStatus.skus}
+              open={openSections.skus}
+              onToggle={() => toggleSection("skus")}
+            >
+              <div className="rounded-[18px] border border-[#D8E3EE] bg-white px-4 py-3">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#0891B2]">Current linked data</p>
+                <p className="mt-3 text-[15px] leading-6 text-[#475569]">No SKU data is linked to this record yet.</p>
+              </div>
+
+              <div className="mt-4 space-y-4">
+                <p className="text-[17px] font-semibold text-[#10243E]">Is this section correct?</p>
+                <ValidationChoices
+                  value={sectionReviews.skus.answer}
+                  onChange={(value) => setSectionReviewValue("skus", { answer: value, issue: value === "incorrect" ? sectionReviews.skus.issue : "" })}
+                />
+              </div>
+
+              {sectionReviews.skus.answer === "incorrect" ? (
+                <fieldset className="mt-4 block">
+                  <legend className="text-[13px] font-semibold text-[#475569]">What is wrong?</legend>
+                  <div className="mt-2 grid gap-2">
+                    {INCORRECT_REASON_OPTIONS.map((option) => (
+                      <label key={option.value} className="flex min-h-[48px] items-center gap-3 rounded-[16px] border border-[#D8E3EE] bg-white px-4 py-2 text-[15px] text-[#334155]">
+                        <input
+                          type="radio"
+                          name="skus_incorrect_reason"
+                          checked={sectionReviews.skus.issue === option.value}
+                          onChange={() => setSectionReviewValue("skus", { issue: option.value })}
+                          className="h-4 w-4 border-slate-300 text-[#06B6D4] focus:ring-[#06B6D4]"
+                        />
+                        <span>{option.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              ) : null}
+
+              {sectionReviews.skus.answer === "incorrect" ? (
+                <fieldset className="mt-4 block">
+                  <legend className="text-[13px] font-semibold text-[#475569]">Help improve this section</legend>
+                  <div className="mt-2 grid gap-2">
+                    {[
+                      { value: "suggest_correction" as const, label: "Suggest correction" },
+                      { value: "add_missing" as const, label: "Add missing data" },
+                      { value: "flag_only" as const, label: "Flag only" },
+                    ].map((option) => (
+                      <label key={option.value} className="flex min-h-[48px] items-center gap-3 rounded-[16px] border border-[#D8E3EE] bg-white px-4 py-2 text-[15px] text-[#334155]">
+                        <input
+                          type="radio"
+                          name="skus_improve_mode"
+                          checked={sectionReviews.skus.improveMode === option.value}
+                          onChange={() => setSectionReviewValue("skus", { improveMode: option.value })}
+                          className="h-4 w-4 border-slate-300 text-[#06B6D4] focus:ring-[#06B6D4]"
+                        />
+                        <span>{option.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              ) : null}
+
+              {sectionReviews.skus.improveMode === "suggest_correction" || sectionReviews.skus.improveMode === "add_missing" ? (
+                <div className="mt-4 grid gap-4">
+                  <label className="block">
+                    <span className="text-[13px] font-semibold text-[#475569]">SKU / product code</span>
+                    <input
+                      value={sectionReviews.skus.skuCode}
+                      onChange={(event) => setSectionReviewValue("skus", { skuCode: event.target.value })}
+                      className="mt-1 w-full rounded-[16px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="text-[13px] font-semibold text-[#475569]">Product name</span>
+                    <input
+                      value={sectionReviews.skus.productName}
+                      onChange={(event) => setSectionReviewValue("skus", { productName: event.target.value })}
+                      className="mt-1 w-full rounded-[16px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="text-[13px] font-semibold text-[#475569]">Category (optional)</span>
+                    <input
+                      value={sectionReviews.skus.skuCategory}
+                      onChange={(event) => setSectionReviewValue("skus", { skuCategory: event.target.value })}
+                      className="mt-1 w-full rounded-[16px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
+                    />
+                  </label>
+                </div>
+              ) : null}
+
+              <label className="mt-4 block">
+                <span className="text-[13px] font-semibold text-[#475569]">Add note or correction (optional)</span>
+                <textarea
+                  value={sectionReviews.skus.note}
+                  onChange={(event) => setSectionReviewValue("skus", { note: event.target.value })}
+                  rows={3}
+                  className="mt-1 w-full rounded-[16px] border border-[#D8E3EE] bg-white px-3 py-2.5 text-[16px] text-[#334155] outline-none"
+                />
+              </label>
+
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                <button type="button" onClick={() => saveSectionReview("skus")} className="inline-flex items-center gap-1.5 rounded-full bg-[#06B6D4] px-4 py-2.5 text-[13px] font-semibold uppercase tracking-[0.12em] text-white">
+                  <Check size={13} />
+                  {sectionReviews.skus.improveMode === "suggest_correction" || sectionReviews.skus.improveMode === "add_missing" ? "Submit suggestion" : "Save review"}
+                </button>
+              </div>
+            </ReviewSection>
+
+            <ReviewSection
+              title="Cards"
+              subtitle="Linked card content"
+              open={openSections.cards}
+              onToggle={() => toggleSection("cards")}
+            >
+              <div className="rounded-[18px] border border-[#D8E3EE] bg-white px-4 py-3">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#0891B2]">Current linked data</p>
+                <p className="mt-3 text-[15px] leading-6 text-[#475569]">No linked cards are shown for this record yet.</p>
+              </div>
+            </ReviewSection>
+
+            <ReviewSection
+              title="Reviews"
+              subtitle={`${selectedHistory.reviewHistory.length} recorded`}
+              open={openSections.reviews}
+              onToggle={() => toggleSection("reviews")}
+            >
+              <div className="mt-3 overflow-hidden rounded-[16px] border border-[#D8E3EE] bg-white">
+                <div className="grid grid-cols-[1.2fr,1fr,1fr] gap-2 border-b border-[#E2E8F0] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#64748B]">
+                  <span>Reviewer</span>
+                  <span>Outcome</span>
+                  <span>Date</span>
+                </div>
+                {selectedHistory.reviewHistory.length > 0 ? (
+                  selectedHistory.reviewHistory
+                    .slice()
+                    .reverse()
+                    .map((entry, index) => (
+                      <div key={`${entry.actor}-${entry.reviewed_at}-${index}`} className="grid grid-cols-[1.2fr,1fr,1fr] gap-2 border-b border-[#EEF2F7] px-3 py-2 text-[13px] text-[#334155] last:border-b-0">
+                        <span>{entry.actor}</span>
+                        <span>{entry.outcome.replaceAll("_", " ")}</span>
+                        <span>{new Date(entry.reviewed_at).toLocaleDateString("en-GB")}</span>
+                      </div>
+                    ))
+                ) : (
+                  <p className="px-3 py-3 text-[13px] text-[#64748B]">No reviews yet.</p>
+                )}
+              </div>
+            </ReviewSection>
+
+            <ReviewSection
+              title="Revisions"
+              subtitle={`${selectedHistory.revisionHistory.length} recorded`}
+              open={openSections.revisions}
+              onToggle={() => toggleSection("revisions")}
+            >
+              <div className="mt-3 overflow-hidden rounded-[16px] border border-[#D8E3EE] bg-white">
+                <div className="grid grid-cols-[1fr,1.4fr,1fr] gap-2 border-b border-[#E2E8F0] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#64748B]">
+                  <span>Revised by</span>
+                  <span>Change</span>
+                  <span>Date</span>
+                </div>
+                {selectedHistory.revisionHistory.length > 0 ? (
+                  selectedHistory.revisionHistory
+                    .slice()
+                    .reverse()
+                    .map((entry, index) => (
+                      <div key={`${entry.actor}-${entry.revised_at}-${index}`} className="grid grid-cols-[1fr,1.4fr,1fr] gap-2 border-b border-[#EEF2F7] px-3 py-2 text-[13px] text-[#334155] last:border-b-0">
+                        <span>{entry.actor}</span>
+                        <span>{entry.summary}</span>
+                        <span>{new Date(entry.revised_at).toLocaleDateString("en-GB")}</span>
+                      </div>
+                    ))
+                ) : (
+                  <p className="px-3 py-3 text-[13px] text-[#64748B]">No revisions yet.</p>
+                )}
+              </div>
+            </ReviewSection>
             </div>
           </div>
         </div>
