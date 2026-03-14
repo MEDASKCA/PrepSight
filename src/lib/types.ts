@@ -125,6 +125,13 @@ export interface Procedure {
   name: string            // procedure name (usually = family name)
   setting: ClinicalSetting
   specialty: string
+  specialty_id?: string
+  service_line_id?: string
+  anatomy_id?: string
+  subanatomy_group?: string
+  aliases?: string[]
+  description?: string
+  status?: string
   approach?: string
   implantSystem?: string
   sections: Section[]

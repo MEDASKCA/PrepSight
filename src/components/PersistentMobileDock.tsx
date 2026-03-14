@@ -136,7 +136,7 @@ const WORKFLOW_TOOLS = [
   { id: "tool-implants", label: "Implants", href: "/", icon: LayoutGrid, tileColor: "#10B981" },
   { id: "tool-product-id", label: "Product ID", href: "/", icon: FolderSearch2, tileColor: "#F97316" },
   { id: "tool-stockroom", label: "Stockroom", href: "/", icon: ShoppingCart, tileColor: "#8B5CF6" },
-  { id: "tool-tray-audit", label: "Tray audit", href: "/", icon: Wrench, tileColor: "#F59E0B" },
+  { id: "tool-data-review", label: "Data Review", href: "/review", icon: Wrench, tileColor: "#F59E0B" },
 ] as const
 
 function tileStyle(color: string) {

@@ -17,6 +17,7 @@ import procedureVariantsDental from "../../data/procedure_variants/dental_and_or
 import procedureVariantSystemMap from "../../data/systems/procedure_variant_system_map.json";
 import systemsData from "../../data/systems/systems.json";
 import suppliersData from "../../data/suppliers/suppliers.json";
+import traumaAndOrthopaedicsLiveMapping from "../../data/systems/trauma_and_orthopaedics_full_live_mapping.json";
 
 export type ProcedureVariant = {
   id: string;
@@ -27,6 +28,7 @@ export type ProcedureVariant = {
   anatomy_id?: string;
   name: string;
   variant_type?: string;
+  variant_value?: string;
   approach?: string;
   description?: string;
   sort_order?: number;
@@ -69,6 +71,45 @@ export type SystemWithSupplier = System & {
 
 export type VariantWithSystems = ProcedureVariant & {
   systems: SystemWithSupplier[];
+};
+
+type HipMappingSystem = {
+  system_id: string;
+  system_name: string;
+  supplier_name: string;
+  supplier_tier: string;
+  fixation_class: string;
+  procedure_class: string;
+  mapping_status: string;
+  active_status: string;
+  notes: string;
+  approach_compatibility: string[];
+};
+
+type HipMappingVariant = {
+  variant_id: string;
+  variant_name: string;
+  systems: HipMappingSystem[];
+};
+
+type HipMappingProcedure = {
+  procedure_id: string;
+  procedure_name: string;
+  variants: HipMappingVariant[];
+};
+
+type HipMappingSubanatomy = {
+  name: string;
+  procedures: HipMappingProcedure[];
+};
+
+type BranchMappingFile = {
+  specialty: string;
+  subspecialty: string;
+  service_line_id?: string;
+  anatomy: string;
+  anatomy_id?: string;
+  subanatomy_groups: HipMappingSubanatomy[];
 };
 
 const procedureVariants: ProcedureVariant[] = [
@@ -114,6 +155,59 @@ const systemById = new Map<string, System>(
 const supplierById = new Map<string, Supplier>(
   suppliers.map((supplier) => [supplier.id, supplier]),
 );
+
+const branchMappings = traumaAndOrthopaedicsLiveMapping as BranchMappingFile[];
+
+const branchMappingVariantById = new Map<string, HipMappingVariant>();
+const branchMappingProcedureById = new Map<string, HipMappingProcedure>();
+const branchMappingSystemById = new Map<string, HipMappingSystem>();
+const branchMetadataByVariantId = new Map<string, { service_line_id: string; anatomy_id: string }>();
+
+for (const branchMapping of branchMappings) {
+  for (const subanatomy of branchMapping.subanatomy_groups || []) {
+    for (const procedure of subanatomy.procedures || []) {
+      branchMappingProcedureById.set(procedure.procedure_id, procedure);
+      for (const variant of procedure.variants || []) {
+        branchMappingVariantById.set(variant.variant_id, variant);
+        branchMetadataByVariantId.set(variant.variant_id, {
+          service_line_id: branchMapping.service_line_id ?? "SL_ARTHROPLASTY",
+          anatomy_id: branchMapping.anatomy_id ?? "",
+        });
+        for (const system of variant.systems || []) {
+          if (!branchMappingSystemById.has(system.system_id)) {
+            branchMappingSystemById.set(system.system_id, system);
+          }
+        }
+      }
+    }
+  }
+}
+
+const supplementalBranchVariants: ProcedureVariant[] = Array.from(
+  branchMappingProcedureById.values(),
+).flatMap((procedure) =>
+  procedure.variants
+    .filter((variant) => !procedureVariantById.has(variant.variant_id))
+    .map((variant, index) => ({
+      id: variant.variant_id,
+      procedure_id: procedure.procedure_id,
+      setting: "operating_theatre",
+      specialty_id: "SPEC_TRAUMA_ORTHOPAEDICS",
+      service_line_id: branchMetadataByVariantId.get(variant.variant_id)?.service_line_id ?? "SL_ARTHROPLASTY",
+      anatomy_id: branchMetadataByVariantId.get(variant.variant_id)?.anatomy_id ?? "",
+      name: variant.variant_name,
+      variant_type: "approach",
+      variant_value: variant.variant_name,
+      description: `${procedure.procedure_name} via ${variant.variant_name.toLowerCase()}.`,
+      sort_order: 100 + index,
+      status: "active",
+    })),
+);
+
+for (const variant of supplementalBranchVariants) {
+  procedureVariants.push(variant);
+  procedureVariantById.set(variant.id, variant);
+}
 
 function sortByOrderThenName<T extends { sort_order?: number; name?: string }>(
   a: T,
@@ -162,6 +256,51 @@ function dedupeSystemsByName(
   });
 }
 
+function createSyntheticSupplier(name: string): Supplier {
+  return {
+    id: `SUP_${name.toUpperCase().replace(/[^A-Z0-9]+/g, "_").replace(/^_+|_+$/g, "")}`,
+    name,
+    aliases: [],
+    status: "active",
+  };
+}
+
+function getBranchMappedSystemsWithSuppliers(variantId: string): SystemWithSupplier[] {
+  const variant = branchMappingVariantById.get(variantId);
+  if (!variant) return [];
+
+  return variant.systems.map((mappedSystem) => {
+    const existing = systemById.get(mappedSystem.system_id);
+    const supplier =
+      existing?.supplier_id
+        ? supplierById.get(existing.supplier_id) ?? null
+        : createSyntheticSupplier(mappedSystem.supplier_name);
+
+    return {
+      id: mappedSystem.system_id,
+      name: mappedSystem.system_name,
+      supplier_id: existing?.supplier_id,
+      specialty_id: existing?.specialty_id ?? "SPEC_TRAUMA_ORTHOPAEDICS",
+      service_line_ids: existing?.service_line_ids ?? [branchMetadataByVariantId.get(variantId)?.service_line_id ?? "SL_ARTHROPLASTY"],
+      anatomy_ids: existing?.anatomy_ids ?? [branchMetadataByVariantId.get(variantId)?.anatomy_id ?? ""],
+      system_type: existing?.system_type ?? "implant",
+      category: existing?.category ?? mappedSystem.procedure_class.replaceAll("_", " "),
+      aliases: existing?.aliases ?? [],
+      description: existing?.description ?? mappedSystem.notes,
+      status: existing?.status ?? "active",
+      supplier,
+      is_default: mappedSystem.mapping_status === "confirmed" && variant.systems.findIndex((item) => item.system_id === mappedSystem.system_id) === 0,
+      mapping_status: mappedSystem.mapping_status,
+      supplier_tier: mappedSystem.supplier_tier,
+      fixation_class: mappedSystem.fixation_class,
+      procedure_class: mappedSystem.procedure_class,
+      active_status: mappedSystem.active_status,
+      review_notes: mappedSystem.notes,
+      approach_compatibility: mappedSystem.approach_compatibility,
+    } as SystemWithSupplier;
+  });
+}
+
 export function getAllProcedureVariants(): ProcedureVariant[] {
   return [...procedureVariants].sort(sortByOrderThenName);
 }
@@ -191,6 +330,11 @@ export function getActiveVariantSystemMapByVariant(
 }
 
 export function getSystemsByVariant(variantId: string): System[] {
+  const branchMappedSystems = getBranchMappedSystemsWithSuppliers(variantId);
+  if (branchMappedSystems.length > 0) {
+    return dedupeSystemsByName(branchMappedSystems).sort((a, b) => a.name.localeCompare(b.name));
+  }
+
   const linkedSystemIds = getActiveVariantSystemMapByVariant(variantId).map(
     (row) => row.system_id,
   );
@@ -206,6 +350,11 @@ export function getSystemsByVariant(variantId: string): System[] {
 export function getSystemsWithSuppliers(
   variantId: string,
 ): SystemWithSupplier[] {
+  const branchMappedSystems = getBranchMappedSystemsWithSuppliers(variantId);
+  if (branchMappedSystems.length > 0) {
+    return dedupeSystemsByName(branchMappedSystems);
+  }
+
   const rows = getActiveVariantSystemMapByVariant(variantId);
 
   const mapped = rows
@@ -430,5 +579,22 @@ export function getProcedureVariantsByAnatomy(
 }
 
 export function getSystemById(systemId: string): System | null {
-  return systemById.get(systemId) ?? null;
+  const existing = systemById.get(systemId);
+  if (existing) return existing;
+
+  const branchMapped = branchMappingSystemById.get(systemId);
+  if (!branchMapped) return null;
+
+  return {
+    id: branchMapped.system_id,
+    name: branchMapped.system_name,
+    specialty_id: "SPEC_TRAUMA_ORTHOPAEDICS",
+    service_line_ids: ["SL_ARTHROPLASTY"],
+    anatomy_ids: [],
+    system_type: "implant",
+    category: branchMapped.procedure_class.replaceAll("_", " "),
+    aliases: [],
+    description: branchMapped.notes,
+    status: "active",
+  };
 }

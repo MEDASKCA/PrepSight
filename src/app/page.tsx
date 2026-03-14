@@ -49,6 +49,7 @@ function dedupeProceduresForDisplay(list: Procedure[]): Procedure[] {
       normalizeText(procedure.name),
       normalizeText("service_line_id" in procedure ? String(procedure.service_line_id) : ""),
       normalizeText("anatomy_id" in procedure ? String(procedure.anatomy_id) : ""),
+      normalizeText("subanatomy_group" in procedure ? String(procedure.subanatomy_group) : ""),
     ].join("|")
     const rows = grouped.get(key) ?? []
     rows.push(procedure)
@@ -240,6 +241,9 @@ export default async function HomePage({ searchParams }: Props) {
         {isAnatomyPage && (
           <ProcedureTabs
             procedures={theatreProcedures}
+            specialty={activeSpecialty}
+            serviceLine={serviceLineLabel}
+            anatomy={anatomyLabel}
             selectedSystemId={system}
             palette={activeSpecialtyPalette}
           />

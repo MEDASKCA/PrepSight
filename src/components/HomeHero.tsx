@@ -13,6 +13,7 @@ import {
   Building2,
   ChevronRight,
   Cross,
+  Database,
   Eye,
   FolderSearch2,
   HeartPulse,
@@ -104,6 +105,13 @@ const WORKFLOW_TOOLS = [
     available: true,
   },
   {
+    label: "Suppliers",
+    href: "/admin",
+    icon: Database,
+    tileColor: "#06B6D4",
+    available: true,
+  },
+  {
     label: "Surgeons",
     href: "",
     icon: UserRound,
@@ -139,23 +147,24 @@ const WORKFLOW_TOOLS = [
     available: false,
   },
   {
-    label: "Tray audit",
-    href: "",
+    label: "Data Review",
+    href: "/review",
     icon: Wrench,
     tileColor: "#F59E0B",
-    available: false,
+    available: true,
   },
 ] as const
 
 const WORKFLOW_IMAGE_MAP: Record<string, string> = {
   "New card": "/icons/workflow/new-card.png",
   Catalogue: "/icons/workflow/catalogue.png",
+  Suppliers: "/icons/workflow/suppliers.svg",
   Surgeons: "/icons/workflow/surgeons.png",
   Directory: "/icons/workflow/directory.png",
   Implants: "/icons/workflow/implants.png",
   "Product ID": "/icons/workflow/product-id.png",
   Stockroom: "/icons/workflow/stockroom.png",
-  "Tray audit": "/icons/workflow/tray-audit.png",
+  "Data Review": "/icons/workflow/tray-audit.png",
 }
 
 const SPECIALTY_SHORT_LABELS: Record<string, string> = {

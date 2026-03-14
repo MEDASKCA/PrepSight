@@ -8,6 +8,21 @@ import {
   type SystemWithSupplier,
   type VariantWithSystems,
 } from "@/lib/variants";
+import { getProfile } from "@/lib/profile";
+import {
+  FIXATION_LABELS,
+  getReviewedMappingsForVariant,
+  getSuggestionCandidatesForVariant,
+  isTrustedReviewer,
+  parseEvidenceLinkText,
+  reviewSystemMapping,
+  setSystemFixationLabel,
+  subscribeToSystemMappingReviews,
+  suggestSystemMapping,
+  type FixationLabel,
+  type ReviewableSystemMapping,
+} from "@/lib/system-mapping-review";
+import type { PrepSightProfile } from "@/lib/types";
 
 type ProcedureListItem = {
   id: string;
@@ -15,6 +30,7 @@ type ProcedureListItem = {
   description?: string;
   aliases?: string[];
   status?: string;
+  subanatomy_group?: string;
 };
 
 type Palette = {
@@ -34,6 +50,224 @@ type ProcedureTabsProps = {
   selectedSystemId?: string;
   palette?: Palette;
 };
+
+type GroupedProcedureSet = {
+  groupName: string;
+  items: Array<{
+    procedure: ProcedureListItem;
+    variants: VariantWithSystems[];
+    suppressBranching: boolean;
+  }>;
+};
+
+function sortSubanatomyGroups(a: string, b: string): number {
+  if (a === "Whole Joint") return -1;
+  if (b === "Whole Joint") return 1;
+  return a.localeCompare(b);
+}
+
+function SubanatomyHeader({
+  label,
+  isDark,
+}: {
+  label: string;
+  isDark: boolean;
+}) {
+  return (
+    <div className="px-1">
+      <div className={`rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] lg:inline-flex lg:px-4 lg:py-1.5 lg:text-[12px] ${isDark ? "border-[#334155] bg-[#1B2636] text-white" : "border-[#D8E3EE] bg-[#F8FBFD] text-[#0F172A]"}`}>
+        {label}
+      </div>
+    </div>
+  );
+}
+
+function formatFixationLabel(value: FixationLabel): string {
+  return value.replaceAll("_", " ");
+}
+
+function StatusBadge({
+  status,
+  isDark,
+}: {
+  status: "confirmed" | "review_required";
+  isDark: boolean;
+}) {
+  return (
+    <span
+      className={`rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] ${
+        status === "confirmed"
+          ? isDark
+            ? "bg-[#133126] text-[#86EFAC]"
+            : "bg-[#DCFCE7] text-[#166534]"
+          : isDark
+            ? "bg-[#3F2A13] text-[#F8D8A8]"
+            : "bg-[#FFF3D9] text-[#9A5B00]"
+      }`}
+    >
+      {status === "confirmed" ? "● Confirmed" : "▲ Review"}
+    </span>
+  );
+}
+
+function FixationBadge({
+  label,
+  isDark,
+}: {
+  label?: string;
+  isDark: boolean;
+}) {
+  if (!label || label === "unknown") return null;
+
+  return (
+    <span
+      className={`rounded-full px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.08em] ${
+        isDark
+          ? "bg-[#132238] text-[#C7D2E0]"
+          : "bg-[#EEF4F8] text-[#475569]"
+      }`}
+    >
+      {label.replaceAll("_", " ")}
+    </span>
+  );
+}
+
+function FixationSelect({
+  value,
+  isDark,
+  onChange,
+}: {
+  value: FixationLabel;
+  isDark: boolean;
+  onChange: (value: FixationLabel) => void;
+}) {
+  return (
+    <select
+      value={value}
+      onChange={(event) => onChange(event.target.value as FixationLabel)}
+      className={`rounded-full border px-2 py-1 text-[11px] font-medium ${
+        isDark
+          ? "border-[#334155] bg-[#132238] text-white"
+          : "border-[#D8E3EE] bg-white text-[#10243E]"
+      }`}
+    >
+      {FIXATION_LABELS.map((label) => (
+        <option key={label} value={label}>
+          {formatFixationLabel(label)}
+        </option>
+      ))}
+    </select>
+  );
+}
+
+function SuggestSystemForm({
+  variant,
+  procedure,
+  specialty,
+  subspecialty,
+  anatomy,
+  subanatomyGroup,
+  candidates,
+  isDark,
+  onSubmitted,
+}: {
+  variant: VariantWithSystems;
+  procedure: ProcedureListItem;
+  specialty: string;
+  subspecialty: string;
+  anatomy: string;
+  subanatomyGroup: string;
+  candidates: SystemWithSupplier[];
+  isDark: boolean;
+  onSubmitted: () => void;
+}) {
+  const [selectedSystemId, setSelectedSystemId] = useState(candidates[0]?.id ?? "");
+  const [fixationLabel, setFixationLabel] = useState<FixationLabel>("unknown");
+  const [reviewNotes, setReviewNotes] = useState("");
+  const [evidenceLinks, setEvidenceLinks] = useState("");
+
+  useEffect(() => {
+    setSelectedSystemId(candidates[0]?.id ?? "");
+  }, [candidates]);
+
+  if (candidates.length === 0) {
+    return (
+      <div className={`rounded-[16px] border px-3 py-3 text-xs ${isDark ? "border-[#334155] bg-[#1B2636] text-[#C7D2E0]" : "border-[#D8E3EE] bg-[#F8FBFD] text-[#51677E]"}`}>
+        No additional system candidates available for this branch yet.
+      </div>
+    );
+  }
+
+  return (
+    <div className={`rounded-[18px] border p-3 ${isDark ? "border-[#334155] bg-[#1B2636]" : "border-[#D8E3EE] bg-[#F8FBFD]"}`}>
+      <div className="grid gap-2 lg:grid-cols-[minmax(0,1fr)_160px]">
+        <select
+          value={selectedSystemId}
+          onChange={(event) => setSelectedSystemId(event.target.value)}
+          className={`rounded-[12px] border px-3 py-2 text-sm ${isDark ? "border-[#334155] bg-[#132238] text-white" : "border-[#D8E3EE] bg-white text-[#10243E]"}`}
+        >
+          {candidates.map((system) => (
+            <option key={system.id} value={system.id}>
+              {system.name}
+            </option>
+          ))}
+        </select>
+        <select
+          value={fixationLabel}
+          onChange={(event) => setFixationLabel(event.target.value as FixationLabel)}
+          className={`rounded-[12px] border px-3 py-2 text-sm ${isDark ? "border-[#334155] bg-[#132238] text-white" : "border-[#D8E3EE] bg-white text-[#10243E]"}`}
+        >
+          {FIXATION_LABELS.map((label) => (
+            <option key={label} value={label}>
+              {formatFixationLabel(label)}
+            </option>
+          ))}
+        </select>
+      </div>
+      <textarea
+        value={reviewNotes}
+        onChange={(event) => setReviewNotes(event.target.value)}
+        rows={2}
+        placeholder="Why should this system be considered?"
+        className={`mt-2 w-full rounded-[12px] border px-3 py-2 text-sm ${isDark ? "border-[#334155] bg-[#132238] text-white placeholder:text-[#94A3B8]" : "border-[#D8E3EE] bg-white text-[#10243E] placeholder:text-[#7A8CA0]"}`}
+      />
+      <input
+        value={evidenceLinks}
+        onChange={(event) => setEvidenceLinks(event.target.value)}
+        placeholder="Evidence links separated by spaces"
+        className={`mt-2 w-full rounded-[12px] border px-3 py-2 text-sm ${isDark ? "border-[#334155] bg-[#132238] text-white placeholder:text-[#94A3B8]" : "border-[#D8E3EE] bg-white text-[#10243E] placeholder:text-[#7A8CA0]"}`}
+      />
+      <div className="mt-2 flex justify-end">
+        <button
+          type="button"
+          onClick={() => {
+            if (!selectedSystemId) return;
+            suggestSystemMapping({
+              specialty,
+              subspecialty,
+              anatomy,
+              subanatomy_group: subanatomyGroup,
+              procedure_id: procedure.id,
+              procedure_name: procedure.name,
+              variant_id: variant.id,
+              variant_name: variant.name,
+              system_id: selectedSystemId,
+              fixation_label: fixationLabel,
+              review_notes: reviewNotes,
+              evidence_links: parseEvidenceLinkText(evidenceLinks),
+            });
+            setReviewNotes("");
+            setEvidenceLinks("");
+            onSubmitted();
+          }}
+          className={`rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] ${isDark ? "bg-[#0EA5E9] text-[#07111F]" : "bg-[#0EA5E9] text-white"}`}
+        >
+          Suggest system
+        </button>
+      </div>
+    </div>
+  );
+}
 
 function Chevron({ expanded, className = "" }: { expanded: boolean; className?: string }) {
   return (
@@ -74,30 +308,44 @@ function SystemRow({
   variantId,
   isSelected,
   isDark,
+  canReview,
 }: {
-  system: SystemWithSupplier;
+  system: SystemWithSupplier | ReviewableSystemMapping;
   procedureId: string;
   variantId: string;
   isSelected: boolean;
   isDark: boolean;
+  canReview: boolean;
 }) {
   const rowClassName = isDark
-    ? `procedure-system-row flex w-full items-center justify-between gap-3 border-t px-5 py-4 text-left transition lg:px-6 lg:py-5 ${
+    ? `procedure-system-row flex w-full items-start justify-between gap-3 border-t px-4 py-3 text-left transition lg:px-5 lg:py-3.5 ${
         isSelected ? "bg-[#334155]" : "bg-[#243244] hover:bg-[#2B3B50]"
       } border-[#334155]`
     : [
-        "procedure-system-row flex w-full items-center justify-between gap-3 border-t border-[#D5DCE3] px-5 py-4 text-left transition lg:border-[#D8E3EE] lg:px-6 lg:py-5",
+        "procedure-system-row flex w-full items-start justify-between gap-3 border-t border-[#D5DCE3] px-4 py-3 text-left transition lg:border-[#D8E3EE] lg:px-5 lg:py-3.5",
         isSelected ? "bg-[#E1F3F0] lg:bg-[#EEF7FF]" : "bg-white hover:bg-[#F4FBFA] lg:bg-white lg:hover:bg-[#F7FBFF]",
       ].join(" ");
 
+  const reviewable = "mapping_id" in system ? (system as ReviewableSystemMapping) : null;
+  const href = `/procedures/${procedureId}?variant=${encodeURIComponent(variantId)}&system=${encodeURIComponent(system.id)}`;
+
   return (
-    <Link
-      href={`/procedures/${procedureId}?variant=${encodeURIComponent(variantId)}&system=${encodeURIComponent(system.id)}`}
-      className={rowClassName}
-    >
-      <div className="min-w-0">
+    <div className={rowClassName}>
+      <Link href={href} className="min-w-0 flex-1">
         <div className={`text-sm font-medium lg:text-[22px] lg:font-semibold lg:tracking-[-0.03em] ${isDark ? "text-white" : "text-slate-900 lg:text-[#10243E]"}`}>
           {system.name}
+        </div>
+        <div className="mt-1 flex flex-wrap items-center gap-1.5">
+          {"fixation_class" in system && (
+            <FixationBadge
+              label={typeof system.fixation_class === "string" ? system.fixation_class : undefined}
+              isDark={isDark}
+            />
+          )}
+          {"mapping_status" in system &&
+            (system.mapping_status === "confirmed" || system.mapping_status === "review_required") && (
+              <StatusBadge status={system.mapping_status} isDark={isDark} />
+            )}
         </div>
         {(formatSystemMeta(system).type || formatSystemMeta(system).supplier) && (
           <div className="mt-1 space-y-0.5">
@@ -118,20 +366,58 @@ function SystemRow({
             {system.description}
           </div>
         )}
+      </Link>
+      <div className="flex shrink-0 flex-col items-end gap-1.5">
+        <div className="flex items-center gap-2">
+          {system.is_default && (
+            <span className={`rounded-full px-2 py-0.5 text-[10px] font-medium lg:border lg:px-2.5 lg:py-0.5 ${isDark ? "border-[#334155] bg-[#132238] text-[#E5EEF9]" : "bg-[#E1F3F0] text-[#134E4A] lg:border-[#D6E6F5] lg:bg-[#F3FAF9] lg:text-[#134E4A]"}`}>
+              Default
+            </span>
+          )}
+          <Link href={href} className="flex h-6 w-6 items-center justify-center">
+            <Chevron expanded={false} className={isDark ? "text-[#C7D2E0]" : "text-[#7BA9A3] lg:text-[#8AA2BA]"} />
+          </Link>
+        </div>
+        {reviewable && canReview ? (
+          <div className="flex flex-wrap items-center justify-end gap-1">
+            <button
+              type="button"
+              onClick={() =>
+                reviewSystemMapping(reviewable.mapping_id, {
+                  mapping_status: "confirmed",
+                  approved_by_admin: true,
+                })
+              }
+              className={`rounded-full px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] ${
+                isDark ? "bg-[#133126] text-[#86EFAC]" : "bg-[#DCFCE7] text-[#166534]"
+              }`}
+            >
+              Confirm
+            </button>
+            <button
+              type="button"
+              onClick={() =>
+                reviewSystemMapping(reviewable.mapping_id, {
+                  mapping_status: "review_required",
+                  approved_by_admin: false,
+                  review_notes: reviewable.review_notes || "Flagged for review.",
+                })
+              }
+              className={`rounded-full px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] ${
+                isDark ? "bg-[#3F2A13] text-[#F8D8A8]" : "bg-[#FFF3D9] text-[#9A5B00]"
+              }`}
+            >
+              Flag
+            </button>
+          </div>
+        ) : null}
       </div>
-      <div className="flex shrink-0 items-center gap-2">
-        {system.is_default && (
-          <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium lg:border lg:px-3 lg:py-1 ${isDark ? "border-[#334155] bg-[#132238] text-[#E5EEF9]" : "bg-[#E1F3F0] text-[#134E4A] lg:border-[#D6E6F5] lg:bg-[#F3FAF9] lg:text-[#134E4A]"}`}>
-            Default
-          </span>
-        )}
-        <Chevron expanded={false} className={isDark ? "text-[#C7D2E0]" : "text-[#7BA9A3] lg:text-[#8AA2BA]"} />
-      </div>
-    </Link>
+    </div>
   );
 }
 
 function VariantSection({
+  procedure,
   procedureId,
   variant,
   expanded,
@@ -140,7 +426,13 @@ function VariantSection({
   isFirst,
   palette,
   isDark,
+  specialty,
+  subspecialty,
+  anatomy,
+  subanatomyGroup,
+  canReview,
 }: {
+  procedure: ProcedureListItem;
   procedureId: string;
   variant: VariantWithSystems;
   expanded: boolean;
@@ -149,7 +441,27 @@ function VariantSection({
   isFirst: boolean;
   palette: Palette;
   isDark: boolean;
+  specialty: string;
+  subspecialty: string;
+  anatomy: string;
+  subanatomyGroup: string;
+  canReview: boolean;
 }) {
+  const reviewedSystems = useMemo(
+    () =>
+      getReviewedMappingsForVariant({
+        procedure: { id: procedure.id, name: procedure.name },
+        variant,
+        currentSystems: variant.systems,
+        specialty,
+        subspecialty,
+        anatomy,
+        subanatomyGroup,
+        includeReviewRequired: true,
+      }),
+    [anatomy, procedure.id, procedure.name, specialty, subanatomyGroup, subspecialty, variant],
+  );
+
   return (
     <div className={isFirst ? "" : "procedure-variant-divider border-t border-[#D5DCE3] lg:border-white/10"}>
       <button
@@ -193,15 +505,15 @@ function VariantSection({
             )}
           </div>
           <span className={`rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] ${isDark ? "border border-[#334155] bg-[#132238] text-[#E5EEF9]" : "border border-black/10 bg-white/55"}`}>
-            {variant.systems.length} systems
+            {reviewedSystems.length} systems
           </span>
         </div>
       </div>
 
       {expanded && (
         <div className={`procedure-variant-content lg:hidden ${isDark ? "bg-[#243244]" : "bg-white"}`}>
-          {variant.systems.length > 0 ? (
-            variant.systems.map((system) => (
+          {reviewedSystems.length > 0 ? (
+            reviewedSystems.map((system) => (
               <SystemRow
                 key={system.id}
                 system={system}
@@ -209,6 +521,7 @@ function VariantSection({
                 variantId={variant.id}
                 isSelected={selectedSystemId === system.id}
                 isDark={isDark}
+                canReview={canReview}
               />
             ))
           ) : (
@@ -220,8 +533,8 @@ function VariantSection({
       )}
 
       <div className="hidden lg:block lg:bg-transparent">
-        {variant.systems.length > 0 ? (
-          variant.systems.map((system) => (
+        {reviewedSystems.length > 0 ? (
+          reviewedSystems.map((system) => (
             <SystemRow
               key={system.id}
               system={system}
@@ -229,6 +542,7 @@ function VariantSection({
               variantId={variant.id}
               isSelected={selectedSystemId === system.id}
               isDark={isDark}
+              canReview={canReview}
             />
           ))
         ) : (
@@ -246,6 +560,10 @@ function DesktopProcedureMatrix({
   selectedSystemId,
   palette,
   isDark,
+  specialty,
+  subspecialty,
+  anatomy,
+  canReview,
 }: {
   proceduresWithVariants: Array<{
     procedure: ProcedureListItem;
@@ -255,6 +573,10 @@ function DesktopProcedureMatrix({
   selectedSystemId?: string;
   palette: Palette;
   isDark: boolean;
+  specialty: string;
+  subspecialty: string;
+  anatomy: string;
+  canReview: boolean;
 }) {
   const [collapsedCards, setCollapsedCards] = useState<Record<string, boolean>>({});
 
@@ -453,6 +775,10 @@ function ProcedureSection({
   selectedSystemId,
   palette,
   isDark,
+  specialty,
+  subspecialty,
+  anatomy,
+  canReview,
 }: {
   procedure: ProcedureListItem;
   variants: VariantWithSystems[];
@@ -460,6 +786,10 @@ function ProcedureSection({
   selectedSystemId?: string;
   palette: Palette;
   isDark: boolean;
+  specialty: string;
+  subspecialty: string;
+  anatomy: string;
+  canReview: boolean;
 }) {
   const [openVariantId, setOpenVariantId] = useState<string | null>(null);
   const [desktopExpanded, setDesktopExpanded] = useState(false);
@@ -524,6 +854,7 @@ function ProcedureSection({
               variants.map((variant, index) => (
                 <VariantSection
                   key={variant.id}
+                  procedure={procedure}
                   procedureId={procedure.id}
                   variant={variant}
                   expanded={openVariantId === variant.id}
@@ -531,6 +862,11 @@ function ProcedureSection({
                   isFirst={index === 0}
                   palette={palette}
                   isDark={isDark}
+                  specialty={specialty}
+                  subspecialty={subspecialty}
+                  anatomy={anatomy}
+                  subanatomyGroup={procedure.subanatomy_group?.trim() || "Ungrouped"}
+                  canReview={canReview}
                   onToggle={() =>
                     setOpenVariantId((current) => (current === variant.id ? null : variant.id))
                   }
@@ -555,6 +891,7 @@ function ProcedureSection({
                     className={index === 0 ? "min-w-0" : "min-w-0 border-l border-[#E4EDF6]"}
                   >
                     <VariantSection
+                      procedure={procedure}
                       procedureId={procedure.id}
                       variant={variant}
                       expanded
@@ -562,6 +899,11 @@ function ProcedureSection({
                       isFirst
                       palette={palette}
                       isDark={isDark}
+                      specialty={specialty}
+                      subspecialty={subspecialty}
+                      anatomy={anatomy}
+                      subanatomyGroup={procedure.subanatomy_group?.trim() || "Ungrouped"}
+                      canReview={canReview}
                       onToggle={() => {
                         setOpenVariantId((current) => (current === variant.id ? null : variant.id));
                       }}
@@ -583,6 +925,9 @@ function ProcedureSection({
 
 export default function ProcedureTabs({
   procedures,
+  specialty,
+  serviceLine,
+  anatomy,
   selectedSystemId,
   palette = {
     header: "#4DA3FF",
@@ -593,6 +938,8 @@ export default function ProcedureTabs({
   },
 }: ProcedureTabsProps) {
   const [isDark, setIsDark] = useState(false);
+  const [reviewRefreshKey, setReviewRefreshKey] = useState(0);
+  const [profile, setProfile] = useState<PrepSightProfile | null>(null);
 
   useEffect(() => {
     const syncTheme = () => {
@@ -609,6 +956,19 @@ export default function ProcedureTabs({
     };
   }, []);
 
+  useEffect(() => {
+    setProfile(getProfile());
+    return subscribeToSystemMappingReviews(() => {
+      setProfile(getProfile());
+      setReviewRefreshKey((current) => current + 1);
+    });
+  }, []);
+
+  const trustedReviewer = isTrustedReviewer(profile);
+  const reviewSpecialty = specialty ?? "Trauma and Orthopaedics";
+  const reviewSubspecialty = serviceLine ?? specialty ?? "Trauma and Orthopaedics";
+  const reviewAnatomy = anatomy ?? "Unknown Anatomy";
+
   const proceduresWithVariants = useMemo(() => {
     return procedures
       .filter((procedure) => procedure.status !== "inactive")
@@ -617,7 +977,26 @@ export default function ProcedureTabs({
         variants: getCuratedVariantsForProcedureWithSystems(procedure.id, procedure.name),
         suppressBranching: hasOnlySyntheticBranching(procedure.id, procedure.name),
       }));
-  }, [procedures]);
+  }, [procedures, reviewRefreshKey]);
+
+  const groupedProcedures = useMemo<GroupedProcedureSet[]>(() => {
+    const grouped = new Map<string, GroupedProcedureSet["items"]>();
+
+    for (const item of proceduresWithVariants) {
+      const groupName = item.procedure.subanatomy_group?.trim() || "Ungrouped";
+      const list = grouped.get(groupName) ?? [];
+      list.push(item);
+      grouped.set(groupName, list);
+    }
+
+    return Array.from(grouped.entries())
+      .sort((a, b) => sortSubanatomyGroups(a[0], b[0]))
+      .map(([groupName, items]) => ({
+        groupName,
+        items: items.sort((a, b) => a.procedure.name.localeCompare(b.procedure.name)),
+      }));
+  }, [proceduresWithVariants]);
+
   if (!proceduresWithVariants.length) {
     return (
       <div className={`procedure-empty-row rounded-xl border border-dashed px-5 py-6 text-sm lg:rounded-[28px] lg:px-7 lg:py-7 ${isDark ? "border-[#334155] bg-[#243244] text-[#C7D2E0]" : "border-slate-300 bg-white text-slate-500 lg:border-[#D8E3EE] lg:bg-white lg:text-[#61758B]"}`}>
@@ -629,25 +1008,45 @@ export default function ProcedureTabs({
   return (
     <>
       <div className="space-y-4 lg:hidden">
-        {proceduresWithVariants.map(({ procedure, variants, suppressBranching }) => (
-          <ProcedureSection
-            key={procedure.id}
-            procedure={procedure}
-            variants={variants}
-            suppressBranching={suppressBranching}
-            selectedSystemId={selectedSystemId}
-            palette={palette}
-            isDark={isDark}
-          />
+        {groupedProcedures.map(({ groupName, items }) => (
+          <section key={groupName} className="space-y-3">
+            <SubanatomyHeader label={groupName} isDark={isDark} />
+            {items.map(({ procedure, variants, suppressBranching }) => (
+              <ProcedureSection
+                key={procedure.id}
+                procedure={procedure}
+                variants={variants}
+                suppressBranching={suppressBranching}
+                selectedSystemId={selectedSystemId}
+                palette={palette}
+                isDark={isDark}
+                specialty={reviewSpecialty}
+                subspecialty={reviewSubspecialty}
+                anatomy={reviewAnatomy}
+                canReview={trustedReviewer}
+              />
+            ))}
+          </section>
         ))}
       </div>
 
-      <DesktopProcedureMatrix
-        proceduresWithVariants={proceduresWithVariants}
-        selectedSystemId={selectedSystemId}
-        palette={palette}
-        isDark={isDark}
-      />
+      <div className="hidden space-y-8 lg:block">
+        {groupedProcedures.map(({ groupName, items }) => (
+          <section key={groupName} className="space-y-4">
+            <SubanatomyHeader label={groupName} isDark={isDark} />
+            <DesktopProcedureMatrix
+              proceduresWithVariants={items}
+              selectedSystemId={selectedSystemId}
+              palette={palette}
+              isDark={isDark}
+              specialty={reviewSpecialty}
+              subspecialty={reviewSubspecialty}
+              anatomy={reviewAnatomy}
+              canReview={trustedReviewer}
+            />
+          </section>
+        ))}
+      </div>
 
     </>
   );
