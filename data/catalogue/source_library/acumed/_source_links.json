@@ -1,0 +1,186 @@
+[
+  {
+    "supplier_id": "SUP_ACUMED",
+    "supplier_name": "Acumed",
+    "system_id": "SYS_RADIAL_HEAD_MODULAR",
+    "system_name": "Acumed Modular Radial Head",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Acumed Modular Radial Head System",
+        "url": "https://www.acumed.net/products/elbow/radial-head-system/",
+        "notes": "Official Acumed product page for the modular radial head system."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ACUMED",
+    "supplier_name": "Acumed",
+    "system_id": "SYS_ACU_LOC_DISTAL_RADIUS_SYSTEM",
+    "system_name": "Acu-Loc Distal Radius System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Acu-Loc 2 Wrist Plating System",
+        "url": "https://www.acumed.net/products/wrist/acu-loc-2-wrist-plating-system/",
+        "notes": "Official Acumed product page for the distal radius plating family."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ACUMED",
+    "supplier_name": "Acumed",
+    "system_id": "SYS_CLAVICLE_PLATING_SYSTEM",
+    "system_name": "Clavicle Plating System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Clavicle Plating System 2",
+        "url": "https://www.acumed.net/products/shoulder/clavicle-plating-system-2/",
+        "notes": "Official Acumed product page for clavicle fracture fixation."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ACUMED",
+    "supplier_name": "Acumed",
+    "system_id": "SYS_DISTAL_HUMERUS_PLATING_SYSTEM",
+    "system_name": "Distal Humerus Plating System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Distal Humerus Plating System",
+        "url": "https://www.acumed.net/products/elbow/distal-humerus-plating-system/",
+        "notes": "Official Acumed product page."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ACUMED",
+    "supplier_name": "Acumed",
+    "system_id": "SYS_OLECRANON_PLATING_SYSTEM",
+    "system_name": "Olecranon Plating System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Olecranon Plating System",
+        "url": "https://www.acumed.net/products/elbow/olecranon-plating-system/",
+        "notes": "Official Acumed product page."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ACUMED",
+    "supplier_name": "Acumed",
+    "system_id": "SYS_ANATOMIC_RADIAL_HEAD_SYSTEM",
+    "system_name": "Anatomic Radial Head System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Anatomic Radial Head System",
+        "url": "https://www.acumed.net/products/elbow/anatomic-radial-head-system/",
+        "notes": "Official Acumed product page for the Anatomic Radial Head System."
+      },
+      {
+        "source_type": "surgical_technique_pdf",
+        "title": "Anatomic Radial Head Solutions Surgical Technique",
+        "url": "https://www.acumed.net/wp-content/uploads/2023/02/Acumed-Surgical-Technique-EN-ARH-Solutions-Second-Generation-ELB10-07-F.pdf",
+        "notes": "Official Acumed surgical technique PDF for anatomic radial head solutions."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ACUMED",
+    "supplier_name": "Acumed",
+    "system_id": "SYS_FOREARM_SHAFT_PLATING_SYSTEM",
+    "system_name": "Forearm Shaft Plating System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Forearm Fracture Solutions",
+        "url": "https://www.acumed.net/products/hand-wrist/anatomic-midshaft-forearm-plating-system/",
+        "notes": "Official Acumed product page covering the Anatomic Midshaft Forearm Plating System and related forearm rod instrumentation."
+      },
+      {
+        "source_type": "catalogue_pdf",
+        "title": "Acumed Product Catalog",
+        "url": "https://www.acumed.net/wp-content/uploads/2023/08/Acumed-Product-Catalog-EN-single-page-vertical-GEN00-21-E.pdf",
+        "notes": "Official Acumed product catalog with forearm rod and plating references."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ACUMED",
+    "supplier_name": "Acumed",
+    "system_id": "SYS_PROXIMAL_HUMERUS_PLATING_SYSTEM",
+    "system_name": "Proximal Humerus Plating System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Polarus Proximal Humeral Plating System",
+        "url": "https://www.acumed.net/products/shoulder/polarus-proximal-humeral-plating-system/",
+        "notes": "Official Acumed product page with linked surgical technique and tray imagery."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ACUMED",
+    "supplier_name": "Acumed",
+    "system_id": "SYS_ACUTRAK___SCAPHOID_COMPRESSION_SCREW_SYSTEM",
+    "system_name": "Acutrak / Scaphoid Compression Screw System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Acutrak 3 Headless Compression Screw System",
+        "url": "https://www.acumed.net/products/screw-pin/acutrak-3-headless-compression-screw-system/",
+        "notes": "Official Acumed Acutrak 3 page with scaphoid indications and linked surgical videos."
+      },
+      {
+        "source_type": "product_page",
+        "title": "Acutrak 2 Headless Compression Screw System",
+        "url": "https://www.acumed.net/products/screw-pin/acutrak-2-headless-compression-screw-system/",
+        "notes": "Official Acumed Acutrak 2 page with scaphoid fixation indications."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ACUMED",
+    "supplier_name": "Acumed",
+    "system_id": "SYS_ACUTRAK_PERCUTANEOUS_SCAPHOID_FIXATION",
+    "system_name": "Acutrak Percutaneous Scaphoid Fixation",
+    "sources": [
+      {
+        "source_type": "surgical_video",
+        "title": "Animated Surgical Technique: Scaphoid Fracture",
+        "url": "https://www.acumed.net/video/animated-surgical-technique-scaphoid-fracture/",
+        "notes": "Official Acumed surgical animation using the Acutrak 2 Mini Screw for scaphoid fixation."
+      },
+      {
+        "source_type": "surgical_video",
+        "title": "Scaphoid Approach to Dorsal Fixation using Acutrak 2 Screw",
+        "url": "https://www.acumed.net/video/scaphoid-approach-to-dorsal-fixation-using-acutrak-2-screw-with-dr-bass/",
+        "notes": "Official Acumed surgical video for dorsal scaphoid fixation using Acutrak 2."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ACUMED",
+    "supplier_name": "Acumed",
+    "system_id": "SYS_TALUS___HINDFOOT_FIXATION_PORTFOLIO",
+    "system_name": "Talus / Hindfoot Fixation Portfolio",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Extremity Screw System",
+        "url": "https://www.acumed.net/products/screw-pin/extremity-screw-system/",
+        "notes": "Official Acumed extremity screw system page with hindfoot and talus indications and tray imagery."
+      },
+      {
+        "source_type": "product_page",
+        "title": "Acutrak 2 Headless Compression Screw System",
+        "url": "https://www.acumed.net/products/screw-pin/acutrak-2-headless-compression-screw-system/",
+        "notes": "Official Acumed Acutrak 2 page with hindfoot, talus, subtalar and ankle arthrodesis indications."
+      }
+    ]
+  }
+]

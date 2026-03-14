@@ -1,0 +1,22 @@
+[
+  {
+    "supplier_id": "SUP_BBRAUN",
+    "supplier_name": "B. Braun",
+    "system_id": "SYS_SYRINGE_PUMP",
+    "system_name": "Syringe Pump",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Perfusor Space Syringe Pump",
+        "url": "https://www.bbraunusa.com/en/products-and-therapies/infusion-therapy/syringe-pumps/perfusor-space.html",
+        "notes": "Official B. Braun syringe pump product page used as the public source anchor."
+      },
+      {
+        "source_type": "technology_page",
+        "title": "Infusion Therapy",
+        "url": "https://www.bbraunusa.com/en/products-and-therapies/infusion-therapy.html",
+        "notes": "Official B. Braun infusion therapy page used as broader workflow context."
+      }
+    ]
+  }
+]

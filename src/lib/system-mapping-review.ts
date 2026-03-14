@@ -2,12 +2,16 @@ import reviewSeedData from "../../data/systems/arthroplasty_system_mapping_revie
 import systemsData from "../../data/systems/systems.json"
 import suppliersData from "../../data/suppliers/suppliers.json"
 import { getProfile } from "./profile"
-import type { PrepSightProfile } from "./types"
+import type { PlatformRole, PrepSightProfile } from "./types"
 import type { ProcedureVariant, SystemWithSupplier } from "./variants"
 
 export type MappingStatus = "confirmed" | "review_required" | "rejected"
 export type ReviewerStatus = "active" | "restricted" | "banned"
-
+export type ReviewableSectionKey = "systems" | "trays" | "skus"
+export type SectionVote = "correct" | "incorrect" | "not_sure"
+export type SectionIssueType = "procedure_mapping" | "implant_type" | "missing_information" | "other"
+export type ProposalActionType = "flag_only" | "suggest_correction" | "add_missing_data"
+export type ProposalStatus = "pending" | "approved" | "rejected"
 export const FIXATION_LABELS = [
   "cemented",
   "cementless",
@@ -66,6 +70,9 @@ type StoredReviewRecord = Partial<Omit<SeedRecord, "last_reviewed_at">> & {
   vote_history?: VoteHistoryEntry[]
   review_history?: ReviewHistoryEntry[]
   revision_history?: RevisionHistoryEntry[]
+  section_validations?: Partial<Record<ReviewableSectionKey, SectionValidationRecord[]>>
+  accepted_section_data?: Partial<Record<ReviewableSectionKey, AcceptedSectionData>>
+  proposals?: SectionProposalRecord[]
 }
 
 export type VoteHistoryEntry = {
@@ -85,9 +92,63 @@ export type ReviewHistoryEntry = {
 
 export type RevisionHistoryEntry = {
   actor: string
-  change_type: "fixation" | "review_notes" | "mapping_status" | "suggestion"
+  change_type:
+    | "fixation"
+    | "review_notes"
+    | "mapping_status"
+    | "suggestion"
+    | "proposal_approved"
+    | "proposal_rejected"
+    | "accepted_data_updated"
   summary: string
   revised_at: string
+}
+
+export type AcceptedSectionData = {
+  items: Array<{ label: string; value: string }>
+  empty_state?: string
+}
+
+export type SectionValidationRecord = {
+  id: string
+  section: ReviewableSectionKey
+  vote: SectionVote
+  issue_type?: SectionIssueType
+  note?: string
+  user: string
+  timestamp: string
+}
+
+export type SectionProposalRecord = {
+  id: string
+  record_id: string
+  section: ReviewableSectionKey
+  action_type: ProposalActionType
+  issue_type?: SectionIssueType
+  current_value_snapshot: AcceptedSectionData
+  proposed_value?: AcceptedSectionData
+  note?: string
+  submitted_by: string
+  submitted_at: string
+  status: ProposalStatus
+  reviewed_by?: string
+  reviewed_at?: string
+  review_note?: string
+}
+
+export type ModerationQueueItem = {
+  proposal: SectionProposalRecord
+  record_title: string
+  supplier_name: string
+  mapping_id: string
+}
+
+export type FlaggedQueueItem = {
+  mapping_id: string
+  record_title: string
+  supplier_name: string
+  section: ReviewableSectionKey
+  latest_validation: SectionValidationRecord
 }
 
 type CatalogSystem = {
@@ -187,8 +248,167 @@ function parseEvidenceLinks(raw?: string): string[] {
     .filter(Boolean)
 }
 
+function buildEntryId(prefix: string): string {
+  return `${prefix}_${Math.random().toString(36).slice(2, 10)}_${Date.now().toString(36)}`
+}
+
+function cloneAcceptedSectionData(value?: AcceptedSectionData): AcceptedSectionData {
+  return {
+    items: [...(value?.items ?? [])].map((item) => ({ ...item })),
+    ...(value?.empty_state ? { empty_state: value.empty_state } : {}),
+  }
+}
+
+const MUTABLE_SECTION_LABELS: Record<ReviewableSectionKey, string[]> = {
+  systems: ["Procedure variant", "Implant type", "Source / rationale", "Note / source context"],
+  trays: ["Tray name", "Tray type / category", "Supplier", "Note"],
+  skus: ["SKU / product code", "Product name", "Category", "Note"],
+}
+
+function sanitizeSectionProposalValue(
+  section: ReviewableSectionKey,
+  proposedValue?: AcceptedSectionData,
+): AcceptedSectionData | undefined {
+  if (!proposedValue) return undefined
+  const allowedLabels = new Set(MUTABLE_SECTION_LABELS[section])
+  const sanitizedItems = (proposedValue.items ?? [])
+    .filter((item) => allowedLabels.has(item.label))
+    .map((item) => ({
+      label: item.label,
+      value: item.value.trim(),
+    }))
+    .filter((item) => item.value.length > 0)
+
+  return {
+    items: sanitizedItems,
+    ...(proposedValue.empty_state ? { empty_state: proposedValue.empty_state } : {}),
+  }
+}
+
+function mergeApprovedSectionData(
+  section: ReviewableSectionKey,
+  currentValue: AcceptedSectionData,
+  proposedValue?: AcceptedSectionData,
+): AcceptedSectionData {
+  const current = cloneAcceptedSectionData(currentValue)
+  const proposed = sanitizeSectionProposalValue(section, proposedValue)
+  if (!proposed) return current
+
+  if (section === "systems") {
+    const mutable = new Map(proposed.items.map((item) => [item.label, item.value]))
+    const nextItems = current.items.map((item) =>
+      mutable.has(item.label)
+        ? { ...item, value: mutable.get(item.label) ?? item.value }
+        : item,
+    )
+
+    for (const item of proposed.items) {
+      if (!nextItems.find((entry) => entry.label === item.label)) {
+        nextItems.push(item)
+      }
+    }
+
+    return {
+      items: nextItems,
+      ...(current.empty_state ? { empty_state: current.empty_state } : {}),
+    }
+  }
+
+  return {
+    items: proposed.items,
+    ...(proposed.items.length === 0
+      ? { empty_state: current.empty_state || proposed.empty_state }
+      : {}),
+  }
+}
+
 export function buildSystemMappingId(variantId: string, systemId: string): string {
   return `SMR_${variantId}_${systemId}`
+}
+
+export type EnsureSystemMappingRecordInput = {
+  mapping_id: string
+  specialty: string
+  subspecialty: string
+  anatomy: string
+  subanatomy_group: string
+  procedure_id: string
+  procedure_name: string
+  variant_id: string
+  variant_name: string
+  system_id: string
+  system_name: string
+  supplier_name: string
+  fixation_label?: FixationLabel
+  review_notes?: string
+}
+
+function buildDefaultAcceptedSectionData(
+  input: EnsureSystemMappingRecordInput,
+): Record<ReviewableSectionKey, AcceptedSectionData> {
+  return {
+    systems: {
+      items: [
+        { label: "Supplier", value: input.supplier_name || "Not recorded" },
+        { label: "Portfolio / item name", value: input.system_name || "Not recorded" },
+        { label: "Procedure variant", value: input.variant_name || "Not recorded" },
+        {
+          label: "Implant type",
+          value: input.fixation_label ? input.fixation_label.replaceAll("_", " ") : "Not recorded",
+        },
+        ...(input.review_notes?.trim()
+          ? [{ label: "Note / source context", value: input.review_notes.trim() }]
+          : []),
+      ],
+    },
+    trays: {
+      items: [],
+      empty_state: "No linked tray data currently held",
+    },
+    skus: {
+      items: [],
+      empty_state: "No linked SKU data currently held",
+    },
+  }
+}
+
+export function ensureSystemMappingReviewRecord(input: EnsureSystemMappingRecordInput): void {
+  ensureLoadedReviewSnapshot()
+  const existing = cachedReviewSnapshot[input.mapping_id]
+  if (existing) return
+
+  cachedReviewSnapshot = {
+    ...cachedReviewSnapshot,
+    [input.mapping_id]: {
+      id: input.mapping_id,
+      specialty: input.specialty,
+      subspecialty: input.subspecialty,
+      anatomy: input.anatomy,
+      subanatomy_group: input.subanatomy_group,
+      procedure_id: input.procedure_id,
+      procedure_name: input.procedure_name,
+      variant_id: input.variant_id,
+      variant_name: input.variant_name,
+      system_id: input.system_id,
+      system_name: input.system_name,
+      supplier_name: input.supplier_name,
+      mapping_status: "review_required",
+      review_notes: input.review_notes?.trim() ?? "",
+      suggested_by_users: [],
+      upvotes: 0,
+      downvotes: 0,
+      evidence_links: [],
+      last_reviewed_at: null,
+      approved_by_admin: false,
+      fixation_label: input.fixation_label ?? "unknown",
+      source: "community",
+      section_validations: {},
+      accepted_section_data: buildDefaultAcceptedSectionData(input),
+      proposals: [],
+    },
+  }
+
+  persistReviewSnapshot()
 }
 
 function inferFixationLabel(text: string): FixationLabel {
@@ -258,8 +478,45 @@ export function subscribeToSystemMappingReviews(listener: () => void): () => voi
   return () => listeners.delete(listener)
 }
 
+export function getReviewAccessRole(profile?: PrepSightProfile | null): PlatformRole {
+  const resolvedProfile = profile ?? getProfile()
+  return resolvedProfile?.platformRole ?? "user"
+}
+
 export function isTrustedReviewer(profile: PrepSightProfile | null): boolean {
-  return profile?.role === "editor" || profile?.role === "clinical_author"
+  const role = getReviewAccessRole(profile)
+  return role === "moderator" || role === "admin"
+}
+
+export function canModerateReviews(profile?: PrepSightProfile | null): boolean {
+  const role = getReviewAccessRole(profile)
+  return role === "moderator" || role === "admin"
+}
+
+export function getAcceptedSectionData(
+  mappingId: string,
+  section: ReviewableSectionKey,
+): AcceptedSectionData {
+  ensureLoadedReviewSnapshot()
+  const record = cachedReviewSnapshot[mappingId]
+  return cloneAcceptedSectionData(record?.accepted_section_data?.[section])
+}
+
+export function getSectionValidationHistory(
+  mappingId: string,
+  section: ReviewableSectionKey,
+): SectionValidationRecord[] {
+  ensureLoadedReviewSnapshot()
+  return [...(cachedReviewSnapshot[mappingId]?.section_validations?.[section] ?? [])]
+}
+
+export function getSectionProposals(
+  mappingId: string,
+  section?: ReviewableSectionKey,
+): SectionProposalRecord[] {
+  ensureLoadedReviewSnapshot()
+  const proposals = [...(cachedReviewSnapshot[mappingId]?.proposals ?? [])]
+  return section ? proposals.filter((proposal) => proposal.section === section) : proposals
 }
 
 export function getReviewActor(profile?: PrepSightProfile | null): string {
@@ -683,6 +940,214 @@ export function voteOnSystemMapping(
   persistReviewSnapshot()
 }
 
+export function submitSectionValidation(input: {
+  mapping_id: string
+  section: ReviewableSectionKey
+  vote: SectionVote
+  issue_type?: SectionIssueType
+  note?: string
+  actor?: string
+}): void {
+  ensureLoadedReviewSnapshot()
+  const existing = cachedReviewSnapshot[input.mapping_id]
+  if (!existing) return
+
+  const actor = input.actor ?? getReviewActor()
+  const nextRecord: SectionValidationRecord = {
+    id: buildEntryId("SV"),
+    section: input.section,
+    vote: input.vote,
+    issue_type: input.issue_type,
+    note: input.note?.trim() || undefined,
+    user: actor,
+    timestamp: new Date().toISOString(),
+  }
+
+  cachedReviewSnapshot = {
+    ...cachedReviewSnapshot,
+    [input.mapping_id]: {
+      ...existing,
+      section_validations: {
+        ...(existing.section_validations ?? {}),
+        [input.section]: [
+          ...((existing.section_validations ?? {})[input.section] ?? []),
+          nextRecord,
+        ],
+      },
+      last_reviewed_at: nextRecord.timestamp,
+    },
+  }
+
+  persistReviewSnapshot()
+}
+
+export function submitSectionProposal(input: {
+  mapping_id: string
+  section: ReviewableSectionKey
+  action_type: ProposalActionType
+  issue_type?: SectionIssueType
+  proposed_value?: AcceptedSectionData
+  note?: string
+  actor?: string
+}): SectionProposalRecord | null {
+  ensureLoadedReviewSnapshot()
+  const existing = cachedReviewSnapshot[input.mapping_id]
+  if (!existing) return null
+
+  const actor = input.actor ?? getReviewActor()
+  const proposal: SectionProposalRecord = {
+    id: buildEntryId("SP"),
+    record_id: input.mapping_id,
+    section: input.section,
+    action_type: input.action_type,
+    issue_type: input.issue_type,
+    current_value_snapshot: cloneAcceptedSectionData(existing.accepted_section_data?.[input.section]),
+    proposed_value: sanitizeSectionProposalValue(input.section, input.proposed_value),
+    note: input.note?.trim() || undefined,
+    submitted_by: actor,
+    submitted_at: new Date().toISOString(),
+    status: "pending",
+  }
+
+  cachedReviewSnapshot = {
+    ...cachedReviewSnapshot,
+    [input.mapping_id]: {
+      ...existing,
+      proposals: [...(existing.proposals ?? []), proposal],
+      revision_history: [
+        ...(existing.revision_history ?? []),
+        {
+          actor,
+          change_type: "suggestion",
+          summary:
+            input.action_type === "flag_only"
+              ? `Flag submitted for ${input.section}`
+              : input.action_type === "suggest_correction"
+                ? `Suggested correction for ${input.section}`
+                : `Suggested addition for ${input.section}`,
+          revised_at: proposal.submitted_at,
+        },
+      ],
+      last_reviewed_at: proposal.submitted_at,
+    },
+  }
+
+  persistReviewSnapshot()
+  return proposal
+}
+
+export function getModerationQueue(status?: ProposalStatus): ModerationQueueItem[] {
+  ensureLoadedReviewSnapshot()
+  const items: ModerationQueueItem[] = []
+
+  for (const [mappingId, record] of Object.entries(cachedReviewSnapshot)) {
+    for (const proposal of record.proposals ?? []) {
+      if (status && proposal.status !== status) continue
+      items.push({
+        proposal,
+        record_title: record.system_name ?? "Untitled record",
+        supplier_name: record.supplier_name ?? "Unknown supplier",
+        mapping_id: mappingId,
+      })
+    }
+  }
+
+  return items.sort((a, b) => b.proposal.submitted_at.localeCompare(a.proposal.submitted_at))
+}
+
+export function getFlaggedQueue(): FlaggedQueueItem[] {
+  ensureLoadedReviewSnapshot()
+  const items: FlaggedQueueItem[] = []
+
+  for (const [mappingId, record] of Object.entries(cachedReviewSnapshot)) {
+    for (const section of ["systems", "trays", "skus"] as ReviewableSectionKey[]) {
+      const validations = record.section_validations?.[section] ?? []
+      const latest = validations[validations.length - 1]
+      if (!latest || latest.vote !== "incorrect") continue
+      items.push({
+        mapping_id: mappingId,
+        record_title: record.system_name ?? "Untitled record",
+        supplier_name: record.supplier_name ?? "Unknown supplier",
+        section,
+        latest_validation: latest,
+      })
+    }
+  }
+
+  return items.sort((a, b) => b.latest_validation.timestamp.localeCompare(a.latest_validation.timestamp))
+}
+
+export function moderateProposal(input: {
+  mapping_id: string
+  proposal_id: string
+  decision: Extract<ProposalStatus, "approved" | "rejected">
+  review_note?: string
+  actor?: string
+}): void {
+  ensureLoadedReviewSnapshot()
+  const existing = cachedReviewSnapshot[input.mapping_id]
+  if (!existing) return
+
+  const actor = input.actor ?? getReviewActor()
+  const reviewedAt = new Date().toISOString()
+
+  const nextProposals = (existing.proposals ?? []).map((proposal) => {
+    if (proposal.id !== input.proposal_id) return proposal
+    return {
+      ...proposal,
+      status: input.decision,
+      reviewed_by: actor,
+      reviewed_at: reviewedAt,
+      review_note: input.review_note?.trim() || undefined,
+    }
+  })
+  const approvedProposal =
+    input.decision === "approved"
+      ? nextProposals.find((proposal) => proposal.id === input.proposal_id)
+      : undefined
+
+  const nextAcceptedSectionData = { ...(existing.accepted_section_data ?? {}) }
+  if (approvedProposal && approvedProposal.action_type !== "flag_only" && approvedProposal.proposed_value) {
+    nextAcceptedSectionData[approvedProposal.section] = mergeApprovedSectionData(
+      approvedProposal.section,
+      cloneAcceptedSectionData(existing.accepted_section_data?.[approvedProposal.section]),
+      approvedProposal.proposed_value,
+    )
+  }
+
+  cachedReviewSnapshot = {
+    ...cachedReviewSnapshot,
+    [input.mapping_id]: {
+      ...existing,
+      proposals: nextProposals,
+      accepted_section_data: nextAcceptedSectionData,
+      revision_history: [
+        ...(existing.revision_history ?? []),
+        {
+          actor,
+          change_type: input.decision === "approved" ? "proposal_approved" : "proposal_rejected",
+          summary:
+            input.decision === "approved"
+              ? `Approved ${approvedProposal?.section ?? "section"} proposal`
+              : "Rejected proposed change",
+          revised_at: reviewedAt,
+        },
+        ...(approvedProposal && approvedProposal.action_type !== "flag_only" && approvedProposal.proposed_value
+          ? [{
+              actor,
+              change_type: "accepted_data_updated" as const,
+              summary: `Accepted ${approvedProposal.section} data updated from approved suggestion`,
+              revised_at: reviewedAt,
+            }]
+          : []),
+      ],
+      last_reviewed_at: reviewedAt,
+    },
+  }
+
+  persistReviewSnapshot()
+}
+
 export function reviewSystemMapping(
   mappingId: string,
   updates: {
@@ -818,6 +1283,18 @@ export function getSystemMappingHistory(mappingId: string): {
     reviewHistory: record?.review_history ?? [],
     revisionHistory: record?.revision_history ?? [],
   }
+}
+
+export function getSectionReviewState(
+  mappingId: string,
+  section: ReviewableSectionKey,
+): "unverified" | "reviewed" | "needs_review" {
+  ensureLoadedReviewSnapshot()
+  const validations = cachedReviewSnapshot[mappingId]?.section_validations?.[section] ?? []
+  const latest = validations[validations.length - 1]
+  if (!latest) return "unverified"
+  if (latest.vote === "incorrect") return "needs_review"
+  return "reviewed"
 }
 
 export function parseEvidenceLinkText(value: string): string[] {

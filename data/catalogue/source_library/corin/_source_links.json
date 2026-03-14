@@ -1,0 +1,44 @@
+[
+  {
+    "supplier_id": "SUP_CORIN",
+    "supplier_name": "Corin",
+    "system_id": "SYS_UNITY_KNEE_SYSTEM",
+    "system_name": "Unity Knee System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Unity Knee",
+        "url": "https://www.coringroup.com/products/unity-knee/",
+        "notes": "Official Corin product page with system overview and linked information."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_CORIN",
+    "supplier_name": "Corin",
+    "system_id": "SYS_OPTIMIZED_POSITIONING_HIP_SYSTEM",
+    "system_name": "Optimized Positioning Hip System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "OPS - Optimized Positioning System",
+        "url": "https://www.coringroup.com/products/ops/",
+        "notes": "Official Corin product page for the optimized positioning workflow."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_CORIN",
+    "supplier_name": "Corin",
+    "system_id": "SYS_ZENITH_ANKLE",
+    "system_name": "Zenith Total Ankle",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Zenith Total Ankle Replacement",
+        "url": "https://www.coringroup.com/products/zenith/",
+        "notes": "Official Corin product page."
+      }
+    ]
+  }
+]

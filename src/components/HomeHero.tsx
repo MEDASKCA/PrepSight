@@ -106,7 +106,7 @@ const WORKFLOW_TOOLS = [
   },
   {
     label: "Suppliers",
-    href: "/admin",
+    href: "/suppliers",
     icon: Database,
     tileColor: "#06B6D4",
     available: true,
@@ -120,31 +120,31 @@ const WORKFLOW_TOOLS = [
   },
   {
     label: "Directory",
-    href: "",
+    href: "/directory",
     icon: Building2,
     tileColor: "#7C5CFC",
-    available: false,
+    available: true,
   },
   {
     label: "Implants",
-    href: "",
+    href: "/catalogue/implants",
     icon: LayoutGrid,
     tileColor: "#10B981",
-    available: false,
+    available: true,
   },
   {
     label: "Product ID",
-    href: "",
+    href: "/catalogue/products",
     icon: FolderSearch2,
     tileColor: "#F97316",
-    available: false,
+    available: true,
   },
   {
     label: "Stockroom",
-    href: "",
+    href: "/catalogue/stockroom",
     icon: ShoppingCart,
     tileColor: "#8B5CF6",
-    available: false,
+    available: true,
   },
   {
     label: "Data Review",
@@ -1473,7 +1473,7 @@ export default function HomeHero({
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/70" />
           <div className="app-card-border relative z-10 border-b px-8 py-5">
             <div className="grid grid-cols-[auto_1fr_auto] items-center gap-6">
-              <div className="flex items-center gap-4">
+              <div data-dev-trigger className="flex items-center gap-4">
                 {hideHomepageImages ? (
                   <div className="app-card-bg app-card-border flex h-16 min-w-16 items-center justify-center rounded-2xl border px-4 shadow-[0_10px_24px_rgba(148,163,184,0.12)]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -1698,7 +1698,7 @@ export default function HomeHero({
 
       <div className="relative z-10 flex min-h-0 flex-1 flex-col pt-[calc(env(safe-area-inset-top,0px)+6px)] lg:hidden">
         <div className="mb-3 flex items-start justify-between px-1">
-          <div className="flex items-center gap-3">
+          <div data-dev-trigger className="flex items-center gap-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/ps-mark.png" alt="P.S." className="h-10 w-auto" />
             <p className="text-[28px] font-bold tracking-[-0.05em] text-[#00B4D8]">PrepSight</p>

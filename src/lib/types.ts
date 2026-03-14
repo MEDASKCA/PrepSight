@@ -158,6 +158,7 @@ export interface SurgeonProcedure {
 
 /** How the user intends to use PrepSight — stored internally, not shown verbatim */
 export type UserRole = "viewer" | "editor" | "clinical_author"
+export type PlatformRole = "user" | "moderator" | "admin"
 
 export const USER_ROLE_LABEL: Record<UserRole, string> = {
   viewer:          "Browse & Reference",
@@ -165,10 +166,17 @@ export const USER_ROLE_LABEL: Record<UserRole, string> = {
   clinical_author: "Clinical Author",
 }
 
+export const USER_ROLE_TO_PLATFORM_ROLE: Record<UserRole, PlatformRole> = {
+  viewer: "user",
+  editor: "moderator",
+  clinical_author: "admin",
+}
+
 export interface PrepSightProfile {
   hospital: string
   departments: string[]
   role: UserRole
+  platformRole?: PlatformRole
   jobTitle?: string            // optional — collected later via profile settings
   name?: string                // optional — "First Last", used for edit attribution
   specialtiesOfInterest: string[]

@@ -44,7 +44,7 @@ export default function CatalogueClient({ items }: Props) {
 
   return (
     <div className="min-h-screen bg-[#F4F7FA]">
-      <header className="sticky top-0 z-30 border-b border-white/10 bg-[#00B4D8]">
+      <header data-dev-trigger className="sticky top-0 z-30 border-b border-white/10 bg-[#00B4D8]">
         <div className="mx-auto flex max-w-6xl items-start gap-3 px-4 pb-2.5 pt-[calc(env(safe-area-inset-top,0px)+8px)] lg:pt-3">
           <Link
             href="/"

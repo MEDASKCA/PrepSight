@@ -1,0 +1,275 @@
+[
+  {
+    "system_id": "SYS_CREO___SABLE_LUMBAR_FUSION_PORTFOLIO",
+    "system_name": "Creo / SABLE Lumbar Fusion Portfolio",
+    "system_category": "spine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\creo-sable-lumbar-fusion-portfolio__SYS_CREO___SABLE_LUMBAR_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_KYPHOPLASTY_PORTFOLIO",
+    "system_name": "Kyphoplasty Portfolio",
+    "system_category": "spine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\kyphoplasty-portfolio__SYS_KYPHOPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LUMBAR_DISCECTOMY_PORTFOLIO",
+    "system_name": "Lumbar Discectomy Portfolio",
+    "system_category": "spine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\lumbar-discectomy-portfolio__SYS_LUMBAR_DISCECTOMY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_XTEND___COALITION_ACDF_PORTFOLIO",
+    "system_name": "Xtend / Coalition ACDF Portfolio",
+    "system_category": "spine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\xtend-coalition-acdf-portfolio__SYS_XTEND___COALITION_ACDF_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBUS_ALIF_PORTFOLIO",
+    "system_name": "Globus ALIF Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\globus-alif-portfolio__SYS_GLOBUS_ALIF_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBUS_COMPLEX_SPINE_PORTFOLIO",
+    "system_name": "Globus Complex Spine Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\globus-complex-spine-portfolio__SYS_GLOBUS_COMPLEX_SPINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBUS_ENABLING_TECH_SPINE_PORTFOLIO",
+    "system_name": "Globus Enabling Tech + Spine Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\globus-enabling-tech-spine-portfolio__SYS_GLOBUS_ENABLING_TECH_SPINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBUS_LLIF_PORTFOLIO",
+    "system_name": "Globus LLIF Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\globus-llif-portfolio__SYS_GLOBUS_LLIF_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBUS_LUMBAR_DECOMPRESSION_PORTFOLIO",
+    "system_name": "Globus Lumbar Decompression Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\globus-lumbar-decompression-portfolio__SYS_GLOBUS_LUMBAR_DECOMPRESSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBUS_MIS_SPINE_PORTFOLIO",
+    "system_name": "Globus MIS Spine Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\globus-mis-spine-portfolio__SYS_GLOBUS_MIS_SPINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBUS_MEDICAL_CERVICAL_DECOMPRESSION_PORTFOLIO",
+    "system_name": "Globus Medical Cervical decompression Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\globus-medical-cervical-decompression-portfolio__SYS_GLOBUS_MEDICAL_CERVICAL_DECOMPRESSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBUS_MEDICAL_LUMBAR_DECOMPRESSION_INSTRUMENTATION_PORTFOLIO",
+    "system_name": "Globus Medical Lumbar decompression / instrumentation Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\globus-medical-lumbar-decompression-instrumentation-portfolio__SYS_GLOBUS_MEDICAL_LUMBAR_DECOMPRESSION_INSTRUMENTATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBUS_MEDICAL_ORTHOPAEDIC_ONCOLOGY_PORTFOLIO",
+    "system_name": "Globus Medical Orthopaedic oncology Portfolio",
+    "system_category": "Orthopaedic oncology",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\globus-medical-orthopaedic-oncology-portfolio__SYS_GLOBUS_MEDICAL_ORTHOPAEDIC_ONCOLOGY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBUS_MEDICAL_SPINE_PORTFOLIO",
+    "system_name": "Globus Medical Spine Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\globus-medical-spine-portfolio__SYS_GLOBUS_MEDICAL_SPINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBUS_MEDICAL_SPINE_TRAUMA_PORTFOLIO",
+    "system_name": "Globus Medical Spine trauma Portfolio",
+    "system_category": "Spine trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\globus-medical-spine-trauma-portfolio__SYS_GLOBUS_MEDICAL_SPINE_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBUS_PLIF_PORTFOLIO",
+    "system_name": "Globus PLIF Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\globus-plif-portfolio__SYS_GLOBUS_PLIF_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBUS_PELVIC_FIXATION_PORTFOLIO",
+    "system_name": "Globus Pelvic Fixation Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\globus-pelvic-fixation-portfolio__SYS_GLOBUS_PELVIC_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBUS_REVISION_SPINE_PORTFOLIO",
+    "system_name": "Globus Revision Spine Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\globus-revision-spine-portfolio__SYS_GLOBUS_REVISION_SPINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBUS_TLIF_PORTFOLIO",
+    "system_name": "Globus TLIF Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\globus-tlif-portfolio__SYS_GLOBUS_TLIF_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBUS_THORACIC_SPINE_PORTFOLIO",
+    "system_name": "Globus Thoracic Spine Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\globus-thoracic-spine-portfolio__SYS_GLOBUS_THORACIC_SPINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PAEDIATRIC___DEFORMITY_SPINE_PORTFOLIO",
+    "system_name": "Paediatric / Deformity Spine Portfolio",
+    "system_category": "paediatric_spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\globus-medical\\paediatric-deformity-spine-portfolio__SYS_PAEDIATRIC___DEFORMITY_SPINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

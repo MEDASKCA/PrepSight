@@ -1,0 +1,80 @@
+[
+  {
+    "system_id": "SYS_DIGIT_FRACTURE_FIXATION_PORTFOLIO",
+    "system_name": "Digit Fracture Fixation Portfolio",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\skeletal-dynamics\\digit-fracture-fixation-portfolio__SYS_DIGIT_FRACTURE_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ELBOW_FRACTURE_FIXATION_PORTFOLIO",
+    "system_name": "Elbow Fracture Fixation Portfolio",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\skeletal-dynamics\\elbow-fracture-fixation-portfolio__SYS_ELBOW_FRACTURE_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GEMINUS_DISTAL_RADIUS_SYSTEM",
+    "system_name": "Geminus Distal Radius System",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\skeletal-dynamics\\geminus-distal-radius-system__SYS_GEMINUS_DISTAL_RADIUS_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HAND_FRACTURE_FIXATION_PORTFOLIO",
+    "system_name": "Hand Fracture Fixation Portfolio",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\skeletal-dynamics\\hand-fracture-fixation-portfolio__SYS_HAND_FRACTURE_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ELBOW_TRAUMA_PORTFOLIO",
+    "system_name": "Elbow Trauma Portfolio",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\skeletal-dynamics\\elbow-trauma-portfolio__SYS_ELBOW_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_THUMB_BASAL_JOINT_PORTFOLIO",
+    "system_name": "Thumb Basal Joint Portfolio",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\skeletal-dynamics\\thumb-basal-joint-portfolio__SYS_THUMB_BASAL_JOINT_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

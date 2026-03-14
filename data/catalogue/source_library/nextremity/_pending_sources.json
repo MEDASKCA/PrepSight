@@ -1,0 +1,41 @@
+[
+  {
+    "system_id": "SYS_BUNION_AND_FOREFOOT_PORTFOLIO",
+    "system_name": "Bunion and Forefoot Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\nextremity\\bunion-and-forefoot-portfolio__SYS_BUNION_AND_FOREFOOT_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TOE___MTP_FUSION_PORTFOLIO",
+    "system_name": "Toe / MTP Fusion Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\nextremity\\toe-mtp-fusion-portfolio__SYS_TOE___MTP_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CMC_ARTHROPLASTY___THUMB_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "CMC Arthroplasty / Thumb Reconstruction Portfolio",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\nextremity\\cmc-arthroplasty-thumb-reconstruction-portfolio__SYS_CMC_ARTHROPLASTY___THUMB_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "system_id": "SYS_ULTRASOUND_GUIDANCE",
+    "system_name": "Ultrasound Guidance System",
+    "system_category": "imaging",
+    "mapping_count": 27,
+    "source_folder": "data\\catalogue\\source_library\\angiodynamics\\ultrasound-guidance-system__SYS_ULTRASOUND_GUIDANCE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_VENOUS_ABLATION_GENERATOR",
+    "system_name": "Endovenous Ablation Generator",
+    "system_category": "venous ablation",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\angiodynamics\\endovenous-ablation-generator__SYS_VENOUS_ABLATION_GENERATOR",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

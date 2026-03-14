@@ -1,0 +1,145 @@
+[
+  {
+    "system_id": "SYS_APTUS_HAND___METACARPAL_FIXATION",
+    "system_name": "Aptus Hand / Metacarpal Fixation",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\medartis\\aptus-hand-metacarpal-fixation__SYS_APTUS_HAND___METACARPAL_FIXATION",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_APTUS_HAND___PHALANGEAL_FIXATION",
+    "system_name": "Aptus Hand / Phalangeal Fixation",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\medartis\\aptus-hand-phalangeal-fixation__SYS_APTUS_HAND___PHALANGEAL_FIXATION",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_APTUS_HAND___SCAPHOID_FIXATION_PORTFOLIO",
+    "system_name": "Aptus Hand / Scaphoid Fixation Portfolio",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medartis\\aptus-hand-scaphoid-fixation-portfolio__SYS_APTUS_HAND___SCAPHOID_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_APTUS_RADIUS_DISTAL_SYSTEM",
+    "system_name": "Aptus Radius Distal System",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medartis\\aptus-radius-distal-system__SYS_APTUS_RADIUS_DISTAL_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_APTUS_WRIST_FUSION_SYSTEM",
+    "system_name": "Aptus Wrist Fusion System",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medartis\\aptus-wrist-fusion-system__SYS_APTUS_WRIST_FUSION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MEDARTIS_HAND_WRIST_SURGERY_PORTFOLIO",
+    "system_name": "Medartis Hand & wrist surgery Portfolio",
+    "system_category": "Hand & wrist surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medartis\\medartis-hand-wrist-surgery-portfolio__SYS_MEDARTIS_HAND_WRIST_SURGERY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MEDARTIS_HAND_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Medartis Hand reconstruction Portfolio",
+    "system_category": "Hand reconstruction",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medartis\\medartis-hand-reconstruction-portfolio__SYS_MEDARTIS_HAND_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MEDARTIS_HAND_SURGERY_PORTFOLIO",
+    "system_name": "Medartis Hand surgery Portfolio",
+    "system_category": "Hand surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medartis\\medartis-hand-surgery-portfolio__SYS_MEDARTIS_HAND_SURGERY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MEDARTIS_HAND_TRAUMA_PORTFOLIO",
+    "system_name": "Medartis Hand trauma Portfolio",
+    "system_category": "Hand trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medartis\\medartis-hand-trauma-portfolio__SYS_MEDARTIS_HAND_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MEDARTIS_SMALL_JOINT_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Medartis Small joint arthroplasty Portfolio",
+    "system_category": "Small joint arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medartis\\medartis-small-joint-arthroplasty-portfolio__SYS_MEDARTIS_SMALL_JOINT_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SCAPHOID_COMPRESSION_SCREW_PORTFOLIO",
+    "system_name": "Scaphoid Compression Screw Portfolio",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medartis\\scaphoid-compression-screw-portfolio__SYS_SCAPHOID_COMPRESSION_SCREW_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

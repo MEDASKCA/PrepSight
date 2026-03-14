@@ -1,0 +1,74 @@
+[
+  {
+    "supplier_id": "SUP_ORTHOFIX",
+    "supplier_name": "Orthofix",
+    "system_id": "SYS_TRUELOK___EXTERNAL_FIXATION_SYSTEM",
+    "system_name": "TrueLok / External Fixation System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "TrueLok EVO Ring Fixation System",
+        "url": "https://orthofix.com/products/orthopedics-solutions/orthopedic-procedures/adult-limb-reconstruction/truelok-evo/",
+        "notes": "Official Orthofix product page with operative technique and IFU links."
+      },
+      {
+        "source_type": "product_page",
+        "title": "TL-HEX TrueLok Hexapod System Trauma",
+        "url": "https://orthofix.com/products/orthopedics-solutions/tl-hex-trauma/",
+        "notes": "Official Orthofix trauma-specific TrueLok Hexapod page."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ORTHOFIX",
+    "supplier_name": "Orthofix",
+    "system_id": "SYS_DAMAGE_CONTROL___EXTERNAL_FIXATION_PORTFOLIO",
+    "system_name": "Damage Control / External Fixation Portfolio",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "ProCallus Hybrid Fixation",
+        "url": "https://orthofix.com/solutions/limb-reconstruction/complex-fracture-management/procallus-hybrid-fixation/",
+        "notes": "Official Orthofix damage-control / complex fracture management source."
+      },
+      {
+        "source_type": "product_page",
+        "title": "TL-HEX TrueLok Hexapod System Trauma",
+        "url": "https://orthofix.com/products/orthopedics-solutions/tl-hex-trauma/",
+        "notes": "Official Orthofix trauma application page."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ORTHOFIX",
+    "supplier_name": "Orthofix",
+    "system_id": "SYS_PAEDIATRIC_DEFORMITY_CORRECTION_PORTFOLIO",
+    "system_name": "Paediatric Deformity Correction Portfolio",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "LRS Pediatric",
+        "url": "https://orthofix.com/products/orthopedics-solutions/orthopedic-procedures/limb-lengthening/lrs-pediatric/",
+        "notes": "Official Orthofix pediatric limb reconstruction page with operative technique materials."
+      },
+      {
+        "source_type": "product_page",
+        "title": "eight-Plate Guided Growth System",
+        "url": "https://orthofix.com/solutions/limb-reconstruction/extremity-deformity-correction/guided-growth-system/",
+        "notes": "Official Orthofix guided growth page for pediatric deformity correction."
+      },
+      {
+        "source_type": "product_page",
+        "title": "eight-Plate Guided Growth System+",
+        "url": "https://orthofix.com/solutions/limb-reconstruction/extremity-deformity-correction/eight-plate-guided-growth-system/",
+        "notes": "Official Orthofix guided growth system plus page with implant sizes, screw options and support material."
+      },
+      {
+        "source_type": "product_page",
+        "title": "JuniOrtho Plating System",
+        "url": "https://orthofix.com/blog/orthofix-announces-fda-clearance-of-the-orthonext-digital-platform-for-the-juniortho-plating-system/",
+        "notes": "Official Orthofix information page describing JuniOrtho as part of the pediatric deformity portfolio."
+      }
+    ]
+  }
+]

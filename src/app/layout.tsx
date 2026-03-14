@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import { Manrope } from "next/font/google"
+import AppGate from "@/components/AppGate"
 import UserPreferencesBoot from "@/components/UserPreferencesBoot"
 import "./globals.css"
 
@@ -47,7 +48,7 @@ export default function RootLayout({
     <html lang="en" className={manrope.className}>
       <body>
         <UserPreferencesBoot />
-        {children}
+        <AppGate>{children}</AppGate>
       </body>
     </html>
   )

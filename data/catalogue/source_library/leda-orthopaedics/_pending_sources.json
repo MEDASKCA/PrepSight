@@ -1,0 +1,574 @@
+[
+  {
+    "system_id": "SYS_UK_ELBOW___HAND_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Elbow / Hand Distribution Portfolio",
+    "system_category": "elbow",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-elbow-hand-distribution-portfolio__SYS_UK_ELBOW___HAND_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_ONCOLOGY_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Oncology Distribution Portfolio",
+    "system_category": "orthopaedic_oncology",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-oncology-distribution-portfolio__SYS_UK_ONCOLOGY_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_PAEDIATRIC_ORTHOPAEDIC_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Paediatric Orthopaedic Distribution Portfolio",
+    "system_category": "paediatric_orthopaedics",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-paediatric-orthopaedic-distribution-portfolio__SYS_UK_PAEDIATRIC_ORTHOPAEDIC_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_PAEDIATRIC_SOFT_TISSUE_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Paediatric Soft Tissue Distribution Portfolio",
+    "system_category": "paediatric_orthopaedics",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-paediatric-soft-tissue-distribution-portfolio__SYS_UK_PAEDIATRIC_SOFT_TISSUE_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_UPPER_LIMB_TRAUMA_DISTRIBUTION_PORTFOLIO",
+    "system_name": "LEDA / Upper-Limb Trauma Distribution Portfolio",
+    "system_category": "Hand/wrist trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-upper-limb-trauma-distribution-portfolio__SYS_LEDA_UPPER_LIMB_TRAUMA_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_DISTRIBUTED_HAND_SOFT_TISSUE_PORTFOLIO",
+    "system_name": "LEDA Distributed Hand Soft Tissue Portfolio",
+    "system_category": "Hand soft tissue trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-distributed-hand-soft-tissue-portfolio__SYS_LEDA_DISTRIBUTED_HAND_SOFT_TISSUE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_DISTRIBUTED_HAND_TRAUMA_PORTFOLIO",
+    "system_name": "LEDA Distributed Hand Trauma Portfolio",
+    "system_category": "Hand soft tissue trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-distributed-hand-trauma-portfolio__SYS_LEDA_DISTRIBUTED_HAND_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_DISTRIBUTED_HAND_WRIST_TRAUMA_PORTFOLIO",
+    "system_name": "LEDA Distributed Hand/Wrist Trauma Portfolio",
+    "system_category": "Hand/wrist trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-distributed-hand-wrist-trauma-portfolio__SYS_LEDA_DISTRIBUTED_HAND_WRIST_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_DISTRIBUTED_SMALL_JOINT_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "LEDA Distributed Small Joint Arthroplasty Portfolio",
+    "system_category": "Small joint arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-distributed-small-joint-arthroplasty-portfolio__SYS_LEDA_DISTRIBUTED_SMALL_JOINT_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_DISTRIBUTED_WRIST_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "LEDA Distributed Wrist Arthroplasty Portfolio",
+    "system_category": "Wrist arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-distributed-wrist-arthroplasty-portfolio__SYS_LEDA_DISTRIBUTED_WRIST_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_HAND_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "LEDA Hand Reconstruction Portfolio",
+    "system_category": "Hand reconstruction",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-hand-reconstruction-portfolio__SYS_LEDA_HAND_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_HAND_SOFT_TISSUE_PORTFOLIO",
+    "system_name": "LEDA Hand Soft Tissue Portfolio",
+    "system_category": "Hand soft tissue",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-hand-soft-tissue-portfolio__SYS_LEDA_HAND_SOFT_TISSUE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_HAND_WRIST_ARTHROSCOPY_PORTFOLIO",
+    "system_name": "LEDA Hand/Wrist Arthroscopy Portfolio",
+    "system_category": "Hand & wrist surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-hand-wrist-arthroscopy-portfolio__SYS_LEDA_HAND_WRIST_ARTHROSCOPY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_HAND_WRIST_PORTFOLIO",
+    "system_name": "LEDA Hand/Wrist Portfolio",
+    "system_category": "Hand & wrist surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-hand-wrist-portfolio__SYS_LEDA_HAND_WRIST_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_HAND_WRIST_SOFT_TISSUE_PORTFOLIO",
+    "system_name": "LEDA Hand/Wrist Soft Tissue Portfolio",
+    "system_category": "Hand & wrist surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-hand-wrist-soft-tissue-portfolio__SYS_LEDA_HAND_WRIST_SOFT_TISSUE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_ORTHOPAEDICS_ELBOW_DECOMPRESSION_PORTFOLIO",
+    "system_name": "LEDA Orthopaedics Elbow decompression Portfolio",
+    "system_category": "Elbow decompression",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-orthopaedics-elbow-decompression-portfolio__SYS_LEDA_ORTHOPAEDICS_ELBOW_DECOMPRESSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_ORTHOPAEDICS_HAND_WRIST_SURGERY_PORTFOLIO",
+    "system_name": "LEDA Orthopaedics Hand & wrist surgery Portfolio",
+    "system_category": "Hand & wrist surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-orthopaedics-hand-wrist-surgery-portfolio__SYS_LEDA_ORTHOPAEDICS_HAND_WRIST_SURGERY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_ORTHOPAEDICS_HAND_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "LEDA Orthopaedics Hand reconstruction Portfolio",
+    "system_category": "Hand reconstruction",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-orthopaedics-hand-reconstruction-portfolio__SYS_LEDA_ORTHOPAEDICS_HAND_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_ORTHOPAEDICS_HAND_SURGERY_PORTFOLIO",
+    "system_name": "LEDA Orthopaedics Hand surgery Portfolio",
+    "system_category": "Hand surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-orthopaedics-hand-surgery-portfolio__SYS_LEDA_ORTHOPAEDICS_HAND_SURGERY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_ORTHOPAEDICS_HAND_TRAUMA_PORTFOLIO",
+    "system_name": "LEDA Orthopaedics Hand trauma Portfolio",
+    "system_category": "Hand trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-orthopaedics-hand-trauma-portfolio__SYS_LEDA_ORTHOPAEDICS_HAND_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_ORTHOPAEDICS_HAND_WRIST_PORTFOLIO",
+    "system_name": "LEDA Orthopaedics Hand/Wrist Portfolio",
+    "system_category": "Hand & wrist surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-orthopaedics-hand-wrist-portfolio__SYS_LEDA_ORTHOPAEDICS_HAND_WRIST_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_ORTHOPAEDICS_PERIPHERAL_NERVE_SURGERY_PORTFOLIO",
+    "system_name": "LEDA Orthopaedics Peripheral nerve surgery Portfolio",
+    "system_category": "Peripheral nerve surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-orthopaedics-peripheral-nerve-surgery-portfolio__SYS_LEDA_ORTHOPAEDICS_PERIPHERAL_NERVE_SURGERY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_ORTHOPAEDICS_SMALL_JOINT_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "LEDA Orthopaedics Small joint arthroplasty Portfolio",
+    "system_category": "Small joint arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-orthopaedics-small-joint-arthroplasty-portfolio__SYS_LEDA_ORTHOPAEDICS_SMALL_JOINT_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEDA_UPPER_LIMB_DISTRIBUTION_PORTFOLIO",
+    "system_name": "LEDA Upper-Limb Distribution Portfolio",
+    "system_category": "Peripheral nerve surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\leda-upper-limb-distribution-portfolio__SYS_LEDA_UPPER_LIMB_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_DISTAL_RADIUS_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Distal Radius Distribution Portfolio",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-distal-radius-distribution-portfolio__SYS_UK_DISTAL_RADIUS_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_ELBOW_ARTHROSCOPY_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Elbow Arthroscopy Distribution Portfolio",
+    "system_category": "elbow",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-elbow-arthroscopy-distribution-portfolio__SYS_UK_ELBOW_ARTHROSCOPY_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_FLATFOOT_RECONSTRUCTION_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Flatfoot Reconstruction Distribution Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-flatfoot-reconstruction-distribution-portfolio__SYS_UK_FLATFOOT_RECONSTRUCTION_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_FOOT___ANKLE_FUSION_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Foot & Ankle Fusion Distribution Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-foot-ankle-fusion-distribution-portfolio__SYS_UK_FOOT___ANKLE_FUSION_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_FOOT___ANKLE_SOFT_TISSUE_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Foot & Ankle Soft Tissue Distribution Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-foot-ankle-soft-tissue-distribution-portfolio__SYS_UK_FOOT___ANKLE_SOFT_TISSUE_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_FOOT___ANKLE_TRAUMA_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Foot & Ankle Trauma Distribution Portfolio",
+    "system_category": "foot_ankle_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-foot-ankle-trauma-distribution-portfolio__SYS_UK_FOOT___ANKLE_TRAUMA_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_HAND___WRIST_TRAUMA_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Hand & Wrist Trauma Distribution Portfolio",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-hand-wrist-trauma-distribution-portfolio__SYS_UK_HAND___WRIST_TRAUMA_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_HAND_SURGERY_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Hand Surgery Distribution Portfolio",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-hand-surgery-distribution-portfolio__SYS_UK_HAND_SURGERY_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_HAND_TENDON_REPAIR_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Hand Tendon Repair Distribution Portfolio",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-hand-tendon-repair-distribution-portfolio__SYS_UK_HAND_TENDON_REPAIR_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_HAND_TRAUMA_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Hand Trauma Distribution Portfolio",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-hand-trauma-distribution-portfolio__SYS_UK_HAND_TRAUMA_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_SHOULDER_STABILISATION_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Shoulder Stabilisation Distribution Portfolio",
+    "system_category": "shoulder_sports",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-shoulder-stabilisation-distribution-portfolio__SYS_UK_SHOULDER_STABILISATION_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_THUMB_CMC_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Thumb CMC Distribution Portfolio",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-thumb-cmc-distribution-portfolio__SYS_UK_THUMB_CMC_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_TRAUMA_FIXATION_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Trauma Fixation Distribution Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-trauma-fixation-distribution-portfolio__SYS_UK_TRAUMA_FIXATION_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_TRAUMA_NAIL_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Trauma Nail Distribution Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-trauma-nail-distribution-portfolio__SYS_UK_TRAUMA_NAIL_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_TRAUMA_PLATE_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Trauma Plate Distribution Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-trauma-plate-distribution-portfolio__SYS_UK_TRAUMA_PLATE_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_TRAUMA_STABILISATION_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Trauma Stabilisation Distribution Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-trauma-stabilisation-distribution-portfolio__SYS_UK_TRAUMA_STABILISATION_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_UPPER_EXTREMITY_IMPLANT_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Upper Extremity Implant Distribution Portfolio",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-upper-extremity-implant-distribution-portfolio__SYS_UK_UPPER_EXTREMITY_IMPLANT_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_UPPER_EXTREMITY_TRAUMA_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Upper Extremity Trauma Distribution Portfolio",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-upper-extremity-trauma-distribution-portfolio__SYS_UK_UPPER_EXTREMITY_TRAUMA_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_WRIST_FUSION_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Wrist Fusion Distribution Portfolio",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-wrist-fusion-distribution-portfolio__SYS_UK_WRIST_FUSION_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UK_WRIST_SURGERY_DISTRIBUTION_PORTFOLIO",
+    "system_name": "UK Wrist Surgery Distribution Portfolio",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\leda-orthopaedics\\uk-wrist-surgery-distribution-portfolio__SYS_UK_WRIST_SURGERY_DISTRIBUTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

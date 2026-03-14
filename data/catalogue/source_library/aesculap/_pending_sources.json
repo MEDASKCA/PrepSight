@@ -1,0 +1,15 @@
+[
+  {
+    "system_id": "SYS_TARGON_PF",
+    "system_name": "TARGON PF Nail",
+    "system_category": "Cephalomedullary Nail \u2014 Proximal Femur",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\aesculap\\targon-pf-nail__SYS_TARGON_PF",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

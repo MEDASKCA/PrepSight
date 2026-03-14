@@ -1,0 +1,54 @@
+[
+  {
+    "system_id": "SYS_ARMADA_SPINE",
+    "system_name": "Armada Spine System",
+    "system_category": "Pedicle Screw-Rod \u2014 Spine",
+    "mapping_count": 9,
+    "source_folder": "data\\catalogue\\source_library\\nuvasive\\armada-spine-system__SYS_ARMADA_SPINE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DEFORMITY___SCOLIOSIS_PORTFOLIO",
+    "system_name": "Deformity / Scoliosis Portfolio",
+    "system_category": "spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\nuvasive\\deformity-scoliosis-portfolio__SYS_DEFORMITY___SCOLIOSIS_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HELIX___COHERE_CERVICAL_PORTFOLIO",
+    "system_name": "Helix / Cohere Cervical Portfolio",
+    "system_category": "spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\nuvasive\\helix-cohere-cervical-portfolio__SYS_HELIX___COHERE_CERVICAL_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_RELINE___MODULUS_LUMBAR_FUSION_PORTFOLIO",
+    "system_name": "RELINE / Modulus Lumbar Fusion Portfolio",
+    "system_category": "spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\nuvasive\\reline-modulus-lumbar-fusion-portfolio__SYS_RELINE___MODULUS_LUMBAR_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

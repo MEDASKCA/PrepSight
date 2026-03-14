@@ -1,0 +1,896 @@
+[
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_EXPERT_TIBIAL_NAIL_SYSTEM",
+    "system_name": "Expert Tibial Nail System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Expert Tibial Nail",
+        "url": "https://www.jnjmedtech.com/en-US/product/expert-tibial-nail",
+        "notes": "Official DePuy Synthes product page for the Expert Tibial Nail platform."
+      },
+      {
+        "source_type": "accompanying_information_page",
+        "title": "Accompanying Product Information",
+        "url": "https://www.jnjmedtech.com/en-EMEA/product/accompanying-information",
+        "notes": "Official accompanying-information page listing Expert Tibial Nail operative technique resources and related implant information."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_RECLAIM___PINNACLE_REVISION_HIP_SYSTEM",
+    "system_name": "Reclaim / Pinnacle Revision Hip System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "RECLAIM Modular Revision Hip System",
+        "url": "https://www.jnjmedtech.com/en-US/product/reclaim-modular-revision-hip-system",
+        "notes": "Official DePuy Synthes product page for the RECLAIM modular revision hip platform."
+      },
+      {
+        "source_type": "product_page",
+        "title": "RECLAIM Monobloc Revision Hip System",
+        "url": "https://www.jnjmedtech.com/en-US/product/reclaim-monobloc-revision-hip-system",
+        "notes": "Official DePuy Synthes product page for the RECLAIM monobloc revision stem family."
+      },
+      {
+        "source_type": "product_page",
+        "title": "PINNACLE Acetabular Cup System",
+        "url": "https://www.jnjmedtech.com/en-US/product/pinnacle-acetabular-cup-system",
+        "notes": "Official J&J MedTech product page for the Pinnacle acetabular cup family."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_GLOBAL_ADVANTAGE",
+    "system_name": "Global Advantage / Delta XTEND",
+    "sources": [
+      {
+        "source_type": "implant_inventory_pdf",
+        "title": "GLOBAL AP IMPL",
+        "url": "https://www.jnjmedtech.com/system/files/pdf/DM70160S%20GLOBAL%20AP%20IMPL_0.pdf",
+        "notes": "Official DePuy Synthes implant inventory PDF for the GLOBAL AP shoulder platform with named humeral heads and stems."
+      },
+      {
+        "source_type": "instrument_inventory_pdf",
+        "title": "GLOBAL AP, intra-med.",
+        "url": "https://www.jnjmedtech.com/system/files/pdf/DM70180N%20GLOBAL%C2%AE%20AP%2C%20intra-med_.pdf",
+        "notes": "Official DePuy Synthes instrumentation inventory PDF for the GLOBAL AP shoulder platform."
+      },
+      {
+        "source_type": "patient_information_leaflet_pdf",
+        "title": "Patient Information Leaflet for Shoulder Joint Replacement",
+        "url": "https://www.jnjmedtech.com/system/files/pdf/Shoulder%20Joint%20Replacement.pdf",
+        "notes": "Official patient information leaflet listing both Global Advantage and Delta Xtend as shoulder joint replacement products."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_ACTIS_PINNACLE",
+    "system_name": "ACTIS / Pinnacle",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "PINNACLE Acetabular Cup System",
+        "url": "https://www.jnjmedtech.com/en-US/product/pinnacle-acetabular-cup-system",
+        "notes": "Official J&J MedTech product page for the Pinnacle acetabular cup family."
+      },
+      {
+        "source_type": "surgical_technique_pdf",
+        "title": "Pinnacle Acetabular Cup System Surgical Technique",
+        "url": "https://www.jnjmedtech.com/sites/default/files/user_uploaded_assets/pdf_assets/2022-06/Pinnacle%20Acetabular%20Cup%20System%20Surgical%20Technique.pdf",
+        "notes": "Official surgical technique PDF."
+      },
+      {
+        "source_type": "product_page",
+        "title": "ACTIS Total Hip System",
+        "url": "https://www.jnjmedtech.com/en-US/product/actis-total-hip-system",
+        "notes": "Official J&J MedTech product page for the ACTIS stem family."
+      },
+      {
+        "source_type": "surgical_technique_pdf",
+        "title": "ACTIS Total Hip System Surgical Technique",
+        "url": "https://www.jnjmedtech.com/sites/default/files/user_uploaded_assets/pdf_assets/2022-06/ACTIS%20Total%20Hip%20System%20Surgical%20Technique.pdf",
+        "notes": "Official surgical technique PDF."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_DHS_SYSTEM",
+    "system_name": "DHS — Dynamic Hip Screw",
+    "sources": [
+      {
+        "source_type": "inventory_control_form_pdf",
+        "title": "Inventory Control Form - LCP Dynamic Helical Hip System (DHHS)",
+        "url": "https://www.jnjmedtech.com/system/files/pdf/Inventory%20Control%20Form%20-%20LCP%C2%AE%20Dynamic%20Helical%20Hip%20System%20%28DHHS%29.pdf",
+        "notes": "Official DePuy Synthes inventory control form for the Dynamic Helical Hip System, usable as the current source-backed anchor for the dynamic hip screw family."
+      },
+      {
+        "source_type": "inventory_control_form_pdf",
+        "title": "Inventory Control Form - LCP Dynamic Helical Hip System (DHHS)",
+        "url": "https://www.jnjmedtech.com/sites/default/files/inventory_control_forms/Inventory%20Control%20Form%20-%20LCP%C2%AE%20Dynamic%20Helical%20Hip%20System%20%28DHHS%29.pdf",
+        "notes": "Alternate official J&J MedTech-hosted path for the same DHHS inventory-control form."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_EXPERT_HUMERAL_NAIL",
+    "system_name": "Expert Humeral Nail (EHN)",
+    "sources": [
+      {
+        "source_type": "accompanying_information_page",
+        "title": "Accompanying Product Information",
+        "url": "https://www.jnjmedtech.com/en-EMEA/product/accompanying-information",
+        "notes": "Official DePuy Synthes accompanying-information page explicitly listing the Expert Humeral Nailing System surgical technique under intramedullary nails."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_MULTILOC_NAIL",
+    "system_name": "MultiLoc Proximal Humeral Nail",
+    "sources": [
+      {
+        "source_type": "accompanying_information_page",
+        "title": "Accompanying Product Information",
+        "url": "https://www.jnjmedtech.com/en-EMEA/product/accompanying-information",
+        "notes": "Official DePuy Synthes accompanying-information page listing MultiLoc Proximal Humeral Nail surgical-technique resources under humerus and shoulder trauma solutions."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_TFNA_LONG_NAIL_SYSTEM",
+    "system_name": "TFNA Long Nail System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "TFN-ADVANCED Proximal Femoral Nailing System",
+        "url": "https://www.jnjmedtech.com/en-US/product/tfn-advanced",
+        "notes": "Official DePuy Synthes product page for the TFN-ADVANCED proximal femoral nailing platform, including long nail variants."
+      },
+      {
+        "source_type": "product_page",
+        "title": "TFN-ADVANCED Proximal Femoral Nailing System (EMEA)",
+        "url": "https://www.jnjmedtech.com/en-EMEA/product/tfn-advanced-proximal-femoral-nailing-system",
+        "notes": "Official EMEA product page exposing surgical technique and screw-only technique resources for the proximal femoral nailing system."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_TFNA_PROXIMAL_FEMORAL_NAILING_SYSTEM",
+    "system_name": "TFNA Proximal Femoral Nailing System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "TFN-ADVANCED Proximal Femoral Nailing System",
+        "url": "https://www.jnjmedtech.com/en-US/product/tfn-advanced",
+        "notes": "Official DePuy Synthes product page for the TFN-ADVANCED proximal femoral nailing platform."
+      },
+      {
+        "source_type": "product_page",
+        "title": "TFN-ADVANCED Proximal Femoral Nailing System (EMEA)",
+        "url": "https://www.jnjmedtech.com/en-EMEA/product/tfn-advanced-proximal-femoral-nailing-system",
+        "notes": "Official EMEA product page exposing surgical technique and screw-only technique resources for the proximal femoral nailing system."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_TC3_REVISION_KNEE",
+    "system_name": "TC3 Revision Knee System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "PFC SIGMA TC3 Revision Knee System",
+        "url": "https://www.jnjmedtech.com/en-US/product/pfc-sigma-tc3-revision-knee-system",
+        "notes": "Official DePuy Synthes product page for the TC3 revision knee platform."
+      },
+      {
+        "source_type": "knee_resources_page",
+        "title": "Knee Specialty Resources",
+        "url": "https://www.jnjmedtech.com/en-EMEA/knee/resources",
+        "notes": "Official DePuy Synthes knee resources page linking revision knee product and education materials."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_DELTA_XTEND",
+    "system_name": "Delta XTEND Reverse Shoulder",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "DELTA XTEND Reverse Shoulder System",
+        "url": "https://www.jnjmedtech.com/en-US/product/delta-xtend-reverse-shoulder-system",
+        "notes": "Official DePuy Synthes product page for the DELTA XTEND reverse shoulder platform."
+      },
+      {
+        "source_type": "shoulder_resources_page",
+        "title": "Shoulder Specialty Resources",
+        "url": "https://www.jnjmedtech.com/en-EMEA/shoulder/resources",
+        "notes": "Official DePuy Synthes shoulder resources page linking DELTA XTEND product and surgical education materials."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_EXPERT_FEMORAL_NAIL",
+    "system_name": "Expert Femoral Nail (EFN)",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Expert Femoral Nail",
+        "url": "https://www.jnjmedtech.com/en-US/product/expert-femoral-nail",
+        "notes": "Official DePuy Synthes product page for the Expert Femoral Nail platform."
+      },
+      {
+        "source_type": "accompanying_information_page",
+        "title": "Accompanying Product Information",
+        "url": "https://www.jnjmedtech.com/en-EMEA/product/accompanying-information",
+        "notes": "Official accompanying-information page listing Expert Femoral Nail operative technique resources and related implant information."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_EXPERT_TIBIAL_NAIL",
+    "system_name": "Expert Tibial Nail (ETN)",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Expert Tibial Nail",
+        "url": "https://www.jnjmedtech.com/en-US/product/expert-tibial-nail",
+        "notes": "Official DePuy Synthes product page for the Expert Tibial Nail platform."
+      },
+      {
+        "source_type": "accompanying_information_page",
+        "title": "Accompanying Product Information",
+        "url": "https://www.jnjmedtech.com/en-EMEA/product/accompanying-information",
+        "notes": "Official accompanying-information page listing Expert Tibial Nail operative technique resources and related implant information."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_TFNA",
+    "system_name": "TFN-ADVANCED Nail System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "TFN-ADVANCED Proximal Femoral Nailing System",
+        "url": "https://www.jnjmedtech.com/en-US/product/tfn-advanced",
+        "notes": "Official DePuy Synthes product page for the TFN-ADVANCED proximal femoral nailing system."
+      },
+      {
+        "source_type": "product_page",
+        "title": "TFN-ADVANCED Proximal Femoral Nailing System (EMEA)",
+        "url": "https://www.jnjmedtech.com/en-EMEA/product/tfn-advanced-proximal-femoral-nailing-system",
+        "notes": "Official EMEA product page exposing surgical technique and screw-only technique resources."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_CSTEM_PINNACLE",
+    "system_name": "C-stem AMT / Pinnacle",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "C-STEM AMT",
+        "url": "https://www.jnjmedtech.com/en-US/product/c-stem-amt",
+        "notes": "Official J&J MedTech product page describing C-STEM AMT as a polished triple-tapered cemented femoral stem for primary and revision THR."
+      },
+      {
+        "source_type": "product_page",
+        "title": "PINNACLE Acetabular Cup System",
+        "url": "https://www.jnjmedtech.com/en-US/product/pinnacle-acetabular-cup-system",
+        "notes": "Official J&J MedTech product page for the Pinnacle acetabular cup family."
+      },
+      {
+        "source_type": "hip_resources_page",
+        "title": "Hip Specialty Resources",
+        "url": "https://www.jnjmedtech.com/en-EMEA/hip/resources",
+        "notes": "Official DePuy Synthes hip resources page explicitly listing the C-STEM AMT and PINNACLE combination in NJR resource links."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_PFNA",
+    "system_name": "PFNA Nail System",
+    "sources": [
+      {
+        "source_type": "accompanying_information_page",
+        "title": "Accompanying Product Information",
+        "url": "https://www.jnjmedtech.com/en-EMEA/product/accompanying-information",
+        "notes": "Official DePuy Synthes accompanying-information page listing PFNA With Augmentation Option and PFNA-II surgical techniques under intramedullary nails."
+      },
+      {
+        "source_type": "sterile_implant_listing_pdf",
+        "title": "PFNA Sterilimplantate Titan",
+        "url": "https://www.jnjmedtech.com/system/files/pdf/L185.280S%20PFNA%20Titan%20Sterilimplantate_1.pdf",
+        "notes": "Official sterile implant listing with PFNA blade product codes and tray structure."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_PINNACLE_SECTOR",
+    "system_name": "Pinnacle / Sector Augments",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "PINNACLE Acetabular Cup System",
+        "url": "https://www.jnjmedtech.com/en-US/product/pinnacle-acetabular-cup-system",
+        "notes": "Official J&J MedTech product page for the Pinnacle acetabular cup family."
+      },
+      {
+        "source_type": "surgical_technique_pdf",
+        "title": "Pinnacle Acetabular Cup System Surgical Technique",
+        "url": "https://www.jnjmedtech.com/sites/default/files/user_uploaded_assets/pdf_assets/2022-06/Pinnacle%20Acetabular%20Cup%20System%20Surgical%20Technique.pdf",
+        "notes": "Official surgical technique PDF for the Pinnacle acetabular system."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_CORAIL_BIPOLAR",
+    "system_name": "Corail / Bipolar Head",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "CORAIL Total Hip System",
+        "url": "https://www.jnjmedtech.com/en-GB/company/depuy-synthes/all-products",
+        "notes": "Official DePuy Synthes all-products page explicitly lists the CORAIL Total Hip System with long-term clinical heritage."
+      },
+      {
+        "source_type": "hip_resources_page",
+        "title": "Hip Specialty Resources",
+        "url": "https://www.jnjmedtech.com/en-EMEA/hip/resources",
+        "notes": "Official DePuy Synthes hip resources page used as the current source-backed anchor for the CORAIL hemiarthroplasty construct family."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_CORAIL_PINNACLE",
+    "system_name": "Corail / Pinnacle",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "CORAIL Total Hip System",
+        "url": "https://www.jnjmedtech.com/en-GB/company/depuy-synthes/all-products",
+        "notes": "Official DePuy Synthes all-products page explicitly lists the CORAIL Total Hip System with long-term clinical heritage."
+      },
+      {
+        "source_type": "product_page",
+        "title": "PINNACLE Acetabular Cup System",
+        "url": "https://www.jnjmedtech.com/en-US/product/pinnacle-acetabular-cup-system",
+        "notes": "Official J&J MedTech product page for the Pinnacle acetabular cup family."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_ATTUNE_KNEE",
+    "system_name": "ATTUNE Knee System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "ATTUNE Knee System",
+        "url": "https://www.jnjmedtech.com/en-US/product/attune-knee-system",
+        "notes": "Official product page with overview and linked resources."
+      },
+      {
+        "source_type": "surgical_technique_pdf",
+        "title": "ATTUNE Knee System Surgical Technique",
+        "url": "https://www.jnjmedtech.com/sites/default/files/user_uploaded_assets/pdf_assets/2023-10/ATTUNE%20Knee%20System%20Surgical%20Technique.pdf",
+        "notes": "Official surgical technique PDF."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_ACTIS___PINNACLE_TOTAL_HIP_SYSTEM",
+    "system_name": "ACTIS / PINNACLE Total Hip System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "PINNACLE Acetabular Cup System",
+        "url": "https://www.jnjmedtech.com/en-US/product/pinnacle-acetabular-cup-system",
+        "notes": "Official product page."
+      },
+      {
+        "source_type": "surgical_technique_pdf",
+        "title": "Pinnacle Acetabular Cup System Surgical Technique",
+        "url": "https://www.jnjmedtech.com/sites/default/files/user_uploaded_assets/pdf_assets/2022-06/Pinnacle%20Acetabular%20Cup%20System%20Surgical%20Technique.pdf",
+        "notes": "Official surgical technique PDF."
+      },
+      {
+        "source_type": "product_page",
+        "title": "ACTIS Total Hip System",
+        "url": "https://www.jnjmedtech.com/en-US/product/actis-total-hip-system",
+        "notes": "Official product page."
+      },
+      {
+        "source_type": "surgical_technique_pdf",
+        "title": "ACTIS Total Hip System Surgical Technique",
+        "url": "https://www.jnjmedtech.com/sites/default/files/user_uploaded_assets/pdf_assets/2022-06/ACTIS%20Total%20Hip%20System%20Surgical%20Technique.pdf",
+        "notes": "Official surgical technique PDF."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_PHILOS_PLATE",
+    "system_name": "PHILOS Proximal Humeral Plate",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "3.5 mm LCP Proximal Humerus Plates",
+        "url": "https://www.jnjmedtech.com/en-US/product/lcp-proximal-humerus-plate",
+        "notes": "Official J&J MedTech product page for DePuy Synthes proximal humerus plating with linked surgical technique and IFU resources."
+      },
+      {
+        "source_type": "loan_set_listing_pdf",
+        "title": "Orthokit Gesamtübersicht aller Leihsets - Trauma",
+        "url": "https://www.jnjmedtech.com/sites/default/files/user_uploaded_assets/pdf_assets/2020-01/OrthokitGesamt%C3%BCbersicht%20aller%20Leihsets%20-%20Trauma%20%281%29.pdf",
+        "notes": "Official DePuy Synthes trauma loan-set listing explicitly naming PHILOS targeting devices and sterile consumables."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_LCP_DISTAL_RADIUS",
+    "system_name": "LCP Distal Radius Plate",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Variable Angle LCP Two-Column Volar Distal Radius Plate",
+        "url": "https://www.jnjmedtech.com/en-US/product/variable-angle-lcp-two-column-volar-distal-radius-plate",
+        "notes": "Official J&J MedTech product page with linked surgical technique and supply-chain resources for the distal radius system."
+      },
+      {
+        "source_type": "inventory_control_form_pdf",
+        "title": "Variable Angle LCP Distal Radius Plates Inventory Control Form",
+        "url": "https://www.jnjmedtech.com/system/files/pdf/VALCPDISRADICF001.pdf",
+        "notes": "Official inventory control form listing plate and screw product codes for the distal radius family."
+      },
+      {
+        "source_type": "surgical_technique_pdf",
+        "title": "Variable Angle LCP Volar Rim Distal Radius Plate 2.4 Surgical Technique",
+        "url": "https://www.jnjmedtech.com/sites/default/files/user_uploaded_assets/pdf_assets/2020-08/120311-190807_Final.pdf",
+        "notes": "Official surgical technique PDF for the variable angle distal radius plate family."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_LCP_DISTAL_HUMERUS",
+    "system_name": "LCP Distal Humerus Plate",
+    "sources": [
+      {
+        "source_type": "portfolio_page",
+        "title": "DePuy Synthes All Products",
+        "url": "https://www.jnjmedtech.com/en-GB/company/depuy-synthes/all-products",
+        "notes": "Official DePuy Synthes all-products page used as the supplier portfolio anchor for trauma plating systems."
+      },
+      {
+        "source_type": "technique_index_page",
+        "title": "Accompanying Product Information",
+        "url": "https://www.jnjmedtech.com/en-EMEA/product/accompanying-information",
+        "notes": "Official DePuy Synthes technique library explicitly listing LCP Distal Humerus Plates Surgical Technique and VA-LCP Distal Humerus Plates technique resources."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_LCP_TIBIAL_PLATEAU",
+    "system_name": "LCP Tibial Plateau Plate",
+    "sources": [
+      {
+        "source_type": "operative_technique_pdf",
+        "title": "VA-LCP Proximal Tibial Plate 3.5 Surgical Technique",
+        "url": "https://www.jnjmedtech.com/sites/default/files/user_uploaded_assets/pdf_assets/2023-09/189822-210920_EMEA_VA-LCP%20Proximal%20Tibial%20Plate%203.5%20STG%20%281%29.pdf",
+        "notes": "Official DePuy Synthes surgical technique covering proximal tibial plateau fixation workflow with the variable-angle plate system."
+      },
+      {
+        "source_type": "inventory_control_form_pdf",
+        "title": "Inventory Control Form - Variable Angle LCP Proximal Tibia Plate (3.5 mm)",
+        "url": "https://www.jnjmedtech.com/system/files/pdf/Inventory%20Control%20Form%20-%20Variable%20Angle%20LCP%C2%AE%20Proximal%20Tibia%20Plate%20%283.5%20mm%29.pdf",
+        "notes": "Official inventory control form listing proximal tibia plate options and screw references."
+      },
+      {
+        "source_type": "system_catalog_pdf",
+        "title": "Universal Small Fragment System Catalog",
+        "url": "https://www.jnjmedtech.com/sites/default/files/user_uploaded_assets/pdf_assets/2022-02/USF%20System%20Catalog%20-%20US%20%281%29.pdf",
+        "notes": "Official system catalog showing the proximal tibia implant trays and associated instrument sets."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_LCP_FOREARM",
+    "system_name": "LCP Radius / Ulna Plates",
+    "sources": [
+      {
+        "source_type": "technique_index_page",
+        "title": "Accompanying Product Information",
+        "url": "https://www.jnjmedtech.com/en-EMEA/product/accompanying-information",
+        "notes": "Official DePuy Synthes technique library listing LCP Proximal Radius Plates, LCP Distal Ulna Plate, and related forearm technique resources."
+      },
+      {
+        "source_type": "catalog_page",
+        "title": "DePuy Synthes All Products",
+        "url": "https://www.jnjmedtech.com/en-US/company/depuy-synthes/all-products?page=10",
+        "notes": "Official DePuy Synthes product catalogue page listing distal radius and distal ulna LCP forearm plating products."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_LCP_FIBULA",
+    "system_name": "LCP Fibula / Distal Fibula",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "LCP Distal Fibula Plates 2.7/3.5",
+        "url": "https://www.jnjmedtech.com/en-US/product/lcp-distal-fibula-plates",
+        "notes": "Official J&J MedTech product page for the distal fibula plating family with linked IFU and technique resources."
+      },
+      {
+        "source_type": "inventory_control_form_pdf",
+        "title": "Inventory Control Form - LCP Distal Fibula Plates 2.7/3.5",
+        "url": "https://www.jnjmedtech.com/system/files/pdf/106260_Inventory%20Control%20Form%20-%20LCP%20Distal%20Fibula%20Plate%20System%202.7_3.5%20mm_0.pdf",
+        "notes": "Official DePuy Synthes inventory control form listing distal fibula plate and screw references."
+      },
+      {
+        "source_type": "brochure_pdf",
+        "title": "LCP Distal Fibula Plates 2.7/3.5 Brochure",
+        "url": "https://www.jnjmedtech.com/system/files/pdf/105909_LCP%20Distal%20Fibula%20Plates%202.7_3.5%20Technique%20Guide.pdf",
+        "notes": "Official DePuy Synthes brochure and technique guide describing distal fibula plating workflow and implant family."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_LCP_DISTAL_TIBIA",
+    "system_name": "LCP Distal Tibia Plate",
+    "sources": [
+      {
+        "source_type": "operative_technique_pdf",
+        "title": "LCP Distal Tibia Plate Surgical Technique",
+        "url": "https://www.jnjmedtech.com/sites/default/files/user_uploaded_assets/pdf_assets/2019-07/036.000.407.pdf",
+        "notes": "Official DePuy Synthes surgical technique covering distal tibia and pilon fixation workflow."
+      },
+      {
+        "source_type": "inventory_control_form_pdf",
+        "title": "Inventory Control Form - VA Distal Tibia Implant Set",
+        "url": "https://www.jnjmedtech.com/system/files/pdf/USFSICF010V2_VA%20Dist%20Tib_RAMPAGE.pdf",
+        "notes": "Official inventory control form listing distal tibia plates and screw references."
+      },
+      {
+        "source_type": "system_catalog_pdf",
+        "title": "Universal Small Fragment System Catalog",
+        "url": "https://www.jnjmedtech.com/sites/default/files/user_uploaded_assets/pdf_assets/2021-01/USF%20System%20Catalog%20-%20US.pdf",
+        "notes": "Official catalog showing distal tibia implant trays and associated instrument sets."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_LCP_CALCANEUM",
+    "system_name": "LCP Calcaneal Plate",
+    "sources": [
+      {
+        "source_type": "catalog_page",
+        "title": "Browse All DePuy Synthes Products",
+        "url": "https://www.jnjmedtech.com/en-US/company/depuy-synthes/all-products?items_per_page=20&page=12",
+        "notes": "Official DePuy Synthes catalogue page explicitly listing the locking calcaneal plates within the trauma portfolio."
+      },
+      {
+        "source_type": "technique_index_page",
+        "title": "Accompanying Product Information",
+        "url": "https://www.jnjmedtech.com/en-EMEA/product/accompanying-information",
+        "notes": "Official DePuy Synthes technique library listing The Locking Calcaneal Plate Surgical Technique and VA Locking Calcaneal Plates 2.7 Surgical Technique."
+      },
+      {
+        "source_type": "specialty_page",
+        "title": "Foot & Ankle",
+        "url": "https://www.jnjmedtech.com/en-US/specialty/foot-and-ankle?items_per_page=12&page=3",
+        "notes": "Official DePuy Synthes foot and ankle specialty page explicitly listing the Variable Angle Locking Calcaneal Plating System."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_GLOBAL_FX",
+    "system_name": "Global FX Fracture System",
+    "sources": [
+      {
+        "source_type": "patient_information_leaflet",
+        "title": "Patient Information Leaflet for Shoulder Joint Replacement",
+        "url": "https://www.jnjmedtech.com/system/files/pdf/Shoulder%20Joint%20Replacement.pdf",
+        "notes": "Official J&J MedTech patient-information leaflet explicitly listing Global FX as a supported shoulder joint replacement product."
+      },
+      {
+        "source_type": "regulatory_listing",
+        "title": "TGA - Global FX Humeral Stem",
+        "url": "https://www.tga.gov.au/resources/artg/315634",
+        "notes": "Official Australian TGA listing for the Global FX humeral stem press-fit prosthesis."
+      },
+      {
+        "source_type": "regulatory_listing",
+        "title": "TGA - Global FX Porocoat Stem",
+        "url": "https://www.tga.gov.au/resources/artg/313925",
+        "notes": "Official Australian TGA listing for the Global FX Porocoat shoulder humeral stem prosthesis."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_LCP_CLAVICLE",
+    "system_name": "LCP Clavicle Plate",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "2.7 mm VA LCP Clavicle Plate System",
+        "url": "https://www.jnjmedtech.com/en-US/product/variable-angle-lcpr-clavicle-plate-system-27-mm",
+        "notes": "Official J&J MedTech product page for the VA clavicle plate family with linked surgical technique and inventory resources."
+      },
+      {
+        "source_type": "launch_note",
+        "title": "DePuy Synthes Launches 2.7 mm VA LCP Clavicle Plate System",
+        "url": "https://www.jnjmedtech.com/en-US/news-events/depuy-synthes-launches-27-mm-variable-angle-locking-compression-plate-clavicle-system",
+        "notes": "Official launch article describing the clavicle plate system types and design intent."
+      },
+      {
+        "source_type": "inventory_control_form_pdf",
+        "title": "Inventory Control Form - LCP Superior and Superior Anterior Clavicle Plate (3.5 mm)",
+        "url": "https://www.jnjmedtech.com/system/files/pdf/Inventory%20Control%20Form%20-%20LCP%C2%AE%20Superior%20and%20Superior%20Anterior%20Clavicle%20Plate%20%283.5%20mm%29.pdf",
+        "notes": "Official inventory control form listing clavicle plate and screw references."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_LCP_HUMERAL_SHAFT",
+    "system_name": "LCP Humeral Shaft Plate",
+    "sources": [
+      {
+        "source_type": "catalog_page",
+        "title": "Browse All DePuy Synthes Products",
+        "url": "https://www.jnjmedtech.com/en-US/company/depuy-synthes/all-products?page=12",
+        "notes": "Official DePuy Synthes product catalogue page listing upper-extremity trauma plating systems and related locking compression plate families."
+      },
+      {
+        "source_type": "specialty_page",
+        "title": "Trauma & Extremities",
+        "url": "https://www.jnjmedtech.com/en-US/specialty/trauma-and-extremities?page=8&pmid=c0a80237f047bbcafc766e524735e9a9&searchData=Search%2520DePuy%2520Synthes",
+        "notes": "Official DePuy Synthes trauma and extremities product listing page filtered across upper-extremity plating systems."
+      },
+      {
+        "source_type": "technique_index_page",
+        "title": "Accompanying Product Information",
+        "url": "https://www.jnjmedtech.com/en-EMEA/product/accompanying-information",
+        "notes": "Official DePuy Synthes technique library used as the anchor for LCP upper-extremity plate technique documents."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_LCP_CLAVICLE_PLATE_SYSTEM",
+    "system_name": "LCP Clavicle Plate System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "2.7 mm VA LCP Clavicle Plate System",
+        "url": "https://www.jnjmedtech.com/en-US/product/variable-angle-lcpr-clavicle-plate-system-27-mm",
+        "notes": "Official J&J MedTech product page for the VA clavicle plate family with linked surgical technique and inventory resources."
+      },
+      {
+        "source_type": "launch_note",
+        "title": "DePuy Synthes Launches 2.7 mm VA LCP Clavicle Plate System",
+        "url": "https://www.jnjmedtech.com/en-US/news-events/depuy-synthes-launches-27-mm-variable-angle-locking-compression-plate-clavicle-system",
+        "notes": "Official launch article describing the clavicle plate system types and design intent."
+      },
+      {
+        "source_type": "inventory_control_form_pdf",
+        "title": "Inventory Control Form - LCP Superior and Superior Anterior Clavicle Plate (3.5 mm)",
+        "url": "https://www.jnjmedtech.com/system/files/pdf/Inventory%20Control%20Form%20-%20LCP%C2%AE%20Superior%20and%20Superior%20Anterior%20Clavicle%20Plate%20%283.5%20mm%29.pdf",
+        "notes": "Official inventory control form listing clavicle plate and screw references."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_VA_LCP_DISTAL_TIBIA_PLATE",
+    "system_name": "VA-LCP Distal Tibia Plate",
+    "sources": [
+      {
+        "source_type": "operative_technique_pdf",
+        "title": "LCP Distal Tibia Plate Surgical Technique",
+        "url": "https://www.jnjmedtech.com/sites/default/files/user_uploaded_assets/pdf_assets/2019-07/036.000.407.pdf",
+        "notes": "Official DePuy Synthes surgical technique covering distal tibia and pilon fixation workflow."
+      },
+      {
+        "source_type": "inventory_control_form_pdf",
+        "title": "Inventory Control Form - VA Distal Tibia Implant Set",
+        "url": "https://www.jnjmedtech.com/system/files/pdf/USFSICF010V2_VA%20Dist%20Tib_RAMPAGE.pdf",
+        "notes": "Official inventory control form listing variable-angle distal tibia plates and screw references."
+      },
+      {
+        "source_type": "system_catalog_pdf",
+        "title": "Universal Small Fragment System Catalog",
+        "url": "https://www.jnjmedtech.com/sites/default/files/user_uploaded_assets/pdf_assets/2021-01/USF%20System%20Catalog%20-%20US.pdf",
+        "notes": "Official catalog showing distal tibia implant trays and associated instrument sets."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_LCP_DISTAL_FEMUR",
+    "system_name": "LCP Distal Femoral Plate",
+    "sources": [
+      {
+        "source_type": "operative_technique_pdf",
+        "title": "LCP Distal Femur Plate Surgical Technique",
+        "url": "https://www.jnjmedtech.com/sites/default/files/user_uploaded_assets/pdf_assets/2020-08/036.000.925.pdf",
+        "notes": "Official DePuy Synthes surgical technique covering lateral distal femur fixation workflow."
+      },
+      {
+        "source_type": "inventory_control_form_pdf",
+        "title": "Inventory Control Form - VA Distal Femur Implant Set",
+        "url": "https://www.jnjmedtech.com/system/files/pdf/USFSICF009V2_VA%20Dist%20Fem_RAMPAGE.pdf",
+        "notes": "Official inventory control form listing distal femur plates and screw references."
+      },
+      {
+        "source_type": "system_catalog_pdf",
+        "title": "Universal Small Fragment System Catalog",
+        "url": "https://www.jnjmedtech.com/sites/default/files/user_uploaded_assets/pdf_assets/2021-01/USF%20System%20Catalog%20-%20US.pdf",
+        "notes": "Official catalog showing distal femur implant trays and associated instrument sets."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_HEALIX_ADVANCE",
+    "system_name": "Healix Advance Anchor",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "HEALIX ADVANCE Knotless Anchor System",
+        "url": "https://www.jnjmedtech.com/en-US/product/healix-advance-knotless-anchor-system",
+        "notes": "Official DePuy Synthes Mitek product page describing the Healix Advance anchor family and shoulder soft-tissue fixation use."
+      },
+      {
+        "source_type": "sports_medicine_portfolio_page",
+        "title": "Shoulder Sports Medicine Solutions",
+        "url": "https://www.jnjmedtech.com/en-US/specialty/sports-medicine",
+        "notes": "Official J&J MedTech sports medicine page used as the portfolio anchor for Mitek anchor systems."
+      },
+      {
+        "source_type": "brochure_pdf",
+        "title": "Mitek Shoulder Repair Product Portfolio",
+        "url": "https://www.jnjmedtech.com/system/files/pdf/Mitek_Shoulder_Repair_Product_Portfolio.pdf",
+        "notes": "Official shoulder repair portfolio brochure used as the supporting source for anchor-family context."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_RIGIDFIX",
+    "system_name": "RigidFix Cross-Pin System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "RIGIDFIX Cross Pin System",
+        "url": "https://www.jnjmedtech.com/en-US/product/rigidfix-cross-pin-system",
+        "notes": "Official DePuy Synthes Mitek product page describing femoral cross-pin fixation for ACL grafts."
+      },
+      {
+        "source_type": "sports_medicine_portfolio_page",
+        "title": "Sports Medicine",
+        "url": "https://www.jnjmedtech.com/en-US/specialty/sports-medicine",
+        "notes": "Official J&J MedTech sports medicine page used as the supporting source for ACL fixation context."
+      },
+      {
+        "source_type": "brochure_pdf",
+        "title": "Mitek Knee Reconstruction Portfolio",
+        "url": "https://www.jnjmedtech.com/system/files/pdf/Mitek_Knee_Reconstruction_Portfolio.pdf",
+        "notes": "Official knee reconstruction portfolio brochure used as supporting context for cross-pin fixation family placement."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_DEPUY_SYNTHES_TRAUMA_PORTFOLIO",
+    "system_name": "DePuy Synthes Trauma Portfolio",
+    "sources": [
+      {
+        "source_type": "catalog_page",
+        "title": "Browse All DePuy Synthes Products",
+        "url": "https://www.jnjmedtech.com/en-US/company/depuy-synthes/all-products",
+        "notes": "Official DePuy Synthes catalogue page used as the portfolio anchor for trauma implant families."
+      },
+      {
+        "source_type": "specialty_page",
+        "title": "Trauma & Extremities",
+        "url": "https://www.jnjmedtech.com/en-US/specialty/trauma-and-extremities",
+        "notes": "Official J&J MedTech trauma and extremities specialty page used as the portfolio-level source."
+      },
+      {
+        "source_type": "technique_index_page",
+        "title": "Accompanying Product Information",
+        "url": "https://www.jnjmedtech.com/en-EMEA/product/accompanying-information",
+        "notes": "Official DePuy Synthes technique library used as the audit trail for the broader trauma portfolio."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_DEPUY_SYNTHES",
+    "supplier_name": "DePuy Synthes",
+    "system_id": "SYS_EXPEDIUM_SPINE",
+    "system_name": "Expedium Spine System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "EXPEDIUM Spine System",
+        "url": "https://www.jnjmedtech.com/en-US/product/expedium-spine-system",
+        "notes": "Official DePuy Synthes / J&J MedTech product page used as the public source anchor."
+      },
+      {
+        "source_type": "technology_page",
+        "title": "Spine",
+        "url": "https://www.jnjmedtech.com/en-US/specialties/spine",
+        "notes": "Official J&J MedTech spine specialty page used as broader workflow context."
+      }
+    ]
+  }
+]

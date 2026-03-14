@@ -171,7 +171,7 @@ export default async function HomePage({ searchParams }: Props) {
 
   return (
     <div className="app-shell-bg min-h-screen">
-      <header className="app-header-bg sticky top-0 z-30 border-b app-card-border lg:backdrop-blur-2xl">
+      <header data-dev-trigger className="app-header-bg sticky top-0 z-30 border-b app-card-border lg:backdrop-blur-2xl">
         <div className="mx-auto flex max-w-4xl items-center gap-3 px-4 pb-2.5 pt-[calc(env(safe-area-inset-top,0px)+8px)] lg:max-w-none lg:px-12 lg:py-5">
           <HistoryBackButton
             fallbackHref={backHref}

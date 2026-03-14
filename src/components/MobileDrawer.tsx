@@ -226,10 +226,7 @@ export default function MobileDrawer() {
 
   return (
     <>
-      <div
-        data-dev-trigger
-        className="sticky top-0 z-40 grid grid-cols-3 items-center overflow-visible border-b border-[#D5DCE3] bg-white px-4 py-0.5 lg:hidden"
-      >
+      <div className="sticky top-0 z-40 grid grid-cols-3 items-center overflow-visible border-b border-[#D5DCE3] bg-white px-4 py-0.5 lg:hidden">
         <button
           onClick={() => setOpen(true)}
           aria-label="Open AI assistant"
@@ -238,7 +235,7 @@ export default function MobileDrawer() {
           <AIIcon className="h-[108px] w-[108px]" />
         </button>
 
-        <Link href="/" className="flex justify-center">
+        <Link href="/" data-dev-trigger className="flex justify-center">
           <span className="text-base font-bold text-[#00B4D8]">PrepSight</span>
         </Link>
 

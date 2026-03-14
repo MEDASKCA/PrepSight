@@ -1,0 +1,41 @@
+[
+  {
+    "system_id": "SYS_PATCH_MATERIAL",
+    "system_name": "Vascular Patch",
+    "system_category": "vascular patch",
+    "mapping_count": 17,
+    "source_folder": "data\\catalogue\\source_library\\lemaitre-vascular\\vascular-patch__SYS_PATCH_MATERIAL",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TUNNELLER",
+    "system_name": "Graft Tunneller",
+    "system_category": "bypass access",
+    "mapping_count": 13,
+    "source_folder": "data\\catalogue\\source_library\\lemaitre-vascular\\graft-tunneller__SYS_TUNNELLER",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HEPARINISED_SHUNT",
+    "system_name": "Carotid Shunt",
+    "system_category": "cerebral protection",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\lemaitre-vascular\\carotid-shunt__SYS_HEPARINISED_SHUNT",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

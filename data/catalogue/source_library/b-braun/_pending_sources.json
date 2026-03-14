@@ -1,0 +1,132 @@
+[
+  {
+    "system_id": "SYS_VASCULAR_CLAMP_SET",
+    "system_name": "Vascular Clamp Set",
+    "system_category": "open vascular",
+    "mapping_count": 39,
+    "source_folder": "data\\catalogue\\source_library\\b-braun\\vascular-clamp-set__SYS_VASCULAR_CLAMP_SET",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_NERVE_STIMULATOR",
+    "system_name": "Nerve Stimulator",
+    "system_category": "regional_anaesthesia",
+    "mapping_count": 13,
+    "source_folder": "data\\catalogue\\source_library\\b-braun\\nerve-stimulator__SYS_NERVE_STIMULATOR",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_INFUSION_PUMP",
+    "system_name": "Infusion Pump",
+    "system_category": "drug_delivery",
+    "mapping_count": 11,
+    "source_folder": "data\\catalogue\\source_library\\b-braun\\infusion-pump__SYS_INFUSION_PUMP",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PATCH_ANGIOPLASTY_SET",
+    "system_name": "Patch Angioplasty Set",
+    "system_category": "arterial reconstruction",
+    "mapping_count": 8,
+    "source_folder": "data\\catalogue\\source_library\\b-braun\\patch-angioplasty-set__SYS_PATCH_ANGIOPLASTY_SET",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EPIDURAL_KIT",
+    "system_name": "Epidural Kit",
+    "system_category": "regional_anaesthesia",
+    "mapping_count": 7,
+    "source_folder": "data\\catalogue\\source_library\\b-braun\\epidural-kit__SYS_EPIDURAL_KIT",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_VEIN_HARVEST_SET",
+    "system_name": "Vein Harvest Set",
+    "system_category": "conduit harvest",
+    "mapping_count": 7,
+    "source_folder": "data\\catalogue\\source_library\\b-braun\\vein-harvest-set__SYS_VEIN_HARVEST_SET",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRIPPING_SET",
+    "system_name": "Vein Stripping Set",
+    "system_category": "venous surgery",
+    "mapping_count": 6,
+    "source_folder": "data\\catalogue\\source_library\\b-braun\\vein-stripping-set__SYS_STRIPPING_SET",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SYRINGE_PUMP",
+    "system_name": "Syringe Pump",
+    "system_category": "drug_delivery",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\b-braun\\syringe-pump__SYS_SYRINGE_PUMP",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CSE_KIT",
+    "system_name": "Combined Spinal Epidural Kit",
+    "system_category": "regional_anaesthesia",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\b-braun\\combined-spinal-epidural-kit__SYS_CSE_KIT",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SPINAL_KIT",
+    "system_name": "Spinal Anaesthesia Kit",
+    "system_category": "regional_anaesthesia",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\b-braun\\spinal-anaesthesia-kit__SYS_SPINAL_KIT",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

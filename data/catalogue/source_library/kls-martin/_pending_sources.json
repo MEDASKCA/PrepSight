@@ -1,0 +1,132 @@
+[
+  {
+    "system_id": "SYS_CALCANEAL_PLATE",
+    "system_name": "Calcaneal Plate System",
+    "system_category": "orthopaedic_fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\kls-martin\\calcaneal-plate-system__SYS_CALCANEAL_PLATE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ELBOW___DISTAL_HUMERUS_PLATE_PORTFOLIO",
+    "system_name": "Elbow / Distal Humerus Plate Portfolio",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\kls-martin\\elbow-distal-humerus-plate-portfolio__SYS_ELBOW___DISTAL_HUMERUS_PLATE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_FOREARM_TRAUMA_PORTFOLIO",
+    "system_name": "Forearm Trauma Portfolio",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\kls-martin\\forearm-trauma-portfolio__SYS_FOREARM_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HAND_INSTRUMENTATION_PORTFOLIO",
+    "system_name": "Hand Instrumentation Portfolio",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\kls-martin\\hand-instrumentation-portfolio__SYS_HAND_INSTRUMENTATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HAND_SMALL_FRAGMENT_PORTFOLIO",
+    "system_name": "Hand Small Fragment Portfolio",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\kls-martin\\hand-small-fragment-portfolio__SYS_HAND_SMALL_FRAGMENT_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HAND_SURGERY_INSTRUMENTATION_PORTFOLIO",
+    "system_name": "Hand Surgery Instrumentation Portfolio",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\kls-martin\\hand-surgery-instrumentation-portfolio__SYS_HAND_SURGERY_INSTRUMENTATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HAND_TENDON_INSTRUMENTATION_PORTFOLIO",
+    "system_name": "Hand Tendon Instrumentation Portfolio",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\kls-martin\\hand-tendon-instrumentation-portfolio__SYS_HAND_TENDON_INSTRUMENTATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UPPER_EXTREMITY_SMALL_FRAGMENT_PORTFOLIO",
+    "system_name": "Upper Extremity Small Fragment Portfolio",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\kls-martin\\upper-extremity-small-fragment-portfolio__SYS_UPPER_EXTREMITY_SMALL_FRAGMENT_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UPPER_EXTREMITY_SOFT_TISSUE_PORTFOLIO",
+    "system_name": "Upper Extremity Soft Tissue Portfolio",
+    "system_category": "elbow",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\kls-martin\\upper-extremity-soft-tissue-portfolio__SYS_UPPER_EXTREMITY_SOFT_TISSUE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_WRIST_INSTRUMENTATION_PORTFOLIO",
+    "system_name": "Wrist Instrumentation Portfolio",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\kls-martin\\wrist-instrumentation-portfolio__SYS_WRIST_INSTRUMENTATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

@@ -1,0 +1,210 @@
+[
+  {
+    "system_id": "SYS_GUIDED_GROWTH___PEDIPLATES_PORTFOLIO",
+    "system_name": "Guided Growth / PediPlates Portfolio",
+    "system_category": "paediatric_orthopaedics",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\orthopediatrics\\guided-growth-pediplates-portfolio__SYS_GUIDED_GROWTH___PEDIPLATES_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PAEDIATRIC_HIP_PORTFOLIO",
+    "system_name": "Paediatric Hip Portfolio",
+    "system_category": "paediatric_orthopaedics",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\orthopediatrics\\paediatric-hip-portfolio__SYS_PAEDIATRIC_HIP_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PAEDIATRIC_OSTEOTOMY___PLATE_PORTFOLIO",
+    "system_name": "Paediatric Osteotomy / Plate Portfolio",
+    "system_category": "paediatric_orthopaedics",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\orthopediatrics\\paediatric-osteotomy-plate-portfolio__SYS_PAEDIATRIC_OSTEOTOMY___PLATE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BANDLOC___RESPONSE_SCOLIOSIS_SYSTEM",
+    "system_name": "BandLoc / RESPONSE Scoliosis System",
+    "system_category": "paediatric_spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthopediatrics\\bandloc-response-scoliosis-system__SYS_BANDLOC___RESPONSE_SCOLIOSIS_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOPEDIATRICS_GUIDED_GROWTH_PORTFOLIO",
+    "system_name": "OrthoPediatrics Guided growth Portfolio",
+    "system_category": "Guided growth",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthopediatrics\\orthopediatrics-guided-growth-portfolio__SYS_ORTHOPEDIATRICS_GUIDED_GROWTH_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOPEDIATRICS_HIP_PRESERVATION_PORTFOLIO",
+    "system_name": "OrthoPediatrics Hip preservation Portfolio",
+    "system_category": "Hip preservation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthopediatrics\\orthopediatrics-hip-preservation-portfolio__SYS_ORTHOPEDIATRICS_HIP_PRESERVATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOPEDIATRICS_PEDIATRIC_FEMUR_PORTFOLIO",
+    "system_name": "OrthoPediatrics Pediatric Femur Portfolio",
+    "system_category": "Pediatric orthopaedics",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthopediatrics\\orthopediatrics-pediatric-femur-portfolio__SYS_ORTHOPEDIATRICS_PEDIATRIC_FEMUR_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOPEDIATRICS_PEDIATRIC_FOOT_PORTFOLIO",
+    "system_name": "OrthoPediatrics Pediatric Foot Portfolio",
+    "system_category": "Pediatric orthopaedics",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthopediatrics\\orthopediatrics-pediatric-foot-portfolio__SYS_ORTHOPEDIATRICS_PEDIATRIC_FOOT_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOPEDIATRICS_PEDIATRIC_HIP_PORTFOLIO",
+    "system_name": "OrthoPediatrics Pediatric Hip Portfolio",
+    "system_category": "Pediatric orthopaedics",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthopediatrics\\orthopediatrics-pediatric-hip-portfolio__SYS_ORTHOPEDIATRICS_PEDIATRIC_HIP_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOPEDIATRICS_PEDIATRIC_PELVIC_PORTFOLIO",
+    "system_name": "OrthoPediatrics Pediatric Pelvic Portfolio",
+    "system_category": "Pediatric orthopaedics",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthopediatrics\\orthopediatrics-pediatric-pelvic-portfolio__SYS_ORTHOPEDIATRICS_PEDIATRIC_PELVIC_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOPEDIATRICS_PEDIATRIC_TIBIA_PORTFOLIO",
+    "system_name": "OrthoPediatrics Pediatric Tibia Portfolio",
+    "system_category": "Pediatric orthopaedics",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthopediatrics\\orthopediatrics-pediatric-tibia-portfolio__SYS_ORTHOPEDIATRICS_PEDIATRIC_TIBIA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOPEDIATRICS_PEDIATRIC_TRAUMA_PORTFOLIO",
+    "system_name": "OrthoPediatrics Pediatric Trauma Portfolio",
+    "system_category": "Pediatric orthopaedics",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthopediatrics\\orthopediatrics-pediatric-trauma-portfolio__SYS_ORTHOPEDIATRICS_PEDIATRIC_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOPEDIATRICS_PEDIATRIC_DEFORMITY_OSTEOTOMY_PORTFOLIO",
+    "system_name": "OrthoPediatrics Pediatric deformity / osteotomy Portfolio",
+    "system_category": "Pediatric deformity / osteotomy",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthopediatrics\\orthopediatrics-pediatric-deformity-osteotomy-portfolio__SYS_ORTHOPEDIATRICS_PEDIATRIC_DEFORMITY_OSTEOTOMY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOPEDIATRICS_PEDIATRIC_LOWER_LIMB_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "OrthoPediatrics Pediatric lower limb reconstruction Portfolio",
+    "system_category": "Pediatric lower limb reconstruction",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthopediatrics\\orthopediatrics-pediatric-lower-limb-reconstruction-portfolio__SYS_ORTHOPEDIATRICS_PEDIATRIC_LOWER_LIMB_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOPEDIATRICS_PEDIATRIC_ORTHOPAEDICS_PORTFOLIO",
+    "system_name": "OrthoPediatrics Pediatric orthopaedics Portfolio",
+    "system_category": "Pediatric orthopaedics",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthopediatrics\\orthopediatrics-pediatric-orthopaedics-portfolio__SYS_ORTHOPEDIATRICS_PEDIATRIC_ORTHOPAEDICS_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_RESPONSE___BANDLOC_PAEDIATRIC_SPINE_SYSTEM",
+    "system_name": "RESPONSE / BandLoc Paediatric Spine System",
+    "system_category": "paediatric_spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthopediatrics\\response-bandloc-paediatric-spine-system__SYS_RESPONSE___BANDLOC_PAEDIATRIC_SPINE_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

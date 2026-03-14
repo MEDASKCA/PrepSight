@@ -1,0 +1,1094 @@
+[
+  {
+    "system_id": "SYS_SOLERA_SPINE",
+    "system_name": "Solera Spine System",
+    "system_category": "Pedicle Screw-Rod \u2014 Spine",
+    "mapping_count": 9,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\solera-spine-system__SYS_SOLERA_SPINE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ASCEND_FLEX",
+    "system_name": "Ascend Flex",
+    "system_category": "Shoulder Replacement \u2014 Anatomic & Reverse",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\ascend-flex__SYS_ASCEND_FLEX",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EXETER_REVISION",
+    "system_name": "Exeter Revision Stem",
+    "system_category": "Hip Revision \u2014 Cemented",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\exeter-revision-stem__SYS_EXETER_REVISION",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_RESTORATION_MODULAR",
+    "system_name": "Restoration Modular",
+    "system_category": "Hip Revision \u2014 Cementless Modular",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\restoration-modular__SYS_RESTORATION_MODULAR",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EXETER_TRIDENT",
+    "system_name": "Exeter / Trident",
+    "system_category": "Hip Arthroplasty System",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\exeter-trident__SYS_EXETER_TRIDENT",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GMRS_ENDOPROSTHETIC",
+    "system_name": "GMRS Modular Endoprosthesis",
+    "system_category": "Endoprosthetic Reconstruction",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\gmrs-modular-endoprosthesis__SYS_GMRS_ENDOPROSTHETIC",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GAMMA_NAIL",
+    "system_name": "Gamma Nail System",
+    "system_category": "Intramedullary Nail System",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\gamma-nail-system__SYS_GAMMA_NAIL",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_T2_FEMORAL_NAIL",
+    "system_name": "T2 Femoral Nail",
+    "system_category": "Intramedullary Nail \u2014 Femoral Shaft",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\t2-femoral-nail__SYS_T2_FEMORAL_NAIL",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CONSERVE_PLUS",
+    "system_name": "Conserve Plus",
+    "system_category": "Hip Resurfacing",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\conserve-plus__SYS_CONSERVE_PLUS",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_KATALYST_RH",
+    "system_name": "Katalyst Radial Head",
+    "system_category": "Radial Head Replacement",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\katalyst-radial-head__SYS_KATALYST_RH",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_KYPHOPLASTY",
+    "system_name": "Stryker Kyphon Balloon",
+    "system_category": "Vertebral Augmentation",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-kyphon-balloon__SYS_STRYKER_KYPHOPLASTY",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_T2_HUMERAL_NAIL",
+    "system_name": "T2 Humeral Nail",
+    "system_category": "Intramedullary Nail \u2014 Humeral Shaft",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\t2-humeral-nail__SYS_T2_HUMERAL_NAIL",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_T2_TIBIAL_NAIL",
+    "system_name": "T2 Tibial Nail",
+    "system_category": "Intramedullary Nail \u2014 Tibial Shaft",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\t2-tibial-nail__SYS_T2_TIBIAL_NAIL",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TRIATHLON_TS",
+    "system_name": "Triathlon TS",
+    "system_category": "Knee Revision \u2014 Constrained/Modular",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\triathlon-ts__SYS_TRIATHLON_TS",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACETABULAR_FRACTURE_FIXATION_PORTFOLIO",
+    "system_name": "Acetabular Fracture Fixation Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\acetabular-fracture-fixation-portfolio__SYS_ACETABULAR_FRACTURE_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ANKLE_FUSION_PORTFOLIO",
+    "system_name": "Ankle Fusion Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\ankle-fusion-portfolio__SYS_ANKLE_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_AXSOS___VARIAX_DISTAL_FEMUR_PLATING",
+    "system_name": "AxSOS / VariAx Distal Femur Plating",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\axsos-variax-distal-femur-plating__SYS_AXSOS___VARIAX_DISTAL_FEMUR_PLATING",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_AXSOS_DISTAL_TIBIA_PLATE",
+    "system_name": "AxSOS Distal Tibia Plate",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\axsos-distal-tibia-plate__SYS_AXSOS_DISTAL_TIBIA_PLATE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_AXSOS_TIBIAL_PLATEAU_PLATING",
+    "system_name": "AxSOS Tibial Plateau Plating",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\axsos-tibial-plateau-plating__SYS_AXSOS_TIBIAL_PLATEAU_PLATING",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EXETER_BIPOLAR",
+    "system_name": "Exeter / Bipolar Head",
+    "system_category": "Hip Hemiarthroplasty \u2014 Cemented",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\exeter-bipolar-head__SYS_EXETER_BIPOLAR",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GMRS___ONCOLOGY_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "GMRS / Oncology Reconstruction Portfolio",
+    "system_category": "orthopaedic_oncology",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\gmrs-oncology-reconstruction-portfolio__SYS_GMRS___ONCOLOGY_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GAMMA4_HIP_FRACTURE_NAIL_SYSTEM",
+    "system_name": "Gamma4 Hip Fracture Nail System",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\gamma4-hip-fracture-nail-system__SYS_GAMMA4_HIP_FRACTURE_NAIL_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GAMMA4_LONG_NAIL_SYSTEM",
+    "system_name": "Gamma4 Long Nail System",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\gamma4-long-nail-system__SYS_GAMMA4_LONG_NAIL_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HINDFOOT_FUSION_PORTFOLIO",
+    "system_name": "Hindfoot Fusion Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\hindfoot-fusion-portfolio__SYS_HINDFOOT_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HOFFMANN_EXTERNAL_FIXATION_SYSTEM",
+    "system_name": "Hoffmann External Fixation System",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\hoffmann-external-fixation-system__SYS_HOFFMANN_EXTERNAL_FIXATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_INBONE___STAR_TOTAL_ANKLE_PORTFOLIO",
+    "system_name": "INBONE / STAR Total Ankle Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\inbone-star-total-ankle-portfolio__SYS_INBONE___STAR_TOTAL_ANKLE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_INSIGNIA___TRIDENT_II_TOTAL_HIP_SYSTEM",
+    "system_name": "Insignia / Trident II Total Hip System",
+    "system_category": "arthroplasty",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\insignia-trident-ii-total-hip-system__SYS_INSIGNIA___TRIDENT_II_TOTAL_HIP_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ONCOLOGY___TUMOUR_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Oncology / Tumour Reconstruction Portfolio",
+    "system_category": "orthopaedic_oncology",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\oncology-tumour-reconstruction-portfolio__SYS_ONCOLOGY___TUMOUR_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARTIAL_KNEE_PORTFOLIO",
+    "system_name": "Partial Knee Portfolio",
+    "system_category": "arthroplasty",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\partial-knee-portfolio__SYS_PARTIAL_KNEE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PATHOLOGIC_FRACTURE___ONCOLOGY_STABILISATION_PORTFOLIO",
+    "system_name": "Pathologic Fracture / Oncology Stabilisation Portfolio",
+    "system_category": "orthopaedic_oncology",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\pathologic-fracture-oncology-stabilisation-portfolio__SYS_PATHOLOGIC_FRACTURE___ONCOLOGY_STABILISATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PELVIC_FIXATION_PORTFOLIO",
+    "system_name": "Pelvic Fixation Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\pelvic-fixation-portfolio__SYS_PELVIC_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_RESTORATION___TRIDENT_REVISION_HIP_SYSTEM",
+    "system_name": "Restoration / Trident Revision Hip System",
+    "system_category": "arthroplasty",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\restoration-trident-revision-hip-system__SYS_RESTORATION___TRIDENT_REVISION_HIP_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SALTO_TALARIS",
+    "system_name": "SALTO Talaris",
+    "system_category": "Total Ankle Replacement \u2014 Fixed Bearing",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\salto-talaris__SYS_SALTO_TALARIS",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STAR_ANKLE",
+    "system_name": "STAR Total Ankle",
+    "system_category": "Total Ankle Replacement \u2014 Mobile Bearing",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\star-total-ankle__SYS_STAR_ANKLE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_T2_ALPHA_FEMUR_NAIL_SYSTEM",
+    "system_name": "T2 Alpha Femur Nail System",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\t2-alpha-femur-nail-system__SYS_T2_ALPHA_FEMUR_NAIL_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_T2_ALPHA_TIBIA_NAIL_SYSTEM",
+    "system_name": "T2 Alpha Tibia Nail System",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\t2-alpha-tibia-nail-system__SYS_T2_ALPHA_TIBIA_NAIL_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_T2_PROXIMAL_HUMERUS___PLATING_PORTFOLIO",
+    "system_name": "T2 Proximal Humerus / Plating Portfolio",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\t2-proximal-humerus-plating-portfolio__SYS_T2_PROXIMAL_HUMERUS___PLATING_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TORNIER_AEQUALIS_SHOULDER_SYSTEM",
+    "system_name": "Tornier Aequalis Shoulder System",
+    "system_category": "arthroplasty",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\tornier-aequalis-shoulder-system__SYS_TORNIER_AEQUALIS_SHOULDER_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TORNIER_PERFORM_REVERSED___AEQUALIS_REVERSED",
+    "system_name": "Tornier Perform Reversed / Aequalis Reversed",
+    "system_category": "arthroplasty",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\tornier-perform-reversed-aequalis-reversed__SYS_TORNIER_PERFORM_REVERSED___AEQUALIS_REVERSED",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TORNIER_RADIAL_HEAD_PORTFOLIO",
+    "system_name": "Tornier Radial Head Portfolio",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\tornier-radial-head-portfolio__SYS_TORNIER_RADIAL_HEAD_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_VARIAX_ANKLE_FRACTURE_SYSTEM",
+    "system_name": "VariAx Ankle Fracture System",
+    "system_category": "foot_ankle_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\variax-ankle-fracture-system__SYS_VARIAX_ANKLE_FRACTURE_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_VARIAX_CALCANEUS_PLATING",
+    "system_name": "VariAx Calcaneus Plating",
+    "system_category": "foot_ankle_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\variax-calcaneus-plating__SYS_VARIAX_CALCANEUS_PLATING",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_VARIAX_DISTAL_RADIUS",
+    "system_name": "VariAx Distal Radius Plate",
+    "system_category": "Volar Locking Plate \u2014 Distal Radius",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\variax-distal-radius-plate__SYS_VARIAX_DISTAL_RADIUS",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_VARIAX_DISTAL_TIBIA___PILON_PLATING",
+    "system_name": "VariAx Distal Tibia / Pilon Plating",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\variax-distal-tibia-pilon-plating__SYS_VARIAX_DISTAL_TIBIA___PILON_PLATING",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHROSCOPY_VISUALIZATION_SYSTEM",
+    "system_name": "Arthroscopy Visualization System",
+    "system_category": "sports_medicine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\arthroscopy-visualization-system__SYS_ARTHROSCOPY_VISUALIZATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CROSSFLOW___ARTHROSCOPY_PORTFOLIO",
+    "system_name": "CrossFlow / Arthroscopy Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\crossflow-arthroscopy-portfolio__SYS_CROSSFLOW___ARTHROSCOPY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_FOOT___ANKLE_FOREFOOT_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Foot & Ankle Forefoot Reconstruction Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\foot-ankle-forefoot-reconstruction-portfolio__SYS_FOOT___ANKLE_FOREFOOT_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ICONIX___CINCHLOCK_SHOULDER_REPAIR",
+    "system_name": "Iconix / CinchLock Shoulder Repair",
+    "system_category": "shoulder_sports",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\iconix-cinchlock-shoulder-repair__SYS_ICONIX___CINCHLOCK_SHOULDER_REPAIR",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_OMEGA___HIP_FRACTURE_FIXATION_PORTFOLIO",
+    "system_name": "Omega / Hip Fracture Fixation Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\omega-hip-fracture-fixation-portfolio__SYS_OMEGA___HIP_FRACTURE_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PATELLA_FIXATION_PORTFOLIO",
+    "system_name": "Patella Fixation Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\patella-fixation-portfolio__SYS_PATELLA_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SPORTS_MEDICINE_ACL_PORTFOLIO",
+    "system_name": "Sports Medicine ACL Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\sports-medicine-acl-portfolio__SYS_SPORTS_MEDICINE_ACL_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_STANMORE_ONCOLOGY_HERITAGE_ENDOPROSTHETIC_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Stryker (Stanmore oncology heritage) Endoprosthetic reconstruction Portfolio",
+    "system_category": "Endoprosthetic reconstruction",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-stanmore-oncology-heritage-endoprosthetic-reconstruction-portfolio__SYS_STRYKER_STANMORE_ONCOLOGY_HERITAGE_ENDOPROSTHETIC_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_STANMORE_ONCOLOGY_HERITAGE_LIMB_SALVAGE_ENDOPROSTHETICS_PORTFOLIO",
+    "system_name": "Stryker (Stanmore oncology heritage) Limb salvage endoprosthetics Portfolio",
+    "system_category": "Limb salvage endoprosthetics",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-stanmore-oncology-heritage-limb-salvage-endoprosthetics-portfolio__SYS_STRYKER_STANMORE_ONCOLOGY_HERITAGE_LIMB_SALVAGE_ENDOPROSTHETICS_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_STANMORE_ONCOLOGY_HERITAGE_ORTHOPAEDIC_ONCOLOGY_LIMB_SALVAGE_PORTFOLIO",
+    "system_name": "Stryker (Stanmore oncology heritage) Orthopaedic oncology / limb salvage Portfolio",
+    "system_category": "Orthopaedic oncology / limb salvage",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-stanmore-oncology-heritage-orthopaedic-oncology-limb-salvage-portfolio__SYS_STRYKER_STANMORE_ONCOLOGY_HERITAGE_ORTHOPAEDIC_ONCOLOGY_LIMB_SALVAGE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_STANMORE_ONCOLOGY_HERITAGE_ORTHOPAEDIC_ONCOLOGY_PORTFOLIO",
+    "system_name": "Stryker (Stanmore oncology heritage) Orthopaedic oncology Portfolio",
+    "system_category": "Orthopaedic oncology",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-stanmore-oncology-heritage-orthopaedic-oncology-portfolio__SYS_STRYKER_STANMORE_ONCOLOGY_HERITAGE_ORTHOPAEDIC_ONCOLOGY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_CARTILAGE_RESTORATION_PORTFOLIO",
+    "system_name": "Stryker Cartilage restoration Portfolio",
+    "system_category": "Cartilage restoration",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-cartilage-restoration-portfolio__SYS_STRYKER_CARTILAGE_RESTORATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_ELBOW_REVISION_PORTFOLIO",
+    "system_name": "Stryker Elbow Revision Portfolio",
+    "system_category": "Elbow arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-elbow-revision-portfolio__SYS_STRYKER_ELBOW_REVISION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_ELBOW_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Stryker Elbow arthroplasty Portfolio",
+    "system_category": "Elbow arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-elbow-arthroplasty-portfolio__SYS_STRYKER_ELBOW_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_ELBOW_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Stryker Elbow reconstruction Portfolio",
+    "system_category": "Elbow reconstruction",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-elbow-reconstruction-portfolio__SYS_STRYKER_ELBOW_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_HIP_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Stryker Hip arthroplasty Portfolio",
+    "system_category": "Hip arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-hip-arthroplasty-portfolio__SYS_STRYKER_HIP_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_HIP_PRESERVATION_PORTFOLIO",
+    "system_name": "Stryker Hip preservation Portfolio",
+    "system_category": "Hip preservation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-hip-preservation-portfolio__SYS_STRYKER_HIP_PRESERVATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_HIP_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Stryker Hip revision arthroplasty Portfolio",
+    "system_category": "Hip revision arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-hip-revision-arthroplasty-portfolio__SYS_STRYKER_HIP_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_ONCOLOGY_MEGAPROSTHESIS_PORTFOLIO",
+    "system_name": "Stryker Oncology / Megaprosthesis Portfolio",
+    "system_category": "Knee reconstruction",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-oncology-megaprosthesis-portfolio__SYS_STRYKER_ONCOLOGY_MEGAPROSTHESIS_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_ONCOLOGY_ENDOPROSTHETIC_PORTFOLIO",
+    "system_name": "Stryker Oncology Endoprosthetic Portfolio",
+    "system_category": "Orthopaedic oncology",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-oncology-endoprosthetic-portfolio__SYS_STRYKER_ONCOLOGY_ENDOPROSTHETIC_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_ONCOLOGY_PELVIC_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Stryker Oncology Pelvic Reconstruction Portfolio",
+    "system_category": "Orthopaedic oncology",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-oncology-pelvic-reconstruction-portfolio__SYS_STRYKER_ONCOLOGY_PELVIC_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_ONCOLOGY_PORTFOLIO",
+    "system_name": "Stryker Oncology Portfolio",
+    "system_category": "Orthopaedic oncology",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-oncology-portfolio__SYS_STRYKER_ONCOLOGY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_ONCOLOGY_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Stryker Oncology Reconstruction Portfolio",
+    "system_category": "Orthopaedic oncology",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-oncology-reconstruction-portfolio__SYS_STRYKER_ONCOLOGY_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_ONCOLOGY_FIXATION_PORTFOLIO",
+    "system_name": "Stryker Oncology fixation Portfolio",
+    "system_category": "Oncology fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-oncology-fixation-portfolio__SYS_STRYKER_ONCOLOGY_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_ORTHOPAEDIC_ONCOLOGY_PORTFOLIO",
+    "system_name": "Stryker Orthopaedic oncology Portfolio",
+    "system_category": "Orthopaedic oncology",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-orthopaedic-oncology-portfolio__SYS_STRYKER_ORTHOPAEDIC_ONCOLOGY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_REVERSE_SHOULDER_REVISION_PORTFOLIO",
+    "system_name": "Stryker Reverse Shoulder Revision Portfolio",
+    "system_category": "Shoulder arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-reverse-shoulder-revision-portfolio__SYS_STRYKER_REVERSE_SHOULDER_REVISION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_SHOULDER_UPPER_EXTREMITY_TRAUMA_PORTFOLIO",
+    "system_name": "Stryker Shoulder / Upper Extremity Trauma Portfolio",
+    "system_category": "Upper-extremity trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-shoulder-upper-extremity-trauma-portfolio__SYS_STRYKER_SHOULDER_UPPER_EXTREMITY_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_SHOULDER_REVISION_PORTFOLIO",
+    "system_name": "Stryker Shoulder Revision Portfolio",
+    "system_category": "Shoulder arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-shoulder-revision-portfolio__SYS_STRYKER_SHOULDER_REVISION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_SHOULDER_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Stryker Shoulder arthroplasty Portfolio",
+    "system_category": "Shoulder arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-shoulder-arthroplasty-portfolio__SYS_STRYKER_SHOULDER_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_SHOULDER_ARTHROSCOPY_PORTFOLIO",
+    "system_name": "Stryker Shoulder arthroscopy Portfolio",
+    "system_category": "Shoulder arthroscopy",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-shoulder-arthroscopy-portfolio__SYS_STRYKER_SHOULDER_ARTHROSCOPY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_SHOULDER_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Stryker Shoulder reconstruction Portfolio",
+    "system_category": "Shoulder reconstruction",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-shoulder-reconstruction-portfolio__SYS_STRYKER_SHOULDER_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_SHOULDER_SOFT_TISSUE_PORTFOLIO",
+    "system_name": "Stryker Shoulder soft tissue Portfolio",
+    "system_category": "Shoulder soft tissue",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-shoulder-soft-tissue-portfolio__SYS_STRYKER_SHOULDER_SOFT_TISSUE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_SHOULDER_SPORTS_MEDICINE_PORTFOLIO",
+    "system_name": "Stryker Shoulder sports medicine Portfolio",
+    "system_category": "Shoulder sports medicine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-shoulder-sports-medicine-portfolio__SYS_STRYKER_SHOULDER_SPORTS_MEDICINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_SPORTS_MEDICINE_KNEE_PORTFOLIO",
+    "system_name": "Stryker Sports medicine knee Portfolio",
+    "system_category": "Sports medicine knee",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-sports-medicine-knee-portfolio__SYS_STRYKER_SPORTS_MEDICINE_KNEE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_TORNIER_REVERSE_SHOULDER_PORTFOLIO",
+    "system_name": "Stryker Tornier Reverse Shoulder Portfolio",
+    "system_category": "Shoulder arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-tornier-reverse-shoulder-portfolio__SYS_STRYKER_TORNIER_REVERSE_SHOULDER_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_TORNIER_SHOULDER_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Stryker Tornier Shoulder Arthroplasty Portfolio",
+    "system_category": "Shoulder arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-tornier-shoulder-arthroplasty-portfolio__SYS_STRYKER_TORNIER_SHOULDER_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_UPPER_EXTREMITY_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Stryker Upper Extremity Arthroplasty Portfolio",
+    "system_category": "Elbow arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-upper-extremity-arthroplasty-portfolio__SYS_STRYKER_UPPER_EXTREMITY_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STRYKER_UPPER_EXTREMITY_TRAUMA_PORTFOLIO",
+    "system_name": "Stryker Upper Extremity Trauma Portfolio",
+    "system_category": "Upper-extremity trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\stryker-upper-extremity-trauma-portfolio__SYS_STRYKER_UPPER_EXTREMITY_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TRAUMA_STABILISATION_PORTFOLIO",
+    "system_name": "Trauma Stabilisation Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\trauma-stabilisation-portfolio__SYS_TRAUMA_STABILISATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_VARIAX_CLAVICLE_PLATE_SYSTEM",
+    "system_name": "VariAx Clavicle Plate System",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\stryker\\variax-clavicle-plate-system__SYS_VARIAX_CLAVICLE_PLATE_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "system_id": "SYS_ANAESTHESIA_MACHINE",
+    "system_name": "Anaesthesia Machine",
+    "system_category": "anaesthesia_delivery",
+    "mapping_count": 19,
+    "source_folder": "data\\catalogue\\source_library\\dr-ger\\anaesthesia-machine__SYS_ANAESTHESIA_MACHINE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

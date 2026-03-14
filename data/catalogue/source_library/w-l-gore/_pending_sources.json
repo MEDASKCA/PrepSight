@@ -1,0 +1,15 @@
+[
+  {
+    "system_id": "SYS_PTFE_GRAFT",
+    "system_name": "PTFE Vascular Graft",
+    "system_category": "prosthetic graft",
+    "mapping_count": 13,
+    "source_folder": "data\\catalogue\\source_library\\w-l-gore\\ptfe-vascular-graft__SYS_PTFE_GRAFT",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

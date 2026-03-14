@@ -1,0 +1,15 @@
+[
+  {
+    "system_id": "SYS_PATIENT_MONITOR",
+    "system_name": "Patient Monitor",
+    "system_category": "monitoring",
+    "mapping_count": 48,
+    "source_folder": "data\\catalogue\\source_library\\edwards-lifesciences\\patient-monitor__SYS_PATIENT_MONITOR",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

@@ -1,0 +1,197 @@
+[
+  {
+    "system_id": "SYS_DAMAGE_CONTROL___EXTERNAL_FIXATION_PORTFOLIO",
+    "system_name": "Damage Control / External Fixation Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\orthofix\\damage-control-external-fixation-portfolio__SYS_DAMAGE_CONTROL___EXTERNAL_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PAEDIATRIC_DEFORMITY_CORRECTION_PORTFOLIO",
+    "system_name": "Paediatric Deformity Correction Portfolio",
+    "system_category": "paediatric_orthopaedics",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\orthofix\\paediatric-deformity-correction-portfolio__SYS_PAEDIATRIC_DEFORMITY_CORRECTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TRUELOK___EXTERNAL_FIXATION_SYSTEM",
+    "system_name": "TrueLok / External Fixation System",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\orthofix\\truelok-external-fixation-system__SYS_TRUELOK___EXTERNAL_FIXATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOFIX_ANKLE_HINDFOOT_FUSION_PORTFOLIO",
+    "system_name": "Orthofix Ankle / hindfoot fusion Portfolio",
+    "system_category": "Ankle / hindfoot fusion",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthofix\\orthofix-ankle-hindfoot-fusion-portfolio__SYS_ORTHOFIX_ANKLE_HINDFOOT_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOFIX_ANKLE_FUSION_PORTFOLIO",
+    "system_name": "Orthofix Ankle Fusion Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthofix\\orthofix-ankle-fusion-portfolio__SYS_ORTHOFIX_ANKLE_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOFIX_ANKLE_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Orthofix Ankle arthroplasty Portfolio",
+    "system_category": "Ankle arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthofix\\orthofix-ankle-arthroplasty-portfolio__SYS_ORTHOFIX_ANKLE_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOFIX_COMPLEX_FRACTURE_MANAGEMENT_PORTFOLIO",
+    "system_name": "Orthofix Complex Fracture Management Portfolio",
+    "system_category": "Complex fracture management",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthofix\\orthofix-complex-fracture-management-portfolio__SYS_ORTHOFIX_COMPLEX_FRACTURE_MANAGEMENT_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOFIX_EXTERNAL_FIXATION_PORTFOLIO",
+    "system_name": "Orthofix External Fixation Portfolio",
+    "system_category": "Damage control orthopaedics",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthofix\\orthofix-external-fixation-portfolio__SYS_ORTHOFIX_EXTERNAL_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOFIX_FOOT_ANKLE_SURGERY_PORTFOLIO",
+    "system_name": "Orthofix Foot & ankle surgery Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthofix\\orthofix-foot-ankle-surgery-portfolio__SYS_ORTHOFIX_FOOT_ANKLE_SURGERY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOFIX_FOOT_ANKLE_TRAUMA_FIXATION_PORTFOLIO",
+    "system_name": "Orthofix Foot & ankle trauma fixation Portfolio",
+    "system_category": "Foot & ankle trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthofix\\orthofix-foot-ankle-trauma-fixation-portfolio__SYS_ORTHOFIX_FOOT_ANKLE_TRAUMA_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOFIX_FOOT_TRAUMA_FIXATION_PORTFOLIO",
+    "system_name": "Orthofix Foot trauma fixation Portfolio",
+    "system_category": "Foot trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthofix\\orthofix-foot-trauma-fixation-portfolio__SYS_ORTHOFIX_FOOT_TRAUMA_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOFIX_HINDFOOT_NAILING_PORTFOLIO",
+    "system_name": "Orthofix Hindfoot Nailing Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthofix\\orthofix-hindfoot-nailing-portfolio__SYS_ORTHOFIX_HINDFOOT_NAILING_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOFIX_LIMB_RECONSTRUCTION_EXTERNAL_FIXATION_PORTFOLIO",
+    "system_name": "Orthofix Limb Reconstruction / External Fixation Portfolio",
+    "system_category": "External fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthofix\\orthofix-limb-reconstruction-external-fixation-portfolio__SYS_ORTHOFIX_LIMB_RECONSTRUCTION_EXTERNAL_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOFIX_LIMB_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Orthofix Limb Reconstruction Portfolio",
+    "system_category": "Complex reconstruction",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthofix\\orthofix-limb-reconstruction-portfolio__SYS_ORTHOFIX_LIMB_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOFIX_PEDIATRIC_ORTHOPAEDICS_PORTFOLIO",
+    "system_name": "Orthofix Pediatric orthopaedics Portfolio",
+    "system_category": "Pediatric orthopaedics",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\orthofix\\orthofix-pediatric-orthopaedics-portfolio__SYS_ORTHOFIX_PEDIATRIC_ORTHOPAEDICS_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

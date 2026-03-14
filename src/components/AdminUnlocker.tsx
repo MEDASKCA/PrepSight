@@ -41,7 +41,7 @@ export default function AdminUnlocker() {
       const hasShortcutModifier = e.ctrlKey || e.metaKey
       if (!hasShortcutModifier || !e.shiftKey) return
       if (e.repeat) return
-      if (e.key.toLowerCase() !== "d") return
+      if (e.key.toLowerCase() !== "m") return
 
       const target = e.target
       if (

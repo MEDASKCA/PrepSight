@@ -1,0 +1,72 @@
+[
+  {
+    "supplier_id": "SUP_EXACTECH",
+    "supplier_name": "Exactech",
+    "system_id": "SYS_EQUINOXE",
+    "system_name": "Equinoxe Shoulder System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Equinoxe Platform Shoulder System",
+        "url": "https://www.exac.com/extremities/equinoxe-platform-system/",
+        "notes": "Official Exactech product page with linked operative techniques and product sheets."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_EXACTECH",
+    "supplier_name": "Exactech",
+    "system_id": "SYS_EQUINOXE_REVERSE_SHOULDER_SYSTEM",
+    "system_name": "Equinoxe Reverse Shoulder System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Equinoxe Platform Shoulder System",
+        "url": "https://www.exac.com/extremities/equinoxe-platform-system/",
+        "notes": "Official Exactech platform shoulder system page covering reverse workflow and linked resources."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_EXACTECH",
+    "supplier_name": "Exactech",
+    "system_id": "SYS_TRULIANT_KNEE_SYSTEM",
+    "system_name": "Truliant Knee System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Truliant Knee System",
+        "url": "https://www.exac.com/lower-extremities/truliant-knee-system/",
+        "notes": "Official Exactech product page."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_EXACTECH",
+    "supplier_name": "Exactech",
+    "system_id": "SYS_VANTAGE_ANKLE",
+    "system_name": "Vantage Total Ankle",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Vantage Total Ankle System",
+        "url": "https://www.exac.com/lower-extremities/vantage-total-ankle-system/",
+        "notes": "Official Exactech product page."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_EXACTECH",
+    "supplier_name": "Exactech",
+    "system_id": "SYS_ALTEON_TOTAL_HIP_SYSTEM",
+    "system_name": "Alteon Total Hip System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Alteon Hip System",
+        "url": "https://www.exac.com/lower-extremities/alteon-hip-system/",
+        "notes": "Official Exactech product page."
+      }
+    ]
+  }
+]

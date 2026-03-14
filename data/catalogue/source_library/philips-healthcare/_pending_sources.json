@@ -1,0 +1,28 @@
+[
+  {
+    "system_id": "SYS_CAPNOGRAPHY_MONITOR",
+    "system_name": "Capnography Monitor",
+    "system_category": "monitoring",
+    "mapping_count": 23,
+    "source_folder": "data\\catalogue\\source_library\\philips-healthcare\\capnography-monitor__SYS_CAPNOGRAPHY_MONITOR",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TEE_SYSTEM",
+    "system_name": "Transoesophageal Echocardiography System",
+    "system_category": "cardiac_imaging",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\philips-healthcare\\transoesophageal-echocardiography-system__SYS_TEE_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

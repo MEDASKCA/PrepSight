@@ -1,0 +1,15 @@
+[
+  {
+    "system_id": "SYS_CENTURION",
+    "system_name": "Centurion Vision System",
+    "system_category": "Phacoemulsification System",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\alcon\\centurion-vision-system__SYS_CENTURION",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

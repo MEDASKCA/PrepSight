@@ -1,0 +1,28 @@
+[
+  {
+    "system_id": "SYS_FLEX_URS",
+    "system_name": "Flexible Ureteroscope",
+    "system_category": "visualisation",
+    "mapping_count": 63,
+    "source_folder": "data\\catalogue\\source_library\\olympus\\flexible-ureteroscope__SYS_FLEX_URS",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ROBOT",
+    "system_name": "Surgical Robot",
+    "system_category": "robotics",
+    "mapping_count": 63,
+    "source_folder": "data\\catalogue\\source_library\\olympus\\surgical-robot__SYS_ROBOT",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

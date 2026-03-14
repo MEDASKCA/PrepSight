@@ -1,0 +1,2437 @@
+{
+  "specialty": "Trauma and Orthopaedic Surgery",
+  "service_line": "Arthroplasty",
+  "counts": {
+    "anatomy_groups": 15,
+    "procedures": 74,
+    "variants": 35,
+    "systems": 114,
+    "cards": 3
+  },
+  "anatomy_groups": [
+    {
+      "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_HIP",
+      "name": "Hip",
+      "sort_order": 10,
+      "procedures": [
+        {
+          "id": "PROC_HIP_RESURFACING",
+          "name": "Hip Resurfacing",
+          "aliases": [],
+          "description": "Bone-conserving arthroplasty of the hip.",
+          "case_tags": [
+            {
+              "id": "CASE_ELECTIVE",
+              "name": "Elective",
+              "description": "Scheduled non-emergency procedure"
+            }
+          ],
+          "variants": [
+            {
+              "id": "PV_HIP_RESURFACING_POSTERIOR",
+              "name": "Posterior Approach",
+              "variant_type": "approach",
+              "variant_value": "Posterior",
+              "description": "Hip resurfacing performed through a posterior approach.",
+              "systems": [
+                {
+                  "id": "SYS_BHR",
+                  "name": "Birmingham Hip Resurfacing",
+                  "supplier": "Smith+Nephew",
+                  "category": "Hip Resurfacing",
+                  "system_type": "implant",
+                  "description": "Smith & Nephew Birmingham Hip Resurfacing (BHR). Metal-on-metal resurfacing arthroplasty for active patients with good bone stock.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_CONSERVE_PLUS",
+                  "name": "Conserve Plus",
+                  "supplier": "Stryker",
+                  "category": "Hip Resurfacing",
+                  "system_type": "implant",
+                  "description": "Stryker Conserve Plus metal-on-metal hip resurfacing system.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_HIP_RESURFACING_LATERAL",
+              "name": "Direct Lateral Approach",
+              "variant_type": "approach",
+              "variant_value": "Direct Lateral",
+              "description": "Hip resurfacing performed through a direct lateral approach.",
+              "systems": [
+                {
+                  "id": "SYS_BHR",
+                  "name": "Birmingham Hip Resurfacing",
+                  "supplier": "Smith+Nephew",
+                  "category": "Hip Resurfacing",
+                  "system_type": "implant",
+                  "description": "Smith & Nephew Birmingham Hip Resurfacing (BHR). Metal-on-metal resurfacing arthroplasty for active patients with good bone stock.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_CONSERVE_PLUS",
+                  "name": "Conserve Plus",
+                  "supplier": "Stryker",
+                  "category": "Hip Resurfacing",
+                  "system_type": "implant",
+                  "description": "Stryker Conserve Plus metal-on-metal hip resurfacing system.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "PROC_PRIMARY_TOTAL_HIP_REPLACEMENT",
+          "name": "Primary Total Hip Replacement",
+          "aliases": [
+            "Total Hip Replacement",
+            "Total Hip Arthroplasty",
+            "THR",
+            "THA"
+          ],
+          "description": "Primary replacement of the hip joint with prosthetic components.",
+          "case_tags": [
+            {
+              "id": "CASE_ELECTIVE",
+              "name": "Elective",
+              "description": "Scheduled non-emergency procedure"
+            }
+          ],
+          "variants": [
+            {
+              "id": "PV_PRIMARY_THR_POSTERIOR",
+              "name": "Posterior Approach",
+              "variant_type": "approach",
+              "variant_value": "Posterior",
+              "description": "Primary total hip replacement performed through a posterior approach.",
+              "systems": [
+                {
+                  "id": "SYS_EXETER_TRIDENT",
+                  "name": "Exeter / Trident",
+                  "supplier": "Stryker",
+                  "category": "Hip Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Hip arthroplasty implant system used in total hip replacement.",
+                  "is_default": false,
+                  "cards": [
+                    {
+                      "id": "CARD_PRIMARY_THR_POSTERIOR_EXETER_TRIDENT",
+                      "procedure_variant_id": "PV_PRIMARY_THR_POSTERIOR",
+                      "system_id": "SYS_EXETER_TRIDENT",
+                      "name": "Primary Total Hip Replacement – Posterior – Exeter / Trident",
+                      "ppe": [
+                        "Sterile gown",
+                        "Sterile gloves",
+                        "Eye protection",
+                        "Lead apron (if fluoroscopy used)"
+                      ],
+                      "operative_references": [
+                        "Local arthroplasty protocol",
+                        "WHO Surgical Safety Checklist"
+                      ],
+                      "nurse_prep_notes": [
+                        "Confirm implant sizes available",
+                        "Check cement preparation system",
+                        "Confirm instrument trays complete"
+                      ],
+                      "theatre_equipment": [
+                        "Orthopaedic table",
+                        "Diathermy unit",
+                        "Suction",
+                        "Pulse lavage",
+                        "Cement mixing system"
+                      ],
+                      "patient_positioning": "Lateral decubitus",
+                      "sterile_field_and_draping": "Standard hip arthroplasty draping",
+                      "instrument_trays": [
+                        "Exeter femoral tray",
+                        "Trident acetabular tray",
+                        "Hip arthroplasty basic set"
+                      ],
+                      "consumables": [
+                        "Bone cement",
+                        "Cement restrictor",
+                        "Suction tubing",
+                        "Pulse lavage tips"
+                      ],
+                      "medications": [
+                        "Antibiotic prophylaxis",
+                        "Tranexamic acid"
+                      ],
+                      "thromboprophylaxis": "According to local protocol",
+                      "local_anaesthetic": "Optional periarticular infiltration",
+                      "post_procedure_dressing": "Standard hip dressing",
+                      "status": "active"
+                    }
+                  ]
+                },
+                {
+                  "id": "SYS_CORAIL_PINNACLE",
+                  "name": "Corail / Pinnacle",
+                  "supplier": "DePuy Synthes",
+                  "category": "Hip Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Hip arthroplasty implant system used in total hip replacement.",
+                  "is_default": false,
+                  "cards": [
+                    {
+                      "id": "CARD_PRIMARY_THR_POSTERIOR_CORAIL_PINNACLE",
+                      "procedure_variant_id": "PV_PRIMARY_THR_POSTERIOR",
+                      "system_id": "SYS_CORAIL_PINNACLE",
+                      "name": "Primary Total Hip Replacement – Posterior – Corail / Pinnacle",
+                      "ppe": [
+                        "Sterile gown",
+                        "Sterile gloves",
+                        "Eye protection"
+                      ],
+                      "operative_references": [
+                        "Local arthroplasty protocol"
+                      ],
+                      "nurse_prep_notes": [
+                        "Confirm Corail stems available",
+                        "Check Pinnacle acetabular shells"
+                      ],
+                      "theatre_equipment": [
+                        "Orthopaedic table",
+                        "Diathermy unit",
+                        "Suction",
+                        "Pulse lavage"
+                      ],
+                      "patient_positioning": "Lateral decubitus",
+                      "sterile_field_and_draping": "Standard hip arthroplasty draping",
+                      "instrument_trays": [
+                        "Corail femoral tray",
+                        "Pinnacle acetabular tray"
+                      ],
+                      "consumables": [
+                        "Bone cement (if cemented)",
+                        "Pulse lavage tips"
+                      ],
+                      "medications": [
+                        "Antibiotic prophylaxis",
+                        "Tranexamic acid"
+                      ],
+                      "thromboprophylaxis": "According to local protocol",
+                      "local_anaesthetic": "Optional periarticular infiltration",
+                      "post_procedure_dressing": "Standard hip dressing",
+                      "status": "active"
+                    }
+                  ]
+                },
+                {
+                  "id": "SYS_POLAR_R3",
+                  "name": "Polar / R3",
+                  "supplier": "Smith+Nephew",
+                  "category": "Hip Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Hip arthroplasty implant system used in total hip replacement.",
+                  "is_default": false,
+                  "cards": [
+                    {
+                      "id": "CARD_PRIMARY_THR_POSTERIOR_POLAR_R3",
+                      "procedure_variant_id": "PV_PRIMARY_THR_POSTERIOR",
+                      "system_id": "SYS_POLAR_R3",
+                      "name": "Primary Total Hip Replacement – Posterior – Polar / R3",
+                      "ppe": [
+                        "Sterile gown",
+                        "Sterile gloves",
+                        "Eye protection"
+                      ],
+                      "operative_references": [
+                        "Local arthroplasty protocol"
+                      ],
+                      "nurse_prep_notes": [
+                        "Confirm Polar stem sizes available",
+                        "Check R3 acetabular components"
+                      ],
+                      "theatre_equipment": [
+                        "Orthopaedic table",
+                        "Diathermy",
+                        "Suction"
+                      ],
+                      "patient_positioning": "Lateral decubitus",
+                      "sterile_field_and_draping": "Standard hip draping",
+                      "instrument_trays": [
+                        "Polar femoral tray",
+                        "R3 acetabular tray"
+                      ],
+                      "consumables": [
+                        "Pulse lavage",
+                        "Suction tubing"
+                      ],
+                      "medications": [
+                        "Antibiotic prophylaxis",
+                        "Tranexamic acid"
+                      ],
+                      "thromboprophylaxis": "According to local protocol",
+                      "local_anaesthetic": "Optional infiltration",
+                      "post_procedure_dressing": "Standard hip dressing",
+                      "status": "active"
+                    }
+                  ]
+                },
+                {
+                  "id": "SYS_TAPERLOC_G7",
+                  "name": "Taperloc / G7",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Hip Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Hip arthroplasty implant system used in total hip replacement.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ACTIS_PINNACLE",
+                  "name": "ACTIS / Pinnacle",
+                  "supplier": "DePuy Synthes",
+                  "category": "Hip Replacement — Cementless",
+                  "system_type": "implant",
+                  "description": "DePuy Synthes ACTIS tapered wedge stem paired with the Pinnacle acetabular cup system. Cementless primary total hip replacement.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ACCOLADE_TRIDENT",
+                  "name": "Accolade II / Trident II",
+                  "supplier": "Stryker",
+                  "category": "Hip Replacement — Cementless",
+                  "system_type": "implant",
+                  "description": "Stryker Accolade II tapered titanium stem with the Trident II acetabular shell. Fully cementless primary THR.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_CSTEM_PINNACLE",
+                  "name": "C-stem AMT / Pinnacle",
+                  "supplier": "DePuy Synthes",
+                  "category": "Hip Replacement — Cemented",
+                  "system_type": "implant",
+                  "description": "DePuy Synthes C-stem AMT polished triple-tapered cemented femoral stem with Pinnacle acetabular cup.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_CPT_TRIDENT",
+                  "name": "CPT / Trident",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Hip Replacement — Hybrid",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet CPT cemented stem with Stryker Trident cementless acetabular shell. Common hybrid configuration.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_CONTINUUM_TAPERLOC",
+                  "name": "Continuum / Taperloc",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Hip Replacement — Cementless",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Continuum acetabular system with Taperloc stem. Trabecular metal cup technology.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_PRIMARY_THR_ANTERIOR",
+              "name": "Anterior Approach",
+              "variant_type": "approach",
+              "variant_value": "Anterior",
+              "description": "Primary total hip replacement performed through an anterior approach.",
+              "systems": [
+                {
+                  "id": "SYS_CORAIL_PINNACLE",
+                  "name": "Corail / Pinnacle",
+                  "supplier": "DePuy Synthes",
+                  "category": "Hip Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Hip arthroplasty implant system used in total hip replacement.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_POLAR_R3",
+                  "name": "Polar / R3",
+                  "supplier": "Smith+Nephew",
+                  "category": "Hip Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Hip arthroplasty implant system used in total hip replacement.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_TAPERLOC_G7",
+                  "name": "Taperloc / G7",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Hip Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Hip arthroplasty implant system used in total hip replacement.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ACTIS_PINNACLE",
+                  "name": "ACTIS / Pinnacle",
+                  "supplier": "DePuy Synthes",
+                  "category": "Hip Replacement — Cementless",
+                  "system_type": "implant",
+                  "description": "DePuy Synthes ACTIS tapered wedge stem paired with the Pinnacle acetabular cup system. Cementless primary total hip replacement.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ACCOLADE_TRIDENT",
+                  "name": "Accolade II / Trident II",
+                  "supplier": "Stryker",
+                  "category": "Hip Replacement — Cementless",
+                  "system_type": "implant",
+                  "description": "Stryker Accolade II tapered titanium stem with the Trident II acetabular shell. Fully cementless primary THR.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_CONTINUUM_TAPERLOC",
+                  "name": "Continuum / Taperloc",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Hip Replacement — Cementless",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Continuum acetabular system with Taperloc stem. Trabecular metal cup technology.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_PRIMARY_THR_LATERAL",
+              "name": "Direct Lateral Approach",
+              "variant_type": "approach",
+              "variant_value": "Direct Lateral",
+              "description": "Primary total hip replacement performed through a direct lateral approach.",
+              "systems": [
+                {
+                  "id": "SYS_CORAIL_PINNACLE",
+                  "name": "Corail / Pinnacle",
+                  "supplier": "DePuy Synthes",
+                  "category": "Hip Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Hip arthroplasty implant system used in total hip replacement.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_EXETER_TRIDENT",
+                  "name": "Exeter / Trident",
+                  "supplier": "Stryker",
+                  "category": "Hip Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Hip arthroplasty implant system used in total hip replacement.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_POLAR_R3",
+                  "name": "Polar / R3",
+                  "supplier": "Smith+Nephew",
+                  "category": "Hip Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Hip arthroplasty implant system used in total hip replacement.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_TAPERLOC_G7",
+                  "name": "Taperloc / G7",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Hip Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Hip arthroplasty implant system used in total hip replacement.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ACTIS_PINNACLE",
+                  "name": "ACTIS / Pinnacle",
+                  "supplier": "DePuy Synthes",
+                  "category": "Hip Replacement — Cementless",
+                  "system_type": "implant",
+                  "description": "DePuy Synthes ACTIS tapered wedge stem paired with the Pinnacle acetabular cup system. Cementless primary total hip replacement.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ACCOLADE_TRIDENT",
+                  "name": "Accolade II / Trident II",
+                  "supplier": "Stryker",
+                  "category": "Hip Replacement — Cementless",
+                  "system_type": "implant",
+                  "description": "Stryker Accolade II tapered titanium stem with the Trident II acetabular shell. Fully cementless primary THR.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_CSTEM_PINNACLE",
+                  "name": "C-stem AMT / Pinnacle",
+                  "supplier": "DePuy Synthes",
+                  "category": "Hip Replacement — Cemented",
+                  "system_type": "implant",
+                  "description": "DePuy Synthes C-stem AMT polished triple-tapered cemented femoral stem with Pinnacle acetabular cup.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_CPT_TRIDENT",
+                  "name": "CPT / Trident",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Hip Replacement — Hybrid",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet CPT cemented stem with Stryker Trident cementless acetabular shell. Common hybrid configuration.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_CONTINUUM_TAPERLOC",
+                  "name": "Continuum / Taperloc",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Hip Replacement — Cementless",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Continuum acetabular system with Taperloc stem. Trabecular metal cup technology.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "PROC_REVISION_TOTAL_HIP_REPLACEMENT",
+          "name": "Revision Total Hip Replacement",
+          "aliases": [
+            "Revision THR"
+          ],
+          "description": "Revision of a previous total hip replacement.",
+          "case_tags": [
+            {
+              "id": "CASE_REVISION",
+              "name": "Revision",
+              "description": "Procedure performed to revise or correct a previous surgery"
+            }
+          ],
+          "variants": [
+            {
+              "id": "PV_REVISION_THR_POSTERIOR",
+              "name": "Posterior Approach",
+              "variant_type": "approach",
+              "variant_value": "Posterior",
+              "description": "Revision total hip replacement performed through a posterior approach.",
+              "systems": [
+                {
+                  "id": "SYS_EXETER_TRIDENT",
+                  "name": "Exeter / Trident",
+                  "supplier": "Stryker",
+                  "category": "Hip Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Hip arthroplasty implant system used in total hip replacement.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_CORAIL_PINNACLE",
+                  "name": "Corail / Pinnacle",
+                  "supplier": "DePuy Synthes",
+                  "category": "Hip Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Hip arthroplasty implant system used in total hip replacement.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_EXETER_REVISION",
+                  "name": "Exeter Revision Stem",
+                  "supplier": "Stryker",
+                  "category": "Hip Revision — Cemented",
+                  "system_type": "implant",
+                  "description": "Stryker Exeter long-stem cemented revision femoral component. Used in femoral revision with cemented technique.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_RESTORATION_MODULAR",
+                  "name": "Restoration Modular",
+                  "supplier": "Stryker",
+                  "category": "Hip Revision — Cementless Modular",
+                  "system_type": "implant",
+                  "description": "Stryker Restoration Modular revision system. Tapered-fluted modular titanium stem for complex femoral revisions with significant bone loss.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ARCOS_REVISION",
+                  "name": "ARCOS Modular",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Hip Revision — Cementless Modular",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet ARCOS modular femoral revision system. Conical fluted stem for poor proximal bone stock.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_REVISION_THR_ETO",
+              "name": "Extended Trochanteric Osteotomy Approach",
+              "variant_type": "approach",
+              "variant_value": "Extended Trochanteric Osteotomy",
+              "description": "Revision total hip replacement using an extended trochanteric osteotomy approach for femoral exposure.",
+              "systems": [
+                {
+                  "id": "SYS_EXETER_REVISION",
+                  "name": "Exeter Revision Stem",
+                  "supplier": "Stryker",
+                  "category": "Hip Revision — Cemented",
+                  "system_type": "implant",
+                  "description": "Stryker Exeter long-stem cemented revision femoral component. Used in femoral revision with cemented technique.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_RESTORATION_MODULAR",
+                  "name": "Restoration Modular",
+                  "supplier": "Stryker",
+                  "category": "Hip Revision — Cementless Modular",
+                  "system_type": "implant",
+                  "description": "Stryker Restoration Modular revision system. Tapered-fluted modular titanium stem for complex femoral revisions with significant bone loss.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ARCOS_REVISION",
+                  "name": "ARCOS Modular",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Hip Revision — Cementless Modular",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet ARCOS modular femoral revision system. Conical fluted stem for poor proximal bone stock.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "PROC_TWO_STAGE_REVISION_TOTAL_HIP_REPLACEMENT",
+          "name": "Two-Stage Revision Total Hip Replacement",
+          "aliases": [],
+          "description": "Staged revision total hip replacement, commonly for prosthetic joint infection.",
+          "case_tags": [
+            {
+              "id": "CASE_REVISION",
+              "name": "Revision",
+              "description": "Procedure performed to revise or correct a previous surgery"
+            }
+          ],
+          "variants": [
+            {
+              "id": "PV_TWO_STAGE_REVISION_THR_STAGE_ONE",
+              "name": "Stage One Explant and Spacer",
+              "variant_type": "stage",
+              "variant_value": "Stage One",
+              "description": "First stage revision total hip replacement with explantation and spacer insertion.",
+              "systems": [
+                {
+                  "id": "SYS_EXETER_REVISION",
+                  "name": "Exeter Revision Stem",
+                  "supplier": "Stryker",
+                  "category": "Hip Revision — Cemented",
+                  "system_type": "implant",
+                  "description": "Stryker Exeter long-stem cemented revision femoral component. Used in femoral revision with cemented technique.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_RESTORATION_MODULAR",
+                  "name": "Restoration Modular",
+                  "supplier": "Stryker",
+                  "category": "Hip Revision — Cementless Modular",
+                  "system_type": "implant",
+                  "description": "Stryker Restoration Modular revision system. Tapered-fluted modular titanium stem for complex femoral revisions with significant bone loss.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ARCOS_REVISION",
+                  "name": "ARCOS Modular",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Hip Revision — Cementless Modular",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet ARCOS modular femoral revision system. Conical fluted stem for poor proximal bone stock.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_TWO_STAGE_REVISION_THR_STAGE_TWO",
+              "name": "Stage Two Reimplantation",
+              "variant_type": "stage",
+              "variant_value": "Stage Two",
+              "description": "Second stage revision total hip replacement with definitive reimplantation.",
+              "systems": [
+                {
+                  "id": "SYS_EXETER_REVISION",
+                  "name": "Exeter Revision Stem",
+                  "supplier": "Stryker",
+                  "category": "Hip Revision — Cemented",
+                  "system_type": "implant",
+                  "description": "Stryker Exeter long-stem cemented revision femoral component. Used in femoral revision with cemented technique.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_RESTORATION_MODULAR",
+                  "name": "Restoration Modular",
+                  "supplier": "Stryker",
+                  "category": "Hip Revision — Cementless Modular",
+                  "system_type": "implant",
+                  "description": "Stryker Restoration Modular revision system. Tapered-fluted modular titanium stem for complex femoral revisions with significant bone loss.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ARCOS_REVISION",
+                  "name": "ARCOS Modular",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Hip Revision — Cementless Modular",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet ARCOS modular femoral revision system. Conical fluted stem for poor proximal bone stock.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_KNEE",
+      "name": "Knee",
+      "sort_order": 20,
+      "procedures": [
+        {
+          "id": "PROC_PRIMARY_TOTAL_KNEE_REPLACEMENT",
+          "name": "Primary Total Knee Replacement",
+          "aliases": [
+            "Total Knee Replacement",
+            "Total Knee Arthroplasty",
+            "TKR",
+            "TKA"
+          ],
+          "description": "Primary replacement of the knee joint with prosthetic components.",
+          "case_tags": [
+            {
+              "id": "CASE_ELECTIVE",
+              "name": "Elective",
+              "description": "Scheduled non-emergency procedure"
+            }
+          ],
+          "variants": [
+            {
+              "id": "PV_PRIMARY_TKR_MEDIAL_PARAPATELLAR",
+              "name": "Medial Parapatellar Approach",
+              "variant_type": "approach",
+              "variant_value": "Medial Parapatellar",
+              "description": "Primary total knee replacement via a medial parapatellar approach.",
+              "systems": [
+                {
+                  "id": "SYS_ATTUNE_KNEE",
+                  "name": "Attune Knee System",
+                  "supplier": "DePuy Synthes",
+                  "category": "Knee Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Total knee replacement implant system.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_TRIATHLON_KNEE",
+                  "name": "Triathlon Knee System",
+                  "supplier": "Stryker",
+                  "category": "Knee Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Total knee replacement implant system.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_PERSONA_KNEE",
+                  "name": "Persona Knee System",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Knee Replacement — Primary CR/PS",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Persona total knee system. Cruciate-retaining and posterior-stabilised options with gender-specific sizing.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_NEXGEN_KNEE",
+                  "name": "NexGen Knee System",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Knee Replacement — Primary CR/PS",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet NexGen Complete Knee Solution. Established primary TKR platform with extensive long-term data.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_LEGION_KNEE",
+                  "name": "LEGION Total Knee System",
+                  "supplier": "Smith+Nephew",
+                  "category": "Knee Replacement — Primary CR/PS",
+                  "system_type": "implant",
+                  "description": "Smith & Nephew LEGION total knee system. Cruciate-retaining and posterior-stabilised options with VERILAST bearing technology.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_PRIMARY_TKR_SUBVASTUS",
+              "name": "Subvastus Approach",
+              "variant_type": "approach",
+              "variant_value": "Subvastus",
+              "description": "Primary total knee replacement via a subvastus approach.",
+              "systems": [
+                {
+                  "id": "SYS_ATTUNE_KNEE",
+                  "name": "Attune Knee System",
+                  "supplier": "DePuy Synthes",
+                  "category": "Knee Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Total knee replacement implant system.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_TRIATHLON_KNEE",
+                  "name": "Triathlon Knee System",
+                  "supplier": "Stryker",
+                  "category": "Knee Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Total knee replacement implant system.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_PERSONA_KNEE",
+                  "name": "Persona Knee System",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Knee Replacement — Primary CR/PS",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Persona total knee system. Cruciate-retaining and posterior-stabilised options with gender-specific sizing.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_NEXGEN_KNEE",
+                  "name": "NexGen Knee System",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Knee Replacement — Primary CR/PS",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet NexGen Complete Knee Solution. Established primary TKR platform with extensive long-term data.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_LEGION_KNEE",
+                  "name": "LEGION Total Knee System",
+                  "supplier": "Smith+Nephew",
+                  "category": "Knee Replacement — Primary CR/PS",
+                  "system_type": "implant",
+                  "description": "Smith & Nephew LEGION total knee system. Cruciate-retaining and posterior-stabilised options with VERILAST bearing technology.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_PRIMARY_TKR_MIDVASTUS",
+              "name": "Midvastus Approach",
+              "variant_type": "approach",
+              "variant_value": "Midvastus",
+              "description": "Primary total knee replacement via a midvastus approach.",
+              "systems": [
+                {
+                  "id": "SYS_ATTUNE_KNEE",
+                  "name": "Attune Knee System",
+                  "supplier": "DePuy Synthes",
+                  "category": "Knee Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Total knee replacement implant system.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_TRIATHLON_KNEE",
+                  "name": "Triathlon Knee System",
+                  "supplier": "Stryker",
+                  "category": "Knee Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Total knee replacement implant system.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_PERSONA_KNEE",
+                  "name": "Persona Knee System",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Knee Replacement — Primary CR/PS",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Persona total knee system. Cruciate-retaining and posterior-stabilised options with gender-specific sizing.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_NEXGEN_KNEE",
+                  "name": "NexGen Knee System",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Knee Replacement — Primary CR/PS",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet NexGen Complete Knee Solution. Established primary TKR platform with extensive long-term data.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_LEGION_KNEE",
+                  "name": "LEGION Total Knee System",
+                  "supplier": "Smith+Nephew",
+                  "category": "Knee Replacement — Primary CR/PS",
+                  "system_type": "implant",
+                  "description": "Smith & Nephew LEGION total knee system. Cruciate-retaining and posterior-stabilised options with VERILAST bearing technology.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "PROC_REVISION_TOTAL_KNEE_REPLACEMENT",
+          "name": "Revision Total Knee Replacement",
+          "aliases": [
+            "Revision TKR"
+          ],
+          "description": "Revision of a previous total knee replacement.",
+          "case_tags": [
+            {
+              "id": "CASE_REVISION",
+              "name": "Revision",
+              "description": "Procedure performed to revise or correct a previous surgery"
+            }
+          ],
+          "variants": [
+            {
+              "id": "PV_REVISION_TKR_TWO_COMPONENT",
+              "name": "Two-Component Revision",
+              "variant_type": "implant_configuration",
+              "variant_value": "Two-Component Revision",
+              "description": "Revision total knee replacement using revision of both femoral and tibial components.",
+              "systems": [
+                {
+                  "id": "SYS_TC3_REVISION_KNEE",
+                  "name": "TC3 Revision Knee System",
+                  "supplier": "DePuy Synthes",
+                  "category": "Knee Revision — Constrained/Modular",
+                  "system_type": "implant",
+                  "description": "DePuy Synthes TC3 total condylar III revision knee system. Constrained condylar option for moderate to severe instability.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_TRIATHLON_TS",
+                  "name": "Triathlon TS",
+                  "supplier": "Stryker",
+                  "category": "Knee Revision — Constrained/Modular",
+                  "system_type": "implant",
+                  "description": "Stryker Triathlon Total Stabiliser (TS) revision knee system. Rotating hinge option for severe bone loss and instability.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_VANGUARD_360",
+                  "name": "Vanguard 360 Revision",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Knee Revision — Constrained/Modular",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Vanguard 360 rotating hinge knee for complex revision with significant bone loss.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_LEGION_REVISION",
+                  "name": "LEGION Revision Knee",
+                  "supplier": "Smith+Nephew",
+                  "category": "Knee Revision — Constrained/Modular",
+                  "system_type": "implant",
+                  "description": "Smith & Nephew LEGION revision knee system with constrained condylar and rotating hinge options.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_REVISION_TKR_CONSTRAINED_HINGE",
+              "name": "Constrained / Hinged Revision",
+              "variant_type": "implant_configuration",
+              "variant_value": "Constrained / Hinged Revision",
+              "description": "Revision total knee replacement using a constrained condylar or hinged construct.",
+              "systems": [
+                {
+                  "id": "SYS_TRIATHLON_TS",
+                  "name": "Triathlon TS",
+                  "supplier": "Stryker",
+                  "category": "Knee Revision — Constrained/Modular",
+                  "system_type": "implant",
+                  "description": "Stryker Triathlon Total Stabiliser (TS) revision knee system. Rotating hinge option for severe bone loss and instability.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_VANGUARD_360",
+                  "name": "Vanguard 360 Revision",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Knee Revision — Constrained/Modular",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Vanguard 360 rotating hinge knee for complex revision with significant bone loss.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_LEGION_REVISION",
+                  "name": "LEGION Revision Knee",
+                  "supplier": "Smith+Nephew",
+                  "category": "Knee Revision — Constrained/Modular",
+                  "system_type": "implant",
+                  "description": "Smith & Nephew LEGION revision knee system with constrained condylar and rotating hinge options.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "PROC_UNICOMPARTMENTAL_KNEE_REPLACEMENT",
+          "name": "Unicompartmental Knee Replacement",
+          "aliases": [
+            "Partial Knee Replacement"
+          ],
+          "description": "Replacement of a single compartment of the knee.",
+          "case_tags": [
+            {
+              "id": "CASE_ELECTIVE",
+              "name": "Elective",
+              "description": "Scheduled non-emergency procedure"
+            }
+          ],
+          "variants": [
+            {
+              "id": "PV_UKR_MEDIAL_FIXED",
+              "name": "Medial Fixed-Bearing",
+              "variant_type": "implant_configuration",
+              "variant_value": "Medial Fixed-Bearing",
+              "description": "Unicompartmental knee replacement using a medial fixed-bearing construct.",
+              "systems": [
+                {
+                  "id": "SYS_JOURNEY_UNI",
+                  "name": "Journey Uni",
+                  "supplier": "Smith+Nephew",
+                  "category": "Unicompartmental Knee Replacement",
+                  "system_type": "implant",
+                  "description": "Smith & Nephew Journey Uni unicompartmental knee. Fixed-bearing medial UKR with kinematic design.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_VANGUARD_M_UKR",
+                  "name": "Vanguard M / Microplasty",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Unicompartmental Knee Replacement",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Vanguard M knee system for fixed-bearing medial unicompartmental replacement.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_UKR_MEDIAL_MOBILE",
+              "name": "Medial Mobile-Bearing",
+              "variant_type": "implant_configuration",
+              "variant_value": "Medial Mobile-Bearing",
+              "description": "Unicompartmental knee replacement using a medial mobile-bearing construct.",
+              "systems": [
+                {
+                  "id": "SYS_OXFORD_UKR",
+                  "name": "Oxford Unicompartmental",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Unicompartmental Knee Replacement",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Oxford Phase 3 unicompartmental knee. Mobile-bearing medial or lateral UKR. Most implanted UKR globally.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_UKR_LATERAL",
+              "name": "Lateral Unicompartmental",
+              "variant_type": "implant_configuration",
+              "variant_value": "Lateral Unicompartmental",
+              "description": "Unicompartmental knee replacement of the lateral compartment.",
+              "systems": [
+                {
+                  "id": "SYS_OXFORD_UKR",
+                  "name": "Oxford Unicompartmental",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Unicompartmental Knee Replacement",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Oxford Phase 3 unicompartmental knee. Mobile-bearing medial or lateral UKR. Most implanted UKR globally.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_SHOULDER",
+      "name": "Shoulder",
+      "sort_order": 30,
+      "procedures": [
+        {
+          "id": "PROC_HEMIARTHROPLASTY_OF_SHOULDER",
+          "name": "Hemiarthroplasty of Shoulder",
+          "aliases": [],
+          "description": "Partial replacement of the shoulder joint.",
+          "case_tags": [
+            {
+              "id": "CASE_ELECTIVE",
+              "name": "Elective",
+              "description": "Scheduled non-emergency procedure"
+            }
+          ],
+          "variants": [
+            {
+              "id": "PV_SHOULDER_HEMI_FRACTURE",
+              "name": "Fracture Hemiarthroplasty",
+              "variant_type": "indication_pattern",
+              "variant_value": "Fracture",
+              "description": "Shoulder hemiarthroplasty performed for proximal humeral fracture.",
+              "systems": [
+                {
+                  "id": "SYS_GLOBAL_FX",
+                  "name": "Global FX Fracture System",
+                  "supplier": "DePuy Synthes",
+                  "category": "Shoulder Hemiarthroplasty — Fracture",
+                  "system_type": "implant",
+                  "description": "DePuy Synthes Global FX fracture hemiarthroplasty system. Modular calcar collar for proximal humerus fracture reconstruction.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ASCEND_FLEX",
+                  "name": "Ascend Flex",
+                  "supplier": "Stryker",
+                  "category": "Shoulder Replacement — Anatomic & Reverse",
+                  "system_type": "implant",
+                  "description": "Stryker/Tornier Ascend Flex total shoulder system. Can be configured as anatomic or reverse TSA using same stem.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_SHOULDER_HEMI_ELECTIVE",
+              "name": "Elective Hemiarthroplasty",
+              "variant_type": "indication_pattern",
+              "variant_value": "Elective",
+              "description": "Shoulder hemiarthroplasty performed electively for glenohumeral pathology.",
+              "systems": [
+                {
+                  "id": "SYS_GLOBAL_ADVANTAGE",
+                  "name": "Global Advantage / Delta XTEND",
+                  "supplier": "DePuy Synthes",
+                  "category": "Shoulder Replacement — Anatomic TSA",
+                  "system_type": "implant",
+                  "description": "DePuy Synthes Global Advantage stemmed anatomic total shoulder arthroplasty system.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ASCEND_FLEX",
+                  "name": "Ascend Flex",
+                  "supplier": "Stryker",
+                  "category": "Shoulder Replacement — Anatomic & Reverse",
+                  "system_type": "implant",
+                  "description": "Stryker/Tornier Ascend Flex total shoulder system. Can be configured as anatomic or reverse TSA using same stem.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "PROC_PRIMARY_TOTAL_SHOULDER_REPLACEMENT",
+          "name": "Primary Total Shoulder Replacement",
+          "aliases": [],
+          "description": "Primary replacement of the glenohumeral joint.",
+          "case_tags": [
+            {
+              "id": "CASE_ELECTIVE",
+              "name": "Elective",
+              "description": "Scheduled non-emergency procedure"
+            }
+          ],
+          "variants": [
+            {
+              "id": "PV_PRIMARY_TSR_STEMMED",
+              "name": "Stemmed Anatomic Shoulder Replacement",
+              "variant_type": "implant_configuration",
+              "variant_value": "Stemmed Anatomic",
+              "description": "Primary total shoulder replacement using a stemmed anatomic implant.",
+              "systems": [
+                {
+                  "id": "SYS_GLOBAL_ADVANTAGE",
+                  "name": "Global Advantage / Delta XTEND",
+                  "supplier": "DePuy Synthes",
+                  "category": "Shoulder Replacement — Anatomic TSA",
+                  "system_type": "implant",
+                  "description": "DePuy Synthes Global Advantage stemmed anatomic total shoulder arthroplasty system.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ASCEND_FLEX",
+                  "name": "Ascend Flex",
+                  "supplier": "Stryker",
+                  "category": "Shoulder Replacement — Anatomic & Reverse",
+                  "system_type": "implant",
+                  "description": "Stryker/Tornier Ascend Flex total shoulder system. Can be configured as anatomic or reverse TSA using same stem.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_EQUINOXE",
+                  "name": "Equinoxe Shoulder System",
+                  "supplier": "Exactech",
+                  "category": "Shoulder Replacement — Anatomic & Reverse",
+                  "system_type": "implant",
+                  "description": "Exactech Equinoxe shoulder platform. Convertible anatomic and reverse total shoulder arthroplasty.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_COMPREHENSIVE_SHOULDER",
+                  "name": "Comprehensive Shoulder",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Shoulder Replacement — Anatomic & Reverse",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Comprehensive shoulder system for anatomic and reverse total shoulder arthroplasty.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_PRIMARY_TSR_STEMLESS",
+              "name": "Stemless Anatomic Shoulder Replacement",
+              "variant_type": "implant_configuration",
+              "variant_value": "Stemless Anatomic",
+              "description": "Primary total shoulder replacement using a stemless anatomic implant.",
+              "systems": [
+                {
+                  "id": "SYS_ECLIPSE_STEMLESS",
+                  "name": "Eclipse Stemless Shoulder",
+                  "supplier": "Arthrex",
+                  "category": "Shoulder Replacement — Stemless",
+                  "system_type": "implant",
+                  "description": "Arthrex Eclipse stemless shoulder arthroplasty. Press-fit metaphyseal fixation without a stem, preserving humeral bone.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_SIDUS_STEMLESS",
+                  "name": "Sidus Stem-Free Shoulder",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Shoulder Replacement — Stemless",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Sidus stem-free shoulder arthroplasty system.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "PROC_REVERSE_TOTAL_SHOULDER_REPLACEMENT",
+          "name": "Reverse Total Shoulder Replacement",
+          "aliases": [],
+          "description": "Reverse geometry shoulder replacement.",
+          "case_tags": [
+            {
+              "id": "CASE_ELECTIVE",
+              "name": "Elective",
+              "description": "Scheduled non-emergency procedure"
+            }
+          ],
+          "variants": [
+            {
+              "id": "VAR_CEMENTED",
+              "name": "Cemented",
+              "variant_type": "fixation",
+              "variant_value": "cemented",
+              "description": "Cemented construct option",
+              "systems": [
+                {
+                  "id": "SYS_AVENIR_COMPLETE___G7_TOTAL_HIP_SYSTEM",
+                  "name": "Avenir Complete / G7 Total Hip System",
+                  "supplier": "Zimmer Biomet",
+                  "category": "arthroplasty",
+                  "system_type": "hip_implant",
+                  "description": "Avenir Complete / G7 Total Hip System mapped to Primary Total Hip Replacement variant Cemented.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ARCOS___G7_REVISION_HIP_SYSTEM",
+                  "name": "Arcos / G7 Revision Hip System",
+                  "supplier": "Zimmer Biomet",
+                  "category": "arthroplasty",
+                  "system_type": "hip_revision_implant",
+                  "description": "Arcos / G7 Revision Hip System mapped to Revision Total Hip Replacement variant Cemented.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_PERSONA_KNEE",
+                  "name": "Persona Knee System",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Knee Replacement — Primary CR/PS",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Persona total knee system. Cruciate-retaining and posterior-stabilised options with gender-specific sizing.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_OXFORD_PARTIAL_KNEE_SYSTEM",
+                  "name": "Oxford Partial Knee System",
+                  "supplier": "Zimmer Biomet",
+                  "category": "arthroplasty",
+                  "system_type": "unicompartmental_knee_implant",
+                  "description": "Oxford Partial Knee System mapped to Unicompartmental Knee Replacement variant Cemented.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_COMPREHENSIVE_SHOULDER_SYSTEM",
+                  "name": "Comprehensive Shoulder System",
+                  "supplier": "Zimmer Biomet",
+                  "category": "arthroplasty",
+                  "system_type": "shoulder_implant",
+                  "description": "Comprehensive Shoulder System mapped to Primary Total Shoulder Replacement variant Cemented.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_COMPREHENSIVE_REVERSE_SHOULDER_SYSTEM",
+                  "name": "Comprehensive Reverse Shoulder System",
+                  "supplier": "Zimmer Biomet",
+                  "category": "arthroplasty",
+                  "system_type": "reverse_shoulder_implant",
+                  "description": "Comprehensive Reverse Shoulder System mapped to Reverse Total Shoulder Replacement variant Cemented.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "VAR_CEMENTLESS",
+              "name": "Cementless",
+              "variant_type": "fixation",
+              "variant_value": "cementless",
+              "description": "Cementless construct option",
+              "systems": [
+                {
+                  "id": "SYS_INSIGNIA___TRIDENT_II_TOTAL_HIP_SYSTEM",
+                  "name": "Insignia / Trident II Total Hip System",
+                  "supplier": "Stryker",
+                  "category": "arthroplasty",
+                  "system_type": "hip_implant",
+                  "description": "Insignia / Trident II Total Hip System mapped to Primary Total Hip Replacement variant Cementless.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_RESTORATION___TRIDENT_REVISION_HIP_SYSTEM",
+                  "name": "Restoration / Trident Revision Hip System",
+                  "supplier": "Stryker",
+                  "category": "arthroplasty",
+                  "system_type": "hip_revision_implant",
+                  "description": "Restoration / Trident Revision Hip System mapped to Revision Total Hip Replacement variant Cementless.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_TRIATHLON_KNEE",
+                  "name": "Triathlon Knee System",
+                  "supplier": "Stryker",
+                  "category": "Knee Arthroplasty System",
+                  "system_type": "implant",
+                  "description": "Total knee replacement implant system.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_PARTIAL_KNEE_PORTFOLIO",
+                  "name": "Partial Knee Portfolio",
+                  "supplier": "Stryker",
+                  "category": "arthroplasty",
+                  "system_type": "unicompartmental_knee_implant",
+                  "description": "Partial Knee Portfolio mapped to Unicompartmental Knee Replacement variant Cementless.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_TORNIER_AEQUALIS_SHOULDER_SYSTEM",
+                  "name": "Tornier Aequalis Shoulder System",
+                  "supplier": "Stryker",
+                  "category": "arthroplasty",
+                  "system_type": "shoulder_implant",
+                  "description": "Tornier Aequalis Shoulder System mapped to Primary Total Shoulder Replacement variant Cementless.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_TORNIER_PERFORM_REVERSED___AEQUALIS_REVERSED",
+                  "name": "Tornier Perform Reversed / Aequalis Reversed",
+                  "supplier": "Stryker",
+                  "category": "arthroplasty",
+                  "system_type": "reverse_shoulder_implant",
+                  "description": "Tornier Perform Reversed / Aequalis Reversed mapped to Reverse Total Shoulder Replacement variant Cementless.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_RTSA_DELTOPECTORAL",
+              "name": "Deltopectoral Approach",
+              "variant_type": "approach",
+              "variant_value": "Deltopectoral",
+              "description": "Reverse total shoulder replacement via a deltopectoral approach.",
+              "systems": [
+                {
+                  "id": "SYS_DELTA_XTEND",
+                  "name": "Delta XTEND Reverse Shoulder",
+                  "supplier": "DePuy Synthes",
+                  "category": "Shoulder Replacement — Reverse TSA",
+                  "system_type": "implant",
+                  "description": "DePuy Synthes Delta XTEND reverse shoulder system. One of the most widely used reverse TSA platforms globally.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ASCEND_FLEX",
+                  "name": "Ascend Flex",
+                  "supplier": "Stryker",
+                  "category": "Shoulder Replacement — Anatomic & Reverse",
+                  "system_type": "implant",
+                  "description": "Stryker/Tornier Ascend Flex total shoulder system. Can be configured as anatomic or reverse TSA using same stem.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_EQUINOXE",
+                  "name": "Equinoxe Shoulder System",
+                  "supplier": "Exactech",
+                  "category": "Shoulder Replacement — Anatomic & Reverse",
+                  "system_type": "implant",
+                  "description": "Exactech Equinoxe shoulder platform. Convertible anatomic and reverse total shoulder arthroplasty.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_COMPREHENSIVE_SHOULDER",
+                  "name": "Comprehensive Shoulder",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Shoulder Replacement — Anatomic & Reverse",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Comprehensive shoulder system for anatomic and reverse total shoulder arthroplasty.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_RTSA_SUPEROLATERAL",
+              "name": "Superolateral Approach",
+              "variant_type": "approach",
+              "variant_value": "Superolateral",
+              "description": "Reverse total shoulder replacement via a superolateral approach.",
+              "systems": [
+                {
+                  "id": "SYS_DELTA_XTEND",
+                  "name": "Delta XTEND Reverse Shoulder",
+                  "supplier": "DePuy Synthes",
+                  "category": "Shoulder Replacement — Reverse TSA",
+                  "system_type": "implant",
+                  "description": "DePuy Synthes Delta XTEND reverse shoulder system. One of the most widely used reverse TSA platforms globally.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ASCEND_FLEX",
+                  "name": "Ascend Flex",
+                  "supplier": "Stryker",
+                  "category": "Shoulder Replacement — Anatomic & Reverse",
+                  "system_type": "implant",
+                  "description": "Stryker/Tornier Ascend Flex total shoulder system. Can be configured as anatomic or reverse TSA using same stem.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_EQUINOXE",
+                  "name": "Equinoxe Shoulder System",
+                  "supplier": "Exactech",
+                  "category": "Shoulder Replacement — Anatomic & Reverse",
+                  "system_type": "implant",
+                  "description": "Exactech Equinoxe shoulder platform. Convertible anatomic and reverse total shoulder arthroplasty.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_COMPREHENSIVE_SHOULDER",
+                  "name": "Comprehensive Shoulder",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Shoulder Replacement — Anatomic & Reverse",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Comprehensive shoulder system for anatomic and reverse total shoulder arthroplasty.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ELBOW",
+      "name": "Elbow",
+      "sort_order": 40,
+      "procedures": [
+        {
+          "id": "PROC_PRIMARY_TOTAL_ELBOW_REPLACEMENT",
+          "name": "Primary Total Elbow Replacement",
+          "aliases": [],
+          "description": "Primary total elbow arthroplasty.",
+          "case_tags": [
+            {
+              "id": "CASE_ELECTIVE",
+              "name": "Elective",
+              "description": "Scheduled non-emergency procedure"
+            }
+          ],
+          "variants": [
+            {
+              "id": "PV_PRIMARY_TER_LINKED",
+              "name": "Linked Total Elbow Replacement",
+              "variant_type": "implant_configuration",
+              "variant_value": "Linked",
+              "description": "Primary total elbow replacement using a linked prosthesis.",
+              "systems": [
+                {
+                  "id": "SYS_COONRAD_MORREY",
+                  "name": "Coonrad-Morrey Total Elbow",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Total Elbow Replacement — Linked",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Coonrad-Morrey total elbow replacement. Semi-constrained linked implant; most widely used total elbow system.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_PRIMARY_TER_UNLINKED",
+              "name": "Unlinked Total Elbow Replacement",
+              "variant_type": "implant_configuration",
+              "variant_value": "Unlinked",
+              "description": "Primary total elbow replacement using an unlinked prosthesis.",
+              "systems": [
+                {
+                  "id": "SYS_LATITUDE_ELBOW",
+                  "name": "Latitude EV Total Elbow",
+                  "supplier": "Integra LifeSciences",
+                  "category": "Total Elbow Replacement — Unlinked",
+                  "system_type": "implant",
+                  "description": "Integra Latitude EV total elbow. Unlinked / convertible design allowing anatomic motion with option of linked stability.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ANKLE",
+      "name": "Ankle",
+      "sort_order": 50,
+      "procedures": [
+        {
+          "id": "PROC_PRIMARY_TOTAL_ANKLE_REPLACEMENT",
+          "name": "Primary Total Ankle Replacement",
+          "aliases": [],
+          "description": "Primary total ankle arthroplasty.",
+          "case_tags": [
+            {
+              "id": "CASE_ELECTIVE",
+              "name": "Elective",
+              "description": "Scheduled non-emergency procedure"
+            }
+          ],
+          "variants": [
+            {
+              "id": "PV_PRIMARY_TAR_FIXED",
+              "name": "Fixed-Bearing Total Ankle Replacement",
+              "variant_type": "implant_configuration",
+              "variant_value": "Fixed-Bearing",
+              "description": "Primary total ankle replacement using a fixed-bearing construct.",
+              "systems": [
+                {
+                  "id": "SYS_INFINITY_ANKLE",
+                  "name": "INFINITY Total Ankle",
+                  "supplier": "Stryker",
+                  "category": "Total Ankle Replacement — Fixed Bearing",
+                  "system_type": "implant",
+                  "description": "Stryker INFINITY total ankle system (evolved from Wright INFINITY). Two-component fixed-bearing design.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_VANTAGE_ANKLE",
+                  "name": "Vantage Total Ankle",
+                  "supplier": "Exactech",
+                  "category": "Total Ankle Replacement — Fixed Bearing",
+                  "system_type": "implant",
+                  "description": "Exactech Vantage total ankle system. Two-component fixed-bearing design with improved sizing range.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_SALTO_TALARIS",
+                  "name": "SALTO Talaris",
+                  "supplier": "Stryker",
+                  "category": "Total Ankle Replacement — Fixed Bearing",
+                  "system_type": "implant",
+                  "description": "Tornier/Stryker SALTO Talaris anatomic total ankle prosthesis. Fixed-bearing two-component design.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_PRIMARY_TAR_MOBILE",
+              "name": "Mobile-Bearing Total Ankle Replacement",
+              "variant_type": "implant_configuration",
+              "variant_value": "Mobile-Bearing",
+              "description": "Primary total ankle replacement using a mobile-bearing construct.",
+              "systems": [
+                {
+                  "id": "SYS_STAR_ANKLE",
+                  "name": "STAR Total Ankle",
+                  "supplier": "Stryker",
+                  "category": "Total Ankle Replacement — Mobile Bearing",
+                  "system_type": "implant",
+                  "description": "Scandinavian Total Ankle Replacement (STAR). Three-component mobile-bearing total ankle system.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ZENITH_ANKLE",
+                  "name": "Zenith Total Ankle",
+                  "supplier": "Corin",
+                  "category": "Total Ankle Replacement — Mobile Bearing",
+                  "system_type": "implant",
+                  "description": "Corin Zenith total ankle replacement. Three-component mobile-bearing design.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_ACETABULUM",
+      "name": "Acetabulum",
+      "sort_order": null,
+      "procedures": [
+        {
+          "id": "PROC_ACETABULAR_REVISION_OF_HIP_REPLACEMENT",
+          "name": "Acetabular Revision of Hip Replacement",
+          "aliases": [],
+          "description": "Revision of the acetabular component of a hip replacement.",
+          "case_tags": [
+            {
+              "id": "CASE_REVISION",
+              "name": "Revision",
+              "description": "Procedure performed to revise or correct a previous surgery"
+            }
+          ],
+          "variants": [
+            {
+              "id": "PV_ACETABULAR_REVISION_ISOLATED_CUP",
+              "name": "Isolated Cup Revision",
+              "variant_type": "reconstruction_type",
+              "variant_value": "Isolated Cup Revision",
+              "description": "Acetabular revision focused on isolated cup/component revision.",
+              "systems": [
+                {
+                  "id": "SYS_PINNACLE_SECTOR",
+                  "name": "Pinnacle / Sector Augments",
+                  "supplier": "DePuy Synthes",
+                  "category": "Hip Revision — Acetabular",
+                  "system_type": "implant",
+                  "description": "DePuy Synthes Pinnacle acetabular revision system with Sector augments for acetabular bone deficiency.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_CONTINUUM_TAPERLOC",
+                  "name": "Continuum / Taperloc",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Hip Replacement — Cementless",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Continuum acetabular system with Taperloc stem. Trabecular metal cup technology.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_ACETABULAR_REVISION_CUP_CAGE",
+              "name": "Cup-Cage Reconstruction",
+              "variant_type": "reconstruction_type",
+              "variant_value": "Cup-Cage Reconstruction",
+              "description": "Acetabular revision using cup-cage reconstruction for major bone loss.",
+              "systems": [
+                {
+                  "id": "SYS_PINNACLE_SECTOR",
+                  "name": "Pinnacle / Sector Augments",
+                  "supplier": "DePuy Synthes",
+                  "category": "Hip Revision — Acetabular",
+                  "system_type": "implant",
+                  "description": "DePuy Synthes Pinnacle acetabular revision system with Sector augments for acetabular bone deficiency.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_CONTINUUM_TAPERLOC",
+                  "name": "Continuum / Taperloc",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Hip Replacement — Cementless",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet Continuum acetabular system with Taperloc stem. Trabecular metal cup technology.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "note": "Present in procedure data but not in current Arthroplasty anatomy map."
+    },
+    {
+      "id": "ANAT_ANKLE",
+      "name": "Ankle",
+      "sort_order": null,
+      "procedures": [
+        {
+          "id": "PROC_TOTAL_ANKLE_ARTHROPLASTY_WITH_PATIENT_SPECIFIC_INSTRUMENTATION",
+          "name": "Total Ankle Arthroplasty with Patient Specific Instrumentation",
+          "aliases": [],
+          "description": "Primary total ankle replacement using PSI.",
+          "case_tags": [],
+          "variants": []
+        }
+      ],
+      "note": "Present in procedure data but not in current Arthroplasty anatomy map."
+    },
+    {
+      "id": "ANAT_ELBOW",
+      "name": "Elbow",
+      "sort_order": null,
+      "procedures": [
+        {
+          "id": "PROC_DISTAL_HUMERAL_HEMIARTHROPLASTY",
+          "name": "Distal Humeral Hemiarthroplasty",
+          "aliases": [],
+          "description": "Partial elbow arthroplasty of distal humerus.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_RADIAL_HEAD_ARTHROPLASTY",
+          "name": "Radial Head Arthroplasty",
+          "aliases": [],
+          "description": "Replacement arthroplasty of radial head.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_REVISION_RADIAL_HEAD_ARTHROPLASTY",
+          "name": "Revision Radial Head Arthroplasty",
+          "aliases": [],
+          "description": "Revision radial head replacement.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_REVISION_TOTAL_ELBOW_REPLACEMENT",
+          "name": "Revision Total Elbow Replacement",
+          "aliases": [],
+          "description": "Revision total elbow arthroplasty.",
+          "case_tags": [],
+          "variants": []
+        }
+      ],
+      "note": "Present in procedure data but not in current Arthroplasty anatomy map."
+    },
+    {
+      "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_FEMUR",
+      "name": "Femur",
+      "sort_order": null,
+      "procedures": [
+        {
+          "id": "PROC_FEMORAL_REVISION_OF_HIP_REPLACEMENT",
+          "name": "Femoral Revision of Hip Replacement",
+          "aliases": [],
+          "description": "Revision of the femoral component of a hip replacement.",
+          "case_tags": [
+            {
+              "id": "CASE_REVISION",
+              "name": "Revision",
+              "description": "Procedure performed to revise or correct a previous surgery"
+            }
+          ],
+          "variants": [
+            {
+              "id": "PV_FEMORAL_REVISION_CEMENTED",
+              "name": "Cemented Stem Revision",
+              "variant_type": "implant_configuration",
+              "variant_value": "Cemented Stem Revision",
+              "description": "Femoral revision using a cemented revision stem construct.",
+              "systems": [
+                {
+                  "id": "SYS_EXETER_REVISION",
+                  "name": "Exeter Revision Stem",
+                  "supplier": "Stryker",
+                  "category": "Hip Revision — Cemented",
+                  "system_type": "implant",
+                  "description": "Stryker Exeter long-stem cemented revision femoral component. Used in femoral revision with cemented technique.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_FEMORAL_REVISION_TAPERED_FLUTED",
+              "name": "Tapered Fluted Stem Revision",
+              "variant_type": "implant_configuration",
+              "variant_value": "Tapered Fluted Stem Revision",
+              "description": "Femoral revision using a tapered fluted revision stem.",
+              "systems": [
+                {
+                  "id": "SYS_RESTORATION_MODULAR",
+                  "name": "Restoration Modular",
+                  "supplier": "Stryker",
+                  "category": "Hip Revision — Cementless Modular",
+                  "system_type": "implant",
+                  "description": "Stryker Restoration Modular revision system. Tapered-fluted modular titanium stem for complex femoral revisions with significant bone loss.",
+                  "is_default": false,
+                  "cards": []
+                },
+                {
+                  "id": "SYS_ARCOS_REVISION",
+                  "name": "ARCOS Modular",
+                  "supplier": "Zimmer Biomet",
+                  "category": "Hip Revision — Cementless Modular",
+                  "system_type": "implant",
+                  "description": "Zimmer Biomet ARCOS modular femoral revision system. Conical fluted stem for poor proximal bone stock.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "note": "Present in procedure data but not in current Arthroplasty anatomy map."
+    },
+    {
+      "id": "ANAT_HIP",
+      "name": "Hip",
+      "sort_order": null,
+      "procedures": [
+        {
+          "id": "PROC_BIPOLAR_HEMIARTHROPLASTY_OF_HIP",
+          "name": "Bipolar Hemiarthroplasty of Hip",
+          "aliases": [
+            "Bipolar Hemiarthroplasty"
+          ],
+          "description": "Bipolar hemiarthroplasty of the hip for fracture.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_CEMENTED_TOTAL_HIP_REPLACEMENT",
+          "name": "Cemented Total Hip Replacement",
+          "aliases": [],
+          "description": "Fully cemented total hip arthroplasty.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_CEMENTLESS_TOTAL_HIP_REPLACEMENT",
+          "name": "Cementless Total Hip Replacement",
+          "aliases": [],
+          "description": "Uncemented total hip arthroplasty.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_CERAMIC_ON_CERAMIC_TOTAL_HIP_REPLACEMENT",
+          "name": "Ceramic-on-Ceramic Total Hip Replacement",
+          "aliases": [],
+          "description": "THR using ceramic articulation.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_CONSTRAINED_LINER_REVISION_OF_HIP_ARTHROPLASTY",
+          "name": "Constrained Liner Revision of Hip Arthroplasty",
+          "aliases": [],
+          "description": "Revision hip procedure using constrained acetabular liner.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_CONVERSION_OF_HIP_HEMIARTHROPLASTY_TO_TOTAL_HIP_REPLACEMENT",
+          "name": "Conversion of Hip Hemiarthroplasty to Total Hip Replacement",
+          "aliases": [],
+          "description": "Conversion of prior hemiarthroplasty to total hip replacement.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_DIRECT_ANTERIOR_TOTAL_HIP_REPLACEMENT",
+          "name": "Direct Anterior Total Hip Replacement",
+          "aliases": [],
+          "description": "Primary THR via direct anterior approach.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_DUAL_MOBILITY_REVISION_HIP_ARTHROPLASTY",
+          "name": "Dual Mobility Revision Hip Arthroplasty",
+          "aliases": [],
+          "description": "Revision THR using dual-mobility construct.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_FEMORAL_HEAD_EXCHANGE_IN_TOTAL_HIP_REPLACEMENT",
+          "name": "Femoral Head Exchange in Total Hip Replacement",
+          "aliases": [],
+          "description": "Exchange of femoral head component in THR revision.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_FEMORAL_OSTEOCHONDROPLASTY_OF_HIP",
+          "name": "Femoral Osteochondroplasty of Hip",
+          "aliases": [],
+          "description": "Arthroscopic femoral osteochondroplasty.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_FEMORAL_STEM_REVISION_OF_HIP_ARTHROPLASTY",
+          "name": "Femoral Stem Revision of Hip Arthroplasty",
+          "aliases": [],
+          "description": "Isolated femoral stem revision procedure.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_HIP_ARTHROSCOPY_FOR_FEMOROACETABULAR_IMPINGEMENT",
+          "name": "Hip Arthroscopy for Femoroacetabular Impingement",
+          "aliases": [],
+          "description": "Arthroscopic cam/pincer impingement treatment.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_HIP_CAPSULAR_RECONSTRUCTION",
+          "name": "Hip Capsular Reconstruction",
+          "aliases": [],
+          "description": "Capsular reconstruction for instability or revision arthroscopy.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_HYBRID_TOTAL_HIP_REPLACEMENT",
+          "name": "Hybrid Total Hip Replacement",
+          "aliases": [],
+          "description": "Hybrid fixation total hip arthroplasty.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_IMPACTION_BONE_GRAFTING_IN_REVISION_HIP_ARTHROPLASTY",
+          "name": "Impaction Bone Grafting in Revision Hip Arthroplasty",
+          "aliases": [],
+          "description": "Revision hip arthroplasty with bone graft impaction.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_ISOLATED_ACETABULAR_LINER_EXCHANGE",
+          "name": "Isolated Acetabular Liner Exchange",
+          "aliases": [],
+          "description": "Exchange of acetabular liner during revision hip surgery.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_LABRAL_REPAIR_OF_HIP",
+          "name": "Labral Repair of Hip",
+          "aliases": [],
+          "description": "Arthroscopic repair of acetabular labrum.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_PERIPROSTHETIC_FRACTURE_FIXATION_AROUND_TOTAL_HIP_REPLACEMENT",
+          "name": "Periprosthetic Fracture Fixation Around Total Hip Replacement",
+          "aliases": [],
+          "description": "Fixation of femoral fracture around a THR.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_POSTERIOR_APPROACH_TOTAL_HIP_REPLACEMENT",
+          "name": "Posterior Approach Total Hip Replacement",
+          "aliases": [],
+          "description": "Primary THR via posterior approach.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_RESECTION_ARTHROPLASTY_OF_HIP",
+          "name": "Resection Arthroplasty of Hip",
+          "aliases": [
+            "Girdlestone Procedure"
+          ],
+          "description": "Excision arthroplasty / Girdlestone-type procedure.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_ROBOTIC_ASSISTED_TOTAL_HIP_REPLACEMENT",
+          "name": "Robotic-Assisted Total Hip Replacement",
+          "aliases": [],
+          "description": "Primary THR with robotic or navigation-assisted workflow.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_SURGICAL_HIP_DISLOCATION_WITH_OSTEOCHONDROPLASTY",
+          "name": "Surgical Hip Dislocation with Osteochondroplasty",
+          "aliases": [],
+          "description": "Open joint-preserving hip procedure.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_TOTAL_HIP_REPLACEMENT_WITH_DUAL_MOBILITY_CONSTRUCT",
+          "name": "Total Hip Replacement with Dual Mobility Construct",
+          "aliases": [],
+          "description": "Primary THR using dual-mobility articulation.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_TROCHANTERIC_FIXATION_IN_REVISION_HIP_ARTHROPLASTY",
+          "name": "Trochanteric Fixation in Revision Hip Arthroplasty",
+          "aliases": [],
+          "description": "Trochanteric claw/cable fixation in revision hip arthroplasty.",
+          "case_tags": [],
+          "variants": []
+        }
+      ],
+      "note": "Present in procedure data but not in current Arthroplasty anatomy map."
+    },
+    {
+      "id": "ANAT_KNEE",
+      "name": "Knee",
+      "sort_order": null,
+      "procedures": [
+        {
+          "id": "PROC_CEMENTED_TOTAL_KNEE_REPLACEMENT",
+          "name": "Cemented Total Knee Replacement",
+          "aliases": [],
+          "description": "Cemented primary TKR.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_CEMENTLESS_TOTAL_KNEE_REPLACEMENT",
+          "name": "Cementless Total Knee Replacement",
+          "aliases": [],
+          "description": "Cementless primary TKR.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_CONSTRAINED_CONDYLAR_KNEE_REPLACEMENT",
+          "name": "Constrained Condylar Knee Replacement",
+          "aliases": [],
+          "description": "Constrained condylar total knee arthroplasty.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_DISTAL_FEMORAL_REPLACEMENT",
+          "name": "Distal Femoral Replacement",
+          "aliases": [],
+          "description": "Megaprosthetic reconstruction of distal femur around knee.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_EXTENSOR_MECHANISM_RECONSTRUCTION_AFTER_KNEE_ARTHROPLASTY",
+          "name": "Extensor Mechanism Reconstruction After Knee Arthroplasty",
+          "aliases": [],
+          "description": "Reconstruction of extensor mechanism after TKR.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_ISOLATED_POLYETHYLENE_EXCHANGE_OF_TOTAL_KNEE_REPLACEMENT",
+          "name": "Isolated Polyethylene Exchange of Total Knee Replacement",
+          "aliases": [],
+          "description": "Revision knee arthroplasty with isolated insert exchange.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_LATERAL_UNICOMPARTMENTAL_KNEE_REPLACEMENT",
+          "name": "Lateral Unicompartmental Knee Replacement",
+          "aliases": [],
+          "description": "Lateral compartment unicompartmental knee arthroplasty.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_MEDIAL_UNICOMPARTMENTAL_KNEE_REPLACEMENT",
+          "name": "Medial Unicompartmental Knee Replacement",
+          "aliases": [],
+          "description": "Medial compartment unicompartmental knee arthroplasty.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_OXFORD_STYLE_PARTIAL_KNEE_REPLACEMENT",
+          "name": "Oxford-Style Partial Knee Replacement",
+          "aliases": [],
+          "description": "Mobile-bearing partial knee replacement.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_PATELLAR_RESURFACING_IN_TOTAL_KNEE_REPLACEMENT",
+          "name": "Patellar Resurfacing in Total Knee Replacement",
+          "aliases": [],
+          "description": "Patellar resurfacing component use during TKR.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_PATELLOFEMORAL_ARTHROPLASTY",
+          "name": "Patellofemoral Arthroplasty",
+          "aliases": [],
+          "description": "Isolated patellofemoral arthroplasty.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_PERIPROSTHETIC_FRACTURE_FIXATION_AROUND_TOTAL_KNEE_REPLACEMENT",
+          "name": "Periprosthetic Fracture Fixation Around Total Knee Replacement",
+          "aliases": [],
+          "description": "Fixation of fracture around a TKR.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_PRIMARY_STEMMED_TOTAL_KNEE_REPLACEMENT",
+          "name": "Primary Stemmed Total Knee Replacement",
+          "aliases": [],
+          "description": "Primary TKR using stemmed components.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_PROXIMAL_TIBIAL_REPLACEMENT",
+          "name": "Proximal Tibial Replacement",
+          "aliases": [],
+          "description": "Megaprosthetic reconstruction of proximal tibia around knee.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_REVISION_ROTATING_PLATFORM_KNEE_ARTHROPLASTY",
+          "name": "Revision Rotating Platform Knee Arthroplasty",
+          "aliases": [],
+          "description": "Revision TKR using rotating-platform design.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_REVISION_SLEEVE_AND_CONE_RECONSTRUCTION_OF_KNEE",
+          "name": "Revision Sleeve and Cone Reconstruction of Knee",
+          "aliases": [],
+          "description": "Revision knee arthroplasty using sleeves/cones for bone loss.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_ROBOTIC_ASSISTED_TOTAL_KNEE_REPLACEMENT",
+          "name": "Robotic-Assisted Total Knee Replacement",
+          "aliases": [],
+          "description": "Primary total knee replacement with robotic assistance.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_ROBOTIC_ASSISTED_UNICOMPARTMENTAL_KNEE_REPLACEMENT",
+          "name": "Robotic-Assisted Unicompartmental Knee Replacement",
+          "aliases": [],
+          "description": "UKR with robotic assistance.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_ROTATING_HINGE_TOTAL_KNEE_REPLACEMENT",
+          "name": "Rotating Hinge Total Knee Replacement",
+          "aliases": [],
+          "description": "Constrained rotating-hinge knee arthroplasty.",
+          "case_tags": [],
+          "variants": []
+        }
+      ],
+      "note": "Present in procedure data but not in current Arthroplasty anatomy map."
+    },
+    {
+      "id": "ANAT_SPEC_TRAUMA_AND_ORTHOPAEDIC_SURGERY_PATELLA",
+      "name": "Patella",
+      "sort_order": null,
+      "procedures": [
+        {
+          "id": "PROC_PATELLOFEMORAL_JOINT_REPLACEMENT",
+          "name": "Patellofemoral Joint Replacement",
+          "aliases": [],
+          "description": "Replacement of the patellofemoral compartment of the knee.",
+          "case_tags": [
+            {
+              "id": "CASE_ELECTIVE",
+              "name": "Elective",
+              "description": "Scheduled non-emergency procedure"
+            }
+          ],
+          "variants": [
+            {
+              "id": "PV_PFJR_ISOLATED",
+              "name": "Isolated Patellofemoral Arthroplasty",
+              "variant_type": "reconstruction_type",
+              "variant_value": "Isolated Patellofemoral Arthroplasty",
+              "description": "Patellofemoral joint replacement performed as an isolated arthroplasty.",
+              "systems": [
+                {
+                  "id": "SYS_JOURNEY_PFJ",
+                  "name": "Journey PFJ System",
+                  "supplier": "Smith+Nephew",
+                  "category": "Patellofemoral Joint Replacement",
+                  "system_type": "implant",
+                  "description": "Smith & Nephew Journey PFJ patellofemoral joint replacement system.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            },
+            {
+              "id": "PV_PFJR_WITH_REALIGNMENT",
+              "name": "Patellofemoral Arthroplasty with Realignment",
+              "variant_type": "reconstruction_type",
+              "variant_value": "Patellofemoral Arthroplasty with Realignment",
+              "description": "Patellofemoral joint replacement combined with extensor mechanism realignment.",
+              "systems": [
+                {
+                  "id": "SYS_JOURNEY_PFJ",
+                  "name": "Journey PFJ System",
+                  "supplier": "Smith+Nephew",
+                  "category": "Patellofemoral Joint Replacement",
+                  "system_type": "implant",
+                  "description": "Smith & Nephew Journey PFJ patellofemoral joint replacement system.",
+                  "is_default": false,
+                  "cards": []
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "note": "Present in procedure data but not in current Arthroplasty anatomy map."
+    },
+    {
+      "id": "ANAT_PELVIS",
+      "name": "Pelvis",
+      "sort_order": null,
+      "procedures": [
+        {
+          "id": "PROC_PERIACETABULAR_OSTEOTOMY",
+          "name": "Periacetabular Osteotomy",
+          "aliases": [],
+          "description": "Reorientation osteotomy for acetabular dysplasia.",
+          "case_tags": [],
+          "variants": []
+        }
+      ],
+      "note": "Present in procedure data but not in current Arthroplasty anatomy map."
+    },
+    {
+      "id": "ANAT_SHOULDER",
+      "name": "Shoulder",
+      "sort_order": null,
+      "procedures": [
+        {
+          "id": "PROC_ANATOMIC_TOTAL_SHOULDER_ARTHROPLASTY",
+          "name": "Anatomic Total Shoulder Arthroplasty",
+          "aliases": [],
+          "description": "Primary anatomic shoulder arthroplasty.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_AUGMENTED_GLENOID_TOTAL_SHOULDER_ARTHROPLASTY",
+          "name": "Augmented Glenoid Total Shoulder Arthroplasty",
+          "aliases": [],
+          "description": "Shoulder arthroplasty using augmented glenoid.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_CONVERTIBLE_SHOULDER_ARTHROPLASTY",
+          "name": "Convertible Shoulder Arthroplasty",
+          "aliases": [],
+          "description": "Shoulder arthroplasty platform convertible from anatomic to reverse.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_REVISION_GLENOID_COMPONENT_OF_SHOULDER_ARTHROPLASTY",
+          "name": "Revision Glenoid Component of Shoulder Arthroplasty",
+          "aliases": [],
+          "description": "Isolated revision of glenoid side of shoulder arthroplasty.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_REVISION_HUMERAL_COMPONENT_OF_SHOULDER_ARTHROPLASTY",
+          "name": "Revision Humeral Component of Shoulder Arthroplasty",
+          "aliases": [],
+          "description": "Isolated revision of humeral side of shoulder arthroplasty.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_REVISION_REVERSE_TOTAL_SHOULDER_REPLACEMENT",
+          "name": "Revision Reverse Total Shoulder Replacement",
+          "aliases": [],
+          "description": "Revision of reverse shoulder arthroplasty.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_REVISION_TOTAL_SHOULDER_REPLACEMENT",
+          "name": "Revision Total Shoulder Replacement",
+          "aliases": [],
+          "description": "Revision of an anatomic total shoulder replacement.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_SHOULDER_HEMIARTHROPLASTY_FOR_FRACTURE",
+          "name": "Shoulder Hemiarthroplasty for Fracture",
+          "aliases": [
+            "Fracture Shoulder Hemiarthroplasty"
+          ],
+          "description": "Hemiarthroplasty for proximal humerus fracture.",
+          "case_tags": [],
+          "variants": []
+        },
+        {
+          "id": "PROC_STEMLESS_TOTAL_SHOULDER_ARTHROPLASTY",
+          "name": "Stemless Total Shoulder Arthroplasty",
+          "aliases": [],
+          "description": "Stemless anatomic shoulder arthroplasty.",
+          "case_tags": [],
+          "variants": []
+        }
+      ],
+      "note": "Present in procedure data but not in current Arthroplasty anatomy map."
+    },
+    {
+      "id": "ANAT_WRIST",
+      "name": "Wrist",
+      "sort_order": null,
+      "procedures": [
+        {
+          "id": "PROC_TOTAL_WRIST_ARTHROPLASTY",
+          "name": "Total Wrist Arthroplasty",
+          "aliases": [],
+          "description": "Total wrist joint replacement.",
+          "case_tags": [],
+          "variants": []
+        }
+      ],
+      "note": "Present in procedure data but not in current Arthroplasty anatomy map."
+    }
+  ]
+}

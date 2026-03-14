@@ -1,0 +1,93 @@
+[
+  {
+    "system_id": "SYS_OLECRANON___PROXIMAL_ULNA_FIXATION",
+    "system_name": "Olecranon / Proximal Ulna Fixation",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\trimed\\olecranon-proximal-ulna-fixation__SYS_OLECRANON___PROXIMAL_ULNA_FIXATION",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PERCUTANEOUS_SCAPHOID_SCREW_PORTFOLIO",
+    "system_name": "Percutaneous Scaphoid Screw Portfolio",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\trimed\\percutaneous-scaphoid-screw-portfolio__SYS_PERCUTANEOUS_SCAPHOID_SCREW_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_RADIAL_HEAD_FIXATION_PORTFOLIO",
+    "system_name": "Radial Head Fixation Portfolio",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\trimed\\radial-head-fixation-portfolio__SYS_RADIAL_HEAD_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SCAPHOID_SCREW_SYSTEM",
+    "system_name": "Scaphoid Screw System",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\trimed\\scaphoid-screw-system__SYS_SCAPHOID_SCREW_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_METACARPAL_FIXATION_PORTFOLIO",
+    "system_name": "Metacarpal Fixation Portfolio",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\trimed\\metacarpal-fixation-portfolio__SYS_METACARPAL_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_WRIST_FUSION_PLATE_SYSTEM",
+    "system_name": "Wrist Fusion Plate System",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\trimed\\wrist-fusion-plate-system__SYS_WRIST_FUSION_PLATE_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_WRIST_SALVAGE_PORTFOLIO",
+    "system_name": "Wrist Salvage Portfolio",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\trimed\\wrist-salvage-portfolio__SYS_WRIST_SALVAGE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

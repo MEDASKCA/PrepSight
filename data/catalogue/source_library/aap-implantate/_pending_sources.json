@@ -1,0 +1,54 @@
+[
+  {
+    "system_id": "SYS_DISTAL_RADIUS_SYSTEM",
+    "system_name": "Distal Radius Fixation System",
+    "system_category": "orthopaedic_fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\aap-implantate\\distal-radius-fixation-system__SYS_DISTAL_RADIUS_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HAND_PLATE",
+    "system_name": "Hand Plating System",
+    "system_category": "orthopaedic_fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\aap-implantate\\hand-plating-system__SYS_HAND_PLATE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_INTRAMEDULLARY_NAIL",
+    "system_name": "Intramedullary Nail System",
+    "system_category": "orthopaedic_fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\aap-implantate\\intramedullary-nail-system__SYS_INTRAMEDULLARY_NAIL",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SMALL_FRAGMENT",
+    "system_name": "Small Fragment Plate System",
+    "system_category": "orthopaedic_fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\aap-implantate\\small-fragment-plate-system__SYS_SMALL_FRAGMENT",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

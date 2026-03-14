@@ -1,0 +1,54 @@
+[
+  {
+    "system_id": "SYS_INTRODUCER_SHEATH",
+    "system_name": "Introducer Sheath",
+    "system_category": "endovascular access",
+    "mapping_count": 18,
+    "source_folder": "data\\catalogue\\source_library\\becton-dickinson\\introducer-sheath__SYS_INTRODUCER_SHEATH",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_FOGARTY_CATHETER",
+    "system_name": "Fogarty Embolectomy Catheter",
+    "system_category": "embolectomy",
+    "mapping_count": 6,
+    "source_folder": "data\\catalogue\\source_library\\becton-dickinson\\fogarty-embolectomy-catheter__SYS_FOGARTY_CATHETER",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DIALYSIS_CATHETER_SET",
+    "system_name": "Tunnelled Dialysis Catheter Set",
+    "system_category": "dialysis access",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\becton-dickinson\\tunnelled-dialysis-catheter-set__SYS_DIALYSIS_CATHETER_SET",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTERIAL_LINE_KIT",
+    "system_name": "Arterial Line Kit",
+    "system_category": "vascular_access",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\becton-dickinson\\arterial-line-kit__SYS_ARTERIAL_LINE_KIT",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

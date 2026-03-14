@@ -9,35 +9,33 @@ import {
   ChevronUp,
   CircleAlert,
   Info,
-  Package,
-  PillBottle,
+  Search,
   ScanSearch,
-  ShieldCheck,
-  SquareStack,
-  Tags,
-  ThumbsDown,
-  ThumbsUp,
 } from "lucide-react"
 import liveMapping from "../../../data/systems/trauma_and_orthopaedics_full_live_mapping.json"
 import {
-  addSystemMappingRevision,
   buildSystemMappingId,
+  canModerateReviews,
+  ensureSystemMappingReviewRecord,
+  getAcceptedSectionData,
   getReviewActor,
   getReviewerStatus,
+  getSectionValidationHistory,
   getSystemMappingHistory,
   getSystemMappingReviewSnapshot,
-  isTrustedReviewer,
-  reviewSystemMapping,
   setReviewerStatus,
+  submitSectionProposal,
+  submitSectionValidation,
   subscribeToSystemMappingReviews,
   voteOnSystemMapping,
   type MappingStatus,
+  type FixationLabel,
   type ReviewerStatus,
+  type ReviewableSectionKey,
+  type SectionIssueType,
 } from "@/lib/system-mapping-review"
 import { getProfile } from "@/lib/profile"
 import type { PrepSightProfile } from "@/lib/types"
-
-type ReviewTab = "systems" | "trays" | "implants" | "skus" | "cards"
 
 const INCORRECT_REASON_OPTIONS = [
   { value: "procedure_mapping", label: "Procedure mapping" },
@@ -46,9 +44,8 @@ const INCORRECT_REASON_OPTIONS = [
   { value: "other", label: "Other" },
 ] as const
 
-type ReviewableSectionKey = "systems" | "trays" | "skus"
 type SectionAnswer = "" | "correct" | "incorrect" | "not_sure"
-type SectionIssue = (typeof INCORRECT_REASON_OPTIONS)[number]["value"] | ""
+type SectionIssue = SectionIssueType | ""
 type ImproveMode = "" | "flag_only" | "suggest_correction" | "add_missing"
 
 type LiveBranch = (typeof liveMapping)[number]
@@ -82,13 +79,13 @@ type ReviewRow = {
   hasProof: boolean
 }
 
-const TABS: Array<{ id: ReviewTab; label: string; icon: typeof ShieldCheck }> = [
-  { id: "systems", label: "Systems", icon: ShieldCheck },
-  { id: "trays", label: "Trays", icon: Package },
-  { id: "implants", label: "Implants", icon: PillBottle },
-  { id: "skus", label: "SKUs", icon: Tags },
-  { id: "cards", label: "Cards", icon: SquareStack },
-]
+type SubmissionFeedback = {
+  tone: "ok" | "warn"
+  title: string
+  detail: string
+}
+
+type QueueStatus = "awaiting" | "validated" | "needs_review" | "rejected"
 
 function formatFixationLabel(value: string): string {
   return value.replaceAll("_", " ")
@@ -110,6 +107,63 @@ function InfoHint({ text }: { text: string }) {
       <Info size={12} />
     </button>
   )
+}
+
+function acceptedDataToTextMap(items: Array<{ label: string; value: string }>) {
+  return Object.fromEntries(items.map((item) => [item.label.toLowerCase(), item.value]))
+}
+
+function buildProposalValue(
+  section: ReviewableSectionKey,
+  values: {
+    note: string
+    procedureVariant: string
+    implantType: string
+    sourceRationale: string
+    trayName: string
+    trayCategory: string
+    traySupplier: string
+    skuCode: string
+    productName: string
+    skuCategory: string
+  },
+) {
+  if (section === "systems") {
+    return {
+      items: [
+        { label: "Procedure variant", value: values.procedureVariant.trim() || "Not recorded" },
+        { label: "Implant type", value: values.implantType.trim() || "Not recorded" },
+        ...(values.sourceRationale.trim()
+          ? [{ label: "Source / rationale", value: values.sourceRationale.trim() }]
+          : []),
+        ...(values.note.trim() ? [{ label: "Note / source context", value: values.note.trim() }] : []),
+      ],
+    }
+  }
+
+  if (section === "trays") {
+    const items = [
+      ...(values.trayName.trim() ? [{ label: "Tray name", value: values.trayName.trim() }] : []),
+      ...(values.trayCategory.trim() ? [{ label: "Tray type / category", value: values.trayCategory.trim() }] : []),
+      ...(values.traySupplier.trim() ? [{ label: "Supplier", value: values.traySupplier.trim() }] : []),
+      ...(values.note.trim() ? [{ label: "Note", value: values.note.trim() }] : []),
+    ]
+    return {
+      items,
+      ...(items.length === 0 ? { empty_state: "No linked tray data currently held" } : {}),
+    }
+  }
+
+  const items = [
+    ...(values.skuCode.trim() ? [{ label: "SKU / product code", value: values.skuCode.trim() }] : []),
+    ...(values.productName.trim() ? [{ label: "Product name", value: values.productName.trim() }] : []),
+    ...(values.skuCategory.trim() ? [{ label: "Category", value: values.skuCategory.trim() }] : []),
+    ...(values.note.trim() ? [{ label: "Note", value: values.note.trim() }] : []),
+  ]
+  return {
+    items,
+    ...(items.length === 0 ? { empty_state: "No linked SKU data currently held" } : {}),
+  }
 }
 
 function buildRows(): ReviewRow[] {
@@ -186,48 +240,64 @@ function buildRows(): ReviewRow[] {
   )
 }
 
-function StatusPill({
-  status,
-  revisionCount,
-  reviewCount,
-}: {
-  status: MappingStatus
-  revisionCount: number
-  reviewCount: number
-}) {
-  if (status === "confirmed") {
-    return <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-emerald-700">Confirmed</span>
-  }
+function getQueueStatus(row: ReviewRow): QueueStatus {
+  const voteCount = row.upvotes + row.downvotes
+  const hasMeaningfulValidation = row.reviewCount > 0 || voteCount > 0
 
-  if (status === "rejected") {
-    return <span className="rounded-full bg-rose-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-rose-700">Rejected</span>
-  }
-
-  if (revisionCount > 0) {
-    return <span className="rounded-full bg-cyan-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-cyan-700">View Revisions</span>
-  }
-
-  if (reviewCount > 0) {
-    return <span className="rounded-full bg-sky-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-sky-700">View Reviews</span>
-  }
-
-  return null
+  if (row.mappingStatus === "rejected") return "rejected"
+  if (row.downvotes > 0 || row.latestDownvoteReason) return "needs_review"
+  if (hasMeaningfulValidation && (row.mappingStatus === "confirmed" || row.upvotes > 0)) return "validated"
+  return "awaiting"
 }
 
-function rowMetaBarClass(status: MappingStatus, revisionCount: number, reviewCount: number): string {
-  if (status === "confirmed") return "border-emerald-200 bg-emerald-50 text-emerald-800"
-  if (status === "rejected") return "border-rose-200 bg-rose-50 text-rose-800"
-  if (revisionCount > 0) return "border-cyan-200 bg-cyan-50 text-cyan-800"
-  if (reviewCount > 0) return "border-sky-200 bg-sky-50 text-sky-800"
-  return "border-amber-200 bg-amber-50 text-amber-800"
+function queueStatusLabel(status: QueueStatus): string {
+  if (status === "validated") return "Validated"
+  if (status === "needs_review") return "Needs review"
+  if (status === "rejected") return "Rejected"
+  return "Needs validation"
 }
 
-function rowContainerClass(status: MappingStatus, revisionCount: number, reviewCount: number): string {
-  if (status === "confirmed") return "border-emerald-200 bg-emerald-50/45 hover:border-emerald-300"
-  if (status === "rejected") return "border-rose-200 bg-rose-50/45 hover:border-rose-300"
-  if (revisionCount > 0) return "border-cyan-200 bg-cyan-50/45 hover:border-cyan-300"
-  if (reviewCount > 0) return "border-sky-200 bg-sky-50/45 hover:border-sky-300"
-  return "border-amber-200 bg-amber-50/45 hover:border-amber-300"
+function queueStatusPillClass(status: QueueStatus): string {
+  if (status === "validated") return "bg-emerald-100 text-emerald-700"
+  if (status === "needs_review") return "bg-amber-100 text-amber-800"
+  if (status === "rejected") return "bg-rose-100 text-rose-700"
+  return "bg-amber-100 text-amber-800"
+}
+
+function queueCardClass(status: QueueStatus): string {
+  if (status === "validated") return "border-emerald-200 bg-white hover:border-emerald-300"
+  if (status === "needs_review") return "border-amber-200 bg-white hover:border-amber-300"
+  if (status === "rejected") return "border-rose-200 bg-white hover:border-rose-300"
+  return "border-[#D8E3EE] bg-white hover:border-[#C2D4E3]"
+}
+
+function getReviewSummaryLine(row: ReviewRow, status: QueueStatus): string {
+  const totalVotes = row.upvotes + row.downvotes
+  const reviewCount = Math.max(row.reviewCount, totalVotes)
+
+  if (status === "awaiting") {
+    return reviewCount > 0 ? `${reviewCount} reviews recorded` : "0 reviews yet"
+  }
+
+  if (status === "validated") {
+    if (totalVotes > 0) {
+      return `${reviewCount} reviews • ${row.confidencePercent}% agreement`
+    }
+    return `${reviewCount} reviews completed`
+  }
+
+  if (status === "needs_review") {
+    if (row.downvotes > 0) {
+      return `${row.downvotes} review${row.downvotes === 1 ? "" : "s"} flagged issues`
+    }
+    return `${reviewCount} reviews need attention`
+  }
+
+  return reviewCount > 0 ? `${reviewCount} reviews recorded` : "Removed from accepted flow"
+}
+
+function getSupportLine(row: ReviewRow): string {
+  return row.reviewNotes?.trim() ? "Linked data available" : "System details available"
 }
 
 function ReviewSection({
@@ -318,14 +388,14 @@ function ValidationChoices({
 }
 
 export default function ReviewPage() {
-  const [activeTab, setActiveTab] = useState<ReviewTab>("systems")
   const [rows, setRows] = useState<ReviewRow[]>([])
-  const [statusFilter, setStatusFilter] = useState<"all" | MappingStatus>("review_required")
+  const [statusFilter, setStatusFilter] = useState<"all" | QueueStatus>("awaiting")
   const [query, setQuery] = useState("")
   const [profile, setProfile] = useState<PrepSightProfile | null>(null)
   const [reviewerName, setReviewerName] = useState("")
   const [reviewerStatus, setLocalReviewerStatus] = useState<ReviewerStatus>("active")
   const [selectedRow, setSelectedRow] = useState<ReviewRow | null>(null)
+  const [submissionFeedback, setSubmissionFeedback] = useState<SubmissionFeedback | null>(null)
   const [sectionReviews, setSectionReviews] = useState<Record<
     ReviewableSectionKey,
     {
@@ -418,29 +488,38 @@ export default function ReviewPage() {
     })
   }, [])
 
-  const canModerate = isTrustedReviewer(profile)
-
-  function handleVote(mappingId: string, direction: "up" | "down") {
-    if (reviewerStatus === "banned") {
-      if (typeof window !== "undefined") window.alert("Reviewer is banned from voting.")
-      return
-    }
-
-    if (direction === "down") {
-      const reason =
-        typeof window !== "undefined"
-          ? window.prompt("Reason for low confidence is required.")
-          : null
-      if (!reason?.trim()) return
-      voteOnSystemMapping(mappingId, "down", { reason, actor: reviewerName })
-      return
-    }
-
-    voteOnSystemMapping(mappingId, "up", { actor: reviewerName })
-  }
+  const canModerate = canModerateReviews(profile)
 
   useEffect(() => {
     if (!selectedRow) return
+    setSubmissionFeedback(null)
+    ensureSystemMappingReviewRecord({
+      mapping_id: selectedRow.mappingId,
+      specialty: selectedRow.specialty,
+      subspecialty: selectedRow.subspecialty,
+      anatomy: selectedRow.anatomy,
+      subanatomy_group: selectedRow.subanatomyGroup,
+      procedure_id: selectedRow.procedureId,
+      procedure_name: selectedRow.procedure,
+      variant_id: selectedRow.variantId,
+      variant_name: selectedRow.variant,
+      system_id: selectedRow.systemId,
+      system_name: selectedRow.system,
+      supplier_name: selectedRow.supplier,
+      fixation_label: ((selectedRow.fixationClass || "unknown").replaceAll(" ", "_")) as FixationLabel,
+      review_notes: selectedRow.reviewNotes,
+    })
+
+    const systemsValidation = getSectionValidationHistory(selectedRow.mappingId, "systems").slice().reverse()[0]
+    const traysValidation = getSectionValidationHistory(selectedRow.mappingId, "trays").slice().reverse()[0]
+    const skusValidation = getSectionValidationHistory(selectedRow.mappingId, "skus").slice().reverse()[0]
+    const acceptedSystems = getAcceptedSectionData(selectedRow.mappingId, "systems")
+    const acceptedTrays = getAcceptedSectionData(selectedRow.mappingId, "trays")
+    const acceptedSkus = getAcceptedSectionData(selectedRow.mappingId, "skus")
+    const systemsMap = acceptedDataToTextMap(acceptedSystems.items)
+    const traysMap = acceptedDataToTextMap(acceptedTrays.items)
+    const skusMap = acceptedDataToTextMap(acceptedSkus.items)
+
     setOpenSections({
       systems: true,
       trays: false,
@@ -451,18 +530,13 @@ export default function ReviewPage() {
     })
     setSectionReviews({
       systems: {
-        answer:
-          selectedRow.mappingStatus === "confirmed"
-            ? "correct"
-            : selectedRow.mappingStatus === "rejected"
-              ? "incorrect"
-              : "",
-        issue: "",
-        note: selectedRow.reviewNotes,
+        answer: systemsValidation?.vote ?? "",
+        issue: systemsValidation?.issue_type ?? "",
+        note: systemsValidation?.note ?? selectedRow.reviewNotes,
         improveMode: "",
-        procedureVariant: selectedRow.variant || "",
-        implantType: selectedRow.fixationClass !== "unknown" ? formatFixationLabel(selectedRow.fixationClass) : "",
-        sourceRationale: "",
+        procedureVariant: systemsMap["procedure variant"] ?? selectedRow.variant ?? "",
+        implantType: systemsMap["implant type"] ?? (selectedRow.fixationClass !== "unknown" ? formatFixationLabel(selectedRow.fixationClass) : ""),
+        sourceRationale: systemsMap["source / rationale"] ?? "",
         trayName: "",
         trayCategory: "",
         traySupplier: selectedRow.supplier,
@@ -471,24 +545,24 @@ export default function ReviewPage() {
         skuCategory: "",
       },
       trays: {
-        answer: "",
-        issue: "",
-        note: "",
+        answer: traysValidation?.vote ?? "",
+        issue: traysValidation?.issue_type ?? "",
+        note: traysValidation?.note ?? "",
         improveMode: "",
         procedureVariant: "",
         implantType: "",
         sourceRationale: "",
-        trayName: "",
-        trayCategory: "",
-        traySupplier: selectedRow.supplier,
+        trayName: traysMap["tray name"] ?? "",
+        trayCategory: traysMap["tray type / category"] ?? "",
+        traySupplier: traysMap["supplier"] ?? selectedRow.supplier,
         skuCode: "",
         productName: "",
         skuCategory: "",
       },
       skus: {
-        answer: "",
-        issue: "",
-        note: "",
+        answer: skusValidation?.vote ?? "",
+        issue: skusValidation?.issue_type ?? "",
+        note: skusValidation?.note ?? "",
         improveMode: "",
         procedureVariant: "",
         implantType: "",
@@ -496,9 +570,9 @@ export default function ReviewPage() {
         trayName: "",
         trayCategory: "",
         traySupplier: selectedRow.supplier,
-        skuCode: "",
-        productName: "",
-        skuCategory: "",
+        skuCode: skusMap["sku / product code"] ?? "",
+        productName: skusMap["product name"] ?? "",
+        skuCategory: skusMap["category"] ?? "",
       },
     })
   }, [selectedRow])
@@ -534,77 +608,101 @@ export default function ReviewPage() {
     if (!selectedRow) return
     const current = sectionReviews[section]
 
+    if (!current.answer) {
+      if (typeof window !== "undefined") window.alert("Choose an answer before saving.")
+      return
+    }
+
     if (current.answer === "incorrect" && !current.issue) {
       if (typeof window !== "undefined") window.alert("Choose what is wrong before saving.")
       return
     }
 
-    const issueLabel = INCORRECT_REASON_OPTIONS.find((option) => option.value === current.issue)?.label ?? "Other"
+    submitSectionValidation({
+      mapping_id: selectedRow.mappingId,
+      section,
+      vote: current.answer,
+      issue_type: current.answer === "incorrect" ? current.issue || undefined : undefined,
+      note: current.note.trim(),
+      actor: reviewerName,
+    })
 
     if (section === "systems" && current.answer === "correct") {
       voteOnSystemMapping(selectedRow.mappingId, "up", {
         actor: reviewerName,
         reason: "Systems section marked correct",
       })
-      reviewSystemMapping(selectedRow.mappingId, {
-        mapping_status: "confirmed",
-        review_notes: current.note.trim(),
-        approved_by_admin: canModerate ? true : undefined,
+      setSubmissionFeedback({
+        tone: "ok",
+        title: "Review saved",
+        detail: "This section is now recorded as reviewed.",
       })
-      return
     }
 
     if (current.answer === "incorrect") {
       voteOnSystemMapping(selectedRow.mappingId, "down", {
         actor: reviewerName,
-        reason: `${section}: ${issueLabel}`,
+        reason: `${section}: ${current.issue || "other"}`,
       })
 
       if (current.improveMode === "suggest_correction") {
-        const summary =
-          section === "systems"
-            ? `Proposed correction for Systems: variant ${current.procedureVariant || "n/a"}, implant type ${current.implantType || "n/a"}${current.sourceRationale ? `. ${current.sourceRationale}` : ""}${current.note.trim() ? `. ${current.note.trim()}` : ""}`
-            : section === "trays"
-              ? `Proposed correction for Trays: ${current.trayName || "n/a"}${current.trayCategory ? `, ${current.trayCategory}` : ""}${current.traySupplier ? `, ${current.traySupplier}` : ""}${current.note.trim() ? `. ${current.note.trim()}` : ""}`
-              : `Proposed correction for SKUs: ${current.skuCode || "n/a"}${current.productName ? `, ${current.productName}` : ""}${current.skuCategory ? `, ${current.skuCategory}` : ""}${current.note.trim() ? `. ${current.note.trim()}` : ""}`
-        addSystemMappingRevision(selectedRow.mappingId, summary, "suggestion")
+        submitSectionProposal({
+          mapping_id: selectedRow.mappingId,
+          section,
+          action_type: "suggest_correction",
+          issue_type: current.issue || undefined,
+          proposed_value: buildProposalValue(section, current),
+          note: current.note.trim(),
+          actor: reviewerName,
+        })
+        setSubmissionFeedback({
+          tone: "ok",
+          title: "Suggestion submitted",
+          detail: "Pending moderation before accepted data is updated.",
+        })
       } else if (current.improveMode === "add_missing") {
-        const summary =
-          section === "systems"
-            ? `Proposed addition for Systems: variant ${current.procedureVariant || "n/a"}, implant type ${current.implantType || "n/a"}${current.sourceRationale ? `. ${current.sourceRationale}` : ""}${current.note.trim() ? `. ${current.note.trim()}` : ""}`
-            : section === "trays"
-              ? `Proposed addition for Trays: ${current.trayName || "n/a"}${current.trayCategory ? `, ${current.trayCategory}` : ""}${current.traySupplier ? `, ${current.traySupplier}` : ""}${current.note.trim() ? `. ${current.note.trim()}` : ""}`
-              : `Proposed addition for SKUs: ${current.skuCode || "n/a"}${current.productName ? `, ${current.productName}` : ""}${current.skuCategory ? `, ${current.skuCategory}` : ""}${current.note.trim() ? `. ${current.note.trim()}` : ""}`
-        addSystemMappingRevision(selectedRow.mappingId, summary, "suggestion")
+        submitSectionProposal({
+          mapping_id: selectedRow.mappingId,
+          section,
+          action_type: "add_missing_data",
+          issue_type: current.issue || undefined,
+          proposed_value: buildProposalValue(section, current),
+          note: current.note.trim(),
+          actor: reviewerName,
+        })
+        setSubmissionFeedback({
+          tone: "ok",
+          title: "Suggestion submitted",
+          detail: "Pending moderation before accepted data is updated.",
+        })
       } else {
-        addSystemMappingRevision(
-          selectedRow.mappingId,
-          current.note.trim() ? `${section}: flagged as incorrect (${issueLabel}). ${current.note.trim()}` : `${section}: flagged as incorrect (${issueLabel})`,
-          "suggestion",
-        )
+        submitSectionProposal({
+          mapping_id: selectedRow.mappingId,
+          section,
+          action_type: "flag_only",
+          issue_type: current.issue || undefined,
+          note: current.note.trim(),
+          actor: reviewerName,
+        })
+        setSubmissionFeedback({
+          tone: "warn",
+          title: "Flag submitted for review",
+          detail: "This section now appears in the moderation queue.",
+        })
       }
+      return
     }
 
-    if (section !== "systems" && current.answer === "correct") {
-      addSystemMappingRevision(
-        selectedRow.mappingId,
-        `${section}: marked correct`,
-        "suggestion",
-      )
-    }
-
-    if (section === "systems") {
-      reviewSystemMapping(selectedRow.mappingId, {
-        mapping_status: current.answer === "correct" ? "confirmed" : "review_required",
-        review_notes: current.note.trim(),
-        approved_by_admin: canModerate && current.answer === "correct" ? true : undefined,
-      })
-    }
+    setSubmissionFeedback({
+      tone: "ok",
+      title: "Review saved",
+      detail: "This section is now recorded as reviewed.",
+    })
   }
 
   const filteredRows = useMemo(() => {
     return rows.filter((row) => {
-      if (statusFilter !== "all" && row.mappingStatus !== statusFilter) return false
+      if (statusFilter !== "all" && getQueueStatus(row) !== statusFilter) return false
       if (!query.trim()) return true
       const text = `${row.subspecialty} ${row.anatomy} ${row.procedure} ${row.variant} ${row.system} ${row.supplier}`.toLowerCase()
       return text.includes(query.trim().toLowerCase())
@@ -614,9 +712,10 @@ export default function ReviewPage() {
   const summary = useMemo(() => {
     const counts = {
       total: rows.length,
-      confirmed: rows.filter((row) => row.mappingStatus === "confirmed").length,
-      review: rows.filter((row) => row.mappingStatus === "review_required").length,
-      rejected: rows.filter((row) => row.mappingStatus === "rejected").length,
+      validated: rows.filter((row) => getQueueStatus(row) === "validated").length,
+      awaiting: rows.filter((row) => getQueueStatus(row) === "awaiting").length,
+      rejected: rows.filter((row) => getQueueStatus(row) === "rejected").length,
+      needsReview: rows.filter((row) => getQueueStatus(row) === "needs_review").length,
     }
     return counts
   }, [rows])
@@ -626,6 +725,22 @@ export default function ReviewPage() {
       return { reviewHistory: [], revisionHistory: [] }
     }
     return getSystemMappingHistory(selectedRow.mappingId)
+  }, [selectedRow, rows])
+
+  const selectedSectionData = useMemo(() => {
+    if (!selectedRow) {
+      return {
+        systems: { items: [], empty_state: "" },
+        trays: { items: [], empty_state: "" },
+        skus: { items: [], empty_state: "" },
+      }
+    }
+
+    return {
+      systems: getAcceptedSectionData(selectedRow.mappingId, "systems"),
+      trays: getAcceptedSectionData(selectedRow.mappingId, "trays"),
+      skus: getAcceptedSectionData(selectedRow.mappingId, "skus"),
+    }
   }, [selectedRow, rows])
 
   const validationSummary = useMemo(() => {
@@ -665,207 +780,184 @@ export default function ReviewPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#F4F8FB] text-[#10243E]">
-      <div className="mx-auto max-w-7xl px-4 pb-5 pt-[calc(env(safe-area-inset-top)+1.5rem)] lg:px-8 lg:pb-8 lg:pt-8">
-        <div className="flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <Link href="/" className="flex h-10 w-10 items-center justify-center rounded-[16px] border border-[#D8E3EE] bg-white">
-              <ArrowLeft size={18} />
-            </Link>
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0891B2]">Data Review</p>
-              <h1 className="text-[28px] font-semibold tracking-[-0.04em]">Systems Review</h1>
-            </div>
-          </div>
-          <Link href="/admin" className="rounded-full bg-[#06B6D4] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-white">
-            Suppliers
+    <div className="min-h-screen bg-[#F4F8FB] text-[#10243E]">
+      <header className="border-b border-white/10 bg-[#08131F]">
+        <div className="mx-auto flex max-w-7xl items-start gap-3 px-4 pb-4 pt-[calc(env(safe-area-inset-top,0px)+12px)] lg:px-8 lg:pb-6 lg:pt-6">
+          <Link
+            href="/"
+            className="app-header-muted mt-0.5 shrink-0 rounded-lg p-2 transition-colors hover:opacity-80 lg:flex lg:h-14 lg:w-14 lg:items-center lg:justify-center lg:rounded-[20px] lg:border lg:border-white/10 lg:bg-white/6 lg:hover:bg-white/10"
+            aria-label="Back"
+          >
+            <ArrowLeft size={18} />
           </Link>
-        </div>
 
-        <div className="mt-4 grid grid-cols-2 gap-2 md:grid-cols-4">
+          <div className="min-w-0 flex-1">
+            <h1 className="app-header-text text-[18px] font-medium leading-snug lg:text-[40px] lg:font-semibold lg:tracking-[-0.05em]">
+              Validate system records
+            </h1>
+            <p className="mt-1 text-sm text-white/72 lg:text-[15px]">
+              Help confirm supplier system data for theatre use
+            </p>
+          </div>
+
+          <div className="flex shrink-0 items-center gap-2">
+            <Link
+              href="/admin"
+              className="rounded-full bg-white/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-white/16"
+              aria-label="Suppliers"
+            >
+              Suppliers
+            </Link>
+          </div>
+        </div>
+      </header>
+
+      <main className="mx-auto max-w-7xl px-4 pb-5 pt-5 text-[#10243E] lg:px-8 lg:pb-8 lg:pt-8">
+        <div className="flex gap-2 overflow-x-auto pb-1">
           {[
-            {
-              value: "all" as const,
-              label: "Total",
-              count: summary.total,
-              icon: ScanSearch,
-              activeClass: "border-[#10243E] bg-[#10243E] text-white",
-              idleClass: "border-[#D8E3EE] bg-white text-[#475569]",
-              labelClass: statusFilter === "all" ? "text-white/80" : "text-[#64748B]",
-            },
-            {
-              value: "confirmed" as const,
-              label: "Confirmed",
-              count: summary.confirmed,
-              icon: ThumbsUp,
-              activeClass: "border-emerald-600 bg-emerald-600 text-white",
-              idleClass: "border-emerald-200 bg-emerald-50 text-emerald-800",
-              labelClass: "",
-            },
-            {
-              value: "review_required" as const,
-              label: "Review",
-              count: summary.review,
-              icon: CircleAlert,
-              activeClass: "border-amber-500 bg-amber-500 text-white",
-              idleClass: "border-amber-200 bg-amber-50 text-amber-800",
-              labelClass: "",
-            },
-            {
-              value: "rejected" as const,
-              label: "Rejected",
-              count: summary.rejected,
-              icon: ThumbsDown,
-              activeClass: "border-rose-600 bg-rose-600 text-white",
-              idleClass: "border-rose-200 bg-rose-50 text-rose-800",
-              labelClass: "",
-            },
+            { value: "all" as const, label: "Total", count: summary.total, activeClass: "border-[#10243E] bg-[#10243E] text-white", idleClass: "border-[#D8E3EE] bg-white text-[#334155]" },
+            { value: "validated" as const, label: "Validated", count: summary.validated, activeClass: "border-emerald-600 bg-emerald-600 text-white", idleClass: "border-emerald-200 bg-emerald-50 text-emerald-800" },
+            { value: "awaiting" as const, label: "Awaiting validation", count: summary.awaiting, activeClass: "border-amber-500 bg-amber-500 text-white", idleClass: "border-amber-200 bg-amber-50 text-amber-800" },
+            { value: "rejected" as const, label: "Rejected", count: summary.rejected, activeClass: "border-rose-600 bg-rose-600 text-white", idleClass: "border-rose-200 bg-rose-50 text-rose-800" },
           ].map((item) => (
             <button
               key={item.value}
               type="button"
               onClick={() => setStatusFilter(item.value)}
-              className={`flex items-center justify-between rounded-[16px] border px-3 py-2.5 text-[13px] transition-colors ${
-                statusFilter === item.value ? item.activeClass : item.idleClass
-              }`}
+              className={`min-w-fit shrink-0 rounded-[18px] border px-4 py-2.5 text-left transition-colors ${statusFilter === item.value ? item.activeClass : item.idleClass}`}
             >
-              <span className={`flex items-center gap-1.5 uppercase tracking-[0.12em] ${item.labelClass}`}>
-                <item.icon size={14} />
-                {item.label}
-              </span>
-              <span className="text-[14px] font-semibold">{item.count}</span>
+              <div className="flex items-center gap-3">
+                <p className="text-[12px] font-semibold">{item.label}</p>
+                <p className="text-[22px] font-semibold tracking-[-0.03em]">{item.count}</p>
+              </div>
             </button>
           ))}
         </div>
 
-        <div className="mt-5 flex flex-wrap gap-2">
-          {TABS.map((tab) => {
-            const Icon = tab.icon
-            return (
-              <button
-                key={tab.id}
-                type="button"
-                onClick={() => setActiveTab(tab.id)}
-                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] font-semibold uppercase tracking-[0.12em] ${
-                  activeTab === tab.id ? "bg-[#06B6D4] text-white" : "border border-[#D8E3EE] bg-white text-[#475569]"
-                }`}
-              >
-                <Icon size={13} />
-                {tab.label}
-              </button>
-            )
-          })}
+        <div className="mt-3 rounded-[20px] border border-amber-200 bg-amber-50 px-4 py-3 text-[#7C2D12]">
+          <p className="text-[12px] font-semibold uppercase tracking-[0.14em]">Internal note</p>
+          <p className="mt-1 text-[14px] leading-6">
+            Fixed data assets such as systems, trays, SKUs, and core mappings should move toward researched and curated master data rather than crowdsourced validation. Keep this page for now, but plan to revise or revert this workflow later.
+          </p>
         </div>
 
-        <div className="mt-3 flex flex-wrap items-center gap-2 text-[12px]">
-          <span className="rounded-full border border-[#D8E3EE] bg-white px-3 py-1.5 text-[#334155]">
-            Reviewer <span className="font-semibold">{reviewerName}</span>
-          </span>
-          <span
-            className={`rounded-full px-3 py-1.5 font-semibold uppercase tracking-[0.08em] ${
-              reviewerStatus === "banned"
-                ? "bg-rose-100 text-rose-700"
-                : reviewerStatus === "restricted"
-                  ? "bg-amber-100 text-amber-700"
-                  : "bg-emerald-100 text-emerald-700"
-            }`}
-          >
-            {reviewerStatus}
-          </span>
-          {canModerate ? (
-            <select
-              value={reviewerStatus}
-              onChange={(event) => {
-                const nextStatus = event.target.value as ReviewerStatus
-                setReviewerStatus(reviewerName, nextStatus)
-                setLocalReviewerStatus(nextStatus)
-              }}
-              className="rounded-full border border-[#D8E3EE] bg-white px-3 py-1.5 text-[12px] font-semibold uppercase tracking-[0.08em] text-[#334155]"
-            >
-              <option value="active">Active</option>
-              <option value="restricted">Restricted</option>
-              <option value="banned">Banned</option>
-            </select>
-          ) : null}
+        <div className="mt-4">
+          <div>
+            <h2 className="text-[24px] font-semibold tracking-[-0.04em] text-[#10243E]">Records awaiting validation</h2>
+            <p className="mt-1 text-[14px] text-[#64748B]">Select a system to confirm or flag its linked data</p>
+          </div>
+
+          <div className="mt-3 rounded-[22px] border border-[#D8E3EE] bg-white p-3">
+            <div className="flex flex-col gap-2">
+              <label className="relative w-full">
+                <Search size={16} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#64748B]" />
+                <input
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Search system, supplier, procedure…"
+                  className="w-full rounded-[16px] border border-[#D8E3EE] bg-[#F8FBFD] py-3 pl-10 pr-4 text-sm outline-none"
+                />
+              </label>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { value: "awaiting" as const, label: "Awaiting validation" },
+                  { value: "validated" as const, label: "Validated" },
+                  { value: "needs_review" as const, label: "Needs review" },
+                  { value: "rejected" as const, label: "Rejected" },
+                ].map((item) => (
+                  <button
+                    key={item.value}
+                    type="button"
+                    onClick={() => setStatusFilter(item.value)}
+                    className={`rounded-full px-3 py-2 text-[12px] font-semibold ${
+                      statusFilter === item.value ? "bg-[#10243E] text-white" : "border border-[#D8E3EE] bg-white text-[#475569]"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-3 space-y-3">
+              {filteredRows.map((row) => {
+                const queueStatus = getQueueStatus(row)
+                const reviewLine = getReviewSummaryLine(row, queueStatus)
+                const ctaLabel =
+                  queueStatus === "awaiting"
+                    ? "Validate record"
+                    : queueStatus === "validated"
+                      ? "View record"
+                      : "Review record"
+
+                return (
+                  <button
+                    key={row.mappingId}
+                    type="button"
+                    onClick={() => setSelectedRow(row)}
+                    className={`w-full rounded-[22px] border px-4 py-3.5 text-left transition-colors ${queueCardClass(queueStatus)}`}
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <p className="text-[18px] font-semibold tracking-[-0.03em] text-[#10243E]">{row.system}</p>
+                        <p className="mt-0.5 text-[15px] text-[#64748B]">{row.supplier}</p>
+                      </div>
+                      <span className={`shrink-0 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] ${queueStatusPillClass(queueStatus)}`}>
+                        {queueStatusLabel(queueStatus)}
+                      </span>
+                    </div>
+
+                    <div className="mt-3 space-y-0.5 text-[14px] text-[#475569]">
+                      <p>{reviewLine}</p>
+                      <p>{getSupportLine(row)}</p>
+                    </div>
+
+                    <div className="mt-3 flex justify-end">
+                      <span
+                        className={`inline-flex rounded-full px-4 py-2 text-[12px] font-semibold ${
+                          queueStatus === "validated"
+                            ? "bg-[#DFF7F1] text-[#0F766E]"
+                            : queueStatus === "rejected"
+                              ? "bg-[#FFE4E6] text-[#BE123C]"
+                              : "bg-[#CCFBF1] text-[#0F766E]"
+                        }`}
+                      >
+                        {ctaLabel}
+                      </span>
+                    </div>
+                  </button>
+                )
+              })}
+
+              {filteredRows.length === 0 ? (
+                <div className="rounded-[20px] border border-dashed border-[#D8E3EE] bg-[#F8FBFD] px-4 py-8 text-center">
+                  <p className="text-[16px] font-medium text-[#10243E]">No records match this view</p>
+                  <p className="mt-1 text-[14px] text-[#64748B]">Try another status filter or search term.</p>
+                </div>
+              ) : null}
+            </div>
+          </div>
         </div>
-
-        {activeTab !== "systems" ? (
-          <div className="mt-5 rounded-[26px] border border-[#D8E3EE] bg-white px-5 py-6">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#0891B2]">{TABS.find((tab) => tab.id === activeTab)?.label}</p>
-            <p className="mt-3 text-[15px] text-[#475569]">This review area is reserved and wired for the next product-depth pass.</p>
-            <p className="mt-1 text-[14px] text-[#64748B]">Systems are live now. Trays, implants, SKUs, and cards will plug into this same workspace once their datasets are loaded.</p>
-          </div>
-        ) : (
-          <div className="mt-5 rounded-[26px] border border-[#D8E3EE] bg-white p-4 lg:p-5">
-            <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-              <input
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search procedure, variant, system, supplier"
-                className="w-full rounded-[16px] border border-[#D8E3EE] bg-[#F8FBFD] px-4 py-2.5 text-sm outline-none lg:max-w-md"
-              />
-            </div>
-
-            <div className="mt-4 space-y-2">
-              {filteredRows.map((row) => (
-                <button
-                  key={row.mappingId}
-                  type="button"
-                  onClick={() => setSelectedRow(row)}
-                  className={`relative w-full rounded-[20px] border px-4 py-3 text-left transition-colors ${rowContainerClass(row.mappingStatus, row.revisionCount, row.reviewCount)}`}
-                >
-                  <div className="flex justify-end">
-                    <span className="text-[13px] font-semibold uppercase tracking-[0.08em]">
-                      {row.confidencePercent}% confidence
-                    </span>
-                  </div>
-                  <div className="pb-6">
-                    <div className="mt-1 flex items-center gap-2">
-                      <p className="text-[18px] font-semibold tracking-[-0.03em]">{row.system}</p>
-                      <StatusPill status={row.mappingStatus} revisionCount={row.revisionCount} reviewCount={row.reviewCount} />
-                    </div>
-                    <div className={`mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] font-semibold uppercase tracking-[0.08em] ${rowMetaBarClass(row.mappingStatus, row.revisionCount, row.reviewCount)}`}>
-                      <span>Reviews {row.reviewCount}</span>
-                      <span>Revisions {row.revisionCount}</span>
-                      {row.hasProof ? <span>Proof</span> : null}
-                      {row.lastReviewedBy ? <span>{row.lastReviewedBy}</span> : null}
-                    </div>
-                  </div>
-                  <div className="absolute bottom-3 right-4 flex items-center gap-x-3 gap-y-1 text-[13px] font-semibold uppercase tracking-[0.08em]">
-                    <span className="inline-flex items-center gap-1">
-                      <ThumbsUp size={13} />
-                      {row.upvotes}
-                    </span>
-                    <span className="inline-flex items-center gap-1">
-                      <ThumbsDown size={13} />
-                      {row.downvotes}
-                    </span>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
+      </main>
 
       {selectedRow ? (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-[#F4F8FB] text-[#10243E]">
           <div className="mx-auto min-h-screen w-full max-w-4xl">
             <div className="sticky top-0 z-10 border-b border-[#D8E3EE] bg-white/95 backdrop-blur">
               <div className="flex items-start justify-between gap-3 px-4 pb-3 pt-[calc(env(safe-area-inset-top,0px)+12px)] lg:px-6 lg:pb-5 lg:pt-5">
-              <div>
-                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#0891B2]">Data Review</p>
-                <h2 className="mt-1 text-[26px] font-semibold tracking-[-0.04em] text-[#10243E]">{selectedRow.system}</h2>
-                <p className="mt-1 text-[15px] text-[#64748B]">{selectedRow.supplier}</p>
+                <div>
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[#0891B2]">Data Review</p>
+                  <h2 className="mt-1 text-[26px] font-semibold tracking-[-0.04em] text-[#10243E]">{selectedRow.system}</h2>
+                  <p className="mt-1 text-[15px] text-[#64748B]">{selectedRow.supplier}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSelectedRow(null)}
+                  className="rounded-full border border-[#D8E3EE] bg-white px-3 py-1.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#475569]"
+                >
+                  Close
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={() => setSelectedRow(null)}
-                className="rounded-full border border-[#D8E3EE] bg-white px-3 py-1.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#475569]"
-              >
-                Close
-              </button>
-            </div>
             </div>
 
             <div className="px-4 py-4 lg:px-6 lg:py-6">
@@ -884,7 +976,9 @@ export default function ReviewPage() {
                   )}
                   <p className="text-[22px] font-semibold tracking-[-0.03em] text-[#10243E]">{validationSummary.label}</p>
                 </div>
-                <StatusPill status={selectedRow.mappingStatus} revisionCount={selectedRow.revisionCount} reviewCount={selectedRow.reviewCount} />
+                <span className={`shrink-0 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] ${queueStatusPillClass(getQueueStatus(selectedRow))}`}>
+                  {queueStatusLabel(getQueueStatus(selectedRow))}
+                </span>
               </div>
               <div className="mt-2 flex flex-wrap items-center gap-2 text-[13px] text-[#64748B]">
                 <span>{validationSummary.reviewedCount} of 3 sections reviewed</span>
@@ -899,6 +993,19 @@ export default function ReviewPage() {
               </div>
             </div>
 
+            {submissionFeedback ? (
+              <div
+                className={`mt-3 rounded-[18px] border px-4 py-3 ${
+                  submissionFeedback.tone === "ok"
+                    ? "border-emerald-200 bg-emerald-50 text-emerald-900"
+                    : "border-amber-200 bg-amber-50 text-amber-900"
+                }`}
+              >
+                <p className="text-[14px] font-semibold">{submissionFeedback.title}</p>
+                <p className="mt-1 text-[13px]">{submissionFeedback.detail}</p>
+              </div>
+            ) : null}
+
             <ReviewSection
               title="Systems"
               subtitle="Linked system data"
@@ -909,24 +1016,11 @@ export default function ReviewPage() {
               <div className="rounded-[18px] border border-[#D8E3EE] bg-white px-4 py-3">
                 <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#0891B2]">Currently held</p>
                 <div className="mt-3 space-y-2 text-[15px] leading-6 text-[#475569]">
-                  <p>
-                    <span className="font-semibold text-[#10243E]">Supplier:</span> {selectedRow.supplier}
-                  </p>
-                  <p>
-                    <span className="font-semibold text-[#10243E]">Portfolio / item name:</span> {selectedRow.system}
-                  </p>
-                  <p>
-                    <span className="font-semibold text-[#10243E]">Procedure variant:</span> {selectedRow.variant || "Not specified"}
-                  </p>
-                  <p>
-                    <span className="font-semibold text-[#10243E]">Implant type:</span>{" "}
-                    {selectedRow.fixationClass !== "unknown" ? formatFixationLabel(selectedRow.fixationClass) : "Not specified"}
-                  </p>
-                  {selectedRow.reviewNotes ? (
-                    <p>
-                      <span className="font-semibold text-[#10243E]">Note / source context:</span> {selectedRow.reviewNotes}
+                  {selectedSectionData.systems.items.map((item) => (
+                    <p key={item.label}>
+                      <span className="font-semibold text-[#10243E]">{item.label}:</span> {item.value}
                     </p>
-                  ) : null}
+                  ))}
                 </div>
               </div>
 
@@ -1046,7 +1140,17 @@ export default function ReviewPage() {
             >
               <div className="rounded-[18px] border border-[#D8E3EE] bg-white px-4 py-3">
                 <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#0891B2]">Current linked data</p>
-                <p className="mt-3 text-[15px] leading-6 text-[#475569]">No tray data is linked to this record yet.</p>
+                {selectedSectionData.trays.items.length > 0 ? (
+                  <div className="mt-3 space-y-2 text-[15px] leading-6 text-[#475569]">
+                    {selectedSectionData.trays.items.map((item) => (
+                      <p key={item.label}>
+                        <span className="font-semibold text-[#10243E]">{item.label}:</span> {item.value}
+                      </p>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="mt-3 text-[15px] leading-6 text-[#475569]">{selectedSectionData.trays.empty_state || "No linked tray data currently held"}</p>
+                )}
               </div>
 
               <div className="mt-4 space-y-4">
@@ -1157,7 +1261,17 @@ export default function ReviewPage() {
             >
               <div className="rounded-[18px] border border-[#D8E3EE] bg-white px-4 py-3">
                 <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#0891B2]">Current linked data</p>
-                <p className="mt-3 text-[15px] leading-6 text-[#475569]">No SKU data is linked to this record yet.</p>
+                {selectedSectionData.skus.items.length > 0 ? (
+                  <div className="mt-3 space-y-2 text-[15px] leading-6 text-[#475569]">
+                    {selectedSectionData.skus.items.map((item) => (
+                      <p key={item.label}>
+                        <span className="font-semibold text-[#10243E]">{item.label}:</span> {item.value}
+                      </p>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="mt-3 text-[15px] leading-6 text-[#475569]">{selectedSectionData.skus.empty_state || "No linked SKU data currently held"}</p>
+                )}
               </div>
 
               <div className="mt-4 space-y-4">
@@ -1328,10 +1442,10 @@ export default function ReviewPage() {
                 )}
               </div>
             </ReviewSection>
-            </div>
           </div>
         </div>
+        </div>
       ) : null}
-    </main>
+    </div>
   )
 }

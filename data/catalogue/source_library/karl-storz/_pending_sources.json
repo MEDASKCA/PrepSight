@@ -1,0 +1,41 @@
+[
+  {
+    "system_id": "SYS_RIGID_URS",
+    "system_name": "Rigid Ureteroscope",
+    "system_category": "visualisation",
+    "mapping_count": 63,
+    "source_folder": "data\\catalogue\\source_library\\karl-storz\\rigid-ureteroscope__SYS_RIGID_URS",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HOPKINS_ENDOSCOPY",
+    "system_name": "Hopkins Endoscopy Platform",
+    "system_category": "Endoscopy Platform",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\karl-storz\\hopkins-endoscopy-platform__SYS_HOPKINS_ENDOSCOPY",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STORZ_LAPAROSCOPY",
+    "system_name": "Karl Storz Laparoscopy Platform",
+    "system_category": "Laparoscopic Platform",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\karl-storz\\karl-storz-laparoscopy-platform__SYS_STORZ_LAPAROSCOPY",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

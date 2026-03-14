@@ -1,0 +1,678 @@
+[
+  {
+    "system_id": "SYS_FIBERTAK",
+    "system_name": "FiberTak Anchor System",
+    "system_category": "Soft Tissue Fixation System",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\fibertak-anchor-system__SYS_FIBERTAK",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SWIVELOCK",
+    "system_name": "SwiveLock Anchor",
+    "system_category": "Suture Anchor \u2014 Knotless",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\swivelock-anchor__SYS_SWIVELOCK",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TIGHT_ROPE_ACL",
+    "system_name": "TightRope ACL / AC System",
+    "system_category": "ACL & AC Fixation \u2014 Suspensory",
+    "mapping_count": 4,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\tightrope-acl-ac-system__SYS_TIGHT_ROPE_ACL",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ANKLE_ARTHROSCOPY_PORTFOLIO",
+    "system_name": "Ankle Arthroscopy Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\ankle-arthroscopy-portfolio__SYS_ANKLE_ARTHROSCOPY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MENISCAL_CINCH",
+    "system_name": "Meniscal Cinch Repair",
+    "system_category": "Meniscal Repair \u2014 All-Inside",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\meniscal-cinch-repair__SYS_MENISCAL_CINCH",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_4K_ARTHROSCOPY___SCOPE_SYSTEM",
+    "system_name": "4K Arthroscopy / Scope System",
+    "system_category": "sports_medicine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\4k-arthroscopy-scope-system__SYS_4K_ARTHROSCOPY___SCOPE_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_AC_TIGHTROPE___AC_JOINT_RECONSTRUCTION",
+    "system_name": "AC TightRope / AC Joint Reconstruction",
+    "system_category": "shoulder_sports",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\ac-tightrope-ac-joint-reconstruction__SYS_AC_TIGHTROPE___AC_JOINT_RECONSTRUCTION",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACL_TIGHTROPE___GRAFTLINK___FIBERTAG_SYSTEM",
+    "system_name": "ACL TightRope / GraftLink / FiberTag System",
+    "system_category": "sports_medicine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\acl-tightrope-graftlink-fibertag-system__SYS_ACL_TIGHTROPE___GRAFTLINK___FIBERTAG_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACHILLES_MIDSUBSTANCE_SPEEDBRIDGE",
+    "system_name": "Achilles Midsubstance SpeedBridge",
+    "system_category": "foot_ankle",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\achilles-midsubstance-speedbridge__SYS_ACHILLES_MIDSUBSTANCE_SPEEDBRIDGE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHROSCOPIC_BURR___RESECTION_PORTFOLIO",
+    "system_name": "Arthroscopic Burr / Resection Portfolio",
+    "system_category": "shoulder_sports",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthroscopic-burr-resection-portfolio__SYS_ARTHROSCOPIC_BURR___RESECTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHROSCOPIC_RESECTION___MENISCECTOMY_PORTFOLIO",
+    "system_name": "Arthroscopic Resection / Meniscectomy Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthroscopic-resection-meniscectomy-portfolio__SYS_ARTHROSCOPIC_RESECTION___MENISCECTOMY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BIOCARTILAGE___CHONDRAL_REPAIR_PORTFOLIO",
+    "system_name": "BioCartilage / Chondral Repair Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\biocartilage-chondral-repair-portfolio__SYS_BIOCARTILAGE___CHONDRAL_REPAIR_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ECLIPSE_STEMLESS",
+    "system_name": "Eclipse Stemless Shoulder",
+    "system_category": "Shoulder Replacement \u2014 Stemless",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\eclipse-stemless-shoulder__SYS_ECLIPSE_STEMLESS",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ELBOW_ARTHROSCOPY___RELEASE_PORTFOLIO",
+    "system_name": "Elbow Arthroscopy / Release Portfolio",
+    "system_category": "elbow",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\elbow-arthroscopy-release-portfolio__SYS_ELBOW_ARTHROSCOPY___RELEASE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_FIBERSTITCH___MENISCAL_REPAIR_SYSTEM",
+    "system_name": "FiberStitch / Meniscal Repair System",
+    "system_category": "sports_medicine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\fiberstitch-meniscal-repair-system__SYS_FIBERSTITCH___MENISCAL_REPAIR_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_FLATFOOT_RECONSTRUCTION___TENDON_TRANSFER_PORTFOLIO",
+    "system_name": "Flatfoot Reconstruction / Tendon Transfer Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\flatfoot-reconstruction-tendon-transfer-portfolio__SYS_FLATFOOT_RECONSTRUCTION___TENDON_TRANSFER_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LABRAL_REPAIR___GLENOID_STABILISATION_PORTFOLIO",
+    "system_name": "Labral Repair / Glenoid Stabilisation Portfolio",
+    "system_category": "shoulder_sports",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\labral-repair-glenoid-stabilisation-portfolio__SYS_LABRAL_REPAIR___GLENOID_STABILISATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LATARJET_INSTRUMENTATION___FIXATION_PORTFOLIO",
+    "system_name": "Latarjet Instrumentation / Fixation Portfolio",
+    "system_category": "shoulder_sports",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\latarjet-instrumentation-fixation-portfolio__SYS_LATARJET_INSTRUMENTATION___FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MPFL___PATELLAR_STABILISATION_PORTFOLIO",
+    "system_name": "MPFL / Patellar Stabilisation Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\mpfl-patellar-stabilisation-portfolio__SYS_MPFL___PATELLAR_STABILISATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MULTILIGAMENT_KNEE_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Multiligament Knee Reconstruction Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\multiligament-knee-reconstruction-portfolio__SYS_MULTILIGAMENT_KNEE_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PCL_TIGHTROPE___BUTTON_FIXATION_PORTFOLIO",
+    "system_name": "PCL TightRope / Button Fixation Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\pcl-tightrope-button-fixation-portfolio__SYS_PCL_TIGHTROPE___BUTTON_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PATELLA_FRACTURE___FIBERTAPE_CERCLAGE_PORTFOLIO",
+    "system_name": "Patella Fracture / FiberTape Cerclage Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\patella-fracture-fibertape-cerclage-portfolio__SYS_PATELLA_FRACTURE___FIBERTAPE_CERCLAGE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SPEEDBRIDGE___SWIVELOCK___FIBERTAK",
+    "system_name": "SpeedBridge / SwiveLock / FiberTak",
+    "system_category": "shoulder_sports",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\speedbridge-swivelock-fibertak__SYS_SPEEDBRIDGE___SWIVELOCK___FIBERTAK",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_S_N_KNEE_SPORTS_MEDICINE_PORTFOLIO",
+    "system_name": "Arthrex / S+N Knee Sports Medicine Portfolio",
+    "system_category": "Sports medicine knee",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-s-n-knee-sports-medicine-portfolio__SYS_ARTHREX_S_N_KNEE_SPORTS_MEDICINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_CARTILAGE_REPAIR_PORTFOLIO",
+    "system_name": "Arthrex Cartilage Repair Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-cartilage-repair-portfolio__SYS_ARTHREX_CARTILAGE_REPAIR_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_CARTILAGE_RESTORATION_PORTFOLIO",
+    "system_name": "Arthrex Cartilage restoration Portfolio",
+    "system_category": "Cartilage restoration",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-cartilage-restoration-portfolio__SYS_ARTHREX_CARTILAGE_RESTORATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_ELBOW_ARTHROSCOPY_PORTFOLIO",
+    "system_name": "Arthrex Elbow Arthroscopy Portfolio",
+    "system_category": "Elbow sports medicine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-elbow-arthroscopy-portfolio__SYS_ARTHREX_ELBOW_ARTHROSCOPY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_ELBOW_PORTFOLIO",
+    "system_name": "Arthrex Elbow Portfolio",
+    "system_category": "Elbow soft tissue",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-elbow-portfolio__SYS_ARTHREX_ELBOW_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_ELBOW_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Arthrex Elbow reconstruction Portfolio",
+    "system_category": "Elbow reconstruction",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-elbow-reconstruction-portfolio__SYS_ARTHREX_ELBOW_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_ELBOW_SOFT_TISSUE_PORTFOLIO",
+    "system_name": "Arthrex Elbow soft tissue Portfolio",
+    "system_category": "Elbow soft tissue",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-elbow-soft-tissue-portfolio__SYS_ARTHREX_ELBOW_SOFT_TISSUE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_ELBOW_SPORTS_MEDICINE_PORTFOLIO",
+    "system_name": "Arthrex Elbow sports medicine Portfolio",
+    "system_category": "Elbow sports medicine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-elbow-sports-medicine-portfolio__SYS_ARTHREX_ELBOW_SPORTS_MEDICINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_FOOT_ANKLE_ARTHROSCOPY_PORTFOLIO",
+    "system_name": "Arthrex Foot & Ankle Arthroscopy Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-foot-ankle-arthroscopy-portfolio__SYS_ARTHREX_FOOT_ANKLE_ARTHROSCOPY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_FOOT_ANKLE_INSTRUMENTS_PORTFOLIO",
+    "system_name": "Arthrex Foot & Ankle Instruments Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-foot-ankle-instruments-portfolio__SYS_ARTHREX_FOOT_ANKLE_INSTRUMENTS_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_FOOT_ANKLE_PORTFOLIO",
+    "system_name": "Arthrex Foot & Ankle Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-foot-ankle-portfolio__SYS_ARTHREX_FOOT_ANKLE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_FOOT_ANKLE_SOFT_TISSUE_PORTFOLIO",
+    "system_name": "Arthrex Foot & Ankle Soft Tissue Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-foot-ankle-soft-tissue-portfolio__SYS_ARTHREX_FOOT_ANKLE_SOFT_TISSUE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_FOOT_ANKLE_TRAUMA_SOFT_TISSUE_PORTFOLIO",
+    "system_name": "Arthrex Foot & Ankle Trauma / Soft Tissue Portfolio",
+    "system_category": "Foot & ankle trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-foot-ankle-trauma-soft-tissue-portfolio__SYS_ARTHREX_FOOT_ANKLE_TRAUMA_SOFT_TISSUE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_FOOT_ANKLE_SURGERY_PORTFOLIO",
+    "system_name": "Arthrex Foot & ankle surgery Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-foot-ankle-surgery-portfolio__SYS_ARTHREX_FOOT_ANKLE_SURGERY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_FOOT_ANKLE_TRAUMA_FIXATION_PORTFOLIO",
+    "system_name": "Arthrex Foot & ankle trauma fixation Portfolio",
+    "system_category": "Foot & ankle trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-foot-ankle-trauma-fixation-portfolio__SYS_ARTHREX_FOOT_ANKLE_TRAUMA_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_FOOT_TRAUMA_FIXATION_PORTFOLIO",
+    "system_name": "Arthrex Foot trauma fixation Portfolio",
+    "system_category": "Foot trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-foot-trauma-fixation-portfolio__SYS_ARTHREX_FOOT_TRAUMA_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_FOREFOOT_INSTRUMENTS_PORTFOLIO",
+    "system_name": "Arthrex Forefoot Instruments Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-forefoot-instruments-portfolio__SYS_ARTHREX_FOREFOOT_INSTRUMENTS_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_FOREFOOT_SOFT_TISSUE_PORTFOLIO",
+    "system_name": "Arthrex Forefoot Soft Tissue Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-forefoot-soft-tissue-portfolio__SYS_ARTHREX_FOREFOOT_SOFT_TISSUE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_HIP_PRESERVATION_PORTFOLIO",
+    "system_name": "Arthrex Hip preservation Portfolio",
+    "system_category": "Hip preservation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-hip-preservation-portfolio__SYS_ARTHREX_HIP_PRESERVATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_KNEE_PRESERVATION_PORTFOLIO",
+    "system_name": "Arthrex Knee Preservation Portfolio",
+    "system_category": "Sports medicine knee",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-knee-preservation-portfolio__SYS_ARTHREX_KNEE_PRESERVATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_KNEE_SPORTS_MEDICINE_PORTFOLIO",
+    "system_name": "Arthrex Knee Sports Medicine Portfolio",
+    "system_category": "Sports medicine knee",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-knee-sports-medicine-portfolio__SYS_ARTHREX_KNEE_SPORTS_MEDICINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_PEDIATRIC_ORTHOPAEDICS_PORTFOLIO",
+    "system_name": "Arthrex Pediatric orthopaedics Portfolio",
+    "system_category": "Pediatric orthopaedics",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-pediatric-orthopaedics-portfolio__SYS_ARTHREX_PEDIATRIC_ORTHOPAEDICS_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_SHOULDER_ARTHROSCOPY_PORTFOLIO",
+    "system_name": "Arthrex Shoulder arthroscopy Portfolio",
+    "system_category": "Shoulder arthroscopy",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-shoulder-arthroscopy-portfolio__SYS_ARTHREX_SHOULDER_ARTHROSCOPY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_SHOULDER_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Arthrex Shoulder reconstruction Portfolio",
+    "system_category": "Shoulder reconstruction",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-shoulder-reconstruction-portfolio__SYS_ARTHREX_SHOULDER_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_SHOULDER_SOFT_TISSUE_PORTFOLIO",
+    "system_name": "Arthrex Shoulder soft tissue Portfolio",
+    "system_category": "Shoulder soft tissue",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-shoulder-soft-tissue-portfolio__SYS_ARTHREX_SHOULDER_SOFT_TISSUE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_SHOULDER_SPORTS_MEDICINE_PORTFOLIO",
+    "system_name": "Arthrex Shoulder sports medicine Portfolio",
+    "system_category": "Shoulder sports medicine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-shoulder-sports-medicine-portfolio__SYS_ARTHREX_SHOULDER_SPORTS_MEDICINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHREX_SPORTS_MEDICINE_KNEE_PORTFOLIO",
+    "system_name": "Arthrex Sports medicine knee Portfolio",
+    "system_category": "Sports medicine knee",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\arthrex-sports-medicine-knee-portfolio__SYS_ARTHREX_SPORTS_MEDICINE_KNEE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CLAVICLE_PLATE",
+    "system_name": "Clavicle Plate System",
+    "system_category": "orthopaedic_fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\clavicle-plate-system__SYS_CLAVICLE_PLATE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_FOOT_RECON",
+    "system_name": "Foot Reconstruction System",
+    "system_category": "orthopaedic_fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\arthrex\\foot-reconstruction-system__SYS_FOOT_RECON",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

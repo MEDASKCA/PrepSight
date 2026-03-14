@@ -1,0 +1,899 @@
+[
+  {
+    "system_id": "SYS_EXPEDIUM_SPINE",
+    "system_name": "Expedium Spine System",
+    "system_category": "Pedicle Screw-Rod \u2014 Spine",
+    "mapping_count": 9,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\expedium-spine-system__SYS_EXPEDIUM_SPINE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HEALIX_ADVANCE",
+    "system_name": "Healix Advance Anchor",
+    "system_category": "Suture Anchor",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\healix-advance-anchor__SYS_HEALIX_ADVANCE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CORAIL_PINNACLE",
+    "system_name": "Corail / Pinnacle",
+    "system_category": "Hip Arthroplasty System",
+    "mapping_count": 4,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\corail-pinnacle__SYS_CORAIL_PINNACLE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LCP_DISTAL_TIBIA",
+    "system_name": "LCP Distal Tibia Plate",
+    "system_category": "Locking Plate \u2014 Distal Tibia",
+    "mapping_count": 4,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\lcp-distal-tibia-plate__SYS_LCP_DISTAL_TIBIA",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACTIS_PINNACLE",
+    "system_name": "ACTIS / Pinnacle",
+    "system_category": "Hip Replacement \u2014 Cementless",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\actis-pinnacle__SYS_ACTIS_PINNACLE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EXPERT_FEMORAL_NAIL",
+    "system_name": "Expert Femoral Nail (EFN)",
+    "system_category": "Intramedullary Nail \u2014 Femoral Shaft",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\expert-femoral-nail-efn__SYS_EXPERT_FEMORAL_NAIL",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PFNA",
+    "system_name": "PFNA Nail System",
+    "system_category": "Intramedullary Nail System",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\pfna-nail-system__SYS_PFNA",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TFNA",
+    "system_name": "TFN-ADVANCED Nail System",
+    "system_category": "Cephalomedullary Nail \u2014 Proximal Femur",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\tfn-advanced-nail-system__SYS_TFNA",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CSTEM_PINNACLE",
+    "system_name": "C-stem AMT / Pinnacle",
+    "system_category": "Hip Replacement \u2014 Cemented",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\c-stem-amt-pinnacle__SYS_CSTEM_PINNACLE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DHS_SYSTEM",
+    "system_name": "DHS \u2014 Dynamic Hip Screw",
+    "system_category": "Dynamic Hip Screw",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\dhs-dynamic-hip-screw__SYS_DHS_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DELTA_XTEND",
+    "system_name": "Delta XTEND Reverse Shoulder",
+    "system_category": "Shoulder Replacement \u2014 Reverse TSA",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\delta-xtend-reverse-shoulder__SYS_DELTA_XTEND",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EXPERT_HUMERAL_NAIL",
+    "system_name": "Expert Humeral Nail (EHN)",
+    "system_category": "Intramedullary Nail \u2014 Humeral Shaft",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\expert-humeral-nail-ehn__SYS_EXPERT_HUMERAL_NAIL",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EXPERT_TIBIAL_NAIL",
+    "system_name": "Expert Tibial Nail (ETN)",
+    "system_category": "Intramedullary Nail \u2014 Tibial Shaft",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\expert-tibial-nail-etn__SYS_EXPERT_TIBIAL_NAIL",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBAL_ADVANTAGE",
+    "system_name": "Global Advantage / Delta XTEND",
+    "system_category": "Shoulder Replacement \u2014 Anatomic TSA",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\global-advantage-delta-xtend__SYS_GLOBAL_ADVANTAGE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LCP_CALCANEUM",
+    "system_name": "LCP Calcaneal Plate",
+    "system_category": "Locking Plate \u2014 Calcaneum",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\lcp-calcaneal-plate__SYS_LCP_CALCANEUM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LCP_CLAVICLE",
+    "system_name": "LCP Clavicle Plate",
+    "system_category": "Locking Plate \u2014 Clavicle",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\lcp-clavicle-plate__SYS_LCP_CLAVICLE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LCP_DISTAL_FEMUR",
+    "system_name": "LCP Distal Femoral Plate",
+    "system_category": "Locking Plate \u2014 Distal Femur",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\lcp-distal-femoral-plate__SYS_LCP_DISTAL_FEMUR",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LCP_DISTAL_HUMERUS",
+    "system_name": "LCP Distal Humerus Plate",
+    "system_category": "Locking Plate \u2014 Distal Humerus",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\lcp-distal-humerus-plate__SYS_LCP_DISTAL_HUMERUS",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LCP_DISTAL_RADIUS",
+    "system_name": "LCP Distal Radius Plate",
+    "system_category": "Volar Locking Plate \u2014 Distal Radius",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\lcp-distal-radius-plate__SYS_LCP_DISTAL_RADIUS",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LCP_FIBULA",
+    "system_name": "LCP Fibula / Distal Fibula",
+    "system_category": "Locking Plate \u2014 Fibula",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\lcp-fibula-distal-fibula__SYS_LCP_FIBULA",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LCP_HUMERAL_SHAFT",
+    "system_name": "LCP Humeral Shaft Plate",
+    "system_category": "Locking Plate \u2014 Humeral Shaft",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\lcp-humeral-shaft-plate__SYS_LCP_HUMERAL_SHAFT",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LCP_FOREARM",
+    "system_name": "LCP Radius / Ulna Plates",
+    "system_category": "Locking Plate \u2014 Forearm",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\lcp-radius-ulna-plates__SYS_LCP_FOREARM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LCP_TIBIAL_PLATEAU",
+    "system_name": "LCP Tibial Plateau Plate",
+    "system_category": "Locking Plate \u2014 Tibial Plateau",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\lcp-tibial-plateau-plate__SYS_LCP_TIBIAL_PLATEAU",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MULTILOC_NAIL",
+    "system_name": "MultiLoc Proximal Humeral Nail",
+    "system_category": "Intramedullary Nail \u2014 Proximal Humerus",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\multiloc-proximal-humeral-nail__SYS_MULTILOC_NAIL",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PHILOS_PLATE",
+    "system_name": "PHILOS Proximal Humeral Plate",
+    "system_category": "Locking Plate \u2014 Proximal Humerus",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\philos-proximal-humeral-plate__SYS_PHILOS_PLATE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PINNACLE_SECTOR",
+    "system_name": "Pinnacle / Sector Augments",
+    "system_category": "Hip Revision \u2014 Acetabular",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\pinnacle-sector-augments__SYS_PINNACLE_SECTOR",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BROAD___NARROW_LCP_HUMERAL_SHAFT_PORTFOLIO",
+    "system_name": "Broad / Narrow LCP Humeral Shaft Portfolio",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\broad-narrow-lcp-humeral-shaft-portfolio__SYS_BROAD___NARROW_LCP_HUMERAL_SHAFT_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CORAIL_BIPOLAR",
+    "system_name": "Corail / Bipolar Head",
+    "system_category": "Hip Hemiarthroplasty \u2014 Cementless",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\corail-bipolar-head__SYS_CORAIL_BIPOLAR",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DHS_PLATE_AND_SCREW_SYSTEM",
+    "system_name": "DHS Plate and Screw System",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\dhs-plate-and-screw-system__SYS_DHS_PLATE_AND_SCREW_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EXPERT_TIBIAL_NAIL_SYSTEM",
+    "system_name": "Expert Tibial Nail System",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\expert-tibial-nail-system__SYS_EXPERT_TIBIAL_NAIL_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_FEMORAL_EXPERT_NAIL___RFN_ADVANCED",
+    "system_name": "Femoral Expert Nail / RFN-Advanced",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\femoral-expert-nail-rfn-advanced__SYS_FEMORAL_EXPERT_NAIL___RFN_ADVANCED",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLOBAL_FX",
+    "system_name": "Global FX Fracture System",
+    "system_category": "Shoulder Hemiarthroplasty \u2014 Fracture",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\global-fx-fracture-system__SYS_GLOBAL_FX",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LC_DCP___LCP_FOREARM_PORTFOLIO",
+    "system_name": "LC-DCP / LCP Forearm Portfolio",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\lc-dcp-lcp-forearm-portfolio__SYS_LC_DCP___LCP_FOREARM_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LCP_CLAVICLE_PLATE_SYSTEM",
+    "system_name": "LCP Clavicle Plate System",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\lcp-clavicle-plate-system__SYS_LCP_CLAVICLE_PLATE_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_OPEN_FRACTURE_STABILISATION_PORTFOLIO",
+    "system_name": "Open Fracture Stabilisation Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\open-fracture-stabilisation-portfolio__SYS_OPEN_FRACTURE_STABILISATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PAEDIATRIC_OSTEOTOMY_PORTFOLIO",
+    "system_name": "Paediatric Osteotomy Portfolio",
+    "system_category": "paediatric_orthopaedics",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\paediatric-osteotomy-portfolio__SYS_PAEDIATRIC_OSTEOTOMY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PAEDIATRIC_TIBIAL_OSTEOTOMY_PORTFOLIO",
+    "system_name": "Paediatric Tibial Osteotomy Portfolio",
+    "system_category": "paediatric_orthopaedics",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\paediatric-tibial-osteotomy-portfolio__SYS_PAEDIATRIC_TIBIAL_OSTEOTOMY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PATELLA_PLATING___CERCLAGE_PORTFOLIO",
+    "system_name": "Patella Plating / Cerclage Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\patella-plating-cerclage-portfolio__SYS_PATELLA_PLATING___CERCLAGE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PELVIC___ACETABULAR_PLATING_SYSTEM",
+    "system_name": "Pelvic / Acetabular Plating System",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\pelvic-acetabular-plating-system__SYS_PELVIC___ACETABULAR_PLATING_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PELVIC_SYSTEM___3_5_RECONSTRUCTION",
+    "system_name": "Pelvic System / 3.5 Reconstruction",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\pelvic-system-3-5-reconstruction__SYS_PELVIC_SYSTEM___3_5_RECONSTRUCTION",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_RIGIDFIX",
+    "system_name": "RigidFix Cross-Pin System",
+    "system_category": "ACL Fixation \u2014 Cross-Pin",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\rigidfix-cross-pin-system__SYS_RIGIDFIX",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TC3_REVISION_KNEE",
+    "system_name": "TC3 Revision Knee System",
+    "system_category": "Knee Revision \u2014 Constrained/Modular",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\tc3-revision-knee-system__SYS_TC3_REVISION_KNEE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TFNA_LONG_NAIL_SYSTEM",
+    "system_name": "TFNA Long Nail System",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\tfna-long-nail-system__SYS_TFNA_LONG_NAIL_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TFNA_PROXIMAL_FEMORAL_NAILING_SYSTEM",
+    "system_name": "TFNA Proximal Femoral Nailing System",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\tfna-proximal-femoral-nailing-system__SYS_TFNA_PROXIMAL_FEMORAL_NAILING_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_VA_LCP_CONDYLAR___DISTAL_FEMUR_PLATE",
+    "system_name": "VA-LCP Condylar / Distal Femur Plate",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\va-lcp-condylar-distal-femur-plate__SYS_VA_LCP_CONDYLAR___DISTAL_FEMUR_PLATE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_VA_LCP_DISTAL_TIBIA_PLATE",
+    "system_name": "VA-LCP Distal Tibia Plate",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\va-lcp-distal-tibia-plate__SYS_VA_LCP_DISTAL_TIBIA_PLATE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_VA_LCP_PROXIMAL_TIBIA_PLATING",
+    "system_name": "VA-LCP Proximal Tibia Plating",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\va-lcp-proximal-tibia-plating__SYS_VA_LCP_PROXIMAL_TIBIA_PLATING",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DEPUY_SYNTHES_ELBOW_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "DePuy Synthes Elbow arthroplasty Portfolio",
+    "system_category": "Elbow arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\depuy-synthes-elbow-arthroplasty-portfolio__SYS_DEPUY_SYNTHES_ELBOW_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DEPUY_SYNTHES_FEMORAL_NAILING_PORTFOLIO",
+    "system_name": "DePuy Synthes Femoral Nailing Portfolio",
+    "system_category": "Trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\depuy-synthes-femoral-nailing-portfolio__SYS_DEPUY_SYNTHES_FEMORAL_NAILING_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DEPUY_SYNTHES_HIP_FRACTURE_FIXATION_PORTFOLIO",
+    "system_name": "DePuy Synthes Hip Fracture Fixation Portfolio",
+    "system_category": "Trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\depuy-synthes-hip-fracture-fixation-portfolio__SYS_DEPUY_SYNTHES_HIP_FRACTURE_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DEPUY_SYNTHES_HIP_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "DePuy Synthes Hip arthroplasty Portfolio",
+    "system_category": "Hip arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\depuy-synthes-hip-arthroplasty-portfolio__SYS_DEPUY_SYNTHES_HIP_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DEPUY_SYNTHES_HIP_PRESERVATION_PORTFOLIO",
+    "system_name": "DePuy Synthes Hip preservation Portfolio",
+    "system_category": "Hip preservation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\depuy-synthes-hip-preservation-portfolio__SYS_DEPUY_SYNTHES_HIP_PRESERVATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DEPUY_SYNTHES_HIP_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "DePuy Synthes Hip revision arthroplasty Portfolio",
+    "system_category": "Hip revision arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\depuy-synthes-hip-revision-arthroplasty-portfolio__SYS_DEPUY_SYNTHES_HIP_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DEPUY_SYNTHES_KNEE_PATELLA_TRAUMA_PORTFOLIO",
+    "system_name": "DePuy Synthes Knee / Patella Trauma Portfolio",
+    "system_category": "Trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\depuy-synthes-knee-patella-trauma-portfolio__SYS_DEPUY_SYNTHES_KNEE_PATELLA_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DEPUY_SYNTHES_NAILING_PORTFOLIO",
+    "system_name": "DePuy Synthes Nailing Portfolio",
+    "system_category": "Nonunion surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\depuy-synthes-nailing-portfolio__SYS_DEPUY_SYNTHES_NAILING_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DEPUY_SYNTHES_PEDIATRIC_ORTHOPAEDICS_PORTFOLIO",
+    "system_name": "DePuy Synthes Pediatric orthopaedics Portfolio",
+    "system_category": "Pediatric orthopaedics",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\depuy-synthes-pediatric-orthopaedics-portfolio__SYS_DEPUY_SYNTHES_PEDIATRIC_ORTHOPAEDICS_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DEPUY_SYNTHES_PERIPROSTHETIC_TRAUMA_PORTFOLIO",
+    "system_name": "DePuy Synthes Periprosthetic Trauma Portfolio",
+    "system_category": "Periprosthetic fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\depuy-synthes-periprosthetic-trauma-portfolio__SYS_DEPUY_SYNTHES_PERIPROSTHETIC_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DEPUY_SYNTHES_REVISION_HIP_ADJUNCT_PORTFOLIO",
+    "system_name": "DePuy Synthes Revision Hip Adjunct Portfolio",
+    "system_category": "Hip revision arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\depuy-synthes-revision-hip-adjunct-portfolio__SYS_DEPUY_SYNTHES_REVISION_HIP_ADJUNCT_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DEPUY_SYNTHES_SHOULDER_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "DePuy Synthes Shoulder arthroplasty Portfolio",
+    "system_category": "Shoulder arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\depuy-synthes-shoulder-arthroplasty-portfolio__SYS_DEPUY_SYNTHES_SHOULDER_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DEPUY_SYNTHES_TIBIAL_NAILING_PORTFOLIO",
+    "system_name": "DePuy Synthes Tibial Nailing Portfolio",
+    "system_category": "Trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\depuy-synthes-tibial-nailing-portfolio__SYS_DEPUY_SYNTHES_TIBIAL_NAILING_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DEPUY_SYNTHES_TRAUMA_PORTFOLIO",
+    "system_name": "DePuy Synthes Trauma Portfolio",
+    "system_category": "Nonunion surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\depuy-synthes-trauma-portfolio__SYS_DEPUY_SYNTHES_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EXPEDIUM___CONCORDE_LUMBAR_FUSION_PORTFOLIO",
+    "system_name": "EXPEDIUM / CONCORDE Lumbar Fusion Portfolio",
+    "system_category": "spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\expedium-concorde-lumbar-fusion-portfolio__SYS_EXPEDIUM___CONCORDE_LUMBAR_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HEMIARTHROPLASTY_PORTFOLIO",
+    "system_name": "Hemiarthroplasty Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\hemiarthroplasty-portfolio__SYS_HEMIARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LARGE___SMALL_EXTERNAL_FIXATOR_PORTFOLIO",
+    "system_name": "Large / Small External Fixator Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\large-small-external-fixator-portfolio__SYS_LARGE___SMALL_EXTERNAL_FIXATOR_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PHILOS___PROXIMAL_HUMERUS_PLATE",
+    "system_name": "PHILOS / Proximal Humerus Plate",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\philos-proximal-humerus-plate__SYS_PHILOS___PROXIMAL_HUMERUS_PLATE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PATHOLOGIC_FRACTURE_STABILISATION_PORTFOLIO",
+    "system_name": "Pathologic Fracture Stabilisation Portfolio",
+    "system_category": "orthopaedic_oncology",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\pathologic-fracture-stabilisation-portfolio__SYS_PATHOLOGIC_FRACTURE_STABILISATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_RECLAIM___PINNACLE_REVISION_HIP_SYSTEM",
+    "system_name": "Reclaim / Pinnacle Revision Hip System",
+    "system_category": "arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\reclaim-pinnacle-revision-hip-system__SYS_RECLAIM___PINNACLE_REVISION_HIP_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_VA_LCP_PILON___DISTAL_TIBIA_PLATING",
+    "system_name": "VA-LCP Pilon / Distal Tibia Plating",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\va-lcp-pilon-distal-tibia-plating__SYS_VA_LCP_PILON___DISTAL_TIBIA_PLATING",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZERO_P___CERVICAL_FUSION_PORTFOLIO",
+    "system_name": "ZERO-P / Cervical Fusion Portfolio",
+    "system_category": "spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\depuy-synthes\\zero-p-cervical-fusion-portfolio__SYS_ZERO_P___CERVICAL_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

@@ -1,0 +1,795 @@
+[
+  {
+    "system_id": "SYS_DEBRIDEMENT_SET",
+    "system_name": "Debridement Set",
+    "system_category": "wound surgery",
+    "mapping_count": 6,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\debridement-set__SYS_DEBRIDEMENT_SET",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ENDOBUTTON_ACL",
+    "system_name": "Endobutton CL",
+    "system_category": "ACL Fixation \u2014 Suspensory",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\endobutton-cl__SYS_ENDOBUTTON_ACL",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_INTERTAN",
+    "system_name": "InterTAN Nail System",
+    "system_category": "Cephalomedullary Nail \u2014 Proximal Femur",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\intertan-nail-system__SYS_INTERTAN",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_POLAR_R3",
+    "system_name": "Polar / R3",
+    "system_category": "Hip Arthroplasty System",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\polar-r3__SYS_POLAR_R3",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_Q_FIX",
+    "system_name": "Q-FIX Suture Anchor",
+    "system_category": "Suture Anchor \u2014 All-Suture",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\q-fix-suture-anchor__SYS_Q_FIX",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TRIGEN_META_NAIL",
+    "system_name": "TRIGEN META-NAIL",
+    "system_category": "Cephalomedullary Nail \u2014 Proximal Femur",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\trigen-meta-nail__SYS_TRIGEN_META_NAIL",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BHR",
+    "system_name": "Birmingham Hip Resurfacing",
+    "system_category": "Hip Resurfacing",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\birmingham-hip-resurfacing__SYS_BHR",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_FASTFIX_MENISCAL",
+    "system_name": "FastFix 360 Meniscal Repair",
+    "system_category": "Meniscal Repair \u2014 All-Inside",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\fastfix-360-meniscal-repair__SYS_FASTFIX_MENISCAL",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_JOURNEY_PFJ",
+    "system_name": "Journey PFJ System",
+    "system_category": "Patellofemoral Joint Replacement",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\journey-pfj-system__SYS_JOURNEY_PFJ",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LEGION_REVISION",
+    "system_name": "LEGION Revision Knee",
+    "system_category": "Knee Revision \u2014 Constrained/Modular",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\legion-revision-knee__SYS_LEGION_REVISION",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TRIGEN_FEMORAL",
+    "system_name": "TRIGEN Femoral Nail",
+    "system_category": "Intramedullary Nail \u2014 Femoral Shaft",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\trigen-femoral-nail__SYS_TRIGEN_FEMORAL",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_AC_JOINT_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "AC Joint Reconstruction Portfolio",
+    "system_category": "shoulder_sports",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\ac-joint-reconstruction-portfolio__SYS_AC_JOINT_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHROSCOPY_RESECTION_PORTFOLIO",
+    "system_name": "Arthroscopy Resection Portfolio",
+    "system_category": "shoulder_sports",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\arthroscopy-resection-portfolio__SYS_ARTHROSCOPY_RESECTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHROSCOPY_VISUALIZATION___PUMP_SYSTEM",
+    "system_name": "Arthroscopy Visualization / Pump System",
+    "system_category": "sports_medicine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\arthroscopy-visualization-pump-system__SYS_ARTHROSCOPY_VISUALIZATION___PUMP_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CARTILAGE_REPAIR_PORTFOLIO",
+    "system_name": "Cartilage Repair Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\cartilage-repair-portfolio__SYS_CARTILAGE_REPAIR_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_FAST_FIX_MENISCAL_REPAIR_SYSTEM",
+    "system_name": "FAST-FIX Meniscal Repair System",
+    "system_category": "sports_medicine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\fast-fix-meniscal-repair-system__SYS_FAST_FIX_MENISCAL_REPAIR_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HEALICOIL___Q_FIX___MULTIFIX",
+    "system_name": "HEALICOIL / Q-FIX / MULTIFIX",
+    "system_category": "shoulder_sports",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\healicoil-q-fix-multifix__SYS_HEALICOIL___Q_FIX___MULTIFIX",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_INTERTAN___HIP_FRACTURE_FIXATION_PORTFOLIO",
+    "system_name": "InterTAN / Hip Fracture Fixation Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\intertan-hip-fracture-fixation-portfolio__SYS_INTERTAN___HIP_FRACTURE_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_JOURNEY_UNI",
+    "system_name": "Journey Uni",
+    "system_category": "Unicompartmental Knee Replacement",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\journey-uni__SYS_JOURNEY_UNI",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_KNEE_LIGAMENT_PORTFOLIO",
+    "system_name": "Knee Ligament Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\knee-ligament-portfolio__SYS_KNEE_LIGAMENT_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PCL_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "PCL Reconstruction Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\pcl-reconstruction-portfolio__SYS_PCL_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PATELLAR_STABILISATION_PORTFOLIO",
+    "system_name": "Patellar Stabilisation Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\patellar-stabilisation-portfolio__SYS_PATELLAR_STABILISATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SHOULDER_INSTABILITY_PORTFOLIO",
+    "system_name": "Shoulder Instability Portfolio",
+    "system_category": "shoulder_sports",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\shoulder-instability-portfolio__SYS_SHOULDER_INSTABILITY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ULTRABUTTON___BIOSURE___ACL_PORTFOLIO",
+    "system_name": "ULTRABUTTON / BIOSURE / ACL Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\ultrabutton-biosure-acl-portfolio__SYS_ULTRABUTTON___BIOSURE___ACL_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_WEREWOLF___MENISCECTOMY_PORTFOLIO",
+    "system_name": "Werewolf / Meniscectomy Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\werewolf-meniscectomy-portfolio__SYS_WEREWOLF___MENISCECTOMY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EVOS___PERI_LOC_HUMERUS_PORTFOLIO",
+    "system_name": "EVOS / PERI-LOC Humerus Portfolio",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\evos-peri-loc-humerus-portfolio__SYS_EVOS___PERI_LOC_HUMERUS_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EVOS_CALCANEUS_PLATING",
+    "system_name": "EVOS Calcaneus Plating",
+    "system_category": "foot_ankle_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\evos-calcaneus-plating__SYS_EVOS_CALCANEUS_PLATING",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EVOS_CLAVICLE_PLATE_SYSTEM",
+    "system_name": "EVOS Clavicle Plate System",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\evos-clavicle-plate-system__SYS_EVOS_CLAVICLE_PLATE_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EVOS_DISTAL_FEMUR_PLATE_SYSTEM",
+    "system_name": "EVOS Distal Femur Plate System",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\evos-distal-femur-plate-system__SYS_EVOS_DISTAL_FEMUR_PLATE_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EVOS_DISTAL_TIBIA___PILON_PLATING",
+    "system_name": "EVOS Distal Tibia / Pilon Plating",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\evos-distal-tibia-pilon-plating__SYS_EVOS_DISTAL_TIBIA___PILON_PLATING",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EVOS_DISTAL_TIBIA_PLATE",
+    "system_name": "EVOS Distal Tibia Plate",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\evos-distal-tibia-plate__SYS_EVOS_DISTAL_TIBIA_PLATE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EVOS_FOOT___ANKLE_PLATING",
+    "system_name": "EVOS Foot & Ankle Plating",
+    "system_category": "foot_ankle_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\evos-foot-ankle-plating__SYS_EVOS_FOOT___ANKLE_PLATING",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EVOS_PROXIMAL_TIBIA_PLATE_SYSTEM",
+    "system_name": "EVOS Proximal Tibia Plate System",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\evos-proximal-tibia-plate-system__SYS_EVOS_PROXIMAL_TIBIA_PLATE_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EVOS_SMALL_FRAGMENT_FOREARM_PORTFOLIO",
+    "system_name": "EVOS Small Fragment Forearm Portfolio",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\evos-small-fragment-forearm-portfolio__SYS_EVOS_SMALL_FRAGMENT_FOREARM_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EXTERNAL_FIXATION_PORTFOLIO",
+    "system_name": "External Fixation Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\external-fixation-portfolio__SYS_EXTERNAL_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_FOOT___ANKLE_TRAUMA_PORTFOLIO",
+    "system_name": "Foot & Ankle Trauma Portfolio",
+    "system_category": "foot_ankle_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\foot-ankle-trauma-portfolio__SYS_FOOT___ANKLE_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_INTERTAN___TRIGEN_HIP_FRACTURE_NAIL_SYSTEM",
+    "system_name": "InterTAN / TRIGEN Hip Fracture Nail System",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\intertan-trigen-hip-fracture-nail-system__SYS_INTERTAN___TRIGEN_HIP_FRACTURE_NAIL_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_JOURNEY_UNI___PARTIAL_KNEE_PORTFOLIO",
+    "system_name": "JOURNEY UNI / Partial Knee Portfolio",
+    "system_category": "arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\journey-uni-partial-knee-portfolio__SYS_JOURNEY_UNI___PARTIAL_KNEE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PERI_LOC___EVOS_PROXIMAL_HUMERUS",
+    "system_name": "PERI-LOC / EVOS Proximal Humerus",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\peri-loc-evos-proximal-humerus__SYS_PERI_LOC___EVOS_PROXIMAL_HUMERUS",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PELVIC_TRAUMA_PORTFOLIO",
+    "system_name": "Pelvic Trauma Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\pelvic-trauma-portfolio__SYS_PELVIC_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_REDAPT_REVISION_HIP_SYSTEM",
+    "system_name": "REDAPT Revision Hip System",
+    "system_category": "arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\redapt-revision-hip-system__SYS_REDAPT_REVISION_HIP_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_REVERSE_SHOULDER_PORTFOLIO",
+    "system_name": "Reverse Shoulder Portfolio",
+    "system_category": "arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\reverse-shoulder-portfolio__SYS_REVERSE_SHOULDER_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SHOULDER_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Shoulder Arthroplasty Portfolio",
+    "system_category": "arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\shoulder-arthroplasty-portfolio__SYS_SHOULDER_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SMITH_NEPHEW_CARTILAGE_RESTORATION_PORTFOLIO",
+    "system_name": "Smith+Nephew Cartilage restoration Portfolio",
+    "system_category": "Cartilage restoration",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\smith-nephew-cartilage-restoration-portfolio__SYS_SMITH_NEPHEW_CARTILAGE_RESTORATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SMITH_NEPHEW_HIP_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Smith+Nephew Hip arthroplasty Portfolio",
+    "system_category": "Hip arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\smith-nephew-hip-arthroplasty-portfolio__SYS_SMITH_NEPHEW_HIP_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SMITH_NEPHEW_HIP_PRESERVATION_PORTFOLIO",
+    "system_name": "Smith+Nephew Hip preservation Portfolio",
+    "system_category": "Hip preservation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\smith-nephew-hip-preservation-portfolio__SYS_SMITH_NEPHEW_HIP_PRESERVATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SMITH_NEPHEW_HIP_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Smith+Nephew Hip revision arthroplasty Portfolio",
+    "system_category": "Hip revision arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\smith-nephew-hip-revision-arthroplasty-portfolio__SYS_SMITH_NEPHEW_HIP_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SMITH_NEPHEW_KNEE_ARTHROSCOPY_PORTFOLIO",
+    "system_name": "Smith+Nephew Knee Arthroscopy Portfolio",
+    "system_category": "Knee arthroscopy",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\smith-nephew-knee-arthroscopy-portfolio__SYS_SMITH_NEPHEW_KNEE_ARTHROSCOPY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SMITH_NEPHEW_KNEE_INSTRUMENTS_PORTFOLIO",
+    "system_name": "Smith+Nephew Knee Instruments Portfolio",
+    "system_category": "Knee reconstruction",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\smith-nephew-knee-instruments-portfolio__SYS_SMITH_NEPHEW_KNEE_INSTRUMENTS_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SMITH_NEPHEW_KNEE_PRESERVATION_PORTFOLIO",
+    "system_name": "Smith+Nephew Knee Preservation Portfolio",
+    "system_category": "Knee preservation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\smith-nephew-knee-preservation-portfolio__SYS_SMITH_NEPHEW_KNEE_PRESERVATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SMITH_NEPHEW_KNEE_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Smith+Nephew Knee arthroplasty Portfolio",
+    "system_category": "Knee arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\smith-nephew-knee-arthroplasty-portfolio__SYS_SMITH_NEPHEW_KNEE_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SMITH_NEPHEW_KNEE_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Smith+Nephew Knee revision arthroplasty Portfolio",
+    "system_category": "Knee revision arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\smith-nephew-knee-revision-arthroplasty-portfolio__SYS_SMITH_NEPHEW_KNEE_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SMITH_NEPHEW_SHOULDER_ARTHROSCOPY_PORTFOLIO",
+    "system_name": "Smith+Nephew Shoulder arthroscopy Portfolio",
+    "system_category": "Shoulder arthroscopy",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\smith-nephew-shoulder-arthroscopy-portfolio__SYS_SMITH_NEPHEW_SHOULDER_ARTHROSCOPY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SMITH_NEPHEW_SHOULDER_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Smith+Nephew Shoulder reconstruction Portfolio",
+    "system_category": "Shoulder reconstruction",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\smith-nephew-shoulder-reconstruction-portfolio__SYS_SMITH_NEPHEW_SHOULDER_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SMITH_NEPHEW_SHOULDER_SOFT_TISSUE_PORTFOLIO",
+    "system_name": "Smith+Nephew Shoulder soft tissue Portfolio",
+    "system_category": "Shoulder soft tissue",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\smith-nephew-shoulder-soft-tissue-portfolio__SYS_SMITH_NEPHEW_SHOULDER_SOFT_TISSUE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SMITH_NEPHEW_SHOULDER_SPORTS_MEDICINE_PORTFOLIO",
+    "system_name": "Smith+Nephew Shoulder sports medicine Portfolio",
+    "system_category": "Shoulder sports medicine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\smith-nephew-shoulder-sports-medicine-portfolio__SYS_SMITH_NEPHEW_SHOULDER_SPORTS_MEDICINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SMITH_NEPHEW_SPORTS_MEDICINE_KNEE_PORTFOLIO",
+    "system_name": "Smith+Nephew Sports medicine knee Portfolio",
+    "system_category": "Sports medicine knee",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\smith-nephew-sports-medicine-knee-portfolio__SYS_SMITH_NEPHEW_SPORTS_MEDICINE_KNEE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TRIGEN_FEMORAL_NAIL_SYSTEM",
+    "system_name": "TRIGEN Femoral Nail System",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\trigen-femoral-nail-system__SYS_TRIGEN_FEMORAL_NAIL_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TRIGEN_INTERTAN_LONG_NAIL",
+    "system_name": "TRIGEN InterTAN Long Nail",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\trigen-intertan-long-nail__SYS_TRIGEN_INTERTAN_LONG_NAIL",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TRIGEN_TIBIAL_NAIL_SYSTEM",
+    "system_name": "TRIGEN Tibial Nail System",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\trigen-tibial-nail-system__SYS_TRIGEN_TIBIAL_NAIL_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TOTAL_ANKLE_PORTFOLIO",
+    "system_name": "Total Ankle Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\smith-nephew\\total-ankle-portfolio__SYS_TOTAL_ANKLE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

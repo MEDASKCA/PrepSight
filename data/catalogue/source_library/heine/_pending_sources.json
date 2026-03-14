@@ -1,0 +1,15 @@
+[
+  {
+    "system_id": "SYS_DIRECT_LARYNGOSCOPE",
+    "system_name": "Direct Laryngoscope",
+    "system_category": "airway",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\heine\\direct-laryngoscope__SYS_DIRECT_LARYNGOSCOPE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

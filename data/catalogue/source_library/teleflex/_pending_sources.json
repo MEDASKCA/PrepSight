@@ -1,0 +1,28 @@
+[
+  {
+    "system_id": "SYS_CVC_KIT",
+    "system_name": "Central Venous Catheter Kit",
+    "system_category": "vascular_access",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\teleflex\\central-venous-catheter-kit__SYS_CVC_KIT",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SGA_DEVICE",
+    "system_name": "Supraglottic Airway Device",
+    "system_category": "airway",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\teleflex\\supraglottic-airway-device__SYS_SGA_DEVICE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

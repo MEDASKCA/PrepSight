@@ -654,8 +654,8 @@ export default function AdminPage() {
             <div className="bg-white border border-slate-200 rounded-2xl p-5">
               <p className="text-xs text-slate-500 uppercase tracking-widest mb-4">All procedures</p>
               <div className="space-y-1.5 max-h-80 overflow-y-auto pr-1">
-                {procedures.map((p) => (
-                  <div key={p.id} className="flex items-center gap-3">
+                {procedures.map((p, index) => (
+                  <div key={`${p.id}-${index}`} className="flex items-center gap-3">
                     <span className="font-mono text-[10px] text-slate-400 shrink-0 w-48 truncate">{p.id}</span>
                     <span className="text-xs text-slate-400 truncate">{p.name}</span>
                   </div>

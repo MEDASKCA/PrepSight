@@ -1,0 +1,132 @@
+[
+  {
+    "system_id": "SYS_ELBOW_ARTHROSCOPY_PORTFOLIO",
+    "system_name": "Elbow Arthroscopy Portfolio",
+    "system_category": "elbow",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\conmed\\elbow-arthroscopy-portfolio__SYS_ELBOW_ARTHROSCOPY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LATARJET_PORTFOLIO",
+    "system_name": "Latarjet Portfolio",
+    "system_category": "shoulder_sports",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\conmed\\latarjet-portfolio__SYS_LATARJET_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARTHROSCOPIC_RESECTION_PORTFOLIO",
+    "system_name": "Arthroscopic Resection Portfolio",
+    "system_category": "shoulder_sports",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\conmed\\arthroscopic-resection-portfolio__SYS_ARTHROSCOPIC_RESECTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CROSSFT___BIOSURE___SPORTS_KNEE_PORTFOLIO",
+    "system_name": "CrossFT / BIOSURE / Sports Knee Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\conmed\\crossft-biosure-sports-knee-portfolio__SYS_CROSSFT___BIOSURE___SPORTS_KNEE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LINVATEC_ARTHROSCOPY_SYSTEM",
+    "system_name": "Linvatec Arthroscopy System",
+    "system_category": "sports_medicine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\conmed\\linvatec-arthroscopy-system__SYS_LINVATEC_ARTHROSCOPY_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LOCKING_PLATE",
+    "system_name": "Locking Plate System",
+    "system_category": "orthopaedic_fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\conmed\\locking-plate-system__SYS_LOCKING_PLATE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_OMNISPAN___MENISCAL_REPAIR_PORTFOLIO",
+    "system_name": "OMNISPAN / Meniscal Repair Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\conmed\\omnispan-meniscal-repair-portfolio__SYS_OMNISPAN___MENISCAL_REPAIR_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SHAVER___MENISCECTOMY_PORTFOLIO",
+    "system_name": "Shaver / Meniscectomy Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\conmed\\shaver-meniscectomy-portfolio__SYS_SHAVER___MENISCECTOMY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SHOULDER_STABILISATION_PORTFOLIO",
+    "system_name": "Shoulder Stabilisation Portfolio",
+    "system_category": "shoulder_sports",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\conmed\\shoulder-stabilisation-portfolio__SYS_SHOULDER_STABILISATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_Y_KNOT___CROSSFT_SHOULDER_REPAIR",
+    "system_name": "Y-Knot / CrossFT Shoulder Repair",
+    "system_category": "shoulder_sports",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\conmed\\y-knot-crossft-shoulder-repair__SYS_Y_KNOT___CROSSFT_SHOULDER_REPAIR",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

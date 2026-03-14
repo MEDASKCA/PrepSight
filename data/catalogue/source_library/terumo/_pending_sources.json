@@ -1,0 +1,28 @@
+[
+  {
+    "system_id": "SYS_DACRON_GRAFT",
+    "system_name": "Dacron Vascular Graft",
+    "system_category": "prosthetic graft",
+    "mapping_count": 15,
+    "source_folder": "data\\catalogue\\source_library\\terumo\\dacron-vascular-graft__SYS_DACRON_GRAFT",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BRANCHED_ENDOGRAFT",
+    "system_name": "Branched Endograft",
+    "system_category": "complex endograft",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\terumo\\branched-endograft__SYS_BRANCHED_ENDOGRAFT",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

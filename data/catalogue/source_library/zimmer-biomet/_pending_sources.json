@@ -1,0 +1,873 @@
+[
+  {
+    "system_id": "SYS_SEQUOIA_SPINE",
+    "system_name": "Sequoia Spine System",
+    "system_category": "Pedicle Screw-Rod \u2014 Spine",
+    "mapping_count": 9,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\sequoia-spine-system__SYS_SEQUOIA_SPINE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARCOS_REVISION",
+    "system_name": "ARCOS Modular",
+    "system_category": "Hip Revision \u2014 Cementless Modular",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\arcos-modular__SYS_ARCOS_REVISION",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CONTINUUM_TAPERLOC",
+    "system_name": "Continuum / Taperloc",
+    "system_category": "Hip Replacement \u2014 Cementless",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\continuum-taperloc__SYS_CONTINUUM_TAPERLOC",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_COMPREHENSIVE_SHOULDER",
+    "system_name": "Comprehensive Shoulder",
+    "system_category": "Shoulder Replacement \u2014 Anatomic & Reverse",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\comprehensive-shoulder__SYS_COMPREHENSIVE_SHOULDER",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MUTARS_ENDOPROSTHETIC",
+    "system_name": "MUTARS Endoprosthesis",
+    "system_category": "Endoprosthetic Reconstruction",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\mutars-endoprosthesis__SYS_MUTARS_ENDOPROSTHETIC",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_NEXGEN_KNEE",
+    "system_name": "NexGen Knee System",
+    "system_category": "Knee Replacement \u2014 Primary CR/PS",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\nexgen-knee-system__SYS_NEXGEN_KNEE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TAPERLOC_G7",
+    "system_name": "Taperloc / G7",
+    "system_category": "Hip Arthroplasty System",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\taperloc-g7__SYS_TAPERLOC_G7",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CPT_TRIDENT",
+    "system_name": "CPT / Trident",
+    "system_category": "Hip Replacement \u2014 Hybrid",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\cpt-trident__SYS_CPT_TRIDENT",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HIP_FRACTURE___HEMIARTHROPLASTY_PORTFOLIO",
+    "system_name": "Hip Fracture / Hemiarthroplasty Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\hip-fracture-hemiarthroplasty-portfolio__SYS_HIP_FRACTURE___HEMIARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_NCB_DISTAL_FEMUR",
+    "system_name": "NCB Distal Femoral Plate",
+    "system_category": "Locking Plate \u2014 Distal Femur",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\ncb-distal-femoral-plate__SYS_NCB_DISTAL_FEMUR",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_NCB_PROX_HUMERUS",
+    "system_name": "NCB Proximal Humerus Plate",
+    "system_category": "Locking Plate \u2014 Proximal Humerus",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\ncb-proximal-humerus-plate__SYS_NCB_PROX_HUMERUS",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_NCB_TIBIAL_PLATEAU",
+    "system_name": "NCB Tibial Plateau Plate",
+    "system_category": "Locking Plate \u2014 Tibial Plateau",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\ncb-tibial-plateau-plate__SYS_NCB_TIBIAL_PLATEAU",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ONCOLOGY_ENDOPROSTHETIC_PORTFOLIO",
+    "system_name": "Oncology Endoprosthetic Portfolio",
+    "system_category": "orthopaedic_oncology",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\oncology-endoprosthetic-portfolio__SYS_ONCOLOGY_ENDOPROSTHETIC_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_OXFORD_UKR",
+    "system_name": "Oxford Unicompartmental",
+    "system_category": "Unicompartmental Knee Replacement",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\oxford-unicompartmental__SYS_OXFORD_UKR",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PELVIC_ONCOLOGY_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Pelvic Oncology Reconstruction Portfolio",
+    "system_category": "orthopaedic_oncology",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\pelvic-oncology-reconstruction-portfolio__SYS_PELVIC_ONCOLOGY_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PERI_LOC_CALCANEUM",
+    "system_name": "PerilLoc Calcaneal Plate",
+    "system_category": "Locking Plate \u2014 Calcaneum",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\perilloc-calcaneal-plate__SYS_PERI_LOC_CALCANEUM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_VANGUARD_360",
+    "system_name": "Vanguard 360 Revision",
+    "system_category": "Knee Revision \u2014 Constrained/Modular",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\vanguard-360-revision__SYS_VANGUARD_360",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ARCOS___G7_REVISION_HIP_SYSTEM",
+    "system_name": "Arcos / G7 Revision Hip System",
+    "system_category": "arthroplasty",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\arcos-g7-revision-hip-system__SYS_ARCOS___G7_REVISION_HIP_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CPT_BIPOLAR",
+    "system_name": "CPT / Bipolar Head",
+    "system_category": "Hip Hemiarthroplasty \u2014 Cemented",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\cpt-bipolar-head__SYS_CPT_BIPOLAR",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_COMPREHENSIVE_REVERSE_SHOULDER_SYSTEM",
+    "system_name": "Comprehensive Reverse Shoulder System",
+    "system_category": "arthroplasty",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\comprehensive-reverse-shoulder-system__SYS_COMPREHENSIVE_REVERSE_SHOULDER_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_COMPREHENSIVE_SHOULDER_SYSTEM",
+    "system_name": "Comprehensive Shoulder System",
+    "system_category": "arthroplasty",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\comprehensive-shoulder-system__SYS_COMPREHENSIVE_SHOULDER_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_COONRAD_MORREY",
+    "system_name": "Coonrad-Morrey Total Elbow",
+    "system_category": "Total Elbow Replacement \u2014 Linked",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\coonrad-morrey-total-elbow__SYS_COONRAD_MORREY",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LIMB_SALVAGE___OSS_ONCOLOGY_PORTFOLIO",
+    "system_name": "Limb Salvage / OSS Oncology Portfolio",
+    "system_category": "orthopaedic_oncology",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\limb-salvage-oss-oncology-portfolio__SYS_LIMB_SALVAGE___OSS_ONCOLOGY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ONCOLOGY___LIMB_SALVAGE_PORTFOLIO",
+    "system_name": "Oncology / Limb Salvage Portfolio",
+    "system_category": "orthopaedic_oncology",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\oncology-limb-salvage-portfolio__SYS_ONCOLOGY___LIMB_SALVAGE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ONCOLOGY_STABILISATION_PORTFOLIO",
+    "system_name": "Oncology Stabilisation Portfolio",
+    "system_category": "orthopaedic_oncology",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\oncology-stabilisation-portfolio__SYS_ONCOLOGY_STABILISATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_OXFORD_PARTIAL_KNEE_SYSTEM",
+    "system_name": "Oxford Partial Knee System",
+    "system_category": "arthroplasty",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\oxford-partial-knee-system__SYS_OXFORD_PARTIAL_KNEE_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SIDUS_STEMLESS",
+    "system_name": "Sidus Stem-Free Shoulder",
+    "system_category": "Shoulder Replacement \u2014 Stemless",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\sidus-stem-free-shoulder__SYS_SIDUS_STEMLESS",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_VANGUARD_M_UKR",
+    "system_name": "Vanguard M / Microplasty",
+    "system_category": "Unicompartmental Knee Replacement",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\vanguard-m-microplasty__SYS_VANGUARD_M_UKR",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACL_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "ACL Reconstruction Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\acl-reconstruction-portfolio__SYS_ACL_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CMN___FEMORAL_NAIL_PORTFOLIO",
+    "system_name": "CMN / Femoral Nail Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\cmn-femoral-nail-portfolio__SYS_CMN___FEMORAL_NAIL_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EXPLOR___RADIAL_HEAD_PORTFOLIO",
+    "system_name": "Explor / Radial Head Portfolio",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\explor-radial-head-portfolio__SYS_EXPLOR___RADIAL_HEAD_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_FEMORAL_NAIL_SYSTEM",
+    "system_name": "Femoral Nail System",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\femoral-nail-system__SYS_FEMORAL_NAIL_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_JUGGERKNOT_SHOULDER_REPAIR_SYSTEM",
+    "system_name": "JuggerKnot Shoulder Repair System",
+    "system_category": "shoulder_sports",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\juggerknot-shoulder-repair-system__SYS_JUGGERKNOT_SHOULDER_REPAIR_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_JUGGERSTITCH___MENISCAL_REPAIR_PORTFOLIO",
+    "system_name": "JuggerStitch / Meniscal Repair Portfolio",
+    "system_category": "sports_medicine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\juggerstitch-meniscal-repair-portfolio__SYS_JUGGERSTITCH___MENISCAL_REPAIR_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_NCB_DISTAL_FEMUR_SYSTEM",
+    "system_name": "NCB Distal Femur System",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\ncb-distal-femur-system__SYS_NCB_DISTAL_FEMUR_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_NCB_DISTAL_TIBIA_PLATE",
+    "system_name": "NCB Distal Tibia Plate",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\ncb-distal-tibia-plate__SYS_NCB_DISTAL_TIBIA_PLATE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_NCB_PROXIMAL_TIBIA_SYSTEM",
+    "system_name": "NCB Proximal Tibia System",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\ncb-proximal-tibia-system__SYS_NCB_PROXIMAL_TIBIA_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_NATURAL_NAIL___FEMORAL_NAIL_PORTFOLIO",
+    "system_name": "Natural Nail / Femoral Nail Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\natural-nail-femoral-nail-portfolio__SYS_NATURAL_NAIL___FEMORAL_NAIL_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PELVIC___ACETABULAR_TRAUMA_PORTFOLIO",
+    "system_name": "Pelvic / Acetabular Trauma Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\pelvic-acetabular-trauma-portfolio__SYS_PELVIC___ACETABULAR_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TIBIA_NAIL_PORTFOLIO",
+    "system_name": "Tibia Nail Portfolio",
+    "system_category": "trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\tibia-nail-portfolio__SYS_TIBIA_NAIL_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TRABECULAR_METAL___ANKLE_PORTFOLIO",
+    "system_name": "Trabecular Metal / ankle portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\trabecular-metal-ankle-portfolio__SYS_TRABECULAR_METAL___ANKLE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_ACETABULAR_REVISION_PORTFOLIO",
+    "system_name": "Zimmer Biomet Acetabular Revision Portfolio",
+    "system_category": "Hip revision arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-acetabular-revision-portfolio__SYS_ZIMMER_BIOMET_ACETABULAR_REVISION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_ACETABULAR_TRAUMA_PORTFOLIO",
+    "system_name": "Zimmer Biomet Acetabular Trauma Portfolio",
+    "system_category": "Pelvic trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-acetabular-trauma-portfolio__SYS_ZIMMER_BIOMET_ACETABULAR_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_ANKLE_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Zimmer Biomet Ankle arthroplasty Portfolio",
+    "system_category": "Ankle arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-ankle-arthroplasty-portfolio__SYS_ZIMMER_BIOMET_ANKLE_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_FEMORAL_REVISION_PORTFOLIO",
+    "system_name": "Zimmer Biomet Femoral Revision Portfolio",
+    "system_category": "Hip revision arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-femoral-revision-portfolio__SYS_ZIMMER_BIOMET_FEMORAL_REVISION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_FEMUR_PLATING_PORTFOLIO",
+    "system_name": "Zimmer Biomet Femur Plating Portfolio",
+    "system_category": "Trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-femur-plating-portfolio__SYS_ZIMMER_BIOMET_FEMUR_PLATING_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_FEMUR_TRAUMA_PORTFOLIO",
+    "system_name": "Zimmer Biomet Femur Trauma Portfolio",
+    "system_category": "Trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-femur-trauma-portfolio__SYS_ZIMMER_BIOMET_FEMUR_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_FOOT_ANKLE_SURGERY_PORTFOLIO",
+    "system_name": "Zimmer Biomet Foot & ankle surgery Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-foot-ankle-surgery-portfolio__SYS_ZIMMER_BIOMET_FOOT_ANKLE_SURGERY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_FOOT_ANKLE_TRAUMA_FIXATION_PORTFOLIO",
+    "system_name": "Zimmer Biomet Foot & ankle trauma fixation Portfolio",
+    "system_category": "Foot & ankle trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-foot-ankle-trauma-fixation-portfolio__SYS_ZIMMER_BIOMET_FOOT_ANKLE_TRAUMA_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_FOOT_TRAUMA_FIXATION_PORTFOLIO",
+    "system_name": "Zimmer Biomet Foot trauma fixation Portfolio",
+    "system_category": "Foot trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-foot-trauma-fixation-portfolio__SYS_ZIMMER_BIOMET_FOOT_TRAUMA_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_HIP_FRACTURE_HEMIARTHROPLASTY_PORTFOLIO",
+    "system_name": "Zimmer Biomet Hip Fracture / Hemiarthroplasty Portfolio",
+    "system_category": "Trauma hip reconstruction",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-hip-fracture-hemiarthroplasty-portfolio__SYS_ZIMMER_BIOMET_HIP_FRACTURE_HEMIARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_HIP_FRACTURE_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Zimmer Biomet Hip Fracture Arthroplasty Portfolio",
+    "system_category": "Hip arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-hip-fracture-arthroplasty-portfolio__SYS_ZIMMER_BIOMET_HIP_FRACTURE_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_HIP_FRACTURE_NAIL_PORTFOLIO",
+    "system_name": "Zimmer Biomet Hip Fracture Nail Portfolio",
+    "system_category": "Trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-hip-fracture-nail-portfolio__SYS_ZIMMER_BIOMET_HIP_FRACTURE_NAIL_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_HIP_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Zimmer Biomet Hip arthroplasty Portfolio",
+    "system_category": "Hip arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-hip-arthroplasty-portfolio__SYS_ZIMMER_BIOMET_HIP_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_HIP_PRESERVATION_PORTFOLIO",
+    "system_name": "Zimmer Biomet Hip preservation Portfolio",
+    "system_category": "Hip preservation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-hip-preservation-portfolio__SYS_ZIMMER_BIOMET_HIP_PRESERVATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_HIP_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Zimmer Biomet Hip revision arthroplasty Portfolio",
+    "system_category": "Hip revision arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-hip-revision-arthroplasty-portfolio__SYS_ZIMMER_BIOMET_HIP_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_KNEE_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Zimmer Biomet Knee arthroplasty Portfolio",
+    "system_category": "Knee arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-knee-arthroplasty-portfolio__SYS_ZIMMER_BIOMET_KNEE_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_KNEE_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Zimmer Biomet Knee revision arthroplasty Portfolio",
+    "system_category": "Knee revision arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-knee-revision-arthroplasty-portfolio__SYS_ZIMMER_BIOMET_KNEE_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_LOWER_EXTREMITY_TRAUMA_PORTFOLIO",
+    "system_name": "Zimmer Biomet Lower Extremity Trauma Portfolio",
+    "system_category": "Trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-lower-extremity-trauma-portfolio__SYS_ZIMMER_BIOMET_LOWER_EXTREMITY_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_ORTHOPAEDIC_ONCOLOGY_PORTFOLIO",
+    "system_name": "Zimmer Biomet Orthopaedic oncology Portfolio",
+    "system_category": "Orthopaedic oncology",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-orthopaedic-oncology-portfolio__SYS_ZIMMER_BIOMET_ORTHOPAEDIC_ONCOLOGY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_PARTIAL_KNEE_PORTFOLIO",
+    "system_name": "Zimmer Biomet Partial Knee Portfolio",
+    "system_category": "Knee arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-partial-knee-portfolio__SYS_ZIMMER_BIOMET_PARTIAL_KNEE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_PELVIC_TRAUMA_PORTFOLIO",
+    "system_name": "Zimmer Biomet Pelvic Trauma Portfolio",
+    "system_category": "Pelvic trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-pelvic-trauma-portfolio__SYS_ZIMMER_BIOMET_PELVIC_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_PROXIMAL_TIBIA_PLATEAU_PORTFOLIO",
+    "system_name": "Zimmer Biomet Proximal Tibia / Plateau Portfolio",
+    "system_category": "Trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-proximal-tibia-plateau-portfolio__SYS_ZIMMER_BIOMET_PROXIMAL_TIBIA_PLATEAU_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_REVISION_HIP_PORTFOLIO",
+    "system_name": "Zimmer Biomet Revision Hip Portfolio",
+    "system_category": "Hip revision arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-revision-hip-portfolio__SYS_ZIMMER_BIOMET_REVISION_HIP_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_REVISION_KNEE_PORTFOLIO",
+    "system_name": "Zimmer Biomet Revision Knee Portfolio",
+    "system_category": "Knee revision arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-revision-knee-portfolio__SYS_ZIMMER_BIOMET_REVISION_KNEE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_SHOULDER_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Zimmer Biomet Shoulder arthroplasty Portfolio",
+    "system_category": "Shoulder arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-shoulder-arthroplasty-portfolio__SYS_ZIMMER_BIOMET_SHOULDER_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ZIMMER_BIOMET_TIBIA_TRAUMA_PORTFOLIO",
+    "system_name": "Zimmer Biomet Tibia Trauma Portfolio",
+    "system_category": "Trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\zimmer-biomet\\zimmer-biomet-tibia-trauma-portfolio__SYS_ZIMMER_BIOMET_TIBIA_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

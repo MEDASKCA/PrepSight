@@ -1,0 +1,56 @@
+[
+  {
+    "supplier_id": "SUP_GLOBUS_MEDICAL",
+    "supplier_name": "Globus Medical",
+    "system_id": "SYS_CREO___SABLE_LUMBAR_FUSION_PORTFOLIO",
+    "system_name": "Creo / SABLE Lumbar Fusion Portfolio",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "CREO Spinal System",
+        "url": "https://www.globusmedical.com/musculoskeletal-solutions/spine/creo-spinal-system/",
+        "notes": "Official Globus Medical product page for the CREO spinal system."
+      },
+      {
+        "source_type": "product_page",
+        "title": "SABLE Interbody Technology",
+        "url": "https://www.globusmedical.com/musculoskeletal-solutions/spine/sable-interbody-technology/",
+        "notes": "Official Globus Medical product page for SABLE interbody implants."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_GLOBUS_MEDICAL",
+    "supplier_name": "Globus Medical",
+    "system_id": "SYS_XTEND___COALITION_ACDF_PORTFOLIO",
+    "system_name": "Xtend / Coalition ACDF Portfolio",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Xtend Anterior Cervical Plate System",
+        "url": "https://www.globusmedical.com/musculoskeletal-solutions/spine/xtend-anterior-cervical-plate-system/",
+        "notes": "Official Globus Medical product page for Xtend ACDF plating."
+      },
+      {
+        "source_type": "product_page",
+        "title": "Coalition AGX Spacer System",
+        "url": "https://www.globusmedical.com/musculoskeletal-solutions/spine/coalition-agx-spacer-system/",
+        "notes": "Official Globus Medical product page for Coalition ACDF spacer technology."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_GLOBUS_MEDICAL",
+    "supplier_name": "Globus Medical",
+    "system_id": "SYS_KYPHOPLASTY_PORTFOLIO",
+    "system_name": "Kyphoplasty Portfolio",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "FORTIFY Expandable Corpectomy Device and Cement Solutions",
+        "url": "https://www.globusmedical.com/musculoskeletal-solutions/spine/fortify-expandable-corpectomy-device/",
+        "notes": "Official Globus Medical page used as an initial vertebral augmentation / reconstruction source anchor. Needs deeper kyphoplasty-specific follow-up."
+      }
+    ]
+  }
+]

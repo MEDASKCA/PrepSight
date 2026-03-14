@@ -1,0 +1,457 @@
+[
+  {
+    "system_id": "SYS_RADIAL_HEAD_MODULAR",
+    "system_name": "Acumed Modular Radial Head",
+    "system_category": "Radial Head Replacement",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-modular-radial-head__SYS_RADIAL_HEAD_MODULAR",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACU_LOC_DISTAL_RADIUS_SYSTEM",
+    "system_name": "Acu-Loc Distal Radius System",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acu-loc-distal-radius-system__SYS_ACU_LOC_DISTAL_RADIUS_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUTRAK___SCAPHOID_COMPRESSION_SCREW_SYSTEM",
+    "system_name": "Acutrak / Scaphoid Compression Screw System",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acutrak-scaphoid-compression-screw-system__SYS_ACUTRAK___SCAPHOID_COMPRESSION_SCREW_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUTRAK_PERCUTANEOUS_SCAPHOID_FIXATION",
+    "system_name": "Acutrak Percutaneous Scaphoid Fixation",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acutrak-percutaneous-scaphoid-fixation__SYS_ACUTRAK_PERCUTANEOUS_SCAPHOID_FIXATION",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ANATOMIC_RADIAL_HEAD_SYSTEM",
+    "system_name": "Anatomic Radial Head System",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\anatomic-radial-head-system__SYS_ANATOMIC_RADIAL_HEAD_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CLAVICLE_PLATING_SYSTEM",
+    "system_name": "Clavicle Plating System",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\clavicle-plating-system__SYS_CLAVICLE_PLATING_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DISTAL_HUMERUS_PLATING_SYSTEM",
+    "system_name": "Distal Humerus Plating System",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\distal-humerus-plating-system__SYS_DISTAL_HUMERUS_PLATING_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_FOREARM_SHAFT_PLATING_SYSTEM",
+    "system_name": "Forearm Shaft Plating System",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\forearm-shaft-plating-system__SYS_FOREARM_SHAFT_PLATING_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HUMERAL_SHAFT_PLATING_SYSTEM",
+    "system_name": "Humeral Shaft Plating System",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\humeral-shaft-plating-system__SYS_HUMERAL_SHAFT_PLATING_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_OLECRANON_PLATING_SYSTEM",
+    "system_name": "Olecranon Plating System",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\olecranon-plating-system__SYS_OLECRANON_PLATING_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PROXIMAL_HUMERUS_PLATING_SYSTEM",
+    "system_name": "Proximal Humerus Plating System",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\proximal-humerus-plating-system__SYS_PROXIMAL_HUMERUS_PLATING_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_RADIAL_HEAD___NECK_FIXATION_PORTFOLIO",
+    "system_name": "Radial Head / Neck Fixation Portfolio",
+    "system_category": "upper_extremity_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\radial-head-neck-fixation-portfolio__SYS_RADIAL_HEAD___NECK_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TALUS___HINDFOOT_FIXATION_PORTFOLIO",
+    "system_name": "Talus / Hindfoot Fixation Portfolio",
+    "system_category": "foot_ankle_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\talus-hindfoot-fixation-portfolio__SYS_TALUS___HINDFOOT_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_DISTAL_ULNA_WRIST_PORTFOLIO",
+    "system_name": "Acumed Distal Ulna / Wrist Portfolio",
+    "system_category": "Hand & wrist surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-distal-ulna-wrist-portfolio__SYS_ACUMED_DISTAL_ULNA_WRIST_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_ELBOW_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Acumed Elbow Reconstruction Portfolio",
+    "system_category": "Elbow trauma reconstruction",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-elbow-reconstruction-portfolio__SYS_ACUMED_ELBOW_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_ELBOW_TRAUMA_PORTFOLIO",
+    "system_name": "Acumed Elbow Trauma Portfolio",
+    "system_category": "Upper-extremity trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-elbow-trauma-portfolio__SYS_ACUMED_ELBOW_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_ELBOW_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Acumed Elbow arthroplasty Portfolio",
+    "system_category": "Elbow arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-elbow-arthroplasty-portfolio__SYS_ACUMED_ELBOW_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_ELBOW_SOFT_TISSUE_PORTFOLIO",
+    "system_name": "Acumed Elbow soft tissue Portfolio",
+    "system_category": "Elbow soft tissue",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-elbow-soft-tissue-portfolio__SYS_ACUMED_ELBOW_SOFT_TISSUE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_ELBOW_SPORTS_MEDICINE_PORTFOLIO",
+    "system_name": "Acumed Elbow sports medicine Portfolio",
+    "system_category": "Elbow sports medicine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-elbow-sports-medicine-portfolio__SYS_ACUMED_ELBOW_SPORTS_MEDICINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_FOREARM_TRAUMA_PORTFOLIO",
+    "system_name": "Acumed Forearm Trauma Portfolio",
+    "system_category": "Upper-extremity trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-forearm-trauma-portfolio__SYS_ACUMED_FOREARM_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_HAND_WRIST_SURGERY_PORTFOLIO",
+    "system_name": "Acumed Hand & wrist surgery Portfolio",
+    "system_category": "Hand & wrist surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-hand-wrist-surgery-portfolio__SYS_ACUMED_HAND_WRIST_SURGERY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_HAND_FUSION_PORTFOLIO",
+    "system_name": "Acumed Hand Fusion Portfolio",
+    "system_category": "Hand surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-hand-fusion-portfolio__SYS_ACUMED_HAND_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_HAND_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Acumed Hand reconstruction Portfolio",
+    "system_category": "Hand reconstruction",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-hand-reconstruction-portfolio__SYS_ACUMED_HAND_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_HAND_SURGERY_PORTFOLIO",
+    "system_name": "Acumed Hand surgery Portfolio",
+    "system_category": "Hand surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-hand-surgery-portfolio__SYS_ACUMED_HAND_SURGERY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_HAND_TRAUMA_PORTFOLIO",
+    "system_name": "Acumed Hand trauma Portfolio",
+    "system_category": "Hand trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-hand-trauma-portfolio__SYS_ACUMED_HAND_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_HAND_WRIST_PORTFOLIO",
+    "system_name": "Acumed Hand/Wrist Portfolio",
+    "system_category": "Hand & wrist surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-hand-wrist-portfolio__SYS_ACUMED_HAND_WRIST_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_PERIPHERAL_NERVE_SURGERY_PORTFOLIO",
+    "system_name": "Acumed Peripheral nerve surgery Portfolio",
+    "system_category": "Peripheral nerve surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-peripheral-nerve-surgery-portfolio__SYS_ACUMED_PERIPHERAL_NERVE_SURGERY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_RADIAL_HEAD_REPLACEMENT_PORTFOLIO",
+    "system_name": "Acumed Radial Head Replacement Portfolio",
+    "system_category": "Upper-extremity arthroplasty/trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-radial-head-replacement-portfolio__SYS_ACUMED_RADIAL_HEAD_REPLACEMENT_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_SMALL_JOINT_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Acumed Small joint arthroplasty Portfolio",
+    "system_category": "Small joint arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-small-joint-arthroplasty-portfolio__SYS_ACUMED_SMALL_JOINT_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_UPPER_EXTREMITY_ELBOW_TRAUMA_PORTFOLIO",
+    "system_name": "Acumed Upper Extremity / Elbow Trauma Portfolio",
+    "system_category": "Upper-extremity trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-upper-extremity-elbow-trauma-portfolio__SYS_ACUMED_UPPER_EXTREMITY_ELBOW_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_WRIST_FUSION_PORTFOLIO",
+    "system_name": "Acumed Wrist Fusion Portfolio",
+    "system_category": "Hand & wrist surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-wrist-fusion-portfolio__SYS_ACUMED_WRIST_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUMED_WRIST_OSTEOTOMY_PORTFOLIO",
+    "system_name": "Acumed Wrist Osteotomy Portfolio",
+    "system_category": "Hand & wrist surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\acumed-wrist-osteotomy-portfolio__SYS_ACUMED_WRIST_OSTEOTOMY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ANKLE_FRACTURE___FIBULA_SYSTEM",
+    "system_name": "Ankle Fracture / Fibula System",
+    "system_category": "foot_ankle_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\ankle-fracture-fibula-system__SYS_ANKLE_FRACTURE___FIBULA_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CALCANEAL_FRACTURE_PLATING_SYSTEM",
+    "system_name": "Calcaneal Fracture Plating System",
+    "system_category": "foot_ankle_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\calcaneal-fracture-plating-system__SYS_CALCANEAL_FRACTURE_PLATING_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_FOREFOOT_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Forefoot Reconstruction Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\acumed\\forefoot-reconstruction-portfolio__SYS_FOREFOOT_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

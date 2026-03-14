@@ -1,0 +1,158 @@
+[
+  {
+    "system_id": "SYS_ZENITH_ANKLE",
+    "system_name": "Zenith Total Ankle",
+    "system_category": "Total Ankle Replacement \u2014 Mobile Bearing",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\corin\\zenith-total-ankle__SYS_ZENITH_ANKLE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CORIN_APOLLOKNEE_OR_COMPARABLE_KNEE_PORTFOLIO",
+    "system_name": "Corin / ApolloKnee or comparable knee portfolio",
+    "system_category": "Knee arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\corin\\corin-apolloknee-or-comparable-knee-portfolio__SYS_CORIN_APOLLOKNEE_OR_COMPARABLE_KNEE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CORIN_HIP_ARTHROPLASTY_ROBOTICS_PORTFOLIO",
+    "system_name": "Corin Hip Arthroplasty + Robotics Portfolio",
+    "system_category": "Hip arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\corin\\corin-hip-arthroplasty-robotics-portfolio__SYS_CORIN_HIP_ARTHROPLASTY_ROBOTICS_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CORIN_HIP_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Corin Hip arthroplasty Portfolio",
+    "system_category": "Hip arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\corin\\corin-hip-arthroplasty-portfolio__SYS_CORIN_HIP_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CORIN_HIP_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Corin Hip revision arthroplasty Portfolio",
+    "system_category": "Hip revision arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\corin\\corin-hip-revision-arthroplasty-portfolio__SYS_CORIN_HIP_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CORIN_KNEE_ARTHROPLASTY_ROBOTICS_PORTFOLIO",
+    "system_name": "Corin Knee Arthroplasty + Robotics Portfolio",
+    "system_category": "Knee arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\corin\\corin-knee-arthroplasty-robotics-portfolio__SYS_CORIN_KNEE_ARTHROPLASTY_ROBOTICS_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CORIN_KNEE_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Corin Knee arthroplasty Portfolio",
+    "system_category": "Knee arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\corin\\corin-knee-arthroplasty-portfolio__SYS_CORIN_KNEE_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CORIN_KNEE_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Corin Knee revision arthroplasty Portfolio",
+    "system_category": "Knee revision arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\corin\\corin-knee-revision-arthroplasty-portfolio__SYS_CORIN_KNEE_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_OPTIMIZED_POSITIONING_HIP_SYSTEM",
+    "system_name": "Optimized Positioning Hip System",
+    "system_category": "arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\corin\\optimized-positioning-hip-system__SYS_OPTIMIZED_POSITIONING_HIP_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_REVISION_HIP_PORTFOLIO",
+    "system_name": "Revision Hip Portfolio",
+    "system_category": "arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\corin\\revision-hip-portfolio__SYS_REVISION_HIP_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UNITY_KNEE_SYSTEM",
+    "system_name": "Unity Knee System",
+    "system_category": "arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\corin\\unity-knee-system__SYS_UNITY_KNEE_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UNITY_PARTIAL_KNEE_PORTFOLIO",
+    "system_name": "Unity Partial Knee Portfolio",
+    "system_category": "arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\corin\\unity-partial-knee-portfolio__SYS_UNITY_PARTIAL_KNEE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

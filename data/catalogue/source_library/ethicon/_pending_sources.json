@@ -1,0 +1,15 @@
+[
+  {
+    "system_id": "SYS_HARMONIC",
+    "system_name": "Harmonic Scalpel",
+    "system_category": "Energy Device",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\ethicon\\harmonic-scalpel__SYS_HARMONIC",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

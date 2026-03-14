@@ -1,0 +1,22 @@
+[
+  {
+    "supplier_id": "SUP_NUVASIVE",
+    "supplier_name": "NuVasive",
+    "system_id": "SYS_ARMADA_SPINE",
+    "system_name": "Armada Spine System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Armada",
+        "url": "https://www.nuvasive.com/procedures/posterior-fixation/armada/",
+        "notes": "Official NuVasive product page used as the public source anchor."
+      },
+      {
+        "source_type": "technology_page",
+        "title": "Posterior Fixation",
+        "url": "https://www.nuvasive.com/procedures/posterior-fixation/",
+        "notes": "Official NuVasive posterior fixation page used as broader workflow context."
+      }
+    ]
+  }
+]

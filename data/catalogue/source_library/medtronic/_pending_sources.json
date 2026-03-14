@@ -1,0 +1,353 @@
+[
+  {
+    "system_id": "SYS_HOLMIUM_LASER",
+    "system_name": "Holmium Laser System",
+    "system_category": "laser",
+    "mapping_count": 63,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\holmium-laser-system__SYS_HOLMIUM_LASER",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SUCTION_DIATHERMY",
+    "system_name": "Suction Diathermy Set",
+    "system_category": "dissection",
+    "mapping_count": 33,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\suction-diathermy-set__SYS_SUCTION_DIATHERMY",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ENDOVASCULAR_WORKSTATION",
+    "system_name": "Endovascular Imaging Workstation",
+    "system_category": "endovascular imaging",
+    "mapping_count": 18,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\endovascular-imaging-workstation__SYS_ENDOVASCULAR_WORKSTATION",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CD_HORIZON",
+    "system_name": "CD HORIZON LEGACY Spine",
+    "system_category": "Pedicle Screw-Rod \u2014 Spine",
+    "mapping_count": 9,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\cd-horizon-legacy-spine__SYS_CD_HORIZON",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_VIDEO_LARYNGOSCOPE",
+    "system_name": "Video Laryngoscope",
+    "system_category": "airway",
+    "mapping_count": 7,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\video-laryngoscope__SYS_VIDEO_LARYNGOSCOPE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_STENT_GRAFT_AAA",
+    "system_name": "Abdominal Aortic Stent Graft",
+    "system_category": "endograft",
+    "mapping_count": 6,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\abdominal-aortic-stent-graft__SYS_STENT_GRAFT_AAA",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CERVICAL_DECOMPRESSION_PORTFOLIO",
+    "system_name": "Cervical Decompression Portfolio",
+    "system_category": "spine",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\cervical-decompression-portfolio__SYS_CERVICAL_DECOMPRESSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DEFORMITY___SCOLIOSIS_FUSION_PORTFOLIO",
+    "system_name": "Deformity / Scoliosis Fusion Portfolio",
+    "system_category": "spine",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\deformity-scoliosis-fusion-portfolio__SYS_DEFORMITY___SCOLIOSIS_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LUMBAR_DECOMPRESSION_PORTFOLIO",
+    "system_name": "Lumbar Decompression Portfolio",
+    "system_category": "spine",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\lumbar-decompression-portfolio__SYS_LUMBAR_DECOMPRESSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_THORACOLUMBAR_FUSION_PORTFOLIO",
+    "system_name": "Thoracolumbar Fusion Portfolio",
+    "system_category": "spine",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\thoracolumbar-fusion-portfolio__SYS_THORACOLUMBAR_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_VERTEBRAL_AUGMENTATION_PORTFOLIO",
+    "system_name": "Vertebral Augmentation Portfolio",
+    "system_category": "spine",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\vertebral-augmentation-portfolio__SYS_VERTEBRAL_AUGMENTATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CD_HORIZON___CATALYFT_LUMBAR_FUSION_PORTFOLIO",
+    "system_name": "CD Horizon / Catalyft Lumbar Fusion Portfolio",
+    "system_category": "spine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\cd-horizon-catalyft-lumbar-fusion-portfolio__SYS_CD_HORIZON___CATALYFT_LUMBAR_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_KYPHON___KYPHOPLASTY_PORTFOLIO",
+    "system_name": "Kyphon / Kyphoplasty Portfolio",
+    "system_category": "spine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\kyphon-kyphoplasty-portfolio__SYS_KYPHON___KYPHOPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LUMBAR_DECOMPRESSION___DISCECTOMY_PORTFOLIO",
+    "system_name": "Lumbar Decompression / Discectomy Portfolio",
+    "system_category": "spine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\lumbar-decompression-discectomy-portfolio__SYS_LUMBAR_DECOMPRESSION___DISCECTOMY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PRESTIGE___DIVERGENCE___ACDF_PORTFOLIO",
+    "system_name": "Prestige / Divergence / ACDF Portfolio",
+    "system_category": "spine",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\prestige-divergence-acdf-portfolio__SYS_PRESTIGE___DIVERGENCE___ACDF_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LIGASURE",
+    "system_name": "LigaSure Vessel Sealing System",
+    "system_category": "Energy Device",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\ligasure-vessel-sealing-system__SYS_LIGASURE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MEDTRONIC_CERVICAL_SPINE_PORTFOLIO",
+    "system_name": "Medtronic Cervical Spine Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\medtronic-cervical-spine-portfolio__SYS_MEDTRONIC_CERVICAL_SPINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MEDTRONIC_DEFORMITY_PORTFOLIO",
+    "system_name": "Medtronic Deformity Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\medtronic-deformity-portfolio__SYS_MEDTRONIC_DEFORMITY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MEDTRONIC_NAVIGATION_SPINE_PORTFOLIO",
+    "system_name": "Medtronic Navigation + Spine Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\medtronic-navigation-spine-portfolio__SYS_MEDTRONIC_NAVIGATION_SPINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MEDTRONIC_NEURO_SPINE_PORTFOLIO",
+    "system_name": "Medtronic Neuro / Spine Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\medtronic-neuro-spine-portfolio__SYS_MEDTRONIC_NEURO_SPINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MEDTRONIC_ORTHOPAEDIC_ONCOLOGY_PORTFOLIO",
+    "system_name": "Medtronic Orthopaedic oncology Portfolio",
+    "system_category": "Orthopaedic oncology",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\medtronic-orthopaedic-oncology-portfolio__SYS_MEDTRONIC_ORTHOPAEDIC_ONCOLOGY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MEDTRONIC_PEDIATRIC_DEFORMITY_PORTFOLIO",
+    "system_name": "Medtronic Pediatric Deformity Portfolio",
+    "system_category": "Pediatric orthopaedics",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\medtronic-pediatric-deformity-portfolio__SYS_MEDTRONIC_PEDIATRIC_DEFORMITY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MEDTRONIC_PEDIATRIC_ORTHOPAEDICS_PORTFOLIO",
+    "system_name": "Medtronic Pediatric orthopaedics Portfolio",
+    "system_category": "Pediatric orthopaedics",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\medtronic-pediatric-orthopaedics-portfolio__SYS_MEDTRONIC_PEDIATRIC_ORTHOPAEDICS_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MEDTRONIC_SPINE_PORTFOLIO",
+    "system_name": "Medtronic Spine Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\medtronic-spine-portfolio__SYS_MEDTRONIC_SPINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MEDTRONIC_SPINE_TRAUMA_PORTFOLIO",
+    "system_name": "Medtronic Spine trauma Portfolio",
+    "system_category": "Spine trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\medtronic-spine-trauma-portfolio__SYS_MEDTRONIC_SPINE_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MEDTRONIC_VERTEBRAL_AUGMENTATION_PORTFOLIO",
+    "system_name": "Medtronic Vertebral Augmentation Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\medtronic-vertebral-augmentation-portfolio__SYS_MEDTRONIC_VERTEBRAL_AUGMENTATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PAEDIATRIC_DEFORMITY_SPINE_PORTFOLIO",
+    "system_name": "Paediatric Deformity Spine Portfolio",
+    "system_category": "paediatric_spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\medtronic\\paediatric-deformity-spine-portfolio__SYS_PAEDIATRIC_DEFORMITY_SPINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

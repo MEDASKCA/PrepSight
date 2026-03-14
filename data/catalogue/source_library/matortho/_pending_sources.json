@@ -1,0 +1,41 @@
+[
+  {
+    "system_id": "SYS_MATORTHO_HIP_RESURFACING_PORTFOLIO",
+    "system_name": "MatOrtho Hip Resurfacing Portfolio",
+    "system_category": "Hip resurfacing",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\matortho\\matortho-hip-resurfacing-portfolio__SYS_MATORTHO_HIP_RESURFACING_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MATORTHO_KNEE_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "MatOrtho Knee arthroplasty Portfolio",
+    "system_category": "Knee arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\matortho\\matortho-knee-arthroplasty-portfolio__SYS_MATORTHO_KNEE_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MATORTHO_KNEE_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "MatOrtho Knee revision arthroplasty Portfolio",
+    "system_category": "Knee revision arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\matortho\\matortho-knee-revision-arthroplasty-portfolio__SYS_MATORTHO_KNEE_REVISION_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

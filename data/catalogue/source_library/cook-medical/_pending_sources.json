@@ -1,0 +1,28 @@
+[
+  {
+    "system_id": "SYS_STENT_GRAFT_THORACIC",
+    "system_name": "Thoracic Aortic Stent Graft",
+    "system_category": "endograft",
+    "mapping_count": 6,
+    "source_folder": "data\\catalogue\\source_library\\cook-medical\\thoracic-aortic-stent-graft__SYS_STENT_GRAFT_THORACIC",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_FENESTRATED_ENDOGRAFT",
+    "system_name": "Fenestrated Endograft",
+    "system_category": "complex endograft",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\cook-medical\\fenestrated-endograft__SYS_FENESTRATED_ENDOGRAFT",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

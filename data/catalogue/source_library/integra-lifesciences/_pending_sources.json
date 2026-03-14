@@ -1,0 +1,106 @@
+[
+  {
+    "system_id": "SYS_LATITUDE_ELBOW",
+    "system_name": "Latitude EV Total Elbow",
+    "system_category": "Total Elbow Replacement \u2014 Unlinked",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\integra-lifesciences\\latitude-ev-total-elbow__SYS_LATITUDE_ELBOW",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PAEDIATRIC_SOFT_TISSUE_PORTFOLIO",
+    "system_name": "Paediatric Soft Tissue Portfolio",
+    "system_category": "paediatric_orthopaedics",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\integra-lifesciences\\paediatric-soft-tissue-portfolio__SYS_PAEDIATRIC_SOFT_TISSUE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PERIPHERAL_NERVE___HAND_SURGERY_PORTFOLIO",
+    "system_name": "Peripheral Nerve / Hand Surgery Portfolio",
+    "system_category": "elbow",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\integra-lifesciences\\peripheral-nerve-hand-surgery-portfolio__SYS_PERIPHERAL_NERVE___HAND_SURGERY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SOFT_TISSUE_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Soft Tissue Reconstruction Portfolio",
+    "system_category": "orthopaedic_oncology",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\integra-lifesciences\\soft-tissue-reconstruction-portfolio__SYS_SOFT_TISSUE_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HAND___NERVE_DECOMPRESSION_PORTFOLIO",
+    "system_name": "Hand / Nerve Decompression Portfolio",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\integra-lifesciences\\hand-nerve-decompression-portfolio__SYS_HAND___NERVE_DECOMPRESSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HAND_SOFT_TISSUE_PORTFOLIO",
+    "system_name": "Hand Soft Tissue Portfolio",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\integra-lifesciences\\hand-soft-tissue-portfolio__SYS_HAND_SOFT_TISSUE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HAND_SOFT_TISSUE_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Hand Soft Tissue Reconstruction Portfolio",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\integra-lifesciences\\hand-soft-tissue-reconstruction-portfolio__SYS_HAND_SOFT_TISSUE_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HAND_TENDON_REPAIR_PORTFOLIO",
+    "system_name": "Hand Tendon Repair Portfolio",
+    "system_category": "hand_wrist",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\integra-lifesciences\\hand-tendon-repair-portfolio__SYS_HAND_TENDON_REPAIR_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "system_id": "SYS_ACCESS_FLOW_PROBE",
+    "system_name": "Transit-Time Flow Probe",
+    "system_category": "flow assessment",
+    "mapping_count": 28,
+    "source_folder": "data\\catalogue\\source_library\\getinge\\transit-time-flow-probe__SYS_ACCESS_FLOW_PROBE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CELL_SAVER",
+    "system_name": "Cell Salvage System",
+    "system_category": "blood management",
+    "mapping_count": 12,
+    "source_folder": "data\\catalogue\\source_library\\getinge\\cell-salvage-system__SYS_CELL_SAVER",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

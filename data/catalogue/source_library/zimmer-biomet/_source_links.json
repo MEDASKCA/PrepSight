@@ -1,0 +1,524 @@
+[
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_OXFORD_PARTIAL_KNEE_SYSTEM",
+    "system_name": "Oxford Partial Knee System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Oxford Partial Knee",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/knee/oxford-partial-knee.html",
+        "notes": "Official Zimmer Biomet product page for the Oxford Partial Knee mobile-bearing unicompartmental system."
+      },
+      {
+        "source_type": "product_brochure_pdf",
+        "title": "Oxford Cementless Partial Knee Brochure",
+        "url": "https://www.zimmerbiomet.com/content/dam/zb-corporate/en/products/specialties/knee/oxford-cementless-partial-knee-replacement/5045.1-US-en%20Oxford%20Cementless%20Partial%20Knee%20Brochure-digital_FINAL.pdf",
+        "notes": "Official Zimmer Biomet brochure describing Oxford partial knee features, mobile bearing design, and cementless construct."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_CPT_BIPOLAR",
+    "system_name": "CPT / Bipolar Head",
+    "sources": [
+      {
+        "source_type": "surgical_technique_pdf",
+        "title": "CPT 12/14 Hip System Surgical Technique",
+        "url": "https://www.zimmerbiomet.com/content/dam/zimmer-biomet/medical-professionals/000-surgical-techniques/hip/cpt-12-14-hip-system-surgical-technique.pdf",
+        "notes": "Official Zimmer Biomet surgical technique PDF describing the CPT polished taper stem family and compatible 12/14 head options."
+      },
+      {
+        "source_type": "field_notice_reference",
+        "title": "CPT Hip System Femoral Stem Surgeon Notice",
+        "url": "https://www.zimmerbiomet.com/content/dam/zb-corporate/en/products/specialties/hip/ZFA%202024-00121%20Surgeon%20Notice_September%202024%20Follow-up.pdf",
+        "notes": "Official Zimmer Biomet notice confirming CPT femoral stem product family identity and current risk communication."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_ARCOS___G7_REVISION_HIP_SYSTEM",
+    "system_name": "Arcos / G7 Revision Hip System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Arcos Modular Femoral Revision System",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/hip/arcos-modular-femoral-revision-system.html",
+        "notes": "Official Zimmer Biomet product page describing the modular femoral revision platform, proximal body options, distal stems, and instrumentation."
+      },
+      {
+        "source_type": "product_brochure_pdf",
+        "title": "Arcos Modular Femoral Revision System Brochure",
+        "url": "https://www.zimmerbiomet.com/content/dam/zb-corporate/en/products/specialties/hip/arcos-modular/15681ArcosModRevBrochureDigitalVersion.pdf",
+        "notes": "Official Zimmer Biomet brochure summarising modular proximal bodies, distal stem options, and auxiliary fixation implants."
+      },
+      {
+        "source_type": "product_page",
+        "title": "G7 Acetabular System",
+        "url": "https://www.zimmerbiomet.com/medical-professionals/hip/product/g7-acetabular-system.html",
+        "notes": "Official Zimmer Biomet product page for the G7 acetabular system."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_COMPREHENSIVE_SHOULDER_SYSTEM",
+    "system_name": "Comprehensive Shoulder System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Comprehensive Shoulder System",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/shoulder/comprehensive-shoulder-system.html",
+        "notes": "Official Zimmer Biomet product page for the Comprehensive shoulder arthroplasty platform."
+      },
+      {
+        "source_type": "surgical_technique_reference",
+        "title": "Comprehensive Shoulder Surgical Techniques",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/shoulder/comprehensive-shoulder-system.html",
+        "notes": "Official product materials reference the operative and surgical technique literature for the Comprehensive shoulder system."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_SIDUS_STEMLESS",
+    "system_name": "Sidus Stem-Free Shoulder",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Sidus Stem-Free Shoulder System",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/shoulder/sidus-stem-free-shoulder-system.html",
+        "notes": "Official Zimmer Biomet product page for the Sidus stem-free shoulder arthroplasty platform."
+      },
+      {
+        "source_type": "surgical_technique_reference",
+        "title": "Sidus Stem-Free Shoulder Surgical Techniques",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/shoulder/sidus-stem-free-shoulder-system.html",
+        "notes": "Official product materials reference the operative and surgical technique literature for the Sidus stem-free system."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_COMPREHENSIVE_REVERSE_SHOULDER_SYSTEM",
+    "system_name": "Comprehensive Reverse Shoulder System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Comprehensive Reverse Shoulder System",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/shoulder/comprehensive-reverse-shoulder-system.html",
+        "notes": "Official Zimmer Biomet product page for the Comprehensive reverse shoulder arthroplasty platform."
+      },
+      {
+        "source_type": "surgical_technique_reference",
+        "title": "Comprehensive Reverse Shoulder Surgical Techniques",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/shoulder/comprehensive-reverse-shoulder-system.html",
+        "notes": "Official product materials reference the operative and surgical technique literature for the Comprehensive reverse shoulder system."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_COMPREHENSIVE_SHOULDER",
+    "system_name": "Comprehensive Shoulder",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Comprehensive Shoulder System",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/shoulder/comprehensive-shoulder-system.html",
+        "notes": "Official Zimmer Biomet product page for the Comprehensive shoulder arthroplasty platform."
+      },
+      {
+        "source_type": "surgical_technique_reference",
+        "title": "Comprehensive Shoulder Surgical Techniques",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/shoulder/comprehensive-shoulder-system.html",
+        "notes": "Official product materials reference the operative and surgical technique literature for the Comprehensive shoulder system."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_CPT_TRIDENT",
+    "system_name": "CPT / Trident",
+    "sources": [
+      {
+        "source_type": "surgical_technique_pdf",
+        "title": "CPT 12/14 Hip System Surgical Technique",
+        "url": "https://www.zimmerbiomet.com/content/dam/zimmer-biomet/medical-professionals/000-surgical-techniques/hip/cpt-12-14-hip-system-surgical-technique.pdf",
+        "notes": "Official Zimmer Biomet surgical technique PDF describing the CPT polished taper stem family and compatible 12/14 head options."
+      },
+      {
+        "source_type": "field_notice_reference",
+        "title": "CPT Hip System Femoral Stem Surgeon Notice",
+        "url": "https://www.zimmerbiomet.com/content/dam/zb-corporate/en/products/specialties/hip/ZFA%202024-00121%20Surgeon%20Notice_September%202024%20Follow-up.pdf",
+        "notes": "Official Zimmer Biomet notice confirming CPT femoral stem product family identity and current risk communication."
+      },
+      {
+        "source_type": "product_page",
+        "title": "Trident II",
+        "url": "https://www.stryker.com/pt/pt/joint-replacement/products/trident-ii/index-eu.html",
+        "notes": "Official Stryker Trident II acetabular system page describing shell, liner, and instrumentation families."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_VANGUARD_360",
+    "system_name": "Vanguard 360 Revision",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Vanguard 360 Revision Knee System",
+        "url": "https://www.zimmerbiomet.com/medical-professionals/knee/product/vanguard-360.html",
+        "notes": "Official Zimmer Biomet product page describing femoral-tibial interchangeability, stem options, offset adapters, augments, and tray design."
+      },
+      {
+        "source_type": "surgical_technique_pdf",
+        "title": "Vanguard 360 Revision Knee System Surgical Technique",
+        "url": "https://www.zimmerbiomet.com/content/dam/zimmer-biomet-OUS-Surg-techniques/knee/vanguard-360-revision-knee-system-surgical-technique.pdf",
+        "notes": "Official Zimmer Biomet surgical technique PDF for the revision knee system."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_ARCOS_REVISION",
+    "system_name": "ARCOS Modular",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Arcos Modular Femoral Revision System",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/hip/arcos-modular-femoral-revision-system.html",
+        "notes": "Official Zimmer Biomet product page describing the modular femoral revision platform, proximal body options, distal stems, and instrumentation."
+      },
+      {
+        "source_type": "product_brochure_pdf",
+        "title": "Arcos Modular Femoral Revision System Brochure",
+        "url": "https://www.zimmerbiomet.com/content/dam/zb-corporate/en/products/specialties/hip/arcos-modular/15681ArcosModRevBrochureDigitalVersion.pdf",
+        "notes": "Official Zimmer Biomet brochure summarising modular proximal bodies, distal stem options, and auxiliary fixation implants."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_OXFORD_UKR",
+    "system_name": "Oxford Unicompartmental",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Oxford Partial Knee",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/knee/oxford-partial-knee.html",
+        "notes": "Official Zimmer Biomet product page for the Oxford Partial Knee mobile-bearing unicompartmental system."
+      },
+      {
+        "source_type": "product_brochure_pdf",
+        "title": "Oxford Cementless Partial Knee Brochure",
+        "url": "https://www.zimmerbiomet.com/content/dam/zb-corporate/en/products/specialties/knee/oxford-cementless-partial-knee-replacement/5045.1-US-en%20Oxford%20Cementless%20Partial%20Knee%20Brochure-digital_FINAL.pdf",
+        "notes": "Official Zimmer Biomet brochure describing Oxford partial knee features, mobile bearing design, and cementless construct."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_CONTINUUM_TAPERLOC",
+    "system_name": "Continuum / Taperloc",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Continuum Acetabular System",
+        "url": "https://www.zimmerbiomet.com/medical-professionals/hip/product/continuum-acetabular-system.html",
+        "notes": "Official Zimmer Biomet product page for the Continuum porous metal acetabular platform."
+      },
+      {
+        "source_type": "product_page",
+        "title": "Taperloc Complete Hip System",
+        "url": "https://www.zimmerbiomet.com/medical-professionals/hip/product/taperloc-complete-hip-system.html",
+        "notes": "Official Zimmer Biomet product page for the Taperloc Complete femoral stem family."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_NEXGEN_KNEE",
+    "system_name": "NexGen Knee System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "NexGen Complete Knee Solution",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/knee/nexgen-complete-knee-solution.html",
+        "notes": "Official Zimmer Biomet product page for the NexGen primary knee platform."
+      },
+      {
+        "source_type": "surgical_technique_pdf",
+        "title": "NexGen LPS Fixed Knee Surgical Technique",
+        "url": "https://www.zimmerbiomet.com/content/dam/zimmer-biomet/medical-professionals/000-surgical-techniques/knee/zimmer-nexgen-lps-fixed-knee-surgical-technique.pdf",
+        "notes": "Official Zimmer Biomet surgical technique PDF for the NexGen complete knee solution."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_TAPERLOC_G7",
+    "system_name": "Taperloc / G7",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Taperloc Complete Hip System",
+        "url": "https://www.zimmerbiomet.com/medical-professionals/hip/product/taperloc-complete-hip-system.html",
+        "notes": "Official Zimmer Biomet product page for the Taperloc Complete femoral system."
+      },
+      {
+        "source_type": "product_page",
+        "title": "G7 Acetabular System",
+        "url": "https://www.zimmerbiomet.com/medical-professionals/hip/product/g7-acetabular-system.html",
+        "notes": "Official Zimmer Biomet product page for the G7 acetabular system."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_PERSONA_KNEE",
+    "system_name": "Persona Knee System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Persona The Personalized Knee",
+        "url": "https://www.zimmerbiomet.com/medical-professionals/knee/product/persona-knee-system.html",
+        "notes": "Official product page with education section and surgical technique references."
+      },
+      {
+        "source_type": "surgical_technique_pdf",
+        "title": "Persona The Personalized Knee Surgical Technique",
+        "url": "https://www.zimmerbiomet.com/content/dam/zb-corporate/en/education-resources/surgical-techniques/specialties/knee/persona-the-personalized-knee/persona-the-personalized-knee-surgical-technique1.pdf",
+        "notes": "Official surgical technique PDF."
+      },
+      {
+        "source_type": "instrumentation_pdf",
+        "title": "Zimmer FuZion Instruments Surgical Technique",
+        "url": "https://www.zimmerbiomet.com/content/dam/zb-corporate/en/education-resources/surgical-techniques/specialties/knee/persona-the-personalized-knee/Persona-FuZion-Instruments-Surgical-Technique97-5026-046-00%20Rev-11.pdf",
+        "notes": "Official instrumentation technique PDF with related Persona knee library references."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_AVENIR_COMPLETE___G7_TOTAL_HIP_SYSTEM",
+    "system_name": "Avenir Complete / G7 Total Hip System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "G7 Acetabular System",
+        "url": "https://www.zimmerbiomet.com/medical-professionals/hip/product/g7-acetabular-system.html",
+        "notes": "Official product page with education section and surgical technique references."
+      },
+      {
+        "source_type": "product_page",
+        "title": "G7 Acetabular System",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/hip/g7-acetabular-system.html",
+        "notes": "Official product page with specifications and tray-efficiency notes."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_COONRAD_MORREY",
+    "system_name": "Coonrad-Morrey Total Elbow",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Coonrad/Morrey Total Elbow System",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/elbow/coonrad-morrey-elbow-system.html",
+        "notes": "Official Zimmer Biomet product page with system overview, stem options, and education links."
+      },
+      {
+        "source_type": "brochure_pdf",
+        "title": "Coonrad-Morrey Total Elbow Brochure",
+        "url": "https://www.zimmerbiomet.com/content/dam/zb-corporate/en/products/specialties/elbow/coonrad-morrey-total-elbow/Coonrad-Morrey-Total-Elbow-Brochure_2022%20.pdf",
+        "notes": "Official Zimmer Biomet brochure describing component families, interchangeability, and instrumentation context."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_VANGUARD_M_UKR",
+    "system_name": "Vanguard M / Microplasty",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Oxford Partial Knee",
+        "url": "https://www.zimmerbiomet.com/medical-professionals/knee/product/oxford-partial-knee.html",
+        "notes": "Official Zimmer Biomet partial-knee product page with Microplasty instrumentation references and education links."
+      },
+      {
+        "source_type": "brochure_pdf",
+        "title": "Oxford Fixed Lateral PKR Brochure",
+        "url": "https://www.zimmerbiomet.com/content/dam/zb-corporate/en/products/specialties/knee/oxford-fixed-lateran-knee/BMET0034.1_OxfordFixedLateralBrochure.pdf",
+        "notes": "Official Zimmer Biomet brochure explicitly referencing the fixed-bearing Vanguard M heritage and Microplasty instrumentation platform."
+      },
+      {
+        "source_type": "technique_pdf",
+        "title": "Oxford Signature Surgical Technique",
+        "url": "https://www.zimmerbiomet.com/content/dam/zb-corporate/en/education-resources/surgical-techniques/specialties/knee/oxford-partial-knee/BMET0515.2%20Oxford%20Signature%20Surgical%20Technique.pdf",
+        "notes": "Official Zimmer Biomet technique addendum noting applicability to the medial Vanguard M partial knee."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_NCB_TIBIAL_PLATEAU",
+    "system_name": "NCB Tibial Plateau Plate",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "NCB Proximal Tibia Plating System",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/trauma/ncb-proximal-tibia-plating-system.html",
+        "notes": "Official Zimmer Biomet product page for the NCB proximal tibia plating platform used for tibial plateau fixation."
+      },
+      {
+        "source_type": "surgical_technique_pdf",
+        "title": "NCB Proximal Tibia System Surgical Technique",
+        "url": "https://www.zimmerbiomet.com/content/dam/zb-corporate/en/education-resources/surgical-techniques/specialties/trauma/ncb-proximal-tibia-plating-system/ncbproximaltibiasystemsurgicaltechnique1.pdf",
+        "notes": "Official Zimmer Biomet surgical technique PDF describing plate, screw, and MIS targeting instrumentation."
+      },
+      {
+        "source_type": "brochure_pdf",
+        "title": "Zimmer NCB Plating System Brochure",
+        "url": "https://www.zimmerbiomet.com/content/dam/zb-corporate/en/products/specialties/trauma/ncb-proximal-tibia-plating-system/zimmer-ncb-plating-system-brochure.pdf",
+        "notes": "Official Zimmer Biomet brochure covering the NCB plating system family and associated instrumentation."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_NCB_DISTAL_FEMUR",
+    "system_name": "NCB Distal Femoral Plate",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "NCB Periprosthetic Femur System",
+        "url": "https://www.zimmerbiomet.com/medical-professionals/trauma/product/ncb-periprosthetic-femur.html",
+        "notes": "Official Zimmer Biomet trauma product page describing the NCB distal femur plate family, screw options, and MIS targeting instrumentation."
+      },
+      {
+        "source_type": "surgical_technique_pdf",
+        "title": "NCB Distal Femur System Surgical Technique",
+        "url": "https://www.zimmerbiomet.com/content/dam/zimmer-biomet/medical-professionals/000-surgical-techniques/trauma/ncb-distal-femur-system-surgical-technique.pdf",
+        "notes": "Official Zimmer Biomet surgical technique PDF for the NCB distal femur system."
+      },
+      {
+        "source_type": "brochure_pdf",
+        "title": "NCB Periprosthetic Femur Plate System Brochure",
+        "url": "https://www.zimmerbiomet.com/content/dam/zb-corporate/en/products/specialties/trauma/ncb-periprosthetic-femur-plate-system/26311GLBLenNCBBrochure.pdf",
+        "notes": "Official Zimmer Biomet brochure covering the broader NCB femur plating family and associated instruments."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_NCB_PROX_HUMERUS",
+    "system_name": "NCB Proximal Humerus Plate",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "NCB Proximal Humerus System",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/trauma/ncb-proximal-humerus-system.html",
+        "notes": "Official Zimmer Biomet product page for the NCB proximal humerus plating platform."
+      },
+      {
+        "source_type": "surgical_technique_pdf",
+        "title": "NCB Proximal Humerus System Surgical Technique",
+        "url": "https://www.zimmerbiomet.com/content/dam/zimmer-biomet/medical-professionals/000-surgical-techniques/trauma/ncb-proximal-humerus-system-surgical-technique.pdf",
+        "notes": "Official Zimmer Biomet surgical technique PDF describing plate, screw, and instrumentation workflow."
+      },
+      {
+        "source_type": "brochure_pdf",
+        "title": "Zimmer NCB Plating System Brochure",
+        "url": "https://www.zimmerbiomet.com/content/dam/zb-corporate/en/products/specialties/trauma/ncb-proximal-humerus-system/zimmer-ncb-plating-system-brochure.pdf",
+        "notes": "Official Zimmer Biomet brochure covering the NCB plating system family and associated instrumentation."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_PERI_LOC_CALCANEUM",
+    "system_name": "PerilLoc Calcaneal Plate",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "PeriLoc Plating System",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/trauma/periloc-plating-system.html",
+        "notes": "Official Zimmer Biomet trauma page used as the public source anchor for PeriLoc calcaneal fixation."
+      },
+      {
+        "source_type": "specialty_page",
+        "title": "Trauma",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/trauma.html",
+        "notes": "Official Zimmer Biomet trauma page used as broader workflow context."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_SEQUOIA_SPINE",
+    "system_name": "Sequoia Spine System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Sequoia Spinal System",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/spine/sequoia-spinal-system.html",
+        "notes": "Official Zimmer Biomet spine product page used as the public source anchor."
+      },
+      {
+        "source_type": "specialty_page",
+        "title": "Spine",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/spine.html",
+        "notes": "Official Zimmer Biomet spine page used as broader workflow context."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_ZIMMER_BIOMET",
+    "supplier_name": "Zimmer Biomet",
+    "system_id": "SYS_MUTARS_ENDOPROSTHETIC",
+    "system_name": "MUTARS Endoprosthesis",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "MUTARS",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/orthopaedic-oncology/mutars.html",
+        "notes": "Official Zimmer Biomet orthopaedic oncology product page used as the public source anchor."
+      },
+      {
+        "source_type": "specialty_page",
+        "title": "Orthopaedic Oncology",
+        "url": "https://www.zimmerbiomet.com/en/products-and-solutions/specialties/orthopaedic-oncology.html",
+        "notes": "Official Zimmer Biomet orthopaedic oncology page used as broader workflow context."
+      }
+    ]
+  }
+]

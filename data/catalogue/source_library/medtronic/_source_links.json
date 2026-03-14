@@ -1,0 +1,62 @@
+[
+  {
+    "supplier_id": "SUP_MEDTRONIC",
+    "supplier_name": "Medtronic",
+    "system_id": "SYS_VIDEO_LARYNGOSCOPE",
+    "system_name": "Video Laryngoscope",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "McGRATH MAC Video Laryngoscope",
+        "url": "https://www.medtronic.com/covidien/en-us/products/airway-management/mcgrath-mac-video-laryngoscope.html",
+        "notes": "Official Medtronic airway management product page used as the public source anchor."
+      },
+      {
+        "source_type": "technology_page",
+        "title": "Airway Management",
+        "url": "https://www.medtronic.com/covidien/en-us/products/airway-management.html",
+        "notes": "Official Medtronic airway management page used as broader workflow context."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_MEDTRONIC",
+    "supplier_name": "Medtronic",
+    "system_id": "SYS_LIGASURE",
+    "system_name": "LigaSure Vessel Sealing System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "LigaSure Vessel Sealing System",
+        "url": "https://www.medtronic.com/covidien/en-us/products/vessel-sealing/ligasure-vessel-sealing-system.html",
+        "notes": "Official Medtronic vessel sealing product page used as the public source anchor."
+      },
+      {
+        "source_type": "technology_page",
+        "title": "Energy Products",
+        "url": "https://www.medtronic.com/covidien/en-us/products/energy-products.html",
+        "notes": "Official Medtronic energy products page used as broader workflow context."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_MEDTRONIC",
+    "supplier_name": "Medtronic",
+    "system_id": "SYS_CD_HORIZON",
+    "system_name": "CD HORIZON LEGACY Spine",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "CD HORIZON Spinal System",
+        "url": "https://www.medtronic.com/us-en/healthcare-professionals/products/spinal-orthopaedic/spine-fixation/cd-horizon-spinal-system.html",
+        "notes": "Official Medtronic spine fixation product page used as the public source anchor."
+      },
+      {
+        "source_type": "technology_page",
+        "title": "Spine and Biologics",
+        "url": "https://www.medtronic.com/us-en/healthcare-professionals/products/spinal-orthopaedic.html",
+        "notes": "Official Medtronic spine page used as broader workflow context."
+      }
+    ]
+  }
+]

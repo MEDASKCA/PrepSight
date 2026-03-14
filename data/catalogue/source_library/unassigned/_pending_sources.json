@@ -1,0 +1,847 @@
+[
+  {
+    "system_id": "SYS_COLORECTAL_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Colorectal Surgery Information System",
+    "system_category": "perioperative_specialty_workflow",
+    "mapping_count": 30,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\colorectal-surgery-information-system__SYS_COLORECTAL_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HPB_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "HPB Surgery Information System",
+    "system_category": "perioperative_specialty_workflow",
+    "mapping_count": 19,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\hpb-surgery-information-system__SYS_HPB_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HERNIA_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Hernia Surgery Information System",
+    "system_category": "perioperative_specialty_workflow",
+    "mapping_count": 19,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\hernia-surgery-information-system__SYS_HERNIA_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GYNECOLOGY_PROCEDURE_INFORMATION_SYSTEM",
+    "system_name": "Gynecology Procedure Information System",
+    "system_category": "women_surgical_management",
+    "mapping_count": 16,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\gynecology-procedure-information-system__SYS_GYNECOLOGY_PROCEDURE_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EMERGENCY_GENERAL_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Emergency General Surgery Information System",
+    "system_category": "perioperative_specialty_workflow",
+    "mapping_count": 13,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\emergency-general-surgery-information-system__SYS_EMERGENCY_GENERAL_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UPPER_GI_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Upper GI Surgery Information System",
+    "system_category": "perioperative_specialty_workflow",
+    "mapping_count": 13,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\upper-gi-surgery-information-system__SYS_UPPER_GI_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORAL_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Oral Surgery Information System",
+    "system_category": "ambulatory_surgical_management",
+    "mapping_count": 12,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\oral-surgery-information-system__SYS_ORAL_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SURGICAL_ONCOLOGY_INFORMATION_SYSTEM",
+    "system_name": "Surgical Oncology Information System",
+    "system_category": "perioperative_specialty_workflow",
+    "mapping_count": 12,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\surgical-oncology-information-system__SYS_SURGICAL_ONCOLOGY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_THORACIC_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Thoracic Surgery Information System",
+    "system_category": "surgical_service_line_management",
+    "mapping_count": 12,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\thoracic-surgery-information-system__SYS_THORACIC_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BREAST_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Breast Surgery Information System",
+    "system_category": "perioperative_specialty_workflow",
+    "mapping_count": 11,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\breast-surgery-information-system__SYS_BREAST_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CRANIAL_NEUROSURGERY_INFORMATION_SYSTEM",
+    "system_name": "Cranial Neurosurgery Information System",
+    "system_category": "neurosurgical_theatre_management",
+    "mapping_count": 11,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\cranial-neurosurgery-information-system__SYS_CRANIAL_NEUROSURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SPINAL_NEUROSURGERY_INFORMATION_SYSTEM",
+    "system_name": "Spinal Neurosurgery Information System",
+    "system_category": "spinal_neurosurgical_management",
+    "mapping_count": 11,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\spinal-neurosurgery-information-system__SYS_SPINAL_NEUROSURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CARDIAC_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Cardiac Surgery Information System",
+    "system_category": "surgical_service_line_management",
+    "mapping_count": 10,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\cardiac-surgery-information-system__SYS_CARDIAC_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ENDOCRINE_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Endocrine Surgery Information System",
+    "system_category": "perioperative_specialty_workflow",
+    "mapping_count": 9,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\endocrine-surgery-information-system__SYS_ENDOCRINE_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HIGH_RISK_OBSTETRICS_INFORMATION_SYSTEM",
+    "system_name": "High Risk Obstetrics Information System",
+    "system_category": "maternal_fetal_emergency_management",
+    "mapping_count": 9,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\high-risk-obstetrics-information-system__SYS_HIGH_RISK_OBSTETRICS_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_NEONATAL_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Neonatal Surgery Information System",
+    "system_category": "neonatal_surgical_management",
+    "mapping_count": 9,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\neonatal-surgery-information-system__SYS_NEONATAL_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_OCULOPLASTIC_INFORMATION_SYSTEM",
+    "system_name": "Oculoplastic Surgery Information System",
+    "system_category": "adnexal_orbital_surgical_management",
+    "mapping_count": 9,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\oculoplastic-surgery-information-system__SYS_OCULOPLASTIC_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PODIATRIC_REARFOOT_ANKLE_INFORMATION_SYSTEM",
+    "system_name": "Podiatric Rearfoot and Ankle Surgery Information System",
+    "system_category": "rearfoot_ankle_reconstructive_management",
+    "mapping_count": 9,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\podiatric-rearfoot-and-ankle-surgery-information-system__SYS_PODIATRIC_REARFOOT_ANKLE_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACUTE_CARE_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Acute Care Surgery Information System",
+    "system_category": "perioperative_specialty_workflow",
+    "mapping_count": 8,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\acute-care-surgery-information-system__SYS_ACUTE_CARE_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BARIATRIC_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Bariatric Surgery Information System",
+    "system_category": "perioperative_specialty_workflow",
+    "mapping_count": 8,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\bariatric-surgery-information-system__SYS_BARIATRIC_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DENTAL_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Dental Surgery Information System",
+    "system_category": "ambulatory_surgical_management",
+    "mapping_count": 8,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\dental-surgery-information-system__SYS_DENTAL_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ENT_HEAD_NECK_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "ENT Head and Neck Surgery Information System",
+    "system_category": "head_neck_oncologic_and_endocrine_management",
+    "mapping_count": 8,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\ent-head-and-neck-surgery-information-system__SYS_ENT_HEAD_NECK_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HAND_MICROSURGERY_INFORMATION_SYSTEM",
+    "system_name": "Hand and Microsurgery Information System",
+    "system_category": "hand_trauma_and_microsurgical_management",
+    "mapping_count": 8,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\hand-and-microsurgery-information-system__SYS_HAND_MICROSURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MAXILLOFACIAL_ONCOLOGY_INFORMATION_SYSTEM",
+    "system_name": "Maxillofacial Oncology and Reconstruction Information System",
+    "system_category": "head_neck_oncologic_reconstructive_management",
+    "mapping_count": 8,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\maxillofacial-oncology-and-reconstruction-information-system__SYS_MAXILLOFACIAL_ONCOLOGY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_OTOLOGY_NEUROTOLOGY_INFORMATION_SYSTEM",
+    "system_name": "Otology and Neurotology Information System",
+    "system_category": "ear_and_hearing_surgical_management",
+    "mapping_count": 8,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\otology-and-neurotology-information-system__SYS_OTOLOGY_NEUROTOLOGY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PAEDIATRIC_GENERAL_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Paediatric General Surgery Information System",
+    "system_category": "general_paediatric_surgical_management",
+    "mapping_count": 8,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\paediatric-general-surgery-information-system__SYS_PAEDIATRIC_GENERAL_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PODIATRIC_FOREFOOT_INFORMATION_SYSTEM",
+    "system_name": "Podiatric Forefoot Surgery Information System",
+    "system_category": "forefoot_reconstructive_management",
+    "mapping_count": 8,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\podiatric-forefoot-surgery-information-system__SYS_PODIATRIC_FOREFOOT_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BURNS_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Burns Surgery Information System",
+    "system_category": "burns_and_reconstructive_management",
+    "mapping_count": 7,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\burns-surgery-information-system__SYS_BURNS_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DERMATOLOGIC_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Dermatologic Surgery Information System",
+    "system_category": "skin_oncology_and_reconstructive_management",
+    "mapping_count": 7,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\dermatologic-surgery-information-system__SYS_DERMATOLOGIC_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DIABETIC_FOOT_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Diabetic Foot Surgery Information System",
+    "system_category": "diabetic_foot_limb_salvage_management",
+    "mapping_count": 7,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\diabetic-foot-surgery-information-system__SYS_DIABETIC_FOOT_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GYNECOLOGIC_ONCOLOGY_INFORMATION_SYSTEM",
+    "system_name": "Gynecologic Oncology Information System",
+    "system_category": "oncology_surgical_management",
+    "mapping_count": 7,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\gynecologic-oncology-information-system__SYS_GYNECOLOGIC_ONCOLOGY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MAXILLOFACIAL_TRAUMA_INFORMATION_SYSTEM",
+    "system_name": "Maxillofacial Trauma Information System",
+    "system_category": "facial_trauma_surgical_management",
+    "mapping_count": 7,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\maxillofacial-trauma-information-system__SYS_MAXILLOFACIAL_TRAUMA_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_OPERATIVE_DELIVERY_INFORMATION_SYSTEM",
+    "system_name": "Operative Delivery Information System",
+    "system_category": "obstetric_birth_suite_management",
+    "mapping_count": 7,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\operative-delivery-information-system__SYS_OPERATIVE_DELIVERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_RHINOLOGY_INFORMATION_SYSTEM",
+    "system_name": "Rhinology and Sinus Surgery Information System",
+    "system_category": "sinonasal_and_skull_base_management",
+    "mapping_count": 7,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\rhinology-and-sinus-surgery-information-system__SYS_RHINOLOGY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_UROGYNECOLOGY_INFORMATION_SYSTEM",
+    "system_name": "Urogynecology and Pelvic Floor Information System",
+    "system_category": "pelvic_floor_surgical_management",
+    "mapping_count": 7,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\urogynecology-and-pelvic-floor-information-system__SYS_UROGYNECOLOGY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BREAST_RECONSTRUCTION_INFORMATION_SYSTEM",
+    "system_name": "Breast Reconstruction Surgery Information System",
+    "system_category": "breast_reconstructive_management",
+    "mapping_count": 6,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\breast-reconstruction-surgery-information-system__SYS_BREAST_RECONSTRUCTION_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CONGENITAL_CARDIAC_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Congenital Cardiac Surgery Information System",
+    "system_category": "paediatric_cardiac_surgical_management",
+    "mapping_count": 6,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\congenital-cardiac-surgery-information-system__SYS_CONGENITAL_CARDIAC_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CORNEAL_ANTERIOR_SEGMENT_INFORMATION_SYSTEM",
+    "system_name": "Corneal and Anterior Segment Information System",
+    "system_category": "corneal_surface_and_graft_management",
+    "mapping_count": 6,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\corneal-and-anterior-segment-information-system__SYS_CORNEAL_ANTERIOR_SEGMENT_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DENTOALVEOLAR_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Dentoalveolar Surgery Information System",
+    "system_category": "oral_alveolar_surgical_management",
+    "mapping_count": 6,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\dentoalveolar-surgery-information-system__SYS_DENTOALVEOLAR_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_FUNCTIONAL_NEUROSURGERY_INFORMATION_SYSTEM",
+    "system_name": "Functional Neurosurgery Information System",
+    "system_category": "stereotactic_and_implant_management",
+    "mapping_count": 6,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\functional-neurosurgery-information-system__SYS_FUNCTIONAL_NEUROSURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_LARYNGOLOGY_AIRWAY_INFORMATION_SYSTEM",
+    "system_name": "Laryngology and Airway Surgery Information System",
+    "system_category": "laryngeal_and_airway_management",
+    "mapping_count": 6,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\laryngology-and-airway-surgery-information-system__SYS_LARYNGOLOGY_AIRWAY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_MINIMALLY_INVASIVE_GYNECOLOGY_INFORMATION_SYSTEM",
+    "system_name": "Minimally Invasive Gynecology Information System",
+    "system_category": "advanced_endoscopic_surgical_management",
+    "mapping_count": 6,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\minimally-invasive-gynecology-information-system__SYS_MINIMALLY_INVASIVE_GYNECOLOGY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PAEDIATRIC_NEUROSURGERY_INFORMATION_SYSTEM",
+    "system_name": "Paediatric Neurosurgery Information System",
+    "system_category": "paediatric_neurosurgical_management",
+    "mapping_count": 6,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\paediatric-neurosurgery-information-system__SYS_PAEDIATRIC_NEUROSURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TRANSPLANT_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Transplant Surgery Information System",
+    "system_category": "perioperative_specialty_workflow",
+    "mapping_count": 6,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\transplant-surgery-information-system__SYS_TRANSPLANT_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_VITREORETINAL_INFORMATION_SYSTEM",
+    "system_name": "Vitreoretinal Surgery Information System",
+    "system_category": "retinal_surgical_management",
+    "mapping_count": 6,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\vitreoretinal-surgery-information-system__SYS_VITREORETINAL_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CAESAREAN_BIRTH_INFORMATION_SYSTEM",
+    "system_name": "Caesarean Birth Information System",
+    "system_category": "obstetric_operating_theatre_management",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\caesarean-birth-information-system__SYS_CAESAREAN_BIRTH_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CLEFT_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Cleft Lip and Palate Surgery Information System",
+    "system_category": "cleft_reconstructive_management",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\cleft-lip-and-palate-surgery-information-system__SYS_CLEFT_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GLAUCOMA_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Glaucoma Surgery Information System",
+    "system_category": "glaucoma_interventional_management",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\glaucoma-surgery-information-system__SYS_GLAUCOMA_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_NEUROONCOLOGY_INFORMATION_SYSTEM",
+    "system_name": "Neurooncology Surgery Information System",
+    "system_category": "neurooncology_surgical_management",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\neurooncology-surgery-information-system__SYS_NEUROONCOLOGY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PAEDIATRIC_OPHTHALMOLOGY_INFORMATION_SYSTEM",
+    "system_name": "Paediatric Ophthalmology Information System",
+    "system_category": "paediatric_eye_surgical_management",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\paediatric-ophthalmology-information-system__SYS_PAEDIATRIC_OPHTHALMOLOGY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PAEDIATRIC_THORACIC_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Paediatric Thoracic Surgery Information System",
+    "system_category": "paediatric_thoracic_surgical_management",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\paediatric-thoracic-surgery-information-system__SYS_PAEDIATRIC_THORACIC_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PAEDIATRIC_TRAUMA_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Paediatric Trauma Surgery Information System",
+    "system_category": "paediatric_trauma_surgical_management",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\paediatric-trauma-surgery-information-system__SYS_PAEDIATRIC_TRAUMA_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PODIATRIC_MIDFOOT_INFORMATION_SYSTEM",
+    "system_name": "Podiatric Midfoot Surgery Information System",
+    "system_category": "midfoot_reconstructive_management",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\podiatric-midfoot-surgery-information-system__SYS_PODIATRIC_MIDFOOT_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_REPRODUCTIVE_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Reproductive Surgery Information System",
+    "system_category": "fertility_surgical_management",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\reproductive-surgery-information-system__SYS_REPRODUCTIVE_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_TMJ_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Temporomandibular Joint Surgery Information System",
+    "system_category": "tmj_interventional_and_reconstructive_management",
+    "mapping_count": 5,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\temporomandibular-joint-surgery-information-system__SYS_TMJ_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CATARACT_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Cataract Surgery Information System",
+    "system_category": "ophthalmic_day_surgery_management",
+    "mapping_count": 4,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\cataract-surgery-information-system__SYS_CATARACT_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ORTHOGNATHIC_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Orthognathic Surgery Information System",
+    "system_category": "dentofacial_deformity_surgical_management",
+    "mapping_count": 4,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\orthognathic-surgery-information-system__SYS_ORTHOGNATHIC_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PAEDIATRIC_ENT_INFORMATION_SYSTEM",
+    "system_name": "Paediatric Otolaryngology Information System",
+    "system_category": "paediatric_ent_surgical_management",
+    "mapping_count": 4,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\paediatric-otolaryngology-information-system__SYS_PAEDIATRIC_ENT_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CRANIOFACIAL_SURGERY_INFORMATION_SYSTEM",
+    "system_name": "Craniofacial Surgery Information System",
+    "system_category": "craniofacial_reconstructive_management",
+    "mapping_count": 3,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\craniofacial-surgery-information-system__SYS_CRANIOFACIAL_SURGERY_INFORMATION_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ANAESTHESIA_INFORMATION_MANAGEMENT",
+    "system_name": "Anaesthesia Information Management System",
+    "system_category": "perioperative_documentation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\anaesthesia-information-management-system__SYS_ANAESTHESIA_INFORMATION_MANAGEMENT",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CARDIOTHORACIC_ANAESTHESIA_WORKFLOW",
+    "system_name": "Cardiothoracic Anaesthesia Workflow System",
+    "system_category": "high_acuity_perioperative_documentation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\cardiothoracic-anaesthesia-workflow-system__SYS_CARDIOTHORACIC_ANAESTHESIA_WORKFLOW",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_DAVINCI",
+    "system_name": "Da Vinci Surgical System",
+    "system_category": "Robotic Surgical Platform",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\da-vinci-surgical-system__SYS_DAVINCI",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_OBSTETRIC_ANAESTHESIA_WORKFLOW",
+    "system_name": "Obstetric Anaesthesia Workflow System",
+    "system_category": "maternity_perioperative_documentation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\obstetric-anaesthesia-workflow-system__SYS_OBSTETRIC_ANAESTHESIA_WORKFLOW",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PAEDIATRIC_ANAESTHESIA_WORKFLOW",
+    "system_name": "Paediatric Anaesthesia Workflow System",
+    "system_category": "perioperative_documentation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\paediatric-anaesthesia-workflow-system__SYS_PAEDIATRIC_ANAESTHESIA_WORKFLOW",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_REGIONAL_ANAESTHESIA_WORKFLOW",
+    "system_name": "Regional Anaesthesia Workflow System",
+    "system_category": "perioperative_documentation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\unassigned\\regional-anaesthesia-workflow-system__SYS_REGIONAL_ANAESTHESIA_WORKFLOW",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

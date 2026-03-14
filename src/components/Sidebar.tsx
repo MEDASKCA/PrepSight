@@ -28,7 +28,10 @@ function AIIcon({ className = "h-[68px] w-[68px]" }: { className?: string }) {
 
 function SearchlessBrand() {
   return (
-    <div className="flex h-11 shrink-0 items-center gap-2 rounded-[14px] border border-[#D8E3EE] bg-[#F8FBFF] px-3">
+    <div
+      data-dev-trigger
+      className="flex h-11 shrink-0 items-center gap-2 rounded-[14px] border border-[#D8E3EE] bg-[#F8FBFF] px-3"
+    >
       <AIIcon className="h-[28px] w-[28px]" />
       <span className="text-sm font-semibold text-[#00B4D8]">PrepSight</span>
     </div>

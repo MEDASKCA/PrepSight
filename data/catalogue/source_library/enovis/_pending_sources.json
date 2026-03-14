@@ -1,0 +1,54 @@
+[
+  {
+    "system_id": "SYS_ALTIVATE_REVERSE_SHOULDER_SYSTEM",
+    "system_name": "AltiVate Reverse Shoulder System",
+    "system_category": "arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\enovis\\altivate-reverse-shoulder-system__SYS_ALTIVATE_REVERSE_SHOULDER_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ALTIVATE_SHOULDER_SYSTEM",
+    "system_name": "AltiVate Shoulder System",
+    "system_category": "arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\enovis\\altivate-shoulder-system__SYS_ALTIVATE_SHOULDER_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EMPOWR___HIP_PORTFOLIO_MAPPING",
+    "system_name": "EMPOWR / hip portfolio mapping",
+    "system_category": "arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\enovis\\empowr-hip-portfolio-mapping__SYS_EMPOWR___HIP_PORTFOLIO_MAPPING",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EMPOWR_KNEE_SYSTEM",
+    "system_name": "EMPOWR Knee System",
+    "system_category": "arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\enovis\\empowr-knee-system__SYS_EMPOWR_KNEE_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

@@ -1,0 +1,457 @@
+[
+  {
+    "system_id": "SYS_MIDFOOT_FUSION_PORTFOLIO",
+    "system_name": "Midfoot Fusion Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\midfoot-fusion-portfolio__SYS_MIDFOOT_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SUBTALAR_FUSION_PORTFOLIO",
+    "system_name": "Subtalar Fusion Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 2,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\subtalar-fusion-portfolio__SYS_SUBTALAR_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_APEX_3D_TOTAL_ANKLE_REPLACEMENT_SYSTEM",
+    "system_name": "APEX 3D Total Ankle Replacement System",
+    "system_category": "foot_ankle",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\apex-3d-total-ankle-replacement-system__SYS_APEX_3D_TOTAL_ANKLE_REPLACEMENT_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_ACHILLES_REPAIR_PORTFOLIO",
+    "system_name": "Achilles Repair Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\achilles-repair-portfolio__SYS_ACHILLES_REPAIR_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BUNION___HALLUX_VALGUS_CORRECTION_PORTFOLIO",
+    "system_name": "Bunion / Hallux Valgus Correction Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\bunion-hallux-valgus-correction-portfolio__SYS_BUNION___HALLUX_VALGUS_CORRECTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_FIRST_MTP_FUSION_PORTFOLIO",
+    "system_name": "First MTP Fusion Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\first-mtp-fusion-portfolio__SYS_FIRST_MTP_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_FLATFOOT_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Flatfoot Reconstruction Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\flatfoot-reconstruction-portfolio__SYS_FLATFOOT_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GORILLA_ANKLE_FRACTURE_PLATING_SYSTEM",
+    "system_name": "Gorilla Ankle Fracture Plating System",
+    "system_category": "foot_ankle_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\gorilla-ankle-fracture-plating-system__SYS_GORILLA_ANKLE_FRACTURE_PLATING_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GORILLA_CALCANEAL_FRACTURE_PLATING",
+    "system_name": "Gorilla Calcaneal Fracture Plating",
+    "system_category": "foot_ankle_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\gorilla-calcaneal-fracture-plating__SYS_GORILLA_CALCANEAL_FRACTURE_PLATING",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GORILLA_PILON___ANKLE_FRACTURE_PLATING_SYSTEM",
+    "system_name": "Gorilla Pilon / Ankle Fracture Plating System",
+    "system_category": "foot_ankle_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\gorilla-pilon-ankle-fracture-plating-system__SYS_GORILLA_PILON___ANKLE_FRACTURE_PLATING_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GORILLA_TALUS___HINDFOOT_FIXATION_PORTFOLIO",
+    "system_name": "Gorilla Talus / Hindfoot Fixation Portfolio",
+    "system_category": "foot_ankle_trauma",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\gorilla-talus-hindfoot-fixation-portfolio__SYS_GORILLA_TALUS___HINDFOOT_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_HINDFOOT___TRIPLE_FUSION_PORTFOLIO",
+    "system_name": "Hindfoot / Triple Fusion Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\hindfoot-triple-fusion-portfolio__SYS_HINDFOOT___TRIPLE_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PILON_FUSION___TTC_FUSION_PORTFOLIO",
+    "system_name": "Pilon Fusion / TTC Fusion Portfolio",
+    "system_category": "foot_ankle",
+    "mapping_count": 1,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\pilon-fusion-ttc-fusion-portfolio__SYS_PILON_FUSION___TTC_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_GORILLA_DISTAL_TIBIA___PILON_PLATING",
+    "system_name": "Gorilla Distal Tibia / Pilon Plating",
+    "system_category": "foot_ankle_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\gorilla-distal-tibia-pilon-plating__SYS_GORILLA_DISTAL_TIBIA___PILON_PLATING",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_ZIMMER_BIOMET_ANKLE_FRACTURE_PORTFOLIO",
+    "system_name": "Paragon 28 / Zimmer Biomet Ankle Fracture Portfolio",
+    "system_category": "Foot & ankle trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-zimmer-biomet-ankle-fracture-portfolio__SYS_PARAGON_28_ZIMMER_BIOMET_ANKLE_FRACTURE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_ZIMMER_BIOMET_FOOT_ANKLE_TRAUMA_PORTFOLIO",
+    "system_name": "Paragon 28 / Zimmer Biomet Foot & Ankle Trauma Portfolio",
+    "system_category": "Foot & ankle trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-zimmer-biomet-foot-ankle-trauma-portfolio__SYS_PARAGON_28_ZIMMER_BIOMET_FOOT_ANKLE_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_ANKLE_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Paragon 28 Ankle Reconstruction Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-ankle-reconstruction-portfolio__SYS_PARAGON_28_ANKLE_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_ANKLE_TRAUMA_PORTFOLIO",
+    "system_name": "Paragon 28 Ankle Trauma Portfolio",
+    "system_category": "Foot & ankle trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-ankle-trauma-portfolio__SYS_PARAGON_28_ANKLE_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_ANKLE_ARTHROPLASTY_PORTFOLIO",
+    "system_name": "Paragon 28 Ankle arthroplasty Portfolio",
+    "system_category": "Ankle arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-ankle-arthroplasty-portfolio__SYS_PARAGON_28_ANKLE_ARTHROPLASTY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_FOOT_ANKLE_SURGERY_PORTFOLIO",
+    "system_name": "Paragon 28 Foot & ankle surgery Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-foot-ankle-surgery-portfolio__SYS_PARAGON_28_FOOT_ANKLE_SURGERY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_FOOT_ANKLE_TRAUMA_FIXATION_PORTFOLIO",
+    "system_name": "Paragon 28 Foot & ankle trauma fixation Portfolio",
+    "system_category": "Foot & ankle trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-foot-ankle-trauma-fixation-portfolio__SYS_PARAGON_28_FOOT_ANKLE_TRAUMA_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_FOOT_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Paragon 28 Foot Reconstruction Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-foot-reconstruction-portfolio__SYS_PARAGON_28_FOOT_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_FOOT_TRAUMA_FIXATION_PORTFOLIO",
+    "system_name": "Paragon 28 Foot trauma fixation Portfolio",
+    "system_category": "Foot trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-foot-trauma-fixation-portfolio__SYS_PARAGON_28_FOOT_TRAUMA_FIXATION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_FOREFOOT_DEFORMITY_PORTFOLIO",
+    "system_name": "Paragon 28 Forefoot Deformity Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-forefoot-deformity-portfolio__SYS_PARAGON_28_FOREFOOT_DEFORMITY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_FOREFOOT_PORTFOLIO",
+    "system_name": "Paragon 28 Forefoot Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-forefoot-portfolio__SYS_PARAGON_28_FOREFOOT_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_FOREFOOT_TRAUMA_PORTFOLIO",
+    "system_name": "Paragon 28 Forefoot Trauma Portfolio",
+    "system_category": "Foot trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-forefoot-trauma-portfolio__SYS_PARAGON_28_FOREFOOT_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_FOREFOOT_DEFORMITY_CORRECTION_PORTFOLIO",
+    "system_name": "Paragon 28 Forefoot deformity correction Portfolio",
+    "system_category": "Forefoot deformity correction",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-forefoot-deformity-correction-portfolio__SYS_PARAGON_28_FOREFOOT_DEFORMITY_CORRECTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_FOREFOOT_FUSION_PORTFOLIO",
+    "system_name": "Paragon 28 Forefoot fusion Portfolio",
+    "system_category": "Forefoot fusion",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-forefoot-fusion-portfolio__SYS_PARAGON_28_FOREFOOT_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_HINDFOOT_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Paragon 28 Hindfoot Reconstruction Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-hindfoot-reconstruction-portfolio__SYS_PARAGON_28_HINDFOOT_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_HINDFOOT_TRAUMA_PORTFOLIO",
+    "system_name": "Paragon 28 Hindfoot Trauma Portfolio",
+    "system_category": "Foot & ankle trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-hindfoot-trauma-portfolio__SYS_PARAGON_28_HINDFOOT_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_HINDFOOT_FUSION_PORTFOLIO",
+    "system_name": "Paragon 28 Hindfoot fusion Portfolio",
+    "system_category": "Hindfoot fusion",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-hindfoot-fusion-portfolio__SYS_PARAGON_28_HINDFOOT_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_MIDFOOT_RECONSTRUCTION_PORTFOLIO",
+    "system_name": "Paragon 28 Midfoot Reconstruction Portfolio",
+    "system_category": "Foot & ankle surgery",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-midfoot-reconstruction-portfolio__SYS_PARAGON_28_MIDFOOT_RECONSTRUCTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_MIDFOOT_TRAUMA_PORTFOLIO",
+    "system_name": "Paragon 28 Midfoot Trauma Portfolio",
+    "system_category": "Foot & ankle trauma fixation",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-midfoot-trauma-portfolio__SYS_PARAGON_28_MIDFOOT_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_MIDFOOT_FUSION_PORTFOLIO",
+    "system_name": "Paragon 28 Midfoot fusion Portfolio",
+    "system_category": "Midfoot fusion",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-midfoot-fusion-portfolio__SYS_PARAGON_28_MIDFOOT_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PARAGON_28_TOTAL_ANKLE_PORTFOLIO",
+    "system_name": "Paragon 28 Total Ankle Portfolio",
+    "system_category": "Ankle arthroplasty",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\paragon-28\\paragon-28-total-ankle-portfolio__SYS_PARAGON_28_TOTAL_ANKLE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "supplier_id": "SUP_PARAGON_28",
+    "supplier_name": "Paragon 28",
+    "system_id": "SYS_APEX_3D_TOTAL_ANKLE_REPLACEMENT_SYSTEM",
+    "system_name": "APEX 3D Total Ankle Replacement System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Apex 3D Total Ankle Replacement System",
+        "url": "https://paragon28.com/products/apex-3d-total-ankle-replacement-system/",
+        "notes": "Official Paragon 28 product page."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_PARAGON_28",
+    "supplier_name": "Paragon 28",
+    "system_id": "SYS_GORILLA_ANKLE_FRACTURE_PLATING_SYSTEM",
+    "system_name": "Gorilla Ankle Fracture Plating System",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Gorilla Ankle Fracture Plating System",
+        "url": "https://paragon28.com/products/gorilla-ankle-fracture-plating-system/",
+        "notes": "Official Paragon 28 product page."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_PARAGON_28",
+    "supplier_name": "Paragon 28",
+    "system_id": "SYS_MIDFOOT_FUSION_PORTFOLIO",
+    "system_name": "Midfoot Fusion Portfolio",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Gorilla Midfoot Plating System",
+        "url": "https://paragon28.com/products/gorilla-midfoot-plating-system/",
+        "notes": "Official Paragon 28 product page supporting midfoot fusion fixation."
+      }
+    ]
+  },
+  {
+    "supplier_id": "SUP_PARAGON_28",
+    "supplier_name": "Paragon 28",
+    "system_id": "SYS_FIRST_MTP_FUSION_PORTFOLIO",
+    "system_name": "First MTP Fusion Portfolio",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Gorilla First MTP Fusion Plating System",
+        "url": "https://paragon28.com/products/gorilla-first-mtp-fusion-plating-system/",
+        "notes": "Official Paragon 28 product page supporting first MTP fusion."
+      }
+    ]
+  }
+]

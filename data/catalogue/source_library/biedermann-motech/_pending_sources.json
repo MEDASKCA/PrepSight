@@ -1,0 +1,262 @@
+[
+  {
+    "system_id": "SYS_BIEDERMANN_CERVICAL_SPINE_PORTFOLIO",
+    "system_name": "Biedermann Cervical Spine Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\biedermann-cervical-spine-portfolio__SYS_BIEDERMANN_CERVICAL_SPINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BIEDERMANN_COMPLEX_DEFORMITY_PORTFOLIO",
+    "system_name": "Biedermann Complex Deformity Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\biedermann-complex-deformity-portfolio__SYS_BIEDERMANN_COMPLEX_DEFORMITY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BIEDERMANN_DEFORMITY_PORTFOLIO",
+    "system_name": "Biedermann Deformity Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\biedermann-deformity-portfolio__SYS_BIEDERMANN_DEFORMITY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BIEDERMANN_LUMBAR_FUSION_PORTFOLIO",
+    "system_name": "Biedermann Lumbar Fusion Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\biedermann-lumbar-fusion-portfolio__SYS_BIEDERMANN_LUMBAR_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BIEDERMANN_MOTECH_CERVICAL_FUSION_PORTFOLIO",
+    "system_name": "Biedermann Motech Cervical fusion Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\biedermann-motech-cervical-fusion-portfolio__SYS_BIEDERMANN_MOTECH_CERVICAL_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BIEDERMANN_MOTECH_COMPLEX_DEFORMITY_CORRECTION_PORTFOLIO",
+    "system_name": "Biedermann Motech Complex deformity correction Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\biedermann-motech-complex-deformity-correction-portfolio__SYS_BIEDERMANN_MOTECH_COMPLEX_DEFORMITY_CORRECTION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BIEDERMANN_MOTECH_LUMBAR_FUSION_PORTFOLIO",
+    "system_name": "Biedermann Motech Lumbar fusion Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\biedermann-motech-lumbar-fusion-portfolio__SYS_BIEDERMANN_MOTECH_LUMBAR_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BIEDERMANN_MOTECH_ORTHOPAEDIC_ONCOLOGY_PORTFOLIO",
+    "system_name": "Biedermann Motech Orthopaedic oncology Portfolio",
+    "system_category": "Orthopaedic oncology",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\biedermann-motech-orthopaedic-oncology-portfolio__SYS_BIEDERMANN_MOTECH_ORTHOPAEDIC_ONCOLOGY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BIEDERMANN_MOTECH_PEDIATRIC_ORTHOPAEDICS_PORTFOLIO",
+    "system_name": "Biedermann Motech Pediatric orthopaedics Portfolio",
+    "system_category": "Pediatric orthopaedics",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\biedermann-motech-pediatric-orthopaedics-portfolio__SYS_BIEDERMANN_MOTECH_PEDIATRIC_ORTHOPAEDICS_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BIEDERMANN_MOTECH_PEDIATRIC_SPINE_DEFORMITY_PORTFOLIO",
+    "system_name": "Biedermann Motech Pediatric spine deformity Portfolio",
+    "system_category": "Pediatric spine deformity",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\biedermann-motech-pediatric-spine-deformity-portfolio__SYS_BIEDERMANN_MOTECH_PEDIATRIC_SPINE_DEFORMITY_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BIEDERMANN_MOTECH_SPINE_PORTFOLIO",
+    "system_name": "Biedermann Motech Spine Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\biedermann-motech-spine-portfolio__SYS_BIEDERMANN_MOTECH_SPINE_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BIEDERMANN_MOTECH_SPINE_TRAUMA_PORTFOLIO",
+    "system_name": "Biedermann Motech Spine trauma Portfolio",
+    "system_category": "Spine trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\biedermann-motech-spine-trauma-portfolio__SYS_BIEDERMANN_MOTECH_SPINE_TRAUMA_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BIEDERMANN_MOTECH_THORACOLUMBAR_FUSION_PORTFOLIO",
+    "system_name": "Biedermann Motech Thoracolumbar fusion Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\biedermann-motech-thoracolumbar-fusion-portfolio__SYS_BIEDERMANN_MOTECH_THORACOLUMBAR_FUSION_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_BIEDERMANN_UPPER_CERVICAL_PORTFOLIO",
+    "system_name": "Biedermann Upper Cervical Portfolio",
+    "system_category": "Spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\biedermann-upper-cervical-portfolio__SYS_BIEDERMANN_UPPER_CERVICAL_PORTFOLIO",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_CERVICAL_SPINAL_SOLUTIONS",
+    "system_name": "Cervical Spinal Solutions",
+    "system_category": "spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\cervical-spinal-solutions__SYS_CERVICAL_SPINAL_SOLUTIONS",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_PEDICLE_SCREW___ROD_SPINAL_SOLUTIONS",
+    "system_name": "Pedicle Screw / Rod Spinal Solutions",
+    "system_category": "spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\pedicle-screw-rod-spinal-solutions__SYS_PEDICLE_SCREW___ROD_SPINAL_SOLUTIONS",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SCOLIOSIS_AND_DEFORMITY_SPINAL_SOLUTIONS",
+    "system_name": "Scoliosis and Deformity Spinal Solutions",
+    "system_category": "paediatric_spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\scoliosis-and-deformity-spinal-solutions__SYS_SCOLIOSIS_AND_DEFORMITY_SPINAL_SOLUTIONS",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SPINAL_SOLUTIONS_FOR_DEGENERATIVE_SURGERY",
+    "system_name": "Spinal Solutions for Degenerative Surgery",
+    "system_category": "spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\spinal-solutions-for-degenerative-surgery__SYS_SPINAL_SOLUTIONS_FOR_DEGENERATIVE_SURGERY",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_SPINAL_SOLUTIONS_FOR_DEGENERATIVE_AND_TRAUMA_SURGERY",
+    "system_name": "Spinal Solutions for Degenerative and Trauma Surgery",
+    "system_category": "spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\spinal-solutions-for-degenerative-and-trauma-surgery__SYS_SPINAL_SOLUTIONS_FOR_DEGENERATIVE_AND_TRAUMA_SURGERY",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_THORACIC___LUMBAR_SPINAL_SOLUTIONS",
+    "system_name": "Thoracic / Lumbar Spinal Solutions",
+    "system_category": "spine",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\biedermann-motech\\thoracic-lumbar-spinal-solutions__SYS_THORACIC___LUMBAR_SPINAL_SOLUTIONS",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

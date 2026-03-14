@@ -1,0 +1,15 @@
+[
+  {
+    "system_id": "SYS_RESECTOSCOPE",
+    "system_name": "Resectoscope",
+    "system_category": "electrosurgery",
+    "mapping_count": 63,
+    "source_folder": "data\\catalogue\\source_library\\richard-wolf\\resectoscope__SYS_RESECTOSCOPE",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]

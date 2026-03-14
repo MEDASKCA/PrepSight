@@ -1,0 +1,22 @@
+[
+  {
+    "supplier_id": "SUP_INTEGRA_LIFESCIENCES",
+    "supplier_name": "Integra LifeSciences",
+    "system_id": "SYS_LATITUDE_ELBOW",
+    "system_name": "Latitude EV Total Elbow",
+    "sources": [
+      {
+        "source_type": "product_page",
+        "title": "Latitude EV Total Elbow Arthroplasty System",
+        "url": "https://integralife.com/latitude-ev-total-elbow-arthroplasty-system/",
+        "notes": "Official Integra product page used as the public source anchor."
+      },
+      {
+        "source_type": "technology_page",
+        "title": "Upper Extremities",
+        "url": "https://integralife.com/orthopedics/upper-extremities/",
+        "notes": "Official Integra orthopedics page used as broader workflow context."
+      }
+    ]
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "system_id": "SYS_EXTREMILOCK_FINGER_FIXATION",
+    "system_name": "ExtremiLOCK Finger Fixation",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\osteomed\\extremilock-finger-fixation__SYS_EXTREMILOCK_FINGER_FIXATION",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  },
+  {
+    "system_id": "SYS_EXTREMILOCK_HAND_FRACTURE_SYSTEM",
+    "system_name": "ExtremiLOCK Hand Fracture System",
+    "system_category": "hand_wrist_trauma",
+    "mapping_count": 0,
+    "source_folder": "data\\catalogue\\source_library\\osteomed\\extremilock-hand-fracture-system__SYS_EXTREMILOCK_HAND_FRACTURE_SYSTEM",
+    "needed_sources": [
+      "operative technique",
+      "ifu",
+      "catalogue"
+    ],
+    "notes": ""
+  }
+]
