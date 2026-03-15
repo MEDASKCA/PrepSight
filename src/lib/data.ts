@@ -78,6 +78,24 @@ const jsonProcedures: Procedure[] = [
 // They take priority: if a seed-data ID matches a JSON procedure ID, the seed version wins.
 const seedIds = new Set(seedProcedures.map((p) => normalizeText(p.id)))
 
+/**
+ * Reconciliation map: JSON procedure IDs that are semantically covered by an authored seed card.
+ * In browse/display UI, the seed version is preferred. The JSON procedure remains accessible
+ * via its direct URL (e.g. for anatomy-filtered views where seed procedures have no anatomy_id).
+ *
+ * key   = JSON procedure ID
+ * value = seed procedure ID that covers it
+ */
+export const SEED_SUPERSEDES: Record<string, string> = {
+  "PROC_PRIMARY_TOTAL_HIP_REPLACEMENT":                             "thr-posterior",
+  "PROC_PRIMARY_TOTAL_KNEE_REPLACEMENT":                            "tkr",
+  "PROC_PRIMARY_TOTAL_SHOULDER_REPLACEMENT":                        "tsa",
+  "PROC_ANTERIOR_CRUCIATE_LIGAMENT_RECONSTRUCTION":                 "acl-reconstruction",
+  "PROC_DYNAMIC_HIP_SCREW_FIXATION_OF_INTERTROCHANTERIC_FRACTURE":  "dhs",
+  "PROC_INTRAMEDULLARY_NAILING_OF_FEMORAL_SHAFT_FRACTURE":          "im-nail-femur",
+  "PROC_UNICOMPARTMENTAL_KNEE_REPLACEMENT":                         "ukr",
+}
+
 export const procedures: Procedure[] = [
   ...seedProcedures,
   ...jsonProcedures.filter((p) => !seedIds.has(normalizeText(p.id))),

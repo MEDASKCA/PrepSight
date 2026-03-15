@@ -1,4 +1,4 @@
-import { procedures, getProceduresBySpecialty } from "@/lib/data"
+import { procedures, getProceduresBySpecialty, SEED_SUPERSEDES } from "@/lib/data"
 import { ClinicalSetting, Procedure } from "@/lib/types"
 import { SETTING_COLOUR, SETTING_SPECIALTIES } from "@/lib/settings"
 import { House } from "lucide-react"
@@ -147,9 +147,13 @@ export default async function HomePage({ searchParams }: Props) {
     }
 
     theatreProcedures = dedupeProceduresForDisplay(
-      theatreProcedures.filter(
-        (p) => hasVariantsForProcedure(p.id) || p.sections.length > 0,
-      ),
+      theatreProcedures.filter((p) => {
+        if (!(hasVariantsForProcedure(p.id) || p.sections.length > 0)) return false
+        // In specialty/service-line views (no anatomy filter) suppress JSON procedures that
+        // are semantically covered by an authored seed card — seed version is preferred.
+        if (!anatomy && p.id in SEED_SUPERSEDES) return false
+        return true
+      }),
     )
   }
 

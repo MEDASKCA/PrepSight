@@ -5,12 +5,11 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { ArrowLeft, House, Search, ChevronRight, Plus, Check } from "lucide-react"
 import Fuse from "fuse.js"
-import { procedures } from "@/lib/seed-data/index"
+import { procedures, SEED_SUPERSEDES } from "@/lib/data"
 import { CLINICAL_SETTINGS } from "@/lib/settings"
-import { ClinicalSetting } from "@/lib/types"
+import { ClinicalSetting, Procedure } from "@/lib/types"
 
 type Step = "search" | "confirm-existing" | "register-new"
-type Procedure = typeof procedures[0]
 
 export default function NewCardPage() {
   const router = useRouter()
@@ -22,7 +21,12 @@ export default function NewCardPage() {
   const [newSetting,   setNewSetting]   = useState<ClinicalSetting | "">("")
   const [newSpecialty, setNewSpecialty] = useState("")
 
-  const fuse = useMemo(() => new Fuse(procedures, {
+  const searchableProcedures = useMemo(
+    () => procedures.filter((p) => !(p.id in SEED_SUPERSEDES)),
+    [],
+  )
+
+  const fuse = useMemo(() => new Fuse(searchableProcedures, {
     keys: ["name"],
     threshold: 0.45,
     minMatchCharLength: 3,
@@ -35,8 +39,8 @@ export default function NewCardPage() {
   }, [query, fuse])
 
   const existingSpecialties = useMemo(() =>
-    [...new Set(procedures.map(p => p.specialty))].sort()
-  , [])
+    [...new Set(searchableProcedures.map(p => p.specialty))].sort()
+  , [searchableProcedures])
 
   // ── Step 1: Search ──────────────────────────────────────────────────────────
   if (step === "search") {

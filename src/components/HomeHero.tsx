@@ -11,6 +11,7 @@ import {
   Bone,
   Brain,
   Building2,
+  CalendarDays,
   ChevronRight,
   Cross,
   Database,
@@ -30,7 +31,6 @@ import {
   Wrench,
 } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
 import { useRouter, useSearchParams } from "next/navigation"
 import ProfileButton from "@/components/ProfileButton"
 import {
@@ -92,62 +92,79 @@ const SPECIALTY_TILE_COLOURS = [
 const WORKFLOW_TOOLS = [
   {
     label: "New card",
+    description: "Create a procedure Kardex",
     href: "/procedures/new",
     icon: Plus,
     tileColor: "#4DA3FF",
     available: true,
   },
   {
+    label: "Calendar",
+    description: "Plan and track upcoming cases",
+    href: "/calendar",
+    icon: CalendarDays,
+    tileColor: "#7C5CFC",
+    available: true,
+  },
+  {
     label: "Catalogue",
+    description: "Products, trays and equipment",
     href: "/catalogue",
     icon: Package,
     tileColor: "#14B8A6",
     available: true,
   },
   {
-    label: "Suppliers",
-    href: "/suppliers",
-    icon: Database,
-    tileColor: "#06B6D4",
-    available: true,
-  },
-  {
-    label: "Surgeons",
-    href: "",
-    icon: UserRound,
-    tileColor: "#6366F1",
-    available: false,
-  },
-  {
-    label: "Directory",
-    href: "/directory",
-    icon: Building2,
-    tileColor: "#7C5CFC",
-    available: true,
-  },
-  {
-    label: "Implants",
-    href: "/catalogue/implants",
-    icon: LayoutGrid,
-    tileColor: "#10B981",
-    available: true,
-  },
-  {
-    label: "Product ID",
-    href: "/catalogue/products",
-    icon: FolderSearch2,
-    tileColor: "#F97316",
-    available: true,
-  },
-  {
     label: "Stockroom",
+    description: "Check and update stock levels",
     href: "/catalogue/stockroom",
     icon: ShoppingCart,
     tileColor: "#8B5CF6",
     available: true,
   },
   {
+    label: "Surgeons",
+    description: "Preferences and setups",
+    href: "",
+    icon: UserRound,
+    tileColor: "#6366F1",
+    available: false,
+  },
+  {
+    label: "Scan",
+    description: "Identify any item by barcode",
+    href: "/catalogue/products",
+    icon: FolderSearch2,
+    tileColor: "#F97316",
+    available: true,
+  },
+  {
+    label: "Directory",
+    description: "Units, locations and contacts",
+    href: "/directory",
+    icon: Building2,
+    tileColor: "#0EA5E9",
+    available: true,
+  },
+  {
+    label: "Suppliers",
+    description: "Contacts and product lines",
+    href: "/suppliers",
+    icon: Database,
+    tileColor: "#06B6D4",
+    available: true,
+  },
+  {
+    label: "Implants",
+    description: "Browse implant systems",
+    href: "/catalogue/implants",
+    icon: LayoutGrid,
+    tileColor: "#10B981",
+    available: true,
+  },
+  {
     label: "Data Review",
+    description: "Review and publish card content",
     href: "/review",
     icon: Wrench,
     tileColor: "#F59E0B",
@@ -157,15 +174,53 @@ const WORKFLOW_TOOLS = [
 
 const WORKFLOW_IMAGE_MAP: Record<string, string> = {
   "New card": "/icons/workflow/new-card.png",
+  "Calendar": "",
   Catalogue: "/icons/workflow/catalogue.png",
   Suppliers: "/icons/workflow/suppliers.svg",
   Surgeons: "/icons/workflow/surgeons.png",
   Directory: "/icons/workflow/directory.png",
   Implants: "/icons/workflow/implants.png",
-  "Product ID": "/icons/workflow/product-id.png",
+  "Scan": "/icons/workflow/product-id.png",
   Stockroom: "/icons/workflow/stockroom.png",
   "Data Review": "/icons/workflow/tray-audit.png",
 }
+
+const NOTIFICATIONS = [
+  { type: "updated" as const, text: "THR Posterior Approach — card reviewed March 2026", time: "2h ago" },
+  { type: "attention" as const, text: "TKR Medial Oxford — review requested", time: "1d ago" },
+  { type: "new" as const, text: "DHS Fixation card added to Trauma & Orthopaedics", time: "3d ago" },
+]
+
+const TICKER_SLIDES = [
+  {
+    tag: "Huddle",
+    title: "Morning Huddle",
+    text: "08:00 · Conference Room 1 · All theatre leads",
+    image: "/announcements/huddle.png",
+    color: "#4DA3FF",
+  },
+  {
+    tag: "Notice",
+    title: "Theatre 3 — Deep clean",
+    text: "Scheduled deep clean in progress. Return expected 14:00",
+    image: "/announcements/notice.png",
+    color: "#F97316",
+  },
+  {
+    tag: "Updated",
+    title: "THR Posterior Approach",
+    text: "Card reviewed and updated — March 2026 · PrepSight editorial",
+    image: "/announcements/update.png",
+    color: "#10B981",
+  },
+  {
+    tag: "Reminder",
+    title: "Surgeon Preference Cards",
+    text: "Check preference cards before first case of the day",
+    image: "/announcements/reminder.png",
+    color: "#7C5CFC",
+  },
+] as const
 
 const SPECIALTY_SHORT_LABELS: Record<string, string> = {
   "Trauma and Orthopaedics": "Ortho",
@@ -414,11 +469,180 @@ function getMobileSpecialtyImageSrc(src?: string): string | undefined {
   return src.replace(/(\.[a-z0-9]+)$/i, "-1$1")
 }
 
+function getSpecialtyColor(specialty: string): string {
+  let hash = 0
+  for (const ch of specialty) hash = (hash * 31 + ch.charCodeAt(0)) & 0xffff
+  return SPECIALTY_TILE_COLOURS[hash % SPECIALTY_TILE_COLOURS.length] ?? "#0EA5E9"
+}
+
+const GREETINGS_MORNING = [
+  "Good morning",
+  "Morning — ready for the day?",
+  "Morning. Let's make it a good one.",
+  "Good morning. All set?",
+  "Morning. Another day, another save.",
+  "Rise and shine.",
+  "Good morning. The day is yours.",
+  "Morning — let's get you prepped.",
+  "Good morning. Start strong.",
+  "Morning. The theatre awaits.",
+  "Good morning. Ready when you are.",
+  "Morning — what's on the list today?",
+  "Good morning. Let's do this.",
+  "Morning. Fresh start, full focus.",
+  "Good morning. How's the day looking?",
+  "Morning — something great is ahead.",
+  "Good morning. Hit the ground running.",
+  "Morning. Let's make every minute count.",
+  "Good morning. Prepared is halfway there.",
+  "Morning — coffee first, then we go.",
+  "Good morning. Big day?",
+  "Morning. Whatever's on today, you've got it.",
+  "Good morning. Ready to prep?",
+  "Morning. Let's make today count.",
+  "Good morning. Steady hands, clear mind.",
+  "Morning. Let's get ahead of the day.",
+  "Good morning. The best preparation starts now.",
+  "Morning — time to get sharp.",
+  "Good morning. One step at a time.",
+  "Morning. Here to help you prepare.",
+  "Good morning. Let's make it smooth.",
+  "Morning — everything under control?",
+  "Good morning. Focus. Prepare. Deliver.",
+  "Morning. Let's build today right.",
+  "Good morning. What do you need?",
+  "Morning. Great things start with great preparation.",
+  "Good morning. You've got this.",
+  "Morning — no surprises today.",
+  "Good morning. Ready to look things up?",
+  "Morning. Let's check everything twice.",
+  "Good morning. Calm, prepared, confident.",
+  "Morning. Let's walk through today together.",
+  "Good morning. The detail matters.",
+  "Morning — off to a strong start.",
+  "Good morning. What are we prepping for?",
+  "Morning. Precision starts here.",
+  "Good morning. Clear the fog, find the facts.",
+  "Morning. Let's keep the team informed.",
+  "Good morning. A well-prepped team is a great team.",
+  "Morning. Shall we get started?",
+]
+
+const GREETINGS_AFTERNOON = [
+  "Good afternoon",
+  "Afternoon — keeping pace?",
+  "Good afternoon. Still going strong?",
+  "Afternoon. How's the day treating you?",
+  "Good afternoon. Made it past the morning rush.",
+  "Afternoon — the hardest part's behind you.",
+  "Good afternoon. What do you need?",
+  "Afternoon. Let's keep the momentum.",
+  "Good afternoon. Plenty of day left.",
+  "Afternoon — need anything looked up?",
+  "Good afternoon. Still sharp?",
+  "Afternoon. Ready for the next one.",
+  "Good afternoon. Looking something up?",
+  "Afternoon. Let's stay ahead.",
+  "Good afternoon. The afternoon belongs to the prepared.",
+  "Afternoon — checking in.",
+  "Good afternoon. How can I help?",
+  "Afternoon. One case at a time.",
+  "Good afternoon. Let's make the rest count.",
+  "Afternoon — you're doing great.",
+  "Good afternoon. Stay focused.",
+  "Afternoon. What's next?",
+  "Good afternoon. Let's run through it.",
+  "Afternoon — any questions?",
+  "Good afternoon. Ready when you are.",
+  "Afternoon. Need a hand?",
+  "Good afternoon. Details matter now more than ever.",
+  "Afternoon — let's get you sorted.",
+  "Good afternoon. Clear and confident.",
+  "Afternoon. The day's moving — let's move with it.",
+  "Good afternoon. Back for more?",
+  "Afternoon — steady as she goes.",
+  "Good afternoon. What are we looking at?",
+  "Afternoon. Everything on track?",
+  "Good afternoon. Here if you need me.",
+  "Afternoon — let's stay sharp together.",
+  "Good afternoon. Need to double-check something?",
+  "Afternoon. All good?",
+  "Good afternoon. Right, let's go.",
+  "Afternoon — you've made it this far.",
+  "Good afternoon. Prepped and ready?",
+  "Afternoon. Let's close the day well.",
+  "Good afternoon. What's coming up next?",
+  "Afternoon — let's make it smooth.",
+  "Good afternoon. What can I help with?",
+  "Afternoon. Focused and prepared.",
+  "Good afternoon. Still a lot of day left.",
+  "Afternoon — onward.",
+  "Good afternoon. Let's get it right.",
+  "Afternoon. Ready for the next case?",
+]
+
+const GREETINGS_EVENING = [
+  "Good evening",
+  "Evening — winding down?",
+  "Good evening. Long day?",
+  "Evening. Still at it?",
+  "Good evening. What's left on the list?",
+  "Evening — almost there.",
+  "Good evening. Let's finish strong.",
+  "Evening. Need anything before you wrap up?",
+  "Good evening. You've earned this moment.",
+  "Evening — end of shift check-in?",
+  "Good evening. Everything tied up?",
+  "Evening. Let's close out well.",
+  "Good evening. How did today go?",
+  "Evening — the day's nearly done.",
+  "Good evening. One last look?",
+  "Evening. Need to prep for tomorrow?",
+  "Good evening. Thinking ahead?",
+  "Evening — planning for the morning?",
+  "Good evening. Tomorrow starts tonight.",
+  "Evening. Let's make sure nothing's missed.",
+  "Good evening. How was the day?",
+  "Evening — checking in before you head off?",
+  "Good evening. Any last things to sort?",
+  "Evening. Let's review what's needed.",
+  "Good evening. Calm evening ahead?",
+  "Evening — take a breath, then let's go.",
+  "Good evening. Looking something up?",
+  "Evening. The prepared are never truly off.",
+  "Good evening. Ready for tomorrow?",
+  "Evening — what can I help with?",
+  "Good evening. Let's get ahead of the week.",
+  "Evening. Tying up loose ends?",
+  "Good evening. Last thing to check?",
+  "Evening — nearly done for the day.",
+  "Good evening. Great work today.",
+  "Evening. Rest well after this.",
+  "Good evening. Need a card before you go?",
+  "Evening — one more look?",
+  "Good evening. Let's make tomorrow easier.",
+  "Evening. Detail now means calm later.",
+  "Good evening. Prepping for the next shift?",
+  "Evening — still thinking about the day?",
+  "Good evening. Let's wrap this up right.",
+  "Evening. What's on your mind?",
+  "Good evening. Here to help.",
+  "Evening — night shift prep?",
+  "Good evening. The diligent never truly clock off.",
+  "Evening. Let's get you sorted.",
+  "Good evening. Almost time to rest.",
+  "Evening — what do you need?",
+]
+
 function getGreeting(): string {
-  const h = new Date().getHours()
-  if (h < 12) return "Good morning."
-  if (h < 17) return "Good afternoon."
-  return "Good evening."
+  const now = new Date()
+  const h = now.getHours()
+  const dayOfYear = Math.floor(
+    (now.getTime() - new Date(now.getFullYear(), 0, 0).getTime()) / 86_400_000,
+  )
+  const pool =
+    h < 12 ? GREETINGS_MORNING : h < 17 ? GREETINGS_AFTERNOON : GREETINGS_EVENING
+  return pool[dayOfYear % pool.length] ?? pool[0]
 }
 
 function getProfileBrowserSnapshot(): PrepSightProfile | null {
@@ -791,6 +1015,7 @@ export default function HomeHero({
   const [specialtyOrderMap, setSpecialtyOrderMap] = useState<Record<string, string[]>>({})
   const [workflowOrder, setWorkflowOrder] = useState<string[]>([])
   const [mobileResultsDrawerStyle, setMobileResultsDrawerStyle] = useState<CSSProperties | null>(null)
+  const [tickerIndex, setTickerIndex] = useState(0)
   const inputRef = useRef<HTMLInputElement>(null)
   const mobileInputRef = useRef<HTMLTextAreaElement>(null)
   const mobileComposerRef = useRef<HTMLDivElement>(null)
@@ -812,7 +1037,7 @@ export default function HomeHero({
     target: HTMLElement
   } | null>(null)
   const messageSeedRef = useRef(0)
-  const greetingText = hasHydrated ? getGreeting().replace(".", "") : "Welcome"
+  const greetingText = hasHydrated ? getGreeting() : "Welcome"
   const contextBadge = hasHydrated && profile ? getContextBadge(profile) : "Browse and reference"
 
   const results = deferredQuery.trim().length > 0
@@ -1459,6 +1684,11 @@ export default function HomeHero({
     threadScrollerRef.current.scrollTop = threadScrollerRef.current.scrollHeight
   }, [messages])
 
+  useEffect(() => {
+    const id = setInterval(() => setTickerIndex((i) => (i + 1) % TICKER_SLIDES.length), 5000)
+    return () => clearInterval(id)
+  }, [])
+
   return (
     <div className="homehero-root app-shell-bg relative flex h-[100dvh] max-w-xl flex-col overflow-hidden animate-step-in px-3 pb-6 pt-3 lg:h-auto lg:max-w-none lg:overflow-visible lg:px-10 lg:py-10">
       <div className="homehero-mobile-backdrop pointer-events-none absolute inset-0 lg:hidden">
@@ -1471,123 +1701,152 @@ export default function HomeHero({
         <div className="homehero-surface app-card-bg app-card-border relative overflow-hidden rounded-[40px] border shadow-[0_36px_80px_rgba(148,163,184,0.18)]">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(77,163,255,0.12),_transparent_30%),radial-gradient(circle_at_85%_12%,_rgba(20,184,166,0.1),_transparent_22%)]" />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/70" />
-          <div className="app-card-border relative z-10 border-b px-8 py-5">
-            <div className="grid grid-cols-[auto_1fr_auto] items-center gap-6">
-              <div data-dev-trigger className="flex items-center gap-4">
-                {hideHomepageImages ? (
-                  <div className="app-card-bg app-card-border flex h-16 min-w-16 items-center justify-center rounded-2xl border px-4 shadow-[0_10px_24px_rgba(148,163,184,0.12)]">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/ps-mark.png" alt="P.S." className="h-9 w-auto opacity-95" />
-                  </div>
-                ) : (
-                  <Image src="/ps-mark.png" alt="P.S." width={64} height={64} className="h-16 w-auto object-contain" />
-                )}
-                <div>
-                  <p className="app-text-strong text-[28px] font-semibold tracking-[-0.05em]">PrepSight</p>
+          <div className="app-card-border relative z-10 border-b px-8 pb-7 pt-6">
+            {/* Row 1: Logo + ProfileButton */}
+            <div className="flex items-center justify-between mb-7">
+              <div data-dev-trigger className="flex items-center gap-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/ps-mark.png" alt="P.S." className="h-11 w-auto" />
+                <p className="text-[26px] font-bold tracking-[-0.05em] text-[#00B4D8]">PrepSight</p>
+              </div>
+              <ProfileButton />
+            </div>
+
+            {/* Row 2: Hero greeting */}
+            <div className="mb-6">
+              <p className="app-text-strong text-[52px] font-semibold tracking-[-0.05em] leading-[1.0]">
+                {greetingText}
+              </p>
+              <p className="app-text-muted mt-2 text-[18px] font-medium">{contextBadge}</p>
+            </div>
+
+            {/* Row 3: Search bar */}
+            <div className="relative">
+              <Search size={20} className="app-text-muted absolute left-6 top-1/2 -translate-y-1/2" />
+              <input
+                ref={inputRef}
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onFocus={() => setFocused(true)}
+                onBlur={() => setTimeout(() => setFocused(false), 150)}
+                placeholder="Search procedure, anatomy, implant system, product or catalogue item…"
+                className="app-card-bg app-card-border app-text-strong w-full rounded-[22px] border py-5 pl-14 pr-6 text-[17px] placeholder:text-[#7290A7] shadow-[inset_0_1px_0_rgba(255,255,255,0.92),0_10px_24px_rgba(86,167,191,0.08)] transition-colors focus:border-[#C9F1F8] focus:outline-none focus:ring-2 focus:ring-[#7DD3FC]/20"
+              />
+
+              {showResults && results.length > 0 && (
+                <div className="app-card-bg app-card-border absolute inset-x-0 top-[calc(100%+12px)] z-30 overflow-hidden rounded-[26px] border shadow-[0_30px_70px_rgba(0,180,216,0.14)]">
+                  {results.map((result) => (
+                    <Link
+                      key={result.id}
+                      href={result.href}
+                      className="app-card-border hover:app-card-bg-soft flex items-center justify-between border-b px-6 py-4 transition-colors last:border-0"
+                    >
+                      <div className="mr-3 min-w-0">
+                        <p className="app-text-strong truncate text-[16px] font-semibold">{result.title}</p>
+                        <p className="app-text-muted mt-1 text-[14px]">{result.subtitle}</p>
+                      </div>
+                      <div className="ml-3 flex shrink-0 flex-col items-end gap-1">
+                        <span className={`rounded-full border px-2.5 py-1 text-[12px] font-semibold ${result.badge.className}`}>
+                          {result.badge.label}
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
                 </div>
-              </div>
+              )}
 
-              <div className="app-card-bg app-card-border relative rounded-[28px] border p-2 shadow-[0_18px_34px_rgba(0,180,216,0.18)]">
-                <Search size={18} className="app-text-muted absolute left-7 top-1/2 -translate-y-1/2" />
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  onFocus={() => setFocused(true)}
-                  onBlur={() => setTimeout(() => setFocused(false), 150)}
-                  placeholder="Search procedure, anatomy, implant system, product, or catalogue item..."
-                  className="app-card-bg app-card-border app-text-strong w-full rounded-[22px] border py-4 pl-13 pr-5 text-[15px] placeholder:text-[#7290A7] shadow-[inset_0_1px_0_rgba(255,255,255,0.92),0_10px_24px_rgba(86,167,191,0.08)] transition-colors focus:border-[#C9F1F8] focus:outline-none focus:ring-2 focus:ring-[#7DD3FC]/20"
-                />
-
-                {showResults && results.length > 0 && (
-                  <div className="app-card-bg app-card-border absolute inset-x-0 top-[calc(100%+16px)] z-30 overflow-hidden rounded-[26px] border shadow-[0_30px_70px_rgba(0,180,216,0.14)]">
-                    {results.map((result) => (
-                      <Link
-                        key={result.id}
-                        href={result.href}
-                        className="app-card-border hover:app-card-bg-soft flex items-center justify-between border-b px-5 py-4 transition-colors last:border-0"
-                      >
-                        <div className="mr-3 min-w-0">
-                          <p className="app-text-strong truncate text-sm font-semibold">{result.title}</p>
-                          <p className="app-text-muted mt-1 text-xs">
-                            {result.subtitle}
-                          </p>
-                        </div>
-                        <div className="ml-3 flex shrink-0 flex-col items-end gap-1">
-                          <span className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold ${result.badge.className}`}>
-                            {result.badge.label}
-                          </span>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                )}
-
-                {showResults && results.length === 0 && (
-                  <div className="app-card-bg app-card-border app-text-muted absolute inset-x-0 top-[calc(100%+16px)] z-30 rounded-[26px] border px-5 py-4 text-sm shadow-[0_30px_70px_rgba(0,180,216,0.14)]">
-                    No procedures found.
-                  </div>
-                )}
-              </div>
-
-              <div className="justify-self-end text-right">
-                <p className="app-text-muted text-[11px] uppercase tracking-[0.18em]">{greetingText}</p>
-                <p className="app-text mt-2 text-sm">{contextBadge}</p>
-                <div className="app-card-bg app-card-border mt-5 inline-flex min-w-[220px] flex-col rounded-[24px] border px-5 py-4 text-left shadow-[0_18px_34px_rgba(148,163,184,0.16)]">
-                  <p className="app-text-muted text-[11px] uppercase tracking-[0.18em]">Procedure cards available</p>
-                  <p className="app-text-strong mt-2 text-[40px] font-semibold leading-none tracking-[-0.06em]">0</p>
+              {showResults && results.length === 0 && (
+                <div className="app-card-bg app-card-border app-text-muted absolute inset-x-0 top-[calc(100%+12px)] z-30 rounded-[26px] border px-6 py-4 text-[16px] shadow-[0_30px_70px_rgba(0,180,216,0.14)]">
+                  No procedures found.
                 </div>
-              </div>
+              )}
             </div>
           </div>
 
           <div className="relative z-10 px-8 pb-8 pt-7">
-            <div className="grid grid-cols-[1.45fr_0.9fr] gap-6">
-              <div className="min-w-0">
-                <p className="app-text-muted text-[14px] font-medium tracking-[0.2em]">Workspace</p>
-                <h1 className="app-text-strong mt-4 max-w-[11ch] text-[78px] font-semibold leading-[0.92] tracking-[-0.07em]">
-                  {activeWorkspaceItem?.label ?? "Operating Theatre"}
-                </h1>
-                <p className="app-text mt-5 max-w-2xl text-[16px] leading-8">
-                  Open the current area like a browser engine for procedural knowledge. Move from specialty to anatomy to authored cards without losing the visual thread.
-                </p>
-              </div>
-
-              <div className="app-card-bg app-card-border rounded-[30px] border p-6 shadow-[0_20px_40px_rgba(148,163,184,0.16)]">
-                <p className="app-text-muted text-[11px] uppercase tracking-[0.18em]">Registered areas</p>
-                <div className="mt-5 grid gap-3">
-                  {workspaceItems.map((item, index) => (
-                    <button
-                      key={item.id}
-                      type="button"
-                      onClick={() => setActiveWorkspace(item.id.replace("setting-", "") as ClinicalSetting)}
-                      className="rounded-[24px] px-5 py-5 text-left text-white transition-transform hover:-translate-y-1 [animation:desktopCardRise_0.55s_cubic-bezier(0.2,0.8,0.2,1)_both]"
-                      style={{
-                        animationDelay: `${index * 60}ms`,
-                        backgroundColor: item.solid,
-                        boxShadow: `0 24px 40px ${item.solid}40`,
-                      }}
-                    >
-                      <p className="text-[28px] font-semibold tracking-[-0.04em]">{item.label}</p>
-                    </button>
-                  ))}
+            {/* ── Announcements ──────────────────────────────────────────── */}
+            <div className="flex items-start justify-between gap-4 mb-2">
+              <p className="app-text-muted text-[20px] font-semibold">Announcements</p>
+              {canSwitchWorkspace && (
+                <div className="shrink-0 flex flex-wrap justify-end gap-2">
+                  {workspaceItems.map((item) => {
+                    const isActive = activeWorkspace === item.id.replace("setting-", "")
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => setActiveWorkspace(item.id.replace("setting-", "") as ClinicalSetting)}
+                        className="rounded-full px-4 py-2 text-[15px] font-semibold transition-all hover:-translate-y-0.5"
+                        style={{
+                          backgroundColor: isActive ? item.solid : `${item.solid}22`,
+                          color: isActive ? "#fff" : item.solid,
+                        }}
+                      >
+                        {item.label}
+                      </button>
+                    )
+                  })}
                 </div>
+              )}
+            </div>
+
+            {/* Announcement cards */}
+            <div className="relative overflow-hidden rounded-[28px]" style={{ height: 260 }}>
+              {TICKER_SLIDES.map((slide, i) => (
+                <div
+                  key={i}
+                  className={`absolute inset-0 flex overflow-hidden rounded-[28px] transition-all duration-500 ${
+                    i === tickerIndex ? "opacity-100 translate-y-0 pointer-events-auto" : "pointer-events-none opacity-0 translate-y-3"
+                  }`}
+                  style={{ background: `linear-gradient(135deg, ${slide.color}EE 0%, ${slide.color}99 100%)` }}
+                >
+                  {/* Text side */}
+                  <div className="flex flex-col justify-between p-9 flex-1 min-w-0">
+                    <span className="self-start rounded-full bg-white/20 px-4 py-2 text-[15px] font-bold uppercase tracking-[0.08em] text-white">
+                      {slide.tag}
+                    </span>
+                    <div>
+                      <p className="text-white text-[34px] font-semibold tracking-[-0.04em] leading-tight">{slide.title}</p>
+                      <p className="mt-2.5 text-white/80 text-[18px] leading-snug">{slide.text}</p>
+                    </div>
+                  </div>
+                  {/* Image placeholder */}
+                  <div className="w-[160px] shrink-0 relative overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={slide.image}
+                      alt=""
+                      className="absolute inset-0 h-full w-full object-cover opacity-30 mix-blend-overlay"
+                      onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none" }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-l from-transparent to-transparent" />
+                    {/* Placeholder visual when no image */}
+                    <div className="flex h-full items-center justify-center opacity-20">
+                      <div className="h-20 w-20 rounded-full border-4 border-white" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* Dot indicators — bottom right */}
+              <div className="absolute bottom-4 right-5 flex gap-1.5 z-10">
+                {TICKER_SLIDES.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setTickerIndex(i)}
+                    className={`h-1.5 rounded-full bg-white transition-all ${i === tickerIndex ? "w-5 opacity-100" : "w-1.5 opacity-40"}`}
+                    aria-label={`Slide ${i + 1}`}
+                  />
+                ))}
               </div>
             </div>
 
             <div className="mt-8 grid grid-cols-[1.25fr_0.75fr] gap-6">
               <div>
-                <div className="mb-5 flex items-end justify-between">
-                  <div>
-                    <p className="app-text-muted text-[14px] font-medium tracking-[0.2em]">Specialties</p>
-                    <h2 className="app-text-strong mt-3 text-[42px] font-semibold tracking-[-0.06em]">
-                      {activeWorkspaceItem?.label ?? "Operating Theatre"}
-                    </h2>
-                  </div>
-                  <p className="app-text-muted max-w-sm text-right text-sm leading-7">
-                    Open any specialty as its own dedicated browser space.
-                  </p>
+                <div className="mb-5">
+                  <p className="app-text-muted text-[20px] font-semibold">Specialties</p>
                 </div>
 
                 <div className="grid grid-cols-3 gap-4">
@@ -1649,44 +1908,109 @@ export default function HomeHero({
 
               <div className="grid content-start gap-4">
                 <div className="app-card-bg app-card-border rounded-[30px] border p-6 shadow-[0_20px_40px_rgba(148,163,184,0.16)]">
-                  <p className="app-text-muted text-[14px] font-medium tracking-[0.2em]">Workflow tools</p>
-                  <div className="mt-5 grid gap-3">
-                    {WORKFLOW_TOOLS.map((tool, index) => (
-                      <Link
-                        key={tool.label}
-                        href={tool.available && tool.href ? tool.href : "#"}
-                        className={`rounded-[24px] px-5 py-5 text-white transition-transform hover:-translate-y-1 [animation:desktopCardRise_0.55s_cubic-bezier(0.2,0.8,0.2,1)_both] ${!tool.available ? "pointer-events-none opacity-55" : ""}`}
-                        style={{
-                          animationDelay: `${index * 50}ms`,
-                          background: `linear-gradient(145deg, ${tool.tileColor} 0%, ${tool.tileColor}D9 100%)`,
-                          boxShadow: `0 24px 40px ${tool.tileColor}38`,
-                        }}
-                      >
-                        <p className="text-[25px] font-semibold tracking-[-0.04em]">{tool.label}</p>
-                      </Link>
+                  <p className="app-text-muted text-[20px] font-semibold">Quick access</p>
+                  <div className="mt-4 grid grid-cols-2 gap-3">
+                    {WORKFLOW_TOOLS.map((tool, index) => {
+                      const Icon = tool.icon
+                      const imageSrc = WORKFLOW_IMAGE_MAP[tool.label]
+                      return (
+                        <Link
+                          key={tool.label}
+                          href={tool.available && tool.href ? tool.href : "#"}
+                          className={`group flex items-center gap-4 rounded-[20px] border p-5 transition-all hover:-translate-y-0.5 hover:shadow-md [animation:desktopCardRise_0.5s_cubic-bezier(0.2,0.8,0.2,1)_both] ${
+                            !tool.available
+                              ? "pointer-events-none opacity-40 border-[#E2E8F0] bg-[#F8FAFC]"
+                              : "app-card-border bg-white hover:bg-[#FAFCFF]"
+                          }`}
+                          style={{ animationDelay: `${index * 35}ms` }}
+                        >
+                          <div
+                            className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[20px] shadow-sm"
+                            style={{
+                              background: `linear-gradient(145deg, ${tool.tileColor} 0%, ${tool.tileColor}CC 100%)`,
+                              boxShadow: `0 8px 20px ${tool.tileColor}45`,
+                            }}
+                          >
+                            {imageSrc ? (
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img src={imageSrc} alt="" className="h-8 w-8 object-contain drop-shadow-sm" />
+                            ) : (
+                              <Icon size={28} className="text-white" />
+                            )}
+                          </div>
+                          <div className="min-w-0">
+                            <p className="app-text-strong text-[19px] font-semibold leading-tight">{tool.label}</p>
+                            {"description" in tool && (
+                              <p className="app-text-muted mt-1 text-[15px] leading-snug line-clamp-2">{tool.description}</p>
+                            )}
+                          </div>
+                        </Link>
+                      )
+                    })}
+                  </div>
+                </div>
+
+                {/* Notifications */}
+                <div className="app-card-bg app-card-border rounded-[30px] border p-6 shadow-[0_20px_40px_rgba(148,163,184,0.16)]">
+                  <p className="app-text-muted text-[20px] font-semibold">Notifications</p>
+                  <div className="mt-4 grid gap-3">
+                    {NOTIFICATIONS.map((notif, i) => (
+                      <div key={i} className="app-card-border flex items-start gap-4 rounded-[20px] border p-5">
+                        <div
+                          className={`mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-[18px] font-bold ${
+                            notif.type === "updated"
+                              ? "bg-[#0EA5E9]/12 text-[#0EA5E9]"
+                              : notif.type === "attention"
+                                ? "bg-[#F97316]/12 text-[#F97316]"
+                                : "bg-[#10B981]/12 text-[#10B981]"
+                          }`}
+                        >
+                          {notif.type === "updated" ? "↑" : notif.type === "attention" ? "!" : "+"}
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="app-text-strong text-[18px] font-medium leading-snug">{notif.text}</p>
+                          <p className="app-text-muted mt-2 text-[15px]">{notif.time}</p>
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </div>
 
                 {recentCards.length > 0 && (
                   <div className="app-card-bg app-card-border rounded-[30px] border p-6 shadow-[0_20px_40px_rgba(148,163,184,0.16)]">
-                    <p className="app-text-muted text-[14px] font-medium tracking-[0.2em]">Recently viewed</p>
-                    <div className="mt-5 grid gap-3">
-                      {recentCards.map((card, index) => (
-                        <Link
-                          key={`${card.entry.procedureId}-${card.entry.variantId ?? "base"}-${card.entry.systemId ?? "base"}`}
-                          href={card.href}
-                          className="app-card-bg app-card-border app-text-strong hover:app-card-bg-soft rounded-[24px] border px-5 py-5 shadow-[0_14px_28px_rgba(148,163,184,0.12)] transition-colors [animation:desktopCardRise_0.55s_cubic-bezier(0.2,0.8,0.2,1)_both]"
-                          style={{ animationDelay: `${index * 45}ms` }}
-                        >
-                          <p className="text-[24px] font-semibold tracking-[-0.04em]">
-                            {card.system?.name ?? card.procedure.name}
-                          </p>
-                          <p className="app-text-muted mt-3 text-sm leading-7">
-                            {formatRecentSubtitle(card.procedure.name, card.variant?.name)}
-                          </p>
-                        </Link>
-                      ))}
+                    <p className="app-text-muted text-[20px] font-semibold">Recently viewed</p>
+                    <div className="mt-4 grid gap-3">
+                      {recentCards.map((card, index) => {
+                        const SpecIcon = SPECIALTY_ICON_MAP[card.procedure.specialty] ?? Stethoscope
+                        const specColor = getSpecialtyColor(card.procedure.specialty)
+                        return (
+                          <Link
+                            key={`${card.entry.procedureId}-${card.entry.variantId ?? "base"}-${card.entry.systemId ?? "base"}`}
+                            href={card.href}
+                            className="app-card-border hover:app-card-bg-soft flex items-center gap-4 rounded-[22px] border px-5 py-5 transition-colors [animation:desktopCardRise_0.55s_cubic-bezier(0.2,0.8,0.2,1)_both]"
+                            style={{ animationDelay: `${index * 45}ms` }}
+                          >
+                            <div
+                              className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[18px]"
+                              style={{
+                                background: `linear-gradient(145deg, ${specColor} 0%, ${specColor}CC 100%)`,
+                                boxShadow: `0 6px 14px ${specColor}35`,
+                              }}
+                            >
+                              <SpecIcon size={26} className="text-white" strokeWidth={1.5} />
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <p className="app-text-strong truncate text-[20px] font-semibold tracking-[-0.02em]">
+                                {card.system?.name ?? card.procedure.name}
+                              </p>
+                              <p className="app-text-muted mt-1 truncate text-[15px]">
+                                {formatRecentSubtitle(card.procedure.name, card.variant?.name)}
+                              </p>
+                            </div>
+                            <ChevronRight size={18} className="app-text-muted shrink-0" />
+                          </Link>
+                        )
+                      })}
                     </div>
                   </div>
                 )}

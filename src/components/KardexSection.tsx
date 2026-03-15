@@ -4,11 +4,20 @@ import { useState } from "react"
 import { ChevronDown, ChevronUp, ExternalLink, Save, Check, Clock, SquarePen, Plus, Trash2 } from "lucide-react"
 import ItemRow from "./ItemRow"
 import CataloguePickerModal from "./CataloguePickerModal"
+import ImplantCheckPanel from "./ImplantCheckPanel"
 import { Section, Item } from "@/lib/types"
 
 interface Props {
   section: Section
   defaultOpen?: boolean
+  anchorId?: string
+  showChecks?: boolean
+  checkedItems?: Set<string>
+  onItemCheck?: (itemId: string) => void
+  implantSystem?: string
+  procedureId?: string
+  procedureName?: string
+  uid?: string | null
   onSave?: () => void
   onSectionChange?: (section: Section) => void
 }
@@ -20,6 +29,14 @@ function today() {
 export default function KardexSection({
   section,
   defaultOpen = false,
+  anchorId,
+  showChecks = false,
+  checkedItems,
+  onItemCheck,
+  implantSystem,
+  procedureId,
+  procedureName,
+  uid,
   onSave,
   onSectionChange,
 }: Props) {
@@ -117,7 +134,10 @@ export default function KardexSection({
   const isPostCare      = section.sectionType === "post_procedure_care"
   const isDischarge     = section.sectionType === "discharge_criteria"
   const isComplications = section.sectionType === "complications_escalation"
+  const isHandover      = section.sectionType === "handover_notes"
+  const isImplants      = section.sectionType === "implants_prosthetics"
   const canEditSection  = section.contentMode !== "fixed"
+
 
   function emitSectionChange(overrides?: Partial<Section>) {
     onSectionChange?.({
@@ -133,18 +153,13 @@ export default function KardexSection({
   }
 
   return (
-    <div className="kardex-section mb-3 overflow-hidden rounded-xl border border-[#D5DCE3] bg-white lg:mb-5 lg:rounded-[30px] lg:border-[#14304B] lg:bg-[#08131F] lg:shadow-[0_28px_64px_rgba(15,23,42,0.24)]">
-      <div className="kardex-section-header flex items-center bg-[#4DA3FF] transition-colors">
+    <div id={anchorId} className="kardex-section mb-1 lg:mb-0 lg:border-b lg:border-white/8 scroll-mt-24">
+      <div className="kardex-section-header flex items-center bg-[#4DA3FF] lg:bg-transparent lg:border-b lg:border-white/10 transition-colors">
         <button
           onClick={() => setOpen(!open)}
-          className="flex-1 flex items-center gap-3 px-4 py-3.5 text-left text-base font-semibold text-white transition-colors hover:bg-[#2F8EF7] lg:px-7 lg:py-6 lg:text-[30px] lg:font-semibold lg:tracking-[-0.05em]"
+          className="flex-1 flex items-center gap-3 px-4 py-3.5 text-left text-base font-semibold text-white transition-colors hover:bg-[#2F8EF7] lg:px-7 lg:py-4 lg:text-[15px] lg:font-bold lg:uppercase lg:tracking-[0.06em] lg:text-white/60 lg:hover:bg-transparent lg:hover:text-white"
         >
           <span className="flex-1">{section.title}</span>
-          {section.contentMode === "fixed" && (
-            <span className="shrink-0 rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white lg:px-4 lg:py-1.5 lg:text-[11px]">
-              Supplier fixed
-            </span>
-          )}
         </button>
 
         {open && canEditSection && (
@@ -182,12 +197,12 @@ export default function KardexSection({
         <div className="kardex-section-body px-4 py-2 lg:px-7 lg:py-6 lg:text-white/78">
 
           {/* ── OVERVIEW ───────────────────────────────────────────── */}
-          {isOverview && (section.summary || section.duration || section.anaesthesiaType) && (
-            <div className="py-2 space-y-2">
+          {isOverview && (section.summary || section.duration || section.anaesthesiaType || section.primarySystem || section.alternatives?.length) && (
+            <div className="py-2 space-y-3">
               {section.summary && (
-                    <p className="text-base leading-relaxed text-[#475569] lg:text-lg lg:leading-8 lg:text-white/72">{section.summary}</p>
+                <p className="text-base leading-relaxed text-[#475569] lg:text-lg lg:leading-8 lg:text-white/72">{section.summary}</p>
               )}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-x-6 gap-y-3">
                 {section.duration && (
                   <div>
                     <p className="text-xs uppercase tracking-wide text-[#94a3b8] lg:text-white/38">Duration</p>
@@ -200,7 +215,28 @@ export default function KardexSection({
                     <p className="text-sm font-semibold text-[#3F4752] lg:text-white">{section.anaesthesiaType}</p>
                   </div>
                 )}
+                {section.primarySystem && (
+                  <div>
+                    <p className="text-xs uppercase tracking-wide text-[#94a3b8] lg:text-white/38">System</p>
+                    <p className="text-sm font-semibold text-[#3F4752] lg:text-white">{section.primarySystem}</p>
+                  </div>
+                )}
               </div>
+              {section.alternatives && section.alternatives.length > 0 && (
+                <div>
+                  <p className="text-xs uppercase tracking-wide text-[#94a3b8] lg:text-white/38 mb-1">Alternatives</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {section.alternatives.map((alt) => (
+                      <span
+                        key={alt}
+                        className="rounded-full border border-[#D5DCE3] px-2.5 py-0.5 text-xs font-medium text-[#475569] lg:border-white/14 lg:text-white/70"
+                      >
+                        {alt}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -413,7 +449,58 @@ export default function KardexSection({
             </div>
           )}
 
+          {/* ── HANDOVER NOTES ─────────────────────────────────────── */}
+          {isHandover && (
+            <div className="space-y-4 py-2">
+              {section.recoveryNotes && (
+                <div className="rounded-xl border border-[#D5DCE3] bg-[#f8fafc] p-4 lg:border-white/10 lg:bg-white/6">
+                  <p className="text-xs uppercase tracking-wide text-[#94a3b8] mb-2">Post-op care</p>
+                  <p className="whitespace-pre-wrap text-base leading-relaxed text-[#475569] lg:text-white/72">{section.recoveryNotes}</p>
+                </div>
+              )}
+              {section.dischargeCriteria && section.dischargeCriteria.length > 0 && (
+                <div>
+                  <p className="text-xs uppercase tracking-wide text-[#94a3b8] mb-2">Discharge criteria</p>
+                  <ul className="space-y-1">
+                    {section.dischargeCriteria.map((criterion, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-[#475569] lg:text-white/72">
+                        <span className="text-emerald-500 mt-0.5">✓</span>
+                        {criterion}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {section.commonComplications && section.commonComplications.length > 0 && (
+                <div>
+                  <p className="text-xs uppercase tracking-wide text-[#94a3b8] mb-2">Complications & escalation</p>
+                  <ul className="space-y-1">
+                    {section.commonComplications.map((c, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-[#475569] lg:text-white/72">
+                        <span className="text-amber-500 mt-0.5">⚠</span>
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* ── IMPLANTS STOCK CHECK ──────────────────────────────── */}
+          {isImplants && implantSystem && (
+            <ImplantCheckPanel
+              implantSystem={implantSystem}
+              procedureId={procedureId ?? "unknown"}
+              procedureName={procedureName ?? ""}
+              uid={uid ?? null}
+            />
+          )}
+
           {/* ── ITEMS LIST ────────────────────────────────────────── */}
+          {/* Suppress scaffold placeholder items in the implants section — the ImplantCheckPanel is the checklist */}
+          {isImplants && implantSystem && !editMode ? null : (
+          <>
           {editMode && canEditSection && (
             <div className="mb-3 flex justify-end">
               <button
@@ -427,14 +514,6 @@ export default function KardexSection({
 
           {localItems.length > 0 && (
             <>
-              <div className="flex items-center pt-1 pb-1.5 text-xs uppercase tracking-wider text-[#94a3b8] border-b border-[#D5DCE3]">
-                <div className="flex-1">Item</div>
-                <div className="flex items-center gap-2 shrink-0">
-                  <div className="w-14 text-center">Loc</div>
-                  <div className="w-10 text-center">Qty</div>
-                  {editMode && <div className="w-[60px]" />}
-                </div>
-              </div>
               {localItems.map((item) => (
                 <ItemRow
                   key={item.id}
@@ -442,9 +521,13 @@ export default function KardexSection({
                   editMode={editMode}
                   allowEdit={!item.isFixed}
                   onDelete={() => deleteItem(item.id)}
+                  isChecked={showChecks ? (checkedItems?.has(item.id) ?? false) : false}
+                  onCheck={showChecks && onItemCheck ? () => onItemCheck(item.id) : undefined}
                 />
               ))}
             </>
+          )}
+          </>
           )}
 
         </div>
