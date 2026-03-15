@@ -74,7 +74,7 @@ function SubanatomyHeader({
   isDark: boolean;
 }) {
   return (
-    <div className="px-1 pb-1">
+    <div className="px-4 pb-1">
       <h2 className={`text-[22px] font-bold tracking-[-0.03em] lg:text-[32px] lg:font-bold lg:tracking-[-0.05em] ${isDark ? "text-white" : "text-[#10243E]"}`}>
         {label}
       </h2>

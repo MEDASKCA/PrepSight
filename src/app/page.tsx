@@ -226,7 +226,7 @@ export default async function HomePage({ searchParams }: Props) {
         </div>
       </header>
 
-      <main className="relative mx-auto max-w-4xl space-y-4 px-4 pb-28 pt-5 lg:max-w-none lg:space-y-8 lg:px-12 lg:pb-10 lg:pt-10">
+      <main className="relative mx-auto max-w-4xl space-y-4 pb-28 pt-3 lg:max-w-none lg:space-y-8 lg:px-12 lg:pb-10 lg:pt-10">
         {isOperatingTheatreOverviewPage && (
           <OperatingTheatreTabs
             tabs={operatingTheatreTabs}
