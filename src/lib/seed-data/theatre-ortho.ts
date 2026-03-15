@@ -79,6 +79,19 @@ export const theatreOrtho: Procedure[] = [
         ],
       },
       {
+        id: "implants",
+        title: "Implants & Prosthetics",
+        sectionType: "implants_prosthetics",
+        contentMode: "fixed",
+        items: [
+          { id: "exeter-stem",     name: "Exeter V40 Femoral Stem",     sku: "STR-EXT-V40",    description: "Cemented polished tapered stem — size confirmed intraoperatively", supplier: { name: "Stryker", contact: "01628 668 800" }, defaultQty: 1 },
+          { id: "trident-shell",   name: "Trident II Acetabular Shell", sku: "STR-TRI-ACE",    description: "Cementless press-fit cup — size matched to reamer", supplier: { name: "Stryker", contact: "01628 668 800" }, defaultQty: 1 },
+          { id: "trident-liner",   name: "Trident Poly Liner",          sku: "STR-TRI-LNR",    description: "Highly cross-linked polyethylene insert", supplier: { name: "Stryker", contact: "01628 668 800" }, defaultQty: 1 },
+          { id: "femoral-head",    name: "Femoral Head (28/32/36mm)",   sku: "STR-EXT-HEAD",   description: "Modular CoCr head — offset and size confirmed after trialling", supplier: { name: "Stryker", contact: "01628 668 800" }, defaultQty: 1 },
+          { id: "bone-cement-thr", name: "Simplex P Bone Cement 40g",   sku: "STR-SPX-P-40G",  description: "PMMA cement for femoral stem fixation", supplier: { name: "Stryker", contact: "01628 668 800" }, defaultQty: 2 },
+        ],
+      },
+      {
         id: "consumables",
         title: "Consumables & Supplies",
         sectionType: "consumables_supplies",
@@ -186,6 +199,19 @@ export const theatreOrtho: Procedure[] = [
         items: [
           { id: "tkr-tray",   name: "TKR Instrument Set",      sku: "ATTUNE Tray",      description: "Cutting guides, spacer blocks, trial components", defaultQty: 1 },
           { id: "basic-tray", name: "Basic Soft Tissue Tray",  sku: "General Ortho Tray", description: "Retractors, forceps, needle holders", defaultQty: 1 },
+        ],
+      },
+      {
+        id: "implants",
+        title: "Implants & Prosthetics",
+        sectionType: "implants_prosthetics",
+        contentMode: "fixed",
+        items: [
+          { id: "attune-femoral",  name: "ATTUNE Femoral Component",    sku: "JJ-ATT-FEM",    description: "Size confirmed intraoperatively with trial", supplier: { name: "J&J MedTech", contact: "01344 864 000" }, defaultQty: 1 },
+          { id: "attune-tibial",   name: "ATTUNE Tibial Baseplate",     sku: "JJ-ATT-TIB",    description: "Cementless or cemented — surgeon preference", supplier: { name: "J&J MedTech", contact: "01344 864 000" }, defaultQty: 1 },
+          { id: "attune-insert",   name: "ATTUNE Tibial Insert",        sku: "JJ-ATT-INS",    description: "CR or PS poly insert — thickness confirmed at trial", supplier: { name: "J&J MedTech", contact: "01344 864 000" }, defaultQty: 1 },
+          { id: "attune-patella",  name: "Patellar Resurfacing Button", sku: "JJ-ATT-PAT",    description: "Optional — surgeon discretion", supplier: { name: "J&J MedTech", contact: "01344 864 000" }, defaultQty: 1 },
+          { id: "bone-cement-tkr", name: "Bone Cement (Palacos R+G)",  sku: "PAL-RG-40G",    description: "Gentamicin-loaded PMMA for tibial fixation", supplier: { name: "Heraeus" }, defaultQty: 2 },
         ],
       },
       {

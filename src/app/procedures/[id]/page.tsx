@@ -86,6 +86,7 @@ export default async function ProcedurePage({ params, searchParams }: Props) {
         title={procedure.name}
         subtitle={procedureVariant?.name ?? procedure.approach}
         tertiaryLabel={procedureSystem?.name ?? procedure.implantSystem}
+        implantSystem={procedureSystem?.name ?? procedure.implantSystem}
       />
     </>
   )

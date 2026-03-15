@@ -241,3 +241,34 @@ export async function saveCardCustomSections(
     console.warn("[PrepSight] Firestore saveCardCustomSections failed:", err)
   }
 }
+
+// ── Collection runs (audit) ────────────────────────────────────────────────────
+
+export interface CollectionRunEntry {
+  itemName: string
+  sectionTitle: string
+  reason: string
+  note: string
+}
+
+export interface CollectionRun {
+  procedureId: string
+  procedureName: string
+  variantName?: string
+  uid: string
+  submittedAt: string
+  totalItems: number
+  collectedCount: number
+  collectedItems: string[]
+  uncollectedItems: CollectionRunEntry[]
+}
+
+export async function saveCollectionRun(run: CollectionRun): Promise<void> {
+  if (!db) return
+  try {
+    const id = `${run.uid}__${run.procedureId}__${Date.now()}`
+    await setDoc(doc(db, "collection_runs", id), run)
+  } catch (err) {
+    console.warn("[PrepSight] Firestore saveCollectionRun failed:", err)
+  }
+}

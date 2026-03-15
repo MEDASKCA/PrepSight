@@ -29,6 +29,10 @@ export type SectionType =
   | "discharge_criteria"
   | "complications_escalation"
   | "patient_information"
+  | "wound_closure"
+  | "local_infiltration"
+  | "dressings"
+  | "handover_notes"
 
 export interface Supplier {
   name: string
@@ -73,6 +77,8 @@ export interface Section {
   summary?: string
   duration?: string
   anaesthesiaType?: string
+  primarySystem?: string
+  alternatives?: string[]
   // post_procedure_care
   recoveryNotes?: string
   // discharge_criteria

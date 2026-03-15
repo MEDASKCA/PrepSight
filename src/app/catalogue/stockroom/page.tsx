@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useState, useEffect, useCallback } from "react"
+import { useSearchParams } from "next/navigation"
 import {
   ArrowLeft,
   RefreshCw,
@@ -25,39 +26,23 @@ import { db } from "@/lib/firebase"
 import { doc, setDoc, serverTimestamp } from "firebase/firestore"
 import { onAuthChange } from "@/lib/auth"
 import { getProfile } from "@/lib/profile"
-
-// ── Types ─────────────────────────────────────────────────────────────────────
-
-type StockStatus = "OK" | "Low" | "Critical" | "Out"
-type IconKey = "bone" | "package" | "settings" | "zap" | "thermometer" | "layout" | "wrench"
+import { SEED_ITEMS, getStockStatus, type StockItem, type StockStatus, type IconKey } from "@/lib/stockroom-data"
 
 interface LastEdit {
   by: string
   at: string
 }
 
-interface StockItem {
-  id: string
-  name: string
-  sku: string
-  group?: string
-  supplier?: string
-  subcategory?: string
-  category: string
-  icon: IconKey
-  qty: number
-  par: number
-  location: string
+// StockItem, StockStatus, IconKey imported from @/lib/stockroom-data
+// Extend locally to include lastEdit UI state
+interface StockItemWithEdit extends StockItem {
   lastEdit?: LastEdit
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 function getStatus(qty: number, par: number): StockStatus {
-  if (qty === 0)          return "Out"
-  if (qty < par * 0.3)   return "Critical"
-  if (qty < par)          return "Low"
-  return "OK"
+  return getStockStatus(qty, par)
 }
 
 function qtyColor(status: StockStatus): string {
@@ -110,47 +95,7 @@ function worstStatus(statuses: StockStatus[]): StockStatus {
 
 // ── Seed data ─────────────────────────────────────────────────────────────────
 
-const IMPLANT_LOCATION = "Theatre Store A — Implant Rack"
-
-const SEED_ITEMS: StockItem[] = [
-  // Triathlon CR Femoral Component
-  { id: "tri-cr-1", name: "Size 1R", sku: "STR-TRI-CR-001", group: "Triathlon CR Femoral Component", supplier: "Stryker", subcategory: "Knee", category: "Implants", icon: "bone", qty: 3, par: 2, location: IMPLANT_LOCATION },
-  { id: "tri-cr-2", name: "Size 2R", sku: "STR-TRI-CR-002", group: "Triathlon CR Femoral Component", supplier: "Stryker", subcategory: "Knee", category: "Implants", icon: "bone", qty: 2, par: 2, location: IMPLANT_LOCATION },
-  { id: "tri-cr-3", name: "Size 3R", sku: "STR-TRI-CR-003", group: "Triathlon CR Femoral Component", supplier: "Stryker", subcategory: "Knee", category: "Implants", icon: "bone", qty: 0, par: 2, location: IMPLANT_LOCATION },
-  { id: "tri-cr-4", name: "Size 4R", sku: "STR-TRI-CR-004", group: "Triathlon CR Femoral Component", supplier: "Stryker", subcategory: "Knee", category: "Implants", icon: "bone", qty: 3, par: 2, location: IMPLANT_LOCATION },
-  { id: "tri-cr-5", name: "Size 5R", sku: "STR-TRI-CR-005", group: "Triathlon CR Femoral Component", supplier: "Stryker", subcategory: "Knee", category: "Implants", icon: "bone", qty: 1, par: 2, location: IMPLANT_LOCATION },
-
-  // Triathlon Tibial Baseplate
-  { id: "tri-tib-a", name: "Size A", sku: "STR-TRI-TIB-A", group: "Triathlon Tibial Baseplate", supplier: "Stryker", subcategory: "Knee", category: "Implants", icon: "bone", qty: 4, par: 3, location: IMPLANT_LOCATION },
-  { id: "tri-tib-b", name: "Size B", sku: "STR-TRI-TIB-B", group: "Triathlon Tibial Baseplate", supplier: "Stryker", subcategory: "Knee", category: "Implants", icon: "bone", qty: 3, par: 3, location: IMPLANT_LOCATION },
-  { id: "tri-tib-c", name: "Size C", sku: "STR-TRI-TIB-C", group: "Triathlon Tibial Baseplate", supplier: "Stryker", subcategory: "Knee", category: "Implants", icon: "bone", qty: 0, par: 3, location: IMPLANT_LOCATION },
-
-  // Triathlon CR Poly Insert
-  { id: "tri-ins-8",  name: "8mm",  sku: "STR-TRI-INS-008", group: "Triathlon CR Poly Insert", supplier: "Stryker", subcategory: "Knee", category: "Implants", icon: "bone", qty: 5, par: 4, location: IMPLANT_LOCATION },
-  { id: "tri-ins-10", name: "10mm", sku: "STR-TRI-INS-010", group: "Triathlon CR Poly Insert", supplier: "Stryker", subcategory: "Knee", category: "Implants", icon: "bone", qty: 2, par: 4, location: IMPLANT_LOCATION },
-  { id: "tri-ins-12", name: "12mm", sku: "STR-TRI-INS-012", group: "Triathlon CR Poly Insert", supplier: "Stryker", subcategory: "Knee", category: "Implants", icon: "bone", qty: 0, par: 4, location: IMPLANT_LOCATION },
-
-  // Exeter V40 Stem
-  { id: "ext-1", name: "Size 1 / Offset 37.5", sku: "STR-EXT-V40-01", group: "Exeter V40 Stem", supplier: "Stryker", subcategory: "Hip", category: "Implants", icon: "bone", qty: 2, par: 2, location: IMPLANT_LOCATION },
-  { id: "ext-2", name: "Size 2 / Offset 37.5", sku: "STR-EXT-V40-02", group: "Exeter V40 Stem", supplier: "Stryker", subcategory: "Hip", category: "Implants", icon: "bone", qty: 3, par: 2, location: IMPLANT_LOCATION },
-  { id: "ext-3", name: "Size 3 / Offset 44",   sku: "STR-EXT-V40-03", group: "Exeter V40 Stem", supplier: "Stryker", subcategory: "Hip", category: "Implants", icon: "bone", qty: 1, par: 2, location: IMPLANT_LOCATION },
-
-  // G7 Acetabular Shell
-  { id: "g7-50", name: "50mm", sku: "ZB-G7-ACE-050", group: "G7 Acetabular Shell", supplier: "Zimmer Biomet", subcategory: "Hip", category: "Implants", icon: "bone", qty: 2, par: 2, location: IMPLANT_LOCATION },
-  { id: "g7-52", name: "52mm", sku: "ZB-G7-ACE-052", group: "G7 Acetabular Shell", supplier: "Zimmer Biomet", subcategory: "Hip", category: "Implants", icon: "bone", qty: 0, par: 2, location: IMPLANT_LOCATION },
-  { id: "g7-54", name: "54mm", sku: "ZB-G7-ACE-054", group: "G7 Acetabular Shell", supplier: "Zimmer Biomet", subcategory: "Hip", category: "Implants", icon: "bone", qty: 3, par: 2, location: IMPLANT_LOCATION },
-
-  // Consumables (flat)
-  { id: "drape-1",  name: "BARRIER Orthopaedic Drape Set", sku: "ML-BAR-ORTH-001",  category: "Consumables", icon: "package",     qty: 24, par: 20, location: "Consumables Room — Shelf C3" },
-  { id: "suture-1", name: "VICRYL 0 Suture 70cm",         sku: "ET-VIC-0-W9984",   category: "Consumables", icon: "package",     qty: 48, par: 40, location: "Suture Cabinet" },
-  { id: "suture-2", name: "PDS II 1 Suture 90cm",         sku: "ET-PDS-1-Z340E",   category: "Consumables", icon: "package",     qty: 6,  par: 20, location: "Suture Cabinet" },
-  { id: "cement-1", name: "Simplex P Bone Cement 40g",    sku: "STR-SPX-P-40G",    category: "Consumables", icon: "package",     qty: 12, par: 10, location: "Cold Store — Bay 2" },
-
-  // Equipment (flat)
-  { id: "equip-1",  name: "SmartPump Tourniquet System",   sku: "STR-SMP-TORN-001", category: "Equipment",   icon: "settings",    qty: 3,  par: 2, location: "Equipment Bay 1" },
-  { id: "equip-2",  name: "VIO 3 Electrosurgery Unit",     sku: "ERB-VIO3-EU-001",  category: "Equipment",   icon: "zap",         qty: 2,  par: 2, location: "Equipment Bay 1" },
-  { id: "equip-3",  name: "Bair Hugger 775 Warming Unit",  sku: "3M-BH775-WM",      category: "Equipment",   icon: "thermometer", qty: 3,  par: 3, location: "Equipment Bay 2" },
-]
+// SEED_ITEMS imported from @/lib/stockroom-data
 
 const ICON_MAP: Record<IconKey, React.ElementType> = {
   bone:        Bone,
@@ -229,9 +174,9 @@ function GroupBadge({ items }: { items: StockItem[] }) {
 // ── Detail panel content ──────────────────────────────────────────────────────
 
 interface DetailPanelProps {
-  item: StockItem
+  item: StockItemWithEdit
   onClose: () => void
-  onAdjust: (item: StockItem, delta: number) => void
+  onAdjust: (item: StockItemWithEdit, delta: number) => void
 }
 
 function DetailPanelContent({ item, onClose, onAdjust }: DetailPanelProps) {
@@ -302,11 +247,12 @@ function DetailPanelContent({ item, onClose, onAdjust }: DetailPanelProps) {
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function StockroomPage() {
-  const [items,         setItems]         = useState<StockItem[]>(SEED_ITEMS)
+  const searchParams = useSearchParams()
+  const [items,         setItems]         = useState<StockItemWithEdit[]>(SEED_ITEMS)
   const [catFilter,     setCatFilter]     = useState("All")
   const [statusFilter,  setStatusFilter]  = useState("All")
-  const [query,         setQuery]         = useState("")
-  const [selected,      setSelected]      = useState<StockItem | null>(null)
+  const [query,         setQuery]         = useState(() => searchParams.get("system") ?? "")
+  const [selected,      setSelected]      = useState<StockItemWithEdit | null>(null)
   const [collapsed,     setCollapsed]     = useState<Set<string>>(new Set())
   const [filterOpen,    setFilterOpen]    = useState(false)
   const [uid,           setUid]           = useState<string | null>(null)
@@ -326,7 +272,7 @@ export default function StockroomPage() {
 
   // Firestore audit + optimistic update
   const adjustQty = useCallback(
-    async (item: StockItem, delta: number) => {
+    async (item: StockItemWithEdit, delta: number) => {
       const profile = getProfile()
       const by = profile?.name ? formatName(profile.name) : "Staff"
       const at = formatTime()
@@ -510,7 +456,7 @@ export default function StockroomPage() {
     )
   }
 
-  function renderFlatItem(item: StockItem & { _status: StockStatus }) {
+  function renderFlatItem(item: StockItemWithEdit & { _status: StockStatus }) {
     const Icon = ICON_MAP[item.icon]
     const isSelected = selected?.id === item.id
     return (
@@ -706,7 +652,7 @@ export default function StockroomPage() {
         {/* Left: scrollable list */}
         <div className="bg-white lg:flex-1 lg:overflow-y-auto lg:border-r lg:border-[#D5DCE3]">
           {groups.map(group => renderGroupBlock(group))}
-          {flatItems.map(item => renderFlatItem(item as StockItem & { _status: StockStatus }))}
+          {flatItems.map(item => renderFlatItem(item as StockItemWithEdit & { _status: StockStatus }))}
           {filteredItems.length === 0 && (
             <div className="flex flex-col items-center justify-center py-20 text-[#94A3B8] gap-2">
               <Package size={32} className="text-[#D5DCE3]" />

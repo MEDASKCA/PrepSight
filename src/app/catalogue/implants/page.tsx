@@ -11,6 +11,7 @@ import {
   Minus,
   Plus,
   Search,
+  Clock,
 } from "lucide-react"
 import { db } from "@/lib/firebase"
 import {
@@ -18,8 +19,12 @@ import {
   onSnapshot,
   updateDoc,
   increment,
+  setDoc,
+  serverTimestamp,
   type DocumentData,
 } from "firebase/firestore"
+import { onAuthChange } from "@/lib/auth"
+import { getProfile } from "@/lib/profile"
 
 import { CATALOGUE, CATALOGUE_SUPPLIERS } from "@/lib/catalogue-data"
 
@@ -39,6 +44,11 @@ interface Implant {
   supplierPhone?: string
 }
 
+interface LastEdit {
+  by: string
+  at: string
+}
+
 interface RackItem {
   id: string
   name: string
@@ -46,6 +56,24 @@ interface RackItem {
   total: number
   available: number
   theatre: string
+  lastEdit?: LastEdit
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+function formatName(fullName: string): string {
+  const parts = fullName.trim().split(/\s+/)
+  if (parts.length < 2) return parts[0]
+  return `${parts[0][0]}. ${parts[parts.length - 1]}`
+}
+
+function formatTime(): string {
+  const now = new Date()
+  const day = now.getDate()
+  const month = now.toLocaleString("en-GB", { month: "short" })
+  const hh = String(now.getHours()).padStart(2, "0")
+  const mm = String(now.getMinutes()).padStart(2, "0")
+  return `${day} ${month} · ${hh}:${mm}`
 }
 
 // ── Data from shared catalogue ─────────────────────────────────────────────────
@@ -87,7 +115,7 @@ const SUBCATEGORIES = [
 const SUPPLIERS = CATALOGUE_SUPPLIERS
 const STATUSES  = ["All Status", "In Stock", "Low Stock", "Out of Stock"]
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
+// ── Status helpers ─────────────────────────────────────────────────────────────
 
 function statusColor(status: string): string {
   switch (status) {
@@ -104,7 +132,7 @@ function availableColor(n: number): string {
   return "text-emerald-600"
 }
 
-// ── Detail sheet ──────────────────────────────────────────────────────────────
+// ── Detail sheet (mobile) ──────────────────────────────────────────────────────
 
 function DetailSheet({ implant, onClose }: { implant: Implant; onClose: () => void }) {
   return (
@@ -129,8 +157,8 @@ function DetailSheet({ implant, onClose }: { implant: Implant; onClose: () => vo
           </span>
           <div className="mt-4 space-y-2">
             {[
-              ["Supplier",    implant.supplier],
-              ["System",      implant.subcategory],
+              ["Supplier",      implant.supplier],
+              ["System",        implant.subcategory],
               ["Available Qty", String(implant.qty)],
             ].map(([label, value]) => (
               <div key={label} className="flex items-center justify-between border-b border-[#D5DCE3] pb-2">
@@ -160,6 +188,10 @@ export default function ImplantsPage() {
   const [rackConnected,  setRackConnected]  = useState(false)
   const [query,          setQuery]          = useState("")
   const [filterOpen,     setFilterOpen]     = useState(false)
+  const [uid,            setUid]            = useState<string | null>(null)
+
+  // Auth listener
+  useEffect(() => onAuthChange((user) => setUid(user?.uid ?? null)), [])
 
   const activeFilterCount = [
     subFilter !== "All",
@@ -189,31 +221,71 @@ export default function ImplantsPage() {
 
   const adjustQty = useCallback(
     async (itemId: string, delta: number) => {
+      const profile = getProfile()
+      const by = profile?.name ? formatName(profile.name) : "Staff"
+      const at = formatTime()
+
+      // 1. Optimistic local update with lastEdit attribution
+      let prevAvailable = 0
       setRackItems(prev =>
-        prev.map(r => r.id === itemId ? { ...r, available: Math.max(0, r.available + delta) } : r)
+        prev.map(r => {
+          if (r.id !== itemId) return r
+          prevAvailable = r.available
+          return { ...r, available: Math.max(0, r.available + delta), lastEdit: { by, at } }
+        })
       )
+
       if (!db) return
+
       try {
+        // 2. Update the rack document (available count)
         await updateDoc(doc(db, "implant_racks", "stryker-triathlon-cr"), {
           [`items.${itemId}.available`]: increment(delta),
         })
+
+        // 3. Write audit log entry to sub-collection (only when signed in)
+        if (uid) {
+          const auditRef = doc(
+            db,
+            "implant_racks",
+            "stryker-triathlon-cr",
+            "audit_log",
+            Date.now().toString()
+          )
+          await setDoc(auditRef, {
+            itemId,
+            delta,
+            newQty: Math.max(0, prevAvailable + delta),
+            by,
+            uid,
+            at: serverTimestamp(),
+          })
+        }
       } catch {
-        // revert on failure
+        // Revert on failure
         setRackItems(prev =>
-          prev.map(r => r.id === itemId ? { ...r, available: Math.max(0, r.available - delta) } : r)
+          prev.map(r =>
+            r.id === itemId
+              ? { ...r, available: prevAvailable, lastEdit: undefined }
+              : r
+          )
         )
       }
     },
-    []
+    [uid]
   )
 
   const filtered = IMPLANTS.filter(i => {
-    if (subFilter !== "All"           && i.subcategory !== subFilter)          return false
-    if (supplierFilter !== "All Suppliers" && i.supplier !== supplierFilter)   return false
-    if (statusFilter !== "All Status" && i.status !== statusFilter)            return false
+    if (subFilter !== "All"                && i.subcategory !== subFilter)      return false
+    if (supplierFilter !== "All Suppliers" && i.supplier    !== supplierFilter) return false
+    if (statusFilter !== "All Status"      && i.status      !== statusFilter)   return false
     if (query) {
       const q = query.toLowerCase()
-      if (!i.name.toLowerCase().includes(q) && !i.sku.toLowerCase().includes(q) && !i.supplier.toLowerCase().includes(q)) return false
+      if (
+        !i.name.toLowerCase().includes(q) &&
+        !i.sku.toLowerCase().includes(q) &&
+        !i.supplier.toLowerCase().includes(q)
+      ) return false
     }
     return true
   })
@@ -246,7 +318,10 @@ export default function ImplantsPage() {
             className="w-full pl-9 pr-4 py-2 text-sm border border-[#D5DCE3] rounded-xl bg-[#F4F7FA] text-[#3F4752] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#4DA3FF] focus:bg-white transition-colors"
           />
           {query && (
-            <button onClick={() => setQuery("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#94A3B8] hover:text-[#526579]">
+            <button
+              onClick={() => setQuery("")}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#94A3B8] hover:text-[#526579]"
+            >
               <X size={14} />
             </button>
           )}
@@ -275,16 +350,25 @@ export default function ImplantsPage() {
         </button>
 
         {/* Desktop: inline dropdowns */}
-        <select value={subFilter} onChange={e => setSubFilter(e.target.value)}
-          className="hidden lg:block text-sm border border-[#D5DCE3] rounded-lg px-3 py-1.5 bg-white text-[#3F4752]">
+        <select
+          value={subFilter}
+          onChange={e => setSubFilter(e.target.value)}
+          className="hidden lg:block text-sm border border-[#D5DCE3] rounded-lg px-3 py-1.5 bg-white text-[#3F4752]"
+        >
           {SUBCATEGORIES.map(c => <option key={c}>{c}</option>)}
         </select>
-        <select value={supplierFilter} onChange={e => setSupplierFilter(e.target.value)}
-          className="hidden lg:block text-sm border border-[#D5DCE3] rounded-lg px-3 py-1.5 bg-white text-[#3F4752]">
+        <select
+          value={supplierFilter}
+          onChange={e => setSupplierFilter(e.target.value)}
+          className="hidden lg:block text-sm border border-[#D5DCE3] rounded-lg px-3 py-1.5 bg-white text-[#3F4752]"
+        >
           {SUPPLIERS.map(s => <option key={s}>{s}</option>)}
         </select>
-        <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)}
-          className="hidden lg:block text-sm border border-[#D5DCE3] rounded-lg px-3 py-1.5 bg-white text-[#3F4752]">
+        <select
+          value={statusFilter}
+          onChange={e => setStatusFilter(e.target.value)}
+          className="hidden lg:block text-sm border border-[#D5DCE3] rounded-lg px-3 py-1.5 bg-white text-[#3F4752]"
+        >
           {STATUSES.map(s => <option key={s}>{s}</option>)}
         </select>
 
@@ -305,7 +389,11 @@ export default function ImplantsPage() {
               <div className="flex items-center justify-between mb-5">
                 <h3 className="text-base font-bold text-[#3F4752]">Filters</h3>
                 <button
-                  onClick={() => { setSubFilter("All"); setSupplierFilter("All Suppliers"); setStatusFilter("All Status") }}
+                  onClick={() => {
+                    setSubFilter("All")
+                    setSupplierFilter("All Suppliers")
+                    setStatusFilter("All Status")
+                  }}
                   className="text-sm text-[#4DA3FF]"
                 >
                   Clear all
@@ -314,22 +402,31 @@ export default function ImplantsPage() {
               <div className="space-y-4">
                 <div>
                   <label className="block text-xs text-[#94A3B8] mb-1.5 uppercase tracking-wider">System</label>
-                  <select value={subFilter} onChange={e => setSubFilter(e.target.value)}
-                    className="w-full text-sm border border-[#D5DCE3] rounded-xl px-3 py-2.5 bg-white text-[#3F4752]">
+                  <select
+                    value={subFilter}
+                    onChange={e => setSubFilter(e.target.value)}
+                    className="w-full text-sm border border-[#D5DCE3] rounded-xl px-3 py-2.5 bg-white text-[#3F4752]"
+                  >
                     {SUBCATEGORIES.map(c => <option key={c}>{c}</option>)}
                   </select>
                 </div>
                 <div>
                   <label className="block text-xs text-[#94A3B8] mb-1.5 uppercase tracking-wider">Supplier</label>
-                  <select value={supplierFilter} onChange={e => setSupplierFilter(e.target.value)}
-                    className="w-full text-sm border border-[#D5DCE3] rounded-xl px-3 py-2.5 bg-white text-[#3F4752]">
+                  <select
+                    value={supplierFilter}
+                    onChange={e => setSupplierFilter(e.target.value)}
+                    className="w-full text-sm border border-[#D5DCE3] rounded-xl px-3 py-2.5 bg-white text-[#3F4752]"
+                  >
                     {SUPPLIERS.map(s => <option key={s}>{s}</option>)}
                   </select>
                 </div>
                 <div>
                   <label className="block text-xs text-[#94A3B8] mb-1.5 uppercase tracking-wider">Status</label>
-                  <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)}
-                    className="w-full text-sm border border-[#D5DCE3] rounded-xl px-3 py-2.5 bg-white text-[#3F4752]">
+                  <select
+                    value={statusFilter}
+                    onChange={e => setStatusFilter(e.target.value)}
+                    className="w-full text-sm border border-[#D5DCE3] rounded-xl px-3 py-2.5 bg-white text-[#3F4752]"
+                  >
                     {STATUSES.map(s => <option key={s}>{s}</option>)}
                   </select>
                 </div>
@@ -346,7 +443,8 @@ export default function ImplantsPage() {
       )}
 
       {/* Desktop two-col */}
-      <div className="lg:flex lg:h-[calc(100vh-120px)]">
+      <div className="lg:flex lg:h-[calc(100vh-160px)]">
+
         {/* Left: implant list + rack tracker */}
         <div className="lg:flex-1 lg:overflow-y-auto lg:border-r lg:border-[#D5DCE3]">
 
@@ -376,12 +474,22 @@ export default function ImplantsPage() {
                 </div>
               </button>
             ))}
+            {filtered.length === 0 && (
+              <div className="flex flex-col items-center justify-center py-16 text-[#94A3B8] gap-2">
+                <Bone size={32} className="text-[#D5DCE3]" />
+                <p className="text-sm">No implants match your search</p>
+              </div>
+            )}
           </div>
 
           {/* Live Rack Tracker */}
           <div className="mt-4 mb-8 mx-4 lg:mx-8 bg-white border border-[#D5DCE3] rounded-2xl overflow-hidden">
             <div className="px-4 py-3 border-b border-[#D5DCE3] flex items-center gap-2">
-              <span className={`w-2 h-2 rounded-full ${rackConnected ? "bg-emerald-500 animate-pulse" : "bg-[#94A3B8]"}`} />
+              <span
+                className={`w-2 h-2 rounded-full shrink-0 ${
+                  rackConnected ? "bg-emerald-500 animate-pulse" : "bg-[#94A3B8]"
+                }`}
+              />
               <span className="text-sm font-semibold text-[#3F4752]">Live Rack Tracker</span>
               <span className="text-xs text-[#94A3B8] ml-1">Stryker Triathlon CR</span>
             </div>
@@ -403,6 +511,14 @@ export default function ImplantsPage() {
                 <div className="min-w-0">
                   <p className="text-xs font-semibold text-[#3F4752] truncate">{item.name}</p>
                   <p className="text-xs text-[#94A3B8] font-mono">{item.catNo}</p>
+                  {item.lastEdit && (
+                    <span className="flex items-center gap-1 mt-0.5">
+                      <Clock size={9} className="text-[#94A3B8]" />
+                      <span className="text-[10px] text-[#94A3B8]">
+                        {item.lastEdit.by} · {item.lastEdit.at}
+                      </span>
+                    </span>
+                  )}
                 </div>
                 <span className="text-sm text-[#526579] text-right">{item.total}</span>
                 <span className={`text-sm font-bold text-right ${availableColor(item.available)}`}>
@@ -430,7 +546,7 @@ export default function ImplantsPage() {
         </div>
 
         {/* Desktop right panel */}
-        <div className="hidden lg:flex w-96 bg-white flex-col overflow-y-auto">
+        <div className="hidden lg:flex w-[400px] bg-white flex-col overflow-y-auto">
           {selected ? (
             <div className="p-6">
               <div className="w-full h-40 rounded-2xl bg-[#F0F4F8] flex items-center justify-center mb-4">
@@ -441,7 +557,11 @@ export default function ImplantsPage() {
                 {selected.sku}
               </span>
               <div className="mt-4 space-y-2">
-                {[["Supplier", selected.supplier], ["System", selected.subcategory], ["Qty", String(selected.qty)]].map(([l, v]) => (
+                {[
+                  ["Supplier", selected.supplier],
+                  ["System",   selected.subcategory],
+                  ["Qty",      String(selected.qty)],
+                ].map(([l, v]) => (
                   <div key={l} className="flex items-center justify-between border-b border-[#D5DCE3] pb-2">
                     <span className="text-xs text-[#94A3B8]">{l}</span>
                     <span className="text-sm text-[#3F4752] font-medium">{v}</span>
@@ -449,7 +569,9 @@ export default function ImplantsPage() {
                 ))}
                 <div className="flex items-center justify-between border-b border-[#D5DCE3] pb-2">
                   <span className="text-xs text-[#94A3B8]">Status</span>
-                  <span className={`text-sm font-medium ${statusColor(selected.status)}`}>{selected.status}</span>
+                  <span className={`text-sm font-medium ${statusColor(selected.status)}`}>
+                    {selected.status}
+                  </span>
                 </div>
               </div>
             </div>

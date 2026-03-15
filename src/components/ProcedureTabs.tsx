@@ -74,10 +74,10 @@ function SubanatomyHeader({
   isDark: boolean;
 }) {
   return (
-    <div className="px-1">
-      <div className={`rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] lg:inline-flex lg:px-4 lg:py-1.5 lg:text-[12px] ${isDark ? "border-[#334155] bg-[#1B2636] text-white" : "border-[#D8E3EE] bg-[#F8FBFD] text-[#0F172A]"}`}>
+    <div className="px-1 pb-1">
+      <h2 className={`text-[22px] font-bold tracking-[-0.03em] lg:text-[32px] lg:font-bold lg:tracking-[-0.05em] ${isDark ? "text-white" : "text-[#10243E]"}`}>
         {label}
-      </div>
+      </h2>
     </div>
   );
 }
@@ -318,11 +318,11 @@ function SystemRow({
   canReview: boolean;
 }) {
   const rowClassName = isDark
-    ? `procedure-system-row flex w-full items-start justify-between gap-3 border-t px-4 py-3 text-left transition lg:px-5 lg:py-3.5 ${
+    ? `procedure-system-row flex w-full items-start justify-between gap-3 border-t px-4 py-4 text-left transition lg:px-5 lg:py-3.5 ${
         isSelected ? "bg-[#334155]" : "bg-[#243244] hover:bg-[#2B3B50]"
       } border-[#334155]`
     : [
-        "procedure-system-row flex w-full items-start justify-between gap-3 border-t border-[#D5DCE3] px-4 py-3 text-left transition lg:border-[#D8E3EE] lg:px-5 lg:py-3.5",
+        "procedure-system-row flex w-full items-start justify-between gap-3 border-t border-[#D5DCE3] px-4 py-4 text-left transition lg:border-[#D8E3EE] lg:px-5 lg:py-3.5",
         isSelected ? "bg-[#E1F3F0] lg:bg-[#EEF7FF]" : "bg-white hover:bg-[#F4FBFA] lg:bg-white lg:hover:bg-[#F7FBFF]",
       ].join(" ");
 
@@ -332,7 +332,7 @@ function SystemRow({
   return (
     <div className={rowClassName}>
       <Link href={href} className="min-w-0 flex-1">
-        <div className={`text-sm font-medium lg:text-[22px] lg:font-semibold lg:tracking-[-0.03em] ${isDark ? "text-white" : "text-slate-900 lg:text-[#10243E]"}`}>
+        <div className={`text-[15px] font-semibold lg:text-[22px] lg:font-semibold lg:tracking-[-0.03em] ${isDark ? "text-white" : "text-slate-900 lg:text-[#10243E]"}`}>
           {system.name}
         </div>
         <div className="mt-1 flex flex-wrap items-center gap-1.5">
@@ -350,12 +350,12 @@ function SystemRow({
         {(formatSystemMeta(system).type || formatSystemMeta(system).supplier) && (
           <div className="mt-1 space-y-0.5">
             {formatSystemMeta(system).type && (
-              <div className={`text-xs font-semibold uppercase tracking-[0.08em] lg:text-[12px] ${isDark ? "text-[#C7D2E0]" : "text-slate-600 lg:text-[#51677E]"}`}>
+              <div className={`text-[11px] font-semibold uppercase tracking-[0.08em] lg:text-[12px] ${isDark ? "text-[#C7D2E0]" : "text-slate-600 lg:text-[#51677E]"}`}>
                 {formatSystemMeta(system).type}
               </div>
             )}
             {formatSystemMeta(system).supplier && (
-              <div className={`text-xs lg:text-sm ${isDark ? "text-[#C7D2E0]" : "text-slate-500 lg:text-[#61758B]"}`}>
+              <div className={`text-[13px] lg:text-sm ${isDark ? "text-[#C7D2E0]" : "text-slate-500 lg:text-[#61758B]"}`}>
                 {formatSystemMeta(system).supplier}
               </div>
             )}
@@ -467,7 +467,7 @@ function VariantSection({
       <button
         type="button"
         onClick={onToggle}
-        className="procedure-variant-bar flex w-full items-center justify-between gap-3 px-5 py-4 text-left transition lg:hidden"
+        className="procedure-variant-bar flex w-full items-center justify-between gap-3 px-5 py-5 text-left transition lg:hidden"
         style={{
           backgroundColor: isDark ? "#243244" : palette.soft,
           color: isDark ? "#E5EEF9" : palette.softText,
@@ -475,11 +475,11 @@ function VariantSection({
         }}
       >
         <div className="min-w-0">
-          <div className="text-sm font-medium lg:text-[26px] lg:font-semibold lg:tracking-[-0.04em]">
+          <div className="text-[15px] font-semibold lg:text-[26px] lg:font-semibold lg:tracking-[-0.04em]">
             {variant.name}
           </div>
           {variant.description && (
-            <div className="mt-1 line-clamp-2 text-xs opacity-90 lg:text-sm lg:leading-6">
+            <div className="mt-1 line-clamp-2 text-[13px] leading-5 opacity-90 lg:text-sm lg:leading-6">
               {variant.description}
             </div>
           )}
@@ -795,7 +795,7 @@ function ProcedureSection({
   const [desktopExpanded, setDesktopExpanded] = useState(false);
 
   return (
-    <div className={`procedure-section-card overflow-hidden rounded-xl border shadow-sm lg:inline-block lg:w-full lg:break-inside-avoid lg:rounded-[28px] lg:shadow-[0_18px_42px_rgba(15,23,42,0.08)] ${isDark ? "border-[#334155] bg-[#243244] lg:bg-[#243244]" : "border-[#D5DCE3] bg-white lg:border-[#D8E3EE] lg:bg-white"}`}>
+    <div className={`procedure-section-card overflow-hidden lg:inline-block lg:w-full lg:break-inside-avoid lg:rounded-[28px] lg:border lg:shadow-[0_18px_42px_rgba(15,23,42,0.08)] ${isDark ? "lg:border-[#334155] lg:bg-[#243244]" : "lg:border-[#D8E3EE] lg:bg-white"}`}>
       <button
         type="button"
         onClick={() => setDesktopExpanded((current) => !current)}
@@ -835,11 +835,11 @@ function ProcedureSection({
       >
         <div className="flex min-w-0 flex-1 items-center gap-3 px-4 py-4 text-left">
           <div className="min-w-0 flex-1">
-            <div className="text-sm font-semibold text-white">
+            <div className="text-[16px] font-semibold leading-snug text-white">
               {procedure.name}
             </div>
             {procedure.description && (
-              <div className="mt-1 line-clamp-2 text-xs text-white/85">
+              <div className="mt-1 line-clamp-2 text-[13px] text-white/85 leading-5">
                 {procedure.description}
               </div>
             )}
@@ -1007,11 +1007,12 @@ export default function ProcedureTabs({
 
   return (
     <>
-      <div className="space-y-4 lg:hidden">
+      <div className="space-y-6 lg:hidden">
         {groupedProcedures.map(({ groupName, items }) => (
-          <section key={groupName} className="space-y-3">
+          <section key={groupName} className="space-y-0">
             <SubanatomyHeader label={groupName} isDark={isDark} />
-            {items.map(({ procedure, variants, suppressBranching }) => (
+            {items.map(({ procedure, variants, suppressBranching }, idx) => (
+              <div key={procedure.id} className={idx > 0 ? `pt-6 ${isDark ? "border-t border-[#334155]" : "border-t border-[#E8EFF6]"}` : ""}>
               <ProcedureSection
                 key={procedure.id}
                 procedure={procedure}
@@ -1025,6 +1026,7 @@ export default function ProcedureTabs({
                 anatomy={reviewAnatomy}
                 canReview={trustedReviewer}
               />
+              </div>
             ))}
           </section>
         ))}

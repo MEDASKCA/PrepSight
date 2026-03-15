@@ -335,7 +335,7 @@ export default function OperatingTheatreTabs({
             {specialtyFirst ? null : (
               <button
                 onClick={() => toggleSpecialty(tab.name)}
-                className="flex w-full items-center gap-3 px-4 py-3.5 text-left text-sm font-semibold text-white transition-colors lg:px-8 lg:py-8 lg:text-[42px] lg:font-semibold lg:tracking-[-0.06em]"
+                className="flex w-full items-center gap-3 px-4 py-4 text-left text-base font-semibold text-white transition-colors lg:px-8 lg:py-8 lg:text-[42px] lg:font-semibold lg:tracking-[-0.06em]"
                 style={{ backgroundColor: palette.header }}
                 onMouseEnter={(event) => {
                   ;(event.currentTarget as HTMLButtonElement).style.backgroundColor = palette.hover
@@ -660,7 +660,7 @@ export default function OperatingTheatreTabs({
                         <button
                           type="button"
                           onClick={() => toggleServiceLine(line.id)}
-                          className={`ot-service-line-bar flex w-full items-center gap-3 px-4 py-3 text-sm transition-colors ${
+                          className={`ot-service-line-bar flex w-full items-center gap-3 px-4 py-4 text-[15px] transition-colors ${
                             specialtyFirst ? "rounded-[20px]" : ""
                           }`}
                           style={{
@@ -691,7 +691,7 @@ export default function OperatingTheatreTabs({
                             </div>
                           )}
 
-                          <span className="min-w-0 flex-1 text-left whitespace-normal break-words leading-snug font-medium">
+                          <span className="min-w-0 flex-1 text-left whitespace-normal break-words leading-snug font-semibold">
                             {formatSubspecialtyLabel(line.name)}
                           </span>
 
@@ -720,7 +720,7 @@ export default function OperatingTheatreTabs({
                                       service_line: line.id,
                                       anatomy: node.id,
                                     })}
-                                    className={`ot-anatomy-row flex w-full items-center gap-2 px-4 py-2 text-sm transition-colors ${
+                                    className={`ot-anatomy-row flex w-full items-center gap-2 px-4 py-3.5 text-[15px] transition-colors ${
                                       isActiveAnatomy
                                         ? "bg-[#E7F2FF] font-semibold text-[#1E3A5F]"
                                         : "text-[#334155] hover:bg-[#F8FBFF]"
@@ -734,7 +734,7 @@ export default function OperatingTheatreTabs({
                                         {node.name}
                                       </div>
                                       {subanatomyPreview.length > 0 && (
-                                        <div className="mt-0.5 text-[10px] leading-[1.25] text-[#64748b] opacity-82">
+                                        <div className="mt-0.5 text-xs leading-[1.3] text-[#64748b] opacity-82">
                                           <span className="font-medium uppercase tracking-[0.08em] text-[#94a3b8]">
                                             Includes
                                           </span>

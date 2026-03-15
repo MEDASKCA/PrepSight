@@ -783,6 +783,59 @@ function buildCardSectionsFromRecord(record: RawCardRecord): Section[] {
   return sections
 }
 
+function injectImplantsSection(
+  sections: Section[],
+  systemId: string,
+  systemName: string,
+): Section[] {
+  if (sections.some((s) => s.sectionType === "implants_prosthetics")) return sections
+
+  const { system, supplier } = getSystemMetadata(systemId)
+  const supplierName = supplier?.name
+
+  const implantSection: Section = {
+    id: `implants-${slug(systemName)}`,
+    title: "Implants & Prosthetics",
+    sectionType: "implants_prosthetics",
+    items: dedupeItems([
+      makeItem(
+        "implant",
+        systemName,
+        system?.description ??
+          `${systemName} — confirm components, trials, and backup sizes are in theatre before knife-to-skin.`,
+        1,
+        supplierName,
+      ),
+      makeItem(
+        "implant",
+        "Trial components",
+        "Open or have immediately available the sizes needed for templating and intraoperative trialling.",
+        1,
+        supplierName,
+      ),
+      makeItem(
+        "implant",
+        "Backup component range",
+        "Retain compatible backup sizes and accessories in theatre until the final implant is seated.",
+        1,
+        supplierName,
+      ),
+    ]),
+  }
+
+  // Insert after equipment_devices, or before consumables_supplies, or at end
+  const afterEquipment = sections.findIndex((s) => s.sectionType === "equipment_devices")
+  const beforeConsumables = sections.findIndex((s) => s.sectionType === "consumables_supplies")
+  const insertAt =
+    afterEquipment >= 0
+      ? afterEquipment + 1
+      : beforeConsumables >= 0
+        ? beforeConsumables
+        : sections.length
+
+  return [...sections.slice(0, insertAt), implantSection, ...sections.slice(insertAt)]
+}
+
 export function buildSystemCardSections(
   procedure: Procedure,
   variantId: string,
@@ -800,7 +853,11 @@ export function buildSystemCardSections(
   )
 
   if (exactCard) {
-    return buildCardSectionsFromRecord(exactCard)
+    return injectImplantsSection(
+      buildCardSectionsFromRecord(exactCard),
+      systemId,
+      systemName,
+    )
   }
 
   const templateForVariant = cardRecords.find(
@@ -818,7 +875,11 @@ export function buildSystemCardSections(
       systemName,
       systemId,
     )
-    return buildCardSectionsFromRecord(adaptedTemplate)
+    return injectImplantsSection(
+      buildCardSectionsFromRecord(adaptedTemplate),
+      systemId,
+      systemName,
+    )
   }
 
   if (procedure.sections.length > 0) {

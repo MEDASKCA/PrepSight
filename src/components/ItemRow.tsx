@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useState, useEffect } from "react"
-import { ImagePlus, X, Flag, Pencil, Save, Check, Clock, Trash2, Loader2 } from "lucide-react"
+import { ImagePlus, X, Flag, Package, Pencil, Save, Check, Clock, Trash2, Loader2 } from "lucide-react"
 import { ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage"
 import { doc, setDoc, deleteDoc, getDoc } from "firebase/firestore"
 import { storage, db } from "@/lib/firebase"
@@ -12,6 +12,8 @@ interface Props {
   editMode?: boolean
   onDelete?: () => void
   allowEdit?: boolean
+  isChecked?: boolean
+  onCheck?: () => void
 }
 
 type UrgencyLevel = "info" | "advisory" | "urgent" | "critical"
@@ -39,6 +41,8 @@ export default function ItemRow({
   editMode = false,
   onDelete,
   allowEdit = true,
+  isChecked = false,
+  onCheck,
 }: Props) {
   const [isDark, setIsDark] = useState(false)
   const [showInfo, setShowInfo]             = useState(false)
@@ -215,7 +219,7 @@ export default function ItemRow({
   return (
     <>
       {/* ── Compact row ─────────────────────────────────────────────── */}
-      <div className={`item-row flex items-center gap-2 border-b py-2.5 ${isDark ? "border-[#334155] bg-[#111E30]" : "border-[#D5DCE3]"} ${editMode ? (isDark ? "bg-[#1A2433]" : "bg-[#fff8f5]") : ""}`}>
+      <div className={`item-row flex items-start gap-2 border-b py-3 ${isDark ? "border-[#334155] bg-[#111E30]" : "border-[#D5DCE3]"} ${editMode ? (isDark ? "bg-[#1A2433]" : "bg-[#fff8f5]") : ""}`}>
 
         {editMode ? (
           /* ── Edit mode — clean row with action icons ──────────────── */
@@ -268,20 +272,38 @@ export default function ItemRow({
             </div>
           </>
         ) : (
-          /* ── View mode ─────────────────────────────────────────────── */
+          /* ── View mode — adaptive multi-line ───────────────────────── */
           <>
+            {/* Thumbnail */}
+            <button
+              type="button"
+              onClick={() => setShowInfo(true)}
+              className="shrink-0 self-start mt-0.5 rounded-lg overflow-hidden"
+              aria-label={`View details for ${localName}`}
+            >
+              {localImage ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={localImage} alt={localName} className="w-8 h-8 object-cover rounded-lg" />
+              ) : (
+                <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isDark ? "bg-[#1A2840]" : "bg-[#EEF2F6]"}`}>
+                  <Package size={14} className={isDark ? "text-[#64748B]" : "text-[#94a3b8]"} />
+                </div>
+              )}
+            </button>
+
+            {/* Content — wraps naturally */}
             <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-1.5 min-w-0">
+              <div className="flex items-start gap-1.5">
                 <button
                   onClick={() => setShowInfo(true)}
-                  className={`min-w-0 truncate text-left text-sm font-semibold leading-snug underline underline-offset-2 ${isDark ? "text-white" : "text-[#2F8EF7]"}`}
+                  className={`flex-1 text-left text-sm font-semibold leading-snug underline underline-offset-2 ${isDark ? "text-white" : "text-[#2F8EF7]"}`}
                 >
                   {localName}
                 </button>
                 <button
                   onClick={() => setShowNotes(true)}
                   className={[
-                    "shrink-0 w-4 h-4 rounded-full border flex items-center justify-center text-[9px] font-bold leading-none transition-colors",
+                    "shrink-0 mt-0.5 w-4 h-4 rounded-full border flex items-center justify-center text-[9px] font-bold leading-none transition-colors",
                     hasNotes
                       ? isDark ? "border-[#7DD3FC] text-[#7DD3FC]" : "border-[#2F8EF7] text-[#2F8EF7]"
                       : isDark ? "border-[#64748B] text-[#C7D2E0] hover:border-[#7DD3FC] hover:text-[#7DD3FC]" : "border-[#94a3b8] text-[#94a3b8] hover:border-[#2F8EF7] hover:text-[#2F8EF7]",
@@ -292,27 +314,37 @@ export default function ItemRow({
                 </button>
               </div>
               {localProduct && (
-                <p className={`mt-0.5 truncate text-xs leading-snug ${isDark ? "text-[#C7D2E0]" : "text-[#94a3b8]"}`}>
+                <p className={`mt-0.5 text-xs leading-snug ${isDark ? "text-[#C7D2E0]" : "text-[#94a3b8]"}`}>
                   {localProduct}
                 </p>
               )}
+              {(localLocation || localQty) && (
+                <div className={`mt-1 flex flex-wrap gap-x-3 gap-y-0.5 text-[11px] ${isDark ? "text-[#64748B]" : "text-[#94a3b8]"}`}>
+                  {localLocation && (
+                    <span>{localLocation.split("/").map((p) => p.trim()).filter(Boolean).join(" · ")}</span>
+                  )}
+                  {localQty && <span>Qty: {localQty}</span>}
+                </div>
+              )}
             </div>
 
-            <div className="flex items-center gap-2 shrink-0">
-              <div className="w-14 text-center">
-                {localLocation
-                  ? localLocation.split("/").map((part, i) => (
-                      <span key={i} className={`block text-[10px] leading-tight ${isDark ? "text-[#C7D2E0]" : "text-[#64748b]"}`}>
-                        {part.trim()}
-                      </span>
-                    ))
-                  : <span className={`text-[10px] ${isDark ? "text-[#64748B]" : "text-[#D5DCE3]"}`}>-</span>
-                }
-              </div>
-              <div className={`w-10 text-center text-sm font-medium ${isDark ? "text-white" : "text-[#3F4752]"}`}>
-                {localQty || "-"}
-              </div>
-            </div>
+            {/* Check button */}
+            {onCheck !== undefined && (
+              <button
+                type="button"
+                onClick={onCheck}
+                className={`shrink-0 self-start mt-0.5 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${
+                  isChecked
+                    ? "bg-emerald-500 border-emerald-500"
+                    : isDark
+                      ? "border-[#334155] bg-[#1A2840] hover:border-emerald-400"
+                      : "border-[#D5DCE3] bg-white hover:border-emerald-400"
+                }`}
+                aria-label={isChecked ? "Uncheck item" : "Check item"}
+              >
+                {isChecked && <Check size={11} className="text-white" />}
+              </button>
+            )}
           </>
         )}
       </div>
